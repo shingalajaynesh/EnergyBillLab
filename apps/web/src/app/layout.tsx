@@ -1,5 +1,6 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import type { ReactNode } from 'react';
 
 import { AppFooter } from '@/components/app-footer';
@@ -28,6 +29,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
+        />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6303291083449043"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
         <AntdRegistry>
           <AppThemeProvider>
