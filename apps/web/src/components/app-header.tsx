@@ -1,6 +1,6 @@
 'use client';
 
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import Button from 'antd/es/button';
 import Drawer from 'antd/es/drawer';
 import Link from 'next/link';
@@ -21,7 +21,10 @@ export function AppHeader() {
       <PageContainer>
         <div className={styles.inner}>
           <Link className={styles.brand} href="/" aria-label="Energy Bill Lab home">
-            Energy Bill Lab
+            <span className={styles.brandMark} aria-hidden="true">
+              <ThunderboltOutlined />
+            </span>
+            <span className={styles.brandText}>Energy Bill Lab</span>
           </Link>
 
           <nav aria-label="Primary navigation" className={styles.nav}>
@@ -29,6 +32,7 @@ export function AppHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                className={styles.navLink}
                 aria-current={pathname === item.href ? 'page' : undefined}
               >
                 {item.label}
@@ -46,17 +50,18 @@ export function AppHeader() {
       </PageContainer>
 
       <Drawer
-        title="Energy Bill Lab"
+        title="Navigation"
         placement="right"
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        width={300}
+        width={280}
       >
         <nav aria-label="Mobile navigation" className={styles.mobileNav}>
           {primaryNavigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
+              className={styles.mobileNavLink}
               aria-current={pathname === item.href ? 'page' : undefined}
               onClick={() => setIsOpen(false)}
             >

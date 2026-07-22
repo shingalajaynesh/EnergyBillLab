@@ -1,22 +1,36 @@
 .article {
-  display: grid;
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 32px 0 40px;
+}
+
+.article section {
+  border-bottom: 1px solid #f0f2f5;
+  padding-bottom: 24px;
+}
+
+.article section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .article h2 {
-  color: var(--ebl-text);
-  font-size: 1.35rem;
-  line-height: 1.2;
-  margin: 0 0 10px;
+  color: #182230;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0 0 14px;
 }
 
 .article p {
-  color: var(--ebl-text-muted);
-  font-size: 1rem;
-  line-height: 1.7;
+  color: #344054;
+  font-size: 1.0625rem;
+  line-height: 1.75;
   margin: 0;
 }
 
 .article p + p {
-  margin-top: 12px;
+  margin-top: 14px;
 }

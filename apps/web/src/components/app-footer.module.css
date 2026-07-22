@@ -1,44 +1,75 @@
 .footer {
-  background: var(--ebl-surface-muted);
-  border-top: 1px solid var(--ebl-border);
-  padding: 34px 0;
+  background: #f8faf9;
+  border-top: 1px solid #eaecf0;
+  padding: 48px 0 24px;
 }
 
 .grid {
   display: grid;
-  gap: 24px;
-  grid-template-columns: minmax(220px, 1.4fr) repeat(4, minmax(120px, 1fr));
+  gap: 32px;
+  grid-template-columns: minmax(260px, 1.4fr) repeat(4, minmax(120px, 1fr));
 }
 
-.grid strong {
-  display: block;
-  margin-bottom: 8px;
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.grid p {
-  color: var(--ebl-text-muted);
+.brandTitle {
+  color: #104c41;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brandDescription {
+  color: #475467;
+  font-size: 0.9375rem;
   line-height: 1.6;
   margin: 0;
   max-width: 320px;
 }
 
-.grid nav {
-  display: grid;
-  gap: 8px;
+.independenceNote {
+  color: #667085;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
 }
 
-.grid nav span {
-  color: var(--ebl-text);
+.groupNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupTitle {
+  color: #182230;
+  font-size: 0.875rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.grid nav a {
-  color: var(--ebl-text-muted);
+.groupLink {
+  color: #475467;
+  font-size: 0.9375rem;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-.grid nav a:hover {
-  color: var(--ebl-text);
+.groupLink:hover {
+  color: #176b5b;
+}
+
+.bottomBar {
+  border-top: 1px solid #eaecf0;
+  color: #667085;
+  font-size: 0.8125rem;
+  margin-top: 40px;
+  padding-top: 24px;
 }
 
 @media (max-width: 860px) {

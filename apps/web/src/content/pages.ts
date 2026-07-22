@@ -141,20 +141,66 @@ export const contentPages = {
       'How Energy Bill Lab approaches privacy, cookies, analytics, advertising readiness, and data minimization.',
     path: '/privacy',
     updatedAt: '2026-07-22',
-    related: ['/terms', '/disclaimer', '/contact'],
+    related: ['/cookies', '/terms', '/disclaimer', '/contact'],
     sections: [
       {
         heading: 'Data minimization',
         paragraphs: [
-          'Energy Bill Lab is designed so core public calculators can work without a login. Calculator inputs should not be stored by default.',
-          'If analytics or platform services are added, the site should avoid sending raw bill amounts, addresses, utility account numbers, uploaded bill content, or other sensitive user inputs.',
+          'Energy Bill Lab is designed so core public calculators work without user login or account registration. Calculator inputs are processed locally in your browser for estimation purposes and are not sold, rented, or linked to personal identities.',
+          'The website avoids capturing sensitive personal inputs such as utility account numbers, full street addresses, SSNs, or uploaded financial documents.',
         ],
       },
       {
-        heading: 'Cookies and third parties',
+        heading: 'Analytics and performance tools',
         paragraphs: [
-          'Hosting, security, analytics, consent, and advertising services may use cookies, identifiers, logs, or similar technologies when configured.',
-          'Advertising is not implemented by this release. If advertising is configured later, this page must be updated to describe relevant third-party advertising, cookies, user choices, and region-specific consent behavior.',
+          'Energy Bill Lab uses privacy-respecting measurement platforms to analyze site usage and monitor technical performance.',
+          'These systems include Google Tag Manager (GTM) for tag orchestration, Google Analytics 4 (GA4) for aggregated traffic patterns, Microsoft Clarity for session behavior visualization, Vercel Analytics for privacy-first pageview metrics, and Vercel Speed Insights for Core Web Vitals performance monitoring.',
+        ],
+      },
+      {
+        heading: 'Advertising and Google AdSense',
+        paragraphs: [
+          'Energy Bill Lab integrates Google AdSense verification and advertising services. Third-party vendors, including Google, use cookies or device identifiers to serve ads based on a user’s prior visits to this or other websites.',
+          'Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visit to Energy Bill Lab and/or other sites on the Internet. Users may opt out of personalized advertising by visiting Google Ads Settings (www.google.com/settings/ads) or through www.aboutads.info.',
+        ],
+      },
+      {
+        heading: 'Consent and regional rights',
+        paragraphs: [
+          'For visitors residing in the European Economic Area (EEA), United Kingdom, or Switzerland, consent for personalized advertising and cookies is requested via Google Privacy & Messaging or certified Consent Management Platforms (CMP) in accordance with the ePrivacy Directive and GDPR.',
+          'Visitors in California and other U.S. states with consumer privacy laws have rights regarding the collection and use of technical identifiers. Energy Bill Lab does not sell personal information.',
+        ],
+      },
+    ],
+  },
+  '/cookies': {
+    title: 'Cookie Policy',
+    description:
+      'Detailed overview of cookies, local storage, analytics trackers, and consent controls at Energy Bill Lab.',
+    path: '/cookies',
+    updatedAt: '2026-07-22',
+    related: ['/privacy', '/terms', '/disclaimer'],
+    sections: [
+      {
+        heading: 'What are cookies?',
+        paragraphs: [
+          'Cookies are small text files placed on your device by websites you visit. They help sites remember preferences, understand how pages perform, and deliver secure functionality.',
+          'Energy Bill Lab uses cookies, browser local storage, and similar technologies to improve performance, analyze aggregate visitor behavior, and manage advertising tags.',
+        ],
+      },
+      {
+        heading: 'Categories of technologies used',
+        paragraphs: [
+          'Essential & Performance: Hosting and delivery services (such as Vercel Speed Insights and Vercel Analytics) collect anonymized technical performance data to maintain fast load times.',
+          'Analytics & Insights: Google Analytics 4 and Microsoft Clarity (orchestrated via Google Tag Manager) collect aggregated usage metrics such as pages viewed, device type, and referral sources.',
+          'Advertising & Verification: Google AdSense scripts and cookies allow verification of publisher status and serving of non-intrusive advertisements.',
+        ],
+      },
+      {
+        heading: 'Managing your choices',
+        paragraphs: [
+          'You can control or disable cookies through your browser settings. Most modern browsers allow you to block third-party cookies, delete existing cookies, or receive a warning before a cookie is stored.',
+          'For European Economic Area (EEA) and UK visitors, ad consent settings can be managed at any time via the consent banner choices. You may also opt out of targeted advertising network cookies at www.aboutads.info or www.youronlinechoices.eu.',
         ],
       },
     ],

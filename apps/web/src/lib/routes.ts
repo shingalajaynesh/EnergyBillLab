@@ -100,6 +100,13 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
+    description: 'Information about cookies, local storage, analytics, and consent management.',
+    group: 'legal',
+    href: '/cookies',
+    label: 'Cookies',
+    sitemap: true,
+  },
+  {
     description: 'Terms for using Energy Bill Lab informational pages and tools.',
     group: 'legal',
     href: '/terms',

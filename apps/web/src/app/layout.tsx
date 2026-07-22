@@ -10,6 +10,7 @@ import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { AppThemeProvider } from '@/components/app-theme-provider';
 import { createRootMetadata } from '@/lib/metadata';
+import { ADSENSE_CLIENT_ID, GTM_ID } from '@/lib/site';
 import {
   createOrganizationStructuredData,
   createWebsiteStructuredData,
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <GoogleTagManager gtmId="GTM-W6X7RMMT" />
+        <GoogleTagManager gtmId={GTM_ID} />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6303291083449043"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />

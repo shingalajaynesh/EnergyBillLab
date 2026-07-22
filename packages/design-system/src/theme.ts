@@ -59,6 +59,7 @@ export const chartPalette = ['#176b5b', '#1f6f8b', '#8a5a00', '#6c5ce7', '#2f7d3
 export const appTheme = {
   token: {
     colorPrimary: colors.brand,
+    colorPrimaryHover: colors.brandStrong,
     colorInfo: colors.info,
     colorSuccess: colors.success,
     colorWarning: colors.warning,
@@ -66,9 +67,12 @@ export const appTheme = {
     colorText: colors.text,
     colorTextSecondary: colors.textMuted,
     colorBorder: colors.border,
+    colorBorderSecondary: colors.borderSubtle,
     colorBgBase: colors.surface,
     colorBgLayout: colors.surfaceMuted,
     colorBgContainer: colors.surface,
+    colorLink: colors.brand,
+    colorLinkHover: colors.brandStrong,
     borderRadius: borderRadii.md,
     fontFamily: typography.fontFamily,
     controlHeight: 40,
@@ -79,15 +83,24 @@ export const appTheme = {
       borderRadius: borderRadii.md,
       controlHeight: 40,
       fontWeight: 600,
+      colorPrimary: colors.brand,
+      colorPrimaryHover: colors.brandStrong,
     },
     Card: {
       borderRadiusLG: borderRadii.lg,
       boxShadowTertiary: 'none',
+      colorBorderSecondary: colors.borderSubtle,
     },
     Layout: {
       bodyBg: colors.surface,
       headerBg: colors.surface,
       footerBg: colors.surfaceMuted,
+    },
+    Tag: {
+      borderRadiusSM: borderRadii.sm,
+    },
+    Typography: {
+      colorTextDescription: colors.textMuted,
     },
   },
 } satisfies ThemeConfig;

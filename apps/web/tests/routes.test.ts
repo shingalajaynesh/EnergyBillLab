@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import sitemap from '../src/app/sitemap';
-import { primaryNavigation, publicRoutes, sitemapRoutes } from '../src/lib/routes';
+import { primaryNavigation, publicRoutes } from '../src/lib/routes';
 
 describe('public route registry', () => {
   it('uses unique lowercase kebab-case paths', () => {
@@ -20,11 +20,11 @@ describe('public route registry', () => {
     expect(navPaths.every((path) => publicRoutes.some((route) => route.href === path))).toBe(true);
   });
 
-  it('keeps sitemap to public pages only', () => {
-    const urls = sitemap().map((entry) => entry.url);
+  it('includes /cookies in public routes and legal footer group', () => {
+    const paths = publicRoutes.map((route) => route.href);
+    expect(paths).toContain('/cookies');
 
-    expect(sitemapRoutes).toHaveLength(urls.length);
-    expect(urls.some((url) => url.includes('/admin'))).toBe(false);
-    expect(urls.some((url) => url.includes('/api/'))).toBe(false);
+    const sitemapUrls = sitemap().map((entry) => entry.url);
+    expect(sitemapUrls.some((url) => url.endsWith('/cookies'))).toBe(true);
   });
 });

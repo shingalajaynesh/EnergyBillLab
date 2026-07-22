@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 
-import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from './site';
+import {
+  BING_SITE_VERIFICATION,
+  GOOGLE_SITE_VERIFICATION,
+  getSiteUrl,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from './site';
 
 type PageMetadataInput = {
   description: string;
@@ -42,6 +49,14 @@ export function createRootMetadata(): Metadata {
     description: SITE_DESCRIPTION,
     alternates: {
       canonical: '/',
+    },
+    verification: {
+      google: GOOGLE_SITE_VERIFICATION,
+      other: BING_SITE_VERIFICATION
+        ? {
+            'msvalidate.01': [BING_SITE_VERIFICATION],
+          }
+        : undefined,
     },
     openGraph: {
       description: SITE_DESCRIPTION,
