@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "cd ../.. && pnpm build:web",
+    "build": "next build",
+    "build:web": "cd ../.. && pnpm build:web",
     "dev": "next dev",
     "lint": "eslint .",
     "test": "vitest run --passWithNoTests",
