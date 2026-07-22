@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "prebuild": "pnpm --filter=@energy-bill-lab/database build",
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsx watch src/main.ts",
     "lint": "eslint .",
