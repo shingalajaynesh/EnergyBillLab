@@ -25,8 +25,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="GTM-W6X7RMMT" />
       <body>
+        <GoogleTagManager gtmId="GTM-W6X7RMMT" />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
