@@ -110,12 +110,12 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
             rules={[{ required: true, message: 'Enter current bill total in $' }]}
           >
             <InputNumber
-              addonBefore="$"
               className={styles.fullWidth}
               max={BILL_ANALYZER_CONSTANTS.MAX_BILL_DOLLARS}
               min={BILL_ANALYZER_CONSTANTS.MIN_BILL_DOLLARS}
               placeholder="e.g. 180.00"
               precision={2}
+              prefix="$"
               size="large"
               step={0.01}
             />
@@ -127,7 +127,6 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
             rules={[{ required: true, message: 'Enter electricity usage in kWh' }]}
           >
             <InputNumber
-              addonAfter="kWh"
               className={styles.fullWidth}
               max={BILL_ANALYZER_CONSTANTS.MAX_KWH}
               min={BILL_ANALYZER_CONSTANTS.MIN_KWH}
@@ -135,6 +134,7 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
               precision={1}
               size="large"
               step={1}
+              suffix="kWh"
             />
           </Form.Item>
 
@@ -144,7 +144,6 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
             rules={[{ required: true, message: 'Enter billing cycle days' }]}
           >
             <InputNumber
-              addonAfter="days"
               className={styles.fullWidth}
               max={BILL_ANALYZER_CONSTANTS.MAX_DAYS}
               min={BILL_ANALYZER_CONSTANTS.MIN_DAYS}
@@ -152,6 +151,7 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
               precision={0}
               size="large"
               step={1}
+              suffix="days"
             />
           </Form.Item>
         </div>
@@ -188,12 +188,12 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                 ]}
               >
                 <InputNumber
-                  addonBefore="$"
                   className={styles.fullWidth}
                   max={BILL_ANALYZER_CONSTANTS.MAX_BILL_DOLLARS}
                   min={BILL_ANALYZER_CONSTANTS.MIN_BILL_DOLLARS}
                   placeholder="e.g. 120.00"
                   precision={2}
+                  prefix="$"
                   size="large"
                   step={0.01}
                 />
@@ -210,7 +210,6 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                 ]}
               >
                 <InputNumber
-                  addonAfter="kWh"
                   className={styles.fullWidth}
                   max={BILL_ANALYZER_CONSTANTS.MAX_KWH}
                   min={BILL_ANALYZER_CONSTANTS.MIN_KWH}
@@ -218,6 +217,7 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                   precision={1}
                   size="large"
                   step={1}
+                  suffix="kWh"
                 />
               </Form.Item>
 
@@ -232,7 +232,6 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                 ]}
               >
                 <InputNumber
-                  addonAfter="days"
                   className={styles.fullWidth}
                   max={BILL_ANALYZER_CONSTANTS.MAX_DAYS}
                   min={BILL_ANALYZER_CONSTANTS.MIN_DAYS}
@@ -240,6 +239,7 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                   precision={0}
                   size="large"
                   step={1}
+                  suffix="days"
                 />
               </Form.Item>
             </div>
@@ -263,31 +263,31 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
                   <div className={styles.formGrid}>
                     <Form.Item label="Current Fixed Charge ($)" name="currentFixedCharge">
                       <InputNumber
-                        addonBefore="$"
                         className={styles.fullWidth}
                         min={0}
                         placeholder="e.g. 15.00"
                         precision={2}
+                        prefix="$"
                       />
                     </Form.Item>
 
                     <Form.Item label="Current Taxes & Fees ($)" name="currentTaxesAndFees">
                       <InputNumber
-                        addonBefore="$"
                         className={styles.fullWidth}
                         min={0}
                         placeholder="e.g. 12.50"
                         precision={2}
+                        prefix="$"
                       />
                     </Form.Item>
 
                     <Form.Item label="Current Credits ($)" name="currentCredits">
                       <InputNumber
-                        addonBefore="$"
                         className={styles.fullWidth}
                         min={0}
                         placeholder="e.g. 5.00"
                         precision={2}
+                        prefix="$"
                       />
                     </Form.Item>
                   </div>
