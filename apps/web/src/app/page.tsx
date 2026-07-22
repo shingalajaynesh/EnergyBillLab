@@ -1,4 +1,4 @@
-import { Button, Col, Row, Space, Typography } from 'antd';
+import Button from 'antd/es/button';
 import Link from 'next/link';
 
 import { PageContainer } from '@/components/page-container';
@@ -28,21 +28,19 @@ export default function HomePage() {
     <PageContainer>
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <Typography.Title level={1}>
-            Understand what changed in your energy bill.
-          </Typography.Title>
-          <Typography.Paragraph className={styles.lede}>
+          <h1>Understand what changed in your energy bill.</h1>
+          <p className={styles.lede}>
             Energy Bill Lab is being built as a transparent U.S. home-energy data product:
             calculators first, official source dates always, and no login wall for core answers.
-          </Typography.Paragraph>
-          <Space size="middle" wrap>
+          </p>
+          <div className={styles.actions}>
             <Button type="primary" size="large" href="/tools/electricity-bill-analyzer">
               Bill analyzer foundation
             </Button>
             <Button size="large" href="/data-sources">
               Data-source plan
             </Button>
-          </Space>
+          </div>
         </div>
         <div className={styles.readinessPanel} aria-label="Foundation readiness summary">
           <span className={styles.panelLabel}>Phase 0 foundation</span>
@@ -64,19 +62,15 @@ export default function HomePage() {
       </section>
 
       <section className={styles.section} aria-labelledby="foundation-links">
-        <Typography.Title id="foundation-links" level={2}>
-          Built for calculators without starting them yet
-        </Typography.Title>
-        <Row gutter={[16, 16]}>
+        <h2 id="foundation-links">Built for calculators without starting them yet</h2>
+        <div className={styles.linkGrid}>
           {priorityLinks.map((item) => (
-            <Col key={item.href} xs={24} md={8}>
-              <Link className={styles.linkCard} href={item.href}>
-                <span>{item.title}</span>
-                <small>{item.text}</small>
-              </Link>
-            </Col>
+            <Link key={item.href} className={styles.linkCard} href={item.href}>
+              <span>{item.title}</span>
+              <small>{item.text}</small>
+            </Link>
           ))}
-        </Row>
+        </div>
       </section>
     </PageContainer>
   );

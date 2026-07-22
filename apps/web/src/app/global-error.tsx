@@ -1,6 +1,7 @@
 'use client';
 
-import { Button, Result } from 'antd';
+import Button from 'antd/es/button';
+import Result from 'antd/es/result';
 
 export default function GlobalError({
   reset,

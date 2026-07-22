@@ -1,7 +1,8 @@
 'use client';
 
 import { MenuOutlined } from '@ant-design/icons';
-import { Button, Drawer, Grid } from 'antd';
+import Button from 'antd/es/button';
+import Drawer from 'antd/es/drawer';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -18,8 +19,6 @@ const navigationItems = [
 
 export function AppHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const screens = Grid.useBreakpoint();
-  const isDesktop = Boolean(screens.md);
 
   return (
     <header className={styles.header}>
@@ -29,21 +28,20 @@ export function AppHeader() {
             Energy Bill Lab
           </Link>
 
-          {isDesktop ? (
-            <nav aria-label="Primary navigation" className={styles.nav}>
-              {navigationItems.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          ) : (
-            <Button
-              aria-label="Open navigation menu"
-              icon={<MenuOutlined />}
-              onClick={() => setIsOpen(true)}
-            />
-          )}
+          <nav aria-label="Primary navigation" className={styles.nav}>
+            {navigationItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <Button
+            className={styles.menuButton}
+            aria-label="Open navigation menu"
+            icon={<MenuOutlined />}
+            onClick={() => setIsOpen(true)}
+          />
         </div>
       </PageContainer>
 

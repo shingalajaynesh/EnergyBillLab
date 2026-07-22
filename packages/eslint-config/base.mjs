@@ -6,7 +6,13 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['**/.next/**', '**/coverage/**', '**/dist/**', '**/node_modules/**'],
+    ignores: [
+      '**/.next/**',
+      '**/coverage/**',
+      '**/dist/**',
+      '**/next-env.d.ts',
+      '**/node_modules/**',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
