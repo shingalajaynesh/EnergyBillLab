@@ -229,13 +229,7 @@ export async function getElectricityRateDataStatus(
       WHERE sector = 'RES'
     `);
 
-<<<<<<< HEAD
     const rawRows = Array.isArray(stats.rows) ? stats.rows : (stats as unknown as StatusRow[]);
-=======
-    const rawRows = Array.isArray(stats.rows)
-      ? stats.rows
-      : (stats as unknown as StatusRow[]);
->>>>>>> 54eaca1a3ea43e23fb1b05a358ca5afba2489a64
     const row = rawRows[0];
     const latestPeriod = row?.latestPeriod ? String(row.latestPeriod) : null;
     const lastImport = row?.lastImport ? new Date(row.lastImport).toISOString() : null;
