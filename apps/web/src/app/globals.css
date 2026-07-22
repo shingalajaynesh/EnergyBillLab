@@ -1,0 +1,31 @@
+:root {
+  --ebl-border: #d0d5dd;
+  --ebl-primary: #176b5b;
+  --ebl-surface: #ffffff;
+  --ebl-surface-muted: #f6f8f7;
+  --ebl-text: #182230;
+  --ebl-text-muted: #475467;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ebl-surface);
+}
+
+body {
+  background: var(--ebl-surface);
+  color: var(--ebl-text);
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+main {
+  min-height: calc(100vh - 272px);
+}

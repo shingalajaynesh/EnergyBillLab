@@ -1,0 +1,55 @@
+.header {
+  background: rgb(255 255 255 / 96%);
+  border-bottom: 1px solid var(--ebl-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand {
+  color: var(--ebl-text);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+}
+
+.nav a,
+.mobileNav a {
+  border-radius: 6px;
+  color: var(--ebl-text-muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav a {
+  padding: 9px 12px;
+}
+
+.nav a:hover,
+.mobileNav a:hover {
+  background: var(--ebl-surface-muted);
+  color: var(--ebl-text);
+}
+
+.mobileNav {
+  display: grid;
+  gap: 8px;
+}
+
+.mobileNav a {
+  padding: 12px;
+}

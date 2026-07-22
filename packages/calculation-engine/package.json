@@ -1,0 +1,23 @@
+{
+  "name": "@energy-bill-lab/calculation-engine",
+  "private": true,
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@energy-bill-lab/eslint-config": "workspace:*",
+    "@energy-bill-lab/typescript-config": "workspace:*",
+    "@types/node": "^24.0.0",
+    "vitest": "^3.2.0"
+  }
+}

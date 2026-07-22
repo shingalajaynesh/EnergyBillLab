@@ -1,0 +1,103 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 32px;
+  align-items: center;
+  padding: 56px 0 44px;
+}
+
+.heroCopy {
+  max-width: 760px;
+}
+
+.lede {
+  max-width: 680px;
+  color: var(--ebl-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.readinessPanel {
+  border: 1px solid var(--ebl-border);
+  border-radius: 8px;
+  background: var(--ebl-surface);
+  padding: 24px;
+}
+
+.panelLabel {
+  color: var(--ebl-text-muted);
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.readinessPanel dl {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.readinessPanel div {
+  border-top: 1px solid var(--ebl-border);
+  padding-top: 14px;
+}
+
+.readinessPanel dt {
+  color: var(--ebl-text-muted);
+  font-size: 0.875rem;
+}
+
+.readinessPanel dd {
+  color: var(--ebl-text);
+  font-feature-settings: 'tnum';
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 2px 0 0;
+}
+
+.section {
+  border-top: 1px solid var(--ebl-border);
+  padding: 40px 0 64px;
+}
+
+.linkCard {
+  border: 1px solid var(--ebl-border);
+  border-radius: 8px;
+  color: inherit;
+  display: block;
+  min-height: 136px;
+  padding: 20px;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.linkCard:hover {
+  border-color: var(--ebl-primary);
+  box-shadow: 0 10px 24px rgb(16 24 40 / 8%);
+}
+
+.linkCard span {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.linkCard small {
+  color: var(--ebl-text-muted);
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 34px;
+  }
+}

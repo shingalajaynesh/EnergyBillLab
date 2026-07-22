@@ -1,0 +1,27 @@
+{
+  "name": "energy-bill-lab",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "build:api": "pnpm --filter @energy-bill-lab/api build",
+    "build:web": "pnpm --filter @energy-bill-lab/web build",
+    "dev": "turbo run dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@energy-bill-lab/eslint-config": "workspace:*",
+    "eslint": "^9.30.0",
+    "prettier": "^3.6.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0"
+  }
+}
