@@ -1,5 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_URL",
+    "DATABASE_READ_URL",
+    "EIA_API_KEY",
+    "NEXT_PUBLIC_SITE_URL",
+    "NEXT_PUBLIC_CONTACT_EMAIL"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
