@@ -1,0 +1,76 @@
+export type UsGeographySeed = {
+  code: string;
+  slug: string;
+  name: string;
+  kind: 'state' | 'district' | 'national';
+  displayOrder: number;
+};
+
+export const US_GEOGRAPHIES: UsGeographySeed[] = [
+  {
+    code: 'US',
+    slug: 'national',
+    name: 'United States Average',
+    kind: 'national',
+    displayOrder: 1,
+  },
+  { code: 'AL', slug: 'alabama', name: 'Alabama', kind: 'state', displayOrder: 2 },
+  { code: 'AK', slug: 'alaska', name: 'Alaska', kind: 'state', displayOrder: 3 },
+  { code: 'AZ', slug: 'arizona', name: 'Arizona', kind: 'state', displayOrder: 4 },
+  { code: 'AR', slug: 'arkansas', name: 'Arkansas', kind: 'state', displayOrder: 5 },
+  { code: 'CA', slug: 'california', name: 'California', kind: 'state', displayOrder: 6 },
+  { code: 'CO', slug: 'colorado', name: 'Colorado', kind: 'state', displayOrder: 7 },
+  { code: 'CT', slug: 'connecticut', name: 'Connecticut', kind: 'state', displayOrder: 8 },
+  { code: 'DE', slug: 'delaware', name: 'Delaware', kind: 'state', displayOrder: 9 },
+  {
+    code: 'DC',
+    slug: 'district-of-columbia',
+    name: 'District of Columbia',
+    kind: 'district',
+    displayOrder: 10,
+  },
+  { code: 'FL', slug: 'florida', name: 'Florida', kind: 'state', displayOrder: 11 },
+  { code: 'GA', slug: 'georgia', name: 'Georgia', kind: 'state', displayOrder: 12 },
+  { code: 'HI', slug: 'hawaii', name: 'Hawaii', kind: 'state', displayOrder: 13 },
+  { code: 'ID', slug: 'idaho', name: 'Idaho', kind: 'state', displayOrder: 14 },
+  { code: 'IL', slug: 'illinois', name: 'Illinois', kind: 'state', displayOrder: 15 },
+  { code: 'IN', slug: 'indiana', name: 'Indiana', kind: 'state', displayOrder: 16 },
+  { code: 'IA', slug: 'iowa', name: 'Iowa', kind: 'state', displayOrder: 17 },
+  { code: 'KS', slug: 'kansas', name: 'Kansas', kind: 'state', displayOrder: 18 },
+  { code: 'KY', slug: 'kentucky', name: 'Kentucky', kind: 'state', displayOrder: 19 },
+  { code: 'LA', slug: 'louisiana', name: 'Louisiana', kind: 'state', displayOrder: 20 },
+  { code: 'ME', slug: 'maine', name: 'Maine', kind: 'state', displayOrder: 21 },
+  { code: 'MD', slug: 'maryland', name: 'Maryland', kind: 'state', displayOrder: 22 },
+  { code: 'MA', slug: 'massachusetts', name: 'Massachusetts', kind: 'state', displayOrder: 23 },
+  { code: 'MI', slug: 'michigan', name: 'Michigan', kind: 'state', displayOrder: 24 },
+  { code: 'MN', slug: 'minnesota', name: 'Minnesota', kind: 'state', displayOrder: 25 },
+  { code: 'MS', slug: 'mississippi', name: 'Mississippi', kind: 'state', displayOrder: 26 },
+  { code: 'MO', slug: 'missouri', name: 'Missouri', kind: 'state', displayOrder: 27 },
+  { code: 'MT', slug: 'montana', name: 'Montana', kind: 'state', displayOrder: 28 },
+  { code: 'NE', slug: 'nebraska', name: 'Nebraska', kind: 'state', displayOrder: 29 },
+  { code: 'NV', slug: 'nevada', name: 'Nevada', kind: 'state', displayOrder: 30 },
+  { code: 'NH', slug: 'new-hampshire', name: 'New Hampshire', kind: 'state', displayOrder: 31 },
+  { code: 'NJ', slug: 'new-jersey', name: 'New Jersey', kind: 'state', displayOrder: 32 },
+  { code: 'NM', slug: 'new-mexico', name: 'New Mexico', kind: 'state', displayOrder: 33 },
+  { code: 'NY', slug: 'new-york', name: 'New York', kind: 'state', displayOrder: 34 },
+  { code: 'NC', slug: 'north-carolina', name: 'North Carolina', kind: 'state', displayOrder: 35 },
+  { code: 'ND', slug: 'north-dakota', name: 'North Dakota', kind: 'state', displayOrder: 36 },
+  { code: 'OH', slug: 'ohio', name: 'Ohio', kind: 'state', displayOrder: 37 },
+  { code: 'OK', slug: 'oklahoma', name: 'Oklahoma', kind: 'state', displayOrder: 38 },
+  { code: 'OR', slug: 'oregon', name: 'Oregon', kind: 'state', displayOrder: 39 },
+  { code: 'PA', slug: 'pennsylvania', name: 'Pennsylvania', kind: 'state', displayOrder: 40 },
+  { code: 'RI', slug: 'rhode-island', name: 'Rhode Island', kind: 'state', displayOrder: 41 },
+  { code: 'SC', slug: 'south-carolina', name: 'South Carolina', kind: 'state', displayOrder: 42 },
+  { code: 'SD', slug: 'south-dakota', name: 'South Dakota', kind: 'state', displayOrder: 43 },
+  { code: 'TN', slug: 'tennessee', name: 'Tennessee', kind: 'state', displayOrder: 44 },
+  { code: 'TX', slug: 'texas', name: 'Texas', kind: 'state', displayOrder: 45 },
+  { code: 'UT', slug: 'utah', name: 'Utah', kind: 'state', displayOrder: 46 },
+  { code: 'VT', slug: 'vermont', name: 'Vermont', kind: 'state', displayOrder: 47 },
+  { code: 'VA', slug: 'virginia', name: 'Virginia', kind: 'state', displayOrder: 48 },
+  { code: 'WA', slug: 'washington', name: 'Washington', kind: 'state', displayOrder: 49 },
+  { code: 'WV', slug: 'west-virginia', name: 'West Virginia', kind: 'state', displayOrder: 50 },
+  { code: 'WI', slug: 'wisconsin', name: 'Wisconsin', kind: 'state', displayOrder: 51 },
+  { code: 'WY', slug: 'wyoming', name: 'Wyoming', kind: 'state', displayOrder: 52 },
+];
+
+export const VALID_GEOGRAPHY_CODES = new Set(US_GEOGRAPHIES.map((g) => g.code));

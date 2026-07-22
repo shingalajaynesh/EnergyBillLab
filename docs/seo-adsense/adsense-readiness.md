@@ -75,6 +75,6 @@ Ads.txt: Ready
 Crawlability: Ready
 Policy pages: Ready
 Consent: Technical preparation complete; external CMP configuration and verification required
-Original content: Ready (Production Electricity Bill Analyzer implemented)
+Original content: Ready (Production Electricity Bill Analyzer and official EIA-backed state residential rate comparison implemented)
 Overall readiness: Technical preparation complete; external CMP configuration and verification required
 ```

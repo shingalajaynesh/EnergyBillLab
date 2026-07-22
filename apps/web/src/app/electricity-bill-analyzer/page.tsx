@@ -6,6 +6,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { CalculatorIsland } from '@/features/electricity-bill-analyzer';
 import { createPageMetadata } from '@/lib/metadata';
+import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 
 import styles from './page.module.css';
 
@@ -16,7 +17,9 @@ export const metadata: Metadata = createPageMetadata({
   path: '/electricity-bill-analyzer',
 });
 
-export default function ElectricityBillAnalyzerPage() {
+export default async function ElectricityBillAnalyzerPage() {
+  const stateRatesSnapshot = await getStateRatesSnapshot();
+
   return (
     <PageContainer>
       <Breadcrumbs
@@ -37,7 +40,7 @@ export default function ElectricityBillAnalyzerPage() {
         </p>
       </div>
 
-      <CalculatorIsland />
+      <CalculatorIsland stateRatesSnapshot={stateRatesSnapshot} />
 
       {/* Crawlable Explanatory Content */}
       <section className={styles.methodologySection}>

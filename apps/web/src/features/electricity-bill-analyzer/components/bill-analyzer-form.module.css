@@ -90,6 +90,24 @@
   }
 }
 
+@media (max-width: 768px) {
+  .formActions :global(.ant-btn) {
+    min-height: 44px;
+  }
+
+  .collapseArea :global(.ant-collapse-header) {
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .toggleHeader :global(.ant-segmented-item) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 600px) {
   .formContainer {
     padding: 16px;

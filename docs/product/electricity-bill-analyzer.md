@@ -55,6 +55,7 @@ The Electricity Bill Analyzer resolves these issues by:
 - **Zero Storage**: No values are saved in `localStorage`, `sessionStorage`, cookies, or URL parameters.
 - **Zero Transmission**: No entered bill amounts, kWh figures, rates, or personal inputs are sent to any API or backend.
 - **Privacy-Safe Analytics**: GTM events record only feature completion metadata (`hasComparison`, `hasAdvancedInputs`, `classification`). Zero user-entered financial or energy figures are included in event payloads.
+- **No Calculator-Specific Client Data Fetch**: No calculator-specific client data fetch is required for basic client-side calculation.
 
 ---
 

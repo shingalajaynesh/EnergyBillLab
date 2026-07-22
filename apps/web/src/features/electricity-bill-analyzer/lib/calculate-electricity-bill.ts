@@ -40,6 +40,8 @@ export function calculateElectricityBill(input: ElectricityBillInput): Calculati
   }
 
   const currentMetrics: CurrentPeriodMetrics = {
+    currentBill: input.currentBill,
+    currentKwh: input.currentKwh,
     allInEffectiveCostPerKwh,
     dailyUsageKwh,
     estimated30DayUsageKwh,
