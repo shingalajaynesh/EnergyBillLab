@@ -1,0 +1,50 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highlight {
+  border-color: #176b5b;
+  background: #f8faf9;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.label {
+  color: #475467;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge {
+  background: #e8f5e9;
+  color: #104c41;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.value {
+  color: #182230;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-feature-settings: 'tnum';
+  letter-spacing: -0.01em;
+}
+
+.subtext {
+  color: #667085;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}

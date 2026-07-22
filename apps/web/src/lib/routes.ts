@@ -26,6 +26,14 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
+    description:
+      'Compare two billing periods, normalize usage by billing days, estimate your all-in cost per kWh, and understand bill changes.',
+    group: 'tools',
+    href: '/electricity-bill-analyzer',
+    label: 'Electricity Bill Analyzer',
+    sitemap: true,
+  },
+  {
     description: 'How state electricity-rate pages will present sourced residential data.',
     group: 'research',
     href: '/electricity-rates',

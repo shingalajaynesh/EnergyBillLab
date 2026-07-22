@@ -17,9 +17,9 @@ export const metadata: Metadata = createPageMetadata({
 
 const priorityLinks = [
   {
-    href: '/tools',
-    title: 'Tool Library',
-    text: 'Explore upcoming calculators for electricity bills, appliances, air conditioning, heating, and EV charging.',
+    href: '/electricity-bill-analyzer',
+    title: 'Electricity Bill Analyzer',
+    text: 'Compare two billing statements, normalize usage by billing days, and isolate usage effects from rate/fee changes.',
   },
   {
     href: '/electricity-rates',
@@ -45,8 +45,8 @@ export default function HomePage() {
             state-rate differences with transparent formulas and plain-English methodology.
           </p>
           <div className={styles.actions}>
-            <Button type="primary" size="large" href="/tools">
-              Explore energy tools
+            <Button type="primary" size="large" href="/electricity-bill-analyzer">
+              Analyze your electric bill
             </Button>
             <Button size="large" href="/methodology">
               See our methodology

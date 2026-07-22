@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.title {
+  color: #182230;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.insightList {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.insightItem {
+  color: #344054;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.checklist {
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkItem {
+  color: #344054;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}

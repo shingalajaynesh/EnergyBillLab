@@ -1,0 +1,163 @@
+.disclaimerBanner {
+  background: #f8faf9;
+  border-left: 4px solid #176b5b;
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+}
+
+.disclaimerBanner p {
+  color: #344054;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.islandContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.resultsArea {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.methodologySection,
+.checklistSection,
+.navigationSection {
+  border-top: 1px solid #eaecf0;
+  padding-top: 36px;
+  margin-top: 36px;
+}
+
+.methodologySection h2,
+.checklistSection h2,
+.navigationSection h2 {
+  color: #182230;
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.methodologySection p,
+.navigationSection p {
+  color: #475467;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.formulaGrid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.formulaCard {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.formulaCard h3 {
+  color: #182230;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.equation {
+  background: #f8faf9;
+  border: 1px solid #e8f5e9;
+  border-radius: 4px;
+  color: #104c41;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  margin: 0 0 10px 0;
+}
+
+.formulaCard p {
+  color: #475467;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.checklistGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.checkCard {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.checkCard h3 {
+  color: #182230;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.checkCard p {
+  color: #475467;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.linkButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.linkButton {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 6px;
+  color: #176b5b;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.linkButton:hover {
+  background: #e8f5e9;
+  border-color: #176b5b;
+  color: #104c41;
+}
+
+@media (max-width: 900px) {
+  .formulaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .checklistGrid {
+    grid-template-columns: 1fr;
+  }
+}

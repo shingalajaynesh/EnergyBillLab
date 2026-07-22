@@ -27,4 +27,12 @@ describe('public route registry', () => {
     const sitemapUrls = sitemap().map((entry) => entry.url);
     expect(sitemapUrls.some((url) => url.endsWith('/cookies'))).toBe(true);
   });
+
+  it('includes /electricity-bill-analyzer in public routes and sitemap', () => {
+    const paths = publicRoutes.map((route) => route.href);
+    expect(paths).toContain('/electricity-bill-analyzer');
+
+    const sitemapUrls = sitemap().map((entry) => entry.url);
+    expect(sitemapUrls.some((url) => url.endsWith('/electricity-bill-analyzer'))).toBe(true);
+  });
 });

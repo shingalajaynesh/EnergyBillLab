@@ -50,6 +50,11 @@ export function createRootMetadata(): Metadata {
     alternates: {
       canonical: '/',
     },
+    icons: {
+      icon: [{ url: '/icon.svg', type: 'image/svg+xml' }, { url: '/favicon.ico' }],
+      shortcut: '/favicon.ico',
+      apple: '/icon.svg',
+    },
     verification: {
       google: GOOGLE_SITE_VERIFICATION,
       other: BING_SITE_VERIFICATION

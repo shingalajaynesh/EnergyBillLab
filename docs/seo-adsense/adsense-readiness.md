@@ -74,7 +74,7 @@ Technical verification: Ready
 Ads.txt: Ready
 Crawlability: Ready
 Policy pages: Ready
-Consent: Ready with manual actions (CMP setup in AdSense dashboard)
-Original content: Ready with manual actions (Calculators under active engine development)
-Overall readiness: Ready with manual actions
+Consent: Technical preparation complete; external CMP configuration and verification required
+Original content: Ready (Production Electricity Bill Analyzer implemented)
+Overall readiness: Technical preparation complete; external CMP configuration and verification required
 ```

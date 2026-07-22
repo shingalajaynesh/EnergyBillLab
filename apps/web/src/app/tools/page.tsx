@@ -6,17 +6,17 @@ import { createPageMetadata } from '@/lib/metadata';
 export const metadata: Metadata = createPageMetadata({
   title: 'Tools',
   description:
-    'Planned Energy Bill Lab calculators for bills, appliances, cooling, heating, and EV charging.',
+    'Public Energy Bill Lab calculators for electricity bills, appliances, cooling, heating, and EV charging.',
   path: '/tools',
 });
 
 export default function ToolsPage() {
   return (
     <HubPage
+      description="Production-quality calculators designed to explain your utility statements and energy costs with transparent formulas."
+      emptyMessage="Additional appliance and state rate tools are under active development."
+      related={['/electricity-bill-analyzer', '/methodology', '/data-sources', '/disclaimer']}
       title="Energy Cost Tools"
-      description="This hub will hold public calculators once the shared calculation engine is implemented and tested."
-      emptyMessage="Calculator pages are intentionally not published in this task. Future tools must show formulas, assumptions, units, warnings, and source notes before they go live."
-      related={['/methodology', '/data-sources', '/disclaimer']}
     />
   );
 }
