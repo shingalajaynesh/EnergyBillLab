@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "build:api": "pnpm --filter @energy-bill-lab/api build",
-    "build:web": "pnpm --filter @energy-bill-lab/web build",
+    "build:api": "turbo run build --filter=@energy-bill-lab/api",
+    "build:web": "turbo run build --filter=@energy-bill-lab/web",
     "dev": "turbo run dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
