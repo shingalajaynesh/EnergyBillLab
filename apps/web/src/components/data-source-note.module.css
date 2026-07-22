@@ -1,0 +1,23 @@
+.note {
+  background: var(--ebl-surface-muted);
+  border: 1px solid var(--ebl-border);
+  border-radius: 8px;
+  margin: 28px 0;
+  padding: 18px;
+}
+
+.note strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.note p {
+  color: var(--ebl-text-muted);
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.note a {
+  color: var(--ebl-primary);
+  font-weight: 700;
+}

@@ -1,6 +1,7 @@
 .next
 BRAIN.md
 CODEX_FIRST_PROMPT.md
+CODEX_SECOND_PROMPT.md
 coverage
 dist
 node_modules

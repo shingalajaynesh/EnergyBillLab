@@ -1,0 +1,5 @@
+.byline {
+  color: var(--ebl-text-subtle);
+  font-size: 0.9375rem;
+  margin: 0 0 24px;
+}

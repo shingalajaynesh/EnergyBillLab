@@ -1,47 +1,13 @@
 import Link from 'next/link';
 
+import { getFooterGroups } from '@/lib/routes';
+
 import styles from './app-footer.module.css';
 import { PageContainer } from './page-container';
 
-const footerGroups = [
-  {
-    title: 'Tools',
-    links: [
-      ['Bill Analyzer', '/tools/electricity-bill-analyzer'],
-      ['Appliance Calculator', '/tools/appliance-energy-cost-calculator'],
-      ['AC Calculator', '/tools/ac-cost-calculator'],
-    ],
-  },
-  {
-    title: 'Research',
-    links: [
-      ['Electricity Rates', '/electricity-rates'],
-      ['Data Sources', '/data-sources'],
-      ['Methodology', '/methodology'],
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      ['About', '/about'],
-      ['Contact', '/contact'],
-      ['Accessibility', '/accessibility'],
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      ['Privacy', '/privacy'],
-      ['Terms', '/terms'],
-      ['Disclaimer', '/disclaimer'],
-    ],
-  },
-] satisfies Array<{
-  title: string;
-  links: Array<[label: string, href: string]>;
-}>;
-
 export function AppFooter() {
+  const footerGroups = getFooterGroups();
+
   return (
     <footer className={styles.footer}>
       <PageContainer>
@@ -53,9 +19,9 @@ export function AppFooter() {
           {footerGroups.map((group) => (
             <nav key={group.title} aria-label={group.title}>
               <span>{group.title}</span>
-              {group.links.map(([label, href]) => (
-                <Link key={href} href={href}>
-                  {label}
+              {group.links.map((route) => (
+                <Link key={route.href} href={route.href}>
+                  {route.label}
                 </Link>
               ))}
             </nav>

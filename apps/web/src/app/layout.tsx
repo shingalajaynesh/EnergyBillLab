@@ -1,4 +1,3 @@
-import '@ant-design/v5-patch-for-react-19';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
@@ -6,38 +5,36 @@ import type { ReactNode } from 'react';
 import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { AppThemeProvider } from '@/components/app-theme-provider';
+import { createRootMetadata } from '@/lib/metadata';
+import {
+  createOrganizationStructuredData,
+  createWebsiteStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://energybilllab.com'),
-  title: {
-    default: 'Energy Bill Lab',
-    template: '%s | Energy Bill Lab',
-  },
-  description:
-    'Energy Bill Lab helps U.S. residents understand electricity costs, state rates, and practical ways to reduce home energy bills.',
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    description:
-      'Understand energy bills, compare electricity rates, and prepare for transparent calculators.',
-    siteName: 'Energy Bill Lab',
-    title: 'Energy Bill Lab',
-    type: 'website',
-    url: '/',
-  },
-};
+export const metadata: Metadata = createRootMetadata();
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const structuredData = [createWebsiteStructuredData(), createOrganizationStructuredData()];
+
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
+        />
         <AntdRegistry>
           <AppThemeProvider>
             <AppHeader />
-            <main>{children}</main>
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
             <AppFooter />
           </AppThemeProvider>
         </AntdRegistry>

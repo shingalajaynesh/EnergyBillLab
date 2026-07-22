@@ -1,0 +1,22 @@
+.article {
+  display: grid;
+  gap: 28px;
+}
+
+.article h2 {
+  color: var(--ebl-text);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.article p {
+  color: var(--ebl-text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.article p + p {
+  margin-top: 12px;
+}

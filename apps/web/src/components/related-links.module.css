@@ -1,0 +1,36 @@
+.related {
+  border-top: 1px solid var(--ebl-border);
+  margin-top: 44px;
+  padding-top: 28px;
+}
+
+.related h2 {
+  font-size: 1.25rem;
+  margin: 0 0 16px;
+}
+
+.related ul {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related li {
+  border: 1px solid var(--ebl-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.related a {
+  color: var(--ebl-primary);
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.related span {
+  color: var(--ebl-text-muted);
+  line-height: 1.55;
+}

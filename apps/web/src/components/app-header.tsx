@@ -4,21 +4,17 @@ import { MenuOutlined } from '@ant-design/icons';
 import Button from 'antd/es/button';
 import Drawer from 'antd/es/drawer';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+
+import { primaryNavigation } from '@/lib/routes';
 
 import styles from './app-header.module.css';
 import { PageContainer } from './page-container';
 
-const navigationItems = [
-  { href: '/tools/electricity-bill-analyzer', label: 'Bill Analyzer' },
-  { href: '/tools', label: 'Calculators' },
-  { href: '/electricity-rates', label: 'Rates' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/about', label: 'About' },
-];
-
 export function AppHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className={styles.header}>
@@ -29,8 +25,12 @@ export function AppHeader() {
           </Link>
 
           <nav aria-label="Primary navigation" className={styles.nav}>
-            {navigationItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+            {primaryNavigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={pathname === item.href ? 'page' : undefined}
+              >
                 {item.label}
               </Link>
             ))}
@@ -53,8 +53,13 @@ export function AppHeader() {
         width={300}
       >
         <nav aria-label="Mobile navigation" className={styles.mobileNav}>
-          {navigationItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
+          {primaryNavigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={pathname === item.href ? 'page' : undefined}
+              onClick={() => setIsOpen(false)}
+            >
               {item.label}
             </Link>
           ))}

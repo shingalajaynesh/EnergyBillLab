@@ -1,0 +1,26 @@
+.contactNotice {
+  border: 1px solid var(--ebl-border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.contactNotice h2 {
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+}
+
+.contactNotice p {
+  color: var(--ebl-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.contactNotice code {
+  color: var(--ebl-text);
+  font-weight: 700;
+}
+
+.contactNotice a {
+  color: var(--ebl-primary);
+  font-weight: 700;
+}

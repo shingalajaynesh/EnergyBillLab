@@ -1,10 +1,14 @@
 :root {
   --ebl-border: #d0d5dd;
+  --ebl-border-subtle: #eaecf0;
   --ebl-primary: #176b5b;
+  --ebl-primary-strong: #104c41;
   --ebl-surface: #ffffff;
   --ebl-surface-muted: #f6f8f7;
+  --ebl-surface-raised: #fcfcfd;
   --ebl-text: #182230;
   --ebl-text-muted: #475467;
+  --ebl-text-subtle: #667085;
 }
 
 * {
@@ -22,10 +26,60 @@ body {
   min-width: 320px;
 }
 
+body,
+button,
+input,
+select,
+textarea {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
 a {
   color: inherit;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgb(23 107 91 / 35%);
+  outline-offset: 3px;
+}
+
 main {
   min-height: calc(100vh - 272px);
+}
+
+.skip-link {
+  background: var(--ebl-primary);
+  border-radius: 0 0 6px 0;
+  color: #ffffff;
+  font-weight: 700;
+  left: 0;
+  padding: 10px 14px;
+  position: fixed;
+  top: 0;
+  transform: translateY(-120%);
+  transition: transform 120ms ease;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

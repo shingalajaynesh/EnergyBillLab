@@ -40,7 +40,9 @@
 }
 
 .nav a:hover,
-.mobileNav a:hover {
+.mobileNav a:hover,
+.nav a[aria-current='page'],
+.mobileNav a[aria-current='page'] {
   background: var(--ebl-surface-muted);
   color: var(--ebl-text);
 }
