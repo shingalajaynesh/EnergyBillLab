@@ -1,10 +1,9 @@
 .next
-BRAIN.md
-CODEX_FIRST_PROMPT.md
-CODEX_SECOND_PROMPT.md
+.ai/BRAIN.md
+.ai/PROJECT_PLAN.md
+.ai/prompts/completed
 coverage
 dist
 node_modules
 pnpm-lock.yaml
-PROJECT_PLAN.md
 .turbo
