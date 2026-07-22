@@ -10,19 +10,24 @@ Tracked environment examples are placeholders only:
 
 Real `.env` files must remain ignored.
 
-| Variable                               | App                  |                     Required | Exposure             | Safe example                                                                     |
-| -------------------------------------- | -------------------- | ---------------------------: | -------------------- | -------------------------------------------------------------------------------- |
-| `NODE_ENV`                             | API/root tooling     |                          Yes | Server-only          | `development`                                                                    |
-| `NEXT_PUBLIC_SITE_URL`                 | Web                  |                          Yes | Public browser value | `http://localhost:3000`                                                          |
-| `NEXT_PUBLIC_CONTACT_EMAIL`            | Web                  |         Yes for contact page | Public browser value | `contact@example.com`                                                            |
-| `NEXT_PUBLIC_GTM_ID`                   | Web                  |      Optional (has fallback) | Public browser value | `GTM-XXXXXXX`                                                                    |
-| `NEXT_PUBLIC_ADSENSE_CLIENT_ID`        | Web                  |      Optional (has fallback) | Public browser value | `ca-pub-XXXXXXXXXXXXXXXX`                                                        |
-| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Web                  |                     Optional | Public browser value | `google1234567890abcdef`                                                         |
-| `NEXT_PUBLIC_BING_SITE_VERIFICATION`   | Web                  |                     Optional | Public browser value | `0123456789ABCDEF0123456789ABCDEF`                                               |
-| `API_HOST`                             | API                  |                          Yes | Server-only          | `0.0.0.0`                                                                        |
-| `API_PORT`                             | API                  |                          Yes | Server-only          | `4000`                                                                           |
-| `DATABASE_URL`                         | API/database package |       Future database phases | Server-only          | `postgresql://user:password@localhost:5432/energy_bill_lab`                      |
-| `DATABASE_URL_POOLED`                  | API/database package | Future pooled database usage | Server-only          | `postgresql://user:password@ep-xxxx-pooler.aws.neon.tech/neondb?sslmode=require` |
+| Variable                               | App                  |                Required | Exposure             | Safe example                                                                     |
+| -------------------------------------- | -------------------- | ----------------------: | -------------------- | -------------------------------------------------------------------------------- |
+| `NODE_ENV`                             | API/root tooling     |                     Yes | Server-only          | `development`                                                                    |
+| `NEXT_PUBLIC_SITE_URL`                 | Web                  |                     Yes | Public browser value | `http://localhost:3000`                                                          |
+| `NEXT_PUBLIC_CONTACT_EMAIL`            | Web                  |    Yes for contact page | Public browser value | `contact@example.com`                                                            |
+| `NEXT_PUBLIC_GTM_ID`                   | Web                  | Optional (has fallback) | Public browser value | `GTM-XXXXXXX`                                                                    |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID`        | Web                  | Optional (has fallback) | Public browser value | `ca-pub-XXXXXXXXXXXXXXXX`                                                        |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Web                  |                Optional | Public browser value | `google1234567890abcdef`                                                         |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION`   | Web                  |                Optional | Public browser value | `0123456789ABCDEF0123456789ABCDEF`                                               |
+| `API_HOST`                             | API                  |                     Yes | Server-only          | `0.0.0.0`                                                                        |
+| `API_PORT`                             | API                  |                     Yes | Server-only          | `4000`                                                                           |
+| `DATABASE_URL`                         | API/database package |  Database write runtime | Server-only          | `postgresql://user:password@localhost:5432/energy_bill_lab`                      |
+| `DATABASE_READ_URL`                    | Web/database package |   Database read runtime | Server-only          | `postgresql://user:password@ep-xxxx-pooler.aws.neon.tech/neondb?sslmode=require` |
+| `DATABASE_MIGRATION_URL`               | Database package     |        Migration runner | Server-only          | `postgresql://user:password@ep-xxxx-direct.aws.neon.tech/neondb?sslmode=require` |
+| `EIA_API_KEY`                          | API                  |        Yes for EIA sync | Server-only          | `eia_api_key_placeholder`                                                        |
+| `EIA_API_BASE_URL`                     | API                  | Optional (has fallback) | Server-only          | `https://api.eia.gov/v2/`                                                        |
+| `EIA_REQUEST_TIMEOUT_MS`               | API                  | Optional (has fallback) | Server-only          | `15000`                                                                          |
+| `EIA_IMPORT_LOOKBACK_MONTHS`           | API                  | Optional (has fallback) | Server-only          | `12`                                                                             |
 
 Variables beginning with `NEXT_PUBLIC_` are exposed to browser code. Do not place secrets in them.
 

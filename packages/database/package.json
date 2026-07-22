@@ -10,18 +10,23 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "lint": "eslint .",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
-    "drizzle-orm": "^0.44.0"
+    "drizzle-orm": "^0.44.0",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
     "@energy-bill-lab/eslint-config": "workspace:*",
     "@energy-bill-lab/typescript-config": "workspace:*",
     "@types/node": "^24.0.0",
+    "@types/pg": "^8.11.0",
+    "drizzle-kit": "^0.30.0",
     "vitest": "^3.2.0"
   }
 }

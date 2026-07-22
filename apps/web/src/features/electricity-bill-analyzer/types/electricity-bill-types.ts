@@ -17,6 +17,8 @@ export type ElectricityBillInput = {
 };
 
 export type CurrentPeriodMetrics = {
+  currentBill: number;
+  currentKwh: number;
   allInEffectiveCostPerKwh: number;
   dailyUsageKwh: number;
   estimated30DayUsageKwh: number;

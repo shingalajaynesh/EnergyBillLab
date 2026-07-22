@@ -2,7 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  serverExternalPackages: ['pg'],
   transpilePackages: [
+    '@energy-bill-lab/database',
     '@energy-bill-lab/design-system',
     'antd',
     '@ant-design/icons',

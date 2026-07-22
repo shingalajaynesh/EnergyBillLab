@@ -13,12 +13,24 @@ import { BillMetricCard } from './bill-metric-card';
 import { CalculatorDisclaimer } from './calculator-disclaimer';
 import styles from './bill-analyzer-results.module.css';
 
+import { StateComparisonCard } from './state-comparison-card';
+
 type BillAnalyzerResultsProps = {
   result: CalculationResult;
+  selectedStateRate?: {
+    code: string;
+    name: string;
+    priceCentsPerKwh: number;
+    period: string;
+  } | null;
   onReset: () => void;
 };
 
-export function BillAnalyzerResults({ onReset, result }: BillAnalyzerResultsProps) {
+export function BillAnalyzerResults({
+  onReset,
+  result,
+  selectedStateRate,
+}: BillAnalyzerResultsProps) {
   const { comparison, current, checklist, insights } = result;
 
   const classification = comparison?.classification ?? 'NO_COMPARISON';
@@ -31,15 +43,21 @@ export function BillAnalyzerResults({ onReset, result }: BillAnalyzerResultsProp
         ? 'error'
         : 'info';
 
+  const userRateForComparison =
+    current.estimatedVariableCostPerKwh ?? current.allInEffectiveCostPerKwh;
+  const isVariableBasis = current.estimatedVariableCostPerKwh !== undefined;
+
   return (
     <div className={styles.container} id="calculator-results" tabIndex={-1}>
-      <Alert
-        className={styles.summaryAlert}
-        description={alertMessage}
-        message="Bill Analysis Summary"
-        showIcon
-        type={alertType}
-      />
+      <div aria-live="polite" role="status">
+        <Alert
+          className={styles.summaryAlert}
+          description={alertMessage}
+          message="Bill Analysis Summary"
+          showIcon
+          type={alertType}
+        />
+      </div>
 
       <div className={styles.metricsGrid}>
         <BillMetricCard
@@ -73,6 +91,17 @@ export function BillAnalyzerResults({ onReset, result }: BillAnalyzerResultsProp
           />
         ) : null}
       </div>
+
+      {selectedStateRate ? (
+        <StateComparisonCard
+          currentKwh={current.currentKwh}
+          isVariableBasis={isVariableBasis}
+          period={selectedStateRate.period}
+          stateEiaRateCents={selectedStateRate.priceCentsPerKwh}
+          stateName={selectedStateRate.name}
+          userRate={userRateForComparison}
+        />
+      ) : null}
 
       {comparison && comparison.hasComparison ? (
         <BillComparisonBreakdown comparison={comparison} />

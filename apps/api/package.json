@@ -11,19 +11,23 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@energy-bill-lab/database": "workspace:*",
     "@fastify/helmet": "^13.0.0",
     "@nestjs/common": "^11.1.0",
     "@nestjs/core": "^11.1.0",
     "@nestjs/platform-fastify": "^11.1.0",
+    "drizzle-orm": "^0.44.0",
     "fastify": "^5.4.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.0",
+    "uuid": "^10.0.0",
     "zod": "^3.25.0"
   },
   "devDependencies": {
     "@energy-bill-lab/eslint-config": "workspace:*",
     "@energy-bill-lab/typescript-config": "workspace:*",
     "@types/node": "^24.0.0",
+    "@types/uuid": "^10.0.0",
     "eslint": "^9.30.0",
     "tsx": "^4.20.0",
     "typescript": "^5.8.0",

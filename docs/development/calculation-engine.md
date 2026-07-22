@@ -62,3 +62,10 @@ $$\text{Total Effect} = |\text{Usage Effect}| + |\text{Rate/Fee Effect}|$$
 2. **`USAGE_PRIMARY`**: $\frac{|\text{Usage Effect}|}{\text{Total Effect}} \ge 0.65$.
 3. **`RATE_FEE_PRIMARY`**: $\frac{|\text{Rate/Fee Effect}|}{\text{Total Effect}} \ge 0.65$.
 4. **`BOTH_SIGNIFICANT`**: Neither component exceeds $65\%$ of the total absolute effect.
+
+---
+
+## Performance & Network Characteristics
+
+- **No Calculator-Specific Client Data Fetch**: No calculator-specific client data fetch is required for basic client-side calculation.
+- **Pure Local Execution**: All formulas execute synchronously within the browser thread.

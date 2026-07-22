@@ -54,6 +54,9 @@ const baseSchema = z.object({
   previousFixedCharge: z.number().min(0, 'Previous fixed charge cannot be negative').optional(),
   previousTaxesAndFees: z.number().min(0, 'Previous taxes and fees cannot be negative').optional(),
   previousCredits: z.number().min(0, 'Previous credits cannot be negative').optional(),
+
+  // Optional state selection
+  selectedStateCode: z.string().optional(),
 });
 
 export const electricityBillSchema = baseSchema

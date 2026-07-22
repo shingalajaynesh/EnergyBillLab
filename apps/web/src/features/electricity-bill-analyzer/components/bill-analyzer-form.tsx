@@ -1,6 +1,16 @@
 'use client';
 
-import { Alert, Button, Collapse, Form, InputNumber, Segmented, Space, Typography } from 'antd';
+import {
+  Alert,
+  Button,
+  Collapse,
+  Form,
+  InputNumber,
+  Segmented,
+  Select,
+  Space,
+  Typography,
+} from 'antd';
 import React, { useRef, useState } from 'react';
 
 import { BILL_ANALYZER_CONSTANTS } from '../constants/electricity-bill-constants';
@@ -16,11 +26,16 @@ import styles from './bill-analyzer-form.module.css';
 const { Text } = Typography;
 
 type BillAnalyzerFormProps = {
-  onCalculate: (input: ElectricityBillInput) => void;
+  geographies?: Array<{ code: string; name: string }>;
+  onCalculate: (input: ElectricityBillInput, selectedStateCode?: string) => void;
   onReset: () => void;
 };
 
-export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps) {
+export function BillAnalyzerForm({
+  geographies = [],
+  onCalculate,
+  onReset,
+}: BillAnalyzerFormProps) {
   const [form] = Form.useForm<ElectricityBillFormValues>();
   const [hasComparison, setHasComparison] = useState<boolean>(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -64,13 +79,15 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
       values.currentTaxesAndFees !== undefined ||
       values.currentCredits !== undefined;
 
+    const selectedStateCode = validation.data.selectedStateCode;
+
     trackCalculatorEvent({
       event: 'electricity_bill_analyzer_completed',
       hasComparison: Boolean(values.previousBill && values.previousKwh && values.previousDays),
       hasAdvancedInputs: isAdvancedUsed,
     });
 
-    onCalculate(inputData);
+    onCalculate(inputData, selectedStateCode);
   };
 
   const handleReset = () => {
@@ -96,6 +113,22 @@ export function BillAnalyzerForm({ onCalculate, onReset }: BillAnalyzerFormProps
       >
         {formError ? (
           <Alert className={styles.errorAlert} message={formError} showIcon type="error" />
+        ) : null}
+
+        {geographies.length > 0 ? (
+          <Form.Item
+            label="Compare with State Residential Average (Optional)"
+            name="selectedStateCode"
+          >
+            <Select
+              allowClear
+              optionFilterProp="label"
+              options={geographies.map((g) => ({ label: g.name, value: g.code }))}
+              placeholder="Select a state (e.g. California, Texas)"
+              showSearch
+              size="large"
+            />
+          </Form.Item>
         ) : null}
 
         <div className={styles.sectionTitle}>
