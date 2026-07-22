@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: energy-bill-lab-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: pnpm install --frozen-lockfile && pnpm db:migrate && pnpm build:api
+    preDeployCommand: pnpm db:migrate
+    startCommand: node apps/api/dist/src/main.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_READ_URL
+        sync: false
+      - key: EIA_API_KEY
+        sync: false
+
+jobs:
+  - type: cron
+    name: eia-monthly-rate-sync
+    env: node
+    schedule: '0 3 5 * *'
+    buildCommand: pnpm install --frozen-lockfile && pnpm build:api
+    startCommand: pnpm data:eia:sync
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: EIA_API_KEY
+        sync: false
