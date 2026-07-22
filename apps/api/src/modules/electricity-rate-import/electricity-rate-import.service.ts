@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import {
   dataImportRuns,
   electricityGeographies,
@@ -41,7 +41,7 @@ export type QualityReport = {
 export class ElectricityRateImportService {
   private readonly logger = new Logger(ElectricityRateImportService.name);
 
-  constructor(private readonly eiaClient: EiaClientService) {}
+  constructor(@Inject(EiaClientService) private readonly eiaClient: EiaClientService) {}
 
   async runImport(options: ImportOptions): Promise<QualityReport> {
     const importRunId = `eia-${Date.now()}-${uuidv4().substring(0, 8)}`;

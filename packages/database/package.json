@@ -10,8 +10,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "node --env-file=../../.env ./node_modules/drizzle-kit/bin.cjs generate",
+    "db:migrate": "node --env-file=../../.env ./node_modules/drizzle-kit/bin.cjs migrate",
     "lint": "eslint .",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit"

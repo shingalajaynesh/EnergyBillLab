@@ -9,7 +9,9 @@ import { ElectricityRateImportService } from './electricity-rate-import.service'
 
 async function main() {
   const logger = new Logger('EiaCli');
-  const app = await NestFactory.createApplicationContext(AppModule, { logger: false });
+  const app = await NestFactory.createApplicationContext(AppModule, {
+    logger: ['log', 'error', 'warn'],
+  });
 
   const command = process.argv[2] || 'help';
   const importService = app.get(ElectricityRateImportService);
