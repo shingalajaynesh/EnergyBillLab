@@ -60,9 +60,16 @@ export function calculateHouseholdCostExamples(priceCentsPerKwh: number): Househ
   }));
 }
 
+export function normalizePeriodYearMonth(period: string): string {
+  if (!period) return '';
+  const match = period.match(/^(\d{4}-\d{2})/);
+  return match ? match[1]! : period;
+}
+
 export function formatSourcePeriod(period: string): string {
-  if (!/^\d{4}-\d{2}$/.test(period)) return period;
-  const [yearStr, monthStr] = period.split('-');
+  const ym = normalizePeriodYearMonth(period);
+  if (!/^\d{4}-\d{2}$/.test(ym)) return period;
+  const [yearStr, monthStr] = ym.split('-');
   const year = parseInt(yearStr || '0', 10);
   const month = parseInt(monthStr || '0', 10);
   const date = new Date(Date.UTC(year, month - 1, 1));
@@ -70,9 +77,11 @@ export function formatSourcePeriod(period: string): string {
 }
 
 export function isConsecutiveCalendarMonth(newerPeriod: string, olderPeriod: string): boolean {
-  if (!/^\d{4}-\d{2}$/.test(newerPeriod) || !/^\d{4}-\d{2}$/.test(olderPeriod)) return false;
-  const [y1, m1] = newerPeriod.split('-').map(Number);
-  const [y2, m2] = olderPeriod.split('-').map(Number);
+  const ym1 = normalizePeriodYearMonth(newerPeriod);
+  const ym2 = normalizePeriodYearMonth(olderPeriod);
+  if (!/^\d{4}-\d{2}$/.test(ym1) || !/^\d{4}-\d{2}$/.test(ym2)) return false;
+  const [y1, m1] = ym1.split('-').map(Number);
+  const [y2, m2] = ym2.split('-').map(Number);
   if (!y1 || !m1 || !y2 || !m2) return false;
 
   const monthDiff = (y1 - y2) * 12 + (m1 - m2);
@@ -93,7 +102,7 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
     const [latestStateRate, latestNationalRate, rawHistory] = await Promise.all([
       getLatestResidentialRateByStateCode(db, config.code),
       getNationalResidentialRate(db),
-      getResidentialRateHistory(db, config.code, 24),
+      getResidentialRateHistory(db, config.code, 25),
     ]);
 
     if (!latestStateRate) {
@@ -130,8 +139,8 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
 
     const householdExamples = calculateHouseholdCostExamples(latestStateRate.priceCentsPerKwh);
 
-    // Format historical trend rows (newest first; only calculate change across consecutive calendar months)
-    const history: HistoryRowViewModel[] = rawHistory.map((item, idx) => {
+    // Format historical trend rows (newest first; fetch 25 to provide baseline for row 24)
+    const history: HistoryRowViewModel[] = rawHistory.slice(0, 24).map((item, idx) => {
       const prevItem = rawHistory[idx + 1];
       const isConsecutive = prevItem
         ? isConsecutiveCalendarMonth(item.period, prevItem.period)

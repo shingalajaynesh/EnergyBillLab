@@ -71,18 +71,20 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     });
   });
 
-  it('formats EIA YYYY-MM source periods into human-readable months', () => {
+  it('formats EIA YYYY-MM and YYYY-MM-DD source periods into human-readable months', () => {
     expect(formatSourcePeriod('2026-03')).toBe('March 2026');
-    expect(formatSourcePeriod('2025-12')).toBe('December 2025');
+    expect(formatSourcePeriod('2026-04-01')).toBe('April 2026');
+    expect(formatSourcePeriod('2025-12-01')).toBe('December 2025');
     expect(formatSourcePeriod('invalid')).toBe('invalid');
   });
 
   it('detects consecutive calendar months accurately to prevent false zero-interpolation on missing periods', () => {
     expect(isConsecutiveCalendarMonth('2026-03', '2026-02')).toBe(true);
-    expect(isConsecutiveCalendarMonth('2026-01', '2025-12')).toBe(true);
+    expect(isConsecutiveCalendarMonth('2026-04-01', '2026-03-01')).toBe(true);
+    expect(isConsecutiveCalendarMonth('2026-01-01', '2025-12-01')).toBe(true);
     // Gap detected: March to January (missing Feb)
-    expect(isConsecutiveCalendarMonth('2026-03', '2026-01')).toBe(false);
-    expect(isConsecutiveCalendarMonth('2026-05', '2025-05')).toBe(false);
+    expect(isConsecutiveCalendarMonth('2026-03-01', '2026-01-01')).toBe(false);
+    expect(isConsecutiveCalendarMonth('2026-05-01', '2025-05-01')).toBe(false);
   });
 
   it('includes all ten state pages in sitemapRoutes', () => {

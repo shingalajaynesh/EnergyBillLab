@@ -174,6 +174,46 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
+    description:
+      'Diagnose sudden electric bill increases by separating kWh usage spikes, rate adjustments, and billing cycle length.',
+    group: 'research',
+    href: '/guides/why-is-my-electric-bill-so-high',
+    label: 'Why Is My Electric Bill So High?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Understand household appliance wattage, daily runtime, compressor duty cycles, and monthly kWh costs.',
+    group: 'research',
+    href: '/guides/how-much-electricity-do-household-appliances-use',
+    label: 'How Much Electricity Do Household Appliances Use?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate air conditioner electricity cost (kWh) using cooling capacity (BTU/hr), EER/SEER efficiency, and duty cycles.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+    label: 'How Much Does It Cost to Run an Air Conditioner?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Compare 750W vs 1,500W electric space heater operating costs, hourly kWh rates, and thermostat duty cycles.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-a-space-heater',
+    label: 'How Much Does It Cost to Run a Space Heater?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate EV home charging costs per session, per mile, and per month based on battery kWh and charging efficiency.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+    label: 'How Much Does It Cost to Charge an EV at Home?',
+    sitemap: true,
+  },
+  {
     description: 'Energy cost comparisons, rate benchmarks, and appliance efficiency evaluations.',
     group: 'research',
     href: '/comparisons',
@@ -275,19 +315,42 @@ export function getFooterGroups() {
   return [
     {
       title: 'Tools',
-      links: publicRoutes.filter((route) => route.group === 'tools'),
+      links: [
+        getRouteByHref('/electricity-bill-analyzer'),
+        getRouteByHref('/tools/appliance-energy-cost-calculator'),
+        getRouteByHref('/tools/ac-cost-calculator'),
+        getRouteByHref('/tools/space-heater-cost-calculator'),
+        getRouteByHref('/tools/ev-home-charging-cost-calculator'),
+      ].filter(isPublicRoute),
     },
     {
-      title: 'Research',
-      links: publicRoutes.filter((route) => route.group === 'research'),
+      title: 'Learn',
+      links: [
+        getRouteByHref('/guides'),
+        getRouteByHref('/appliances'),
+        getRouteByHref('/comparisons'),
+        getRouteByHref('/electricity-rates'),
+      ].filter(isPublicRoute),
     },
     {
       title: 'Company',
-      links: publicRoutes.filter((route) => route.group === 'company' && route.href !== '/'),
+      links: [
+        getRouteByHref('/about'),
+        getRouteByHref('/contact'),
+        getRouteByHref('/methodology'),
+        getRouteByHref('/data-sources'),
+        getRouteByHref('/editorial-policy'),
+        getRouteByHref('/accessibility'),
+      ].filter(isPublicRoute),
     },
     {
       title: 'Legal',
-      links: publicRoutes.filter((route) => route.group === 'legal'),
+      links: [
+        getRouteByHref('/privacy'),
+        getRouteByHref('/cookies'),
+        getRouteByHref('/terms'),
+        getRouteByHref('/disclaimer'),
+      ].filter(isPublicRoute),
     },
   ];
 }

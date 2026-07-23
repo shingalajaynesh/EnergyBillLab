@@ -1,0 +1,145 @@
+.hubContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 2rem);
+}
+
+.introSection {
+  max-width: 780px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ebl-text-muted, #475467);
+  margin-bottom: 0.5rem;
+}
+
+.guideSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sectionHeader {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin: 0;
+}
+
+.guideGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.guideCard {
+  background-color: #ffffff;
+  border: 1px solid var(--ebl-border-subtle, #eaecf0);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.guideCard:hover,
+.guideCard:focus-visible {
+  border-color: var(--ebl-primary, #176b5b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.guideCardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.categoryTag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ebl-primary-strong, #104c41);
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ebl-text-main, #182230);
+  margin: 0;
+}
+
+.cardDescription {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ebl-text-muted, #475467);
+  margin: 0;
+}
+
+.cardAction {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ebl-primary, #176b5b);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.calculatorSection {
+  margin-top: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ebl-border-subtle, #eaecf0);
+}
+
+.calcGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.calcLink {
+  background-color: var(--ebl-bg-subtle, #f8faf9);
+  border: 1px solid var(--ebl-border-subtle, #eaecf0);
+  border-radius: 6px;
+  padding: 1rem;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.calcLink:hover,
+.calcLink:focus-visible {
+  background-color: #ffffff;
+  border-color: var(--ebl-primary, #176b5b);
+  outline: none;
+}
+
+.calcTitle {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+}
+
+.calcSubtext {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--ebl-text-muted, #667085);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .guideGrid {
+    grid-template-columns: 1fr;
+  }
+}

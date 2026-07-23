@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!config) return {};
 
   return createPageMetadata({
-    title: `${config.metaTitle} | Energy Bill Lab`,
+    title: config.metaTitle,
     description: config.metaDescription,
     path: `/electricity-rates/${config.slug}`,
   });

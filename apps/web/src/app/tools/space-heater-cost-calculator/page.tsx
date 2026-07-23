@@ -12,7 +12,7 @@ import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/space-heater-cost-calculator')!;
 
 export const metadata: Metadata = createPageMetadata({
-  title: `${routeInfo.label} | Energy Bill Lab`,
+  title: routeInfo.label,
   description: routeInfo.description,
   path: routeInfo.href,
 });

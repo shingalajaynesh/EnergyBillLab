@@ -26,6 +26,11 @@ export const ADS_ALLOWED_ROUTES = [
   '/methodology',
   '/data-sources',
   '/editorial-policy',
+  '/guides/why-is-my-electric-bill-so-high',
+  '/guides/how-much-electricity-do-household-appliances-use',
+  '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+  '/guides/how-much-does-it-cost-to-run-a-space-heater',
+  '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
 ] as const;
 
 export type AllowedAdRoute = (typeof ADS_ALLOWED_ROUTES)[number];

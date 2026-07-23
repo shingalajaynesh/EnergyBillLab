@@ -21,7 +21,7 @@ import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 import styles from './rates-hub.module.css';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'U.S. Residential Electricity Rates by State | Energy Bill Lab',
+  title: 'U.S. Residential Electricity Rates by State',
   description:
     'Compare residential electricity rate benchmarks across U.S. states with verified EIA data, national benchmarks, monthly cost examples, and transparent methodology.',
   path: '/electricity-rates',

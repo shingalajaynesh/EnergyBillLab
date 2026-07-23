@@ -1,13 +1,13 @@
 .footer {
-  background: #f8faf9;
-  border-top: 1px solid #eaecf0;
-  padding: 48px 0 24px;
+  background: var(--ebl-bg-subtle, #f8faf9);
+  border-top: 1px solid var(--ebl-border-subtle, #eaecf0);
+  padding: 40px 0 24px;
 }
 
 .grid {
   display: grid;
   gap: 32px;
-  grid-template-columns: minmax(260px, 1.4fr) repeat(4, minmax(120px, 1fr));
+  grid-template-columns: minmax(240px, 1.3fr) repeat(4, minmax(120px, 1fr));
 }
 
 .brandCol {
@@ -17,59 +17,73 @@
 }
 
 .brandTitle {
-  color: #104c41;
+  color: var(--ebl-primary-strong, #104c41);
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .brandDescription {
-  color: #475467;
+  color: var(--ebl-text-muted, #475467);
   font-size: 0.9375rem;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
-  max-width: 320px;
+  max-width: 300px;
 }
 
 .independenceNote {
-  color: #667085;
+  color: var(--ebl-text-muted, #667085);
   font-size: 0.8125rem;
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0;
-  max-width: 320px;
+  max-width: 300px;
 }
 
 .groupNav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .groupTitle {
-  color: #182230;
-  font-size: 0.875rem;
+  color: var(--ebl-text-main, #182230);
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
 .groupLink {
-  color: #475467;
-  font-size: 0.9375rem;
+  color: var(--ebl-text-muted, #475467);
+  font-size: 0.875rem;
   text-decoration: none;
+  padding: 4px 0;
+  border-radius: 4px;
   transition: color 0.15s ease;
 }
 
-.groupLink:hover {
-  color: #176b5b;
+.groupLink:hover,
+.groupLink:focus-visible {
+  color: var(--ebl-primary, #176b5b);
+  outline: none;
+}
+
+.groupLink:focus-visible {
+  box-shadow: 0 0 0 2px var(--ebl-primary, #176b5b);
 }
 
 .bottomBar {
-  border-top: 1px solid #eaecf0;
-  color: #667085;
+  border-top: 1px solid var(--ebl-border-subtle, #eaecf0);
+  color: var(--ebl-text-muted, #667085);
   font-size: 0.8125rem;
-  margin-top: 40px;
-  padding-top: 24px;
+  margin-top: 32px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 @media (max-width: 860px) {
@@ -81,5 +95,10 @@
 @media (max-width: 520px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .groupLink {
+    padding: 8px 0;
   }
 }

@@ -1,0 +1,302 @@
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ebl-primary-strong, #104c41);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--ebl-text-main, #182230);
+  margin: 0 0 0.875rem 0;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ebl-text-muted, #475467);
+  margin-bottom: 1rem;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.84rem;
+  color: var(--ebl-text-muted, #667085);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ebl-border-subtle, #eaecf0);
+}
+
+.takeawayPanel {
+  background-color: var(--ebl-bg-subtle, #f8faf9);
+  border: 1px solid var(--ebl-border-subtle, #eaecf0);
+  border-left: 4px solid var(--ebl-primary, #176b5b);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.takeawayPanel h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin: 0 0 0.65rem 0;
+}
+
+.takeawayPanel ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.takeawayPanel li {
+  margin-bottom: 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ebl-text-muted, #344054);
+}
+
+.takeawayPanel li:last-child {
+  margin-bottom: 0;
+}
+
+.section {
+  margin-bottom: 1.75rem;
+}
+
+.section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ebl-border-subtle, #f1f5f9);
+}
+
+.section h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ebl-text-main, #182230);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.section p {
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: var(--ebl-text-muted, #344054);
+  margin: 0 0 0.875rem 0;
+}
+
+.formulaBox {
+  background-color: #f0faf8;
+  border: 1px solid #ccece6;
+  border-radius: var(--radius-md, 8px);
+  padding: 1.1rem 1.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #0f5245;
+  overflow-x: auto;
+  margin: 0.875rem 0 1.25rem 0;
+}
+
+.workedExampleCard {
+  background-color: #ffffff;
+  border: 1px solid var(--ebl-border-subtle, #eaecf0);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.35rem;
+  margin: 1.25rem 0;
+}
+
+.workedExampleCard h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin: 0 0 0.875rem 0;
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+
+.exampleItem {
+  background: var(--ebl-bg-subtle, #f8faf9);
+  padding: 0.75rem 0.875rem;
+  border-radius: 6px;
+}
+
+.exampleItem .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ebl-text-muted, #667085);
+}
+
+.exampleItem .value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ctaCard {
+  background-color: #f0faf8;
+  border: 1px solid #ccece6;
+  border-radius: var(--radius-md, 8px);
+  padding: 1.75rem;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ctaCard h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ebl-primary-strong, #104c41);
+}
+
+.ctaCard p {
+  font-size: 0.9375rem;
+  margin: 0;
+  color: var(--ebl-text-muted, #475467);
+  line-height: 1.5;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ebl-primary, #176b5b);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 0.25rem;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  background-color: var(--ebl-primary-strong, #104c41);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--ebl-border-subtle, #eaecf0);
+  border-radius: var(--radius-md, 8px);
+}
+
+.tableWrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tableWrapper caption {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ebl-text-muted, #667085);
+  padding: 0.65rem 1rem;
+  text-align: left;
+  background-color: var(--ebl-bg-subtle, #f8faf9);
+  border-bottom: 1px solid var(--ebl-border-subtle, #eaecf0);
+}
+
+.tableWrapper th {
+  background-color: var(--ebl-bg-subtle, #f8faf9);
+  color: var(--ebl-text-main, #182230);
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ebl-border-subtle, #eaecf0);
+}
+
+.tableWrapper td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ebl-border-subtle, #f1f5f9);
+  color: var(--ebl-text-muted, #344054);
+}
+
+.tableWrapper tr:last-child td {
+  border-bottom: none;
+}
+
+.sourcesSection {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ebl-border-subtle, #eaecf0);
+}
+
+.sourcesSection h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ebl-text-main, #182230);
+  margin: 0 0 0.875rem 0;
+}
+
+.sourceList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sourceItem {
+  margin-bottom: 0.65rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ebl-text-muted, #475467);
+}
+
+.sourceItem a {
+  color: var(--ebl-primary, #176b5b);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.sourceItem a:hover,
+.sourceItem a:focus-visible {
+  color: var(--ebl-primary-strong, #104c41);
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .ctaCard {
+    padding: 1.25rem 1rem;
+  }
+}
