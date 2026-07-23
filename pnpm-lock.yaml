@@ -96,6 +96,9 @@ importers:
       '@ant-design/v5-patch-for-react-19':
         specifier: ^1.0.3
         version: 1.0.3(antd@5.29.3(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@energy-bill-lab/calculation-engine':
+        specifier: workspace:*
+        version: link:../../packages/calculation-engine
       '@energy-bill-lab/database':
         specifier: workspace:*
         version: link:../../packages/database

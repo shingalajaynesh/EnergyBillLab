@@ -16,7 +16,15 @@ export default function ElectricityRatesPage() {
       description="U.S. residential electricity rate benchmarks and state average comparisons grounded in official U.S. EIA data."
       eyebrow="Rate Benchmarks"
       introText="Residential electricity rates vary significantly across U.S. states due to generation mix, fuel costs, regulatory structures, and delivery infrastructure. Energy Bill Lab uses Form EIA-861M monthly retail sales data to provide verified rate benchmarks for household utility analysis."
-      related={['/electricity-bill-analyzer', '/data-sources', '/methodology', '/editorial-policy']}
+      related={[
+        '/electricity-bill-analyzer',
+        '/tools/ev-home-charging-cost-calculator',
+        '/tools/ac-cost-calculator',
+        '/tools/space-heater-cost-calculator',
+        '/tools/appliance-energy-cost-calculator',
+        '/data-sources',
+        '/methodology',
+      ]}
       title="Residential Electricity Rates"
     />
   );

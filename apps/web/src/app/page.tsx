@@ -22,9 +22,29 @@ const priorityLinks = [
     text: 'Compare two billing statements, normalize usage by billing days, and isolate usage effects from rate/fee changes.',
   },
   {
+    href: '/tools/appliance-energy-cost-calculator',
+    title: 'Appliance Energy Cost Calculator',
+    text: 'Estimate electricity usage (kWh) and operating costs for major household appliances with transparent duty cycle controls.',
+  },
+  {
+    href: '/tools/ac-cost-calculator',
+    title: 'Air Conditioner Cost Calculator',
+    text: 'Calculate AC electricity costs using cooling capacity (BTU/hr), EER efficiency ratings, wattage, and duty cycle.',
+  },
+  {
+    href: '/tools/space-heater-cost-calculator',
+    title: 'Space Heater Cost Calculator',
+    text: 'Estimate electricity usage (kWh) and operating costs for one or more electric space heaters based on wattage, quantity, and duty cycle.',
+  },
+  {
+    href: '/tools/ev-home-charging-cost-calculator',
+    title: 'EV Home Charging Cost Calculator',
+    text: 'Calculate EV home charging electricity usage (kWh), grid charging losses, session costs, and cost per mile.',
+  },
+  {
     href: '/electricity-rates',
     title: 'Electricity Rates',
-    text: 'Review how state electricity-rate snapshots will present residential averages with source dates.',
+    text: 'Review residential electricity rate benchmarks across U.S. states with official EIA source data.',
   },
   {
     href: '/guides',

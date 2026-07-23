@@ -16,7 +16,15 @@ export default function ComparisonsPage() {
       description="Analytical evaluations comparing energy consumption scenarios, rate tier impacts, and appliance heating/cooling trade-offs."
       eyebrow="Energy Comparisons"
       introText="Evaluating home energy efficiency requires comparing alternative heating, cooling, and charging options against baseline utility rates. Energy Bill Lab provides comparative analysis frameworks based on normalized daily kilowatt-hour consumption."
-      related={['/electricity-bill-analyzer', '/tools', '/methodology', '/data-sources']}
+      related={[
+        '/tools/ev-home-charging-cost-calculator',
+        '/tools/ac-cost-calculator',
+        '/tools/space-heater-cost-calculator',
+        '/tools/appliance-energy-cost-calculator',
+        '/electricity-bill-analyzer',
+        '/methodology',
+        '/data-sources',
+      ]}
       title="Household Energy Comparisons"
     />
   );

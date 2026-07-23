@@ -16,7 +16,16 @@ export default function ToolsPage() {
       description="Production-quality calculators designed to explain your utility statements and energy costs with transparent formulas."
       eyebrow="Interactive Utilities"
       introText="Energy Bill Lab provides transparent calculators to help U.S. households understand electricity charges, usage fluctuations, and appliance operating costs. All tools are free to use and do not require user account registration."
-      related={['/electricity-bill-analyzer', '/methodology', '/data-sources', '/editorial-policy']}
+      related={[
+        '/electricity-bill-analyzer',
+        '/tools/appliance-energy-cost-calculator',
+        '/tools/ac-cost-calculator',
+        '/tools/space-heater-cost-calculator',
+        '/tools/ev-home-charging-cost-calculator',
+        '/methodology',
+        '/data-sources',
+        '/editorial-policy',
+      ]}
       title="Home Energy Cost Tools"
     />
   );

@@ -339,7 +339,7 @@ export function BillAnalyzerForm({
         <div className={styles.formActions}>
           <Space>
             <Button size="large" type="default" onClick={handleReset}>
-              Clear
+              Clear inputs
             </Button>
             <Button htmlType="submit" size="large" type="primary">
               Analyze Electricity Bill

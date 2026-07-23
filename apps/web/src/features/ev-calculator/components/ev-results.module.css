@@ -1,0 +1,79 @@
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.primaryResultCard {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(24, 144, 255, 0.15);
+}
+
+.primaryTitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.primaryValue {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.primarySubtext {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.metricCard {
+  background: var(--color-bg-container, #ffffff);
+  border: 1px solid var(--color-border-secondary, #f0f0f0);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.metricLabel {
+  font-size: 13px;
+  color: var(--color-text-secondary, #595959);
+  margin-bottom: 4px;
+}
+
+.metricVal {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text, #1f1f1f);
+}
+
+.metricDetail {
+  font-size: 12px;
+  color: var(--color-text-tertiary, #8c8c8c);
+  margin-top: 2px;
+}
+
+.scenarioSection {
+  background: var(--color-bg-container, #ffffff);
+  border: 1px solid var(--color-border-secondary, #f0f0f0);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.scenarioTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text, #1f1f1f);
+  margin-bottom: 12px;
+}

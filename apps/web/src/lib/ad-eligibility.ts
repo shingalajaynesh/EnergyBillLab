@@ -8,6 +8,10 @@
 export const ADS_ALLOWED_ROUTES = [
   '/',
   '/electricity-bill-analyzer',
+  '/tools/appliance-energy-cost-calculator',
+  '/tools/ac-cost-calculator',
+  '/tools/space-heater-cost-calculator',
+  '/tools/ev-home-charging-cost-calculator',
   '/methodology',
   '/data-sources',
   '/editorial-policy',

@@ -16,7 +16,15 @@ export default function GuidesPage() {
       description="Practical guides for diagnosing high electric bills, seasonal spikes, fixed charges, and utility statement line items."
       eyebrow="Energy Guides"
       introText="Unexpected electric bill increases are usually caused by a combination of weather extremes, longer billing cycles, rate adjustments, or estimated meter readings. Our guides explain how to dissect your utility statement and identify actionable steps to control costs."
-      related={['/electricity-bill-analyzer', '/methodology', '/data-sources', '/editorial-policy']}
+      related={[
+        '/electricity-bill-analyzer',
+        '/tools/appliance-energy-cost-calculator',
+        '/tools/ac-cost-calculator',
+        '/tools/space-heater-cost-calculator',
+        '/tools/ev-home-charging-cost-calculator',
+        '/methodology',
+        '/data-sources',
+      ]}
       title="Electric Bill Problem Guides"
     />
   );

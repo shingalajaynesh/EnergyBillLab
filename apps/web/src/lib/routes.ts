@@ -36,6 +36,38 @@ export const publicRoutes = [
   },
   {
     description:
+      'Estimate the electricity usage and operating cost of any household appliance based on wattage, usage hours, and duty cycle.',
+    group: 'tools',
+    href: '/tools/appliance-energy-cost-calculator',
+    label: 'Appliance Energy Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Estimate air conditioner electricity usage (kWh) and operating cost using cooling capacity (BTU/hr), EER efficiency, wattage, and duty cycle.',
+    group: 'tools',
+    href: '/tools/ac-cost-calculator',
+    label: 'Air Conditioner Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Estimate electricity usage (kWh) and operating costs for one or more electric space heaters based on wattage, quantity, runtime, and duty cycle.',
+    group: 'tools',
+    href: '/tools/space-heater-cost-calculator',
+    label: 'Space Heater Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate EV home charging electricity usage (kWh), grid charging losses, session costs, and cost per mile based on battery capacity, SoC, charging efficiency, and utility rates.',
+    group: 'tools',
+    href: '/tools/ev-home-charging-cost-calculator',
+    label: 'EV Home Charging Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
       'Residential electricity rate benchmarks and U.S. state averages with EIA source attribution.',
     group: 'research',
     href: '/electricity-rates',

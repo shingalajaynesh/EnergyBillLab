@@ -23,12 +23,23 @@
 
 .formGrid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .fullWidth {
-  width: 100%;
+  width: 100% !important;
+  display: block;
+}
+
+.fullWidth :global(.ant-input-number),
+.fullWidth :global(.ant-input-number-group-wrapper),
+.fullWidth :global(.ant-input-number-wrapper),
+.fullWidth :global(.ant-input-number-affix-wrapper) {
+  width: 100% !important;
+  min-height: 48px;
+  font-size: 1.05rem;
+  border-radius: 8px;
 }
 
 .comparisonToggleArea {

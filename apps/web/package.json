@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "prebuild": "pnpm --filter=@energy-bill-lab/database build && pnpm --filter=@energy-bill-lab/design-system build",
+    "prebuild": "pnpm --filter=@energy-bill-lab/calculation-engine build && pnpm --filter=@energy-bill-lab/database build && pnpm --filter=@energy-bill-lab/design-system build",
     "build": "next build",
     "build:web": "cd ../.. && pnpm build:web",
     "dev": "next dev",
@@ -15,6 +15,7 @@
     "@ant-design/icons": "^5.6.0",
     "@ant-design/nextjs-registry": "^1.0.2",
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@energy-bill-lab/calculation-engine": "workspace:*",
     "@energy-bill-lab/database": "workspace:*",
     "@energy-bill-lab/design-system": "workspace:*",
     "@next/third-parties": "^16.2.11",

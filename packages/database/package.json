@@ -10,8 +10,10 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "db:check": "node --env-file=../../.env ./node_modules/drizzle-kit/bin.cjs check",
     "db:generate": "node --env-file=../../.env ./node_modules/drizzle-kit/bin.cjs generate",
     "db:migrate": "node --env-file=../../.env ./node_modules/drizzle-kit/bin.cjs migrate",
+    "db:seed:geographies": "node --env-file=../../.env ../../node_modules/.bin/tsx src/seed/seed-geographies.ts",
     "lint": "eslint .",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit"
