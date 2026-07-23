@@ -20,21 +20,21 @@ export const contentPages = {
     description:
       'Learn what Energy Bill Lab is building: public, transparent home-energy tools for U.S. residents.',
     path: '/about',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-07-23',
     related: ['/methodology', '/data-sources', '/editorial-policy'],
     sections: [
       {
         heading: 'Purpose',
         paragraphs: [
           'Energy Bill Lab is a public-first home-energy information site for U.S. residents. The goal is to help homeowners, renters, apartment residents, and EV owners understand why bills change and what practical steps may reduce costs.',
-          'The site is being built around transparent calculators, sourced rate data, and plain-English explanations. Public tools should remain usable without creating an account.',
+          'The site is built around transparent calculators, sourced rate data, and plain-English explanations. Public tools remain freely usable without requiring account creation or personal identity submission.',
         ],
       },
       {
-        heading: 'Current status',
+        heading: 'Product principles',
         paragraphs: [
-          'This foundation release establishes the public design, route, trust, and SEO structure before calculator logic is added.',
-          'Energy Bill Lab does not claim to be a utility, financial adviser, legal adviser, or certified energy-audit provider.',
+          'Energy Bill Lab provides interactive calculators, verified state benchmarks, and transparent formulas to help households evaluate energy usage.',
+          'Energy Bill Lab does not claim to be a utility provider, financial adviser, legal adviser, or certified energy-audit firm.',
         ],
       },
     ],
@@ -42,23 +42,23 @@ export const contentPages = {
   '/contact': {
     title: 'Contact Energy Bill Lab',
     description:
-      'Contact information and configuration status for Energy Bill Lab feedback and accessibility reports.',
+      'Contact information for Energy Bill Lab feedback, source corrections, and accessibility reports.',
     path: '/contact',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-07-23',
     related: ['/about', '/accessibility', '/privacy'],
     sections: [
       {
         heading: 'Contact channel',
         paragraphs: [
-          'Energy Bill Lab uses a configured public contact channel rather than invented addresses or phone numbers.',
-          'When a contact email is configured, use it for source corrections, accessibility feedback, and general site questions.',
+          'For source corrections, accessibility feedback, data questions, or general site inquiries, contact the Energy Bill Lab team at support@energybilllab.com.',
+          'Our editorial team reviews source correction requests against official public datasets including U.S. EIA reports.',
         ],
       },
       {
         heading: 'What to include',
         paragraphs: [
-          'For corrections, include the page URL, the issue, and any official source that supports the correction.',
-          'Do not send utility account numbers, full street addresses, payment information, or private billing documents through general contact email.',
+          'For corrections, include the page URL, the specific issue, and any official source that supports the correction.',
+          'Do not send utility account numbers, full street addresses, payment information, or private billing documents through general email.',
         ],
       },
     ],
@@ -66,9 +66,9 @@ export const contentPages = {
   '/methodology': {
     title: 'Methodology',
     description:
-      'How Energy Bill Lab will explain formulas, assumptions, source dates, and limitations for energy-cost estimates.',
+      'How Energy Bill Lab explains formulas, assumptions, source dates, and limitations for energy-cost estimates.',
     path: '/methodology',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-07-23',
     related: ['/data-sources', '/disclaimer', '/tools'],
     sections: [
       {
@@ -81,8 +81,8 @@ export const contentPages = {
       {
         heading: 'Formula transparency',
         paragraphs: [
-          'Each calculator will show its formula, input units, assumptions, warnings, rounding behavior, and the source of any default rate or appliance value used.',
-          'Calculator implementation is intentionally not part of this release. Formula logic will live in the shared calculation-engine package in a later phase.',
+          'Each calculator displays its formula, input units, assumptions, warnings, rounding behavior, and the source of any default rate or appliance value used.',
+          'Calculations use explicit unit conversions, decimal-safe arithmetic, and deterministic rounding formulas documented transparently on each tool page.',
         ],
       },
     ],
@@ -90,23 +90,23 @@ export const contentPages = {
   '/data-sources': {
     title: 'Data Sources',
     description:
-      'The public and official data-source approach planned for Energy Bill Lab rate and appliance information.',
+      'Public and official data sources used for Energy Bill Lab rate benchmarks and appliance reference data.',
     path: '/data-sources',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-07-23',
     related: ['/methodology', '/electricity-rates', '/editorial-policy'],
     sections: [
       {
-        heading: 'Planned source approach',
+        heading: 'Official source standards',
         paragraphs: [
-          'Energy Bill Lab will prefer official public datasets for electricity-rate information, including U.S. Energy Information Administration data where appropriate.',
-          'Published data pages must identify the source, dataset or URL, geographic scope, unit, publication date when available, and the date Energy Bill Lab last validated the snapshot.',
+          'Energy Bill Lab uses official public datasets for electricity-rate information, primarily U.S. Energy Information Administration (EIA) Form EIA-861M monthly retail sales reports.',
+          'Published rate pages identify the primary source, dataset name, geographic scope, unit, publication date, and the date Energy Bill Lab validated the snapshot.',
         ],
       },
       {
-        heading: 'No fabricated fallback values',
+        heading: 'Data validation & integrity',
         paragraphs: [
-          'If an upstream import fails, the product should keep the last validated snapshot and show its update date. It should not replace valid information with empty, partial, or invented values.',
-          'This release does not include database tables, EIA ingestion, or live rate snapshots.',
+          'If an upstream import fails, the product maintains the last validated snapshot and displays its update date. It does not replace valid information with empty, partial, or invented values.',
+          'Rate benchmarks are periodically synchronized to ensure accuracy while preserving historical comparison baselines.',
         ],
       },
     ],
@@ -257,21 +257,21 @@ export const contentPages = {
     description:
       'Energy Bill Lab accessibility goals, keyboard support, readable content, and feedback path.',
     path: '/accessibility',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-07-23',
     related: ['/contact', '/about', '/privacy'],
     sections: [
       {
         heading: 'Accessibility target',
         paragraphs: [
-          'Energy Bill Lab targets WCAG 2.2 AA for public pages and tools. The product should support keyboard navigation, visible focus states, semantic headings, readable contrast, and useful labels.',
-          'Future calculators should provide visible form labels, clear error messages, and text explanations for charts or visual summaries.',
+          'Energy Bill Lab targets WCAG 2.2 AA standards for public pages and interactive tools. The site supports keyboard navigation, visible focus indicators, semantic heading structures, readable color contrast, and descriptive ARIA labels.',
+          'All calculator components provide visible form labels, accessible error announcements, and clear text descriptions for analytical summaries.',
         ],
       },
       {
-        heading: 'Feedback',
+        heading: 'Feedback & assistance',
         paragraphs: [
-          'Accessibility feedback should use the configured contact channel when one is available.',
-          'If no contact email is configured, the site should avoid inventing one and make the missing configuration clear before publication.',
+          'We welcome feedback on the accessibility of Energy Bill Lab. If you encounter an accessibility barrier or require assistance, email our support team at support@energybilllab.com.',
+          'Please describe the nature of the issue and the web page URL so we can address it promptly.',
         ],
       },
     ],

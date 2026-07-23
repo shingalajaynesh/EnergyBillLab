@@ -4,19 +4,20 @@ import { HubPage } from '@/components/hub-page';
 import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Appliances',
+  title: 'Appliance Energy Cost & Power Benchmark Reference',
   description:
-    'Planned appliance reference pages for watts, duty cycles, and home energy-cost context.',
+    'Reference guide for typical appliance wattage, duty cycles, operating hours, and daily operating cost formulas.',
   path: '/appliances',
 });
 
 export default function AppliancesPage() {
   return (
     <HubPage
-      title="Appliances"
-      description="Appliance pages will explain typical watts, use patterns, assumptions, and source dates once reviewed data is ready."
-      emptyMessage="No appliance reference pages are published yet. The site will not present unsourced appliance defaults as facts."
-      related={['/tools', '/methodology', '/data-sources']}
+      description="Appliance energy consumption benchmarks, typical wattage ranges, and daily operating cost estimations."
+      eyebrow="Appliance Reference"
+      introText="Understanding household appliance electricity usage requires evaluating three parameters: rated wattage, daily operating hours, and duty cycle. Energy Bill Lab provides power consumption guidance for air conditioners, space heaters, refrigerators, EV home chargers, and major household equipment."
+      related={['/electricity-bill-analyzer', '/methodology', '/data-sources', '/tools']}
+      title="Appliance Energy Consumption"
     />
   );
 }

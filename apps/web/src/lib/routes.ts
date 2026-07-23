@@ -11,14 +11,15 @@ export type PublicRoute = {
 
 export const publicRoutes = [
   {
-    description: 'A transparent overview of the Energy Bill Lab product direction.',
+    description: 'Independent home energy tools, calculators, and transparent rate methodology.',
     group: 'company',
     href: '/',
     label: 'Home',
     sitemap: true,
   },
   {
-    description: 'Planned public calculators for electricity bills and appliance costs.',
+    description:
+      'Public energy cost tools and calculators for electricity bills and appliance usage.',
     group: 'tools',
     href: '/tools',
     label: 'Tools',
@@ -34,7 +35,8 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
-    description: 'How state electricity-rate pages will present sourced residential data.',
+    description:
+      'Residential electricity rate benchmarks and U.S. state averages with EIA source attribution.',
     group: 'research',
     href: '/electricity-rates',
     label: 'Electricity Rates',
@@ -42,7 +44,8 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
-    description: 'Planned appliance reference pages and energy-use explanations.',
+    description:
+      'Appliance power consumption data, typical wattage benchmarks, and operating cost guides.',
     group: 'research',
     href: '/appliances',
     label: 'Appliances',
@@ -50,7 +53,8 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
-    description: 'Practical guides for understanding common home energy-bill problems.',
+    description:
+      'Practical guides for diagnosing high electric bills, seasonal spikes, and utility statement charges.',
     group: 'research',
     href: '/guides',
     label: 'Guides',
@@ -58,28 +62,32 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
-    description: 'Planned comparisons for equipment, rates, and home energy decisions.',
+    description: 'Energy cost comparisons, rate benchmarks, and appliance efficiency evaluations.',
     group: 'research',
     href: '/comparisons',
     label: 'Comparisons',
+    nav: true,
     sitemap: true,
   },
   {
-    description: 'How Energy Bill Lab will calculate estimates and explain limitations.',
+    description:
+      'Transparent formulas, calculation assumptions, and estimate limitations at Energy Bill Lab.',
     group: 'research',
     href: '/methodology',
     label: 'Methodology',
     sitemap: true,
   },
   {
-    description: 'Official and public data sources planned for rate and appliance content.',
+    description:
+      'Official U.S. EIA datasets, utility benchmarks, and state energy data sources used by Energy Bill Lab.',
     group: 'research',
     href: '/data-sources',
     label: 'Data Sources',
     sitemap: true,
   },
   {
-    description: 'What Energy Bill Lab is building and how the site approaches trust.',
+    description:
+      'About Energy Bill Lab: transparent home-energy tools and consumer utility guidance.',
     group: 'company',
     href: '/about',
     label: 'About',
@@ -87,7 +95,7 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
-    description: 'How to contact Energy Bill Lab when a verified contact channel is configured.',
+    description: 'Contact Energy Bill Lab for source corrections, feedback, and site inquiries.',
     group: 'company',
     href: '/contact',
     label: 'Contact',

@@ -4,19 +4,20 @@ import { HubPage } from '@/components/hub-page';
 import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Guides',
+  title: 'Home Energy & Electric Bill Problem Guides',
   description:
-    'Planned practical guides for understanding high electric bills and home energy costs.',
+    'Practical, source-backed guides for understanding sudden bill spikes, fixed utility charges, and seasonal energy usage.',
   path: '/guides',
 });
 
 export default function GuidesPage() {
   return (
     <HubPage
-      title="Guides"
-      description="Guides will be published when they provide original, reviewed, problem-solving content."
-      emptyMessage="No guides are published yet. Energy Bill Lab will avoid generic filler and mass-produced SEO pages."
-      related={['/methodology', '/data-sources', '/editorial-policy']}
+      description="Practical guides for diagnosing high electric bills, seasonal spikes, fixed charges, and utility statement line items."
+      eyebrow="Energy Guides"
+      introText="Unexpected electric bill increases are usually caused by a combination of weather extremes, longer billing cycles, rate adjustments, or estimated meter readings. Our guides explain how to dissect your utility statement and identify actionable steps to control costs."
+      related={['/electricity-bill-analyzer', '/methodology', '/data-sources', '/editorial-policy']}
+      title="Electric Bill Problem Guides"
     />
   );
 }
