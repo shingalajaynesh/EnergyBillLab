@@ -9,7 +9,6 @@ import type { ReactNode } from 'react';
 import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { AppThemeProvider } from '@/components/app-theme-provider';
-import { DomSafetyGuard } from '@/components/dom-safety-guard';
 import { createRootMetadata } from '@/lib/metadata';
 import { ADSENSE_CLIENT_ID, GTM_ID } from '@/lib/site';
 import {
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <DomSafetyGuard />
         <GoogleTagManager gtmId={GTM_ID} />
         <a className="skip-link" href="#main-content">
           Skip to content
