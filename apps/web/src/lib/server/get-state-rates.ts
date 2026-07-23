@@ -8,13 +8,30 @@ import {
 } from '@energy-bill-lab/database';
 import { unstable_cache } from 'next/cache';
 
+export type RateDataProvenance =
+  | {
+      status: 'live_database';
+      sourcePeriod: string;
+      sourceName: string;
+    }
+  | {
+      status: 'bundled_snapshot';
+      sourcePeriod: string;
+      sourceName: string;
+      snapshotGeneratedAt: string;
+    }
+  | {
+      status: 'unavailable';
+    };
+
 export type StateRatesSnapshot = {
   available: boolean;
+  provenance: RateDataProvenance;
   rates: Record<string, StateRateDTO>;
   geographies: Array<{ code: string; name: string; slug: string }>;
 };
 
-async function fetchStateRatesFromDb(): Promise<StateRatesSnapshot> {
+export async function getStateRatesSnapshotUncached(): Promise<StateRatesSnapshot> {
   const geographies = US_GEOGRAPHIES.filter((g) => g.kind === 'state' || g.kind === 'district').map(
     (g) => ({
       code: g.code,
@@ -28,6 +45,7 @@ async function fetchStateRatesFromDb(): Promise<StateRatesSnapshot> {
     if (!db) {
       return {
         available: false,
+        provenance: { status: 'unavailable' },
         rates: {},
         geographies,
       };
@@ -35,15 +53,25 @@ async function fetchStateRatesFromDb(): Promise<StateRatesSnapshot> {
 
     const rates = await getLatestResidentialRatesForAllStates(db);
     const available = Object.keys(rates).length > 0;
+    const usRate = rates['US'] || Object.values(rates)[0];
 
     return {
       available,
-      rates,
+      provenance:
+        available && usRate
+          ? {
+              status: 'live_database',
+              sourcePeriod: usRate.period,
+              sourceName: 'U.S. EIA Form EIA-861M',
+            }
+          : { status: 'unavailable' },
+      rates: available ? rates : {},
       geographies,
     };
   } catch {
     return {
       available: false,
+      provenance: { status: 'unavailable' },
       rates: {},
       geographies,
     };
@@ -51,7 +79,7 @@ async function fetchStateRatesFromDb(): Promise<StateRatesSnapshot> {
 }
 
 export const getStateRatesSnapshot = unstable_cache(
-  fetchStateRatesFromDb,
+  getStateRatesSnapshotUncached,
   ['eia-residential-rates-snapshot'],
   {
     revalidate: 86400, // 24 hours

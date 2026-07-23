@@ -2,17 +2,19 @@
 
 ## Current Task
 
-- Phase: Five-Calculator Suite Production Audit and Hardening
-- Objectives:
-  - Audit and harden all 5 launch calculators (`/electricity-bill-analyzer`, `/tools/appliance-energy-cost-calculator`, `/tools/ac-cost-calculator`, `/tools/space-heater-cost-calculator`, `/tools/ev-home-charging-cost-calculator`).
-  - Standardize pure analytics payload builders with dedicated unit tests across all 5 features.
-  - Align accessible `aria-live="polite"` result announcements and form action buttons.
-  - Ensure consistent unit formatting, 30-day/365-day baseline terminology, and zero raw user input transmission to analytics.
-  - Run and verify the full monorepo validation suite (`format:check`, `typecheck`, `lint`, `test`, `build:web`, `build:api`).
-- Strict Git Rules: Read-only Git commands only. All changes remain unstaged for manual repository owner review.
-- Suggested Commit: `fix(calculators): harden launch calculator suite`
+- Status: Completed (Ready for review)
+- Phase: Fix State Rates Data Integrity & Provenance Architecture
+- Completed Actions:
+  - Removed all hardcoded rate fallback constants (`FALLBACK_EIA_RATES`) to prevent presenting static figures as live EIA data when PostgreSQL is offline.
+  - Implemented explicit `RateDataProvenance` model (`live_database` | `bundled_snapshot` | `unavailable`) across `get-state-rates.ts` and `get-state-page-data.ts`.
+  - Configured state rates hub (`/electricity-rates`) and state reports (`/electricity-rates/[state]`) to suppress numerical rate claims and render `<DataUnavailablePanel>` when provenance is `unavailable`.
+  - Updated calculator pages and state rate selectors to display _"State averages are temporarily unavailable — please enter your utility rate below"_ while maintaining 100% manual input functionality.
+  - Added unit tests for provenance statuses, database failure returns, state page unavailable view models, and gap detection.
+  - Documentation updated in `docs/product/electricity-rate-state-pages.md`, `docs/operations/rate-data-fallbacks.md`, and `docs/data-sources/eia-electricity-rates.md`.
+- Strict Git Restriction: Read-only Git commands only. All changes remain unstaged in working tree for repository owner review.
+- Suggested Commit: `fix(state-rates): prevent stale fallback rate claims`
 
 ## Last Completed Task
 
-- Phase: Production EV Home Charging Cost Calculator (`/tools/ev-home-charging-cost-calculator`)
-- Status: Completed and awaiting owner Git review
+- Phase: Redesign Electricity Rates Hub and State Reports
+- Status: Completed and verified

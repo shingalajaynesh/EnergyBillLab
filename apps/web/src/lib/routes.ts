@@ -77,6 +77,86 @@ export const publicRoutes = [
   },
   {
     description:
+      'California residential electricity rates, average monthly energy bills, and EIA trends.',
+    group: 'research',
+    href: '/electricity-rates/california',
+    label: 'California Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Texas residential electricity rates, ERCOT grid context, and monthly power costs.',
+    group: 'research',
+    href: '/electricity-rates/texas',
+    label: 'Texas Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Florida residential electricity rates, utility fuel adjustments, and monthly AC costs.',
+    group: 'research',
+    href: '/electricity-rates/florida',
+    label: 'Florida Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'New York residential electricity rates, NYC vs Upstate drivers, and EIA benchmarks.',
+    group: 'research',
+    href: '/electricity-rates/new-york',
+    label: 'New York Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Pennsylvania residential electricity rates, PAPUC Shop for Power context, and trends.',
+    group: 'research',
+    href: '/electricity-rates/pennsylvania',
+    label: 'Pennsylvania Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Illinois residential electricity rates, ComEd and Ameren supply charges, and nuclear data.',
+    group: 'research',
+    href: '/electricity-rates/illinois',
+    label: 'Illinois Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Ohio residential electricity rates, PUCO Choice benchmarks, and monthly power costs.',
+    group: 'research',
+    href: '/electricity-rates/ohio',
+    label: 'Ohio Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Georgia residential electricity rates, Georgia Power baseline tariffs, and Vogtle data.',
+    group: 'research',
+    href: '/electricity-rates/georgia',
+    label: 'Georgia Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'North Carolina residential electricity rates, Duke Energy tariffs, and solar growth.',
+    group: 'research',
+    href: '/electricity-rates/north-carolina',
+    label: 'North Carolina Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Michigan residential electricity rates, DTE and Consumers Energy tariffs, and EIA trends.',
+    group: 'research',
+    href: '/electricity-rates/michigan',
+    label: 'Michigan Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
       'Appliance power consumption data, typical wattage benchmarks, and operating cost guides.',
     group: 'research',
     href: '/appliances',
