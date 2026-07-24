@@ -48,7 +48,7 @@ describe('public route registry', () => {
     expect(statePages).toHaveLength(10);
 
     const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');
-    expect(guides).toHaveLength(5);
+    expect(guides).toHaveLength(10);
   });
 
   it('includes trust and privacy routes in public route registry', () => {

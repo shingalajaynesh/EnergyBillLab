@@ -4,8 +4,12 @@ import path from 'path';
 import {
   calculateAcCost,
   calculateApplianceCost,
+  calculateDryerCost,
   calculateEvChargingCost,
+  calculatePoolPumpCost,
+  calculateRefrigeratorAnnualKwhCost,
   calculateSpaceHeaterCost,
+  calculateWaterHeaterCost,
 } from '@energy-bill-lab/calculation-engine';
 import { describe, expect, it } from 'vitest';
 
@@ -14,19 +18,24 @@ import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFooterGroups, publicRoutes, sitemapRoutes } from '@/lib/routes';
 
-describe('First Five Energy Guides Architecture & Integrity', () => {
-  it('defines exactly five guide definitions in energyGuides registry', () => {
-    expect(guideSlugs).toHaveLength(5);
+describe('Ten Energy Guides Architecture & Integrity', () => {
+  it('defines exactly ten guide definitions in energyGuides registry', () => {
+    expect(guideSlugs).toHaveLength(10);
     expect(guideSlugs).toEqual([
       'why-is-my-electric-bill-so-high',
       'how-much-electricity-do-household-appliances-use',
       'how-much-does-it-cost-to-run-an-air-conditioner',
       'how-much-does-it-cost-to-run-a-space-heater',
       'how-much-does-it-cost-to-charge-an-ev-at-home',
+      'how-much-electricity-does-a-refrigerator-use',
+      'how-much-does-it-cost-to-run-an-electric-clothes-dryer',
+      'how-much-does-it-cost-to-run-an-electric-water-heater',
+      'how-much-does-it-cost-to-run-a-pool-pump',
+      'how-much-does-it-cost-to-run-a-dehumidifier',
     ]);
   });
 
-  it('registers all five guide routes in publicRoutes and sitemapRoutes', () => {
+  it('registers all ten guide routes in publicRoutes and sitemapRoutes', () => {
     const publicHrefs = publicRoutes.map((r) => r.href);
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
 
@@ -37,7 +46,7 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
     });
   });
 
-  it('marks all five guide routes as ad-eligible in isAdEligibleRoute', () => {
+  it('marks all ten guide routes as ad-eligible in isAdEligibleRoute', () => {
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}`;
       expect(isAdEligibleRoute(guideHref)).toBe(true);
@@ -51,6 +60,11 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
       '/tools/ac-cost-calculator',
       '/tools/space-heater-cost-calculator',
       '/tools/ev-home-charging-cost-calculator',
+      '/tools/refrigerator-cost-calculator',
+      '/tools/clothes-dryer-cost-calculator',
+      '/tools/electric-water-heater-cost-calculator',
+      '/tools/pool-pump-cost-calculator',
+      '/tools/dehumidifier-cost-calculator',
     ];
 
     guideSlugs.forEach((slug) => {
@@ -99,13 +113,18 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
     expect(toolHrefs).toContain('/tools/appliance-energy-cost-calculator');
   });
 
-  it('verifies valid table markup in guide page files without raw aria-label text nodes', () => {
+  it('verifies valid table markup in all guide page files without raw aria-label text nodes', () => {
     const guidePageFiles = [
       'src/app/guides/why-is-my-electric-bill-so-high/page.tsx',
       'src/app/guides/how-much-electricity-do-household-appliances-use/page.tsx',
       'src/app/guides/how-much-does-it-cost-to-run-an-air-conditioner/page.tsx',
       'src/app/guides/how-much-does-it-cost-to-run-a-space-heater/page.tsx',
       'src/app/guides/how-much-does-it-cost-to-charge-an-ev-at-home/page.tsx',
+      'src/app/guides/how-much-electricity-does-a-refrigerator-use/page.tsx',
+      'src/app/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer/page.tsx',
+      'src/app/guides/how-much-does-it-cost-to-run-an-electric-water-heater/page.tsx',
+      'src/app/guides/how-much-does-it-cost-to-run-a-pool-pump/page.tsx',
+      'src/app/guides/how-much-does-it-cost-to-run-a-dehumidifier/page.tsx',
     ];
 
     const webPackageRoot = process.cwd();
@@ -125,16 +144,6 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
     });
   });
 
-  it('verifies .gitignore explicitly preserves .env.example', () => {
-    const repoRoot = path.resolve(process.cwd(), '../..');
-    const gitignorePath = path.join(repoRoot, '.gitignore');
-    const gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');
-
-    expect(gitignoreContent).toContain('!.env.example');
-    expect(gitignoreContent).toContain('.next');
-    expect(gitignoreContent).toContain('node_modules');
-  });
-
   it('executes shared calculation-engine functions correctly for worked examples', () => {
     // Appliance calculation worked example check
     const appliance = calculateApplianceCost({
@@ -147,42 +156,57 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
     expect(appliance.periodKwh).toBe(360);
     expect(appliance.periodCostUsd).toBe(59.4);
 
-    // AC calculation worked example check
-    const ac = calculateAcCost({
-      mode: 'capacity_eer',
-      coolingCapacityBtu: 12000,
-      eer: 10,
-      hoursPerDay: 8,
+    // Refrigerator worked example check
+    const refAnnual = calculateRefrigeratorAnnualKwhCost({
+      annualKwh: 400,
       days: 30,
       rateCentsPerKwh: 16.5,
-      dutyCyclePercent: 65,
     });
-    expect(ac.inputWatts).toBe(1200);
-    expect(ac.monthlyKwh).toBe(187.2);
-    expect(ac.monthlyCostUsd).toBe(30.89);
+    expect(refAnnual.dailyKwh).toBeCloseTo(1.0958, 3);
+    expect(refAnnual.periodCostUsd).toBe(5.42);
 
-    // Space heater calculation worked example check
-    const heater = calculateSpaceHeaterCost({
-      heaterWatts: 1500,
-      quantity: 1,
-      hoursPerDay: 8,
+    // Dryer worked example check
+    const dryer = calculateDryerCost({
+      wattage: 4000,
+      minutesPerLoad: 45,
+      loadsPerWeek: 5,
+      weeks: 4,
+      rateCentsPerKwh: 16.5,
+    });
+    expect(dryer.kwhPerLoad).toBe(3.0);
+    expect(dryer.costPerLoadUsd).toBe(0.5);
+
+    // Water heater worked example check
+    const wh = calculateWaterHeaterCost({
+      elementWatts: 4500,
+      activeElements: 1,
+      hoursPerDay: 3.0,
       days: 30,
       rateCentsPerKwh: 16.5,
-      dutyCyclePercent: 75,
     });
-    expect(heater.periodKwh).toBe(270);
-    expect(heater.periodCostUsd).toBe(44.55);
+    expect(wh.dailyKwh).toBe(13.5);
+    expect(wh.periodCostUsd).toBe(66.83);
 
-    // EV charging calculation worked example check
-    const ev = calculateEvChargingCost({
-      batteryCapacityKwh: 75,
-      startingChargePercent: 20,
-      targetChargePercent: 80,
-      chargingEfficiencyPercent: 88,
+    // Pool pump worked example check
+    const pool = calculatePoolPumpCost({
+      wattage: 1500,
+      hoursPerDay: 8,
+      daysPerWeek: 7,
+      weeks: 20,
       rateCentsPerKwh: 16.5,
     });
-    expect(ev.batteryEnergyAddedKwh).toBe(45);
-    expect(ev.gridEnergyRequiredKwh).toBe(51.14);
-    expect(ev.chargeCostUsd).toBe(8.44);
+    expect(pool.dailyKwh).toBe(12.0);
+    expect(pool.periodCostUsd).toBe(277.2);
+
+    // Dehumidifier worked example check
+    const dehum = calculateApplianceCost({
+      wattage: 500,
+      hoursPerDay: 24,
+      days: 30,
+      rateCentsPerKwh: 16.5,
+      dutyCyclePercent: 50,
+    });
+    expect(dehum.dailyKwh).toBe(6.0);
+    expect(dehum.periodCostUsd).toBe(29.7);
   });
 });

@@ -10,7 +10,7 @@ import type { PublicRouteHref } from '@/lib/routes';
 export const metadata: Metadata = createPageMetadata({
   title: 'Appliance Energy Cost & Power Benchmark Reference',
   description:
-    'Calculate and compare household appliance electricity costs. Explore specific calculators for refrigerators, clothes dryers, water heaters, pool pumps, and dehumidifiers.',
+    'Calculate and compare household appliance electricity costs. Explore specific calculators and guides for refrigerators, clothes dryers, water heaters, pool pumps, and dehumidifiers.',
   path: '/appliances',
 });
 
@@ -23,31 +23,42 @@ export default function AppliancesPage() {
   const specificCalculators = [
     {
       href: '/tools/refrigerator-cost-calculator' as PublicRouteHref,
+      guideHref: '/guides/how-much-electricity-does-a-refrigerator-use' as PublicRouteHref,
       title: 'Refrigerator Cost Calculator',
+      guideTitle: 'Refrigerator Energy Guide',
       description:
         'Estimate 24/7 continuous plugged-in cost using compressor duty cycle or annual EnergyGuide rating.',
     },
     {
       href: '/tools/clothes-dryer-cost-calculator' as PublicRouteHref,
+      guideHref:
+        '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer' as PublicRouteHref,
       title: 'Clothes Dryer Cost Calculator',
+      guideTitle: 'Electric Dryer Guide',
       description:
         'Calculate 240V electric dryer cost per laundry load, weekly spending, and annual consumption.',
     },
     {
       href: '/tools/electric-water-heater-cost-calculator' as PublicRouteHref,
+      guideHref: '/guides/how-much-does-it-cost-to-run-an-electric-water-heater' as PublicRouteHref,
       title: 'Electric Water Heater Cost Calculator',
+      guideTitle: 'Water Heater Guide',
       description:
         'Estimate electric resistance tank water heating costs using element wattage and active heating hours.',
     },
     {
       href: '/tools/pool-pump-cost-calculator' as PublicRouteHref,
+      guideHref: '/guides/how-much-does-it-cost-to-run-a-pool-pump' as PublicRouteHref,
       title: 'Pool Pump Cost Calculator',
+      guideTitle: 'Pool Pump Guide',
       description:
         'Calculate daily, monthly, and seasonal pool filtration electricity costs based on motor input wattage.',
     },
     {
       href: '/tools/dehumidifier-cost-calculator' as PublicRouteHref,
+      guideHref: '/guides/how-much-does-it-cost-to-run-a-dehumidifier' as PublicRouteHref,
       title: 'Dehumidifier Cost Calculator',
+      guideTitle: 'Dehumidifier Guide',
       description:
         'Estimate basement and room dehumidifier operating costs using rated power and humidistat duty cycle.',
     },
@@ -82,10 +93,14 @@ export default function AppliancesPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-electricity-do-household-appliances-use',
+    '/guides/how-much-electricity-does-a-refrigerator-use',
+    '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
+    '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
+    '/guides/how-much-does-it-cost-to-run-a-pool-pump',
+    '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
     '/electricity-bill-analyzer',
     '/electricity-rates',
     '/methodology',
-    '/data-sources',
   ];
 
   return (
@@ -107,14 +122,14 @@ export default function AppliancesPage() {
         <p style={{ fontSize: 16, color: '#595959', maxWidth: 840, lineHeight: 1.6 }}>
           Understanding household appliance electricity consumption requires evaluating electrical
           input wattage, daily operating hours, and duty cycle. Energy Bill Lab provides dedicated
-          calculators for major home appliances and transparent calculation methodologies.
+          calculators and source-backed guides for major home appliances.
         </p>
       </header>
 
-      {/* Appliance-Specific Calculators Section */}
+      {/* Appliance-Specific Calculators & Guides Section */}
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 22, fontWeight: 700, color: '#1f1f1f', marginBottom: 16 }}>
-          Appliance-Specific Calculators
+          Appliance Calculators & In-Depth Guides
         </h2>
         <div
           style={{
@@ -123,26 +138,63 @@ export default function AppliancesPage() {
             gap: 16,
           }}
         >
-          {specificCalculators.map((calc) => (
-            <Link
-              key={calc.href}
-              href={calc.href}
+          {specificCalculators.map((item) => (
+            <div
+              key={item.href}
               style={{
-                display: 'block',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
                 padding: 20,
                 background: '#ffffff',
                 border: '1px solid #e8e8e8',
                 borderRadius: 10,
-                textDecoration: 'none',
               }}
             >
-              <h3 style={{ fontSize: 17, fontWeight: 600, color: '#176b5b', marginBottom: 6 }}>
-                {calc.title}
-              </h3>
-              <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-                {calc.description}
-              </p>
-            </Link>
+              <div>
+                <Link
+                  href={item.href}
+                  style={{
+                    fontSize: 17,
+                    fontWeight: 600,
+                    color: '#176b5b',
+                    marginBottom: 6,
+                    display: 'block',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {item.title}
+                </Link>
+                <p
+                  style={{ fontSize: 14, color: '#595959', margin: '0 0 12px 0', lineHeight: 1.5 }}
+                >
+                  {item.description}
+                </p>
+              </div>
+              <div
+                style={{
+                  paddingTop: 8,
+                  borderTop: '1px solid #f0f0f0',
+                  display: 'flex',
+                  gap: 12,
+                  fontSize: 13,
+                }}
+              >
+                <Link
+                  href={item.href}
+                  style={{ color: '#176b5b', fontWeight: 600, textDecoration: 'none' }}
+                >
+                  Use Calculator →
+                </Link>
+                <span style={{ color: '#d9d9d9' }}>|</span>
+                <Link
+                  href={item.guideHref}
+                  style={{ color: '#595959', textDecoration: 'underline' }}
+                >
+                  Read Guide
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -270,12 +322,9 @@ export default function AppliancesPage() {
         </div>
 
         <p style={{ fontSize: 15, color: '#434343', marginTop: 16 }}>
-          Read our in-depth editorial guide:{' '}
-          <Link
-            href="/guides/how-much-electricity-do-household-appliances-use"
-            style={{ color: '#176b5b', fontWeight: 600 }}
-          >
-            How Much Electricity Do Household Appliances Use? →
+          Explore our in-depth appliance energy guides:{' '}
+          <Link href="/guides" style={{ color: '#176b5b', fontWeight: 600 }}>
+            View All 10 Home Energy Guides →
           </Link>
         </p>
       </section>

@@ -36,6 +36,11 @@ export const ADS_ALLOWED_ROUTES = [
   '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
   '/guides/how-much-does-it-cost-to-run-a-space-heater',
   '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+  '/guides/how-much-electricity-does-a-refrigerator-use',
+  '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
+  '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
+  '/guides/how-much-does-it-cost-to-run-a-pool-pump',
+  '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
 ] as const;
 
 export type AllowedAdRoute = (typeof ADS_ALLOWED_ROUTES)[number];

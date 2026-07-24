@@ -12,7 +12,7 @@ import styles from './guides-hub.module.css';
 export const metadata: Metadata = createPageMetadata({
   title: 'Home Energy & Electric Bill Problem Guides',
   description:
-    'Practical, source-backed guides for understanding sudden bill spikes, fixed utility charges, appliance power draw, AC cooling, space heating, and EV home charging.',
+    'Practical, source-backed guides for understanding sudden bill spikes, fixed utility charges, appliance power draw, AC cooling, space heating, EV charging, refrigerators, dryers, water heaters, pool pumps, and dehumidifiers.',
   path: '/guides',
 });
 
@@ -42,10 +42,43 @@ const calculators = [
     label: 'EV Home Charging Calculator',
     description: 'Calculate session costs and Level 1/Level 2 efficiency losses.',
   },
+  {
+    href: '/tools/refrigerator-cost-calculator',
+    label: 'Refrigerator Cost Calculator',
+    description:
+      'Estimate monthly refrigerator operating costs using compressor duty cycle or annual kWh rating.',
+  },
+  {
+    href: '/tools/clothes-dryer-cost-calculator',
+    label: 'Clothes Dryer Cost Calculator',
+    description:
+      'Calculate 240V electric dryer cost per load, weekly spending, and annual consumption.',
+  },
+  {
+    href: '/tools/electric-water-heater-cost-calculator',
+    label: 'Electric Water Heater Cost Calculator',
+    description:
+      'Estimate electric resistance tank water heating costs using element wattage and runtime.',
+  },
+  {
+    href: '/tools/pool-pump-cost-calculator',
+    label: 'Pool Pump Cost Calculator',
+    description:
+      'Calculate daily, monthly, and seasonal pool filtration costs based on motor input wattage.',
+  },
+  {
+    href: '/tools/dehumidifier-cost-calculator',
+    label: 'Dehumidifier Cost Calculator',
+    description:
+      'Estimate basement and room dehumidifier operating costs using rated power and duty cycle.',
+  },
 ];
 
 export default function GuidesPage() {
-  const guidesList = guideSlugs.map((slug) => energyGuides[slug]!);
+  const allGuides = guideSlugs.map((slug) => energyGuides[slug]!);
+
+  const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics');
+  const applianceGuides = allGuides.filter((g) => g.category === 'Appliance Benchmarks');
 
   return (
     <PageContainer>
@@ -59,25 +92,26 @@ export default function GuidesPage() {
       <div className={styles.hubContainer}>
         <PageHeader
           eyebrow="Energy Guides"
-          title="Electric Bill Problem Guides"
-          description="Practical guides for diagnosing high electric bills, appliance energy draw, AC cooling costs, space heater runtime, and EV home charging."
+          title="Electric Bill & Appliance Guides"
+          description="Practical, source-backed guides for diagnosing high electric bills, appliance energy draw, AC cooling costs, space heater runtime, EV charging, refrigerators, dryers, water heaters, pool pumps, and dehumidifiers."
         />
 
         <div className={styles.introSection}>
           <p>
             Unexpected electric bill increases are usually caused by a combination of weather
             extremes, longer billing cycles, rate adjustments, or estimated meter readings. Our
-            guides explain how to dissect your utility statement and identify actionable steps to
-            control costs.
+            guides explain how to dissect your utility statement, estimate appliance electricity
+            draw, and identify actionable steps to control costs.
           </p>
         </div>
 
-        <section className={styles.guideSection} aria-labelledby="energy-problem-guides">
-          <h2 id="energy-problem-guides" className={styles.sectionHeader}>
-            Energy Problem Guides
+        {/* Section 1: Electric Bill Diagnostics */}
+        <section className={styles.guideSection} aria-labelledby="electric-bill-diagnostics">
+          <h2 id="electric-bill-diagnostics" className={styles.sectionHeader}>
+            Electric Bill Diagnostic Guides
           </h2>
           <div className={styles.guideGrid}>
-            {guidesList.map((guide) => (
+            {problemGuides.map((guide) => (
               <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
                 <div className={styles.guideCardTop}>
                   <span className={styles.categoryTag}>{guide.category}</span>
@@ -90,7 +124,35 @@ export default function GuidesPage() {
           </div>
         </section>
 
-        <section className={styles.calculatorSection} aria-labelledby="use-a-calculator">
+        {/* Section 2: Appliance Energy Guides */}
+        <section
+          className={styles.guideSection}
+          aria-labelledby="appliance-energy-guides"
+          style={{ marginTop: 40 }}
+        >
+          <h2 id="appliance-energy-guides" className={styles.sectionHeader}>
+            Appliance Energy & Cost Guides
+          </h2>
+          <div className={styles.guideGrid}>
+            {applianceGuides.map((guide) => (
+              <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
+                <div className={styles.guideCardTop}>
+                  <span className={styles.categoryTag}>{guide.category}</span>
+                  <h3 className={styles.cardTitle}>{guide.h1Title}</h3>
+                  <p className={styles.cardDescription}>{guide.description}</p>
+                </div>
+                <span className={styles.cardAction}>Read Guide →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 3: Calculators */}
+        <section
+          className={styles.calculatorSection}
+          aria-labelledby="use-a-calculator"
+          style={{ marginTop: 48 }}
+        >
           <h2 id="use-a-calculator" className={styles.sectionHeader}>
             Use a Calculator
           </h2>

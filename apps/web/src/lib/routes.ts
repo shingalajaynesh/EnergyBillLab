@@ -254,6 +254,46 @@ export const publicRoutes = [
     sitemap: true,
   },
   {
+    description:
+      'Calculate refrigerator electricity consumption (kWh) and monthly operating cost using EnergyGuide annual ratings, compressor duty cycles, and rated power draw.',
+    group: 'research',
+    href: '/guides/how-much-electricity-does-a-refrigerator-use',
+    label: 'How Much Electricity Does a Refrigerator Use?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate 240V electric clothes dryer cost per load, weekly spending, and annual electricity consumption based on rated wattage and laundry frequency.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
+    label: 'How Much Does It Cost to Run an Electric Clothes Dryer?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate electric resistance tank water heating costs per day, month, and year using element wattage, active heating hours, and utility rates.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
+    label: 'How Much Does It Cost to Run an Electric Water Heater?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate residential pool pump electricity costs per day, month, and season based on electrical input Watts, filtration hours per day, and utility rates.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-a-pool-pump',
+    label: 'How Much Does It Cost to Run a Pool Pump?',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate basement and room dehumidifier electricity costs per day, month, and season based on rated wattage, humidistat duty cycle, and utility rates.',
+    group: 'research',
+    href: '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
+    label: 'How Much Does It Cost to Run a Dehumidifier?',
+    sitemap: true,
+  },
+  {
     description: 'Energy cost comparisons, rate benchmarks, and appliance efficiency evaluations.',
     group: 'research',
     href: '/comparisons',
