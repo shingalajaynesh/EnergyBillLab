@@ -5,8 +5,10 @@ import {
   calculateSpaceHeaterCost,
   type SpaceHeaterCostResult,
 } from '@energy-bill-lab/calculation-engine';
-import { Button, InputNumber, Select } from 'antd';
+import { Button, Select } from 'antd';
 import React, { useState } from 'react';
+
+import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 
 import { HEATER_PRESETS, type SpaceHeaterPreset } from '../constants/heater-presets';
 import { trackHeaterAnalytics } from '../lib/heater-analytics';
@@ -171,14 +173,14 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
           >
             Heater Wattage Rating (Watts) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-watts-input"
             aria-label="Space Heater Wattage Rating in Watts"
             value={values.heaterWatts}
             min={10}
             max={10000}
             step={50}
-            addonAfter="W"
+            unit="W"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -202,7 +204,7 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
           >
             Number of Space Heaters (Quantity) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-qty-input"
             aria-label="Number of Space Heaters"
             value={values.quantity}
@@ -210,7 +212,7 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
             max={20}
             step={1}
             precision={0}
-            addonAfter="unit(s)"
+            unit="unit(s)"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -236,14 +238,14 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
           >
             Operating Duration per Day (Hours) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-hours-input"
             aria-label="Operating Duration per Day in Hours"
             value={values.hoursPerDay}
             min={0}
             max={24}
             step={0.5}
-            addonAfter="hrs/day"
+            unit="hrs/day"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -264,14 +266,14 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
           >
             Calculation Period (Days) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-days-input"
             aria-label="Calculation Period in Days"
             value={values.days}
             min={1}
             max={365}
             step={1}
-            addonAfter="days"
+            unit="days"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -292,7 +294,7 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
           >
             Electricity Rate (Cents per kWh) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-rate-input"
             aria-label="Electricity Rate in Cents per kWh"
             value={values.rateCentsPerKwh}
@@ -300,7 +302,7 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
             max={500}
             step={0.1}
             precision={2}
-            addonAfter="¢/kWh"
+            unit="¢/kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -355,14 +357,14 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
               <InfoCircleOutlined title="Percentage of time the heating element actively draws full power while switched on." />
             </span>
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="heater-duty-input"
             aria-label="Thermostat Duty Cycle Percentage"
             value={values.dutyCyclePercent}
             min={0}
             max={100}
             step={5}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {

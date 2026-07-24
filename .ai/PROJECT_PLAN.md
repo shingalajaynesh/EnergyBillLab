@@ -708,16 +708,17 @@ Quality gate:
 - no duplicate formula logic
 - route metadata complete
 
-### Days 25–27: First data and guide pages
+### Days 25–27: First data and guide pages [COMPLETED]
 
 Deliver:
 
-- 10 state pages with real data
-- 5 high-intent problem guides minimum
-- electricity-rates hub
-- guides hub
-- appliance hub
-- state chart or table
+- 10 state pages with real data [COMPLETED]
+- 5 high-intent problem guides minimum [COMPLETED]
+- electricity-rates hub [COMPLETED]
+- guides hub [COMPLETED]
+- appliance hub [COMPLETED]
+- state chart or table [COMPLETED]
+- Guide/footer HTML validity and UI hardening [COMPLETED]
 
 Quality gate:
 
@@ -725,6 +726,10 @@ Quality gate:
 - every guide links to a relevant calculator
 - source dates visible
 - no mass AI text
+- 100% valid semantic table markup without raw attribute text
+- footer restructured with concise hub links
+
+### Next Planned Phase: Source, editorial-quality, SEO and real-browser review of the first five guides
 
 ### Days 28–30: Production and AdSense audit
 

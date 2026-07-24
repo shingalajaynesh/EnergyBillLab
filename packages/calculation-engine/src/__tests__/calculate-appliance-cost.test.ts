@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { ApplianceCalculationError, calculateApplianceCost } from '../calculate-appliance-cost';
+import {
+  ApplianceCalculationError,
+  calculateApplianceCost,
+  calculateDryerCost,
+  calculatePoolPumpCost,
+  calculateRefrigeratorAnnualKwhCost,
+  calculateWaterHeaterCost,
+} from '../calculate-appliance-cost';
 
 describe('calculateApplianceCost', () => {
   it('calculates energy consumption and cost correctly for standard 1500W appliance', () => {
@@ -111,5 +118,68 @@ describe('calculateApplianceCost', () => {
         dutyCyclePercent: 120,
       }),
     ).toThrow(ApplianceCalculationError);
+  });
+
+  it('calculates refrigerator annual EnergyGuide kWh conversion correctly', () => {
+    // 600 kWh/yr at 16.5 c/kWh over 30 days
+    const result = calculateRefrigeratorAnnualKwhCost({
+      annualKwh: 600,
+      days: 30,
+      rateCentsPerKwh: 16.5,
+    });
+
+    expect(result.annualKwh).toBe(600);
+    expect(result.annualCostUsd).toBe(99);
+    expect(result.dailyKwh).toBeCloseTo(1.6438, 3);
+  });
+
+  it('calculates clothes dryer load-based operating costs correctly', () => {
+    // 4000W dryer, 45 mins/load, 4 loads/week, 16.5 c/kWh
+    const result = calculateDryerCost({
+      wattage: 4000,
+      minutesPerLoad: 45,
+      loadsPerWeek: 4,
+      weeks: 4.33,
+      rateCentsPerKwh: 16.5,
+    });
+
+    // kWh/load = 4000 * 0.75 / 1000 = 3 kWh/load
+    // cost/load = 3 kWh * $0.165 = $0.495 -> $0.50
+    expect(result.kwhPerLoad).toBe(3);
+    expect(result.costPerLoadUsd).toBe(0.5);
+    expect(result.hoursPerLoad).toBe(0.75);
+    expect(result.loadsPerWeekUsed).toBe(4);
+  });
+
+  it('calculates water heater costs with element count correctly', () => {
+    // 4500W element, 1 active element, 3 hrs/day, 30 days, 16.5 c/kWh
+    const result = calculateWaterHeaterCost({
+      elementWatts: 4500,
+      activeElements: 1,
+      hoursPerDay: 3,
+      days: 30,
+      rateCentsPerKwh: 16.5,
+    });
+
+    // Daily kWh = 4.5 kW * 3 hrs = 13.5 kWh
+    // 30-day kWh = 405 kWh
+    // 30-day cost = 405 * $0.165 = $66.825 -> $66.83
+    expect(result.dailyKwh).toBe(13.5);
+    expect(result.periodKwh).toBe(405);
+    expect(result.periodCostUsd).toBe(66.83);
+  });
+
+  it('calculates pool pump weekly normalized schedule correctly', () => {
+    // 1500W pump, 8 hrs/day, 7 days/week, 4.33 weeks, 16.5 c/kWh
+    const result = calculatePoolPumpCost({
+      wattage: 1500,
+      hoursPerDay: 8,
+      daysPerWeek: 7,
+      weeks: 4.33,
+      rateCentsPerKwh: 16.5,
+    });
+
+    // Daily kWh = 1.5 * 8 = 12 kWh
+    expect(result.dailyKwh).toBe(12);
   });
 });

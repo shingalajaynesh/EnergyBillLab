@@ -2,6 +2,7 @@
   color: var(--ebl-text-subtle);
   font-size: 0.9375rem;
   padding-top: 24px;
+  margin-bottom: clamp(16px, 2.5vw, 24px);
 }
 
 .breadcrumbs ol {

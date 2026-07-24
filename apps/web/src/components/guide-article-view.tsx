@@ -11,6 +11,34 @@ import { serializeStructuredData } from '@/lib/structured-data';
 
 import styles from './guide-article-view.module.css';
 
+function formatHumanDate(isoDate: string): string {
+  const parts = isoDate.split('-');
+  const yearStr = parts[0] ?? '2026';
+  const monthStr = parts[1] ?? '01';
+  const dayStr = parts[2] ?? '01';
+  const year = parseInt(yearStr, 10);
+  const monthIdx = parseInt(monthStr, 10) - 1;
+  const day = parseInt(dayStr, 10);
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  if (!isNaN(year) && !isNaN(monthIdx) && monthNames[monthIdx] && !isNaN(day)) {
+    return `${monthNames[monthIdx]} ${day}, ${year}`;
+  }
+  return isoDate;
+}
+
 export function GuideArticleView({
   guide,
   children,
@@ -24,7 +52,7 @@ export function GuideArticleView({
     headline: guide.h1Title,
     description: guide.description,
     mainEntityOfPage: getSiteUrl(guide.href),
-    datePublished: '2026-07-23',
+    datePublished: guide.datePublished,
     dateModified: guide.updatedAt,
     author: {
       '@type': 'Organization',
@@ -58,7 +86,7 @@ export function GuideArticleView({
             <span>•</span>
             <span>Reviewed for data accuracy</span>
             <span>•</span>
-            <span>Updated {guide.updatedAt}</span>
+            <time dateTime={guide.updatedAt}>Updated {formatHumanDate(guide.updatedAt)}</time>
           </div>
         </header>
 

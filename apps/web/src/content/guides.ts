@@ -21,6 +21,7 @@ export type GuideDefinition = {
   description: string;
   eyebrow: string;
   updatedAt: string;
+  datePublished: string;
   category: string;
   primaryCalculatorHref: PublicRouteHref;
   primaryCalculatorLabel: string;
@@ -45,6 +46,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
       'Diagnose sudden electric bill increases by separating kilowatt-hour usage spikes, rate adjustments, billing cycle days, seasonal HVAC loads, and utility charges.',
     eyebrow: 'Electric Bill Diagnostic Guide',
     updatedAt: '2026-07-23',
+    datePublished: '2026-07-23',
     category: 'Bill Analysis',
     primaryCalculatorHref: '/electricity-bill-analyzer',
     primaryCalculatorLabel: 'Electricity Bill Analyzer',
@@ -98,6 +100,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
       'Learn how appliance wattage, daily runtime, and compressor duty cycles determine kilowatt-hour (kWh) consumption and monthly electricity costs.',
     eyebrow: 'Appliance Consumption Benchmark',
     updatedAt: '2026-07-23',
+    datePublished: '2026-07-23',
     category: 'Appliance Benchmarks',
     primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
     primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
@@ -151,6 +154,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
       'Calculate air conditioner electricity cost (kWh) using cooling capacity (BTU/hr), EER/SEER efficiency, compressor duty cycle, and local utility rates.',
     eyebrow: 'Cooling Cost Guide',
     updatedAt: '2026-07-23',
+    datePublished: '2026-07-23',
     category: 'HVAC Cooling',
     primaryCalculatorHref: '/tools/ac-cost-calculator',
     primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
@@ -204,6 +208,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
       'Compare 750W vs 1,500W electric space heater operating costs, hourly kWh rates, thermostat duty cycles, and spot heating efficiency.',
     eyebrow: 'Heating Cost Guide',
     updatedAt: '2026-07-23',
+    datePublished: '2026-07-23',
     category: 'HVAC Heating',
     primaryCalculatorHref: '/tools/space-heater-cost-calculator',
     primaryCalculatorLabel: 'Space Heater Cost Calculator',
@@ -257,6 +262,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
       'Calculate EV home charging costs per session, per mile, and per month based on battery kWh, state-of-charge, grid charging efficiency, and utility tariffs.',
     eyebrow: 'EV Home Charging Guide',
     updatedAt: '2026-07-23',
+    datePublished: '2026-07-23',
     category: 'Electric Vehicles',
     primaryCalculatorHref: '/tools/ev-home-charging-cost-calculator',
     primaryCalculatorLabel: 'EV Home Charging Calculator',

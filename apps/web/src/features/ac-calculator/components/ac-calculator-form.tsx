@@ -2,8 +2,10 @@
 
 import { InfoCircleOutlined, ReloadOutlined } from '@ant-design/icons';
 import { calculateAcCost, type AcCostResult } from '@energy-bill-lab/calculation-engine';
-import { Button, InputNumber, Radio, Select } from 'antd';
+import { Button, Radio, Select } from 'antd';
 import React, { useState } from 'react';
+
+import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 
 import { AC_PRESETS, type AcPreset } from '../constants/ac-presets';
 import { trackAcAnalytics } from '../lib/ac-analytics';
@@ -210,14 +212,14 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
               >
                 Cooling Capacity (BTU/hr) *
               </label>
-              <InputNumber
+              <NumberInputWithUnit
                 id="ac-capacity-input"
                 aria-label="Cooling Capacity in BTU per hour"
                 value={values.coolingCapacityBtu}
                 min={1000}
                 max={120000}
                 step={500}
-                addonAfter="BTU/hr"
+                unit="BTU/hr"
                 style={{ width: '100%', minHeight: 44 }}
                 onChange={(val) => {
                   if (val !== null) {
@@ -239,7 +241,7 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
               >
                 Energy Efficiency Ratio (EER) *
               </label>
-              <InputNumber
+              <NumberInputWithUnit
                 id="ac-eer-input"
                 aria-label="Energy Efficiency Ratio EER"
                 value={values.eer}
@@ -247,7 +249,7 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
                 max={40}
                 step={0.5}
                 precision={1}
-                addonAfter="EER"
+                unit="EER"
                 style={{ width: '100%', minHeight: 44 }}
                 onChange={(val) => {
                   if (val !== null) {
@@ -272,14 +274,14 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
             >
               AC Electrical Input Power (Watts) *
             </label>
-            <InputNumber
+            <NumberInputWithUnit
               id="ac-wattage-input"
               aria-label="AC Electrical Input Power in Watts"
               value={values.wattage}
               min={10}
               max={20000}
               step={50}
-              addonAfter="W"
+              unit="W"
               style={{ width: '100%', minHeight: 44 }}
               onChange={(val) => {
                 if (val !== null) {
@@ -333,14 +335,14 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
           >
             Operating Duration per Day (Hours) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ac-hours-input"
             aria-label="Operating Duration per Day in Hours"
             value={values.hoursPerDay}
             min={0}
             max={24}
             step={0.5}
-            addonAfter="hrs/day"
+            unit="hrs/day"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -361,14 +363,14 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
           >
             Calculation Period (Days) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ac-days-input"
             aria-label="Calculation Period in Days"
             value={values.days}
             min={1}
             max={365}
             step={1}
-            addonAfter="days"
+            unit="days"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -389,7 +391,7 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
           >
             Electricity Rate (Cents per kWh) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ac-rate-input"
             aria-label="Electricity Rate in Cents per kWh"
             value={values.rateCentsPerKwh}
@@ -397,7 +399,7 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
             max={500}
             step={0.1}
             precision={2}
-            addonAfter="¢/kWh"
+            unit="¢/kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -452,14 +454,14 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
               <InfoCircleOutlined title="Percentage of time the compressor actively runs while thermostat is on." />
             </span>
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ac-duty-input"
             aria-label="Compressor Duty Cycle Percentage"
             value={values.dutyCyclePercent}
             min={0}
             max={100}
             step={5}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {

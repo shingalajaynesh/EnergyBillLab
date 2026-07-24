@@ -60,6 +60,8 @@ describe('First Five Energy Guides Architecture & Integrity', () => {
       expect(guide.summaryTakeaways.length).toBeGreaterThan(0);
       expect(guide.breadcrumbLabel).toBeDefined();
       expect(guide.actionLabel).toBeDefined();
+      expect(guide.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(guide.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
 

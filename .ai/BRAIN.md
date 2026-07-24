@@ -1026,21 +1026,28 @@ Until AdSense review and the launch MVP are complete:
 
 ## 24. Approved MVP sequence
 
-1. Repository and quality foundation
-2. Design tokens and application shell
-3. Legal, trust, and methodology pages
-4. Data model and official data import foundation
-5. Shared calculation engine
-6. Electricity Bill Analyzer
-7. Appliance Energy Cost Calculator
-8. AC Cost Calculator
-9. Space Heater Cost Calculator
-10. EV Home Charging Calculator
-11. First high-quality state pages
-12. First problem-solving guides
-13. Search Console, analytics, monitoring, sitemap, robots, and ads.txt verification
-14. Production quality audit
-15. AdSense review monitoring and safe iteration
+1. Repository and quality foundation [COMPLETED]
+2. Design tokens and application shell [COMPLETED]
+3. Legal, trust, and methodology pages [COMPLETED]
+4. Data model and official data import foundation [COMPLETED]
+5. Shared calculation engine [COMPLETED]
+6. Electricity Bill Analyzer [COMPLETED]
+7. Appliance Energy Cost Calculator [COMPLETED]
+8. AC Cost Calculator [COMPLETED]
+9. Space Heater Cost Calculator [COMPLETED]
+10. EV Home Charging Calculator [COMPLETED]
+11. First high-quality state pages (10 states) [COMPLETED]
+12. First problem-solving guides (5 guides) [COMPLETED]
+13. Guide/footer HTML validity, footer IA, and design hardening [COMPLETED]
+    - PostgreSQL remains primary rate source with no hardcoded EIA fallback values.
+    - Historical trend query fetches 25 periods and displays 24 so oldest row has prior-month baseline; missing periods are never converted to zero.
+    - Footer links to primary hubs (`Tools`, `Learn`, `Company`, `Legal`) without listing all 10 states or 5 guides individually.
+    - All 5 guide pages use semantic `<table aria-label="...">` markup with captions and scoped headers (`scope="col"`).
+    - Guide CTA buttons use Energy Bill Lab brand teal palette (`var(--ebl-primary, #176b5b)`) instead of bright blue gradients.
+14. Source, editorial-quality, SEO and real-browser review of the first five guides [PLANNED]
+15. Search Console, analytics, monitoring, sitemap, robots, and ads.txt verification [PLANNED]
+16. Production quality audit [PLANNED]
+17. AdSense review monitoring and safe iteration [PLANNED]
 
 ---
 

@@ -5,8 +5,10 @@ import {
   calculateApplianceCost,
   type ApplianceCostResult,
 } from '@energy-bill-lab/calculation-engine';
-import { Button, InputNumber, Select } from 'antd';
+import { Button, Select } from 'antd';
 import React, { useState } from 'react';
+
+import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 
 import { APPLIANCE_PRESETS, type AppliancePreset } from '../constants/appliance-presets';
 import { trackApplianceAnalytics } from '../lib/appliance-analytics';
@@ -174,14 +176,14 @@ export function ApplianceCalculatorForm({
           >
             Appliance Power Rating (Watts) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="appliance-wattage-input"
             aria-label="Appliance Power Rating in Watts"
             value={values.wattage}
             min={1}
             max={50000}
             step={10}
-            addonAfter="W"
+            unit="W"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -203,14 +205,14 @@ export function ApplianceCalculatorForm({
           >
             Usage Duration per Day (Hours) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="appliance-hours-input"
             aria-label="Usage Duration per Day in Hours"
             value={values.hoursPerDay}
             min={0}
             max={24}
             step={0.5}
-            addonAfter="hrs/day"
+            unit="hrs/day"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -233,14 +235,14 @@ export function ApplianceCalculatorForm({
           >
             Calculation Period (Days) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="appliance-days-input"
             aria-label="Calculation Period in Days"
             value={values.days}
             min={1}
             max={365}
             step={1}
-            addonAfter="days"
+            unit="days"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -263,7 +265,7 @@ export function ApplianceCalculatorForm({
           >
             Electricity Rate (Cents per kWh) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="appliance-rate-input"
             aria-label="Electricity Rate in Cents per kWh"
             value={values.rateCentsPerKwh}
@@ -271,7 +273,7 @@ export function ApplianceCalculatorForm({
             max={500}
             step={0.1}
             precision={2}
-            addonAfter="¢/kWh"
+            unit="¢/kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -310,7 +312,7 @@ export function ApplianceCalculatorForm({
               }))}
             />
             <div className={styles.fieldHint}>
-              Fills current EIA residential average for selected state.
+              Fills official EIA state residential average rate.
             </div>
           </div>
         )}
@@ -326,14 +328,14 @@ export function ApplianceCalculatorForm({
               <InfoCircleOutlined title="Percentage of time the appliance actively draws full rated power while running." />
             </span>
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="appliance-duty-input"
             aria-label="Duty Cycle Percentage"
             value={values.dutyCyclePercent}
             min={0}
             max={100}
             step={5}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {

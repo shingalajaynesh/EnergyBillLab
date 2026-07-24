@@ -5,8 +5,10 @@ import {
   calculateEvChargingCost,
   type EvChargingCostResult,
 } from '@energy-bill-lab/calculation-engine';
-import { Button, InputNumber, Select } from 'antd';
+import { Button, Select } from 'antd';
 import React, { useState } from 'react';
+
+import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 
 import { EV_PRESETS, type EvPreset } from '../constants/ev-presets';
 import { trackEvAnalytics } from '../lib/ev-analytics';
@@ -185,14 +187,14 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Usable Battery Capacity (kWh) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-capacity-input"
             aria-label="Usable EV Battery Capacity in kWh"
             value={values.batteryCapacityKwh}
             min={5}
             max={300}
             step={5}
-            addonAfter="kWh"
+            unit="kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -216,14 +218,14 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Starting Charge State of Charge (SoC %) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-start-soc-input"
             aria-label="Starting Battery Charge Percentage"
             value={values.startingChargePercent}
             min={0}
             max={99}
             step={5}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -244,14 +246,14 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Target Charge State of Charge (SoC %) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-target-soc-input"
             aria-label="Target Battery Charge Percentage"
             value={values.targetChargePercent}
             min={1}
             max={100}
             step={5}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -277,14 +279,14 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
               <InfoCircleOutlined title="Accounts for onboard AC-to-DC conversion, cable heat loss, and thermal battery management." />
             </span>
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-efficiency-input"
             aria-label="AC Charging Efficiency Percentage"
             value={values.chargingEfficiencyPercent}
             min={50}
             max={100}
             step={1}
-            addonAfter="%"
+            unit="%"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -307,7 +309,7 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Electricity Rate (Cents per kWh) *
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-rate-input"
             aria-label="Electricity Rate in Cents per kWh"
             value={values.rateCentsPerKwh}
@@ -315,7 +317,7 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
             max={500}
             step={0.1}
             precision={2}
-            addonAfter="¢/kWh"
+            unit="¢/kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               if (val !== null) {
@@ -370,14 +372,14 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Trip / Daily Driving Distance (Miles)
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-miles-input"
             aria-label="Driving Distance in Miles"
             value={values.milesDriven}
             min={1}
             max={50000}
             step={5}
-            addonAfter="mi"
+            unit="mi"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               const next = { ...values, milesDriven: val ?? undefined };
@@ -401,7 +403,7 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
           >
             Vehicle Driving Efficiency (Miles per kWh)
           </label>
-          <InputNumber
+          <NumberInputWithUnit
             id="ev-mi-kwh-input"
             aria-label="Vehicle Efficiency in Miles per kWh"
             value={values.milesPerKwh}
@@ -409,7 +411,7 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
             max={10}
             step={0.1}
             precision={1}
-            addonAfter="mi/kWh"
+            unit="mi/kWh"
             style={{ width: '100%', minHeight: 44 }}
             onChange={(val) => {
               const next = { ...values, milesPerKwh: val ?? undefined };

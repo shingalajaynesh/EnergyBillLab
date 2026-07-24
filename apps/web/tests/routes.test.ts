@@ -35,4 +35,34 @@ describe('public route registry', () => {
     const sitemapUrls = sitemap().map((entry) => entry.url);
     expect(sitemapUrls.some((url) => url.endsWith('/electricity-bill-analyzer'))).toBe(true);
   });
+
+  it('maintains expected 10 calculators (5 launch + 5 appliance expansion), 10 state rate pages, and 5 energy guides', () => {
+    const paths = publicRoutes.map((route) => route.href);
+
+    const calculators = paths.filter(
+      (path) => path === '/electricity-bill-analyzer' || path.startsWith('/tools/'),
+    );
+    expect(calculators).toHaveLength(10);
+
+    const statePages = paths.filter((path) => path.startsWith('/electricity-rates/'));
+    expect(statePages).toHaveLength(10);
+
+    const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');
+    expect(guides).toHaveLength(5);
+  });
+
+  it('includes trust and privacy routes in public route registry', () => {
+    const paths = publicRoutes.map((route) => route.href);
+
+    expect(paths).toContain('/privacy');
+    expect(paths).toContain('/cookies');
+    expect(paths).toContain('/terms');
+    expect(paths).toContain('/disclaimer');
+    expect(paths).toContain('/about');
+    expect(paths).toContain('/contact');
+    expect(paths).toContain('/methodology');
+    expect(paths).toContain('/data-sources');
+    expect(paths).toContain('/editorial-policy');
+    expect(paths).toContain('/accessibility');
+  });
 });

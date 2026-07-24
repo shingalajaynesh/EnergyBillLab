@@ -68,6 +68,46 @@ export const publicRoutes = [
   },
   {
     description:
+      'Calculate monthly and annual electricity costs for your refrigerator using rated power, compressor cycling percentage, or official EnergyGuide annual kWh benchmarks.',
+    group: 'tools',
+    href: '/tools/refrigerator-cost-calculator',
+    label: 'Refrigerator Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate electric clothes dryer electricity cost per laundry load, weekly spending, and annual kWh consumption based on element wattage, cycle length, and local utility rates.',
+    group: 'tools',
+    href: '/tools/clothes-dryer-cost-calculator',
+    label: 'Clothes Dryer Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate monthly and annual electricity costs for electric-resistance water heaters using element wattage ratings, active daily heating hours, and local state utility rates.',
+    group: 'tools',
+    href: '/tools/electric-water-heater-cost-calculator',
+    label: 'Electric Water Heater Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate daily, monthly, and seasonal electricity costs for residential pool pumps using electrical input wattage, filtration schedule hours, and utility power rates.',
+    group: 'tools',
+    href: '/tools/pool-pump-cost-calculator',
+    label: 'Pool Pump Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate monthly and annual electricity costs for basement and room dehumidifiers using compressor wattage, humidistat cycling duty cycle, and local utility electricity rates.',
+    group: 'tools',
+    href: '/tools/dehumidifier-cost-calculator',
+    label: 'Dehumidifier Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
       'Residential electricity rate benchmarks and U.S. state averages with EIA source attribution.',
     group: 'research',
     href: '/electricity-rates',
