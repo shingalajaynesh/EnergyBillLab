@@ -17,6 +17,7 @@ export type PublishedStateConfig = {
     | 'Regulated Utility Market'
     | 'Retail Choice / Deregulated Market'
     | 'Retail supplier choice with regulated distribution'
+    | 'Mixed municipal, cooperative, and investor-owned structure'
     | 'Hybrid Market';
   isPublished: boolean;
   keyFactors: Array<{
@@ -950,7 +951,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     relatedStateSlugs: ['illinois', 'michigan', 'minnesota', 'iowa'],
   },
-  // BATCH 3 NEWLY PUBLISHED STATES
+  // BATCH 3 PUBLISHED STATES
   colorado: {
     code: 'CO',
     slug: 'colorado',
@@ -1480,6 +1481,537 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       },
     ],
     relatedStateSlugs: ['minnesota', 'wisconsin', 'illinois', 'missouri'],
+  },
+  // BATCH 4 NEWLY PUBLISHED STATES
+  nevada: {
+    code: 'NV',
+    slug: 'nevada',
+    name: 'Nevada',
+    metaTitle: 'Nevada Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'View Nevada residential electricity rates, average monthly household bills, PUCN utility regulation, solar generation, and desert cooling drivers.',
+    overview:
+      'Nevada operates a regulated electric utility structure under the Public Utilities Commission of Nevada (PUCN). NV Energy (operating as Nevada Power in southern Nevada and Sierra Pacific Power in northern Nevada) serves the vast majority of residential households. Rates reflect high summer air conditioning loads in desert climates, utility-scale solar generation expansion, and Western grid power transfers.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Desert Climate Cooling Demand',
+        description:
+          'Prolonged summer heat waves in Southern Nevada drive intense air conditioning usage, creating sharp seasonal consumption spikes.',
+      },
+      {
+        title: 'Utility Solar & Storage Buildout',
+        description:
+          'Nevada features extensive utility-scale solar installations across desert basins, backed by battery storage to support evening peak demand.',
+      },
+      {
+        title: 'PUCN Regulatory & Rate Oversight',
+        description:
+          'Multi-year general rate cases and energy efficiency surcharges approved by the Public Utilities Commission of Nevada regulate utility delivery tariffs.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity sales and retail revenue',
+      },
+      {
+        organization: 'Public Utilities Commission of Nevada (PUCN)',
+        title: 'Nevada Electric Utility Rate Filings & Energy Rules',
+        name: 'Public Utilities Commission of Nevada (PUCN)',
+        url: 'https://puc.nv.gov/',
+        supportedTopic: 'PUCN rate regulation and utility solar rules',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Nevada State Energy Profile & Data Overview',
+        name: 'EIA Nevada State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=NV',
+        supportedTopic: 'Nevada solar energy production and generation profile',
+      },
+    ],
+    relatedStateSlugs: ['california', 'arizona', 'utah', 'idaho'],
+  },
+  arkansas: {
+    code: 'AR',
+    slug: 'arkansas',
+    name: 'Arkansas',
+    metaTitle: 'Arkansas Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Explore Arkansas residential electricity rates, Entergy Arkansas tariffs, APSC regulation, and seasonal energy bill benchmarks.',
+    overview:
+      'Arkansas operates a traditionally regulated electric utility market overseen by the Arkansas Public Service Commission (APSC). Investor-owned Entergy Arkansas serves the majority of residential homes alongside Southwestern Electric Power Company (SWEPCO), Oklahoma Gas & Electric (OG&E), and electric cooperatives. Rates reflect natural gas, nuclear, and hydroelectric generation portfolios.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Natural Gas & Nuclear Baseload Portfolio',
+        description:
+          'Natural gas combined-cycle facilities and nuclear power (Arkansas Nuclear One) supply reliable baseline electricity across the state.',
+      },
+      {
+        title: 'Humid Subtropical Summer Cooling Load',
+        description:
+          'High summer heat and humidity require extensive air conditioning usage across residential households throughout central and southern Arkansas.',
+      },
+      {
+        title: 'APSC Rate & Formula Regulatory Filings',
+        description:
+          'Formula rate plan reviews and fuel cost adjustment clauses supervised by state regulators govern retail electricity tariffs.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'Arkansas Public Service Commission (APSC)',
+        title: 'Arkansas Utility Base Orders & Rate Plan Oversight',
+        name: 'Arkansas Public Service Commission (APSC)',
+        url: 'https://apsc.arkansas.gov/',
+        supportedTopic: 'APSC utility regulation and formula rate plans',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Arkansas State Energy Profile & Data Overview',
+        name: 'EIA Arkansas State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=AR',
+        supportedTopic: 'Arkansas generation mix and nuclear baseload context',
+      },
+    ],
+    relatedStateSlugs: ['louisiana', 'mississippi', 'oklahoma', 'missouri'],
+  },
+  mississippi: {
+    code: 'MS',
+    slug: 'mississippi',
+    name: 'Mississippi',
+    metaTitle: 'Mississippi Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze Mississippi residential electricity rates, Entergy Mississippi tariffs, MPSC regulation, natural gas reliance, and cooling loads.',
+    overview:
+      'Mississippi operates a regulated utility framework supervised by the Mississippi Public Service Commission (MPSC). Primary investor-owned utilities Entergy Mississippi and Mississippi Power serve residential load alongside municipal distribution systems and rural electric cooperatives. Rates reflect heavy summer cooling loads and reliance on natural gas and nuclear generation.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Natural Gas Fuel Generation Reliance',
+        description:
+          'Natural gas power plants supply the major portion of Mississippi net electricity, tying utility fuel adjustments to wholesale gas market trends.',
+      },
+      {
+        title: 'Deep South Cooling Intensity',
+        description:
+          'High humidity and extended summer heatwaves require prolonged air conditioning usage throughout residential households.',
+      },
+      {
+        title: 'MPSC Rate Formula & Grid Hardening Surcharges',
+        description:
+          'Formula rate adjustments and storm recovery riders approved by the Mississippi PSC govern distribution charges and infrastructure investments.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity metrics',
+      },
+      {
+        organization: 'Mississippi Public Service Commission (MPSC)',
+        title: 'Mississippi Electric Utility Regulation & Tariff Orders',
+        name: 'Mississippi Public Service Commission (MPSC)',
+        url: 'https://www.psc.ms.gov/',
+        supportedTopic: 'MPSC rate formula oversight and storm riders',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Mississippi State Energy Profile & Data Overview',
+        name: 'EIA Mississippi State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=MS',
+        supportedTopic: 'Mississippi natural gas generation share',
+      },
+    ],
+    relatedStateSlugs: ['alabama', 'louisiana', 'tennessee', 'arkansas'],
+  },
+  kansas: {
+    code: 'KS',
+    slug: 'kansas',
+    name: 'Kansas',
+    metaTitle: 'Kansas Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Review Kansas residential electricity rates, Evergy regulated tariffs, KCC regulation, SPP wind power, and seasonal energy trends.',
+    overview:
+      'Kansas operates a regulated electric utility structure overseen by the Kansas Corporation Commission (KCC). Evergy (formed by the merger of Westar Energy and KCP&L) serves the major metropolitan centers alongside electric cooperatives and municipal utilities. Rates are supported by strong wind power generation, SPP regional grid integration, and dual seasonal climate demands.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Abundant Wind Generation Capacity',
+        description:
+          'Kansas ranks among leading U.S. states in wind power generation, integrating utility-scale wind farms into the regional SPP grid.',
+      },
+      {
+        title: 'SPP Regional Grid Integration',
+        description:
+          'Southwest Power Pool transmission networks balance variable wind generation with natural gas and nuclear baseload power.',
+      },
+      {
+        title: 'Extreme Seasonal Temperature Range',
+        description:
+          'Cold Midwestern winter temperatures and hot summer cooling periods drive seasonal residential electricity consumption spikes.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
+      },
+      {
+        organization: 'Kansas Corporation Commission (KCC)',
+        title: 'Kansas Electric Utility Rate Cases & SPP Filings',
+        name: 'Kansas Corporation Commission (KCC)',
+        url: 'https://kcc.ks.gov/',
+        supportedTopic: 'KCC rate regulation and SPP grid integration',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Kansas State Energy Profile & Data Overview',
+        name: 'EIA Kansas State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=KS',
+        supportedTopic: 'Kansas wind power production rank and energy mix',
+      },
+    ],
+    relatedStateSlugs: ['oklahoma', 'missouri', 'nebraska', 'colorado'],
+  },
+  utah: {
+    code: 'UT',
+    slug: 'utah',
+    name: 'Utah',
+    metaTitle: 'Utah Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Discover Utah residential electricity rates, Rocky Mountain Power tariffs, UPSC regulation, and regional energy transition benchmarks.',
+    overview:
+      'Utah operates a regulated electric utility market supervised by the Utah Public Service Commission (UPSC). Rocky Mountain Power (a division of PacifiCorp) provides service to the majority of residential households alongside municipal power systems. Rates reflect a historically coal-supported fleet transitioning toward utility solar, natural gas, and regional grid resources.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Generation Mix & Resource Transition',
+        description:
+          'PacifiCorp integrated resource plans transition capacity from coal units toward expanded solar installations, wind, and battery storage.',
+      },
+      {
+        title: 'Wasatch Front Cooling & Winter Space Heating',
+        description:
+          'Rapid population growth along the Wasatch Front increases summer peak cooling demand alongside cold mountain winter space heating loads.',
+      },
+      {
+        title: 'UPSC Multi-Year Rate Regulation',
+        description:
+          'The Utah PSC supervises general rate cases, grid hardening investments, and net metering tariffs for residential customers.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate statistics',
+      },
+      {
+        organization: 'Utah Public Service Commission (UPSC)',
+        title: 'Utah Rate Case Orders & PacifiCorp IRP Oversight',
+        name: 'Utah Public Service Commission (UPSC)',
+        url: 'https://psc.utah.gov/',
+        supportedTopic: 'UPSC rate regulation and resource transition plans',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Utah State Energy Profile & Data Overview',
+        name: 'EIA Utah State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=UT',
+        supportedTopic: 'Utah generation mix and solar expansion profile',
+      },
+    ],
+    relatedStateSlugs: ['colorado', 'nevada', 'idaho', 'arizona'],
+  },
+  nebraska: {
+    code: 'NE',
+    slug: 'nebraska',
+    name: 'Nebraska',
+    metaTitle: 'Nebraska Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Learn about Nebraska public power residential electricity rates, NPPD and OPPD benchmarks, and public power district cost structures.',
+    overview:
+      'Nebraska is unique as the only state served entirely by public power entities, including public power districts (such as Nebraska Public Power District and Omaha Public Power District), municipal utilities, and rural electric cooperatives. Overseen by local elected boards and the Nebraska Power Review Board, rates reflect non-profit public service, nuclear baseload generation, and wind integration.',
+    marketType: 'Mixed municipal, cooperative, and investor-owned structure',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Public Power Non-Profit Structure',
+        description:
+          'Public power districts operate on a cost-of-service basis without shareholder returns, historically keeping residential baseline rates competitive.',
+      },
+      {
+        title: 'Nuclear & Wind Generation Base',
+        description:
+          'Baseload nuclear generation (Cooper Nuclear Station) combined with growing wind power capacity supplies reliable low-carbon electricity.',
+      },
+      {
+        title: 'Agricultural & Seasonal Climate Demands',
+        description:
+          'Severe Midwestern winter cold and hot summer weather drive residential climate conditioning loads alongside agricultural irrigation power demand.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail sales metrics',
+      },
+      {
+        organization: 'Nebraska Power Review Board',
+        title: 'Nebraska Public Power District Oversight & Annual Reports',
+        name: 'Nebraska Power Review Board',
+        url: 'https://prb.nebraska.gov/',
+        supportedTopic: 'Public power non-profit model and utility oversight',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Nebraska State Energy Profile & Data Overview',
+        name: 'EIA Nebraska State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=NE',
+        supportedTopic: 'Nebraska public power structure and nuclear baseload',
+      },
+    ],
+    relatedStateSlugs: ['iowa', 'kansas', 'south-dakota', 'colorado'],
+  },
+  'new-mexico': {
+    code: 'NM',
+    slug: 'new-mexico',
+    name: 'New Mexico',
+    metaTitle: 'New Mexico Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Compare New Mexico residential electricity rates, PNM tariffs, NMPRC regulation, solar/wind growth, and desert climate energy costs.',
+    overview:
+      'New Mexico operates a regulated electricity market framework supervised by the New Mexico Public Regulation Commission (NMPRC). Public Service Company of New Mexico (PNM) and Southwestern Public Service (SPS/Xcel Energy) serve primary population centers alongside electric co-ops. Rates reflect transition away from coal toward expanded utility solar, wind generation, and desert cooling loads.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Solar & Wind Resource Expansion',
+        description:
+          'High solar irradiance across high-desert regions accelerates utility-scale photovoltaic solar development and battery storage projects.',
+      },
+      {
+        title: 'Energy Transition Act Decarbonization Targets',
+        description:
+          'State clean energy legislation targets progressive clean power goals, supporting coal plant closures and renewable replacement capacity.',
+      },
+      {
+        title: 'High-Desert Cooling & Heating Demands',
+        description:
+          'Desert summer heat drives residential air conditioning loads, while cold mountain winter nights require significant space heating.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'New Mexico Public Regulation Commission (NMPRC)',
+        title: 'New Mexico Utility Rate Cases & Clean Energy Mandates',
+        name: 'New Mexico Public Regulation Commission (NMPRC)',
+        url: 'https://www.nm-prc.org/',
+        supportedTopic: 'NMPRC rate regulation and Energy Transition Act compliance',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'New Mexico State Energy Profile & Data Overview',
+        name: 'EIA New Mexico State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=NM',
+        supportedTopic: 'New Mexico solar generation growth and high-desert profile',
+      },
+    ],
+    relatedStateSlugs: ['arizona', 'colorado', 'texas', 'utah'],
+  },
+  'west-virginia': {
+    code: 'WV',
+    slug: 'west-virginia',
+    name: 'West Virginia',
+    metaTitle: 'West Virginia Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Examine West Virginia residential electricity rates, Appalachian Power and Mon Power tariffs, WVPSC regulation, and coal generation context.',
+    overview:
+      'West Virginia operates a traditional regulated electric utility market overseen by the Public Service Commission of West Virginia (WVPSC). Service is provided primarily by Appalachian Power, Wheeling Power (AEP), Monongahela Power, and Potomac Edison (FirstEnergy). Rates reflect a historically coal-dominant generation fleet, mountain terrain delivery costs, and grid reliability upgrades.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Coal Baseload Generation Dominance',
+        description:
+          'Coal power plants generate the majority of West Virginia net electricity, providing firm baseline energy while facing environmental compliance costs.',
+      },
+      {
+        title: 'Appalachian Mountain Winter Heating Load',
+        description:
+          'Rugged terrain and severe mountain winter temperatures drive heavy electric space heating consumption across West Virginia homes.',
+      },
+      {
+        title: 'WVPSC Utility Rate & Infrastructure Regulation',
+        description:
+          'Base rate proceedings, vegetation management surcharges, and transmission modernization programs influence monthly residential delivery fees.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate metrics',
+      },
+      {
+        organization: 'Public Service Commission of West Virginia (WVPSC)',
+        title: 'West Virginia Utility Rate Filings & Tariff Orders',
+        name: 'Public Service Commission of West Virginia (WVPSC)',
+        url: 'https://www.psc.state.wv.us/',
+        supportedTopic: 'WVPSC rate regulation and infrastructure surcharges',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'West Virginia State Energy Profile & Data Overview',
+        name: 'EIA West Virginia State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=WV',
+        supportedTopic: 'West Virginia coal generation share and mountain grid profile',
+      },
+    ],
+    relatedStateSlugs: ['virginia', 'pennsylvania', 'ohio', 'kentucky'],
+  },
+  idaho: {
+    code: 'ID',
+    slug: 'idaho',
+    name: 'Idaho',
+    metaTitle: 'Idaho Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Find Idaho residential electricity rates, Idaho Power benchmarks, IPUC regulation, Snake River hydro generation, and seasonal bill drivers.',
+    overview:
+      'Idaho operates a regulated electric utility structure supervised by the Idaho Public Utilities Commission (IPUC). Investor-owned Idaho Power, Avista Utilities, and Rocky Mountain Power serve residential homes alongside consumer-owned utilities. Rates benefit from low-cost Snake River basin hydroelectric generation, balanced by growing agricultural and summer cooling loads.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Hydroelectric Generation Base',
+        description:
+          'Snake River dams supply a major share of low-cost, zero-carbon hydroelectric power, supporting competitive residential rates.',
+      },
+      {
+        title: 'Agricultural Irrigation & Summer Peak Demand',
+        description:
+          'Summer irrigation pumping load combined with residential AC cooling creates sharp seasonal peak demand across Southern Idaho.',
+      },
+      {
+        title: 'IPUC Rate Oversight & Clean Energy Goals',
+        description:
+          'Multi-year rate cases and clean energy transition filings approved by the Idaho PUC guide transmission expansion and grid reliability.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
+      },
+      {
+        organization: 'Idaho Public Utilities Commission (IPUC)',
+        title: 'Idaho Rate Orders & Idaho Power IRP Oversight',
+        name: 'Idaho Public Utilities Commission (IPUC)',
+        url: 'https://puc.idaho.gov/',
+        supportedTopic: 'IPUC rate regulation and hydroelectric grid oversight',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Idaho State Energy Profile & Data Overview',
+        name: 'EIA Idaho State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=ID',
+        supportedTopic: 'Idaho Snake River hydroelectric generation share',
+      },
+    ],
+    relatedStateSlugs: ['washington', 'oregon', 'utah', 'nevada'],
+  },
+  hawaii: {
+    code: 'HI',
+    slug: 'hawaii',
+    name: 'Hawaii',
+    metaTitle: 'Hawaii Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Understand Hawaii residential electricity rates, HECO tariffs, HPUC regulation, island grid oil fuel costs, and rooftop solar adoption.',
+    overview:
+      'Hawaii operates isolated island electric grids regulated by the Hawaii Public Utilities Commission (HPUC). Hawaiian Electric Companies (HECO, MECO, HELCO) serve Oahu, Maui, and Hawaii Island, while Kauai Island Utility Cooperative (KIUC) serves Kauai. Because island grids rely historically on imported petroleum fuel, Hawaii residential electricity rates rank highest in the nation.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Isolated Island Grids & Fuel Import Dependency',
+        description:
+          'Isolated electrical systems cannot import power from neighboring regions, making baseline rates highly sensitive to global oil pricing.',
+      },
+      {
+        title: 'Nation-Leading Rooftop Solar Adoption',
+        description:
+          'High electricity rates drive widespread residential rooftop solar and battery storage adoption across all Hawaiian islands.',
+      },
+      {
+        title: 'Statutory 100% Clean Energy Mandate',
+        description:
+          'State climate legislation mandates 100% renewable electricity supply, accelerating utility-scale solar, geothermal, and wind grid integration.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales statistics',
+      },
+      {
+        organization: 'Hawaii Public Utilities Commission (HPUC)',
+        title: 'Hawaii HECO Base Orders & Clean Energy Mandates',
+        name: 'Hawaii Public Utilities Commission (HPUC)',
+        url: 'https://puc.hawaii.gov/',
+        supportedTopic: 'HPUC rate regulation and 100% renewable mandate',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Hawaii State Energy Profile & Data Overview',
+        name: 'EIA Hawaii State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=HI',
+        supportedTopic: 'Hawaii isolated island grid and high electricity cost profile',
+      },
+    ],
+    relatedStateSlugs: ['california', 'washington', 'oregon', 'arizona'],
   },
 };
 

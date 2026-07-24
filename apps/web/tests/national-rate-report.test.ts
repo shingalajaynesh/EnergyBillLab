@@ -122,28 +122,39 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
     }
   });
 
-  it('dynamically resolves Batch 3 states to published report routes and retains Rate Data Only for unpublished states', () => {
-    const batch3Slugs = [
-      'connecticut',
-      'oklahoma',
-      'colorado',
-      'minnesota',
-      'iowa',
-      'louisiana',
-      'kentucky',
-      'oregon',
-      'alabama',
-      'south-carolina',
+  it('dynamically resolves Batch 4 states to published report routes and retains Rate Data Only for Batch 5 states', () => {
+    const batch4Slugs = [
+      'nevada',
+      'arkansas',
+      'mississippi',
+      'kansas',
+      'utah',
+      'nebraska',
+      'new-mexico',
+      'west-virginia',
+      'idaho',
+      'hawaii',
     ];
-    const unpublishedSlugs = ['nevada', 'hawaii', 'alaska', 'vermont', 'idaho'];
+    const batch5UnpublishedSlugs = [
+      'maine',
+      'new-hampshire',
+      'rhode-island',
+      'vermont',
+      'delaware',
+      'montana',
+      'south-dakota',
+      'north-dakota',
+      'wyoming',
+      'alaska',
+    ];
 
-    batch3Slugs.forEach((slug: string) => {
+    batch4Slugs.forEach((slug: string) => {
       const config = PUBLISHED_STATES[slug];
       expect(config).toBeDefined();
       expect(config?.isPublished).toBe(true);
     });
 
-    unpublishedSlugs.forEach((slug: string) => {
+    batch5UnpublishedSlugs.forEach((slug: string) => {
       const config = PUBLISHED_STATES[slug];
       expect(config?.isPublished).not.toBe(true);
     });

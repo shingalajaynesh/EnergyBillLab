@@ -51,6 +51,19 @@ Hub Route Pattern:
 29. `connecticut` (CT)
 30. `iowa` (IA)
 
+### Batch 4 (10 States — Growth Phase 3)
+
+31. `nevada` (NV)
+32. `arkansas` (AR)
+33. `mississippi` (MS)
+34. `kansas` (KS)
+35. `utah` (UT)
+36. `nebraska` (NE)
+37. `new-mexico` (NM)
+38. `west-virginia` (WV)
+39. `idaho` (ID)
+40. `hawaii` (HI)
+
 Any request to an unapproved state slug returns Next.js `notFound()`.
 
 ## Rate Data Provenance Architecture

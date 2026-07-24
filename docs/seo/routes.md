@@ -23,7 +23,7 @@ This document serves as the authoritative index for all public, indexable routes
 - `/tools/pool-pump-cost-calculator` — Pool Pump Cost Calculator
 - `/tools/dehumidifier-cost-calculator` — Dehumidifier Cost Calculator
 
-### 2. State Electricity Rate Pages (30 Published)
+### 2. State Electricity Rate Pages (40 Published)
 
 - `/electricity-rates` — Electricity Rates Hub
 - `/electricity-rates/california` — California Electricity Rates
@@ -56,6 +56,16 @@ This document serves as the authoritative index for all public, indexable routes
 - `/electricity-rates/oklahoma` — Oklahoma Electricity Rates
 - `/electricity-rates/connecticut` — Connecticut Electricity Rates
 - `/electricity-rates/iowa` — Iowa Electricity Rates
+- `/electricity-rates/nevada` — Nevada Electricity Rates
+- `/electricity-rates/arkansas` — Arkansas Electricity Rates
+- `/electricity-rates/mississippi` — Mississippi Electricity Rates
+- `/electricity-rates/kansas` — Kansas Electricity Rates
+- `/electricity-rates/utah` — Utah Electricity Rates
+- `/electricity-rates/nebraska` — Nebraska Electricity Rates
+- `/electricity-rates/new-mexico` — New Mexico Electricity Rates
+- `/electricity-rates/west-virginia` — West Virginia Electricity Rates
+- `/electricity-rates/idaho` — Idaho Electricity Rates
+- `/electricity-rates/hawaii` — Hawaii Electricity Rates
 
 ### 3. Original Research Reports (1)
 

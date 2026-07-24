@@ -16,9 +16,9 @@ import {
 import { getStateRatesSnapshotUncached } from '@/lib/server/get-state-rates';
 
 describe('State Electricity Rates Configuration & Helpers', () => {
-  it('defines exactly thirty approved states in PUBLISHED_STATES', () => {
-    expect(APPROVED_STATE_SLUGS).toHaveLength(30);
-    expect(Object.keys(PUBLISHED_STATES)).toHaveLength(30);
+  it('defines exactly forty approved states in PUBLISHED_STATES', () => {
+    expect(APPROVED_STATE_SLUGS).toHaveLength(40);
+    expect(Object.keys(PUBLISHED_STATES)).toHaveLength(40);
     expect(APPROVED_STATE_SLUGS).toEqual([
       'california',
       'texas',
@@ -50,6 +50,16 @@ describe('State Electricity Rates Configuration & Helpers', () => {
       'oklahoma',
       'connecticut',
       'iowa',
+      'nevada',
+      'arkansas',
+      'mississippi',
+      'kansas',
+      'utah',
+      'nebraska',
+      'new-mexico',
+      'west-virginia',
+      'idaho',
+      'hawaii',
     ]);
   });
 
@@ -79,15 +89,15 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     });
   });
 
-  it('correctly validates approved state slugs including Batch 3 states', () => {
+  it('correctly validates approved state slugs including Batch 4 states', () => {
     expect(isApprovedStateSlug('california')).toBe(true);
     expect(isApprovedStateSlug('TEXAS')).toBe(true);
-    expect(isApprovedStateSlug('colorado')).toBe(true);
-    expect(isApprovedStateSlug('connecticut')).toBe(true);
-    expect(isApprovedStateSlug('iowa')).toBe(true);
+    expect(isApprovedStateSlug('nevada')).toBe(true);
+    expect(isApprovedStateSlug('hawaii')).toBe(true);
+    expect(isApprovedStateSlug('idaho')).toBe(true);
 
     expect(isApprovedStateSlug('alaska')).toBe(false);
-    expect(isApprovedStateSlug('hawaii')).toBe(false);
+    expect(isApprovedStateSlug('vermont')).toBe(false);
     expect(isApprovedStateSlug('district-of-columbia')).toBe(false);
     expect(isApprovedStateSlug('unknown-slug')).toBe(false);
   });
