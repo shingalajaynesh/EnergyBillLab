@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 
 import {
   APPROVED_STATE_SLUGS,
-  FIRST_TEN_STATES,
   isApprovedStateSlug,
-} from '@/config/first-ten-states';
+  PUBLISHED_STATES,
+} from '@/config/published-states';
 import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { sitemapRoutes } from '@/lib/routes';
 import {
@@ -16,9 +16,9 @@ import {
 import { getStateRatesSnapshotUncached } from '@/lib/server/get-state-rates';
 
 describe('State Electricity Rates Configuration & Helpers', () => {
-  it('defines exactly twenty approved states in FIRST_TEN_STATES', () => {
+  it('defines exactly twenty approved states in PUBLISHED_STATES', () => {
     expect(APPROVED_STATE_SLUGS).toHaveLength(20);
-    expect(Object.keys(FIRST_TEN_STATES)).toHaveLength(20);
+    expect(Object.keys(PUBLISHED_STATES)).toHaveLength(20);
     expect(APPROVED_STATE_SLUGS).toEqual([
       'california',
       'texas',
@@ -41,6 +41,18 @@ describe('State Electricity Rates Configuration & Helpers', () => {
       'maryland',
       'wisconsin',
     ]);
+  });
+
+  it('verifies every published state contains authoritative non-empty sources', () => {
+    APPROVED_STATE_SLUGS.forEach((slug) => {
+      const config = PUBLISHED_STATES[slug];
+      expect(config).toBeDefined();
+      expect(config!.sources.length).toBeGreaterThan(0);
+      config!.sources.forEach((src) => {
+        expect(src.name).toBeTruthy();
+        expect(src.url).toMatch(/^https?:\/\//);
+      });
+    });
   });
 
   it('correctly validates approved state slugs', () => {

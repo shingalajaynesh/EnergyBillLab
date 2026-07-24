@@ -39,11 +39,11 @@ describe('Public Publisher Identity & Trust Integrity', () => {
     const aboutMeta = createPageMetadata(contentPages['/about']);
     const contactMeta = createPageMetadata(contentPages['/contact']);
 
-    expect(aboutMeta.title).toBe('About Energy Bill Lab | Energy Bill Lab');
-    expect(contactMeta.title).toBe('Contact Energy Bill Lab | Energy Bill Lab');
+    expect(aboutMeta.title).toBe('About Energy Bill Lab');
+    expect(contactMeta.title).toBe('Contact Energy Bill Lab');
 
-    expect(aboutMeta.alternates?.canonical).toBe('https://energybilllab.com/about');
-    expect(contactMeta.alternates?.canonical).toBe('https://energybilllab.com/contact');
+    expect(aboutMeta.alternates?.canonical).toBe('/about');
+    expect(contactMeta.alternates?.canonical).toBe('/contact');
     expect(aboutMeta.title).not.toEqual(contactMeta.title);
   });
 });

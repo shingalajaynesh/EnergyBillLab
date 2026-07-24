@@ -9,9 +9,9 @@ import { PageHeader } from '@/components/page-header';
 import { RelatedLinks } from '@/components/related-links';
 import {
   APPROVED_STATE_SLUGS,
-  FIRST_TEN_STATES,
   isApprovedStateSlug,
-} from '@/config/first-ten-states';
+  PUBLISHED_STATES,
+} from '@/config/published-states';
 import {
   CalculatorCtaBox,
   DataUnavailablePanel,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const config = FIRST_TEN_STATES[normalizedSlug];
+  const config = PUBLISHED_STATES[normalizedSlug];
   if (!config) return {};
 
   return createPageMetadata({
@@ -156,7 +156,7 @@ export default async function StateElectricityRatePage({ params }: Props) {
           </h2>
           <div className={styles.relatedGrid}>
             {approvedRelatedSlugs.map((relSlug) => {
-              const relConfig = FIRST_TEN_STATES[relSlug];
+              const relConfig = PUBLISHED_STATES[relSlug];
               if (!relConfig) return null;
               return (
                 <Link

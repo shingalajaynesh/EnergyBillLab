@@ -13,7 +13,7 @@ import {
   FieldTimeOutlined,
 } from '@ant-design/icons';
 
-import type { FirstTenStateConfig } from '@/config/first-ten-states';
+import type { PublishedStateConfig } from '@/config/published-states';
 import type { StatePageViewModel } from '@/lib/server/get-state-page-data';
 
 import styles from './state-rate-components.module.css';
@@ -71,7 +71,7 @@ export function StateRateCard({
   latestRateCents,
   periodFormatted,
 }: {
-  config: FirstTenStateConfig;
+  config: PublishedStateConfig;
   latestRateCents: number | null;
   periodFormatted: string | null;
 }) {
@@ -322,7 +322,7 @@ export function RateHistoryTable({ data }: { data: StatePageViewModel }) {
 }
 
 /* 7. State Market & Climate Drivers Grid */
-export function StateDriverGrid({ config }: { config: FirstTenStateConfig }) {
+export function StateDriverGrid({ config }: { config: PublishedStateConfig }) {
   return (
     <section className={styles.sectionCard} aria-labelledby="drivers-heading">
       <h2 id="drivers-heading" className={styles.sectionTitle}>

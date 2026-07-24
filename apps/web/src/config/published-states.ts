@@ -1,4 +1,4 @@
-export type FirstTenStateConfig = {
+export type PublishedStateConfig = {
   code: string;
   slug: string;
   name: string;
@@ -17,7 +17,9 @@ export type FirstTenStateConfig = {
   relatedStateSlugs: string[];
 };
 
-export const FIRST_TEN_STATES: Record<string, FirstTenStateConfig> = {
+export type FirstTenStateConfig = PublishedStateConfig;
+
+export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
   california: {
     code: 'CA',
     slug: 'california',
@@ -800,12 +802,16 @@ export const FIRST_TEN_STATES: Record<string, FirstTenStateConfig> = {
   },
 };
 
-export const APPROVED_STATE_SLUGS = Object.keys(FIRST_TEN_STATES);
+export const FIRST_TEN_STATES = PUBLISHED_STATES;
+
+export const APPROVED_STATE_SLUGS = Object.keys(PUBLISHED_STATES);
 
 export function isApprovedStateSlug(slug: string): boolean {
   return APPROVED_STATE_SLUGS.includes(slug.toLowerCase());
 }
 
-export function getFirstTenStateConfig(slug: string): FirstTenStateConfig | null {
-  return FIRST_TEN_STATES[slug.toLowerCase()] || null;
+export function getPublishedStateConfig(slug: string): PublishedStateConfig | null {
+  return PUBLISHED_STATES[slug.toLowerCase()] || null;
 }
+
+export const getFirstTenStateConfig = getPublishedStateConfig;

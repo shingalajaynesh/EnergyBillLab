@@ -9,7 +9,7 @@ import {
 } from '@energy-bill-lab/database';
 import { unstable_cache } from 'next/cache';
 
-import { FIRST_TEN_STATES, type FirstTenStateConfig } from '@/config/first-ten-states';
+import { PUBLISHED_STATES, type PublishedStateConfig } from '@/config/published-states';
 import type { RateDataProvenance } from '@/lib/server/get-state-rates';
 
 export type HouseholdCostExample = {
@@ -28,7 +28,7 @@ export type HistoryRowViewModel = {
 
 export type StatePageViewModel = {
   slug: string;
-  config: FirstTenStateConfig;
+  config: PublishedStateConfig;
   hasData: boolean;
   provenance: RateDataProvenance;
   latestStateRate: StateRateDTO | null;
@@ -90,7 +90,7 @@ export function isConsecutiveCalendarMonth(newerPeriod: string, olderPeriod: str
 
 export async function getStatePageDataUncached(slug: string): Promise<StatePageViewModel | null> {
   const normalizedSlug = slug.toLowerCase();
-  const config = FIRST_TEN_STATES[normalizedSlug];
+  const config = PUBLISHED_STATES[normalizedSlug];
   if (!config) return null;
 
   try {
@@ -186,7 +186,7 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
   }
 }
 
-function createUnavailableStateViewModel(config: FirstTenStateConfig): StatePageViewModel {
+function createUnavailableStateViewModel(config: PublishedStateConfig): StatePageViewModel {
   return {
     slug: config.slug,
     config,

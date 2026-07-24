@@ -9,9 +9,11 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 ## State Coverage Baseline & Expansion Roadmap
 
 ### Published State Coverage: 20 of 50 States
+
 ### Remaining State Coverage: 30 of 50 States
 
 #### Batch 1 (Published — Phase 1)
+
 - California (`CA`)
 - Texas (`TX`)
 - Florida (`FL`)
@@ -24,6 +26,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Michigan (`MI`)
 
 #### Batch 2 (Published — Growth Phase 1)
+
 - Arizona (`AZ`)
 - Virginia (`VA`)
 - Washington (`WA`)
@@ -36,6 +39,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Wisconsin (`WI`)
 
 #### Batch 3 (Future Scope — 10 States)
+
 - Colorado (`CO`)
 - Minnesota (`MN`)
 - South Carolina (`SC`)
@@ -48,6 +52,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Iowa (`IA`)
 
 #### Batch 4 (Future Scope — 10 States)
+
 - Nevada (`NV`)
 - Arkansas (`AR`)
 - Mississippi (`MS`)
@@ -60,6 +65,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Hawaii (`HI`)
 
 #### Batch 5 (Future Scope — 10 States)
+
 - Maine (`ME`)
 - New Hampshire (`NH`)
 - Rhode Island (`RI`)
@@ -71,7 +77,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Wyoming (`WY`)
 - Alaska (`AK`)
 
-*Note: Washington, D.C. is a separate federal district and is not counted among the 50 U.S. states. It may be evaluated in a distinct future scope.*
+_Note: Washington, D.C. is a separate federal district and is not counted among the 50 U.S. states. It may be evaluated in a distinct future scope._
 
 ---
 
@@ -83,7 +89,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - **Original Linkable Data Reports Published:** 0
 - **Embeddable Outreach Assets Published:** 0
 
-*Important Note: Domain Authority is a third-party proprietary metric. Unmeasured third-party scores are recorded as "Not yet measured" rather than an invented numeric score.*
+_Important Note: Domain Authority is a third-party proprietary metric. Unmeasured third-party scores are recorded as "Not yet measured" rather than an invented numeric score._
 
 ---
 
@@ -100,6 +106,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 ## Authority Growth & Outreach Strategy
 
 ### Priority Linkable Data Assets
+
 1. U.S. Residential Electricity-Rate Change Report (EIA-861M quarterly synthesis)
 2. State Electricity Rate Comparison Table with Transparent Methodology
 3. Highest and Lowest Residential Rate Analysis by U.S. Region
@@ -108,6 +115,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 6. Energy Calculation Engine Technical Methodology Reference
 
 ### Target Audiences for Outreach
+
 - Local and state consumer utility journalists
 - Personal finance and household budgeting writers
 - University energy policy and environmental science researchers
@@ -116,6 +124,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Public libraries and educational resource lists
 
 ### Allowed vs. Forbidden Outreach Practices
+
 - **Allowed:** Personalized editorial outreach, data error corrections, original research pitches, resource-page suggestions, embeddable data widgets, expert technical commentary.
 - **Forbidden:** Paid dofollow link purchases, private blog networks (PBNs), automated mass cold emailing, comment spam, forum link drops, link exchanges at scale, fake personas, fake statistics.
 

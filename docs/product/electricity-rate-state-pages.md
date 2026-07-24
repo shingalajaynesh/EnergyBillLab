@@ -13,6 +13,7 @@ Hub Route Pattern:
 ## Approved Published States (20)
 
 ### Batch 1 (10 States)
+
 1. `california` (CA)
 2. `texas` (TX)
 3. `florida` (FL)
@@ -25,6 +26,7 @@ Hub Route Pattern:
 10. `michigan` (MI)
 
 ### Batch 2 (10 States — Growth Phase 1)
+
 11. `arizona` (AZ)
 12. `virginia` (VA)
 13. `washington` (WA)

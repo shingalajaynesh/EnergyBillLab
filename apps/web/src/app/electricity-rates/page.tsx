@@ -6,7 +6,7 @@ import { DataSourceNote } from '@/components/data-source-note';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { RelatedLinks } from '@/components/related-links';
-import { APPROVED_STATE_SLUGS, FIRST_TEN_STATES } from '@/config/first-ten-states';
+import { APPROVED_STATE_SLUGS, PUBLISHED_STATES } from '@/config/published-states';
 import {
   CalculatorCtaBox,
   DataUnavailablePanel,
@@ -51,7 +51,7 @@ export default async function ElectricityRatesPage() {
   // Fallback viewmodel data for DataUnavailablePanel on hub page
   const hubUnavailableData: StatePageViewModel = {
     slug: 'hub',
-    config: FIRST_TEN_STATES['california']!,
+    config: PUBLISHED_STATES['california']!,
     hasData: false,
     provenance: { status: 'unavailable' },
     latestStateRate: null,
@@ -100,7 +100,7 @@ export default async function ElectricityRatesPage() {
 
         <div className={styles.statesGrid}>
           {APPROVED_STATE_SLUGS.map((slug) => {
-            const config = FIRST_TEN_STATES[slug];
+            const config = PUBLISHED_STATES[slug];
             if (!config) return null;
             const rateDto = snapshot.rates[config.code];
             const latestRateCents = isAvailable && rateDto ? rateDto.priceCentsPerKwh : null;
@@ -119,7 +119,9 @@ export default async function ElectricityRatesPage() {
         </div>
 
         <p className={styles.noticeText}>
-          * Note: Energy Bill Lab currently publishes rate reports for 20 of 50 U.S. states. Remaining state pages will be published in subsequent releases following EIA dataset validation and state-level editorial review.
+          * Note: Energy Bill Lab currently publishes rate reports for 20 of 50 U.S. states.
+          Remaining state pages will be published in subsequent releases following EIA dataset
+          validation and state-level editorial review.
         </p>
       </section>
 
