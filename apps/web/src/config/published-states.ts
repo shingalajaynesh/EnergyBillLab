@@ -2014,6 +2014,537 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     relatedStateSlugs: ['california', 'washington', 'oregon', 'arizona'],
   },
+  // BATCH 5 NEWLY PUBLISHED STATES (FINAL 10 STATES — 50 OF 50 TOTAL)
+  maine: {
+    code: 'ME',
+    slug: 'maine',
+    name: 'Maine',
+    metaTitle: 'Maine Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'View Maine residential electricity rates, CMP and Versant delivery tariffs, MPUC regulation, ISO New England trends, and hydro/wind supply.',
+    overview:
+      'Maine operates a restructured electricity market where transmission and distribution are handled by investor-owned utilities Central Maine Power (CMP) and Versant Power, while retail supply is competitive. Rates reflect ISO New England regional grid conditions, winter heating demands, and imported hydroelectric power.',
+    marketType: 'Retail supplier choice with regulated distribution',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Regulated Delivery & Retail Supply',
+        description:
+          'Delivery networks are operated by regulated distribution utilities CMP and Versant, while electricity supply is procured via Standard Offer auctions or third-party suppliers.',
+      },
+      {
+        title: 'ISO New England Grid Constraints',
+        description:
+          'Regional natural gas pipeline capacity bottlenecks during winter months drive seasonal wholesale electricity price spikes across Maine.',
+      },
+      {
+        title: 'Hydro & Renewable Generation',
+        description:
+          'Local hydroelectric dams, onshore wind, and Canadian energy imports supply a substantial portion of Maine net electricity generation.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity sales and retail revenue',
+      },
+      {
+        organization: 'Maine Public Utilities Commission (MPUC)',
+        title: 'Maine Electric Utility Regulation & Standard Offer Auctions',
+        name: 'Maine Public Utilities Commission (MPUC)',
+        url: 'https://www.maine.gov/mpuc/',
+        supportedTopic: 'MPUC delivery tariff regulation and Standard Offer supply',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Maine State Energy Profile & Data Overview',
+        name: 'EIA Maine State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=ME',
+        supportedTopic: 'Maine renewable generation mix and regional grid profile',
+      },
+    ],
+    relatedStateSlugs: ['new-hampshire', 'massachusetts', 'vermont', 'connecticut'],
+  },
+  'new-hampshire': {
+    code: 'NH',
+    slug: 'new-hampshire',
+    name: 'New Hampshire',
+    metaTitle: 'New Hampshire Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Explore New Hampshire residential electricity rates, Eversource NH tariffs, NHPUC regulation, Seabrook nuclear baseload, and ISO New England metrics.',
+    overview:
+      'New Hampshire operates a competitive electric choice market where regulated distribution utilities (Eversource NH, Liberty Utilities, Unitil, and NHEC) deliver power while customers can choose retail energy suppliers. Rates reflect ISO New England transmission costs, winter gas constraints, and nuclear baseload generation.',
+    marketType: 'Retail supplier choice with regulated distribution',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'NHPUC Default Energy Service Auctions',
+        description:
+          'The New Hampshire Public Utilities Commission oversees bi-annual Default Energy Service auctions for utility customers who do not choose a competitive supplier.',
+      },
+      {
+        title: 'Seabrook Station Nuclear Baseload',
+        description:
+          'Seabrook Station Nuclear Power Plant provides a major share of New Hampshire net electricity generation, supplying zero-carbon baseline energy.',
+      },
+      {
+        title: 'New England Regional Winter Demand',
+        description:
+          'Cold winter temperatures drive increased space heating fuel demand across New England, creating regional wholesale power price fluctuations.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'New Hampshire Public Utilities Commission (NHPUC)',
+        title: 'New Hampshire Utility Base Orders & Default Service Rules',
+        name: 'New Hampshire Public Utilities Commission (NHPUC)',
+        url: 'https://www.puc.nh.gov/',
+        supportedTopic: 'NHPUC default energy service auctions and utility regulation',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'New Hampshire State Energy Profile & Data Overview',
+        name: 'EIA New Hampshire State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=NH',
+        supportedTopic: 'New Hampshire Seabrook nuclear baseload and power generation profile',
+      },
+    ],
+    relatedStateSlugs: ['maine', 'massachusetts', 'vermont', 'rhode-island'],
+  },
+  'rhode-island': {
+    code: 'RI',
+    slug: 'rhode-island',
+    name: 'Rhode Island',
+    metaTitle: 'Rhode Island Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze Rhode Island residential electricity rates, Rhode Island Energy tariffs, RIPUC regulation, offshore wind growth, and ISO New England benchmarks.',
+    overview:
+      'Rhode Island operates under a retail electric choice framework where Rhode Island Energy (a PPL Corporation subsidiary) manages electric distribution while consumers can select competitive suppliers or receive Last Resort Service. Rates reflect ISO New England capacity costs and coastal climate cooling demand.',
+    marketType: 'Retail supplier choice with regulated distribution',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Rhode Island Energy Distribution Tariff',
+        description:
+          'The Rhode Island Public Utilities Commission regulates delivery rates, grid modernization programs, and Last Resort Service procurement.',
+      },
+      {
+        title: 'ISO New England Fuel Mix Impact',
+        description:
+          'High regional reliance on natural gas combined-cycle power generation links retail supply tariffs directly to wholesale gas spot pricing.',
+      },
+      {
+        title: 'Offshore Wind & Renewable Mandates',
+        description:
+          'Pioneering offshore wind projects (Block Island Wind Farm) and state clean energy targets expand regional zero-emission power delivery.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate metrics',
+      },
+      {
+        organization: 'Rhode Island Public Utilities Commission (RIPUC)',
+        title: 'Rhode Island Energy Base Tariffs & Last Resort Service',
+        name: 'Rhode Island Public Utilities Commission (RIPUC)',
+        url: 'https://ripuc.ri.gov/',
+        supportedTopic: 'RIPUC rate regulation and Last Resort Service auctions',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Rhode Island State Energy Profile & Data Overview',
+        name: 'EIA Rhode Island State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=RI',
+        supportedTopic: 'Rhode Island offshore wind and natural gas generation share',
+      },
+    ],
+    relatedStateSlugs: ['massachusetts', 'connecticut', 'new-york', 'new-jersey'],
+  },
+  vermont: {
+    code: 'VT',
+    slug: 'vermont',
+    name: 'Vermont',
+    metaTitle: 'Vermont Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Review Vermont residential electricity rates, Green Mountain Power tariffs, VPUC regulation, Canadian hydro imports, and winter heating loads.',
+    overview:
+      'Vermont operates a traditionally regulated electric utility market supervised by the Vermont Public Utility Commission (VPUC). Green Mountain Power serves the majority of residential homes alongside municipal electric departments and electric co-ops. Rates reflect high renewable energy integration, regional hydro imports, and severe winter space heating load.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'VPUC Utility Rate Regulation',
+        description:
+          'Multi-year rate cases and clean energy plan filings approved by the Vermont PUC guide distribution investments and grid resilience.',
+      },
+      {
+        title: 'Canadian & Regional Hydro Imports',
+        description:
+          'Long-term contracts for Hydro-Québec energy and local hydroelectric dams supply low-carbon baseline power across Vermont.',
+      },
+      {
+        title: 'Severe Northern Winter Climate',
+        description:
+          'Cold winter temperatures require significant electric space and water heating consumption, driving seasonal household utility costs.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales metrics',
+      },
+      {
+        organization: 'Vermont Public Utility Commission (VPUC)',
+        title: 'Vermont Utility Base Filings & Clean Energy Plan Rules',
+        name: 'Vermont Public Utility Commission (VPUC)',
+        url: 'https://puc.vermont.gov/',
+        supportedTopic: 'VPUC rate regulation and clean energy plan oversight',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Vermont State Energy Profile & Data Overview',
+        name: 'EIA Vermont State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=VT',
+        supportedTopic: 'Vermont hydroelectric import share and net generation mix',
+      },
+    ],
+    relatedStateSlugs: ['new-hampshire', 'maine', 'massachusetts', 'new-york'],
+  },
+  delaware: {
+    code: 'DE',
+    slug: 'delaware',
+    name: 'Delaware',
+    metaTitle: 'Delaware Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Compare Delaware residential electricity rates, Delmarva Power tariffs, Delaware PSC regulation, PJM market rules, and summer cooling trends.',
+    overview:
+      'Delaware operates a restructured retail electric choice market within the PJM Interconnection. Regulated distribution utility Delmarva Power (an Exelon company) delivers power to residential homes alongside Delaware Electric Cooperative and municipal systems. Rates reflect PJM grid capacity pricing and coastal summer cooling loads.',
+    marketType: 'Retail supplier choice with regulated distribution',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Delaware PSC SOS Supply Auctions',
+        description:
+          'The Delaware Public Service Commission oversees competitive Standard Offer Service (SOS) auctions for default utility supply rates.',
+      },
+      {
+        title: 'PJM Interconnection Grid Integration',
+        description:
+          'Delaware participates in the PJM wholesale market, balancing local natural gas generation with regional transmission imports.',
+      },
+      {
+        title: 'Mid-Atlantic Summer Cooling Demand',
+        description:
+          'Hot, humid coastal summer weather increases central air conditioning utilization across residential households.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
+      },
+      {
+        organization: 'Delaware Public Service Commission (DE PSC)',
+        title: 'Delaware Utility Base Orders & SOS Auction Oversight',
+        name: 'Delaware Public Service Commission (DE PSC)',
+        url: 'https://depsc.delaware.gov/',
+        supportedTopic: 'DE PSC rate regulation and SOS default supply auctions',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Delaware State Energy Profile & Data Overview',
+        name: 'EIA Delaware State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=DE',
+        supportedTopic: 'Delaware PJM grid integration and natural gas generation share',
+      },
+    ],
+    relatedStateSlugs: ['maryland', 'pennsylvania', 'new-jersey', 'virginia'],
+  },
+  montana: {
+    code: 'MT',
+    slug: 'montana',
+    name: 'Montana',
+    metaTitle: 'Montana Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Examine Montana residential electricity rates, NorthWestern Energy tariffs, MPSC regulation, hydro and wind power, and severe winter demand.',
+    overview:
+      'Montana operates a regulated electric utility structure supervised by the Montana Public Service Commission (MPSC). Investor-owned NorthWestern Energy serves the majority of residential urban households alongside rural electric cooperatives. Rates reflect a generation mix of hydroelectricity, coal, natural gas, and wind, alongside extreme winter heating loads.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Hydroelectric & Wind Generation Base',
+        description:
+          'Abundant river hydro dams combined with utility-scale wind farms provide significant zero-carbon electricity across Montana.',
+      },
+      {
+        title: 'Northern Rockies Winter Climate',
+        description:
+          'Sub-zero winter cold waves drive continuous space heating and water heating loads across residential homes.',
+      },
+      {
+        title: 'MPSC Base Rate & Supply Regulation',
+        description:
+          'General rate case proceedings and integrated resource plans approved by the Montana PSC determine retail delivery tariffs.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate statistics',
+      },
+      {
+        organization: 'Montana Public Service Commission (MPSC)',
+        title: 'Montana Utility Rate Case Orders & Resource Plans',
+        name: 'Montana Public Service Commission (MPSC)',
+        url: 'https://psc.mt.gov/',
+        supportedTopic: 'MPSC rate regulation and utility supply plans',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Montana State Energy Profile & Data Overview',
+        name: 'EIA Montana State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=MT',
+        supportedTopic: 'Montana hydroelectric generation share and wind power profile',
+      },
+    ],
+    relatedStateSlugs: ['idaho', 'wyoming', 'north-dakota', 'south-dakota'],
+  },
+  'south-dakota': {
+    code: 'SD',
+    slug: 'south-dakota',
+    name: 'South Dakota',
+    metaTitle: 'South Dakota Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Find South Dakota residential electricity rates, Xcel and Otter Tail Power benchmarks, SDPUC regulation, wind and hydro power trends.',
+    overview:
+      'South Dakota operates a regulated electric utility structure overseen by the South Dakota Public Utilities Commission (SDPUC). Investor-owned utilities (Northern States Power / Xcel, Otter Tail Power, Black Hills Energy, Northwestern Energy) serve households alongside municipal power systems and rural electric co-ops. Rates benefit from abundant wind energy and Missouri River hydroelectric dams.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Nation-Leading Wind & Hydro Generation',
+        description:
+          'Wind power and Missouri River hydroelectric dams generate the dominant share of South Dakota net electricity, keeping wholesale costs competitive.',
+      },
+      {
+        title: 'Regional SPP & MISO Grid Integration',
+        description:
+          'Utilities participate in the SPP and MISO regional transmission grids, balancing variable wind power with regional market loads.',
+      },
+      {
+        title: 'High Plains Seasonal Extreme Loads',
+        description:
+          'Cold Great Plains winters and hot summer cooling periods create sharp seasonal residential consumption swings.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'South Dakota Public Utilities Commission (SDPUC)',
+        title: 'South Dakota Utility Rate Filings & SPP/MISO Rules',
+        name: 'South Dakota Public Utilities Commission (SDPUC)',
+        url: 'https://puc.sd.gov/',
+        supportedTopic: 'SDPUC rate regulation and regional grid participation',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'South Dakota State Energy Profile & Data Overview',
+        name: 'EIA South Dakota State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=SD',
+        supportedTopic: 'South Dakota wind power production and hydro dams profile',
+      },
+    ],
+    relatedStateSlugs: ['north-dakota', 'nebraska', 'minnesota', 'iowa'],
+  },
+  'north-dakota': {
+    code: 'ND',
+    slug: 'north-dakota',
+    name: 'North Dakota',
+    metaTitle: 'North Dakota Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Understand North Dakota residential electricity rates, MDU and Otter Tail tariffs, NDPSC regulation, lignite coal and wind generation.',
+    overview:
+      'North Dakota operates a regulated electric utility structure supervised by the North Dakota Public Service Commission (NDPSC). Primary investor-owned utilities Montana-Dakota Utilities (MDU), Otter Tail Power, and Xcel Energy serve urban households alongside strong rural electric co-ops. Rates rank among the lowest nationwide due to abundant coal, wind, and hydro generation resources.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Abundant Lignite Coal & Wind Generation',
+        description:
+          'Lignite coal plants combined with expanding wind farms generate substantial surplus electricity exported to neighboring states.',
+      },
+      {
+        title: 'Low Baseline Statewide Residential Rates',
+        description:
+          'Proximity to mine-mouth coal generation and wind resources keeps baseline utility generation charges low, though individual municipal and cooperative tariffs vary.',
+      },
+      {
+        title: 'Severe Northern Plains Winter Heating',
+        description:
+          'Extended sub-zero winter temperatures drive heavy electrical heating loads across North Dakota households.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
+      },
+      {
+        organization: 'North Dakota Public Service Commission (NDPSC)',
+        title: 'North Dakota Electric Utility Rate Cases & Orders',
+        name: 'North Dakota Public Service Commission (NDPSC)',
+        url: 'https://www.psc.nd.gov/',
+        supportedTopic: 'NDPSC rate regulation and energy export oversight',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'North Dakota State Energy Profile & Data Overview',
+        name: 'EIA North Dakota State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=ND',
+        supportedTopic: 'North Dakota lignite coal generation and wind export profile',
+      },
+    ],
+    relatedStateSlugs: ['south-dakota', 'minnesota', 'montana', 'iowa'],
+  },
+  wyoming: {
+    code: 'WY',
+    slug: 'wyoming',
+    name: 'Wyoming',
+    metaTitle: 'Wyoming Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze Wyoming residential electricity rates, Rocky Mountain Power tariffs, WPSC regulation, coal and wind generation power export.',
+    overview:
+      'Wyoming operates a regulated electric utility market overseen by the Wyoming Public Service Commission (WPSC). Rocky Mountain Power (PacifiCorp) and Black Hills Energy serve primary load centers alongside rural electric cooperatives. Rates benefit from abundant coal and wind resources across large geographic delivery territories.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Major Coal Generation & Power Export',
+        description:
+          'Wyoming is the nation’s top coal-producing state and a major net exporter of electricity to Western regional grid markets.',
+      },
+      {
+        title: 'High-Altitude Mountain Climate',
+        description:
+          'Cold, windy mountain winters require substantial residential space heating, while low humidity keeps summer cooling demand moderate.',
+      },
+      {
+        title: 'Large Geographic Service Territory Tariffs',
+        description:
+          'Low population density requires extensive distribution line maintenance across vast rural service territories.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'Wyoming Public Service Commission (WPSC)',
+        title: 'Wyoming Rate Case Orders & PacifiCorp Filings',
+        name: 'Wyoming Public Service Commission (WPSC)',
+        url: 'https://psc.wyo.gov/',
+        supportedTopic: 'WPSC rate regulation and rural service territory tariffs',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Wyoming State Energy Profile & Data Overview',
+        name: 'EIA Wyoming State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=WY',
+        supportedTopic: 'Wyoming coal generation dominance and power export data',
+      },
+    ],
+    relatedStateSlugs: ['colorado', 'montana', 'utah', 'idaho'],
+  },
+  alaska: {
+    code: 'AK',
+    slug: 'alaska',
+    name: 'Alaska',
+    metaTitle: 'Alaska Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'View Alaska residential electricity rates, Railbelt utility benchmarks, RCA regulation, isolated grid diesel generation, and rural cost drivers.',
+    overview:
+      'Alaska operates non-interconnected regional electrical systems regulated by the Regulatory Commission of Alaska (RCA). Railbelt utilities (Chugach Electric, Matanuska Electric, Golden Valley Electric) serve urban centers from Anchorage to Fairbanks, while remote rural microgrids rely on diesel generation. Statewide average rates reflect natural gas, hydro, and high remote fuel delivery costs.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Isolated Regional Grids & Railbelt Systems',
+        description:
+          'Alaska has no grid interconnection with the contiguous lower 48 states, operating independent Railbelt and rural microgrid systems.',
+      },
+      {
+        title: 'Natural Gas & Hydroelectric Baseline',
+        description:
+          'Cook Inlet natural gas and hydroelectric dams supply power to Railbelt communities, while remote villages depend on imported diesel.',
+      },
+      {
+        title: 'Extreme Subarctic Climate & Rural Cost Variance',
+        description:
+          'Severe winter cold drives heavy heating and lighting loads. Statewide average rate data reflects urban Railbelt pricing, while isolated bush communities experience significantly higher diesel generation costs.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate statistics',
+      },
+      {
+        organization: 'Regulatory Commission of Alaska (RCA)',
+        title: 'Alaska Railbelt Utility Orders & Rural Tariff Oversight',
+        name: 'Regulatory Commission of Alaska (RCA)',
+        url: 'https://rca.alaska.gov/',
+        supportedTopic: 'RCA rate regulation and Railbelt utility oversight',
+      },
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Alaska State Energy Profile & Data Overview',
+        name: 'EIA Alaska State Energy Profile',
+        url: 'https://www.eia.gov/state/?sid=AK',
+        supportedTopic: 'Alaska isolated microgrids and rural diesel generation costs',
+      },
+    ],
+    relatedStateSlugs: ['washington', 'hawaii', 'oregon', 'idaho'],
+  },
 };
 
 export const FIRST_TEN_STATES = PUBLISHED_STATES;

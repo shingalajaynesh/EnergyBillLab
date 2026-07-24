@@ -712,7 +712,7 @@ Quality gate:
 
 Deliver:
 
-- 40 state pages with real data [COMPLETED BATCH 1, 2, 3, 4]
+- 50 state pages with real data [COMPLETED BATCH 1, 2, 3, 4, 5]
 - 5 high-intent problem guides minimum [COMPLETED]
 - electricity-rates hub [COMPLETED]
 - guides hub [COMPLETED]

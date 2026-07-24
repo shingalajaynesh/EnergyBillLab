@@ -122,42 +122,20 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
     }
   });
 
-  it('dynamically resolves Batch 4 states to published report routes and retains Rate Data Only for Batch 5 states', () => {
-    const batch4Slugs = [
-      'nevada',
-      'arkansas',
-      'mississippi',
-      'kansas',
-      'utah',
-      'nebraska',
-      'new-mexico',
-      'west-virginia',
-      'idaho',
-      'hawaii',
-    ];
-    const batch5UnpublishedSlugs = [
-      'maine',
-      'new-hampshire',
-      'rhode-island',
-      'vermont',
-      'delaware',
-      'montana',
-      'south-dakota',
-      'north-dakota',
-      'wyoming',
-      'alaska',
-    ];
+  it('dynamically resolves all 50 state report routes and leaves zero Rate Data Only labels', () => {
+    const all50Slugs = Object.keys(PUBLISHED_STATES);
+    expect(all50Slugs).toHaveLength(50);
 
-    batch4Slugs.forEach((slug: string) => {
+    all50Slugs.forEach((slug: string) => {
       const config = PUBLISHED_STATES[slug];
       expect(config).toBeDefined();
       expect(config?.isPublished).toBe(true);
     });
 
-    batch5UnpublishedSlugs.forEach((slug: string) => {
-      const config = PUBLISHED_STATES[slug];
-      expect(config?.isPublished).not.toBe(true);
-    });
+    const unpublishedSlugs = all50Slugs.filter(
+      (slug: string) => !PUBLISHED_STATES[slug]?.isPublished,
+    );
+    expect(unpublishedSlugs).toHaveLength(0);
   });
 
   it('validates CSV export route headers, columns, X-Report-Period, cache-control, and content', async () => {

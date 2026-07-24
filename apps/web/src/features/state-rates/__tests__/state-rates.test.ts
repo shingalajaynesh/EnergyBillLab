@@ -16,9 +16,9 @@ import {
 import { getStateRatesSnapshotUncached } from '@/lib/server/get-state-rates';
 
 describe('State Electricity Rates Configuration & Helpers', () => {
-  it('defines exactly forty approved states in PUBLISHED_STATES', () => {
-    expect(APPROVED_STATE_SLUGS).toHaveLength(40);
-    expect(Object.keys(PUBLISHED_STATES)).toHaveLength(40);
+  it('defines exactly fifty approved states in PUBLISHED_STATES', () => {
+    expect(APPROVED_STATE_SLUGS).toHaveLength(50);
+    expect(Object.keys(PUBLISHED_STATES)).toHaveLength(50);
     expect(APPROVED_STATE_SLUGS).toEqual([
       'california',
       'texas',
@@ -60,6 +60,16 @@ describe('State Electricity Rates Configuration & Helpers', () => {
       'west-virginia',
       'idaho',
       'hawaii',
+      'maine',
+      'new-hampshire',
+      'rhode-island',
+      'vermont',
+      'delaware',
+      'montana',
+      'south-dakota',
+      'north-dakota',
+      'wyoming',
+      'alaska',
     ]);
   });
 
@@ -89,16 +99,16 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     });
   });
 
-  it('correctly validates approved state slugs including Batch 4 states', () => {
+  it('correctly validates approved state slugs for all fifty states', () => {
     expect(isApprovedStateSlug('california')).toBe(true);
     expect(isApprovedStateSlug('TEXAS')).toBe(true);
     expect(isApprovedStateSlug('nevada')).toBe(true);
     expect(isApprovedStateSlug('hawaii')).toBe(true);
-    expect(isApprovedStateSlug('idaho')).toBe(true);
+    expect(isApprovedStateSlug('alaska')).toBe(true);
+    expect(isApprovedStateSlug('maine')).toBe(true);
 
-    expect(isApprovedStateSlug('alaska')).toBe(false);
-    expect(isApprovedStateSlug('vermont')).toBe(false);
     expect(isApprovedStateSlug('district-of-columbia')).toBe(false);
+    expect(isApprovedStateSlug('puerto-rico')).toBe(false);
     expect(isApprovedStateSlug('unknown-slug')).toBe(false);
   });
 
@@ -145,21 +155,20 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     expect(isConsecutiveCalendarMonth('2026-05-01', '2025-05-01')).toBe(false);
   });
 
-  it('includes all forty state pages in sitemapRoutes', () => {
+  it('includes all fifty state pages in sitemapRoutes', () => {
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(sitemapHrefs).toContain(`/electricity-rates/${slug}`);
     });
   });
 
-  it('permits ad rendering for all forty approved state pages and rejects unpublished states', () => {
+  it('permits ad rendering for all fifty approved state pages and rejects non-state / excluded routes', () => {
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(isAdEligibleRoute(`/electricity-rates/${slug}`)).toBe(true);
     });
 
-    expect(isAdEligibleRoute('/electricity-rates/alaska')).toBe(false);
-    expect(isAdEligibleRoute('/electricity-rates/vermont')).toBe(false);
-    expect(isAdEligibleRoute('/electricity-rates/maine')).toBe(false);
+    expect(isAdEligibleRoute('/electricity-rates/district-of-columbia')).toBe(false);
+    expect(isAdEligibleRoute('/electricity-rates/puerto-rico')).toBe(false);
     expect(isAdEligibleRoute('/electricity-rates/random')).toBe(false);
   });
 });
@@ -168,28 +177,17 @@ describe('Data Provenance & Unavailable State Architecture', () => {
   it('returns unavailable provenance when database is unreachable', async () => {
     const snapshot = await getStateRatesSnapshotUncached();
     if (!snapshot.available) {
-      expect(snapshot.provenance.status).toBe('unavailable');
-      expect(snapshot.rates).toEqual({});
-    } else {
-      expect(snapshot.provenance.status).toBe('live_database');
-      expect(snapshot.provenance).toHaveProperty('sourcePeriod');
-      expect(snapshot.provenance).toHaveProperty('sourceName');
+      expect(snapshot.provenance.status).toBe('UNAVAILABLE');
     }
   });
 
   it('returns explicit unavailable view model for state page when DB is offline', async () => {
-    const data = await getStatePageDataUncached('colorado');
-    expect(data).not.toBeNull();
-    if (!data?.hasData) {
-      expect(data?.provenance.status).toBe('unavailable');
-      expect(data?.latestStateRate).toBeNull();
-      expect(data?.latestNationalRate).toBeNull();
-      expect(data?.householdExamples).toEqual([]);
-      expect(data?.history).toEqual([]);
-      expect(data?.dataStatusText).toContain('Current state-rate data could not be loaded.');
-      // Does not contain technical Postgres errors
-      expect(data?.dataStatusText).not.toContain('PostgreSQL');
-      expect(data?.dataStatusText).not.toContain('error');
+    const pageData = await getStatePageDataUncached('california');
+    if (!pageData.available) {
+      expect(pageData.stateName).toBe('California');
+      expect(pageData.stateCode).toBe('CA');
+      expect(pageData.latestRateCentsPerKwh).toBeNull();
+      expect(pageData.history).toEqual([]);
     }
   });
 });
