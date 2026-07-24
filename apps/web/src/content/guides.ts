@@ -47,7 +47,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     eyebrow: 'Electric Bill Diagnostic Guide',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
-    category: 'Bill Analysis',
+    category: 'Electric Bill Diagnostics',
     primaryCalculatorHref: '/electricity-bill-analyzer',
     primaryCalculatorLabel: 'Electricity Bill Analyzer',
     primaryCalculatorDescription:
@@ -101,7 +101,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     eyebrow: 'Appliance Consumption Benchmark',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
-    category: 'Appliance Benchmarks',
+    category: 'Electric Bill Diagnostics',
     primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
     primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
     primaryCalculatorDescription:
@@ -155,7 +155,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     eyebrow: 'Cooling Cost Guide',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
-    category: 'HVAC Cooling',
+    category: 'Electric Bill Diagnostics',
     primaryCalculatorHref: '/tools/ac-cost-calculator',
     primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
     primaryCalculatorDescription:
@@ -209,7 +209,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     eyebrow: 'Heating Cost Guide',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
-    category: 'HVAC Heating',
+    category: 'Electric Bill Diagnostics',
     primaryCalculatorHref: '/tools/space-heater-cost-calculator',
     primaryCalculatorLabel: 'Space Heater Cost Calculator',
     primaryCalculatorDescription:
@@ -263,7 +263,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     eyebrow: 'EV Home Charging Guide',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
-    category: 'Electric Vehicles',
+    category: 'Electric Bill Diagnostics',
     primaryCalculatorHref: '/tools/ev-home-charging-cost-calculator',
     primaryCalculatorLabel: 'EV Home Charging Calculator',
     primaryCalculatorDescription:
