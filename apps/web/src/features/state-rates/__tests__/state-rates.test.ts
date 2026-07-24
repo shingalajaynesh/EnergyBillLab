@@ -177,16 +177,17 @@ describe('Data Provenance & Unavailable State Architecture', () => {
   it('returns unavailable provenance when database is unreachable', async () => {
     const snapshot = await getStateRatesSnapshotUncached();
     if (!snapshot.available) {
-      expect(snapshot.provenance.status).toBe('UNAVAILABLE');
+      expect(snapshot.provenance.status).toBe('unavailable');
     }
   });
 
   it('returns explicit unavailable view model for state page when DB is offline', async () => {
     const pageData = await getStatePageDataUncached('california');
-    if (!pageData.available) {
-      expect(pageData.stateName).toBe('California');
-      expect(pageData.stateCode).toBe('CA');
-      expect(pageData.latestRateCentsPerKwh).toBeNull();
+    expect(pageData).not.toBeNull();
+    if (pageData && !pageData.hasData) {
+      expect(pageData.config.name).toBe('California');
+      expect(pageData.config.code).toBe('CA');
+      expect(pageData.latestStateRate).toBeNull();
       expect(pageData.history).toEqual([]);
     }
   });

@@ -4,10 +4,10 @@
 
 ## Responsibilities
 
-- Public routes and static layout shell (46 prerendered static pages)
-- 10 interactive energy cost calculators (5 launch + 5 expansion tools)
-- 10 U.S. state electricity rate pages backed by PostgreSQL EIA monthly snapshots
-- 5 deeply researched problem-solving energy guides
+- Public routes and static layout shell (71 prerendered static pages)
+- 10 interactive energy cost calculators
+- 50 U.S. state electricity rate pages backed by PostgreSQL EIA monthly snapshots
+- 10 deeply researched problem-solving energy guides
 - Trust, legal, accessibility, and methodology pages
 - Privacy-hardened analytics event tracking (`window.dataLayer`)
 - Metadata, sitemap, robots, and structured data (JSON-LD) helpers

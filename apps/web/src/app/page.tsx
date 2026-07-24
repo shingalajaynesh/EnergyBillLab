@@ -9,9 +9,9 @@ import { createPageMetadata } from '@/lib/metadata';
 import styles from './page.module.css';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Energy Bill Lab | Understand Your Home Energy Bill',
+  title: 'Energy Bill Lab | Electricity Rates & Home Energy Calculators',
   description:
-    'Transparent home-energy cost tools, methodology, and source-led electricity-rate context for U.S. residents.',
+    'Compare residential electricity rates across all 50 U.S. states, analyze your electric bill, and estimate appliance energy costs using transparent formulas and U.S. EIA data.',
   path: '/',
 });
 
@@ -20,6 +20,21 @@ const priorityLinks = [
     href: '/electricity-bill-analyzer',
     title: 'Electricity Bill Analyzer',
     text: 'Compare two billing statements, normalize usage by billing days, and isolate usage effects from rate/fee changes.',
+  },
+  {
+    href: '/electricity-rates',
+    title: '50-State Electricity Rates Hub',
+    text: 'Explore detailed residential electricity rate reports for all 50 U.S. states with official EIA monthly data provenance.',
+  },
+  {
+    href: '/research/us-residential-electricity-rate-report',
+    title: 'U.S. Electricity Rate Research Report',
+    text: 'Review our original national research report analyzing residential rate benchmarks, rankings, and trends across all 50 states.',
+  },
+  {
+    href: '/tools',
+    title: 'Interactive Energy Calculators (10)',
+    text: 'Calculate operating costs for air conditioners, space heaters, EV chargers, refrigerators, water heaters, dryers, pool pumps, and dehumidifiers.',
   },
   {
     href: '/tools/appliance-energy-cost-calculator',
@@ -32,24 +47,14 @@ const priorityLinks = [
     text: 'Calculate AC electricity costs using cooling capacity (BTU/hr), EER efficiency ratings, wattage, and duty cycle.',
   },
   {
-    href: '/tools/space-heater-cost-calculator',
-    title: 'Space Heater Cost Calculator',
-    text: 'Estimate electricity usage (kWh) and operating costs for one or more electric space heaters based on wattage, quantity, and duty cycle.',
-  },
-  {
     href: '/tools/ev-home-charging-cost-calculator',
     title: 'EV Home Charging Cost Calculator',
     text: 'Calculate EV home charging electricity usage (kWh), grid charging losses, session costs, and cost per mile.',
   },
   {
-    href: '/electricity-rates',
-    title: 'Electricity Rates',
-    text: 'Review residential electricity rate benchmarks across U.S. states with official EIA source data.',
-  },
-  {
     href: '/guides',
-    title: 'Bill Problem Guides',
-    text: 'Understand common bill issues including seasonal spikes, fixed charges, and estimated meter readings.',
+    title: 'Problem-Solving Energy Guides (10)',
+    text: 'Understand seasonal bill spikes, appliance usage benchmarks, heat pump costs, fixed charges, and estimated meter readings.',
   },
 ];
 
@@ -58,36 +63,37 @@ export default function HomePage() {
     <PageContainer>
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.badge}>Independent Home Energy Data</span>
+          <span className={styles.badge}>Independent U.S. Home Energy Data</span>
           <h1>Understand what drives your home energy bill</h1>
           <p className={styles.lede}>
             Energy Bill Lab helps U.S. households understand electricity costs, appliance usage, and
-            state-rate differences with transparent formulas and plain-English methodology.
+            state-rate differences across all 50 U.S. states with transparent formulas, official EIA
+            data, and plain-English methodology.
           </p>
           <div className={styles.actions}>
             <Button type="primary" size="large" href="/electricity-bill-analyzer">
               Analyze your electric bill
             </Button>
-            <Button size="large" href="/methodology">
-              See our methodology
+            <Button size="large" href="/electricity-rates">
+              View 50-state rate reports
             </Button>
           </div>
         </div>
 
-        <div className={styles.readinessPanel} aria-label="Product trust rules">
-          <span className={styles.panelLabel}>Product Principles</span>
+        <div className={styles.readinessPanel} aria-label="Energy Bill Lab product coverage">
+          <span className={styles.panelLabel}>Product Coverage</span>
           <dl>
             <div>
-              <dt>Core Access</dt>
-              <dd>No public login wall</dd>
+              <dt>State Coverage</dt>
+              <dd>50 of 50 U.S. States</dd>
             </div>
             <div>
-              <dt>Data Transparency</dt>
-              <dd>Source dates required</dd>
+              <dt>Data Provenance</dt>
+              <dd>U.S. EIA Form EIA-861M</dd>
             </div>
             <div>
-              <dt>Calculation Approach</dt>
-              <dd>Estimates, not predictions</dd>
+              <dt>Calculation Tools</dt>
+              <dd>10 Interactive Calculators</dd>
             </div>
           </dl>
         </div>
@@ -107,14 +113,14 @@ export default function HomePage() {
             <h3>2. Estimating appliance costs</h3>
             <p>
               Calculate daily, monthly, and annual operating costs for air conditioners, space
-              heaters, EV home chargers, and major appliances.
+              heaters, EV home chargers, water heaters, refrigerators, and major home appliances.
             </p>
           </div>
           <div className={styles.problemCard}>
-            <h3>3. Comparing state rate context</h3>
+            <h3>3. 50-State rate context</h3>
             <p>
-              View residential electricity rate benchmarks with clear source attribution to EIA and
-              official state records.
+              View residential electricity rate benchmarks across all 50 U.S. states with clear
+              source attribution to official U.S. EIA reports and state regulatory agencies.
             </p>
           </div>
         </div>
@@ -147,15 +153,15 @@ export default function HomePage() {
             <h3>Official data sources</h3>
             <p>
               Rate data and state benchmarks link directly to published public datasets, including
-              U.S. EIA reports and state energy offices.
+              U.S. EIA monthly retail sales reports and state energy offices.
             </p>
             <Link href="/data-sources">Review data sources &rarr;</Link>
           </div>
           <div>
             <h3>Editorial standards</h3>
             <p>
-              We publish practical, human-reviewed explanations for real home-energy questions
-              without mass-generated AI content or clickbait.
+              We publish practical, source-reviewed explanations for real home-energy questions
+              with transparent methodology, clear citations, and editorial review.
             </p>
             <Link href="/editorial-policy">Read editorial policy &rarr;</Link>
           </div>
