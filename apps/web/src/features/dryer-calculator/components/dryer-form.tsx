@@ -150,7 +150,7 @@ export function DryerForm({
 
           <Form.Item
             name="minutesPerLoad"
-            label="Minutes per Load"
+            label="Minutes per Load (Minutes)"
             rules={[{ required: true, message: 'Please enter minutes per load' }]}
           >
             <NumberInputWithUnit min={1} max={300} unit="min" />

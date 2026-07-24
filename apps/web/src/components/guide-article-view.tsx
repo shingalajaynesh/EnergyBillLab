@@ -101,7 +101,7 @@ export function GuideArticleView({
           </div>
         ) : null}
 
-        <main>{children}</main>
+        <div>{children}</div>
 
         <section className={styles.ctaCard}>
           <h3>{guide.primaryCalculatorLabel}</h3>

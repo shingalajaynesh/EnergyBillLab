@@ -154,7 +154,7 @@ export function PoolPumpForm({
 
           <Form.Item
             name="hoursPerDay"
-            label="Filtration Hours / Day"
+            label="Filtration Duration per Day (Hours)"
             rules={[{ required: true, message: 'Please enter hours per day' }]}
           >
             <NumberInputWithUnit min={0} max={24} step={0.5} unit="hrs/day" />
@@ -162,7 +162,7 @@ export function PoolPumpForm({
 
           <Form.Item
             name="daysPerWeek"
-            label="Operating Days / Week"
+            label="Operating Days per Week (Days)"
             rules={[{ required: true, message: 'Please enter days per week' }]}
           >
             <NumberInputWithUnit min={1} max={7} unit="days/wk" />

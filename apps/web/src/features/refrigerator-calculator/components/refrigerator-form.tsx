@@ -191,7 +191,7 @@ export function RefrigeratorForm({
                 <NumberInputWithUnit min={0} max={100} unit="%" />
               </Form.Item>
 
-              <Form.Item name="hoursPerDay" label="Connected Hours / Day">
+              <Form.Item name="hoursPerDay" label="Connected Duration per Day (Hours)">
                 <NumberInputWithUnit min={0} max={24} unit="hrs" />
               </Form.Item>
             </>
@@ -205,7 +205,7 @@ export function RefrigeratorForm({
             </Form.Item>
           )}
 
-          <Form.Item name="days" label="Calculation Days">
+          <Form.Item name="days" label="Calculation Period (Days)">
             <NumberInputWithUnit min={1} max={365} unit="days" />
           </Form.Item>
 

@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AntdRegistry>
           <AppThemeProvider>
             <AppHeader />
-            <main id="main-content" tabIndex={-1}>
+            <main id="main-content" className="siteMain" tabIndex={-1}>
               {children}
             </main>
             <AppFooter />

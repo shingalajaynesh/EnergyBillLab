@@ -153,7 +153,7 @@ export function DehumidifierForm({
 
           <Form.Item
             name="hoursPerDay"
-            label="Connected Hours / Day"
+            label="Connected Duration per Day (Hours)"
             rules={[{ required: true, message: 'Please enter connected hours' }]}
           >
             <NumberInputWithUnit min={0} max={24} step={0.5} unit="hrs" />
@@ -163,7 +163,7 @@ export function DehumidifierForm({
             <NumberInputWithUnit min={0} max={100} unit="%" />
           </Form.Item>
 
-          <Form.Item name="days" label="Calculation Days">
+          <Form.Item name="days" label="Calculation Period (Days)">
             <NumberInputWithUnit min={1} max={365} unit="days" />
           </Form.Item>
 
