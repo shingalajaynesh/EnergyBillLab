@@ -86,8 +86,8 @@ _Note: Washington, D.C. is a separate federal district and is not counted among 
 - **Verified Referring Domains (Reported by Owner):** 0
 - **Third-Party Domain Authority Score:** Not yet measured
 - **Search Console External Links Baseline:** Account verification pending
-- **Original Linkable Data Reports Published:** 0
-- **Embeddable Outreach Assets Published:** 0
+- **Original Linkable Data Reports Published:** 1 (`/research/us-residential-electricity-rate-report`)
+- **Embeddable Outreach Assets Published:** 1 (`docs/growth/electricity-rate-report-outreach-kit.md`)
 
 _Important Note: Domain Authority is a third-party proprietary metric. Unmeasured third-party scores are recorded as "Not yet measured" rather than an invented numeric score._
 

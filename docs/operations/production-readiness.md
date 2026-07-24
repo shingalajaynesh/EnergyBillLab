@@ -23,17 +23,13 @@ Energy Bill Lab is prepared for launch with the following verified scope:
   9. Pool Pump Cost Calculator (`/tools/pool-pump-cost-calculator`)
   10. Dehumidifier Cost Calculator (`/tools/dehumidifier-cost-calculator`)
 
-- **State Electricity Rate Pages (10):**
-  - California (`/electricity-rates/california`)
-  - Texas (`/electricity-rates/texas`)
-  - Florida (`/electricity-rates/florida`)
-  - New York (`/electricity-rates/new-york`)
-  - Pennsylvania (`/electricity-rates/pennsylvania`)
-  - Illinois (`/electricity-rates/illinois`)
-  - Ohio (`/electricity-rates/ohio`)
-  - Georgia (`/electricity-rates/georgia`)
-  - North Carolina (`/electricity-rates/north-carolina`)
-  - Michigan (`/electricity-rates/michigan`)
+- **State Electricity Rate Pages (20):**
+  - California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, Michigan, Arizona, Virginia, Washington, New Jersey, Massachusetts, Tennessee, Indiana, Missouri, Maryland, Wisconsin (`/electricity-rates/[state]`).
+
+- **Original National Research Reports (1):**
+  - Research Hub (`/research`)
+  - U.S. Residential Electricity-Rate Report (`/research/us-residential-electricity-rate-report`)
+  - Safe CSV Data Export (`/research/us-residential-electricity-rate-report/csv`)
 
 - **Problem-Solving Energy Guides (5):**
   1. Why Is My Electric Bill So High? (`/guides/why-is-my-electric-bill-so-high`)

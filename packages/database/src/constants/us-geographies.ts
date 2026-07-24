@@ -74,3 +74,6 @@ export const US_GEOGRAPHIES: UsGeographySeed[] = [
 ];
 
 export const VALID_GEOGRAPHY_CODES = new Set(US_GEOGRAPHIES.map((g) => g.code));
+
+export const CANONICAL_50_STATES = US_GEOGRAPHIES.filter((g) => g.kind === 'state');
+export const CANONICAL_50_STATE_CODES = CANONICAL_50_STATES.map((g) => g.code);

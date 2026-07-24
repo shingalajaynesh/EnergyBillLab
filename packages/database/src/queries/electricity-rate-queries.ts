@@ -268,6 +268,19 @@ export type RawStateReportRow = {
   previousYearPeriod: string | null;
 };
 
+interface SqlNationalRateRow extends Record<string, unknown> {
+  code: string;
+  slug: string;
+  name: string;
+  kind: string;
+  period: string | number;
+  priceCentsPerKwh: string | number;
+  previousMonthRateCents: string | number | null;
+  previousMonthPeriod: string | number | null;
+  previousYearRateCents: string | number | null;
+  previousYearPeriod: string | number | null;
+}
+
 export async function getNationalReportRawData(db: DatabaseInstance): Promise<{
   commonPeriod: string | null;
   nationalAverageCentsPerKwh: number | null;
@@ -291,9 +304,10 @@ export async function getNationalReportRawData(db: DatabaseInstance): Promise<{
 
   const commonPeriod = String(periodRows[0].period);
 
-  function getPrevMonthStr(periodYm: string): string | null {
-    if (!/^\d{4}-\d{2}$/.test(periodYm)) return null;
-    const [y, m] = periodYm.split('-').map(Number);
+  function getPrevMonthStr(periodStr: string): string | null {
+    const ym = periodStr.slice(0, 7);
+    if (!/^\d{4}-\d{2}$/.test(ym)) return null;
+    const [y, m] = ym.split('-').map(Number);
     if (!y || !m) return null;
     let prevY = y;
     let prevM = m - 1;
@@ -301,20 +315,21 @@ export async function getNationalReportRawData(db: DatabaseInstance): Promise<{
       prevM = 12;
       prevY = y - 1;
     }
-    return `${prevY}-${String(prevM).padStart(2, '0')}`;
+    return `${prevY}-${String(prevM).padStart(2, '0')}-01`;
   }
 
-  function getPrevYearStr(periodYm: string): string | null {
-    if (!/^\d{4}-\d{2}$/.test(periodYm)) return null;
-    const [y, m] = periodYm.split('-').map(Number);
+  function getPrevYearStr(periodStr: string): string | null {
+    const ym = periodStr.slice(0, 7);
+    if (!/^\d{4}-\d{2}$/.test(ym)) return null;
+    const [y, m] = ym.split('-').map(Number);
     if (!y || !m) return null;
-    return `${y - 1}-${String(m).padStart(2, '0')}`;
+    return `${y - 1}-${String(m).padStart(2, '0')}-01`;
   }
 
   const prevMonthPeriod = getPrevMonthStr(commonPeriod);
   const prevYearPeriod = getPrevYearStr(commonPeriod);
 
-  const rawStateRows = await db.execute<SqlRateRow>(sql`
+  const rawStateRows = await db.execute<SqlNationalRateRow>(sql`
     SELECT 
       g.code,
       g.slug,
@@ -330,28 +345,40 @@ export async function getNationalReportRawData(db: DatabaseInstance): Promise<{
     INNER JOIN electricity_retail_sales_monthly curr 
       ON curr.geography_code = g.code AND curr.sector = 'RES' AND curr.period = ${commonPeriod}::date
     LEFT JOIN electricity_retail_sales_monthly pm 
-      ON pm.geography_code = g.code AND pm.sector = 'RES' AND pm.period = ${prevMonthPeriod ? `${prevMonthPeriod}-01` : null}::date
+      ON pm.geography_code = g.code AND pm.sector = 'RES' AND pm.period = ${prevMonthPeriod}::date
     LEFT JOIN electricity_retail_sales_monthly py 
-      ON py.geography_code = g.code AND py.sector = 'RES' AND py.period = ${prevYearPeriod ? `${prevYearPeriod}-01` : null}::date
+      ON py.geography_code = g.code AND py.sector = 'RES' AND py.period = ${prevYearPeriod}::date
     WHERE g.kind = 'state' AND g.is_active = true
     ORDER BY curr.price_cents_per_kwh DESC
   `);
 
   const rows = Array.isArray(rawStateRows.rows)
     ? rawStateRows.rows
-    : (rawStateRows as unknown as SqlRateRow[]);
+    : (rawStateRows as unknown as SqlNationalRateRow[]);
 
   const mappedRows: RawStateReportRow[] = rows.map((r) => ({
-    code: r.code,
-    slug: r.slug,
-    name: r.name,
-    kind: r.kind,
+    code: String(r.code),
+    slug: String(r.slug),
+    name: String(r.name),
+    kind: String(r.kind),
     period: String(r.period),
     priceCentsPerKwh: String(r.priceCentsPerKwh),
-    previousMonthRateCents: r.previousMonthRateCents ? String(r.previousMonthRateCents) : null,
-    previousMonthPeriod: r.previousMonthPeriod ? String(r.previousMonthPeriod) : null,
-    previousYearRateCents: r.previousYearRateCents ? String(r.previousYearRateCents) : null,
-    previousYearPeriod: r.previousYearPeriod ? String(r.previousYearPeriod) : null,
+    previousMonthRateCents:
+      r.previousMonthRateCents !== null && r.previousMonthRateCents !== undefined
+        ? String(r.previousMonthRateCents)
+        : null,
+    previousMonthPeriod:
+      r.previousMonthPeriod !== null && r.previousMonthPeriod !== undefined
+        ? String(r.previousMonthPeriod)
+        : null,
+    previousYearRateCents:
+      r.previousYearRateCents !== null && r.previousYearRateCents !== undefined
+        ? String(r.previousYearRateCents)
+        : null,
+    previousYearPeriod:
+      r.previousYearPeriod !== null && r.previousYearPeriod !== undefined
+        ? String(r.previousYearPeriod)
+        : null,
   }));
 
   const nationalQuery = await db.execute<{ priceCentsPerKwh: string }>(sql`

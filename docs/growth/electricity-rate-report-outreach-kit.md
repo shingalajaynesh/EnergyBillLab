@@ -42,13 +42,13 @@ This internal operational guide outlines the ethical outreach strategy for Energ
 2. **Personal Finance & Household Budgeting Writers:** Columnists and bloggers providing practical advice on reducing household electricity bills.
 3. **University Energy & Environmental Researchers:** Academic departments and graduate researchers studying residential energy burdens, energy equity, and regional rate disparities.
 4. **Public Libraries & Educational Reference Pages:** Community resource pages providing consumer financial literacy and utility assistance links.
-5. **State Consumer Advocacy Organizations:** Non-profit consumer protection boards and utility oversight groups.
+5. **Existing Article Editors & Fact-Checkers:** Writers with published energy articles referencing outdated or unverified utility rate figures.
 
 ---
 
-## 4. Ethical Pitch Templates
+## 4. Ethical Pitch Templates (5 Required Templates)
 
-### Template A: Local / State Energy Journalist
+### Template 1: State / Local Utility Journalist
 
 **Subject:** Data Context: [State] residential electricity rate trends ([Month Year] EIA benchmark)
 
@@ -67,14 +67,14 @@ If you ever need custom state-level residential rate data breakdowns or historic
 
 Best regards,
 
-Jaynesh Shingala  
-Founder & Technical Publisher, Energy Bill Lab  
-shingala.jaynesh@gmail.com  
+Jaynesh Shingala
+Founder & Technical Publisher, Energy Bill Lab
+shingala.jaynesh@gmail.com
 https://energybilllab.com/about
 
 ---
 
-### Template B: Personal Finance & Budgeting Writer
+### Template 2: Personal Finance & Budgeting Writer
 
 **Subject:** Free reference: U.S. state electricity rate benchmark report
 
@@ -91,13 +91,36 @@ If your readers are looking for a transparent, non-commercial tool to compare th
 
 Best regards,
 
-Jaynesh Shingala  
-Founder & Technical Publisher, Energy Bill Lab  
+Jaynesh Shingala
+Founder & Technical Publisher, Energy Bill Lab
 shingala.jaynesh@gmail.com
 
 ---
 
-### Template C: Public Library / Educational Resource Page Maintainer
+### Template 3: University Energy / Environmental Researcher
+
+**Subject:** Dataset reference: Single-period U.S. residential electricity rate benchmarks
+
+Hi Professor / Dr. [Researcher Last Name],
+
+I came across your research on [Research Topic / Energy Equity / Rate Disparities].
+
+As part of our independent data work at Energy Bill Lab, we compile and publish single-period U.S. residential electricity rate datasets based on Form EIA-861M Monthly Retail Sales:
+https://energybilllab.com/research/us-residential-electricity-rate-report
+
+Our report evaluates all 50 U.S. states under one common calendar period to prevent asynchronous reporting bias, and offers clean CSV data downloads.
+
+If this dataset or methodology is helpful for your department's reference or comparative policy analysis, feel free to utilize the open data export.
+
+Best regards,
+
+Jaynesh Shingala
+Founder & Technical Publisher, Energy Bill Lab
+shingala.jaynesh@gmail.com
+
+---
+
+### Template 4: Public Library / Educational Resource Page Maintainer
 
 **Subject:** Resource suggestion for consumer utility & energy education
 
@@ -114,8 +137,31 @@ If you are updating your financial literacy or utility assistance reference link
 
 Sincerely,
 
-Jaynesh Shingala  
-Founder & Technical Publisher, Energy Bill Lab  
+Jaynesh Shingala
+Founder & Technical Publisher, Energy Bill Lab
+shingala.jaynesh@gmail.com
+
+---
+
+### Template 5: Existing Article Data Correction or Update
+
+**Subject:** Data update note for your article on [Article Topic / State Rates]
+
+Hi [Writer / Editor Name],
+
+I was reading your article "[Article Title]" on [Publication Name] and noticed it mentions a residential electricity rate for [State] from [Older Year/Month].
+
+If you plan to update the piece with current figures, the U.S. Energy Information Administration (EIA) Form EIA-861M benchmark for [State] for [Latest Month Year] is [X.XX ¢/kWh].
+
+We maintain a full single-period state rate ranking and historical tracking table here:
+https://energybilllab.com/research/us-residential-electricity-rate-report
+
+I hope this updated EIA figure is helpful for your readers.
+
+Best regards,
+
+Jaynesh Shingala
+Founder & Technical Publisher, Energy Bill Lab
 shingala.jaynesh@gmail.com
 
 ---

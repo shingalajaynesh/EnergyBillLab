@@ -31,6 +31,7 @@ export type StateRateChange = {
   previousRateCents: number;
   changeCents: number;
   changePercent: number;
+  isLargeMonthlyMovement: boolean;
   currentPeriod: string;
   previousPeriod: string;
 };
@@ -60,6 +61,7 @@ export type NationalRateReportModel = {
   }>;
   highestRates: StateRateRanking[];
   lowestRates: StateRateRanking[];
+  allStates: StateRateRanking[];
   largestMonthlyIncreases: StateRateChange[];
   largestMonthlyDecreases: StateRateChange[];
   largestAnnualIncreases: StateRateChange[];
@@ -172,6 +174,17 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
       periodFormatted: commonPeriodFormatted,
     }));
 
+    const allStates: StateRateRanking[] = sortedDescending.map((s, idx) => ({
+      rank: idx + 1,
+      code: s.code,
+      name: s.name,
+      slug: s.slug,
+      isPublished: s.isPublished,
+      priceCentsPerKwh: s.priceCentsPerKwh,
+      period: s.period,
+      periodFormatted: commonPeriodFormatted,
+    }));
+
     // Monthly change rankings (only states with valid monthly changes)
     const validMonthly = stateList.filter(
       (s) => s.monthlyChangeCents !== null && s.monthlyChangePercent !== null,
@@ -190,6 +203,7 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
         previousRateCents: s.priceCentsPerKwh - (s.monthlyChangeCents || 0),
         changeCents: s.monthlyChangeCents!,
         changePercent: s.monthlyChangePercent!,
+        isLargeMonthlyMovement: Math.abs(s.monthlyChangePercent!) >= 20,
         currentPeriod: commonPeriod,
         previousPeriod: s.prevMonthPeriod || '',
       }));
@@ -207,6 +221,7 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
         previousRateCents: s.priceCentsPerKwh - (s.monthlyChangeCents || 0),
         changeCents: s.monthlyChangeCents!,
         changePercent: s.monthlyChangePercent!,
+        isLargeMonthlyMovement: Math.abs(s.monthlyChangePercent!) >= 20,
         currentPeriod: commonPeriod,
         previousPeriod: s.prevMonthPeriod || '',
       }));
@@ -229,6 +244,7 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
         previousRateCents: s.priceCentsPerKwh - (s.annualChangeCents || 0),
         changeCents: s.annualChangeCents!,
         changePercent: s.annualChangePercent!,
+        isLargeMonthlyMovement: false,
         currentPeriod: commonPeriod,
         previousPeriod: s.prevYearPeriod || '',
       }));
@@ -246,6 +262,7 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
         previousRateCents: s.priceCentsPerKwh - (s.annualChangeCents || 0),
         changeCents: s.annualChangeCents!,
         changePercent: s.annualChangePercent!,
+        isLargeMonthlyMovement: false,
         currentPeriod: commonPeriod,
         previousPeriod: s.prevYearPeriod || '',
       }));
@@ -312,6 +329,7 @@ export async function getNationalRateReportUncached(): Promise<NationalRateRepor
       statesExcluded,
       highestRates,
       lowestRates,
+      allStates,
       largestMonthlyIncreases,
       largestMonthlyDecreases,
       largestAnnualIncreases,
@@ -337,6 +355,7 @@ function createUnavailableReportModel(generatedAt: string): NationalRateReportMo
     statesExcluded: [],
     highestRates: [],
     lowestRates: [],
+    allStates: [],
     largestMonthlyIncreases: [],
     largestMonthlyDecreases: [],
     largestAnnualIncreases: [],
@@ -349,9 +368,9 @@ function createUnavailableReportModel(generatedAt: string): NationalRateReportMo
 
 export const getNationalRateReport = unstable_cache(
   getNationalRateReportUncached,
-  ['eia-national-rate-report'],
+  ['national-electricity-rate-report'],
   {
     revalidate: 86400, // 24 hours
-    tags: ['eia-national-rate-report'],
+    tags: ['national-electricity-rate-report'],
   },
 );
