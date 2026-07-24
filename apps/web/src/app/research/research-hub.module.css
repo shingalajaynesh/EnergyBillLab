@@ -1,0 +1,133 @@
+.sectionCard {
+  background: var(--ebl-surface);
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.reportBadge {
+  display: inline-block;
+  background: rgba(23, 107, 91, 0.1);
+  color: var(--ebl-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reportTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.reportTitle a {
+  color: var(--ebl-text);
+  text-decoration: none;
+}
+
+.reportTitle a:hover {
+  color: var(--ebl-primary);
+}
+
+.reportDescription {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #475467;
+  margin-bottom: 24px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  background: #f9fafb;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 0.825rem;
+  color: #667085;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.metaValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ebl-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.primaryCta:hover {
+  background: var(--ebl-primary-strong);
+}
+
+.publisherCard {
+  background: #f6f8f7;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin-bottom: 32px;
+}
+
+.publisherTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 12px 0;
+}
+
+.publisherText {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  color: #344054;
+  margin-bottom: 12px;
+}
+
+.publisherContact {
+  font-size: 0.925rem;
+  color: #475467;
+  margin: 0;
+}
+
+.publisherContact a {
+  color: var(--ebl-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}

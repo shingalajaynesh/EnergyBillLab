@@ -1,0 +1,352 @@
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.summaryCard {
+  background: var(--ebl-surface);
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.03);
+}
+
+.summaryLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #667085;
+}
+
+.summaryValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ebl-text);
+  line-height: 1.2;
+}
+
+.summaryNote {
+  font-size: 0.825rem;
+  color: #667085;
+}
+
+.sectionCard {
+  background: var(--ebl-surface);
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 8px 0;
+}
+
+.sectionSubtitle {
+  font-size: 0.975rem;
+  color: #475467;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.findingsList {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #344054;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 8px;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.dataTable caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dataTable th {
+  background: #f9fafb;
+  color: #344054;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--ebl-border-subtle);
+}
+
+.dataTable td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ebl-border-subtle);
+  color: #1d2939;
+}
+
+.dataTable tr:hover td {
+  background: #f9fafb;
+}
+
+.numericCol {
+  font-weight: 700;
+  font-feature-settings: 'tnum';
+}
+
+.reportLink {
+  color: var(--ebl-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reportLink:hover {
+  text-decoration: underline;
+}
+
+.unpublishedTag {
+  display: inline-block;
+  font-size: 0.775rem;
+  color: #667085;
+  background: #f2f4f7;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.columnBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 12px 0;
+}
+
+.miniTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.miniTable caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.miniTable th {
+  background: #f9fafb;
+  color: #475467;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--ebl-border-subtle);
+}
+
+.miniTable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ebl-border-subtle);
+  color: #1d2939;
+}
+
+.increaseCol {
+  color: #b42318;
+  font-weight: 700;
+}
+
+.decreaseCol {
+  color: #027a48;
+  font-weight: 700;
+}
+
+.disclaimerCallout {
+  background: #fff9f2;
+  border-left: 4px solid #f79009;
+  padding: 14px 18px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #b54708;
+  margin-bottom: 20px;
+}
+
+.publishedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.publishedStateCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--ebl-text);
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.publishedStateCard:hover {
+  background: #ffffff;
+  border-color: var(--ebl-primary);
+  box-shadow: 0 2px 6px rgba(23, 107, 91, 0.1);
+  color: var(--ebl-primary);
+}
+
+.publishedStateCode {
+  font-size: 0.775rem;
+  background: rgba(23, 107, 91, 0.1);
+  color: var(--ebl-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.prose {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  color: #344054;
+}
+
+.prose h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 20px 0 8px 0;
+}
+
+.citationCard {
+  background: #f8faf9;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.citationTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 8px 0;
+}
+
+.citationSubtitle {
+  font-size: 0.95rem;
+  color: #475467;
+  margin: 0 0 16px 0;
+}
+
+.citationBox {
+  background: #ffffff;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #1d2939;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.exportRow {
+  display: flex;
+  align-items: center;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ebl-surface);
+  border: 1px solid var(--ebl-primary);
+  color: var(--ebl-primary);
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.downloadBtn:hover {
+  background: var(--ebl-primary);
+  color: #ffffff;
+}
+
+.publisherCard {
+  background: #f6f8f7;
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin-bottom: 32px;
+}
+
+.publisherTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 12px 0;
+}
+
+.publisherText {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  color: #344054;
+  margin-bottom: 12px;
+}
+
+.publisherContact {
+  font-size: 0.925rem;
+  color: #475467;
+  margin: 0;
+}
+
+.publisherContact a {
+  color: var(--ebl-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 6px;
+}

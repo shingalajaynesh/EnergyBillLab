@@ -254,3 +254,122 @@ export async function getElectricityRateDataStatus(
     };
   }
 }
+
+export type RawStateReportRow = {
+  code: string;
+  slug: string;
+  name: string;
+  kind: string;
+  period: string;
+  priceCentsPerKwh: string;
+  previousMonthRateCents: string | null;
+  previousMonthPeriod: string | null;
+  previousYearRateCents: string | null;
+  previousYearPeriod: string | null;
+};
+
+export async function getNationalReportRawData(db: DatabaseInstance): Promise<{
+  commonPeriod: string | null;
+  nationalAverageCentsPerKwh: number | null;
+  rows: RawStateReportRow[];
+}> {
+  const periodQuery = await db.execute<{ period: string }>(sql`
+    SELECT period::text as period
+    FROM electricity_retail_sales_monthly
+    WHERE sector = 'RES' AND geography_code = 'US'
+    ORDER BY period DESC
+    LIMIT 1
+  `);
+
+  const periodRows = Array.isArray(periodQuery.rows)
+    ? periodQuery.rows
+    : (periodQuery as unknown as Array<{ period: string }>);
+
+  if (!periodRows || periodRows.length === 0 || !periodRows[0]?.period) {
+    return { commonPeriod: null, nationalAverageCentsPerKwh: null, rows: [] };
+  }
+
+  const commonPeriod = String(periodRows[0].period);
+
+  function getPrevMonthStr(periodYm: string): string | null {
+    if (!/^\d{4}-\d{2}$/.test(periodYm)) return null;
+    const [y, m] = periodYm.split('-').map(Number);
+    if (!y || !m) return null;
+    let prevY = y;
+    let prevM = m - 1;
+    if (prevM === 0) {
+      prevM = 12;
+      prevY = y - 1;
+    }
+    return `${prevY}-${String(prevM).padStart(2, '0')}`;
+  }
+
+  function getPrevYearStr(periodYm: string): string | null {
+    if (!/^\d{4}-\d{2}$/.test(periodYm)) return null;
+    const [y, m] = periodYm.split('-').map(Number);
+    if (!y || !m) return null;
+    return `${y - 1}-${String(m).padStart(2, '0')}`;
+  }
+
+  const prevMonthPeriod = getPrevMonthStr(commonPeriod);
+  const prevYearPeriod = getPrevYearStr(commonPeriod);
+
+  const rawStateRows = await db.execute<SqlRateRow>(sql`
+    SELECT 
+      g.code,
+      g.slug,
+      g.name,
+      g.kind,
+      curr.period::text as period,
+      curr.price_cents_per_kwh as "priceCentsPerKwh",
+      pm.price_cents_per_kwh as "previousMonthRateCents",
+      pm.period::text as "previousMonthPeriod",
+      py.price_cents_per_kwh as "previousYearRateCents",
+      py.period::text as "previousYearPeriod"
+    FROM electricity_geographies g
+    INNER JOIN electricity_retail_sales_monthly curr 
+      ON curr.geography_code = g.code AND curr.sector = 'RES' AND curr.period = ${commonPeriod}::date
+    LEFT JOIN electricity_retail_sales_monthly pm 
+      ON pm.geography_code = g.code AND pm.sector = 'RES' AND pm.period = ${prevMonthPeriod ? `${prevMonthPeriod}-01` : null}::date
+    LEFT JOIN electricity_retail_sales_monthly py 
+      ON py.geography_code = g.code AND py.sector = 'RES' AND py.period = ${prevYearPeriod ? `${prevYearPeriod}-01` : null}::date
+    WHERE g.kind = 'state' AND g.is_active = true
+    ORDER BY curr.price_cents_per_kwh DESC
+  `);
+
+  const rows = Array.isArray(rawStateRows.rows)
+    ? rawStateRows.rows
+    : (rawStateRows as unknown as SqlRateRow[]);
+
+  const mappedRows: RawStateReportRow[] = rows.map((r) => ({
+    code: r.code,
+    slug: r.slug,
+    name: r.name,
+    kind: r.kind,
+    period: String(r.period),
+    priceCentsPerKwh: String(r.priceCentsPerKwh),
+    previousMonthRateCents: r.previousMonthRateCents ? String(r.previousMonthRateCents) : null,
+    previousMonthPeriod: r.previousMonthPeriod ? String(r.previousMonthPeriod) : null,
+    previousYearRateCents: r.previousYearRateCents ? String(r.previousYearRateCents) : null,
+    previousYearPeriod: r.previousYearPeriod ? String(r.previousYearPeriod) : null,
+  }));
+
+  const nationalQuery = await db.execute<{ priceCentsPerKwh: string }>(sql`
+    SELECT price_cents_per_kwh as "priceCentsPerKwh"
+    FROM electricity_retail_sales_monthly
+    WHERE sector = 'RES' AND geography_code = 'US' AND period = ${commonPeriod}::date
+    LIMIT 1
+  `);
+  const nationalRows = Array.isArray(nationalQuery.rows)
+    ? nationalQuery.rows
+    : (nationalQuery as unknown as Array<{ priceCentsPerKwh: string }>);
+  const nationalAverageCentsPerKwh = nationalRows[0]?.priceCentsPerKwh
+    ? parseFloat(nationalRows[0].priceCentsPerKwh)
+    : null;
+
+  return {
+    commonPeriod,
+    nationalAverageCentsPerKwh,
+    rows: mappedRows,
+  };
+}

@@ -108,6 +108,23 @@ export const publicRoutes = [
   },
   {
     description:
+      'Original, source-led research reports analyzing U.S. residential electricity rates and household energy trends.',
+    group: 'research',
+    href: '/research',
+    label: 'Research',
+    nav: true,
+    sitemap: true,
+  },
+  {
+    description:
+      'National U.S. residential electricity rate report analyzing state rankings, monthly price shifts, and household energy charge benchmarks.',
+    group: 'research',
+    href: '/research/us-residential-electricity-rate-report',
+    label: 'U.S. Residential Electricity-Rate Report',
+    sitemap: true,
+  },
+  {
+    description:
       'Residential electricity rate benchmarks and U.S. state averages with EIA source attribution.',
     group: 'research',
     href: '/electricity-rates',
@@ -486,6 +503,7 @@ export function getFooterGroups() {
     {
       title: 'Learn',
       links: [
+        getRouteByHref('/research'),
         getRouteByHref('/guides'),
         getRouteByHref('/appliances'),
         getRouteByHref('/comparisons'),
