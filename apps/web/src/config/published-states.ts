@@ -13,7 +13,11 @@ export type PublishedStateConfig = {
   metaTitle: string;
   metaDescription: string;
   overview: string;
-  marketType: 'Regulated Utility Market' | 'Retail Choice / Deregulated Market' | 'Hybrid Market';
+  marketType:
+    | 'Regulated Utility Market'
+    | 'Retail Choice / Deregulated Market'
+    | 'Retail supplier choice with regulated distribution'
+    | 'Hybrid Market';
   isPublished: boolean;
   keyFactors: Array<{
     title: string;
@@ -41,7 +45,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Renewable Mandates & Grid Transition',
         description:
-          'California SB 100 mandates 100% clean electricity by 2045, accelerating solar and utility-scale battery storage investments that influence baseline residential delivery rates.',
+          'California clean energy legislation accelerates solar and utility-scale battery storage investments that influence baseline residential delivery rates.',
       },
       {
         title: 'Tiered & Time-of-Use Rate Structures',
@@ -87,7 +91,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'ERCOT Grid & Market Structure',
         description:
-          'The Electric Reliability Council of Texas (ERCOT) manages the grid for 90% of Texas residents. High summer temperatures drive peak demand above 85,000 MW, influencing wholesale generation costs.',
+          'The Electric Reliability Council of Texas (ERCOT) manages the grid for 90% of Texas residents. High summer temperatures drive peak demand, influencing wholesale generation costs.',
       },
       {
         title: 'Retail Choice & Transmission Charges',
@@ -138,7 +142,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Natural Gas Fuel Dependence',
         description:
-          'Over 70% of Florida net electricity generation comes from natural gas plants, making monthly utility fuel clause adjustments sensitive to natural gas commodity spot prices.',
+          'A major share of Florida net electricity generation comes from natural gas plants, making monthly utility fuel clause adjustments sensitive to natural gas commodity spot prices.',
       },
       {
         title: 'Storm Hardening & Undergrounding',
@@ -182,9 +186,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
           'Limited transmission line capacity between abundant Upstate hydro/nuclear capacity and high Downstate load centers creates regional price separation within the NYISO market.',
       },
       {
-        title: 'CLCPA Clean Energy Mandates',
+        title: 'Clean Energy Mandates',
         description:
-          'New York Climate Leadership and Community Protection Act targets 70% renewable electricity by 2030, funding offshore wind, solar, and grid upgrades.',
+          'New York state climate policy targets ambitious renewable electricity goals, funding offshore wind, solar, and grid upgrades.',
       },
       {
         title: 'Regulated Delivery vs. Energy Supply',
@@ -205,7 +209,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
         title: 'New York Utility Tariffs & Clean Energy Mandates',
         name: 'New York Public Service Commission (NYPSC)',
         url: 'https://www.dps.ny.gov/',
-        supportedTopic: 'Regional transmission congestion and CLCPA clean energy rules',
+        supportedTopic: 'Regional transmission congestion and clean energy rules',
       },
     ],
     relatedStateSlugs: ['pennsylvania', 'massachusetts', 'new-jersey', 'connecticut'],
@@ -225,7 +229,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'PJM Grid & Energy Production',
         description:
-          'Pennsylvania ranks among the top states for net electricity generation, drawing from natural gas (Marcellus Shale), nuclear power, and coal.',
+          'Pennsylvania ranks among the top states for net electricity generation, drawing from natural gas, nuclear power, and coal.',
       },
       {
         title: 'PAPUC "Price to Compare" Benchmark',
@@ -271,12 +275,12 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Nuclear Power Generation Capacity',
         description:
-          'Illinois generates more nuclear power than any other U.S. state, providing over 50% of the state’s electricity and stabilizing wholesale carbon-free energy supply.',
+          'Illinois generates substantial nuclear power, providing over half of the state’s electricity and stabilizing wholesale carbon-free energy supply.',
       },
       {
         title: 'Climate and Equitable Jobs Act (CEJA)',
         description:
-          'Enacted in 2021, CEJA sets a 100% clean energy goal by 2050, supporting renewable development and funding nuclear plant preservation.',
+          'Enacted in 2021, CEJA sets clean energy targets by supporting renewable development and funding nuclear plant preservation.',
       },
       {
         title: 'Regional RTO Price Variance',
@@ -322,7 +326,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Natural Gas & Coal Generation Shift',
         description:
-          'Ohio’s generation portfolio has transitioned rapidly from coal to natural gas combined-cycle power plants, linking baseline energy rates to natural gas markets.',
+          'Ohio’s generation portfolio has transitioned from coal to natural gas combined-cycle power plants, linking baseline energy rates to natural gas markets.',
       },
       {
         title: 'Municipal Aggregation Programs',
@@ -361,7 +365,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     isPublished: true,
     keyFactors: [
       {
-        title: 'Vogtle Units 3 & 4 Nuclear Expansion',
+        title: 'Plant Vogtle Nuclear Expansion',
         description:
           'The completion of new nuclear reactors at Plant Vogtle expands zero-emission baseload capacity while rate adjustments reflect long-term capital construction recovery.',
       },
@@ -455,7 +459,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'MPSC Clean Energy Plan Mandates',
         description:
-          'Michigan’s 2023 clean energy legislation targets 80% clean energy by 2035 and 100% by 2040, accelerating solar, wind, and storage grid investments.',
+          'Michigan clean energy legislation targets progressive clean energy goals, accelerating solar, wind, and storage grid investments.',
       },
       {
         title: 'Grid Reliability & Vegetation Management',
@@ -463,9 +467,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
           'Frequent severe winter ice storms and high tree canopy coverage require elevated tree-trimming and line hardening expenditures funded via retail rates.',
       },
       {
-        title: 'Limited 10% Electric Choice Cap',
+        title: 'Limited Statutory Electric Choice Cap',
         description:
-          'Michigan maintains a strict 10% statutory cap on retail electric choice, meaning the vast majority of residential homes receive full bundled utility service.',
+          'Michigan maintains a strict statutory cap on retail electric choice, meaning the vast majority of residential homes receive full bundled utility service.',
       },
     ],
     sources: [
@@ -547,12 +551,12 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Data Center Demand Impact',
         description:
-          'Northern Virginia hosts the world’s largest concentration of data centers, driving significant overall grid transmission investment and regional capacity load.',
+          'Northern Virginia hosts a major concentration of data centers, driving significant overall grid transmission investment and regional capacity load.',
       },
       {
         title: 'Virginia Clean Economy Act (VCEA)',
         description:
-          'Enacted in 2020, VCEA mandates 100% carbon-free electricity by 2045 for Dominion Virginia, accelerating offshore wind and solar buildouts.',
+          'Enacted in 2020, VCEA mandates carbon-free electricity goals for Dominion Virginia, accelerating offshore wind and solar buildouts.',
       },
       {
         title: 'Dual Seasonal HVAC Peaks',
@@ -593,12 +597,12 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Hydroelectric Power Advantage',
         description:
-          'Hydroelectric dams provide over 60% of Washington’s electricity generation, supplying low-cost, zero-carbon power via the Bonneville Power Administration (BPA).',
+          'Hydroelectric dams provide the majority of Washington’s electricity generation, supplying low-cost, zero-carbon power via the Bonneville Power Administration (BPA).',
       },
       {
         title: 'Clean Energy Transformation Act (CETA)',
         description:
-          'CETA requires Washington utilities to transition to 100% clean electricity by 2045, phasing out coal-fired power imports by 2025.',
+          'CETA requires Washington utilities to transition to clean electricity, phasing out coal-fired power imports.',
       },
       {
         title: 'Winter Space & Water Heating',
@@ -619,7 +623,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
         title: 'Washington Utility Regulation & CETA Compliance',
         name: 'Washington Utilities and Transportation Commission (UTC)',
         url: 'https://www.utc.wa.gov/',
-        supportedTopic: 'Hydroelectric supply advantage and CETA 100% clean mandate',
+        supportedTopic: 'Hydroelectric supply advantage and CETA clean mandate',
       },
     ],
     relatedStateSlugs: ['california', 'oregon', 'idaho', 'montana'],
@@ -639,12 +643,12 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Basic Generation Service (BGS) Auctions',
         description:
-          'New Jersey BPU supervises annual competitive BGS auctions that determine default supply rates for households that do not choose an third-party supplier.',
+          'New Jersey BPU supervises annual competitive BGS auctions that determine default supply rates for households that do not choose a third-party supplier.',
       },
       {
         title: 'Energy Master Plan & Clean Energy Goals',
         description:
-          'State policy targets 100% clean energy by 2035, funding offshore wind procurement, community solar projects, and nuclear ZEC preservation.',
+          'State policy targets progressive clean energy goals, funding offshore wind procurement, community solar projects, and nuclear ZEC preservation.',
       },
       {
         title: 'Dense Transmission & Population Center',
@@ -690,12 +694,12 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Municipal Aggregation Programs',
         description:
-          'Over 150 Massachusetts cities and towns operate opt-out municipal aggregation programs, contracting bulk green supply for residents.',
+          'Many Massachusetts cities and towns operate opt-out municipal aggregation programs, contracting bulk green supply for residents.',
       },
       {
-        title: '2050 Decarbonization Roadmap',
+        title: 'Decarbonization Roadmap',
         description:
-          'State law mandates net-zero greenhouse gas emissions by 2050, accelerating heat pump adoption and offshore wind transmission investments.',
+          'State policy targets deep greenhouse gas emission reductions, accelerating heat pump adoption and offshore wind transmission investments.',
       },
     ],
     sources: [
@@ -833,7 +837,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'MPSC Rate Case & Renewable Mandates',
         description:
-          'Missouri’s Renewable Energy Standard requires investor-owned utilities to acquire 15% of electricity from renewable resources.',
+          'Missouri’s Renewable Energy Standard requires investor-owned utilities to acquire electricity from renewable resources.',
       },
     ],
     sources: [
@@ -862,7 +866,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Find Maryland residential electricity rates, Maryland PSC choice benchmarks, EmPOWER efficiency programs, and PJM grid context.',
     overview:
-      'Maryland is a deregulated retail electric choice state within the PJM Interconnection. Households can choose an competitive supplier or receive default Standard Offer Service (SOS) from regulated utilities like BGE, Pepco, Delmarva Power, and Potomac Edison.',
+      'Maryland is a deregulated retail electric choice state within the PJM Interconnection. Households can choose a competitive supplier or receive default Standard Offer Service (SOS) from regulated utilities like BGE, Pepco, Delmarva Power, and Potomac Edison.',
     marketType: 'Retail Choice / Deregulated Market',
     isPublished: true,
     keyFactors: [
@@ -953,26 +957,26 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     name: 'Colorado',
     metaTitle: 'Colorado Residential Electricity Rates & Monthly Cost',
     metaDescription:
-      'View Colorado residential electricity rates, average monthly household bills, CPUC utility regulation, and clean energy transition drivers.',
+      'View Colorado residential electricity rates, average monthly household bills, Colorado PUC utility regulation, and clean energy transition drivers.',
     overview:
-      'Colorado operates a regulated electric utility structure overseen by the Colorado Public Utilities Commission (CPUC). Investor-owned Xcel Energy (Public Service Company of Colorado) and Black Hills Energy serve major population centers, alongside municipal systems and electric co-ops. Rates reflect Colorado’s clean energy transition mandates (80% carbon reduction by 2030), solar/wind buildouts, and high winter space heating demand.',
+      'Colorado operates a regulated electric utility structure overseen by the Colorado Public Utilities Commission (Colorado PUC). Investor-owned Xcel Energy (Public Service Company of Colorado) and Black Hills Energy serve major population centers, alongside municipal systems and electric co-ops. Rates reflect Colorado’s clean energy transition goals, wind and solar expansion, and high winter space heating demand.',
     marketType: 'Regulated Utility Market',
     isPublished: true,
     keyFactors: [
       {
-        title: 'CPUC Clean Energy Plans & Carbon Targets',
+        title: 'Colorado PUC Clean Energy Plans',
         description:
-          'State policy mandates an 80% reduction in electric utility carbon emissions by 2030 and 100% clean electricity by 2050, accelerating renewable generation capital expenditures.',
+          'State utility regulation and clean energy filings accelerate renewable generation capital investments across major investor-owned utilities.',
       },
       {
-        title: 'Rapid Wind & Solar Grid Expansion',
+        title: 'Wind & Solar Grid Expansion',
         description:
-          'Colorado ranks high in onshore wind generation and utility-scale solar across the Front Range, balancing baseline power delivery with renewable integration.',
+          'Colorado ranks among leading Western states in onshore wind generation and utility-scale solar across the Front Range, balancing baseline power delivery with renewable integration.',
       },
       {
         title: 'Mountain Climate & Winter Heating Load',
         description:
-          'Cold winter temperatures across high-elevation regions create high winter heating and natural gas cost interdependencies.',
+          'Cold winter temperatures across high-elevation regions create significant winter heating and natural gas cost interdependencies.',
       },
     ],
     sources: [
@@ -984,9 +988,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
         supportedTopic: 'Monthly residential electricity sales and retail revenue',
       },
       {
-        organization: 'Colorado Public Utilities Commission (CPUC)',
+        organization: 'Colorado Public Utilities Commission (Colorado PUC)',
         title: 'Colorado Utility Regulation & Clean Energy Filings',
-        name: 'Colorado Public Utilities Commission (CPUC)',
+        name: 'Colorado Public Utilities Commission (Colorado PUC)',
         url: 'https://puc.colorado.gov/',
         supportedTopic: 'Utility rate structure and clean energy transition targets',
       },
@@ -999,16 +1003,16 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     name: 'Minnesota',
     metaTitle: 'Minnesota Residential Electricity Rates & Monthly Cost',
     metaDescription:
-      'Explore Minnesota average residential electricity rates, monthly bills, MPUC tariffs, and 100% clean energy transition goals.',
+      'Explore Minnesota average residential electricity rates, monthly bills, MPUC tariffs, and clean energy transition goals.',
     overview:
-      'Minnesota operates a regulated utility market under the oversight of the Minnesota Public Utilities Commission (MPUC). Investor-owned utilities like Xcel Energy and Minnesota Power serve residential homes alongside strong electric co-ops. Rates reflect MISO grid integration, severe cold-weather heating load, and a 100% carbon-free electricity standard by 2040.',
+      'Minnesota operates a regulated utility market under the oversight of the Minnesota Public Utilities Commission (MPUC). Investor-owned utilities like Xcel Energy and Minnesota Power serve residential homes alongside strong electric co-ops. Rates reflect MISO grid integration, severe cold-weather heating load, and statutory clean energy goals.',
     marketType: 'Regulated Utility Market',
     isPublished: true,
     keyFactors: [
       {
-        title: '100% Carbon-Free Electricity Standard by 2040',
+        title: 'Clean Energy Legislation & Decarbonization Targets',
         description:
-          'Enacted in 2023, Minnesota state law requires electric utilities to achieve 100% carbon-free electricity by 2040, accelerating coal plant retirements.',
+          'Minnesota state policies mandate clean electricity goals, accelerating coal plant retirements and renewable energy buildouts.',
       },
       {
         title: 'Severe Cold-Weather Heating Load',
@@ -1018,7 +1022,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'MISO Regional Grid & Wind Integration',
         description:
-          'Over 20% of Minnesota electricity comes from wind power, integrated via the Midcontinent Independent System Operator (MISO).',
+          'A substantial share of Minnesota electricity comes from wind power, integrated via the Midcontinent Independent System Operator (MISO).',
       },
     ],
     sources: [
@@ -1034,7 +1038,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
         title: 'Minnesota Electric Utility Decisions & Clean Energy Standard',
         name: 'Minnesota Public Utilities Commission (MPUC)',
         url: 'https://mn.gov/puc/',
-        supportedTopic: 'MPUC rate regulation and 100% carbon-free 2040 mandate',
+        supportedTopic: 'MPUC rate regulation and clean energy decarbonization goals',
       },
     ],
     relatedStateSlugs: ['wisconsin', 'iowa', 'north-dakota', 'south-dakota'],
@@ -1054,7 +1058,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'High Nuclear Baseload Capacity',
         description:
-          'Nuclear power provides over 50% of South Carolina net electricity generation, supplying low-carbon baseline energy across the state.',
+          'Nuclear power provides a major share of South Carolina net electricity generation, supplying low-carbon baseline energy across the state.',
       },
       {
         title: 'Intense Summer Cooling Demand',
@@ -1100,7 +1104,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       {
         title: 'Natural Gas & Nuclear Generation Portfolio',
         description:
-          'Natural gas and nuclear plants provide the vast majority of Alabama baseload power generation, stabilizing grid capacity.',
+          'Natural gas and nuclear plants provide the primary baseload power generation for Alabama, stabilizing grid capacity.',
       },
       {
         title: 'Deep South Summer Air Conditioning Load',
@@ -1139,14 +1143,14 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Examine Louisiana residential electricity rates, Entergy tariffs, LPSC regulation, natural gas generation, and storm recovery riders.',
     overview:
-      'Louisiana operates a regulated electricity market framework supervised by the Louisiana Public Service Commission (LPSC) and the New Orleans City Council. Entergy Louisiana, Entergy New Orleans, and Cleco Power serve the majority of residential customers. Rates reflect natural gas generation dominance, industrial load balances, and severe weather / storm recovery riders.',
+      'Louisiana operates a regulated electricity market framework supervised by the Louisiana Public Service Commission (LPSC) and the New Orleans City Council. Entergy Louisiana, Entergy New Orleans, and Cleco Power serve the majority of residential customers. Rates reflect natural gas generation reliance, industrial load balances, and severe weather storm recovery riders.',
     marketType: 'Regulated Utility Market',
     isPublished: true,
     keyFactors: [
       {
-        title: 'Natural Gas Fuel Dominance',
+        title: 'Natural Gas Fuel Generation Reliance',
         description:
-          'Over 70% of Louisiana net electricity generation is natural gas-fired, tying retail rates closely to Gulf Coast natural gas spot prices.',
+          'Natural gas power plants generate the majority of Louisiana net electricity, tying retail rates closely to natural gas spot market pricing.',
       },
       {
         title: 'Hurricane Restoration & Grid Hardening Riders',
@@ -1172,7 +1176,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
         title: 'Louisiana Utility Tariff Orders & Storm Securitization',
         name: 'Louisiana Public Service Commission (LPSC)',
         url: 'https://lpsc.louisiana.gov/',
-        supportedTopic: 'Natural gas generation dominance and hurricane recovery riders',
+        supportedTopic: 'Natural gas generation reliance and hurricane recovery riders',
       },
     ],
     relatedStateSlugs: ['texas', 'arkansas', 'mississippi', 'alabama'],
@@ -1231,19 +1235,19 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Learn about Oregon residential electricity rates, OPUC regulated tariffs, PGE and PacifiCorp benchmarks, and Columbia River hydro supply.',
     overview:
-      'Oregon residential electricity is served by investor-owned utilities Portland General Electric (PGE) and PacifiCorp (Pacific Power) under Oregon Public Utility Commission (OPUC) regulation, alongside consumer-owned PUDs and co-ops. Rates reflect abundant Columbia River basin hydroelectric power, climate policies (HB 2021 clean energy targets), and wildfire mitigation costs.',
+      'Oregon residential electricity is served by investor-owned utilities Portland General Electric (PGE) and PacifiCorp (Pacific Power) under Oregon Public Utility Commission (OPUC) regulation, alongside consumer-owned PUDs and co-ops. Rates reflect abundant Columbia River basin hydroelectric power, state clean energy targets, and wildfire mitigation costs.',
     marketType: 'Regulated Utility Market',
     isPublished: true,
     keyFactors: [
       {
         title: 'Hydroelectric Generation Base',
         description:
-          'Hydroelectric facilities provide roughly half of Oregon electricity, backed by Bonneville Power Administration (BPA) wholesale power.',
+          'Hydroelectric facilities supply a major portion of Oregon electricity, backed by Bonneville Power Administration (BPA) wholesale power.',
       },
       {
-        title: 'HB 2021 100% Clean Energy Mandate',
+        title: 'Clean Energy Policy Targets',
         description:
-          'State law requires investor-owned utilities to reduce greenhouse gas emissions 100% below baseline levels by 2040.',
+          'State legislation requires investor-owned utilities to systematically reduce greenhouse gas emissions below baseline levels.',
       },
       {
         title: 'Wildfire Mitigation & Grid Resilience Investments',
@@ -1261,10 +1265,10 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
       },
       {
         organization: 'Oregon Public Utility Commission (OPUC)',
-        title: 'Oregon Utility Regulation & HB 2021 Clean Energy Targets',
+        title: 'Oregon Utility Regulation & Clean Energy Targets',
         name: 'Oregon Public Utility Commission (OPUC)',
         url: 'https://www.oregon.gov/puc',
-        supportedTopic: 'Hydroelectric generation advantage and HB 2021 clean energy mandate',
+        supportedTopic: 'Hydroelectric generation advantage and clean energy decarbonization goals',
       },
     ],
     relatedStateSlugs: ['washington', 'california', 'idaho', 'nevada'],
@@ -1282,9 +1286,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     isPublished: true,
     keyFactors: [
       {
-        title: 'Wind Energy Leadership',
+        title: 'Wind Energy Generation Leadership',
         description:
-          'Oklahoma ranks among top U.S. states in wind generation, producing over 40% of its total electricity from wind turbines.',
+          'Oklahoma produces a major portion of its total electricity from wind turbines, ranking among top U.S. states for wind power.',
       },
       {
         title: 'Natural Gas Marginal Pricing',
@@ -1323,8 +1327,8 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Analyze Connecticut residential electricity rates, PURA Choice benchmarks, Eversource and UI tariffs, and ISO New England winter trends.',
     overview:
-      'Connecticut operates a restructured retail electric choice market within ISO New England. Regulated distribution utilities Eversource (CL&P) and United Illuminating (UI) handle power delivery, while customers can select competitive retail suppliers or receive default Standard Service rates. Rates are elevated due to ISO New England winter gas pipeline bottlenecks and regional transmission costs.',
-    marketType: 'Retail Choice / Deregulated Market',
+      'Connecticut operates under a retail supplier choice framework with regulated distribution utilities Eversource (CL&P) and United Illuminating (UI) handling power delivery, while customers can select competitive retail suppliers or receive default Standard Service rates. Rates reflect ISO New England winter gas pipeline bottlenecks and regional transmission costs.',
+    marketType: 'Retail supplier choice with regulated distribution',
     isPublished: true,
     keyFactors: [
       {
@@ -1369,14 +1373,14 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Review Iowa residential electricity rates, IUC regulation, MidAmerican and Alliant Energy tariffs, and nation-leading wind energy generation.',
     overview:
-      'Iowa operates a regulated electric utility market supervised by the Iowa Utilities Commission (IUC). Investor-owned MidAmerican Energy and Alliant Energy (Interstate Power and Light) serve major urban centers, flanked by consumer-owned municipal systems and rural electric co-ops. Iowa leads the nation in wind power reliance, generating over 60% of its electricity from wind.',
+      'Iowa operates a regulated electric utility market supervised by the Iowa Utilities Commission (IUC). Investor-owned MidAmerican Energy and Alliant Energy (Interstate Power and Light) serve major urban centers, flanked by consumer-owned municipal systems and rural electric co-ops. Iowa leads the nation in wind power reliance, generating a major share of its electricity from wind energy.',
     marketType: 'Regulated Utility Market',
     isPublished: true,
     keyFactors: [
       {
         title: 'Nation-Leading Wind Energy Reliance',
         description:
-          'Iowa produces over 60% of net electricity generation from wind power, stabilizing long-term energy supply costs across the state.',
+          'Iowa produces a dominant share of net electricity generation from wind power, stabilizing long-term energy supply costs across the state.',
       },
       {
         title: 'MISO Grid Integration & Agricultural Load',
