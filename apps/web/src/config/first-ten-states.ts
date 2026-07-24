@@ -408,6 +408,396 @@ export const FIRST_TEN_STATES: Record<string, FirstTenStateConfig> = {
     ],
     relatedStateSlugs: ['illinois', 'ohio', 'wisconsin', 'pennsylvania'],
   },
+  arizona: {
+    code: 'AZ',
+    slug: 'arizona',
+    name: 'Arizona',
+    metaTitle: 'Arizona Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'View Arizona residential electricity rates, average monthly AC bills, ACC regulatory tariffs, and solar energy context.',
+    overview:
+      'Arizona residential electricity consumption is driven heavily by extreme summer cooling demand. Regulated by the Arizona Corporation Commission (ACC), major utilities like Arizona Public Service (APS) and Salt River Project (SRP) utilize time-of-use (TOU) rates and demand charges during summer peak hours.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Extreme Summer Air Conditioning Load',
+        description:
+          'Summer temperatures exceeding 110°F drive continuous AC compressor operation, creating dramatic summer usage spikes across Arizona households.',
+      },
+      {
+        title: 'Mandatory & Optional TOU Tariffs',
+        description:
+          'APS and SRP offer structured Time-of-Use plans with high super-peak rates during hot weekday afternoon hours (3 p.m. to 7 p.m. or 4 p.m. to 7 p.m.).',
+      },
+      {
+        title: 'Solar & Palo Verde Nuclear Generation',
+        description:
+          'Arizona generates substantial carbon-free power from rooftop/utility solar and the Palo Verde Nuclear Generating Station, the nation’s largest nuclear plant by net generation.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Arizona Corporation Commission (ACC)',
+        url: 'https://www.azcc.gov/',
+      },
+    ],
+    relatedStateSlugs: ['california', 'texas', 'nevada', 'utah'],
+  },
+  virginia: {
+    code: 'VA',
+    slug: 'virginia',
+    name: 'Virginia',
+    metaTitle: 'Virginia Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze Virginia residential electricity rates, Dominion Energy tariffs, VCEA clean energy goals, and monthly power bills.',
+    overview:
+      'Virginia operates a regulated electricity market dominated by Dominion Energy Virginia and Appalachian Power. Rates reflect rapid data center growth in Northern Virginia, offshore wind buildouts, and the Virginia Clean Economy Act (VCEA) decarbonization targets.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Data Center Demand Impact',
+        description:
+          'Northern Virginia hosts the world’s largest concentration of data centers, driving significant overall grid transmission investment and regional capacity load.',
+      },
+      {
+        title: 'Virginia Clean Economy Act (VCEA)',
+        description:
+          'Enacted in 2020, VCEA mandates 100% carbon-free electricity by 2045 for Dominion Virginia, accelerating offshore wind and solar buildouts.',
+      },
+      {
+        title: 'Dual Seasonal HVAC Peaks',
+        description:
+          'High heat pump penetration creates winter heating peaks alongside summer AC demand, influencing year-round residential consumption.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Virginia State Corporation Commission (SCC)',
+        url: 'https://scc.virginia.gov/',
+      },
+    ],
+    relatedStateSlugs: ['north-carolina', 'maryland', 'pennsylvania', 'georgia'],
+  },
+  washington: {
+    code: 'WA',
+    slug: 'washington',
+    name: 'Washington',
+    metaTitle: 'Washington Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Explore Washington residential electricity rates, abundant hydroelectric power benchmarks, BPA regional supply, and CETA clean energy rules.',
+    overview:
+      'Washington state benefits from abundant hydroelectric power along the Columbia River basin, resulting in residential electricity rates that rank among the lowest in the United States. Regulated by the UTC, rates are influenced by seasonal snowpack levels and the Clean Energy Transformation Act (CETA).',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Hydroelectric Power Advantage',
+        description:
+          'Hydroelectric dams provide over 60% of Washington’s electricity generation, supplying low-cost, zero-carbon power via the Bonneville Power Administration (BPA).',
+      },
+      {
+        title: 'Clean Energy Transformation Act (CETA)',
+        description:
+          'CETA requires Washington utilities to transition to 100% clean electricity by 2045, phasing out coal-fired power imports by 2025.',
+      },
+      {
+        title: 'Winter Space & Water Heating',
+        description:
+          'Because electricity rates are relatively low, electric heat pumps and resistance water heaters are widely used, creating peak winter demand.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Washington Utilities and Transportation Commission (UTC)',
+        url: 'https://www.utc.wa.gov/',
+      },
+    ],
+    relatedStateSlugs: ['california', 'oregon', 'idaho', 'montana'],
+  },
+  'new-jersey': {
+    code: 'NJ',
+    slug: 'new-jersey',
+    name: 'New Jersey',
+    metaTitle: 'New Jersey Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Compare New Jersey residential electricity rates, BGC basic generation service auctions, BPU regulations, and PJM market trends.',
+    overview:
+      'New Jersey operates a restructured retail electric choice market within the PJM Interconnection. Regulated distribution utilities (PSE&G, JCP&L, Atlantic City Electric, Rockland Electric) procure default generation supply through annual BGS state auctions.',
+    marketType: 'Retail Choice / Deregulated Market',
+    keyFactors: [
+      {
+        title: 'Basic Generation Service (BGS) Auctions',
+        description:
+          'New Jersey BPU supervises annual competitive BGS auctions that determine default supply rates for households that do not choose an third-party supplier.',
+      },
+      {
+        title: 'Energy Master Plan & Clean Energy Goals',
+        description:
+          'State policy targets 100% clean energy by 2035, funding offshore wind procurement, community solar projects, and nuclear ZEC preservation.',
+      },
+      {
+        title: 'Dense Transmission & Population Center',
+        description:
+          'High population density and regional PJM congestion charges contribute to higher baseline transmission and distribution delivery rates.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'New Jersey Board of Public Utilities (NJBPU)',
+        url: 'https://www.nj.gov/bpu/',
+      },
+    ],
+    relatedStateSlugs: ['new-york', 'pennsylvania', 'maryland', 'massachusetts'],
+  },
+  massachusetts: {
+    code: 'MA',
+    slug: 'massachusetts',
+    name: 'Massachusetts',
+    metaTitle: 'Massachusetts Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Discover Massachusetts residential electricity rates, ISO New England market drivers, DPU tariffs, and winter energy supply spikes.',
+    overview:
+      'Massachusetts residential electricity rates rank among the highest in the nation due to ISO New England natural gas pipeline constraints, regional capacity pricing, and ambitious clean energy mandates. Consumers can select competitive suppliers or default basic service.',
+    marketType: 'Retail Choice / Deregulated Market',
+    keyFactors: [
+      {
+        title: 'ISO New England Winter Pipeline Bottlenecks',
+        description:
+          'Winter natural gas pipeline constraints in New England force dual-fuel generators onto pricier LNG imports or oil, driving seasonal supply rate spikes.',
+      },
+      {
+        title: 'Municipal Aggregation Programs',
+        description:
+          'Over 150 Massachusetts cities and towns operate opt-out municipal aggregation programs, contracting bulk green supply for residents.',
+      },
+      {
+        title: '2050 Decarbonization Roadmap',
+        description:
+          'State law mandates net-zero greenhouse gas emissions by 2050, accelerating heat pump adoption and offshore wind transmission investments.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Massachusetts Department of Public Utilities (DPU)',
+        url: 'https://www.mass.gov/orgs/department-of-public-utilities',
+      },
+    ],
+    relatedStateSlugs: ['new-york', 'new-jersey', 'connecticut', 'rhode-island'],
+  },
+  tennessee: {
+    code: 'TN',
+    slug: 'tennessee',
+    name: 'Tennessee',
+    metaTitle: 'Tennessee Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Review Tennessee residential electricity rates, TVA wholesale power benchmarks, local power company distribution, and seasonal trends.',
+    overview:
+      'Tennessee operates under a unique public power structure anchored by the Tennessee Valley Authority (TVA), a federally owned corporation. Local municipal systems and electric cooperatives distribute TVA power to residential customers across the state.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Tennessee Valley Authority (TVA) Federal Power',
+        description:
+          'TVA generates wholesale power from a balanced portfolio of nuclear plants, hydroelectric dams, natural gas, and solar, supplying local distributors.',
+      },
+      {
+        title: 'Low Wholesale Base Rates',
+        description:
+          'Public power regulation helps keep Tennessee residential electricity rates below national averages, supporting regional industrial and residential growth.',
+      },
+      {
+        title: 'High Winter Heat Pump & Space Heating Demand',
+        description:
+          'Widespread adoption of electric resistance and heat pump space heating creates strong winter morning usage peaks during cold snaps.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Tennessee Valley Authority (TVA)',
+        url: 'https://www.tva.com/',
+      },
+    ],
+    relatedStateSlugs: ['georgia', 'north-carolina', 'kentucky', 'alabama'],
+  },
+  indiana: {
+    code: 'IN',
+    slug: 'indiana',
+    name: 'Indiana',
+    metaTitle: 'Indiana Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Understand Indiana residential electricity rates, IURC utility regulation, coal-to-gas generation shifts, and monthly household energy costs.',
+    overview:
+      'Indiana residential electricity is provided under a traditional regulated utility framework overseen by the Indiana Utility Regulatory Commission (IURC). Major utilities (AES Indiana, CenterPoint, Duke Energy Indiana, NIPSCO, Indiana Michigan Power) operate integrated generation and distribution.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Coal-to-Gas Generation Transition',
+        description:
+          'Indiana historically relied heavily on coal; utilities are actively retiring aging coal plants and transitioning to natural gas, solar, and wind capacity.',
+      },
+      {
+        title: 'MISO & PJM Regional Grid Membership',
+        description:
+          'Indiana utilities participate in MISO and PJM wholesale markets, balancing industrial demand center loads with residential consumption.',
+      },
+      {
+        title: 'IURC Rate Case Recovery',
+        description:
+          'Multi-year rate cases submitted to the IURC reflect capital investments in environmental compliance, grid modernizations, and generation replacement.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Indiana Utility Regulatory Commission (IURC)',
+        url: 'https://www.in.gov/iurc/',
+      },
+    ],
+    relatedStateSlugs: ['illinois', 'ohio', 'michigan', 'kentucky'],
+  },
+  missouri: {
+    code: 'MO',
+    slug: 'missouri',
+    name: 'Missouri',
+    metaTitle: 'Missouri Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Examine Missouri residential electricity rates, Ameren Missouri and Evergy tariffs, MPSC regulation, and seasonal energy trends.',
+    overview:
+      'Missouri operates a regulated electricity market with primary service provided by Ameren Missouri and Evergy. Overseen by the Missouri Public Service Commission (MPSC), rates are supported by nuclear power (Callaway Plant), coal, and natural gas generation.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'Callaway Nuclear & Coal Base Generation',
+        description:
+          'Ameren’s Callaway Nuclear Plant provides reliable baseload power, while coal and natural gas generation supply peak residential cooling and heating demand.',
+      },
+      {
+        title: 'Significant Seasonal Temperature Swings',
+        description:
+          'Missouri experiences hot, humid summers requiring heavy AC cooling alongside cold Midwestern winters driving space heating consumption.',
+      },
+      {
+        title: 'MPSC Rate Case & Renewable Mandates',
+        description:
+          'Missouri’s Renewable Energy Standard requires investor-owned utilities to acquire 15% of electricity from renewable resources.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Missouri Public Service Commission (MPSC)',
+        url: 'https://psc.mo.gov/',
+      },
+    ],
+    relatedStateSlugs: ['illinois', 'kansas', 'iowa', 'tennessee'],
+  },
+  maryland: {
+    code: 'MD',
+    slug: 'maryland',
+    name: 'Maryland',
+    metaTitle: 'Maryland Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Find Maryland residential electricity rates, Maryland PSC choice benchmarks, EmPOWER efficiency programs, and PJM grid context.',
+    overview:
+      'Maryland is a deregulated retail electric choice state within the PJM Interconnection. Households can choose an competitive supplier or receive default Standard Offer Service (SOS) from regulated utilities like BGE, Pepco, Delmarva Power, and Potomac Edison.',
+    marketType: 'Retail Choice / Deregulated Market',
+    keyFactors: [
+      {
+        title: 'Standard Offer Service (SOS) Auctions',
+        description:
+          'The Maryland PSC oversees semi-annual wholesale auctions that establish default supply rates for utility customers who do not choose a third-party supplier.',
+      },
+      {
+        title: 'EmPOWER Maryland Energy Efficiency Act',
+        description:
+          'State efficiency programs fund rebate initiatives and grid upgrades through small monthly customer utility statement surcharges.',
+      },
+      {
+        title: 'PJM Grid & Regional Transmission Charges',
+        description:
+          'Wholesale pricing reflects PJM capacity auction results, regional transmission congestion, and Mid-Atlantic clean energy procurement rules.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Maryland Public Service Commission (PSC)',
+        url: 'https://www.psc.state.md.us/',
+      },
+    ],
+    relatedStateSlugs: ['virginia', 'pennsylvania', 'new-jersey', 'delaware'],
+  },
+  wisconsin: {
+    code: 'WI',
+    slug: 'wisconsin',
+    name: 'Wisconsin',
+    metaTitle: 'Wisconsin Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Learn about Wisconsin residential electricity rates, PSCW regulated tariffs, We Energies benchmarks, and winter heating loads.',
+    overview:
+      'Wisconsin operates a traditionally regulated utility market supervised by the Public Service Commission of Wisconsin (PSCW). Major utilities (We Energies, Wisconsin Public Service, Alliant Energy, Xcel Energy) operate bundled generation, transmission, and distribution networks.',
+    marketType: 'Regulated Utility Market',
+    keyFactors: [
+      {
+        title: 'PSCW Quadrennial & Biennial Rate Reviews',
+        description:
+          'The PSCW conducts strict rate reviews, setting authorized utility return on equity (ROE) and capital recovery for grid reliability investments.',
+      },
+      {
+        title: 'Severe Upper Midwest Winter Climate',
+        description:
+          'Long, cold winters drive heavy space heating, water heating, and engine block heater electrical loads across Wisconsin homes.',
+      },
+      {
+        title: 'Point Beach Nuclear & Renewable Buildouts',
+        description:
+          'Point Beach Nuclear Plant provides zero-carbon baseload power while utilities expand solar and wind farms to meet state carbon-reduction targets.',
+      },
+    ],
+    sources: [
+      {
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        name: 'Public Service Commission of Wisconsin (PSCW)',
+        url: 'https://psc.wi.gov/',
+      },
+    ],
+    relatedStateSlugs: ['illinois', 'michigan', 'minnesota', 'iowa'],
+  },
 };
 
 export const APPROVED_STATE_SLUGS = Object.keys(FIRST_TEN_STATES);

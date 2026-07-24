@@ -16,9 +16,9 @@ import {
 import { getStateRatesSnapshotUncached } from '@/lib/server/get-state-rates';
 
 describe('State Electricity Rates Configuration & Helpers', () => {
-  it('defines exactly ten approved states in FIRST_TEN_STATES', () => {
-    expect(APPROVED_STATE_SLUGS).toHaveLength(10);
-    expect(Object.keys(FIRST_TEN_STATES)).toHaveLength(10);
+  it('defines exactly twenty approved states in FIRST_TEN_STATES', () => {
+    expect(APPROVED_STATE_SLUGS).toHaveLength(20);
+    expect(Object.keys(FIRST_TEN_STATES)).toHaveLength(20);
     expect(APPROVED_STATE_SLUGS).toEqual([
       'california',
       'texas',
@@ -30,6 +30,16 @@ describe('State Electricity Rates Configuration & Helpers', () => {
       'georgia',
       'north-carolina',
       'michigan',
+      'arizona',
+      'virginia',
+      'washington',
+      'new-jersey',
+      'massachusetts',
+      'tennessee',
+      'indiana',
+      'missouri',
+      'maryland',
+      'wisconsin',
     ]);
   });
 
@@ -37,6 +47,8 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     expect(isApprovedStateSlug('california')).toBe(true);
     expect(isApprovedStateSlug('TEXAS')).toBe(true);
     expect(isApprovedStateSlug('michigan')).toBe(true);
+    expect(isApprovedStateSlug('arizona')).toBe(true);
+    expect(isApprovedStateSlug('wisconsin')).toBe(true);
 
     expect(isApprovedStateSlug('alaska')).toBe(false);
     expect(isApprovedStateSlug('hawaii')).toBe(false);

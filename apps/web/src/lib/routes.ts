@@ -197,6 +197,86 @@ export const publicRoutes = [
   },
   {
     description:
+      'Arizona residential electricity rates, average monthly AC bills, and ACC tariffs.',
+    group: 'research',
+    href: '/electricity-rates/arizona',
+    label: 'Arizona Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Virginia residential electricity rates, Dominion Energy tariffs, and VCEA targets.',
+    group: 'research',
+    href: '/electricity-rates/virginia',
+    label: 'Virginia Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Washington residential electricity rates, hydroelectric benchmarks, and CETA rules.',
+    group: 'research',
+    href: '/electricity-rates/washington',
+    label: 'Washington Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'New Jersey residential electricity rates, BGS auction benchmarks, and BPU context.',
+    group: 'research',
+    href: '/electricity-rates/new-jersey',
+    label: 'New Jersey Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Massachusetts residential electricity rates, ISO New England drivers, and DPU tariffs.',
+    group: 'research',
+    href: '/electricity-rates/massachusetts',
+    label: 'Massachusetts Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Tennessee residential electricity rates, TVA wholesale power benchmarks, and LPC context.',
+    group: 'research',
+    href: '/electricity-rates/tennessee',
+    label: 'Tennessee Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Indiana residential electricity rates, IURC utility regulation, and generation data.',
+    group: 'research',
+    href: '/electricity-rates/indiana',
+    label: 'Indiana Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Missouri residential electricity rates, Ameren and Evergy tariffs, and MPSC rules.',
+    group: 'research',
+    href: '/electricity-rates/missouri',
+    label: 'Missouri Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Maryland residential electricity rates, Maryland PSC choice benchmarks, and PJM context.',
+    group: 'research',
+    href: '/electricity-rates/maryland',
+    label: 'Maryland Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
+      'Wisconsin residential electricity rates, PSCW regulated tariffs, and We Energies data.',
+    group: 'research',
+    href: '/electricity-rates/wisconsin',
+    label: 'Wisconsin Electricity Rates',
+    sitemap: true,
+  },
+  {
+    description:
       'Appliance power consumption data, typical wattage benchmarks, and operating cost guides.',
     group: 'research',
     href: '/appliances',

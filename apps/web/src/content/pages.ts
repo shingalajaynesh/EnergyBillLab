@@ -18,23 +18,44 @@ export const contentPages = {
   '/about': {
     title: 'About Energy Bill Lab',
     description:
-      'Learn what Energy Bill Lab is building: public, transparent home-energy tools for U.S. residents.',
+      'Energy Bill Lab is an independent informational website created and maintained by Jaynesh Shingala, a Full-Stack Software Engineer based in Surat, Gujarat, India.',
     path: '/about',
-    updatedAt: '2026-07-23',
-    related: ['/methodology', '/data-sources', '/editorial-policy'],
+    updatedAt: '2026-07-24',
+    related: ['/methodology', '/data-sources', '/editorial-policy', '/contact'],
     sections: [
       {
-        heading: 'Purpose',
+        heading: 'What Energy Bill Lab Does',
         paragraphs: [
-          'Energy Bill Lab is a public-first home-energy information site for U.S. residents. The goal is to help homeowners, renters, apartment residents, and EV owners understand why bills change and what practical steps may reduce costs.',
-          'The site is built around transparent calculators, sourced rate data, and plain-English explanations. Public tools remain freely usable without requiring account creation or personal identity submission.',
+          'Energy Bill Lab is a public-first home-energy utility website for U.S. residents. We publish transparent home-energy calculators, state electricity-rate benchmarks, and source-led explanations designed to help U.S. households understand electricity usage and costs.',
+          'All core public calculators remain freely accessible without requiring user login, account registration, or personal identity submission.',
         ],
       },
       {
-        heading: 'Product principles',
+        heading: 'Who Creates & Maintains Energy Bill Lab',
         paragraphs: [
-          'Energy Bill Lab provides interactive calculators, verified state benchmarks, and transparent formulas to help households evaluate energy usage.',
-          'Energy Bill Lab does not claim to be a utility provider, financial adviser, legal adviser, or certified energy-audit firm.',
+          'Energy Bill Lab was founded and is independently published by Jaynesh Shingala, a Full-Stack Software Engineer based in Surat, Gujarat, India.',
+          'Jaynesh develops and maintains the site’s calculation algorithms, data integrations, technical publishing workflow, and public educational tools.',
+        ],
+      },
+      {
+        heading: 'How Calculators & Data Are Built',
+        paragraphs: [
+          'Calculators are built using pure TypeScript formulas with explicit units, decimal-safe arithmetic, and deterministic rounding rules.',
+          'Rate benchmarks are sourced directly from official U.S. Energy Information Administration (EIA) Form EIA-861M monthly retail sales reports, stored in a PostgreSQL database snapshot.',
+        ],
+      },
+      {
+        heading: 'Editorial Independence & Disclaimers',
+        paragraphs: [
+          'Energy Bill Lab is an independent educational site. We are not a utility company, energy supplier, government agency, licensed financial adviser, or substitute for an individual utility statement.',
+          'Calculations represent informational estimates rather than binding utility bill predictions.',
+        ],
+      },
+      {
+        heading: 'Corrections & Transparency',
+        paragraphs: [
+          'We welcome source corrections, accessibility reports, and technical feedback. Factual correction requests are evaluated against official public data sources including the U.S. EIA, U.S. DOE, and ENERGY STAR.',
+          'Direct all publisher and editorial inquiries to Jaynesh Shingala at shingala.jaynesh@gmail.com.',
         ],
       },
     ],
@@ -42,23 +63,32 @@ export const contentPages = {
   '/contact': {
     title: 'Contact Energy Bill Lab',
     description:
-      'Contact information for Energy Bill Lab feedback, source corrections, and accessibility reports.',
+      'Contact Jaynesh Shingala, Founder and Technical Publisher of Energy Bill Lab, for site feedback, source corrections, and accessibility inquiries.',
     path: '/contact',
-    updatedAt: '2026-07-23',
-    related: ['/about', '/accessibility', '/privacy'],
+    updatedAt: '2026-07-24',
+    related: ['/about', '/accessibility', '/privacy', '/editorial-policy'],
     sections: [
       {
-        heading: 'Contact channel',
+        heading: 'Publisher Contact Details',
         paragraphs: [
-          'For source corrections, accessibility feedback, data questions, or general site inquiries, contact the Energy Bill Lab team at support@energybilllab.com.',
-          'Our editorial team reviews source correction requests against official public datasets including U.S. EIA reports.',
+          'Energy Bill Lab is published by Jaynesh Shingala (Founder & Technical Publisher), based in Surat, Gujarat, India.',
+          'For general questions, calculation corrections, data-source inquiries, accessibility issues, editorial corrections, media inquiries, or technical site feedback, email: shingala.jaynesh@gmail.com.',
         ],
       },
       {
-        heading: 'What to include',
+        heading: 'Inquiry Categories',
         paragraphs: [
-          'For corrections, include the page URL, the specific issue, and any official source that supports the correction.',
-          'Do not send utility account numbers, full street addresses, payment information, or private billing documents through general email.',
+          '• General Questions: Feedback on calculators, tools, and site features.',
+          '• Calculation & Data Corrections: Reporting discrepancies in formulas or official rate snapshots.',
+          '• Accessibility Inquiries: Reporting screen-reader or keyboard navigation issues.',
+          '• Media & Research: Inquiries regarding our published state rate benchmarks or methodologies.',
+        ],
+      },
+      {
+        heading: 'Correction Guidance',
+        paragraphs: [
+          'When submitting a correction request, please include: (1) The specific page URL, (2) A description of the issue, (3) The expected correction, and (4) A link to an official supporting dataset (e.g., U.S. EIA or state public utility commission) where applicable.',
+          'Please do not send sensitive personal information such as utility account numbers, full street addresses, SSNs, or private payment documents.',
         ],
       },
     ],
@@ -116,9 +146,16 @@ export const contentPages = {
     description:
       'Energy Bill Lab editorial rules for useful, sourced, transparent home-energy content.',
     path: '/editorial-policy',
-    updatedAt: '2026-07-22',
-    related: ['/methodology', '/data-sources', '/about'],
+    updatedAt: '2026-07-24',
+    related: ['/methodology', '/data-sources', '/about', '/contact'],
     sections: [
+      {
+        heading: 'Ownership & Technical Publishing',
+        paragraphs: [
+          'Energy Bill Lab is owned and published by Jaynesh Shingala, Founder & Technical Publisher (Surat, Gujarat, India; contact: shingala.jaynesh@gmail.com).',
+          'All published calculators, state rate reports, and educational guides undergo human technical review before publication.',
+        ],
+      },
       {
         heading: 'People-first content',
         paragraphs: [
@@ -127,10 +164,10 @@ export const contentPages = {
         ],
       },
       {
-        heading: 'Review expectations',
+        heading: 'Review expectations & Corrections',
         paragraphs: [
-          'Before publication, calculator and data pages should receive source checks, formula checks, mobile review, accessibility review, and a final status decision.',
-          'When an error is found, corrections should favor clarity: update the page, preserve source dates, and avoid silently changing public meaning.',
+          'Before publication, calculator and data pages receive source checks, formula checks, mobile review, accessibility review, and a final status decision.',
+          'When an error is found, corrections favor clarity: update the page, preserve source dates, and document corrections transparently.',
         ],
       },
     ],
