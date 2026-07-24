@@ -1,12 +1,17 @@
 # Energy Bill Lab
 
-Energy Bill Lab is a public-first U.S. home-energy utility website. It will help residents understand high electricity bills, estimate appliance operating costs, compare state electricity rates, and review transparent methodology and source notes.
+Energy Bill Lab is a public-first U.S. home-energy utility website. It helps U.S. residents understand high electricity bills, estimate appliance operating costs, compare state electricity rates, and review transparent methodology and source notes.
 
 ## Current Status
 
-The repository contains the monorepo foundation, Next.js public web shell, NestJS API foundation, shared package boundaries, design-system tokens, trust/legal pages, route registry, metadata helpers, sitemap, and robots configuration.
+Energy Bill Lab is a production-ready monorepo featuring:
 
-Calculator functionality is not implemented yet.
+- **Launch Calculators (5)**: Electricity Bill Analyzer, Appliance Energy Cost Calculator, Air Conditioner Cost Calculator, Space Heater Cost Calculator, EV Home Charging Cost Calculator.
+- **Expansion Appliance Calculators (5)**: Refrigerator Cost Calculator, Clothes Dryer Cost Calculator, Electric Water Heater Cost Calculator, Pool Pump Cost Calculator, Dehumidifier Cost Calculator.
+- **State Electricity Rate Pages (10)**: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, Michigan (backed by official Neon PostgreSQL U.S. EIA monthly data).
+- **Problem-Solving Energy Guides (5)**: High bill diagnostics, appliance usage benchmarks, AC cooling costs, space heater costs, and EV home charging costs.
+- **Trust & Policy System**: About, Contact, Methodology, Data Sources, Editorial Policy, Accessibility, Privacy Policy, Terms of Service, Disclaimer, Cookies.
+- **Backend API & Scheduled Sync**: NestJS API with Fastify adapter, PostgreSQL Drizzle ORM, and automated EIA monthly data importer.
 
 ## Monorepo Overview
 
@@ -14,15 +19,15 @@ This is a pnpm and Turborepo TypeScript monorepo.
 
 ```text
 apps/
-  web/      Next.js App Router public website
-  api/      NestJS Fastify API
+  web/      Next.js App Router public website (46 prerendered static pages)
+  api/      NestJS Fastify API service and EIA ingestion sync job
 packages/
-  calculation-engine/  Future pure calculation formulas
-  contracts/           Future shared Zod contracts and API types
-  database/            Future Drizzle and Neon database code
+  calculation-engine/  Pure calculation formulas package (100% unit tested)
+  contracts/           Shared Zod schemas and API types
+  database/            Neon PostgreSQL schema, Drizzle client, migrations
   design-system/       Ant Design theme tokens and product constants
   eslint-config/       Shared ESLint flat config
-  testing/             Future shared test helpers
+  testing/             Shared test helpers
   typescript-config/   Shared strict TypeScript configs
 docs/                  Human-facing project documentation
 .ai/                   Agent instructions, active task context, ADRs, and prompts
@@ -33,10 +38,10 @@ docs/                  Human-facing project documentation
 - Package management: pnpm
 - Task orchestration: Turborepo
 - Language: TypeScript
-- Web: Next.js App Router, React, Ant Design, CSS Modules
+- Web: Next.js App Router, React, Ant Design, CSS Modules, `@next/third-parties`
 - API: NestJS with Fastify
-- Validation: Zod where shared contracts require it
-- Database plan: Neon PostgreSQL with Drizzle ORM
+- Validation: Zod shared contracts
+- Database: Neon PostgreSQL with Drizzle ORM
 - Frontend hosting: Vercel
 - API/jobs hosting: Render
 
@@ -59,7 +64,7 @@ Use tracked examples only as placeholders:
 - `apps/web/.env.example`
 - `apps/api/.env.example`
 
-Copy the relevant values into local ignored environment files. Never commit real credentials.
+Copy the relevant values into local ignored environment files (`.env.local`). Never commit real credentials.
 
 ## Development Commands
 
@@ -93,6 +98,9 @@ See `apps/web/README.md` and `apps/api/README.md` for application-specific notes
 ## Documentation Links
 
 - Documentation index: `docs/README.md`
+- Product documentation: `docs/product/`
+- Appliance expansion calculators: `docs/product/appliance-expansion-calculators.md`
+- Production readiness report: `docs/operations/production-readiness.md`
 - Local setup: `docs/development/local-setup.md`
 - Repository structure: `docs/development/repository-structure.md`
 - Testing and validation: `docs/development/testing.md`
@@ -106,19 +114,10 @@ All agents must start with `AGENTS.md`, then read `.ai/BRAIN.md`, `.ai/PROJECT_P
 
 Completed prompts in `.ai/prompts/completed/` are historical records. Do not execute them again.
 
-## Deployment Overview
+## Security & Privacy
 
-- Vercel builds the public web app from the monorepo root using `vercel.json`.
-- Render is the intended host for the API and future scheduled jobs.
-- Neon PostgreSQL is the planned database platform for later database phases.
-
-Deployment secrets belong in provider configuration, not in source control.
-
-## Security Warning
-
-Never commit real `.env` files, credentials, tokens, screenshots with secrets, or secret-bearing URLs. Values beginning with `NEXT_PUBLIC_` are exposed to browser code.
-
-The repository owner should rotate any credential that was visible to an AI coding environment.
+- PostgreSQL driver SSL connection mode warnings are accepted, non-fatal library warnings. `packages/database/src/clients/db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` are protected files.
+- Zero user financial metrics, bill amounts, kWh values, rates, or geographic state names are transmitted in analytics events.
 
 ## Contribution Workflow
 
@@ -127,5 +126,5 @@ The repository owner should rotate any credential that was visible to an AI codi
 3. Search for existing functionality before creating new files.
 4. Keep the change scoped to one coherent purpose.
 5. Update tests and documentation when behavior or architecture changes.
-6. Run required validation.
+6. Run required validation (`pnpm format:check ; pnpm typecheck ; pnpm lint ; pnpm test ; pnpm build:web ; pnpm build:api`).
 7. Commit with `type(scope): concise description`.

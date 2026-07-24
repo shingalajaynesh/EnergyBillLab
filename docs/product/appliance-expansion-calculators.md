@@ -13,25 +13,30 @@ This document details the 5 expansion appliance cost calculators added to Energy
 ## Core Formulas & Scope Guardrails
 
 ### 1. Refrigerator Cost Calculator
+
 - **Modes**:
   - Wattage Mode: `kWh = (Watts × Hours per Day × Days × Duty Cycle %) ÷ 1,000`
   - EnergyGuide Mode: `kWh = (Annual kWh ÷ 365) × Days` (Duty cycle forced to 100% to prevent double-scaling)
 - **Scope**: Electric compression refrigerators.
 
 ### 2. Clothes Dryer Cost Calculator
+
 - **Formula**: `kWh = (Watts × (Minutes per Load / 60) × Loads per Week × Weeks) ÷ 1,000`
 - **Scope**: Electric dryers only. Gas dryer fuel calculations are excluded.
 
 ### 3. Electric Water Heater Cost Calculator
+
 - **Formula**: `kWh = (Element Watts × Active Elements × Hours per Day × Days × Duty Cycle %) ÷ 1,000`
 - **Default Active Elements**: 1.
 - **Scope**: Electric-resistance tank water heaters only. Heat-pump models excluded.
 
 ### 4. Pool Pump Cost Calculator
+
 - **Formula**: `kWh = (Input Watts × Hours per Day × (Days per Week / 7) × (Weeks × 7)) ÷ 1,000`
 - **Scope**: Primary input power in Watts required. Horsepower without efficiency derivation excluded.
 
 ### 5. Dehumidifier Cost Calculator
+
 - **Formula**: `kWh = (Watts × Hours per Day × Days × Duty Cycle %) ÷ 1,000`
 - **Scope**: Electrical wattage and duty cycle model primary. Pint rating energy derivation excluded.
 

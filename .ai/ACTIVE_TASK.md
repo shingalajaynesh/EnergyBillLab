@@ -2,17 +2,22 @@
 
 ## Current Task
 
-- Phase: Appliance Expansion Calculator Hardening & Scope Correction
-- Status: In Progress (Correcting Ant Design deprecation warnings, appliance scope boundaries, guide header date presentation, and global main-to-footer spacing)
+- Phase: Final Review of the First Five Appliance-Expansion Calculators
+- Status: Completed (Formula, source, mobile UX, accessibility, analytics privacy, and production review of the 5 expansion calculators verified — No active implementation task)
 - Verified Scope:
-  - 5 expansion calculators implemented and corrected (`/tools/refrigerator-cost-calculator`, `/tools/clothes-dryer-cost-calculator`, `/tools/electric-water-heater-cost-calculator`, `/tools/pool-pump-cost-calculator`, `/tools/dehumidifier-cost-calculator`)
-  - 5 launch calculators + 10 state pages + 5 guides + trust pages
-- Corrective Fixes:
-  - **Ant Design InputNumber Deprecation**: Migrated all form fields across repository to `NumberInputWithUnit` using `Space.Compact`.
-  - **PostgreSQL SSL Warning**: Documented as accepted non-fatal driver warning; database client configuration intentionally unchanged.
-  - **Appliance Scope Alignments**: Electric dryers only (no gas fuel cost), electric resistance water heaters only (default active elements = 1; no heat pump model), pool pump electrical input wattage primary, dehumidifier wattage/duty-cycle primary model (no pint/IEF energy derivation), refrigerator annual-kWh mode duty-cycle safety.
-  - **Guide Header Formatting**: Restrained Title Case eyebrow, reduced H1 title size, deterministic human-readable date presentation (`Updated July 23, 2026`) with machine-readable ISO `<time dateTime="...">`.
-  - **Global Main/Footer Spacing**: `body` flex column layout with `min-height: 100dvh`, `main` flex child with `clamp(48px, 6vw, 72px)` bottom padding.
-  - **Electricity Rate Display**: Preserved primary `18.83 ¢/kWh` formatting.
+  - 5 expansion calculators (`/tools/refrigerator-cost-calculator`, `/tools/clothes-dryer-cost-calculator`, `/tools/electric-water-heater-cost-calculator`, `/tools/pool-pump-cost-calculator`, `/tools/dehumidifier-cost-calculator`)
+  - 5 launch calculators + 10 state pages + 5 guides + trust & legal pages
+- Audit Results:
+  - **Shared Formula**: `calculateApplianceCost` is authoritative pure calculation engine function; 0 duplicated client arithmetic.
+  - **Appliance Scope Alignments**: Electric dryers only, electric resistance water heaters only (active elements default = 1), wattage-based pool pump model, wattage/duty-cycle dehumidifier model, refrigerator annual-kWh mode duty-cycle forced to 100%.
+  - **Unit Input Accessibility**: `NumberInputWithUnit` uses `aria-hidden="true"` unit badges with explicit text unit names in form labels.
+  - **Header & Footer Spacing**: Scoped `.siteMain` layout padding (`clamp(48px, 6vw, 72px)`); guide header eyebrow styled as refined category badge.
+  - **Rate Display**: Formatted rates consistently use `18.83 ¢/kWh` (never `$18.83/kWh`).
+  - **Analytics Privacy**: 100% dataLayer compliance; zero raw inputs, rates, or bill amounts sent.
+  - **Protected Files**: `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` remain 100% untouched.
+- Test & Build Results:
+  - 16 test files / 76 unit tests passed cleanly (`pnpm test`).
+  - Next.js Web Build prerendered 46/46 static pages cleanly (`pnpm build:web`).
+  - 0 `addonAfter` or `addonBefore` deprecation warnings in calculator form code.
 - Strict Git Rules: Read-only Git commands only. All changes remain unstaged in working tree.
-- Suggested Commit: `fix(appliances): correct calculator scope warnings and global spacing`
+- Suggested Commit: `fix(appliances): complete formula source UX and privacy review`

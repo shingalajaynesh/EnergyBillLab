@@ -4,19 +4,23 @@
 
 ## Responsibilities
 
-- Public routes and layouts
-- Trust, legal, and methodology pages
-- Metadata, sitemap, robots, and structured data helpers
-- Ant Design SSR registry and theme provider
-- Future calculator UI
+- Public routes and static layout shell (46 prerendered static pages)
+- 10 interactive energy cost calculators (5 launch + 5 expansion tools)
+- 10 U.S. state electricity rate pages backed by PostgreSQL EIA monthly snapshots
+- 5 deeply researched problem-solving energy guides
+- Trust, legal, accessibility, and methodology pages
+- Privacy-hardened analytics event tracking (`window.dataLayer`)
+- Metadata, sitemap, robots, and structured data (JSON-LD) helpers
+- Ant Design SSR registry and custom CSS Modules design system
 
 ## Important Paths
 
 - Routes: `src/app/`
-- Reusable components: `src/components/`
-- Structured static content: `src/content/`
-- Route and SEO helpers: `src/lib/`
-- Tests: `tests/`
+- Reusable UI components: `src/components/`
+- Feature modules: `src/features/`
+- Structured static content & benchmarks: `src/content/`
+- Route, SEO, metadata, and site helpers: `src/lib/`
+- Monorepo integration tests: `tests/`
 
 ## Commands
 
@@ -28,5 +32,3 @@ pnpm --filter @energy-bill-lab/web typecheck
 pnpm --filter @energy-bill-lab/web lint
 pnpm --filter @energy-bill-lab/web test
 ```
-
-Do not add calculator logic, database access, authentication, ads, or analytics without an active task.

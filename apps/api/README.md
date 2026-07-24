@@ -1,19 +1,20 @@
 # API Application
 
-`apps/api` is the NestJS with Fastify backend for Energy Bill Lab.
+`apps/api` is the NestJS with Fastify backend service for Energy Bill Lab.
 
 ## Responsibilities
 
 - Versioned `/api/v1` API routes
-- Health endpoints
-- Future data imports and backend jobs
-- Future protected admin operations
+- System health and database connectivity endpoints
+- Automated monthly U.S. EIA retail electricity sales data ingestion service
+- PostgreSQL (Neon) database schema sync and data validation
 
 ## Important Paths
 
 - Entry point: `src/main.ts`
 - Environment validation: `src/config/env.ts`
-- Modules: `src/modules/`
+- EIA importer service: `src/infrastructure/eia/`
+- API controllers & services: `src/modules/`
 
 ## Commands
 
@@ -25,5 +26,3 @@ pnpm --filter @energy-bill-lab/api typecheck
 pnpm --filter @energy-bill-lab/api lint
 pnpm --filter @energy-bill-lab/api test
 ```
-
-Do not add database schemas, migrations, EIA ingestion, authentication, or admin features without an active task.
