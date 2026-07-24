@@ -6,6 +6,7 @@ export type PublishedStateConfig = {
   metaDescription: string;
   overview: string;
   marketType: 'Regulated Utility Market' | 'Retail Choice / Deregulated Market' | 'Hybrid Market';
+  isPublished: boolean;
   keyFactors: Array<{
     title: string;
     description: string;
@@ -13,6 +14,7 @@ export type PublishedStateConfig = {
   sources: Array<{
     name: string;
     url: string;
+    supportedTopic?: string;
   }>;
   relatedStateSlugs: string[];
 };
@@ -30,6 +32,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'California residential electricity rates rank among the highest in the contiguous United States. Rates are driven by aggressive renewable energy procurement goals, wildfire mitigation infrastructure investments, grid modernization initiatives, and high peak summer cooling demand.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Renewable Mandates & Grid Transition',
@@ -69,6 +72,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Texas operates the largest deregulated ERCOT electricity market in North America. While competitive retail providers offer fixed and variable plans, residential rates reflect natural gas generation pricing, rapid wind and solar expansion, and extreme summer air conditioning demand.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'ERCOT Grid & Market Structure',
@@ -108,6 +112,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Florida residential electricity usage is dominated by year-round air conditioning and heat pump operation. Rates are regulated by the Florida Public Service Commission and closely linked to natural gas import costs and storm hardening infrastructure projects.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Year-Round Air Conditioning Demand',
@@ -147,6 +152,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'New York residential electricity rates reflect significant regional variations between New York City / Long Island (high transmission congestion and delivery costs) and Upstate New York (hydroelectric and nuclear generation supply).',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Upstate vs. Downstate Congestion',
@@ -186,6 +192,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Pennsylvania is a major energy exporter within the PJM Interconnection grid. With a fully restructured retail market, residents can shop for competitive electricity suppliers or receive default service (Price to Compare) from regulated utilities.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'PJM Grid & Energy Production',
@@ -225,6 +232,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Illinois features a retail choice market split between the PJM region (northern Illinois / ComEd) and MISO region (central & southern Illinois / Ameren). High nuclear power capacity provides baseline zero-carbon generation.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Nuclear Power Generation Capacity',
@@ -264,6 +272,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Ohio residential customers operate within a deregulated retail electric choice market served by PJM. Households can choose an independent Certified Retail Electric Service (CRES) provider or default to local utility Standard Service Offer (SSO) rates.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'PUCO Standard Service Auctions',
@@ -303,6 +312,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Georgia residential electricity is provided under a traditionally regulated market framework dominated by Georgia Power, municipal utilities (MEAG), and Electric Membership Corporations (EMCs). Baseline rates reflect major nuclear expansion and warm climate cooling loads.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Vogtle Units 3 & 4 Nuclear Expansion',
@@ -342,6 +352,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'North Carolina operates a regulated electricity market with service primarily provided by Duke Energy Carolinas and Duke Energy Progress. Rates are competitively priced compared to national benchmarks, supported by nuclear baseload and rapid utility solar growth.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Duke Energy System Integration',
@@ -381,6 +392,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Michigan residential electricity rates reflect significant infrastructure modernization programs, coal plant retirements, and heavy winter weather conditions. Primary investor-owned utilities DTE Energy and Consumers Energy operate under MPSC oversight.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'MPSC Clean Energy Plan Mandates',
@@ -420,6 +432,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Arizona residential electricity consumption is driven heavily by extreme summer cooling demand. Regulated by the Arizona Corporation Commission (ACC), major utilities like Arizona Public Service (APS) and Salt River Project (SRP) utilize time-of-use (TOU) rates and demand charges during summer peak hours.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Extreme Summer Air Conditioning Load',
@@ -459,6 +472,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Virginia operates a regulated electricity market dominated by Dominion Energy Virginia and Appalachian Power. Rates reflect rapid data center growth in Northern Virginia, offshore wind buildouts, and the Virginia Clean Economy Act (VCEA) decarbonization targets.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Data Center Demand Impact',
@@ -498,6 +512,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Washington state benefits from abundant hydroelectric power along the Columbia River basin, resulting in residential electricity rates that rank among the lowest in the United States. Regulated by the UTC, rates are influenced by seasonal snowpack levels and the Clean Energy Transformation Act (CETA).',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Hydroelectric Power Advantage',
@@ -537,6 +552,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'New Jersey operates a restructured retail electric choice market within the PJM Interconnection. Regulated distribution utilities (PSE&G, JCP&L, Atlantic City Electric, Rockland Electric) procure default generation supply through annual BGS state auctions.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Basic Generation Service (BGS) Auctions',
@@ -576,6 +592,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Massachusetts residential electricity rates rank among the highest in the nation due to ISO New England natural gas pipeline constraints, regional capacity pricing, and ambitious clean energy mandates. Consumers can select competitive suppliers or default basic service.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'ISO New England Winter Pipeline Bottlenecks',
@@ -615,6 +632,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Tennessee operates under a unique public power structure anchored by the Tennessee Valley Authority (TVA), a federally owned corporation. Local municipal systems and electric cooperatives distribute TVA power to residential customers across the state.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Tennessee Valley Authority (TVA) Federal Power',
@@ -654,6 +672,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Indiana residential electricity is provided under a traditional regulated utility framework overseen by the Indiana Utility Regulatory Commission (IURC). Major utilities (AES Indiana, CenterPoint, Duke Energy Indiana, NIPSCO, Indiana Michigan Power) operate integrated generation and distribution.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Coal-to-Gas Generation Transition',
@@ -693,6 +712,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Missouri operates a regulated electricity market with primary service provided by Ameren Missouri and Evergy. Overseen by the Missouri Public Service Commission (MPSC), rates are supported by nuclear power (Callaway Plant), coal, and natural gas generation.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Callaway Nuclear & Coal Base Generation',
@@ -732,6 +752,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Maryland is a deregulated retail electric choice state within the PJM Interconnection. Households can choose an competitive supplier or receive default Standard Offer Service (SOS) from regulated utilities like BGE, Pepco, Delmarva Power, and Potomac Edison.',
     marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'Standard Offer Service (SOS) Auctions',
@@ -771,6 +792,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     overview:
       'Wisconsin operates a traditionally regulated utility market supervised by the Public Service Commission of Wisconsin (PSCW). Major utilities (We Energies, Wisconsin Public Service, Alliant Energy, Xcel Energy) operate bundled generation, transmission, and distribution networks.',
     marketType: 'Regulated Utility Market',
+    isPublished: true,
     keyFactors: [
       {
         title: 'PSCW Quadrennial & Biennial Rate Reviews',
@@ -804,7 +826,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
 
 export const FIRST_TEN_STATES = PUBLISHED_STATES;
 
-export const APPROVED_STATE_SLUGS = Object.keys(PUBLISHED_STATES);
+export const APPROVED_STATE_SLUGS = Object.values(PUBLISHED_STATES)
+  .filter((state) => state.isPublished)
+  .map((state) => state.slug);
 
 export function isApprovedStateSlug(slug: string): boolean {
   return APPROVED_STATE_SLUGS.includes(slug.toLowerCase());
