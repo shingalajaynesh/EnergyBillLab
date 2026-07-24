@@ -160,8 +160,8 @@ export default function HomePage() {
           <div>
             <h3>Editorial standards</h3>
             <p>
-              We publish practical, source-reviewed explanations for real home-energy questions
-              with transparent methodology, clear citations, and editorial review.
+              We publish practical, source-reviewed explanations for real home-energy questions with
+              transparent methodology, clear citations, and editorial review.
             </p>
             <Link href="/editorial-policy">Read editorial policy &rarr;</Link>
           </div>
