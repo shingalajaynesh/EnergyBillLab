@@ -23,8 +23,8 @@ Energy Bill Lab is prepared for launch with the following verified scope:
   9. Pool Pump Cost Calculator (`/tools/pool-pump-cost-calculator`)
   10. Dehumidifier Cost Calculator (`/tools/dehumidifier-cost-calculator`)
 
-- **State Electricity Rate Pages (20):**
-  - California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, Michigan, Arizona, Virginia, Washington, New Jersey, Massachusetts, Tennessee, Indiana, Missouri, Maryland, Wisconsin (`/electricity-rates/[state]`).
+- **State Electricity Rate Pages (30):**
+  - California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, Michigan, Arizona, Virginia, Washington, New Jersey, Massachusetts, Tennessee, Indiana, Missouri, Maryland, Wisconsin, Colorado, Minnesota, South Carolina, Alabama, Louisiana, Kentucky, Oregon, Oklahoma, Connecticut, Iowa (`/electricity-rates/[state]`).
 
 - **Original National Research Reports (1):**
   - Research Hub (`/research`)

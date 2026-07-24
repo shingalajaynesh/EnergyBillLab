@@ -8,9 +8,9 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 
 ## State Coverage Baseline & Expansion Roadmap
 
-### Published State Coverage: 20 of 50 States
+### Published State Coverage: 30 of 50 States
 
-### Remaining State Coverage: 30 of 50 States
+### Remaining State Coverage: 20 of 50 States
 
 #### Batch 1 (Published — Phase 1)
 
@@ -38,7 +38,7 @@ This document tracks Energy Bill Lab's U.S. state electricity-rate coverage, pub
 - Maryland (`MD`)
 - Wisconsin (`WI`)
 
-#### Batch 3 (Future Scope — 10 States)
+#### Batch 3 (Published — Growth Phase 2)
 
 - Colorado (`CO`)
 - Minnesota (`MN`)

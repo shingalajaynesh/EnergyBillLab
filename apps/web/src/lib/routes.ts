@@ -1,3 +1,5 @@
+import { PUBLISHED_STATE_CONFIGS } from '@/config/published-states';
+
 export type RouteGroup = 'tools' | 'research' | 'company' | 'legal';
 
 export type PublicRoute = {
@@ -9,7 +11,7 @@ export type PublicRoute = {
   sitemap?: boolean;
 };
 
-export const publicRoutes = [
+const basePublicRoutes = [
   {
     description: 'Independent home energy tools, calculators, and transparent rate methodology.',
     group: 'company',
@@ -132,166 +134,17 @@ export const publicRoutes = [
     nav: true,
     sitemap: true,
   },
-  {
-    description:
-      'California residential electricity rates, average monthly energy bills, and EIA trends.',
-    group: 'research',
-    href: '/electricity-rates/california',
-    label: 'California Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Texas residential electricity rates, ERCOT grid context, and monthly power costs.',
-    group: 'research',
-    href: '/electricity-rates/texas',
-    label: 'Texas Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Florida residential electricity rates, utility fuel adjustments, and monthly AC costs.',
-    group: 'research',
-    href: '/electricity-rates/florida',
-    label: 'Florida Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'New York residential electricity rates, NYC vs Upstate drivers, and EIA benchmarks.',
-    group: 'research',
-    href: '/electricity-rates/new-york',
-    label: 'New York Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Pennsylvania residential electricity rates, PAPUC Shop for Power context, and trends.',
-    group: 'research',
-    href: '/electricity-rates/pennsylvania',
-    label: 'Pennsylvania Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Illinois residential electricity rates, ComEd and Ameren supply charges, and nuclear data.',
-    group: 'research',
-    href: '/electricity-rates/illinois',
-    label: 'Illinois Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Ohio residential electricity rates, PUCO Choice benchmarks, and monthly power costs.',
-    group: 'research',
-    href: '/electricity-rates/ohio',
-    label: 'Ohio Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Georgia residential electricity rates, Georgia Power baseline tariffs, and Vogtle data.',
-    group: 'research',
-    href: '/electricity-rates/georgia',
-    label: 'Georgia Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'North Carolina residential electricity rates, Duke Energy tariffs, and solar growth.',
-    group: 'research',
-    href: '/electricity-rates/north-carolina',
-    label: 'North Carolina Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Michigan residential electricity rates, DTE and Consumers Energy tariffs, and EIA trends.',
-    group: 'research',
-    href: '/electricity-rates/michigan',
-    label: 'Michigan Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Arizona residential electricity rates, average monthly AC bills, and ACC tariffs.',
-    group: 'research',
-    href: '/electricity-rates/arizona',
-    label: 'Arizona Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Virginia residential electricity rates, Dominion Energy tariffs, and VCEA targets.',
-    group: 'research',
-    href: '/electricity-rates/virginia',
-    label: 'Virginia Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Washington residential electricity rates, hydroelectric benchmarks, and CETA rules.',
-    group: 'research',
-    href: '/electricity-rates/washington',
-    label: 'Washington Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'New Jersey residential electricity rates, BGS auction benchmarks, and BPU context.',
-    group: 'research',
-    href: '/electricity-rates/new-jersey',
-    label: 'New Jersey Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Massachusetts residential electricity rates, ISO New England drivers, and DPU tariffs.',
-    group: 'research',
-    href: '/electricity-rates/massachusetts',
-    label: 'Massachusetts Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Tennessee residential electricity rates, TVA wholesale power benchmarks, and LPC context.',
-    group: 'research',
-    href: '/electricity-rates/tennessee',
-    label: 'Tennessee Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Indiana residential electricity rates, IURC utility regulation, and generation data.',
-    group: 'research',
-    href: '/electricity-rates/indiana',
-    label: 'Indiana Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Missouri residential electricity rates, Ameren and Evergy tariffs, and MPSC rules.',
-    group: 'research',
-    href: '/electricity-rates/missouri',
-    label: 'Missouri Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Maryland residential electricity rates, Maryland PSC choice benchmarks, and PJM context.',
-    group: 'research',
-    href: '/electricity-rates/maryland',
-    label: 'Maryland Electricity Rates',
-    sitemap: true,
-  },
-  {
-    description:
-      'Wisconsin residential electricity rates, PSCW regulated tariffs, and We Energies data.',
-    group: 'research',
-    href: '/electricity-rates/wisconsin',
-    label: 'Wisconsin Electricity Rates',
-    sitemap: true,
-  },
+] as const satisfies readonly PublicRoute[];
+
+const statePublicRoutes = PUBLISHED_STATE_CONFIGS.map((conf) => ({
+  description: conf.metaDescription,
+  group: 'research' as const,
+  href: `/electricity-rates/${conf.slug}` as const,
+  label: `${conf.name} Electricity Rates`,
+  sitemap: true,
+}));
+
+const restPublicRoutes = [
   {
     description:
       'Appliance power consumption data, typical wattage benchmarks, and operating cost guides.',
@@ -473,6 +326,12 @@ export const publicRoutes = [
     sitemap: true,
   },
 ] as const satisfies readonly PublicRoute[];
+
+export const publicRoutes = [
+  ...basePublicRoutes,
+  ...statePublicRoutes,
+  ...restPublicRoutes,
+] as const;
 
 export type PublicRouteHref = (typeof publicRoutes)[number]['href'];
 export type PublicRouteEntry = (typeof publicRoutes)[number];

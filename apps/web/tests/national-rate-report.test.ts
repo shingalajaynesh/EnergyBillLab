@@ -121,6 +121,34 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
     }
   });
 
+  it('dynamically resolves Batch 3 states to published report routes and retains Rate Data Only for unpublished states', () => {
+    const { PUBLISHED_STATES } = require('@/config/published-states');
+    const batch3Slugs = [
+      'connecticut',
+      'oklahoma',
+      'colorado',
+      'minnesota',
+      'iowa',
+      'louisiana',
+      'kentucky',
+      'oregon',
+      'alabama',
+      'south-carolina',
+    ];
+    const unpublishedSlugs = ['nevada', 'hawaii', 'alaska', 'vermont', 'idaho'];
+
+    batch3Slugs.forEach((slug: string) => {
+      const config = PUBLISHED_STATES[slug];
+      expect(config).toBeDefined();
+      expect(config?.isPublished).toBe(true);
+    });
+
+    unpublishedSlugs.forEach((slug: string) => {
+      const config = PUBLISHED_STATES[slug];
+      expect(config?.isPublished).not.toBe(true);
+    });
+  });
+
   it('validates CSV export route headers, columns, X-Report-Period, cache-control, and content', async () => {
     const response = await getCsvRoute();
 

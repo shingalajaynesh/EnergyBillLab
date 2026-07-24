@@ -10,7 +10,7 @@ Canonical Route Pattern:
 Hub Route Pattern:
 `/electricity-rates`
 
-## Approved Published States (20)
+## Approved Published States (30)
 
 ### Batch 1 (10 States)
 
@@ -37,6 +37,19 @@ Hub Route Pattern:
 18. `missouri` (MO)
 19. `maryland` (MD)
 20. `wisconsin` (WI)
+
+### Batch 3 (10 States — Growth Phase 2)
+
+21. `colorado` (CO)
+22. `minnesota` (MN)
+23. `south-carolina` (SC)
+24. `alabama` (AL)
+25. `louisiana` (LA)
+26. `kentucky` (KY)
+27. `oregon` (OR)
+28. `oklahoma` (OK)
+29. `connecticut` (CT)
+30. `iowa` (IA)
 
 Any request to an unapproved state slug returns Next.js `notFound()`.
 

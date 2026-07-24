@@ -1,3 +1,11 @@
+export type StateSource = {
+  organization: string;
+  title: string;
+  url: string;
+  supportedTopic: string;
+  name?: string;
+};
+
 export type PublishedStateConfig = {
   code: string;
   slug: string;
@@ -11,11 +19,7 @@ export type PublishedStateConfig = {
     title: string;
     description: string;
   }>;
-  sources: Array<{
-    name: string;
-    url: string;
-    supportedTopic?: string;
-  }>;
+  sources: StateSource[];
   relatedStateSlugs: string[];
 };
 
@@ -52,12 +56,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity sales and retail revenue',
       },
       {
+        organization: 'California Public Utilities Commission (CPUC)',
+        title: 'California Electric Utility Regulation & Rate Cases',
         name: 'California Public Utilities Commission (CPUC)',
         url: 'https://www.cpuc.ca.gov/',
+        supportedTopic: 'Utility rate structure and wildfire mitigation surcharges',
       },
     ],
     relatedStateSlugs: ['texas', 'washington', 'arizona', 'oregon'],
@@ -92,12 +102,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential rate metrics',
       },
       {
+        organization: 'Public Utility Commission of Texas (PUCT)',
+        title: 'Texas Retail Electric Provider Oversight & Power to Choose',
         name: 'Public Utility Commission of Texas (PUCT)',
         url: 'https://www.puc.texas.gov/',
+        supportedTopic: 'Retail market restructuring and TDU delivery charges',
       },
     ],
     relatedStateSlugs: ['california', 'florida', 'illinois', 'louisiana'],
@@ -132,12 +148,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential revenue and kWh sales',
       },
       {
+        organization: 'Florida Public Service Commission (PSC)',
+        title: 'Florida Electric Utility Rate Filings & Fuel Adjustments',
         name: 'Florida Public Service Commission (PSC)',
         url: 'https://www.psc.state.fl.us/',
+        supportedTopic: 'Utility fuel adjustment clauses and storm hardening riders',
       },
     ],
     relatedStateSlugs: ['georgia', 'texas', 'north-carolina', 'alabama'],
@@ -172,12 +194,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
       },
       {
+        organization: 'New York Public Service Commission (NYPSC)',
+        title: 'New York Utility Tariffs & Clean Energy Mandates',
         name: 'New York Public Service Commission (NYPSC)',
         url: 'https://www.dps.ny.gov/',
+        supportedTopic: 'Regional transmission congestion and CLCPA clean energy rules',
       },
     ],
     relatedStateSlugs: ['pennsylvania', 'massachusetts', 'new-jersey', 'connecticut'],
@@ -212,12 +240,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide electricity pricing statistics',
       },
       {
+        organization: 'Pennsylvania Public Utility Commission (PAPUC)',
+        title: 'Pennsylvania Electric Choice & Price to Compare',
         name: 'Pennsylvania Public Utility Commission (PAPUC)',
         url: 'https://www.puc.pa.gov/',
+        supportedTopic: 'Default supply Price to Compare and PJM generation context',
       },
     ],
     relatedStateSlugs: ['ohio', 'new-york', 'illinois', 'maryland'],
@@ -252,12 +286,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential rate statistics',
       },
       {
+        organization: 'Illinois Commerce Commission (ICC)',
+        title: 'Illinois Utility Rate Structure & CEJA Oversight',
         name: 'Illinois Commerce Commission (ICC)',
         url: 'https://www.icc.illinois.gov/',
+        supportedTopic: 'Nuclear baseload regulation and CEJA clean energy rules',
       },
     ],
     relatedStateSlugs: ['ohio', 'michigan', 'pennsylvania', 'indiana'],
@@ -292,12 +332,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity data',
       },
       {
+        organization: 'Public Utilities Commission of Ohio (PUCO)',
+        title: 'Ohio Standard Service Offer (SSO) & CRES Rules',
         name: 'Public Utilities Commission of Ohio (PUCO)',
         url: 'https://puco.ohio.gov/',
+        supportedTopic: 'SSO auction oversight and municipal aggregation rules',
       },
     ],
     relatedStateSlugs: ['pennsylvania', 'illinois', 'michigan', 'kentucky'],
@@ -332,12 +378,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales metrics',
       },
       {
+        organization: 'Georgia Public Service Commission (PSC)',
+        title: 'Georgia Utility Base Rate Orders & Plant Vogtle Filings',
         name: 'Georgia Public Service Commission (PSC)',
         url: 'https://psc.ga.gov/',
+        supportedTopic: 'Plant Vogtle nuclear expansion recovery and summer cooling tariffs',
       },
     ],
     relatedStateSlugs: ['florida', 'north-carolina', 'alabama', 'south-carolina'],
@@ -372,12 +424,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate data',
       },
       {
+        organization: 'North Carolina Utilities Commission (NCUC)',
+        title: 'North Carolina Multi-Year Rate Plans & Carbon Plan',
         name: 'North Carolina Utilities Commission (NCUC)',
         url: 'https://www.ncuc.gov/',
+        supportedTopic: 'Duke Energy regulated tariffs and utility solar growth',
       },
     ],
     relatedStateSlugs: ['georgia', 'virginia', 'south-carolina', 'florida'],
@@ -412,12 +470,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity metrics',
       },
       {
+        organization: 'Michigan Public Service Commission (MPSC)',
+        title: 'Michigan Clean Energy Plan Orders & Reliability Surcharges',
         name: 'Michigan Public Service Commission (MPSC)',
         url: 'https://www.michigan.gov/mpsc',
+        supportedTopic: 'MPSC clean energy mandates and statutory choice cap',
       },
     ],
     relatedStateSlugs: ['illinois', 'ohio', 'wisconsin', 'pennsylvania'],
@@ -452,12 +516,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity data',
       },
       {
+        organization: 'Arizona Corporation Commission (ACC)',
+        title: 'Arizona TOU Tariff Rates & Palo Verde Nuclear Oversight',
         name: 'Arizona Corporation Commission (ACC)',
         url: 'https://www.azcc.gov/',
+        supportedTopic: 'Time-of-use pricing and Palo Verde nuclear generation context',
       },
     ],
     relatedStateSlugs: ['california', 'texas', 'nevada', 'utah'],
@@ -492,12 +562,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity metrics',
       },
       {
+        organization: 'Virginia State Corporation Commission (SCC)',
+        title: 'Virginia Rate Filings & VCEA Decarbonization Rules',
         name: 'Virginia State Corporation Commission (SCC)',
         url: 'https://scc.virginia.gov/',
+        supportedTopic: 'Data center load impact and VCEA decarbonization goals',
       },
     ],
     relatedStateSlugs: ['north-carolina', 'maryland', 'pennsylvania', 'georgia'],
@@ -532,12 +608,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
       },
       {
+        organization: 'Washington Utilities and Transportation Commission (UTC)',
+        title: 'Washington Utility Regulation & CETA Compliance',
         name: 'Washington Utilities and Transportation Commission (UTC)',
         url: 'https://www.utc.wa.gov/',
+        supportedTopic: 'Hydroelectric supply advantage and CETA 100% clean mandate',
       },
     ],
     relatedStateSlugs: ['california', 'oregon', 'idaho', 'montana'],
@@ -572,12 +654,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate statistics',
       },
       {
+        organization: 'New Jersey Board of Public Utilities (NJBPU)',
+        title: 'New Jersey BGS Auction Oversight & Energy Master Plan',
         name: 'New Jersey Board of Public Utilities (NJBPU)',
         url: 'https://www.nj.gov/bpu/',
+        supportedTopic: 'BGS basic generation service auctions and offshore wind goals',
       },
     ],
     relatedStateSlugs: ['new-york', 'pennsylvania', 'maryland', 'massachusetts'],
@@ -612,12 +700,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail sales metrics',
       },
       {
+        organization: 'Massachusetts Department of Public Utilities (DPU)',
+        title: 'Massachusetts Basic Service & Municipal Aggregation Filings',
         name: 'Massachusetts Department of Public Utilities (DPU)',
         url: 'https://www.mass.gov/orgs/department-of-public-utilities',
+        supportedTopic: 'ISO New England winter supply spikes and municipal aggregation',
       },
     ],
     relatedStateSlugs: ['new-york', 'new-jersey', 'connecticut', 'rhode-island'],
@@ -652,12 +746,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate statistics',
       },
       {
+        organization: 'Tennessee Valley Authority (TVA)',
+        title: 'TVA Wholesale Power Tariffs & Generation Portfolio',
         name: 'Tennessee Valley Authority (TVA)',
         url: 'https://www.tva.com/',
+        supportedTopic: 'Federal public power model and wholesale baseload generation',
       },
     ],
     relatedStateSlugs: ['georgia', 'north-carolina', 'kentucky', 'alabama'],
@@ -692,12 +792,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
       },
       {
+        organization: 'Indiana Utility Regulatory Commission (IURC)',
+        title: 'Indiana Electric Rate Cases & IURC Base Orders',
         name: 'Indiana Utility Regulatory Commission (IURC)',
         url: 'https://www.in.gov/iurc/',
+        supportedTopic: 'Coal plant retirement recovery and IURC utility rate regulation',
       },
     ],
     relatedStateSlugs: ['illinois', 'ohio', 'michigan', 'kentucky'],
@@ -732,12 +838,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate data',
       },
       {
+        organization: 'Missouri Public Service Commission (MPSC)',
+        title: 'Missouri Utility Rate Cases & Renewable Standard',
         name: 'Missouri Public Service Commission (MPSC)',
         url: 'https://psc.mo.gov/',
+        supportedTopic: 'Callaway nuclear plant baseload and MPSC rate regulation',
       },
     ],
     relatedStateSlugs: ['illinois', 'kansas', 'iowa', 'tennessee'],
@@ -772,12 +884,18 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate metrics',
       },
       {
+        organization: 'Maryland Public Service Commission (PSC)',
+        title: 'Maryland Standard Offer Service (SOS) Auctions & EmPOWER',
         name: 'Maryland Public Service Commission (PSC)',
         url: 'https://www.psc.state.md.us/',
+        supportedTopic: 'SOS default supply auctions and EmPOWER efficiency surcharges',
       },
     ],
     relatedStateSlugs: ['virginia', 'pennsylvania', 'new-jersey', 'delaware'],
@@ -812,23 +930,496 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     sources: [
       {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
         name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
         url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
       },
       {
+        organization: 'Public Service Commission of Wisconsin (PSCW)',
+        title: 'Wisconsin Electric Utility Rate Decisions',
         name: 'Public Service Commission of Wisconsin (PSCW)',
         url: 'https://psc.wi.gov/',
+        supportedTopic: 'PSCW rate regulation and Point Beach nuclear baseload',
       },
     ],
     relatedStateSlugs: ['illinois', 'michigan', 'minnesota', 'iowa'],
+  },
+  // BATCH 3 NEWLY PUBLISHED STATES
+  colorado: {
+    code: 'CO',
+    slug: 'colorado',
+    name: 'Colorado',
+    metaTitle: 'Colorado Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'View Colorado residential electricity rates, average monthly household bills, CPUC utility regulation, and clean energy transition drivers.',
+    overview:
+      'Colorado operates a regulated electric utility structure overseen by the Colorado Public Utilities Commission (CPUC). Investor-owned Xcel Energy (Public Service Company of Colorado) and Black Hills Energy serve major population centers, alongside municipal systems and electric co-ops. Rates reflect Colorado’s clean energy transition mandates (80% carbon reduction by 2030), solar/wind buildouts, and high winter space heating demand.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'CPUC Clean Energy Plans & Carbon Targets',
+        description:
+          'State policy mandates an 80% reduction in electric utility carbon emissions by 2030 and 100% clean electricity by 2050, accelerating renewable generation capital expenditures.',
+      },
+      {
+        title: 'Rapid Wind & Solar Grid Expansion',
+        description:
+          'Colorado ranks high in onshore wind generation and utility-scale solar across the Front Range, balancing baseline power delivery with renewable integration.',
+      },
+      {
+        title: 'Mountain Climate & Winter Heating Load',
+        description:
+          'Cold winter temperatures across high-elevation regions create high winter heating and natural gas cost interdependencies.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity sales and retail revenue',
+      },
+      {
+        organization: 'Colorado Public Utilities Commission (CPUC)',
+        title: 'Colorado Utility Regulation & Clean Energy Filings',
+        name: 'Colorado Public Utilities Commission (CPUC)',
+        url: 'https://puc.colorado.gov/',
+        supportedTopic: 'Utility rate structure and clean energy transition targets',
+      },
+    ],
+    relatedStateSlugs: ['wyoming', 'utah', 'new-mexico', 'kansas'],
+  },
+  minnesota: {
+    code: 'MN',
+    slug: 'minnesota',
+    name: 'Minnesota',
+    metaTitle: 'Minnesota Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Explore Minnesota average residential electricity rates, monthly bills, MPUC tariffs, and 100% clean energy transition goals.',
+    overview:
+      'Minnesota operates a regulated utility market under the oversight of the Minnesota Public Utilities Commission (MPUC). Investor-owned utilities like Xcel Energy and Minnesota Power serve residential homes alongside strong electric co-ops. Rates reflect MISO grid integration, severe cold-weather heating load, and a 100% carbon-free electricity standard by 2040.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: '100% Carbon-Free Electricity Standard by 2040',
+        description:
+          'Enacted in 2023, Minnesota state law requires electric utilities to achieve 100% carbon-free electricity by 2040, accelerating coal plant retirements.',
+      },
+      {
+        title: 'Severe Cold-Weather Heating Load',
+        description:
+          'Sub-zero winter temperatures drive heavy electric space and water heating demand across Minnesota homes during peak winter months.',
+      },
+      {
+        title: 'MISO Regional Grid & Wind Integration',
+        description:
+          'Over 20% of Minnesota electricity comes from wind power, integrated via the Midcontinent Independent System Operator (MISO).',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'Minnesota Public Utilities Commission (MPUC)',
+        title: 'Minnesota Electric Utility Decisions & Clean Energy Standard',
+        name: 'Minnesota Public Utilities Commission (MPUC)',
+        url: 'https://mn.gov/puc/',
+        supportedTopic: 'MPUC rate regulation and 100% carbon-free 2040 mandate',
+      },
+    ],
+    relatedStateSlugs: ['wisconsin', 'iowa', 'north-dakota', 'south-dakota'],
+  },
+  'south-carolina': {
+    code: 'SC',
+    slug: 'south-carolina',
+    name: 'South Carolina',
+    metaTitle: 'South Carolina Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze South Carolina residential electricity rates, Dominion and Duke Energy tariffs, PSC regulation, and nuclear baseload data.',
+    overview:
+      'South Carolina operates a regulated electricity market framework supervised by the South Carolina Public Service Commission (PSC). Dominant investor-owned utilities Dominion Energy South Carolina and Duke Energy Carolinas/Progress serve residential households alongside Santee Cooper and electric cooperatives. Rates reflect high summer air conditioning usage and heavy nuclear baseload generation.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'High Nuclear Baseload Capacity',
+        description:
+          'Nuclear power provides over 50% of South Carolina net electricity generation, supplying low-carbon baseline energy across the state.',
+      },
+      {
+        title: 'Intense Summer Cooling Demand',
+        description:
+          'Hot, humid coastal summers drive high air conditioning utilization and peak seasonal monthly consumption across South Carolina households.',
+      },
+      {
+        title: 'SC PSC Rate & Capital Expenditure Regulation',
+        description:
+          'Multi-year utility rate cases reflect grid resilience, storm recovery, and solar integration investments approved by state regulators.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate metrics',
+      },
+      {
+        organization: 'South Carolina Public Service Commission (PSC)',
+        title: 'South Carolina Electric Utility Base Rate Filings',
+        name: 'South Carolina Public Service Commission (PSC)',
+        url: 'https://psc.sc.gov/',
+        supportedTopic: 'Nuclear baseload regulation and summer cooling demand tariffs',
+      },
+    ],
+    relatedStateSlugs: ['north-carolina', 'georgia', 'florida', 'tennessee'],
+  },
+  alabama: {
+    code: 'AL',
+    slug: 'alabama',
+    name: 'Alabama',
+    metaTitle: 'Alabama Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Review Alabama residential electricity rates, Alabama Power tariffs, APSC rate stabilization mechanisms, and summer cooling demand.',
+    overview:
+      'Alabama operates a traditionally regulated utility market led by Alabama Power (a Southern Company subsidiary) alongside municipal systems and rural electric cooperatives. Supervised by the Alabama Public Service Commission (APSC), residential rates are supported by a diverse generation mix of natural gas, nuclear power, coal, and hydroelectric facilities.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Natural Gas & Nuclear Generation Portfolio',
+        description:
+          'Natural gas and nuclear plants provide the vast majority of Alabama baseload power generation, stabilizing grid capacity.',
+      },
+      {
+        title: 'Deep South Summer Air Conditioning Load',
+        description:
+          'Prolonged summer heat and humidity require extensive air conditioning usage across residential homes during summer months.',
+      },
+      {
+        title: 'APSC Rate Stabilization & Equalization (RSE)',
+        description:
+          'Formulaic Rate Stabilization & Equalization (RSE) mechanisms regulate utility returns and fuel adjustment clauses for retail customers.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'Alabama Public Service Commission (APSC)',
+        title: 'Alabama Power Rate Stabilization & Equalization Oversight',
+        name: 'Alabama Public Service Commission (APSC)',
+        url: 'https://psc.alabama.gov/',
+        supportedTopic: 'APSC Rate Stabilization & Equalization and nuclear generation',
+      },
+    ],
+    relatedStateSlugs: ['georgia', 'florida', 'tennessee', 'mississippi'],
+  },
+  louisiana: {
+    code: 'LA',
+    slug: 'louisiana',
+    name: 'Louisiana',
+    metaTitle: 'Louisiana Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Examine Louisiana residential electricity rates, Entergy tariffs, LPSC regulation, natural gas generation, and storm recovery riders.',
+    overview:
+      'Louisiana operates a regulated electricity market framework supervised by the Louisiana Public Service Commission (LPSC) and the New Orleans City Council. Entergy Louisiana, Entergy New Orleans, and Cleco Power serve the majority of residential customers. Rates reflect natural gas generation dominance, industrial load balances, and severe weather / storm recovery riders.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Natural Gas Fuel Dominance',
+        description:
+          'Over 70% of Louisiana net electricity generation is natural gas-fired, tying retail rates closely to Gulf Coast natural gas spot prices.',
+      },
+      {
+        title: 'Hurricane Restoration & Grid Hardening Riders',
+        description:
+          'Approved cost recovery riders for major tropical storm and hurricane transmission repairs influence monthly retail delivery rates.',
+      },
+      {
+        title: 'Gulf Coast Cooling Intensity',
+        description:
+          'Subtropical climate creates prolonged high-humidity summer cooling demand across homes throughout southern Louisiana.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly residential electricity metrics',
+      },
+      {
+        organization: 'Louisiana Public Service Commission (LPSC)',
+        title: 'Louisiana Utility Tariff Orders & Storm Securitization',
+        name: 'Louisiana Public Service Commission (LPSC)',
+        url: 'https://lpsc.louisiana.gov/',
+        supportedTopic: 'Natural gas generation dominance and hurricane recovery riders',
+      },
+    ],
+    relatedStateSlugs: ['texas', 'arkansas', 'mississippi', 'alabama'],
+  },
+  kentucky: {
+    code: 'KY',
+    slug: 'kentucky',
+    name: 'Kentucky',
+    metaTitle: 'Kentucky Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Discover Kentucky residential electricity rates, KPSC utility regulation, coal-to-gas transition drivers, and average power costs.',
+    overview:
+      'Kentucky operates a regulated electric utility structure overseen by the Kentucky Public Service Commission (KPSC). Major investor-owned utilities LG&E, KU, and Duke Energy Kentucky serve households alongside TVA distributors and rural electric co-ops. Rates reflect a historically coal-heavy generation fleet transitioning to natural gas and solar.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Coal-to-Gas Generation Transition',
+        description:
+          'Utilities are retiring legacy coal units under KPSC approval, replacing capacity with natural gas combined-cycle and utility solar.',
+      },
+      {
+        title: 'Competitive Industrial & Residential Baseline Rates',
+        description:
+          'Electricity rates in Kentucky historically rank below national averages due to regional fuel access and baseload power infrastructure.',
+      },
+      {
+        title: 'Dual Heating & Cooling Seasonal Spikes',
+        description:
+          'Humid summers and cold winters drive both summer air conditioning and winter heat pump electrical loads across Kentucky households.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales benchmarks',
+      },
+      {
+        organization: 'Kentucky Public Service Commission (KPSC)',
+        title: 'Kentucky Electric Utility Rate Orders & Generation Plans',
+        name: 'Kentucky Public Service Commission (KPSC)',
+        url: 'https://psc.ky.gov/',
+        supportedTopic: 'Coal-to-gas generation transition and KPSC utility regulation',
+      },
+    ],
+    relatedStateSlugs: ['tennessee', 'indiana', 'ohio', 'missouri'],
+  },
+  oregon: {
+    code: 'OR',
+    slug: 'oregon',
+    name: 'Oregon',
+    metaTitle: 'Oregon Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Learn about Oregon residential electricity rates, OPUC regulated tariffs, PGE and PacifiCorp benchmarks, and Columbia River hydro supply.',
+    overview:
+      'Oregon residential electricity is served by investor-owned utilities Portland General Electric (PGE) and PacifiCorp (Pacific Power) under Oregon Public Utility Commission (OPUC) regulation, alongside consumer-owned PUDs and co-ops. Rates reflect abundant Columbia River basin hydroelectric power, climate policies (HB 2021 clean energy targets), and wildfire mitigation costs.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Hydroelectric Generation Base',
+        description:
+          'Hydroelectric facilities provide roughly half of Oregon electricity, backed by Bonneville Power Administration (BPA) wholesale power.',
+      },
+      {
+        title: 'HB 2021 100% Clean Energy Mandate',
+        description:
+          'State law requires investor-owned utilities to reduce greenhouse gas emissions 100% below baseline levels by 2040.',
+      },
+      {
+        title: 'Wildfire Mitigation & Grid Resilience Investments',
+        description:
+          'OPUC-approved vegetation management and line hardening expenditures support grid safety during high-wind summer periods.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential rate statistics',
+      },
+      {
+        organization: 'Oregon Public Utility Commission (OPUC)',
+        title: 'Oregon Utility Regulation & HB 2021 Clean Energy Targets',
+        name: 'Oregon Public Utility Commission (OPUC)',
+        url: 'https://www.oregon.gov/puc',
+        supportedTopic: 'Hydroelectric generation advantage and HB 2021 clean energy mandate',
+      },
+    ],
+    relatedStateSlugs: ['washington', 'california', 'idaho', 'nevada'],
+  },
+  oklahoma: {
+    code: 'OK',
+    slug: 'oklahoma',
+    name: 'Oklahoma',
+    metaTitle: 'Oklahoma Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Compare Oklahoma residential electricity rates, OG&E and PSO tariffs, OCC regulation, and wind power generation context.',
+    overview:
+      'Oklahoma operates a regulated electric utility market overseen by the Oklahoma Corporation Commission (OCC). Primary investor-owned utilities Oklahoma Gas and Electric (OG&E) and Public Service Company of Oklahoma (PSO/AEP) serve residential load alongside rural electric cooperatives. Rates are supported by abundant wind energy generation and natural gas plants.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Wind Energy Leadership',
+        description:
+          'Oklahoma ranks among top U.S. states in wind generation, producing over 40% of its total electricity from wind turbines.',
+      },
+      {
+        title: 'Natural Gas Marginal Pricing',
+        description:
+          'Natural gas power plants balance wind variability and set marginal prices in the Southwest Power Pool (SPP) regional grid.',
+      },
+      {
+        title: 'Extreme Weather & Storm Restoration',
+        description:
+          'Tornadoes and severe ice storms require periodic utility infrastructure restoration cost recovery approved by state regulators.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail sales benchmarks',
+      },
+      {
+        organization: 'Oklahoma Corporation Commission (OCC)',
+        title: 'Oklahoma Public Utility Rate Cases & SPP Grid Oversight',
+        name: 'Oklahoma Corporation Commission (OCC)',
+        url: 'https://oklahoma.gov/occ.html',
+        supportedTopic: 'Wind energy generation leadership and OCC rate regulation',
+      },
+    ],
+    relatedStateSlugs: ['texas', 'kansas', 'missouri', 'arkansas'],
+  },
+  connecticut: {
+    code: 'CT',
+    slug: 'connecticut',
+    name: 'Connecticut',
+    metaTitle: 'Connecticut Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Analyze Connecticut residential electricity rates, PURA Choice benchmarks, Eversource and UI tariffs, and ISO New England winter trends.',
+    overview:
+      'Connecticut operates a restructured retail electric choice market within ISO New England. Regulated distribution utilities Eversource (CL&P) and United Illuminating (UI) handle power delivery, while customers can select competitive retail suppliers or receive default Standard Service rates. Rates are elevated due to ISO New England winter gas pipeline bottlenecks and regional transmission costs.',
+    marketType: 'Retail Choice / Deregulated Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'PURA Standard Service Generation Auctions',
+        description:
+          'The Connecticut Public Utilities Regulatory Authority (PURA) supervises bi-annual supply procurements for default utility customers.',
+      },
+      {
+        title: 'ISO New England Winter Fuel Constraints',
+        description:
+          'Regional natural gas pipeline bottlenecks during cold snaps influence seasonal electricity supply price spikes.',
+      },
+      {
+        title: 'High Regional Transmission & Distribution Tariffs',
+        description:
+          'Densely populated coastal delivery networks contribute to higher baseline residential delivery fees across Connecticut.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Statewide residential sales data',
+      },
+      {
+        organization: 'Connecticut Public Utilities Regulatory Authority (PURA)',
+        title: 'Connecticut Electric Choice & PURA Rate Decisions',
+        name: 'Connecticut Public Utilities Regulatory Authority (PURA)',
+        url: 'https://portal.ct.gov/pura',
+        supportedTopic: 'PURA Standard Service auctions and ISO New England winter constraints',
+      },
+    ],
+    relatedStateSlugs: ['massachusetts', 'new-york', 'rhode-island', 'vermont'],
+  },
+  iowa: {
+    code: 'IA',
+    slug: 'iowa',
+    name: 'Iowa',
+    metaTitle: 'Iowa Residential Electricity Rates & Monthly Cost',
+    metaDescription:
+      'Review Iowa residential electricity rates, IUC regulation, MidAmerican and Alliant Energy tariffs, and nation-leading wind energy generation.',
+    overview:
+      'Iowa operates a regulated electric utility market supervised by the Iowa Utilities Commission (IUC). Investor-owned MidAmerican Energy and Alliant Energy (Interstate Power and Light) serve major urban centers, flanked by consumer-owned municipal systems and rural electric co-ops. Iowa leads the nation in wind power reliance, generating over 60% of its electricity from wind.',
+    marketType: 'Regulated Utility Market',
+    isPublished: true,
+    keyFactors: [
+      {
+        title: 'Nation-Leading Wind Energy Reliance',
+        description:
+          'Iowa produces over 60% of net electricity generation from wind power, stabilizing long-term energy supply costs across the state.',
+      },
+      {
+        title: 'MISO Grid Integration & Agricultural Load',
+        description:
+          'Utilities participate in the MISO regional grid, serving heavy grain drying and agricultural manufacturing demand.',
+      },
+      {
+        title: 'Severe Winter & Summer Seasonal Extreme Loads',
+        description:
+          'Cold Midwestern winters and hot summer cooling periods drive seasonal residential consumption spikes across Iowa homes.',
+      },
+    ],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration (EIA)',
+        title: 'Form EIA-861M Monthly Retail Sales',
+        name: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
+        url: 'https://www.eia.gov/electricity/monthly/',
+        supportedTopic: 'Monthly retail electricity rate metrics',
+      },
+      {
+        organization: 'Iowa Utilities Commission (IUC)',
+        title: 'Iowa Electric Rate Filings & Wind Capacity Oversight',
+        name: 'Iowa Utilities Commission (IUC)',
+        url: 'https://iuc.iowa.gov/',
+        supportedTopic: 'Wind energy generation reliance and IUC rate regulation',
+      },
+    ],
+    relatedStateSlugs: ['minnesota', 'wisconsin', 'illinois', 'missouri'],
   },
 };
 
 export const FIRST_TEN_STATES = PUBLISHED_STATES;
 
-export const APPROVED_STATE_SLUGS = Object.values(PUBLISHED_STATES)
-  .filter((state) => state.isPublished)
-  .map((state) => state.slug);
+export const PUBLISHED_STATE_CONFIGS = Object.values(PUBLISHED_STATES).filter(
+  (state) => state.isPublished,
+);
+
+export const APPROVED_STATE_SLUGS = PUBLISHED_STATE_CONFIGS.map((state) => state.slug);
+
+export const PUBLISHED_STATE_ROUTES = PUBLISHED_STATE_CONFIGS.map(
+  (state) => `/electricity-rates/${state.slug}` as const,
+);
 
 export function isApprovedStateSlug(slug: string): boolean {
   return APPROVED_STATE_SLUGS.includes(slug.toLowerCase());

@@ -45,7 +45,7 @@ describe('public route registry', () => {
     expect(calculators).toHaveLength(10);
 
     const statePages = paths.filter((path) => path.startsWith('/electricity-rates/'));
-    expect(statePages).toHaveLength(20);
+    expect(statePages).toHaveLength(30);
 
     const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');
     expect(guides).toHaveLength(10);
