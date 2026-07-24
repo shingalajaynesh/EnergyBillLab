@@ -9,6 +9,7 @@ This document serves as the authoritative index for all public, indexable routes
 ## Route Categories
 
 ### 1. Primary Utility & Calculator Routes (10)
+
 - `/` — Homepage / Primary Bill Analyzer Entry
 - `/electricity-bill-analyzer` — Bill Analyzer & Usage Normalizer Tool
 - `/tools` — Public Tools Hub
@@ -23,6 +24,7 @@ This document serves as the authoritative index for all public, indexable routes
 - `/tools/dehumidifier-cost-calculator` — Dehumidifier Cost Calculator
 
 ### 2. State Electricity Rate Pages (30 Published)
+
 - `/electricity-rates` — Electricity Rates Hub
 - `/electricity-rates/california` — California Electricity Rates
 - `/electricity-rates/texas` — Texas Electricity Rates
@@ -56,11 +58,13 @@ This document serves as the authoritative index for all public, indexable routes
 - `/electricity-rates/iowa` — Iowa Electricity Rates
 
 ### 3. Original Research Reports (1)
+
 - `/research` — Research Hub
 - `/research/us-residential-electricity-rate-report` — National Electricity-Rate Report
 - `/research/us-residential-electricity-rate-report/csv` — CSV Export Route
 
 ### 4. Guides & Hubs (10 Guides + Hubs)
+
 - `/appliances` — Appliances Hub
 - `/guides` — Guides Hub
 - `/guides/why-is-my-electric-bill-so-high`
@@ -75,6 +79,7 @@ This document serves as the authoritative index for all public, indexable routes
 - `/guides/how-much-does-it-cost-to-run-a-dehumidifier`
 
 ### 5. Trust, Legal & Policy Pages (10)
+
 - `/about` — About Energy Bill Lab
 - `/contact` — Contact & Editorial Corrections
 - `/methodology` — Calculation Methodology

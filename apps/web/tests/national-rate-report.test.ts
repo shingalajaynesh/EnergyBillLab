@@ -8,6 +8,7 @@ import { CANONICAL_50_STATE_CODES, US_GEOGRAPHIES } from '@energy-bill-lab/datab
 import { dynamic as hubDynamic } from '@/app/research/page';
 import { GET as getCsvRoute } from '@/app/research/us-residential-electricity-rate-report/csv/route';
 import { dynamic as reportDynamic } from '@/app/research/us-residential-electricity-rate-report/page';
+import { PUBLISHED_STATES } from '@/config/published-states';
 import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getRouteByHref, sitemapRoutes } from '@/lib/routes';
@@ -122,7 +123,6 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
   });
 
   it('dynamically resolves Batch 3 states to published report routes and retains Rate Data Only for unpublished states', () => {
-    const { PUBLISHED_STATES } = require('@/config/published-states');
     const batch3Slugs = [
       'connecticut',
       'oklahoma',
