@@ -156,6 +156,42 @@ describe('Ten Energy Guides Architecture & Integrity', () => {
     expect(appliance.periodKwh).toBe(360);
     expect(appliance.periodCostUsd).toBe(59.4);
 
+    // AC worked example check
+    const ac = calculateAcCost({
+      mode: 'capacity_eer',
+      coolingCapacityBtu: 12000,
+      eer: 10,
+      hoursPerDay: 8,
+      days: 30,
+      rateCentsPerKwh: 16.5,
+      dutyCyclePercent: 65,
+    });
+    expect(ac.monthlyKwh).toBe(187.2);
+    expect(ac.monthlyCostUsd).toBe(30.89);
+
+    // Space heater worked example check
+    const heater = calculateSpaceHeaterCost({
+      heaterWatts: 1500,
+      quantity: 1,
+      hoursPerDay: 8,
+      days: 30,
+      rateCentsPerKwh: 16.5,
+      dutyCyclePercent: 75,
+    });
+    expect(heater.periodKwh).toBe(270);
+    expect(heater.periodCostUsd).toBe(44.55);
+
+    // EV charging worked example check
+    const ev = calculateEvChargingCost({
+      batteryCapacityKwh: 75,
+      startingChargePercent: 20,
+      targetChargePercent: 80,
+      chargingEfficiencyPercent: 88,
+      rateCentsPerKwh: 16.5,
+    });
+    expect(ev.gridEnergyRequiredKwh).toBe(51.14);
+    expect(ev.chargeCostUsd).toBe(8.44);
+
     // Refrigerator worked example check
     const refAnnual = calculateRefrigeratorAnnualKwhCost({
       annualKwh: 400,
