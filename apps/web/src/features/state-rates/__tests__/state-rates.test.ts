@@ -145,21 +145,21 @@ describe('State Electricity Rates Configuration & Helpers', () => {
     expect(isConsecutiveCalendarMonth('2026-05-01', '2025-05-01')).toBe(false);
   });
 
-  it('includes all thirty state pages in sitemapRoutes', () => {
+  it('includes all forty state pages in sitemapRoutes', () => {
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(sitemapHrefs).toContain(`/electricity-rates/${slug}`);
     });
   });
 
-  it('permits ad rendering for all thirty approved state pages and rejects unpublished states', () => {
+  it('permits ad rendering for all forty approved state pages and rejects unpublished states', () => {
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(isAdEligibleRoute(`/electricity-rates/${slug}`)).toBe(true);
     });
 
     expect(isAdEligibleRoute('/electricity-rates/alaska')).toBe(false);
-    expect(isAdEligibleRoute('/electricity-rates/hawaii')).toBe(false);
-    expect(isAdEligibleRoute('/electricity-rates/nevada')).toBe(false);
+    expect(isAdEligibleRoute('/electricity-rates/vermont')).toBe(false);
+    expect(isAdEligibleRoute('/electricity-rates/maine')).toBe(false);
     expect(isAdEligibleRoute('/electricity-rates/random')).toBe(false);
   });
 });

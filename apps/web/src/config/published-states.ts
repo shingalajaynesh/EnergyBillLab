@@ -17,6 +17,7 @@ export type PublishedStateConfig = {
     | 'Regulated Utility Market'
     | 'Retail Choice / Deregulated Market'
     | 'Retail supplier choice with regulated distribution'
+    | 'Public power-only utility structure'
     | 'Mixed municipal, cooperative, and investor-owned structure'
     | 'Hybrid Market';
   isPublished: boolean;
@@ -1482,7 +1483,7 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     ],
     relatedStateSlugs: ['minnesota', 'wisconsin', 'illinois', 'missouri'],
   },
-  // BATCH 4 NEWLY PUBLISHED STATES
+  // BATCH 4 PUBLISHED STATES
   nevada: {
     code: 'NV',
     slug: 'nevada',
@@ -1756,8 +1757,8 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     metaDescription:
       'Learn about Nebraska public power residential electricity rates, NPPD and OPPD benchmarks, and public power district cost structures.',
     overview:
-      'Nebraska is unique as the only state served entirely by public power entities, including public power districts (such as Nebraska Public Power District and Omaha Public Power District), municipal utilities, and rural electric cooperatives. Overseen by local elected boards and the Nebraska Power Review Board, rates reflect non-profit public service, nuclear baseload generation, and wind integration.',
-    marketType: 'Mixed municipal, cooperative, and investor-owned structure',
+      'Nebraska is the only U.S. state served entirely by publicly owned electric utilities, including public power districts, municipal utilities, and electric cooperatives. Oversight is distributed among local governing boards and the Nebraska Power Review Board.',
+    marketType: 'Public power-only utility structure',
     isPublished: true,
     keyFactors: [
       {
