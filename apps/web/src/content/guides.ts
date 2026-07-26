@@ -2452,7 +2452,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Net Metering Affects Your Electric Bill',
     breadcrumbLabel: 'Net Metering & Solar Credits',
     description:
-      'Learn how rooftop solar net metering (and state-specific policies like California Net Billing / NEM rules) calculates imported vs. exported kWh, bill credits, annual true-ups, minimum bills, and fixed customer fees.',
+      "Learn how rooftop solar net metering (and state-specific tariffs like California's Net Billing Tariff, commonly called the Solar Billing Plan or NEM 3) calculates imported vs. exported kWh, bill credits, annual true-ups, minimum bills, and fixed customer fees.",
     eyebrow: 'Solar Billing Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -2464,11 +2464,18 @@ export const energyGuides: Record<string, GuideDefinition> = {
     actionLabel: 'Analyze Solar Net Metering',
     summaryTakeaways: [
       'Net metering tracks the bi-directional flow of electricity: kWh imported from the grid minus surplus solar kWh exported back to the grid.',
-      'Compensation structures vary by state and utility—ranging from 1:1 full retail rate credits to avoided-cost or net-billing tariffs (such as California Net Billing / NEM 3.0 rules).',
+      "Compensation structures vary by state and utility—ranging from classic 1:1 full retail rate credits to state-specific net-billing tariffs (such as California's Net Billing Tariff / NEM 3, which succeeded NEM 2.0 on April 15, 2023).",
       'Net metering does not eliminate all electric charges; solar customers still pay fixed monthly customer fees, grid interconnection charges, and minimum bills.',
     ],
     sections: [],
     sources: [
+      {
+        organization: 'California Public Utilities Commission',
+        title: 'Net Billing Tariff Decision D.22-12-056 (Proceeding R.20-08-020)',
+        topic:
+          'Net Billing Tariff adopted via Decision D.22-12-056 in proceeding R.20-08-020, Solar Billing Plan rules, and April 15, 2023 transition',
+        url: 'https://www.cpuc.ca.gov/nemrevisit',
+      },
       {
         organization: 'National Renewable Energy Laboratory',
         title: 'Net Energy Metering (NEM) Policy & Compensation Models',

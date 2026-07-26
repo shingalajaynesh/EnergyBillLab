@@ -40,9 +40,12 @@ export default function GuideTimeOfUseRatePage() {
         </p>
         <ul>
           <li>
-            <strong>Peak Hours:</strong> Period of highest grid energy demand (for example, 4 PM to
-            9 PM on summer weekdays in California utility tariffs, or 3 PM to 8 PM in Arizona APS
-            tariffs). Exact peak windows vary by utility provider and region.
+            <strong>Peak Hours:</strong> Period of highest grid energy demand (for example, Southern
+            California Edison's TOU-D-PRIME plan uses a 4 p.m.–9 p.m. time window, but its price
+            classification varies by season and whether the day is a weekday or weekend, while
+            Arizona Public Service's current Time-of-Use plan uses a 4 p.m.–7 p.m. weekday window,
+            excluding applicable holidays). Exact peak hours, seasonal schedules, and day rules vary
+            by utility provider.
           </li>
           <li>
             <strong>Off-Peak Hours:</strong> Period of lowest grid demand (nights, early mornings,

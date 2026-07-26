@@ -36,30 +36,30 @@ export default function GuideWhyRatesChangePage() {
       <section className={styles.section}>
         <h2>Primary Drivers of Electricity Price Fluctuations</h2>
         <p>
-          According to 2023 data from the{' '}
-          <strong>U.S. Energy Information Administration (EIA)</strong>, U.S. residential
-          electricity prices reflect three core operational cost categories:
+          According to data from the <strong>U.S. Energy Information Administration (EIA)</strong>,
+          residential electricity prices reflect generation, transmission, distribution, utility
+          operations, regulatory requirements, taxes, and other charges. The relative share of each
+          component differs across utilities and jurisdictions:
         </p>
         <ul>
           <li>
-            <strong>Generation / Power Supply (~46% of Rate):</strong> Costs to generate electricity
-            from natural gas, nuclear, coal, and renewable resources fluctuate based on wholesale
-            energy markets and fuel prices.
+            <strong>Generation / Power Supply:</strong> Costs to generate electricity from natural
+            gas, nuclear, coal, and renewable resources fluctuate based on commodity fuel markets
+            and wholesale power pricing.
           </li>
           <li>
-            <strong>Distribution Grid (~38% of Rate):</strong> Regulated local utility expenses for
-            building, maintaining, and repairing neighborhood power lines, substations,
-            transformers, and customer meters.
+            <strong>Distribution Grid:</strong> Regulated local utility expenses for building,
+            maintaining, and repairing neighborhood power lines, substations, transformers, and
+            customer meters.
           </li>
           <li>
-            <strong>Transmission Grid (~16% of Rate):</strong> Costs for moving high-voltage
-            electricity across interstate transmission towers from power plants to local
-            distribution networks.
+            <strong>Transmission Grid:</strong> Costs for moving high-voltage electricity across
+            interstate transmission networks from power plants to local distribution centers.
           </li>
           <li>
-            <strong>State Regulatory Rate Cases:</strong> Regulated utilities must submit public
-            evidence to state public utility commissions (PUCs) to approve base rate changes for
-            distribution operations.
+            <strong>State Regulatory Rate Cases:</strong> Regulated electric utilities must submit
+            public evidence to state public utility commissions (PUCs) or local governing boards to
+            approve base rate changes for distribution operations.
           </li>
         </ul>
         <div className={styles.formulaBox}>
@@ -74,13 +74,11 @@ export default function GuideWhyRatesChangePage() {
             aria-label="Breakdown of primary cost drivers behind residential electricity pricing"
             className={styles.dataTable}
           >
-            <caption>
-              U.S. Residential Electricity Price Breakdown (EIA 2023 National Benchmark)
-            </caption>
+            <caption>Components of U.S. Residential Electricity Prices</caption>
             <thead>
               <tr>
                 <th scope="col">Price Component</th>
-                <th scope="col">National Average Share</th>
+                <th scope="col">Cost Component Description</th>
                 <th scope="col">Primary Volatility Drivers</th>
                 <th scope="col">Regulatory Authority</th>
               </tr>
@@ -88,19 +86,19 @@ export default function GuideWhyRatesChangePage() {
             <tbody>
               <tr>
                 <td>Generation / Power Supply</td>
-                <td>~46% of Total Rate</td>
+                <td>Power plant fuel and electricity generation</td>
                 <td>Wholesale fuel price volatility, plant maintenance, regional demand</td>
-                <td>FERC (Wholesale Markets) / State PUCs (Retail Supply)</td>
+                <td>FERC (Interstate Wholesale) / State PUCs (Retail Supply)</td>
               </tr>
               <tr>
                 <td>Distribution Grid</td>
-                <td>~38% of Total Rate</td>
+                <td>Local poles, wires, substations, and meters</td>
                 <td>Local power line repairs, substation upgrades, storm restoration</td>
                 <td>State Public Utility Commissions (PUCs)</td>
               </tr>
               <tr>
                 <td>Transmission Grid</td>
-                <td>~16% of Total Rate</td>
+                <td>High-voltage long-distance power lines</td>
                 <td>High-voltage interstate line expansion, regional reliability projects</td>
                 <td>FERC & Regional Transmission Organizations (RTOs)</td>
               </tr>
@@ -108,10 +106,10 @@ export default function GuideWhyRatesChangePage() {
           </table>
         </div>
         <p className={styles.tableFootnote}>
-          * Note: Official national benchmark based on 2023 U.S. Energy Information Administration
-          (EIA) price component data. FERC regulates interstate transmission and wholesale markets,
-          while state PUCs regulate local retail distribution charges. Component proportions vary
-          significantly by state and utility.
+          * Note: Based on U.S. Energy Information Administration (EIA) price factor documentation.
+          FERC regulates interstate transmission and wholesale markets, while state PUCs regulate
+          local retail distribution charges. Component proportions vary significantly by state and
+          utility.
         </p>
       </section>
 

@@ -36,31 +36,32 @@ export default function GuidePeakVsOffPeakPage() {
         <h2>Grid Peak Demand Physics & Regional Seasonality</h2>
         <p>
           Peak hours are determined by climate, solar generation curves, and daily human activity,
-          varying significantly by utility tariff and region. For example:
+          varying significantly by utility tariff and region. Utility-specific examples checked
+          against published rate information include:
         </p>
         <ul>
           <li>
-            <strong>California Summer Cooling Peak (SCE TOU-D-PRIME Tariff):</strong> Southern
-            California Edison defines summer peak hours as 4:00 PM to 9:00 PM on weekdays, when air
-            conditioning load coincides with declining solar generation.
+            <strong>Southern California Edison (SCE TOU-D-PRIME):</strong> TOU-D-PRIME uses a 4:00
+            PM – 9:00 PM time window, but its price classification (on-peak vs. mid-peak vs.
+            off-peak) varies by season (summer vs. winter) and whether the day is a weekday or
+            weekend. Customers must review SCE's current tariff before making usage decisions.
           </li>
           <li>
-            <strong>Southwest Summer Peak (Arizona APS Saver Choice Tariff):</strong> Arizona Public
-            Service defines summer peak hours as 3:00 PM to 8:00 PM weekdays (May through October).
+            <strong>Arizona Public Service (APS Time-of-Use 4pm-7pm Weekdays):</strong> Current
+            active residential TOU plan defines on-peak hours from 4:00 PM to 7:00 PM on weekdays,
+            excluding applicable holidays. (Note: The historical APS Saver Choice Plus 3:00 PM–8:00
+            PM plan is closed to new enrollment).
           </li>
           <li>
-            <strong>Upper Midwest Winter Heating Peak (Xcel Energy Minnesota Tariff):</strong> Xcel
-            Energy defines winter peak hours as 9:00 AM to 9:00 PM weekdays (October through May).
+            <strong>Xcel Energy Minnesota (Residential Time of Day):</strong> The current Minnesota
+            Residential Time of Day schedule identifies weekdays from 9:00 AM to 9:00 PM as on-peak
+            hours (excluding applicable holidays). Customers should verify the current Minnesota
+            tariff because schedules and eligibility can change.
           </li>
           <li>
-            <strong>Critical Peak Pricing Events:</strong> During severe heatwaves or winter storms,
-            some utilities declare critical peak pricing events with temporary rate surcharges
-            (e.g., $1.00+/kWh).
-          </li>
-          <li>
-            <strong>Shifting Flexible Load:</strong> Appliances with delay timers (dishwashers, EV
-            chargers, pool pumps, washing machines) can be automated to operate during off-peak
-            overnight hours.
+            <strong>Critical Peak Pricing Events:</strong> During severe heatwaves or winter
+            freezing events, utilities may declare short critical peak pricing events with temporary
+            rate surcharges (e.g., $1.00+/kWh).
           </li>
         </ul>
         <div className={styles.formulaBox}>
@@ -69,51 +70,51 @@ export default function GuidePeakVsOffPeakPage() {
       </section>
 
       <section className={styles.section}>
-        <h2>Sample Named Utility TOU Tariff Schedules</h2>
+        <h2>Audited Utility TOU Tariff Examples</h2>
         <div className={styles.tableWrapper}>
           <table
-            aria-label="Sample named utility peak vs off-peak time windows and pricing schedules"
+            aria-label="Audited utility peak vs off-peak time windows and rate schedules"
             className={styles.dataTable}
           >
-            <caption>Sample Named Utility Tariff Schedules (Illustrative Utility Examples)</caption>
+            <caption>Audited Residential Utility Tariff Schedules</caption>
             <thead>
               <tr>
-                <th scope="col">Utility & Tariff Name</th>
-                <th scope="col">Applicable Season</th>
+                <th scope="col">Utility Name & Tariff Schedule</th>
+                <th scope="col">Status</th>
                 <th scope="col">Peak Hours Window</th>
                 <th scope="col">Off-Peak Window</th>
-                <th scope="col">Sample Rate Tier</th>
+                <th scope="col">Official Source</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>SCE TOU-D-PRIME (California)</td>
-                <td>Summer (Jun–Sep)</td>
-                <td>4:00 PM – 9:00 PM Weekdays</td>
-                <td>9:00 PM – 4:00 PM & Weekends</td>
-                <td>Peak ~34 ¢/kWh / Off-Peak ~14 ¢/kWh</td>
+                <td>Southern California Edison (SCE) — TOU-D-PRIME</td>
+                <td>Current Active Plan</td>
+                <td>4:00 PM – 9:00 PM (Summer Weekday On-Peak / Seasonal Mid-Peak)</td>
+                <td>Off-Peak & Super Off-Peak Hours (Varies by Season & Day)</td>
+                <td>sce.com/tou</td>
               </tr>
               <tr>
-                <td>APS Saver Choice (Arizona)</td>
-                <td>Summer (May–Oct)</td>
-                <td>3:00 PM – 8:00 PM Weekdays</td>
-                <td>8:00 PM – 3:00 PM & Weekends</td>
-                <td>Peak ~31 ¢/kWh / Off-Peak ~11 ¢/kWh</td>
+                <td>Arizona Public Service (APS) — TOU 4pm–7pm Weekdays</td>
+                <td>Current Active Plan</td>
+                <td>4:00 PM – 7:00 PM Weekdays</td>
+                <td>7:00 PM – 4:00 PM Weekdays + All Weekend / Holidays</td>
+                <td>aps.com/tou</td>
               </tr>
               <tr>
-                <td>Xcel Energy Time-of-Day (Minnesota)</td>
-                <td>Winter (Oct–May)</td>
+                <td>Xcel Energy Minnesota — Residential Time of Day</td>
+                <td>Current Active Plan</td>
                 <td>9:00 AM – 9:00 PM Weekdays</td>
-                <td>9:00 PM – 9:00 AM & Weekends</td>
-                <td>Peak ~24 ¢/kWh / Off-Peak ~10 ¢/kWh</td>
+                <td>9:00 PM – 9:00 AM Weekdays + All Weekend / Holidays</td>
+                <td>xcelenergy.com/mn</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className={styles.tableFootnote}>
-          * Note: Peak schedules, hours, rate structures, and weekend rules are established by
-          individual electric utilities and state public utility commissions. Figures represent
-          named utility tariff examples and illustrative calculation assumptions.
+          * Note: Utility-specific examples were checked against cited official rate pages. Policies
+          and tariffs can change, and customers must confirm their current utility tariff directly
+          with their electric provider.
         </p>
       </section>
 

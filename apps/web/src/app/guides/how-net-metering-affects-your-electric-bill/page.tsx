@@ -28,8 +28,7 @@ export default function GuideNetMeteringPage() {
         <p>
           Your monthly bill calculates <strong>Net Grid Energy</strong> (Imported kWh − Exported
           kWh). However, net metering compensation rules vary significantly by state—ranging from
-          1:1 full retail rate credits to reduced avoided-cost export rates (such as California's
-          Net Billing Tariff, commonly known as NEM 3.0).
+          classic 1:1 full retail rate credits to state-specific net-billing export rates.
         </p>
       </section>
 
@@ -44,10 +43,12 @@ export default function GuideNetMeteringPage() {
           </li>
           <li>
             <strong>Compensation Structures:</strong> Under classic 1:1 net metering laws, exported
-            kWh receives full retail credit value. California-specific example: earlier California
-            tariffs (NEM 1.0 and 2.0) provided 1:1 retail credits, whereas California's current Net
-            Billing Tariff (NEM 3.0) credits surplus generation at variable wholesale avoided-cost
-            rates.
+            kWh receives full retail credit value. California-specific example: California’s Net
+            Billing Tariff was adopted through CPUC Decision D.22-12-056 within proceeding
+            R.20-08-020. It applies to qualifying interconnection applications submitted on or after
+            April 15, 2023. California investor-owned utilities refer to it as the Solar Billing
+            Plan. Surplus solar exports under the Net Billing Tariff are credited at variable
+            wholesale avoided-cost rates rather than full 1:1 retail rates.
           </li>
           <li>
             <strong>Monthly Carryover & Annual True-Up:</strong> Excess monthly export credits carry
