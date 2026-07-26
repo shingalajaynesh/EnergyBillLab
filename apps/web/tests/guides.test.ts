@@ -18,36 +18,36 @@ import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFooterGroups, publicRoutes, sitemapRoutes } from '@/lib/routes';
 
-const BATCH_3_SLUGS = [
-  'how-much-electricity-does-a-microwave-use',
-  'how-much-electricity-does-an-air-fryer-use',
-  'how-much-electricity-does-a-television-use',
-  'how-much-electricity-does-a-wifi-router-use',
-  'how-much-electricity-does-a-laptop-use',
-  'how-much-electricity-does-an-electric-kettle-use',
-  'how-much-electricity-does-an-induction-cooktop-use',
-  'how-much-electricity-does-a-window-air-conditioner-use',
-  'what-is-vampire-power-and-how-much-does-it-cost',
-  'heat-pump-vs-electric-resistance-heating-cost',
+const BATCH_4_SLUGS = [
+  'how-much-electricity-does-central-air-conditioning-use',
+  'how-much-electricity-does-a-portable-air-conditioner-use',
+  'how-much-electricity-does-a-ductless-mini-split-use',
+  'how-much-electricity-does-a-heat-pump-use',
+  'how-much-electricity-does-an-electric-furnace-use',
+  'how-much-electricity-does-electric-baseboard-heating-use',
+  'how-much-can-a-smart-thermostat-save',
+  'should-you-turn-off-the-air-conditioner-when-away',
+  'how-air-leaks-increase-your-energy-bill',
+  'how-attic-insulation-affects-your-energy-bill',
 ];
 
-describe('Thirty Energy Guides Architecture & Integrity', () => {
-  it('defines aggregate 30 guide definitions (10 Batch 1 + 10 Batch 2 + 10 Batch 3) with 0 duplicate slugs', () => {
-    expect(guideSlugs).toHaveLength(30);
-    expect(new Set(guideSlugs).size).toBe(30);
-    expect(GUIDE_ROUTES).toHaveLength(30);
+describe('Forty Energy Guides Architecture & Integrity', () => {
+  it('defines aggregate 40 guide definitions (10 Batch 1 + 10 Batch 2 + 10 Batch 3 + 10 Batch 4) with 0 duplicate slugs', () => {
+    expect(guideSlugs).toHaveLength(40);
+    expect(new Set(guideSlugs).size).toBe(40);
+    expect(GUIDE_ROUTES).toHaveLength(40);
 
-    BATCH_3_SLUGS.forEach((slug) => {
+    BATCH_4_SLUGS.forEach((slug) => {
       expect(guideSlugs).toContain(slug);
     });
   });
 
-  it('registers all thirty guide routes in publicRoutes and sitemapRoutes', () => {
+  it('registers all forty guide routes in publicRoutes and sitemapRoutes', () => {
     const publicHrefs = publicRoutes.map((r) => r.href);
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
 
-    expect(guideSlugs).toHaveLength(30);
-    expect(new Set(guideSlugs).size).toBe(30);
+    expect(guideSlugs).toHaveLength(40);
+    expect(new Set(guideSlugs).size).toBe(40);
 
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}` as const;
@@ -59,7 +59,7 @@ describe('Thirty Energy Guides Architecture & Integrity', () => {
     });
   });
 
-  it('marks all twenty published guide routes as ad-eligible and rejects unknown guide routes', () => {
+  it('marks all forty published guide routes as ad-eligible and rejects unknown guide routes', () => {
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}`;
       expect(isAdEligibleRoute(guideHref)).toBe(true);

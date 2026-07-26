@@ -1520,6 +1520,496 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sitemapEligible: true,
     adEligible: true,
   },
+  'how-much-electricity-does-central-air-conditioning-use': {
+    slug: 'how-much-electricity-does-central-air-conditioning-use',
+    href: '/guides/how-much-electricity-does-central-air-conditioning-use',
+    title: 'How Much Electricity Does Central Air Conditioning Use? (Watts, Tons & Cost)',
+    h1Title: 'How Much Electricity Does Central Air Conditioning Use?',
+    breadcrumbLabel: 'Central AC Electricity Usage',
+    description:
+      'Calculate central air conditioning power consumption (3,000W–5,000W), cooling tonnage (2.5–5.0 tons), SEER2 efficiency ratings, compressor duty cycles, and monthly electric bill impact.',
+    eyebrow: 'Central Cooling Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/ac-cost-calculator',
+    primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate central air conditioning operating costs based on system tonnage, SEER2 rating, and daily cooling runtime.',
+    actionLabel: 'Calculate Central AC Operating Cost',
+    summaryTakeaways: [
+      'Central air conditioners draw 3,000W to 5,000W of electrical power (3.0 to 5.0 kW) depending on cooling capacity (2.5 to 5.0 tons / 30,000–60,000 BTU/hr).',
+      'Running a 3.5-ton central AC for 8 hours daily at a 60% compressor duty cycle consumes ~17 to 24 kWh per day ($100 to $220 monthly depending on electric rates).',
+      'Upgrading from SEER 10 or 13 to SEER2 16+ reduces central cooling energy consumption by 15% to 30%.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Central Air Conditioning Systems & Energy Efficiency Standards',
+        topic:
+          'Central AC wattage by tonnage, SEER2 efficiency standards, compressor duty cycles, and duct losses',
+        url: 'https://www.energy.gov/energysaver/central-air-conditioning',
+      },
+      {
+        organization: 'ENERGY STAR',
+        title: 'Central Air Conditioner Efficiency Specifications',
+        topic:
+          'SEER2 efficiency baselines, EER2 regional requirements, and variable-speed compressor performance',
+        url: 'https://www.energystar.gov/products/heating_cooling/central_air_conditioners',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/ac-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+      '/guides/how-much-electricity-does-a-window-air-conditioner-use',
+      '/guides/how-much-electricity-does-a-ductless-mini-split-use',
+      '/guides/should-you-turn-off-the-air-conditioner-when-away',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-portable-air-conditioner-use': {
+    slug: 'how-much-electricity-does-a-portable-air-conditioner-use',
+    href: '/guides/how-much-electricity-does-a-portable-air-conditioner-use',
+    title: 'How Much Electricity Does a Portable Air Conditioner Use? (Watts & SACC Cost)',
+    h1Title: 'How Much Electricity Does a Portable Air Conditioner Use?',
+    breadcrumbLabel: 'Portable AC Electricity Usage',
+    description:
+      'Discover portable air conditioner power consumption (900W–1,400W), DOE SACC cooling ratings, single-hose vs dual-hose efficiency, exhaust heat losses, and operating costs.',
+    eyebrow: 'Portable Cooling Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/ac-cost-calculator',
+    primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate portable air conditioner cooling costs based on rated wattage, SACC cooling capacity, and daily runtime.',
+    actionLabel: 'Calculate Portable AC Operating Cost',
+    summaryTakeaways: [
+      'Portable air conditioners draw 900W to 1,400W of electrical power while operating.',
+      'Single-hose portable AC units pull warm room air through the exhaust hose, creating negative air pressure that draws unconditioned outdoor air back into the room.',
+      'Due to exhaust hose heat radiation and infiltration, portable units consume 15% to 30% more electricity per BTU of net cooling delivered than window AC units.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Portable Air Conditioner Energy Test Procedures & SACC Standards',
+        topic:
+          'Seasonally Adjusted Cooling Capacity (SACC), single-hose vs dual-hose infiltration heat loss, and power draw',
+        url: 'https://www.energy.gov/eere/buildings/appliance-and-equipment-standards-program',
+      },
+      {
+        organization: 'Federal Trade Commission',
+        title: 'EnergyGuide Appliance Ratings for Portable Air Conditioners',
+        topic:
+          'Annual operating cost labels and comparative energy efficiency ratios for portable cooling',
+        url: 'https://www.ftc.gov/legal-library/browse/rules/energy-water-use-labeling-consumer-information-under-energy-policy-conservation-act-energy-labeling-rule',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/ac-cost-calculator',
+      '/guides/how-much-electricity-does-a-window-air-conditioner-use',
+      '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-ductless-mini-split-use': {
+    slug: 'how-much-electricity-does-a-ductless-mini-split-use',
+    href: '/guides/how-much-electricity-does-a-ductless-mini-split-use',
+    title: 'How Much Electricity Does a Ductless Mini-Split Use? (Inverter Watts & Cost)',
+    h1Title: 'How Much Electricity Does a Ductless Mini-Split Use?',
+    breadcrumbLabel: 'Mini-Split Electricity Usage',
+    description:
+      'Calculate ductless mini-split heat pump power draw (200W idle modulation to 2,000W full load), variable-speed inverter efficiency (SEER2 18–30+), zone heating/cooling, and electric bill savings.',
+    eyebrow: 'Mini-Split Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/ac-cost-calculator',
+    primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
+    primaryCalculatorDescription:
+      'Estimate ductless mini-split cooling and heating operating costs based on inverter capacity and zone usage.',
+    actionLabel: 'Calculate Mini-Split Operating Cost',
+    summaryTakeaways: [
+      'Ductless mini-split heat pumps use variable-speed inverter compressors that modulate power draw between 200W and 2,000W based on real-time room thermal load.',
+      'High SEER2 (18 to 30+) and HSPF2 (9 to 12+) ratings allow ductless mini-splits to consume 25% to 40% less electricity than traditional ducted central systems.',
+      'Zoned mini-split operation lets households heat or cool only occupied rooms, eliminating energy wasted conditioning empty space.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Ductless Mini-Split Heat Pump Efficiency Specifications',
+        topic:
+          'Variable-speed inverter compressor efficiency, SEER2 and HSPF2 ratings, and multi-zone heating/cooling performance',
+        url: 'https://www.energystar.gov/products/heating_cooling/ductless_heating_cooling',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Ductless Mini-Split Heat Pumps Energy Saver Guide',
+        topic:
+          'Inverter modulation benefits, ductless zone control savings, and cold-climate heating performance',
+        url: 'https://www.energy.gov/energysaver/ductless-mini-split-heat-pumps',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/ac-cost-calculator',
+      '/tools/space-heater-cost-calculator',
+      '/guides/how-much-electricity-does-a-heat-pump-use',
+      '/guides/heat-pump-vs-electric-resistance-heating-cost',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-heat-pump-use': {
+    slug: 'how-much-electricity-does-a-heat-pump-use',
+    href: '/guides/how-much-electricity-does-a-heat-pump-use',
+    title: 'How Much Electricity Does a Heat Pump Use? (Heating & Cooling kWh)',
+    h1Title: 'How Much Electricity Does a Heat Pump Use?',
+    breadcrumbLabel: 'Heat Pump Electricity Usage',
+    description:
+      'Calculate annual and monthly heat pump electricity usage (kWh) in heating and cooling modes, Coefficient of Performance (COP 2.0–4.0), defrost cycles, and backup auxiliary heat strip spikes.',
+    eyebrow: 'Heat Pump Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/space-heater-cost-calculator',
+    primaryCalculatorLabel: 'Space Heater Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate seasonal heat pump heating and cooling operating costs based on system COP and outdoor temperature.',
+    actionLabel: 'Calculate Heat Pump Operating Cost',
+    summaryTakeaways: [
+      'A residential air-source heat pump consumes 1,500W to 4,500W depending on mode, outdoor temperature, and compressor speed.',
+      'In cooling mode, heat pumps function identically to central AC units (SEER2 15–22+). In heating mode, COP (2.0–4.0) delivers 2 to 4 times more thermal heat per kWh than electric resistance.',
+      'When outdoor temperatures fall below the thermal balance point (e.g., <20°F), auxiliary electric resistance heat strips (5 kW to 10 kW) engage, temporarily tripling electrical power draw.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Heat Pump Systems Energy Efficiency & Seasonal Performance',
+        topic:
+          'Heating vs cooling kWh draw, Coefficient of Performance (COP), HSPF2 ratings, defrost cycles, and auxiliary heat strips',
+        url: 'https://www.energy.gov/energysaver/heat-pump-systems',
+      },
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Residential Heating and Cooling Energy Consumption Survey',
+        topic:
+          'Annual kWh consumption for heat pump space heating and cooling by U.S. climate zone',
+        url: 'https://www.eia.gov/consumption/residential/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/space-heater-cost-calculator',
+      '/tools/ac-cost-calculator',
+      '/guides/heat-pump-vs-electric-resistance-heating-cost',
+      '/guides/how-much-electricity-does-a-ductless-mini-split-use',
+      '/guides/how-much-electricity-does-an-electric-furnace-use',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-an-electric-furnace-use': {
+    slug: 'how-much-electricity-does-an-electric-furnace-use',
+    href: '/guides/how-much-electricity-does-an-electric-furnace-use',
+    title: 'How Much Electricity Does an Electric Furnace Use? (kW, kWh & Cost)',
+    h1Title: 'How Much Electricity Does an Electric Furnace Use?',
+    breadcrumbLabel: 'Electric Furnace Usage',
+    description:
+      'Calculate electric furnace power draw (10 kW–25 kW), heating element staging, blower motor power, monthly winter kWh consumption (1,500–3,500 kWh), and operating costs.',
+    eyebrow: 'Electric Furnace Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/space-heater-cost-calculator',
+    primaryCalculatorLabel: 'Space Heater Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate winter electric furnace operating costs based on heating capacity (kW) and daily runtime.',
+    actionLabel: 'Calculate Electric Furnace Operating Cost',
+    summaryTakeaways: [
+      'Residential electric furnaces have high rated heating capacities between 10 kW and 25 kW (10,000W to 25,000W).',
+      'Electric furnaces do not run continuously at maximum kW; multi-stage heating controls cycle heating elements on and off based on indoor thermostat demand.',
+      'In cold winter climates, an electric furnace operating 5 to 8 hours daily at a 50% duty cycle consumes 1,500 to 3,000 kWh per month ($300 to $600+ monthly at 20 ¢/kWh).',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Electric Resistance Heating Systems & Furnaces',
+        topic:
+          'Electric furnace kW heating elements, blower motor energy draw, thermostat duty cycles, and winter heating loads',
+        url: 'https://www.energy.gov/energysaver/electric-resistance-heating',
+      },
+      {
+        organization: 'Building America Solution Center',
+        title: 'Electric Furnace Staging & Space Heating System Sizing',
+        topic:
+          'Multi-stage heating controls, peak electrical demand, and thermal distribution efficiency',
+        url: 'https://basc.pnnl.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/space-heater-cost-calculator',
+      '/guides/heat-pump-vs-electric-resistance-heating-cost',
+      '/guides/how-much-electricity-does-electric-baseboard-heating-use',
+      '/guides/how-much-electricity-does-a-heat-pump-use',
+      '/guides/why-is-my-electric-bill-so-high',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-electric-baseboard-heating-use': {
+    slug: 'how-much-electricity-does-electric-baseboard-heating-use',
+    href: '/guides/how-much-electricity-does-electric-baseboard-heating-use',
+    title: 'How Much Electricity Does Baseboard Heating Use? (Watts/ft & Cost)',
+    h1Title: 'How Much Electricity Does Electric Baseboard Heating Use?',
+    breadcrumbLabel: 'Baseboard Heating Usage',
+    description:
+      'Calculate electric baseboard heater power consumption (250 Watts per linear foot), room-by-room zone control, line-voltage thermostats, and winter monthly operating costs.',
+    eyebrow: 'Baseboard Heating Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Heating & Cooling Systems',
+    primaryCalculatorHref: '/tools/space-heater-cost-calculator',
+    primaryCalculatorLabel: 'Space Heater Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate electric baseboard heater operating costs per room and per home based on heater length and daily runtime.',
+    actionLabel: 'Calculate Baseboard Heating Cost',
+    summaryTakeaways: [
+      'Electric baseboard heaters draw approximately 250 Watts per linear foot of heater length (e.g., a 6-foot baseboard draws 1,500W).',
+      'Baseboard heating utilizes individual room line-voltage thermostats, allowing room-by-room zone temperature control.',
+      'Heating a 3-bedroom house with 8,000W of baseboard heaters operating 6 hours daily consumes ~1,440 kWh per month ($288/month at 20 ¢/kWh).',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Electric Baseboard Heaters & Zone Heating Guide',
+        topic:
+          'Wattage per linear foot (250W/ft), line-voltage thermostat operation, zone heating efficiency, and convective heat flow',
+        url: 'https://www.energy.gov/energysaver/electric-resistance-heating',
+      },
+      {
+        organization: 'National Renewable Energy Laboratory',
+        title: 'Residential Zoned Electric Space Heating Study',
+        topic:
+          'Baseboard heater thermal delivery, room zoning energy impact, and heat loss dynamics',
+        url: 'https://www.nrel.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/space-heater-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-a-space-heater',
+      '/guides/heat-pump-vs-electric-resistance-heating-cost',
+      '/guides/how-much-electricity-does-an-electric-furnace-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-can-a-smart-thermostat-save': {
+    slug: 'how-much-can-a-smart-thermostat-save',
+    href: '/guides/how-much-can-a-smart-thermostat-save',
+    title: 'How Much Can a Smart Thermostat Save on Your Electric Bill?',
+    h1Title: 'How Much Can a Smart Thermostat Save on Your Energy Bill?',
+    breadcrumbLabel: 'Smart Thermostat Savings',
+    description:
+      'Discover smart thermostat energy savings (ENERGY STAR benchmarks: 8%–12% heating, 15% cooling), automated schedule setbacks, geofencing occupancy detection, and ROI payback periods.',
+    eyebrow: 'Thermostat Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Home Efficiency & Envelope',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Analyze your household electric statement to estimate heating and cooling savings from smart thermostat setbacks.',
+    actionLabel: 'Analyze Your Electric Bill',
+    summaryTakeaways: [
+      'According to ENERGY STAR research, certified smart thermostats save households an average of 8% to 12% on heating bills and 15% on cooling bills.',
+      'Saving energy relies on automated temperature setbacks (setting the thermostat 7°F to 10°F back for 8 hours daily while asleep or away).',
+      'Annual financial savings typically range from $50 to $180 depending on local utility rates, climate severity, and HVAC equipment type.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Smart Thermostats Energy Efficiency Specification & Savings Benchmarks',
+        topic:
+          'Independent energy savings field studies, 8%–12% heating / 15% cooling benchmarks, and occupancy detection algorithms',
+        url: 'https://www.energystar.gov/products/heating_cooling/smart_thermostats',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Thermostats Energy Saver Guide',
+        topic:
+          'Temperature setback calculations, 1% savings per degree setback for 8-hour periods, and HVAC compatibility',
+        url: 'https://www.energy.gov/energysaver/thermostats',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/should-you-turn-off-the-air-conditioner-when-away',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+      '/guides/how-much-electricity-does-a-heat-pump-use',
+      '/guides/why-is-my-electric-bill-so-high',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'should-you-turn-off-the-air-conditioner-when-away': {
+    slug: 'should-you-turn-off-the-air-conditioner-when-away',
+    href: '/guides/should-you-turn-off-the-air-conditioner-when-away',
+    title: 'Should You Turn Off the AC When Away? (Thermostat Setback Rules)',
+    h1Title: 'Should You Turn Off the Air Conditioner When Away?',
+    breadcrumbLabel: 'Turning Off AC When Away',
+    description:
+      'Learn whether to turn off your AC or raise the thermostat when away, short vs all-day absences, indoor humidity control, heat gain thermodynamics, and safe temperature limits (78°F–80°F).',
+    eyebrow: 'AC Strategy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Home Efficiency & Envelope',
+    primaryCalculatorHref: '/tools/ac-cost-calculator',
+    primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate air conditioner operating costs under continuous vs setback thermostat schedules.',
+    actionLabel: 'Calculate AC Operating Cost',
+    summaryTakeaways: [
+      'For all-day absences (8+ hours), raising your thermostat by 7°F to 10°F (to 78°F–80°F) consumes less total electricity than leaving the AC running at 72°F all day.',
+      'Heat gain physics shows that heat enters a home slower when indoor temperature is closer to outdoor temperature, reducing total daily thermal heat transfer.',
+      'Completely turning off the AC in humid climates is not recommended because indoor humidity will rise, increasing risk of mold and forcing the AC to work harder during recovery.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Thermostat Setbacks & Air Conditioning Operating Efficiency',
+        topic:
+          'Thermostat setback thermodynamics, indoor heat gain transfer rates, and humidity control safety boundaries',
+        url: 'https://www.energy.gov/energysaver/thermostats',
+      },
+      {
+        organization: 'Building America Solution Center',
+        title: 'HVAC Temperature Recovery & Indoor Relative Humidity Limits',
+        topic:
+          'Indoor moisture removal, compressor runtime during temperature recovery, and mold prevention guidelines',
+        url: 'https://basc.pnnl.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/ac-cost-calculator',
+      '/guides/how-much-can-a-smart-thermostat-save',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+      '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-air-leaks-increase-your-energy-bill': {
+    slug: 'how-air-leaks-increase-your-energy-bill',
+    href: '/guides/how-air-leaks-increase-your-energy-bill',
+    title: 'How Air Leaks Increase Your Energy Bill (Sealing & Infiltration)',
+    h1Title: 'How Air Leaks Increase Your Electric Bill',
+    breadcrumbLabel: 'Air Leaks & Draft Costs',
+    description:
+      'Discover how air infiltration and exfiltration force HVAC systems to work harder, the stack effect in multi-story homes, leak locations, weatherstripping ROI, and blower door test benefits.',
+    eyebrow: 'Air Sealing Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Home Efficiency & Envelope',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Analyze your household electric statement to estimate potential bill reductions from professional air sealing.',
+    actionLabel: 'Analyze Your Electric Bill',
+    summaryTakeaways: [
+      'Unsealed air leaks around windows, doors, attic bypasses, and ductwork account for 15% to 30% of average home heating and cooling energy loss.',
+      'The "stack effect" causes warm air to rise and escape through attic penetrations during winter, pulling cold outdoor air in through basement and ground-floor cracks.',
+      'According to DOE estimates, professional air sealing and weatherstripping can reduce heating and cooling costs by 15% to 20%.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Air Sealing Your Home & Air Infiltration Reduction',
+        topic:
+          'Building envelope infiltration loss, stack effect physics, duct leakage, weatherstripping ROI, and blower door testing',
+        url: 'https://www.energy.gov/energysaver/air-sealing-your-home',
+      },
+      {
+        organization: 'ENERGY STAR',
+        title: 'Seal and Insulate Guide for Home Energy Efficiency',
+        topic:
+          'Attic air sealing locations, chimney bypasses, recessed light penetrations, and energy bill savings',
+        url: 'https://www.energystar.gov/saveathome/seal_insulate',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/how-attic-insulation-affects-your-energy-bill',
+      '/guides/why-is-my-electric-bill-high-when-usage-is-low',
+      '/guides/why-is-my-electric-bill-so-high',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-attic-insulation-affects-your-energy-bill': {
+    slug: 'how-attic-insulation-affects-your-energy-bill',
+    href: '/guides/how-attic-insulation-affects-your-energy-bill',
+    title: 'How Attic Insulation Affects Your Energy Bill (R-Value & Cost)',
+    h1Title: 'How Attic Insulation Affects Your Energy Bill',
+    breadcrumbLabel: 'Attic Insulation & R-Value',
+    description:
+      'Understand R-value thermal resistance (R-30 to R-60), climate zone insulation recommendations, air sealing before insulating, thermal bridging, and HVAC energy bill savings.',
+    eyebrow: 'Insulation Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Home Efficiency & Envelope',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Estimate monthly heating and cooling savings from upgrading attic insulation to recommended DOE R-values.',
+    actionLabel: 'Analyze Your Electric Bill',
+    summaryTakeaways: [
+      'Attic insulation retards conductive thermal heat flow, keeping heat inside during winter and blocking attic heat from radiating into living spaces during summer.',
+      'The Department of Energy recommends attic insulation levels between R-30 (10–14 inches) and R-60 (16–22 inches) depending on climate zone.',
+      'Upgrading under-insulated attics (e.g., from R-11 to R-49) reduces home heating and cooling energy usage by an estimated 15% to 20%.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Attic Insulation Guide & Recommended R-Values by Climate Zone',
+        topic:
+          'R-value thermal resistance standards, climate zone recommendations (Zones 1–7), conductive heat transfer, and energy savings',
+        url: 'https://www.energy.gov/energysaver/insulation',
+      },
+      {
+        organization: 'ENERGY STAR',
+        title: 'Rule of Thumb for Insulation Depths & Air Sealing Requirements',
+        topic:
+          'Measuring existing insulation depth, air sealing attic floor penetrations prior to insulation, and ROI',
+        url: 'https://www.energystar.gov/saveathome/seal_insulate',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/how-air-leaks-increase-your-energy-bill',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+      '/guides/how-much-electricity-does-a-heat-pump-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
 };
 
 export const guideSlugs = Object.keys(energyGuides);

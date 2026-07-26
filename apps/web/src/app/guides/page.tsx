@@ -84,9 +84,18 @@ export default function GuidesPage() {
       slug === 'how-billing-cycle-length-affects-electricity-bills' ||
       slug === 'what-is-vampire-power-and-how-much-does-it-cost'
         ? 'Electric Bill Diagnostics'
-        : slug === 'kw-vs-kwh-explained' || slug === 'heat-pump-vs-electric-resistance-heating-cost'
-          ? 'Energy Fundamentals'
-          : 'Appliance Energy Guides';
+        : slug.includes('air-condition') ||
+            slug.includes('mini-split') ||
+            slug.includes('furnace') ||
+            slug.includes('thermostat') ||
+            slug.includes('heat-pump') ||
+            slug.includes('air-leaks') ||
+            slug.includes('insulation') ||
+            slug.includes('baseboard')
+          ? 'Heating, Cooling & Home Efficiency'
+          : slug === 'kw-vs-kwh-explained'
+            ? 'Energy Fundamentals'
+            : 'Appliance Energy Guides';
 
     return {
       ...guide,
@@ -95,6 +104,7 @@ export default function GuidesPage() {
   });
 
   const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics');
+  const hvacGuides = allGuides.filter((g) => g.category === 'Heating, Cooling & Home Efficiency');
   const fundamentalGuides = allGuides.filter((g) => g.category === 'Energy Fundamentals');
   const applianceGuides = allGuides.filter((g) => g.category === 'Appliance Energy Guides');
 
@@ -111,7 +121,7 @@ export default function GuidesPage() {
         <PageHeader
           eyebrow="Energy Guides"
           title="Electric Bill & Appliance Guides"
-          description="Practical, source-backed guides for diagnosing high electric bills, appliance energy draw, AC cooling costs, space heater runtime, EV charging, refrigerators, dryers, water heaters, pool pumps, and dehumidifiers."
+          description="Practical, source-backed guides for diagnosing high electric bills, HVAC system electricity draw, AC cooling costs, heat pumps, furnaces, smart thermostats, insulation, and household appliance energy use."
         />
 
         <div className={styles.introSection}>
@@ -130,6 +140,29 @@ export default function GuidesPage() {
           </h2>
           <div className={styles.guideGrid}>
             {problemGuides.map((guide) => (
+              <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
+                <div className={styles.guideCardTop}>
+                  <span className={styles.categoryTag}>{guide.category}</span>
+                  <h3 className={styles.cardTitle}>{guide.h1Title}</h3>
+                  <p className={styles.cardDescription}>{guide.description}</p>
+                </div>
+                <span className={styles.cardAction}>Read Guide →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 2: Heating, Cooling & Home Efficiency */}
+        <section
+          className={styles.guideSection}
+          aria-labelledby="hvac-home-efficiency"
+          style={{ marginTop: 40 }}
+        >
+          <h2 id="hvac-home-efficiency" className={styles.sectionHeader}>
+            Heating, Cooling & Home Efficiency
+          </h2>
+          <div className={styles.guideGrid}>
+            {hvacGuides.map((guide) => (
               <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
                 <div className={styles.guideCardTop}>
                   <span className={styles.categoryTag}>{guide.category}</span>
