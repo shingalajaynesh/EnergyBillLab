@@ -142,9 +142,7 @@ export default async function NationalRateReportPage() {
                 <strong className={styles.summaryValue}>
                   {report.statesIncludedCount} U.S. States
                 </strong>
-                <small className={styles.summaryNote}>
-                  20 states with published editorial reports
-                </small>
+                <small className={styles.summaryNote}>50 of 50 state reports published</small>
               </div>
             </section>
 

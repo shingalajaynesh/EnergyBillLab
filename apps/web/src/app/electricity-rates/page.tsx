@@ -119,9 +119,8 @@ export default async function ElectricityRatesPage() {
         </div>
 
         <p className={styles.noticeText}>
-          * Note: Energy Bill Lab currently publishes rate reports for 20 of 50 U.S. states.
-          Remaining state pages will be published in subsequent releases following EIA dataset
-          validation and state-level editorial review.
+          * Note: Energy Bill Lab publishes rate reports for 50 of 50 U.S. states (0 state reports
+          remaining) with validated EIA dataset coverage and state-level editorial review.
         </p>
       </section>
 

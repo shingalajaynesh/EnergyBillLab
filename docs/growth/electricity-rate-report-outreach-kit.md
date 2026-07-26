@@ -10,7 +10,7 @@ This internal operational guide outlines the ethical outreach strategy for Energ
 
 - **Primary Source:** Official U.S. Energy Information Administration (EIA) Form EIA-861M Monthly Retail Sales reports.
 - **Reporting Rule:** Enforces **one common reporting period** across all 50 U.S. states and national benchmarks to eliminate period mismatch bias.
-- **Database vs. Editorial Scope:** Distinguishes full database coverage (all 50 U.S. states analyzed in rankings) from the 20 states with published editorial reports (`/electricity-rates/california`, `/electricity-rates/texas`, etc.).
+- **Database vs. Editorial Scope:** Full database coverage and 50 of 50 states with published editorial reports (`/electricity-rates/california`, `/electricity-rates/texas`, etc.).
 - **Missing Data Handling:** Missing reporting periods remain `null` or `"Not reported"` and are **never** converted to zero or interpolated.
 - **Household Calculations:** Household energy costs (500, 800, 1,000, 1,500 kWh) are explicitly labeled **energy-charge estimates** ($kWh \times \text{rate} / 100$), excluding fixed customer account fees and local utility taxes.
 

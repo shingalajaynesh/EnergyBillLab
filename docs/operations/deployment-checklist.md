@@ -3,7 +3,7 @@
 **Site:** EnergyBillLab.com  
 **Document:** `docs/operations/deployment-checklist.md`  
 **Status:** Active Deployment & Search Indexing Guide
-**Last Updated:** July 24, 2026 (50-State Full Production Audit)
+**Last Updated:** July 26, 2026 (Post-Deployment Cleanup & Indexing Readiness)
 
 ---
 
@@ -39,33 +39,57 @@ Immediately following production deployment, inspect:
 
 ---
 
-## 3. Google Search Console Manual Checklist
+## 3. Vercel Manual Owner Actions
+
+Perform these manual monitoring actions in the Vercel Dashboard:
+
+- [ ] **Confirm Production Deployment:** Confirm latest deployment is marked Production and successful.
+- [ ] **Review Functions Logs:** Check Vercel Functions logs for runtime exceptions or unhandled rejections.
+- [ ] **Review 404 & 500 Errors:** Audit Vercel Analytics / Access Logs for any unexpected 404 broken routes or 500 server errors.
+- [ ] **Check Failed Database Requests:** Inspect function execution logs for database connection timeouts or query errors.
+- [ ] **Check Build Duration:** Ensure static generation of 50 state routes completes within allocated build time.
+- [ ] **Check Web Vitals:** Verify Real Experience Score (LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1) under Vercel Speed Insights.
+
+---
+
+## 4. Neon PostgreSQL Manual Owner Actions
+
+Perform these manual monitoring actions in the Neon Console:
+
+- [ ] **Review Connection Failures:** Check database connection pool metrics for dropped connections or auth failures.
+- [ ] **Review Query Latency:** Monitor p95 query latency for rate snapshot queries.
+- [ ] **Confirm Report Records:** Confirm April 2026 report records (`2026-04`) remain active and accessible.
+- [ ] **Confirm 50 Canonical States:** Verify 50 state geographies and retail sales rows are intact.
+- [ ] **Security Rule:** Do not expose connection credentials or database project IDs in public logs or documentation.
+
+---
+
+## 5. Google Search Console Manual Owner Actions
 
 Perform these manual owner actions in Google Search Console after deployment:
 
-1. **Deploy Production Changes:** Verify production deployment finishes cleanly on Vercel.
-2. **URL Inspection:** Open URL Inspection for representative state pages (`/electricity-rates/maine`, `/electricity-rates/hawaii`, `/electricity-rates/alaska`, `/electricity-rates/nebraska`).
-3. **Test Live URL:** Run "Test Live URL" for each inspected page to verify rendering, mobile usability, and canonical tags.
-4. **Request Indexing:** Click "Request Indexing" for the representative set of newly published state pages.
-5. **Open Sitemaps:** Navigate to Indexing > Sitemaps in Google Search Console.
-6. **Submit Sitemap:** Enter `sitemap.xml` and click Submit (resubmit if already present).
-7. **Monitor Indexing Reports:** Review "Pages" reports weekly for "Crawled - currently not indexed", "Duplicate without user-selected canonical", and "Server error (5xx)" entries.
-8. **Monitor Search Performance:** Track state-page impressions, clicks, CTR, and search queries under Performance.
+- [ ] **Submit or Resubmit Sitemap:** Submit or resubmit `sitemap.xml` in Sitemaps tool.
+- [ ] **Inspect Representative URLs:** Inspect key state routes (`/electricity-rates/hawaii`, `/electricity-rates/north-dakota`, `/electricity-rates/california`, `/electricity-rates/texas`).
+- [ ] **Request Indexing:** Request indexing for a small, representative set of URLs only (do not blast mass requests).
+- [ ] **Monitor Crawled — Currently Not Indexed:** Track the "Crawled - currently not indexed" report weekly.
+- [ ] **Monitor Duplicate Without Canonical:** Verify no "Duplicate without user-selected canonical" warnings exist.
+- [ ] **Monitor Server Errors:** Check 5xx server error trends in Coverage/Pages report.
+- [ ] **Monitor Impressions & Queries:** Track impressions, clicks, average position, and top queries under Performance.
 
 ---
 
-## 4. Bing Webmaster Tools Manual Checklist
+## 6. Bing Webmaster Tools Manual Owner Actions
 
 Perform these manual owner actions in Bing Webmaster Tools after deployment:
 
-1. **Verify Sitemap:** Open Sitemaps tool and verify status of `https://energybilllab.com/sitemap.xml`.
-2. **Submit Sitemap:** Resubmit `https://energybilllab.com/sitemap.xml` if needed.
-3. **URL Submission:** Use URL Submission tool to submit a representative batch of state pages for fast crawling.
-4. **Monitor Index Explorer:** Review Index Explorer, Crawl Details, and SEO Reports for any discovered crawl issues.
+- [ ] **Verify Sitemap:** Open Sitemaps tool and verify status of `https://energybilllab.com/sitemap.xml`.
+- [ ] **Submit Sitemap:** Submit or resubmit `https://energybilllab.com/sitemap.xml` if needed.
+- [ ] **Submit Representative URLs:** Submit a small set of representative URLs via URL Submission tool.
+- [ ] **Monitor Crawl & Indexing Errors:** Review Index Explorer, Crawl Details, and SEO Reports for any crawl errors.
 
 ---
 
-## 5. AdSense Review Period Safety Rules
+## 7. AdSense Review Period Safety Rules
 
 During active Google AdSense site review:
 
