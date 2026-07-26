@@ -341,10 +341,10 @@ export default function ComparisonsPage() {
                   Coefficient of Performance (COP).
                 </p>
                 <p>
-                  <strong>Cooling Ratings (EER & SEER2):</strong> EER and SEER2 are imperial
-                  cooling-capacity ratios measured in BTU/Wh. Because they carry physical units,
-                  they cannot be treated as ordinary dimensionless efficiency percentages without
-                  unit conversions and seasonal load definitions.
+                  <strong>Cooling Ratings (EER & SEER2):</strong>{' '}
+                  {'EER and SEER2 are imperial cooling-capacity ratios measured in BTU/Wh.'} Because
+                  they carry physical units, they cannot be treated as ordinary dimensionless
+                  efficiency percentages without unit conversions and seasonal load definitions.
                 </p>
               </div>
             </details>

@@ -113,7 +113,8 @@
   justify-content: center;
   width: 1.25rem;
   height: 1.25rem;
-  background: rgba(23, 107, 91, 0.12);
+  background: var(--ebl-surface-raised);
+  border: 1px solid var(--ebl-border-subtle);
   color: var(--ebl-primary);
   border-radius: 50%;
   font-size: 0.75rem;
@@ -136,7 +137,7 @@
   justify-content: center;
   padding: 0.75rem 1.375rem;
   background: var(--ebl-primary);
-  color: #ffffff;
+  color: var(--ebl-surface);
   font-weight: 700;
   font-size: 0.9375rem;
   border: 1px solid var(--ebl-primary);
@@ -158,7 +159,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.375rem;
-  background: #ffffff;
+  background: var(--ebl-surface);
   color: var(--ebl-text);
   font-weight: 600;
   font-size: 0.9375rem;
@@ -192,11 +193,10 @@
    ========================================================================== */
 
 .launcherPanel {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
 }
 
 .launcherHeader {
@@ -211,7 +211,8 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   color: var(--ebl-primary);
-  background: rgba(23, 107, 91, 0.08);
+  background: var(--ebl-surface-muted);
+  border: 1px solid var(--ebl-border-subtle);
   padding: 0.2rem 0.5rem;
   border-radius: 0.25rem;
   margin-bottom: 0.375rem;
@@ -254,7 +255,7 @@
   padding: 0.5625rem 0.75rem;
   font-size: 0.875rem;
   color: var(--ebl-text);
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border);
   border-radius: 0.375rem;
   transition:
@@ -285,7 +286,7 @@
   width: 100%;
   padding: 0.6875rem 1rem;
   background: var(--ebl-primary);
-  color: #ffffff;
+  color: var(--ebl-surface);
   font-weight: 700;
   font-size: 0.875rem;
   border: none;
@@ -321,7 +322,7 @@
 }
 
 .compCard {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   padding: 1.375rem;
@@ -335,7 +336,6 @@
 
 .compCard:hover {
   border-color: var(--ebl-primary);
-  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.05);
 }
 
 .compCardHeader {
@@ -349,8 +349,9 @@
 .badgeGuide {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #176b5b;
-  background: #eef7f5;
+  color: var(--ebl-primary);
+  background: var(--ebl-surface-muted);
+  border: 1px solid var(--ebl-border-subtle);
   padding: 0.15rem 0.5rem;
   border-radius: 0.25rem;
 }
@@ -358,8 +359,9 @@
 .badgeCalculator {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #0f766e;
-  background: #ccfbf1;
+  color: var(--ebl-primary-strong);
+  background: var(--ebl-surface-muted);
+  border: 1px solid var(--ebl-border-subtle);
   padding: 0.15rem 0.5rem;
   border-radius: 0.25rem;
 }
@@ -384,7 +386,7 @@
 .vsPill {
   font-size: 0.6875rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--ebl-surface);
   background: var(--ebl-primary);
   padding: 0.1rem 0.35rem;
   border-radius: 0.2rem;
@@ -457,7 +459,7 @@
 
 .expandBtn {
   padding: 0.625rem 1.5rem;
-  background: #ffffff;
+  background: var(--ebl-surface);
   color: var(--ebl-primary);
   border: 1px solid var(--ebl-border);
   font-weight: 700;
@@ -479,7 +481,7 @@
    ========================================================================== */
 
 .categoryNavContainer {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -511,13 +513,13 @@
 
 .tabBtn:hover {
   color: var(--ebl-text);
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--ebl-surface-raised);
 }
 
 .tabBtnActive {
   color: var(--ebl-primary);
   font-weight: 700;
-  background: #ffffff;
+  background: var(--ebl-surface);
   box-shadow: 0 -2px 0 var(--ebl-primary) inset;
 }
 
@@ -591,7 +593,7 @@
   align-self: flex-start;
   padding: 0.625rem 1.125rem;
   background: var(--ebl-primary);
-  color: #ffffff;
+  color: var(--ebl-surface);
   font-weight: 700;
   font-size: 0.875rem;
   border-radius: 0.375rem;
@@ -636,12 +638,13 @@
 }
 
 .guideRowCard:hover {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border-color: var(--ebl-primary);
 }
 
 .guideRowIcon {
   font-size: 1rem;
+  color: var(--ebl-primary);
   flex-shrink: 0;
 }
 
@@ -676,7 +679,7 @@
    ========================================================================== */
 
 .examplePanel {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   padding: clamp(1.375rem, 3vw, 2.25rem);
@@ -729,7 +732,7 @@
 }
 
 .valB {
-  color: #0284c7;
+  color: var(--ebl-primary-strong);
 }
 
 .exampleDisclaimer {
@@ -770,7 +773,8 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  background: rgba(23, 107, 91, 0.12);
+  background: var(--ebl-surface-raised);
+  border: 1px solid var(--ebl-border-subtle);
   color: var(--ebl-primary);
   font-size: 0.9375rem;
   font-weight: 800;
@@ -797,7 +801,7 @@
    ========================================================================== */
 
 .formulaPanel {
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   padding: clamp(1.5rem, 3vw, 2.25rem);
@@ -874,9 +878,10 @@
   justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
-  background: rgba(23, 107, 91, 0.1);
+  background: var(--ebl-surface-raised);
+  border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.25rem;
-  font-size: 0.8125rem;
+  color: var(--ebl-primary);
 }
 
 .formulaCardLabel {
@@ -889,7 +894,7 @@
   font-size: 0.9375rem;
   font-weight: 700;
   color: var(--ebl-primary);
-  background: #ffffff;
+  background: var(--ebl-surface);
   border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
@@ -941,8 +946,8 @@
    ========================================================================== */
 
 .rateCtaPanel {
-  background: #f0f7f5;
-  border: 1px solid rgba(23, 107, 91, 0.2);
+  background: var(--ebl-surface-muted);
+  border: 1px solid var(--ebl-border-subtle);
   border-radius: 0.5rem;
   padding: clamp(1.5rem, 3.5vw, 2.25rem);
   display: flex;
@@ -970,7 +975,10 @@
 }
 
 .rateCtaIcon {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ebl-primary);
 }
 
 .rateCtaBadge {
