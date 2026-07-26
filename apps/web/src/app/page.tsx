@@ -53,7 +53,7 @@ const priorityLinks = [
   },
   {
     href: '/guides',
-    title: 'Problem-Solving Energy Guides (10)',
+    title: 'Problem-Solving Energy Guides (50)',
     text: 'Understand seasonal bill spikes, appliance usage benchmarks, heat pump costs, fixed charges, and estimated meter readings.',
   },
 ];
