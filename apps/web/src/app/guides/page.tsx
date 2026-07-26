@@ -78,7 +78,9 @@ export default function GuidesPage() {
   const allGuides = guideSlugs.map((slug) => energyGuides[slug]!);
 
   const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics');
-  const applianceGuides = allGuides.filter((g) => g.category === 'Appliance Benchmarks');
+  const applianceGuides = allGuides.filter(
+    (g) => g.category === 'Appliance Benchmarks' || g.category === 'Energy Fundamentals',
+  );
 
   return (
     <PageContainer>

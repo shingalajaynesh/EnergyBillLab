@@ -1,4 +1,5 @@
 import { PUBLISHED_STATE_ROUTES } from '@/config/published-states';
+import { GUIDE_ROUTES } from '@/content/guides';
 
 /**
  * Centralized Google AdSense Route-Level Ad Eligibility System
@@ -7,7 +8,7 @@ import { PUBLISHED_STATE_ROUTES } from '@/config/published-states';
  * dead-end utility routes, policy pages, and non-content areas.
  */
 
-export const STATIC_ADS_ALLOWED_ROUTES = [
+export const CORE_STATIC_ADS_ALLOWED_ROUTES = [
   '/',
   '/electricity-bill-analyzer',
   '/tools/appliance-energy-cost-calculator',
@@ -23,16 +24,11 @@ export const STATIC_ADS_ALLOWED_ROUTES = [
   '/methodology',
   '/data-sources',
   '/editorial-policy',
-  '/guides/why-is-my-electric-bill-so-high',
-  '/guides/how-much-electricity-do-household-appliances-use',
-  '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
-  '/guides/how-much-does-it-cost-to-run-a-space-heater',
-  '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
-  '/guides/how-much-electricity-does-a-refrigerator-use',
-  '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
-  '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
-  '/guides/how-much-does-it-cost-to-run-a-pool-pump',
-  '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
+] as const;
+
+export const STATIC_ADS_ALLOWED_ROUTES = [
+  ...CORE_STATIC_ADS_ALLOWED_ROUTES,
+  ...GUIDE_ROUTES,
 ] as const;
 
 export const ADS_ALLOWED_ROUTES = [

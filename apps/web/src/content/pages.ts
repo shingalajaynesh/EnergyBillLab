@@ -300,7 +300,7 @@ export const contentPages = {
       {
         heading: 'Accessibility target',
         paragraphs: [
-          'Energy Bill Lab targets WCAG 2.2 AA standards for public pages and interactive tools. The site supports keyboard navigation, visible focus indicators, semantic heading structures, readable color contrast, and descriptive ARIA labels.',
+          'Energy Bill Lab is implemented and reviewed toward WCAG 2.2 AA standards for public pages and interactive tools. The site supports keyboard navigation, visible focus indicators, semantic heading structures, readable color contrast, and descriptive ARIA labels.',
           'All calculator components provide visible form labels, accessible error announcements, and clear text descriptions for analytical summaries.',
         ],
       },

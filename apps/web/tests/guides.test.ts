@@ -18,9 +18,10 @@ import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFooterGroups, publicRoutes, sitemapRoutes } from '@/lib/routes';
 
-describe('Ten Energy Guides Architecture & Integrity', () => {
-  it('defines exactly ten guide definitions in energyGuides registry', () => {
-    expect(guideSlugs).toHaveLength(10);
+describe('Twenty Energy Guides Architecture & Integrity', () => {
+  it('defines aggregate 20 guide definitions (10 Batch 1 + 10 Batch 2) with 0 duplicate slugs', () => {
+    expect(guideSlugs).toHaveLength(20);
+    expect(new Set(guideSlugs).size).toBe(20);
     expect(guideSlugs).toEqual([
       'why-is-my-electric-bill-so-high',
       'how-much-electricity-do-household-appliances-use',
@@ -32,24 +33,56 @@ describe('Ten Energy Guides Architecture & Integrity', () => {
       'how-much-does-it-cost-to-run-an-electric-water-heater',
       'how-much-does-it-cost-to-run-a-pool-pump',
       'how-much-does-it-cost-to-run-a-dehumidifier',
+      'how-to-calculate-electricity-cost-per-kwh-from-your-bill',
+      'why-is-my-electric-bill-high-when-usage-is-low',
+      'electricity-supply-charge-vs-delivery-charge',
+      'kw-vs-kwh-explained',
+      'how-billing-cycle-length-affects-electricity-bills',
+      'how-much-electricity-does-a-dishwasher-use',
+      'how-much-electricity-does-a-washing-machine-use',
+      'how-much-does-it-cost-to-run-an-electric-oven',
+      'how-much-electricity-does-a-ceiling-fan-use',
+      'how-much-electricity-does-a-gaming-pc-use',
     ]);
   });
 
-  it('registers all ten guide routes in publicRoutes and sitemapRoutes', () => {
+  it('registers all twenty guide routes in publicRoutes and sitemapRoutes', () => {
     const publicHrefs = publicRoutes.map((r) => r.href);
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
+
+    expect(guideSlugs).toHaveLength(20);
+    expect(new Set(guideSlugs).size).toBe(20);
 
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}` as const;
       expect(publicHrefs).toContain(guideHref);
-      expect(sitemapHrefs).toContain(guideHref);
+
+      // Verify each guide appears in sitemap exactly once
+      const sitemapMatches = sitemapHrefs.filter((href) => href === guideHref);
+      expect(sitemapMatches).toHaveLength(1);
     });
   });
 
-  it('marks all ten guide routes as ad-eligible in isAdEligibleRoute', () => {
+  it('marks all twenty published guide routes as ad-eligible and rejects unknown guide routes', () => {
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}`;
       expect(isAdEligibleRoute(guideHref)).toBe(true);
+    });
+
+    // Verify unknown guide routes default to false
+    expect(isAdEligibleRoute('/guides/unknown-fake-guide-slug')).toBe(false);
+    expect(isAdEligibleRoute('/guides/invalid-test-route')).toBe(false);
+  });
+
+  it('verifies related-guide routes resolve to valid public routes in the route registry', () => {
+    const validPublicHrefs = new Set(publicRoutes.map((r) => r.href));
+
+    guideSlugs.forEach((slug) => {
+      const guide = energyGuides[slug]!;
+      expect(guide.relatedRoutes.length).toBeGreaterThan(0);
+      guide.relatedRoutes.forEach((relatedHref) => {
+        expect(validPublicHrefs.has(relatedHref)).toBe(true);
+      });
     });
   });
 
@@ -125,6 +158,16 @@ describe('Ten Energy Guides Architecture & Integrity', () => {
       'src/app/guides/how-much-does-it-cost-to-run-an-electric-water-heater/page.tsx',
       'src/app/guides/how-much-does-it-cost-to-run-a-pool-pump/page.tsx',
       'src/app/guides/how-much-does-it-cost-to-run-a-dehumidifier/page.tsx',
+      'src/app/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill/page.tsx',
+      'src/app/guides/why-is-my-electric-bill-high-when-usage-is-low/page.tsx',
+      'src/app/guides/electricity-supply-charge-vs-delivery-charge/page.tsx',
+      'src/app/guides/kw-vs-kwh-explained/page.tsx',
+      'src/app/guides/how-billing-cycle-length-affects-electricity-bills/page.tsx',
+      'src/app/guides/how-much-electricity-does-a-dishwasher-use/page.tsx',
+      'src/app/guides/how-much-electricity-does-a-washing-machine-use/page.tsx',
+      'src/app/guides/how-much-does-it-cost-to-run-an-electric-oven/page.tsx',
+      'src/app/guides/how-much-electricity-does-a-ceiling-fan-use/page.tsx',
+      'src/app/guides/how-much-electricity-does-a-gaming-pc-use/page.tsx',
     ];
 
     const webPackageRoot = process.cwd();

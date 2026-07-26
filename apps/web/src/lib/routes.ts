@@ -1,4 +1,5 @@
 import { PUBLISHED_STATE_CONFIGS } from '@/config/published-states';
+import { energyGuides, guideSlugs } from '@/content/guides';
 
 export type RouteGroup = 'tools' | 'research' | 'company' | 'legal';
 
@@ -10,6 +11,17 @@ export type PublicRoute = {
   nav?: boolean;
   sitemap?: boolean;
 };
+
+export const guidePublicRoutes: PublicRoute[] = guideSlugs.map((slug) => {
+  const g = energyGuides[slug]!;
+  return {
+    description: g.description,
+    group: 'research' as const,
+    href: g.href,
+    label: g.breadcrumbLabel || g.title,
+    sitemap: g.sitemapEligible,
+  };
+});
 
 const basePublicRoutes = [
   {
@@ -164,86 +176,6 @@ const restPublicRoutes = [
     sitemap: true,
   },
   {
-    description:
-      'Diagnose sudden electric bill increases by separating kWh usage spikes, rate adjustments, and billing cycle length.',
-    group: 'research',
-    href: '/guides/why-is-my-electric-bill-so-high',
-    label: 'Why Is My Electric Bill So High?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Understand household appliance wattage, daily runtime, compressor duty cycles, and monthly kWh costs.',
-    group: 'research',
-    href: '/guides/how-much-electricity-do-household-appliances-use',
-    label: 'How Much Electricity Do Household Appliances Use?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate air conditioner electricity cost (kWh) using cooling capacity (BTU/hr), EER/SEER efficiency, and duty cycles.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
-    label: 'How Much Does It Cost to Run an Air Conditioner?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Compare 750W vs 1,500W electric space heater operating costs, hourly kWh rates, and thermostat duty cycles.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-a-space-heater',
-    label: 'How Much Does It Cost to Run a Space Heater?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate EV home charging costs per session, per mile, and per month based on battery kWh and charging efficiency.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
-    label: 'How Much Does It Cost to Charge an EV at Home?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate refrigerator electricity consumption (kWh) and monthly operating cost using EnergyGuide annual ratings, compressor duty cycles, and rated power draw.',
-    group: 'research',
-    href: '/guides/how-much-electricity-does-a-refrigerator-use',
-    label: 'How Much Electricity Does a Refrigerator Use?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate 240V electric clothes dryer cost per load, weekly spending, and annual electricity consumption based on rated wattage and laundry frequency.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
-    label: 'How Much Does It Cost to Run an Electric Clothes Dryer?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate electric resistance tank water heating costs per day, month, and year using element wattage, active heating hours, and utility rates.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
-    label: 'How Much Does It Cost to Run an Electric Water Heater?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate residential pool pump electricity costs per day, month, and season based on electrical input Watts, filtration hours per day, and utility rates.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-a-pool-pump',
-    label: 'How Much Does It Cost to Run a Pool Pump?',
-    sitemap: true,
-  },
-  {
-    description:
-      'Calculate basement and room dehumidifier electricity costs per day, month, and season based on rated wattage, humidistat duty cycle, and utility rates.',
-    group: 'research',
-    href: '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
-    label: 'How Much Does It Cost to Run a Dehumidifier?',
-    sitemap: true,
-  },
-  {
     description: 'Energy cost comparisons, rate benchmarks, and appliance efficiency evaluations.',
     group: 'research',
     href: '/comparisons',
@@ -329,6 +261,7 @@ const restPublicRoutes = [
 
 export const publicRoutes = [
   ...basePublicRoutes,
+  ...guidePublicRoutes,
   ...statePublicRoutes,
   ...restPublicRoutes,
 ] as const;
