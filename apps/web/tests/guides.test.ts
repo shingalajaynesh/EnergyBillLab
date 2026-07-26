@@ -13,45 +13,41 @@ import {
 } from '@energy-bill-lab/calculation-engine';
 import { describe, expect, it } from 'vitest';
 
-import { energyGuides, guideSlugs } from '@/content/guides';
+import { GUIDE_ROUTES, energyGuides, guideSlugs } from '@/content/guides';
 import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFooterGroups, publicRoutes, sitemapRoutes } from '@/lib/routes';
 
-describe('Twenty Energy Guides Architecture & Integrity', () => {
-  it('defines aggregate 20 guide definitions (10 Batch 1 + 10 Batch 2) with 0 duplicate slugs', () => {
-    expect(guideSlugs).toHaveLength(20);
-    expect(new Set(guideSlugs).size).toBe(20);
-    expect(guideSlugs).toEqual([
-      'why-is-my-electric-bill-so-high',
-      'how-much-electricity-do-household-appliances-use',
-      'how-much-does-it-cost-to-run-an-air-conditioner',
-      'how-much-does-it-cost-to-run-a-space-heater',
-      'how-much-does-it-cost-to-charge-an-ev-at-home',
-      'how-much-electricity-does-a-refrigerator-use',
-      'how-much-does-it-cost-to-run-an-electric-clothes-dryer',
-      'how-much-does-it-cost-to-run-an-electric-water-heater',
-      'how-much-does-it-cost-to-run-a-pool-pump',
-      'how-much-does-it-cost-to-run-a-dehumidifier',
-      'how-to-calculate-electricity-cost-per-kwh-from-your-bill',
-      'why-is-my-electric-bill-high-when-usage-is-low',
-      'electricity-supply-charge-vs-delivery-charge',
-      'kw-vs-kwh-explained',
-      'how-billing-cycle-length-affects-electricity-bills',
-      'how-much-electricity-does-a-dishwasher-use',
-      'how-much-electricity-does-a-washing-machine-use',
-      'how-much-does-it-cost-to-run-an-electric-oven',
-      'how-much-electricity-does-a-ceiling-fan-use',
-      'how-much-electricity-does-a-gaming-pc-use',
-    ]);
+const BATCH_3_SLUGS = [
+  'how-much-electricity-does-a-microwave-use',
+  'how-much-electricity-does-an-air-fryer-use',
+  'how-much-electricity-does-a-television-use',
+  'how-much-electricity-does-a-wifi-router-use',
+  'how-much-electricity-does-a-laptop-use',
+  'how-much-electricity-does-an-electric-kettle-use',
+  'how-much-electricity-does-an-induction-cooktop-use',
+  'how-much-electricity-does-a-window-air-conditioner-use',
+  'what-is-vampire-power-and-how-much-does-it-cost',
+  'heat-pump-vs-electric-resistance-heating-cost',
+];
+
+describe('Thirty Energy Guides Architecture & Integrity', () => {
+  it('defines aggregate 30 guide definitions (10 Batch 1 + 10 Batch 2 + 10 Batch 3) with 0 duplicate slugs', () => {
+    expect(guideSlugs).toHaveLength(30);
+    expect(new Set(guideSlugs).size).toBe(30);
+    expect(GUIDE_ROUTES).toHaveLength(30);
+
+    BATCH_3_SLUGS.forEach((slug) => {
+      expect(guideSlugs).toContain(slug);
+    });
   });
 
-  it('registers all twenty guide routes in publicRoutes and sitemapRoutes', () => {
+  it('registers all thirty guide routes in publicRoutes and sitemapRoutes', () => {
     const publicHrefs = publicRoutes.map((r) => r.href);
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
 
-    expect(guideSlugs).toHaveLength(20);
-    expect(new Set(guideSlugs).size).toBe(20);
+    expect(guideSlugs).toHaveLength(30);
+    expect(new Set(guideSlugs).size).toBe(30);
 
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}` as const;

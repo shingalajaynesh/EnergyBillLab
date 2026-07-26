@@ -1034,6 +1034,492 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sitemapEligible: true,
     adEligible: true,
   },
+  'how-much-electricity-does-a-microwave-use': {
+    slug: 'how-much-electricity-does-a-microwave-use',
+    href: '/guides/how-much-electricity-does-a-microwave-use',
+    title: 'How Much Electricity Does a Microwave Use? (Watts, kWh & Cost)',
+    h1Title: 'How Much Electricity Does a Microwave Use?',
+    breadcrumbLabel: 'Microwave Electricity Cost',
+    description:
+      'Calculate microwave electricity consumption (kWh) and operating cost based on input wattage, cooking output, standby clock draw, and daily usage.',
+    eyebrow: 'Microwave Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate daily, monthly, and annual microwave operating costs based on wattage and cooking duration.',
+    actionLabel: 'Calculate Microwave Energy Cost',
+    summaryTakeaways: [
+      'Residential microwaves typically consume 1,100W to 1,800W of electrical input power to generate 700W to 1,200W of cooking output.',
+      'Because microwaves operate for short durations (5 to 15 minutes daily), monthly electricity costs remain low—typically $0.40 to $1.50.',
+      'Digital microwave clocks draw 2W to 4W continuously, consuming ~1.5 to 3.0 kWh per month in standby power.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Estimating Appliance and Home Electronic Energy Use',
+        topic: 'Microwave power consumption, standby clock power draw, and cooking efficiency',
+        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+      },
+      {
+        organization: 'ENERGY STAR',
+        title: 'Residential Kitchen Appliance Energy Efficiency Standards',
+        topic: 'Standby power limits and kitchen electronics energy baselines',
+        url: 'https://www.energystar.gov/products/appliances',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-electricity-does-an-air-fryer-use',
+      '/guides/how-much-does-it-cost-to-run-an-electric-oven',
+      '/guides/what-is-vampire-power-and-how-much-does-it-cost',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-an-air-fryer-use': {
+    slug: 'how-much-electricity-does-an-air-fryer-use',
+    href: '/guides/how-much-electricity-does-an-air-fryer-use',
+    title: 'How Much Electricity Does an Air Fryer Use? (Watts, Ovens & Cost)',
+    h1Title: 'How Much Electricity Does an Air Fryer Use?',
+    breadcrumbLabel: 'Air Fryer Electricity Cost',
+    description:
+      'Discover air fryer power consumption (1,400W–1,800W), thermostat duty cycles, cooking time impact, and energy comparisons with full-size electric ovens.',
+    eyebrow: 'Air Fryer Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate air fryer operating costs per meal and per month based on element wattage and cooking time.',
+    actionLabel: 'Calculate Air Fryer Operating Cost',
+    summaryTakeaways: [
+      'Countertop air fryers operate at rated heating element capacities of 1,400W to 1,800W.',
+      'Air fryers heat a compact 3 to 6-quart chamber rapidly, reducing preheating times to 2–3 minutes compared to 10–15 minutes for full-size ovens.',
+      'While air fryers consume less energy for single-dish or small-portion meals, full-size electric ovens remain more efficient per serving when cooking multi-rack family meals.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Kitchen Appliance Energy Efficiency & Small Cooking Electronics',
+        topic:
+          'Small appliance heating elements, thermostat duty cycles, and cooking energy efficiency',
+        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+      },
+      {
+        organization: 'ENERGY STAR',
+        title: 'Commercial & Residential Cooking Equipment Energy Baselines',
+        topic: 'Convection heating efficiency and compact cooking enclosure energy performance',
+        url: 'https://www.energystar.gov/products/appliances',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-an-electric-oven',
+      '/guides/how-much-electricity-does-a-microwave-use',
+      '/guides/how-much-electricity-does-an-induction-cooktop-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-television-use': {
+    slug: 'how-much-electricity-does-a-television-use',
+    href: '/guides/how-much-electricity-does-a-television-use',
+    title: 'How Much Electricity Does a TV Use? (Watts, OLED vs LED & Cost)',
+    h1Title: 'How Much Electricity Does a Television Use?',
+    breadcrumbLabel: 'TV Electricity Cost',
+    description:
+      'Calculate television electricity usage (kWh) and monthly cost based on screen size (32"-75"+), display technology (LED vs OLED), brightness settings, and standby power.',
+    eyebrow: 'Television Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate monthly television operating costs based on screen size, display technology, and viewing hours.',
+    actionLabel: 'Calculate Television Electricity Cost',
+    summaryTakeaways: [
+      'Modern LED/LCD televisions draw 30W to 120W, while large 65"+ OLED televisions draw 100W to 220W depending on HDR brightness settings.',
+      'Operating a TV for 4 hours daily consumes 4 to 25 kWh per month, costing between $0.80 and $5.00 depending on electric rates.',
+      'Connected smart TVs draw 0.5W to 2.0W in standby mode to maintain network connections for quick wake and background updates.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Televisions Energy Efficiency Specification (Version 9.0)',
+        topic:
+          'On-mode power limits by screen area, HDR power consumption, and standby power requirements',
+        url: 'https://www.energystar.gov/products/home_electronics/televisions',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Home Electronics Energy Use Guide',
+        topic:
+          'Display power demand, ambient light sensors, and streaming media device energy consumption',
+        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-electricity-does-a-gaming-pc-use',
+      '/guides/what-is-vampire-power-and-how-much-does-it-cost',
+      '/guides/how-much-electricity-does-a-wifi-router-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-wifi-router-use': {
+    slug: 'how-much-electricity-does-a-wifi-router-use',
+    href: '/guides/how-much-electricity-does-a-wifi-router-use',
+    title: 'How Much Electricity Does a Wi-Fi Router Use? (24/7 Cost & Watts)',
+    h1Title: 'How Much Electricity Does a Wi-Fi Router Use?',
+    breadcrumbLabel: 'Wi-Fi Router Electricity Cost',
+    description:
+      'Calculate 24/7 Wi-Fi router, modem, and mesh node electricity consumption (Watts, kWh) and annual operating costs across utility electric rates.',
+    eyebrow: 'Wi-Fi Router Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate continuous 24/7 router and mesh networking equipment operating costs.',
+    actionLabel: 'Calculate Wi-Fi Router Operating Cost',
+    summaryTakeaways: [
+      'Standalone Wi-Fi routers and modem combos draw 5W to 15W continuously, operating 8,760 hours per year.',
+      'A continuous 10W router setup consumes ~7.3 kWh per month (87.6 kWh per year), costing $13.00 to $26.00 annually depending on electric rates.',
+      'Multi-node Wi-Fi mesh systems with 3 units draw 15W to 35W combined, multiplying annual continuous electricity costs.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Small Network Equipment Efficiency Specifications',
+        topic:
+          'Broadband modems, wireless routers, access points, and continuous network power draw',
+        url: 'https://www.energystar.gov/products/certified-products/small-network-equipment',
+      },
+      {
+        organization: 'Lawrence Berkeley National Laboratory',
+        title: 'Home Network Equipment Energy Consumption Study',
+        topic:
+          'Continuous electrical draw of modems, routers, and mesh node network infrastructure',
+        url: 'https://www.lbl.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-electricity-does-a-laptop-use',
+      '/guides/how-much-electricity-does-a-television-use',
+      '/guides/what-is-vampire-power-and-how-much-does-it-cost',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-laptop-use': {
+    slug: 'how-much-electricity-does-a-laptop-use',
+    href: '/guides/how-much-electricity-does-a-laptop-use',
+    title: 'How Much Electricity Does a Laptop Use? (Watts, Charging & Cost)',
+    h1Title: 'How Much Electricity Does a Laptop Computer Use?',
+    breadcrumbLabel: 'Laptop Electricity Cost',
+    description:
+      'Calculate laptop computer power consumption (15W–90W), charger wattage ratings, battery charging efficiency losses, and monthly operating costs.',
+    eyebrow: 'Laptop Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate laptop computer operating costs based on active power draw and work hours.',
+    actionLabel: 'Calculate Laptop Electricity Cost',
+    summaryTakeaways: [
+      'Laptops draw 15W to 45W during typical office work and web browsing, ramping to 50W–90W under high processor or charging loads.',
+      'A laptop used 8 hours daily for work consumes 4 to 12 kWh per month, costing between $0.80 and $2.40 monthly at average electric rates.',
+      'Laptops consume 70% to 85% less power than desktop computers due to mobile-optimized processors, integrated displays, and power management.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Computers & Monitors Energy Efficiency Specifications',
+        topic:
+          'Notebook computer power limits, external power supply efficiency, and idle/active state power draw',
+        url: 'https://www.energystar.gov/products/office_equipment/computers',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Estimating Computer and Office Electronic Power Draw',
+        topic:
+          'Laptop charger rating vs. actual wall power consumption and battery charging efficiency',
+        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-electricity-does-a-gaming-pc-use',
+      '/guides/how-much-electricity-does-a-wifi-router-use',
+      '/guides/what-is-vampire-power-and-how-much-does-it-cost',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-an-electric-kettle-use': {
+    slug: 'how-much-electricity-does-an-electric-kettle-use',
+    href: '/guides/how-much-electricity-does-an-electric-kettle-use',
+    title: 'How Much Electricity Does an Electric Kettle Use? (Watts & Cost)',
+    h1Title: 'How Much Electricity Does an Electric Kettle Use?',
+    breadcrumbLabel: 'Electric Kettle Electricity Cost',
+    description:
+      'Calculate electric kettle power consumption (1,200W–1,500W), short boiling runtime, overfilling energy waste, and cost per boil across utility rates.',
+    eyebrow: 'Electric Kettle Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate cost per boil and monthly operating expenses for electric kettles.',
+    actionLabel: 'Calculate Electric Kettle Operating Cost',
+    summaryTakeaways: [
+      'Electric kettles operate at high power ratings of 1,200W to 1,500W but run for short periods (3 to 5 minutes per boil).',
+      'Boiling 1 liter of water consumes approximately 0.08 to 0.11 kWh, costing $0.015 to $0.025 per boil at standard electric rates.',
+      'Overfilling an electric kettle by heating 1.7L when only needing 250mL for one cup wastes up to 80% of the energy consumed during that boil.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Small Kitchen Appliance Power & Water Heating Energy',
+        topic:
+          'Electric resistance water heating element efficiency, thermal losses, and kettle power draw',
+        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+      },
+      {
+        organization: 'National Institute of Standards and Technology',
+        title: 'Residential Water Heating and Energy Conversion Study',
+        topic:
+          'Specific heat capacity of water heating and small container thermal conversion rates',
+        url: 'https://www.nist.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-electricity-does-an-induction-cooktop-use',
+      '/guides/how-much-electricity-does-a-microwave-use',
+      '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-an-induction-cooktop-use': {
+    slug: 'how-much-electricity-does-an-induction-cooktop-use',
+    href: '/guides/how-much-electricity-does-an-induction-cooktop-use',
+    title: 'How Much Electricity Does an Induction Cooktop Use? (Watts & Cost)',
+    h1Title: 'How Much Electricity Does an Induction Cooktop Use?',
+    breadcrumbLabel: 'Induction Cooktop Electricity Cost',
+    description:
+      'Discover induction cooktop power ratings (1,400W–3,700W), power level cycling, magnetic pan heating efficiency, and hourly cooking costs.',
+    eyebrow: 'Induction Cooktop Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate induction cooktop cooking costs based on burner power and daily cooking time.',
+    actionLabel: 'Calculate Induction Cooktop Cost',
+    summaryTakeaways: [
+      'Induction cooktop burners operate at rated power capacities of 1,400W to 3,700W, cycling power output based on selected heat settings.',
+      'Induction technology transfers electromagnetic energy directly to ferrous cookware, achieving higher heat transfer efficiency than radiant electric coils.',
+      'A typical meal cooked on medium heat (1,500W for 30 minutes) consumes ~0.75 kWh, costing between $0.15 and $0.23 at average utility rates.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Residential Cooking Products Energy Conservation Standards',
+        topic:
+          'Electromagnetic induction heating efficiency, power level modulation, and cooking energy consumption',
+        url: 'https://www.energy.gov/eere/buildings/appliance-and-equipment-standards-program',
+      },
+      {
+        organization: 'Lawrence Berkeley National Laboratory',
+        title: 'Induction vs Resistance Cooking Energy Performance Study',
+        topic: 'Heat transfer efficiency to cookware and energy consumption comparisons',
+        url: 'https://www.lbl.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/appliance-energy-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-an-electric-oven',
+      '/guides/how-much-electricity-does-an-electric-kettle-use',
+      '/guides/how-much-electricity-does-an-air-fryer-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-much-electricity-does-a-window-air-conditioner-use': {
+    slug: 'how-much-electricity-does-a-window-air-conditioner-use',
+    href: '/guides/how-much-electricity-does-a-window-air-conditioner-use',
+    title: 'How Much Electricity Does a Window AC Use? (BTU, Watts & Cost)',
+    h1Title: 'How Much Electricity Does a Window Air Conditioner Use?',
+    breadcrumbLabel: 'Window AC Electricity Cost',
+    description:
+      'Calculate window air conditioner electricity usage (kWh) and monthly cooling cost based on BTU capacity (5,000–12,000), EER/CEER rating, and thermostat duty cycle.',
+    eyebrow: 'Window AC Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Appliance Benchmarks',
+    primaryCalculatorHref: '/tools/ac-cost-calculator',
+    primaryCalculatorLabel: 'Air Conditioner Cost Calculator',
+    primaryCalculatorDescription:
+      'Estimate window air conditioner cooling expenses based on BTU capacity, CEER rating, and daily runtime.',
+    actionLabel: 'Calculate Window AC Cooling Cost',
+    summaryTakeaways: [
+      'Small 5,000 BTU window AC units draw 450W to 550W, while large 12,000 BTU units draw 1,000W to 1,200W when the compressor is actively running.',
+      'Operating an 8,000 BTU window unit for 8 hours daily at a 60% compressor duty cycle consumes ~3.5 kWh/day ($16.00 to $32.00 monthly).',
+      'CEER (Combined Energy Efficiency Ratio) ratings of 12.0+ consume 10% to 15% less electricity than older units with EER ratings below 10.0.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'ENERGY STAR',
+        title: 'Room Air Conditioners Energy Efficiency Specification',
+        topic:
+          'CEER efficiency baselines, cooling capacity in BTU/hr, and compressor energy limits',
+        url: 'https://www.energystar.gov/products/heating_cooling/room_air_conditioners',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Room Air Conditioner Energy Saver Guide',
+        topic:
+          'Sizing window AC units by room square footage, thermostat settings, and seasonal energy use',
+        url: 'https://www.energy.gov/energysaver/room-air-conditioners',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/ac-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+      '/guides/how-much-electricity-does-a-ceiling-fan-use',
+      '/guides/how-much-does-it-cost-to-run-a-space-heater',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'what-is-vampire-power-and-how-much-does-it-cost': {
+    slug: 'what-is-vampire-power-and-how-much-does-it-cost',
+    href: '/guides/what-is-vampire-power-and-how-much-does-it-cost',
+    title: 'What Is Vampire Power & How Much Does It Cost? (Standby Usage)',
+    h1Title: 'What Is Vampire Power and How Much Does It Cost?',
+    breadcrumbLabel: 'Vampire Power & Standby Cost',
+    description:
+      'Understand standby power consumption (vampire load), continuous phantom power draw in household electronics, annual dollar costs, and smart power strip savings.',
+    eyebrow: 'Standby Energy Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Analyze your household electric statement to isolate continuous background standby power.',
+    actionLabel: 'Analyze Your Household Electric Bill',
+    summaryTakeaways: [
+      'Vampire power (phantom load) is the electrical energy consumed by appliances and electronics while turned off or in standby mode.',
+      'A typical U.S. household has 20 to 40 plugged-in devices drawing 1W to 15W continuously, accumulating 200 to 500 kWh annually ($30 to $100/year).',
+      'Smart power strips auto-cut power to secondary electronics when primary devices (like TVs or computers) enter standby, eliminating continuous draw.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'Lawrence Berkeley National Laboratory',
+        title: 'Standby Power Summary Data & Appliance Measurements',
+        topic:
+          'Empirical measurement of standby power draw across residential electronics and appliances',
+        url: 'https://standby.lbl.gov/',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Reducing Standby Power Losses in Home Electronics',
+        topic:
+          'Phantom loads, smart power strips, ENERGY STAR standby power requirements, and measurement tools',
+        url: 'https://www.energy.gov/energysaver/low-power-mode-payoffs',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/how-much-electricity-does-a-television-use',
+      '/guides/how-much-electricity-does-a-wifi-router-use',
+      '/guides/how-much-electricity-does-a-microwave-use',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'heat-pump-vs-electric-resistance-heating-cost': {
+    slug: 'heat-pump-vs-electric-resistance-heating-cost',
+    href: '/guides/heat-pump-vs-electric-resistance-heating-cost',
+    title: 'Heat Pump vs. Electric Resistance Heating Cost Comparison',
+    h1Title: 'Heat Pump vs. Electric Resistance Heating: Cost & Efficiency Comparison',
+    breadcrumbLabel: 'Heat Pump vs Resistance Heating',
+    description:
+      'Compare heat pump coefficient of performance (COP 2.0–4.0) with electric resistance heating (COP 1.0), outdoor temperature impacts, and heating bill savings.',
+    eyebrow: 'Heating Technology Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Energy Fundamentals',
+    primaryCalculatorHref: '/tools/space-heater-cost-calculator',
+    primaryCalculatorLabel: 'Space Heater Cost Calculator',
+    primaryCalculatorDescription:
+      'Calculate heating operating expenses and compare heat pump COP efficiency with electric resistance.',
+    actionLabel: 'Calculate Space Heater Operating Cost',
+    summaryTakeaways: [
+      'Heat pumps move existing heat from outdoor air rather than generating it from electrical resistance, achieving Coefficient of Performance (COP) ratings of 2.0 to 4.0.',
+      'Electric resistance heaters (baseboards, space heaters, electric furnaces) convert 100% of electricity to heat (COP 1.0), consuming 2 to 3 times more electricity for equal heating output.',
+      'In moderate climates, heat pumps reduce space heating electricity consumption by 50% to 60% compared to electric resistance heating.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Heat Pump Systems & Energy Efficiency Guide',
+        topic:
+          'Heat pump COP performance ratings, heating season performance factor (HSPF2), and resistance heating comparisons',
+        url: 'https://www.energy.gov/energysaver/heat-pump-systems',
+      },
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Heating Fuel and Electricity Usage in U.S. Homes',
+        topic:
+          'Residential space heating energy consumption by heating fuel type and regional climate zones',
+        url: 'https://www.eia.gov/consumption/residential/',
+      },
+    ],
+    relatedRoutes: [
+      '/tools/space-heater-cost-calculator',
+      '/guides/how-much-does-it-cost-to-run-a-space-heater',
+      '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+      '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
+      '/appliances',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
 };
 
 export const guideSlugs = Object.keys(energyGuides);

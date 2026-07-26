@@ -2,15 +2,44 @@
 
 ## Current Task
 
-- Phase: Final Phase — Complete 50-State Production Audit
-- Status: Complete & Verified (Awaiting Review & Commit)
-- Scope Completed:
-  1. Complete 50-State Route Audit: Verified HTTP 200, correct canonical URLs, unique titles, unique meta descriptions, exactly 1 H1 per page, ¢/kWh rate units, source period visibility, consumer disclaimers, resolving CTAs and methodology/data source links, complete authoritative source lists, resolving related state links, zero localhost URLs, zero noindex tags, zero NaN/undefined/Infinity strings, zero hardcoded fallback rates, and honest missing-data handling across all 50 state pages.
-  2. Sitemap Audit: Verified production sitemap contains exactly 50 state routes, research hub, national research report, 10 calculators, 10 guides, trust and policy pages, zero duplicate state URLs, zero unpublished routes, zero localhost hostnames, HTTPS origin, and valid XML output.
-  3. Research Report Audit: Verified hub, report, and CSV use common period 2026-04, all 50 state links resolve, 0 "Rate Data Only" badges remain, Hawaii (#1 highest, 44.59 ¢/kWh) and North Dakota (#1 lowest, 10.44 ¢/kWh) rankings remain mathematically accurate, Maryland anomaly guidance remains visible, CSV export contains 50 unique canonical states with matching headers and X-Report-Period header.
-  4. Link Validation: Verified internal link resolution across 50 state pages, 10 calculators, 10 guides, research hub and report, about, contact, methodology, data sources, editorial policy, accessibility, privacy, cookies, terms, and disclaimer with zero broken links or redirect chains.
-  5. Editorial Trust Review: Inspected all 50 state reports for cautious, accurate market wording without overstating deregulation, legal claims, or mandatory rules.
-  6. Deployment Checklist: Updated `docs/operations/deployment-checklist.md` with explicit Google Search Console and Bing Webmaster Tools manual owner action steps.
-  7. Protected Files: `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, `render.yaml` remain 100% untouched.
+- Phase: Guide Expansion Batch 3
+- Status: Complete & Verified (Awaiting User Review / Deployment)
+- Scope Completed & Verified:
+  1. Published Exactly 10 New Source-Reviewed Guides (Total 30 Published Guides):
+     - `/guides/how-much-electricity-does-a-microwave-use`
+     - `/guides/how-much-electricity-does-an-air-fryer-use`
+     - `/guides/how-much-electricity-does-a-television-use`
+     - `/guides/how-much-electricity-does-a-wifi-router-use`
+     - `/guides/how-much-electricity-does-a-laptop-use`
+     - `/guides/how-much-electricity-does-an-electric-kettle-use`
+     - `/guides/how-much-electricity-does-an-induction-cooktop-use`
+     - `/guides/how-much-electricity-does-a-window-air-conditioner-use`
+     - `/guides/what-is-vampire-power-and-how-much-does-it-cost`
+     - `/guides/heat-pump-vs-electric-resistance-heating-cost`
+  2. Total Guide Count: Exactly 30 published guides (10 Batch 1 + 10 Batch 2 + 10 Batch 3).
+  3. Inventory Integrity: 50 state reports remain 50, 10 calculators remain 10, research reports remain unchanged. Do not create Guide Batch 4.
+  4. Single Canonical Guide Registry Architecture: `energyGuides` dictionary in `apps/web/src/content/guides.ts` is the sole manually maintained registry. `GUIDE_ROUTES`, `publicRoutes`, `sitemapRoutes`, and `STATIC_ADS_ALLOWED_ROUTES` derive dynamically. Zero hardcoded duplicate lists exist.
+  5. Content Standards & Editorial Trust Rules: Direct answer near top, transparent energy formula, worked cost examples, low/typical/high scenarios, assumptions & limitations, calculator CTA, related guides, methodology link, data sources link, consumer disclaimer, reviewed dates (`2026-07-26`), primary sources (U.S. DOE, ENERGY STAR, U.S. EIA, LBNL, NIST). Exact numerical values labeled as illustrative calculation assumptions or typical manufacturer benchmarks.
+  6. Accessibility: Implemented and reviewed toward WCAG 2.2 AA (heading hierarchy H1->H2->H3, table captions, scoped headers, local table scrolling, focus states).
+  7. Automated Tests (`apps/web/tests/guides.test.ts` & `routes.test.ts`):
+     - Exactly 30 unique guide slugs in canonical registry
+     - Exactly 10 Batch 3 guide slugs exist
+     - `GUIDE_ROUTES` contains exactly 30 routes
+     - Every guide appears once in `publicRoutes` and `sitemapRoutes`
+     - Every published guide is deliberately ad-eligible
+     - Unknown guide routes are not ad-eligible
+     - Every related-guide link resolves to a valid public route
+  8. Quality Gate Execution Results:
+     - `pnpm format:check` — PASSED (Prettier compliant)
+     - `pnpm typecheck` — PASSED (0 errors across 9 packages)
+     - `pnpm lint` — PASSED (10/10 tasks)
+     - `pnpm test` — PASSED (19 test files, 104 tests passed)
+     - `pnpm --filter=@energy-bill-lab/web test` — PASSED
+     - `pnpm --filter=@energy-bill-lab/database test` — PASSED
+     - `pnpm --filter=@energy-bill-lab/api test` — PASSED
+     - `pnpm build:web` — PASSED (112 static pages prerendered)
+     - `pnpm build:api` — PASSED
+  9. Protected Files Unchanged: `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` remain 100% untouched (0 diff).
 - Strict Git Rules: Read-only commands used by agent. All changes remain unstaged in working tree.
-- Suggested Commit: `fix(audit): complete fifty-state production review`
+- Suggested Commit: `feat(guides): publish third household energy guide batch`
+- Final Recommendation: `Review and deploy Guide Batch 3 (30 total guides live). Monitor search impressions, guide traffic, and calculator conversions in Google Search Console to select Batch 4 topics based on actual user demand.`

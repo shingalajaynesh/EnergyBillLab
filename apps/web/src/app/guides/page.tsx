@@ -75,12 +75,28 @@ const calculators = [
 ];
 
 export default function GuidesPage() {
-  const allGuides = guideSlugs.map((slug) => energyGuides[slug]!);
+  const allGuides = guideSlugs.map((slug) => {
+    const guide = energyGuides[slug]!;
+    const category =
+      slug.startsWith('why-is-my-electric-bill') ||
+      slug === 'electricity-supply-charge-vs-delivery-charge' ||
+      slug === 'how-to-calculate-electricity-cost-per-kwh-from-your-bill' ||
+      slug === 'how-billing-cycle-length-affects-electricity-bills' ||
+      slug === 'what-is-vampire-power-and-how-much-does-it-cost'
+        ? 'Electric Bill Diagnostics'
+        : slug === 'kw-vs-kwh-explained' || slug === 'heat-pump-vs-electric-resistance-heating-cost'
+          ? 'Energy Fundamentals'
+          : 'Appliance Energy Guides';
+
+    return {
+      ...guide,
+      category,
+    };
+  });
 
   const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics');
-  const applianceGuides = allGuides.filter(
-    (g) => g.category === 'Appliance Benchmarks' || g.category === 'Energy Fundamentals',
-  );
+  const fundamentalGuides = allGuides.filter((g) => g.category === 'Energy Fundamentals');
+  const applianceGuides = allGuides.filter((g) => g.category === 'Appliance Energy Guides');
 
   return (
     <PageContainer>
@@ -114,6 +130,29 @@ export default function GuidesPage() {
           </h2>
           <div className={styles.guideGrid}>
             {problemGuides.map((guide) => (
+              <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
+                <div className={styles.guideCardTop}>
+                  <span className={styles.categoryTag}>{guide.category}</span>
+                  <h3 className={styles.cardTitle}>{guide.h1Title}</h3>
+                  <p className={styles.cardDescription}>{guide.description}</p>
+                </div>
+                <span className={styles.cardAction}>Read Guide →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 2: Energy Fundamentals */}
+        <section
+          className={styles.guideSection}
+          aria-labelledby="energy-fundamentals"
+          style={{ marginTop: 40 }}
+        >
+          <h2 id="energy-fundamentals" className={styles.sectionHeader}>
+            Energy Fundamentals & Heating Technology
+          </h2>
+          <div className={styles.guideGrid}>
+            {fundamentalGuides.map((guide) => (
               <Link key={guide.slug} href={guide.href} className={styles.guideCard}>
                 <div className={styles.guideCardTop}>
                   <span className={styles.categoryTag}>{guide.category}</span>
