@@ -18,36 +18,36 @@ import { isAdEligibleRoute } from '@/lib/ad-eligibility';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFooterGroups, publicRoutes, sitemapRoutes } from '@/lib/routes';
 
-const BATCH_4_SLUGS = [
-  'how-much-electricity-does-central-air-conditioning-use',
-  'how-much-electricity-does-a-portable-air-conditioner-use',
-  'how-much-electricity-does-a-ductless-mini-split-use',
-  'how-much-electricity-does-a-heat-pump-use',
-  'how-much-electricity-does-an-electric-furnace-use',
-  'how-much-electricity-does-electric-baseboard-heating-use',
-  'how-much-can-a-smart-thermostat-save',
-  'should-you-turn-off-the-air-conditioner-when-away',
-  'how-air-leaks-increase-your-energy-bill',
-  'how-attic-insulation-affects-your-energy-bill',
+const BATCH_5_SLUGS = [
+  'how-to-read-an-electric-bill-line-by-line',
+  'what-is-a-time-of-use-electricity-rate',
+  'peak-vs-off-peak-electricity-hours-explained',
+  'fixed-vs-variable-electricity-rates',
+  'what-is-a-demand-charge-on-an-electric-bill',
+  'estimated-vs-actual-meter-reading',
+  'how-budget-billing-works',
+  'why-electricity-rates-change',
+  'fuel-adjustment-charges-and-utility-riders-explained',
+  'how-net-metering-affects-your-electric-bill',
 ];
 
-describe('Forty Energy Guides Architecture & Integrity', () => {
-  it('defines aggregate 40 guide definitions (10 Batch 1 + 10 Batch 2 + 10 Batch 3 + 10 Batch 4) with 0 duplicate slugs', () => {
-    expect(guideSlugs).toHaveLength(40);
-    expect(new Set(guideSlugs).size).toBe(40);
-    expect(GUIDE_ROUTES).toHaveLength(40);
+describe('Fifty Energy Guides Architecture & Integrity', () => {
+  it('defines aggregate 50 guide definitions (10 Batch 1 + 10 Batch 2 + 10 Batch 3 + 10 Batch 4 + 10 Batch 5) with 0 duplicate slugs', () => {
+    expect(guideSlugs).toHaveLength(50);
+    expect(new Set(guideSlugs).size).toBe(50);
+    expect(GUIDE_ROUTES).toHaveLength(50);
 
-    BATCH_4_SLUGS.forEach((slug) => {
+    BATCH_5_SLUGS.forEach((slug) => {
       expect(guideSlugs).toContain(slug);
     });
   });
 
-  it('registers all forty guide routes in publicRoutes and sitemapRoutes', () => {
+  it('registers all fifty guide routes in publicRoutes and sitemapRoutes', () => {
     const publicHrefs = publicRoutes.map((r) => r.href);
     const sitemapHrefs = sitemapRoutes.map((r) => r.href);
 
-    expect(guideSlugs).toHaveLength(40);
-    expect(new Set(guideSlugs).size).toBe(40);
+    expect(guideSlugs).toHaveLength(50);
+    expect(new Set(guideSlugs).size).toBe(50);
 
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}` as const;
@@ -59,7 +59,7 @@ describe('Forty Energy Guides Architecture & Integrity', () => {
     });
   });
 
-  it('marks all forty published guide routes as ad-eligible and rejects unknown guide routes', () => {
+  it('marks all fifty guide routes as ad-eligible and rejects unknown guide routes', () => {
     guideSlugs.forEach((slug) => {
       const guideHref = `/guides/${slug}`;
       expect(isAdEligibleRoute(guideHref)).toBe(true);

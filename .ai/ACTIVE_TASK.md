@@ -2,43 +2,37 @@
 
 ## Current Task
 
-- Phase: Guide Expansion Batch 4 — Heating, Cooling, and Home Efficiency
+- Phase: Guide Expansion Batch 5 — Electricity Bills, Rates, and Metering
 - Status: Complete & Verified (Awaiting User Review / Deployment)
 - Scope Completed & Verified:
-  1. Implemented Exactly 10 New Source-Reviewed Guides (Total 40 Guides Implemented in Repository):
-     - `/guides/how-much-electricity-does-central-air-conditioning-use`
-     - `/guides/how-much-electricity-does-a-portable-air-conditioner-use`
-     - `/guides/how-much-electricity-does-a-ductless-mini-split-use`
-     - `/guides/how-much-electricity-does-a-heat-pump-use`
-     - `/guides/how-much-electricity-does-an-electric-furnace-use`
-     - `/guides/how-much-electricity-does-electric-baseboard-heating-use`
-     - `/guides/how-much-can-a-smart-thermostat-save`
-     - `/guides/should-you-turn-off-the-air-conditioner-when-away`
-     - `/guides/how-air-leaks-increase-your-energy-bill`
-     - `/guides/how-attic-insulation-affects-your-energy-bill`
-  2. Total Guide Inventory: Exactly 40 canonical guides implemented in the repository (10 Batch 1 + 10 Batch 2 + 10 Batch 3 + 10 Batch 4).
-  3. Inventory Integrity: 50 state reports remain 50, 10 calculators remain 10, research report architecture remains unchanged. Do not create Guide Batch 5.
+  1. Implemented Exactly 10 New Source-Reviewed Guides (Total 50 Guides Implemented in Repository):
+     - `/guides/how-to-read-an-electric-bill-line-by-line`
+     - `/guides/what-is-a-time-of-use-electricity-rate`
+     - `/guides/peak-vs-off-peak-electricity-hours-explained`
+     - `/guides/fixed-vs-variable-electricity-rates`
+     - `/guides/what-is-a-demand-charge-on-an-electric-bill`
+     - `/guides/estimated-vs-actual-meter-reading`
+     - `/guides/how-budget-billing-works`
+     - `/guides/why-electricity-rates-change`
+     - `/guides/fuel-adjustment-charges-and-utility-riders-explained`
+     - `/guides/how-net-metering-affects-your-electric-bill`
+  2. Total Guide Inventory: Exactly 50 canonical guides implemented in the repository (10 Batch 1 + 10 Batch 2 + 10 Batch 3 + 10 Batch 4 + 10 Batch 5).
+  3. Inventory Integrity: 50 state reports remain 50, 10 calculators remain 10, research report architecture remains unchanged. Do not create Guide Batch 6.
   4. Single Canonical Guide Registry Architecture: `energyGuides` dictionary in `apps/web/src/content/guides.ts` is the sole manually maintained registry. `GUIDE_ROUTES`, `publicRoutes`, `sitemapRoutes`, and `STATIC_ADS_ALLOWED_ROUTES` derive dynamically. Zero hardcoded duplicate lists exist.
-  5. Content & Source Precision Audit:
-     - Central AC: 20%–30% duct losses attributed to U.S. DOE Energy Saver; 60% compressor duty cycle explicitly labeled as an illustrative calculation assumption for peak summer demand.
-     - Ductless Mini-Split: Inverter modulation (200W–1,500W) and SEER2 (18–30+) / HSPF2 (9–12+) ratings labeled as manufacturer performance specs; replaced "zero duct losses" with "avoids the distribution losses associated with central ductwork".
-     - Electric Furnace: Monthly consumption (1,350–2,700 kWh) explicitly labeled as an illustrative calculation assumption.
-     - Baseboard Heating: 250W per linear foot labeled as a standard manufacturer sizing specification.
-     - Smart Thermostats: 8%–12% heating and 15% cooling savings attributed to independent field research evaluated by ENERGY STAR.
-     - Air Sealing: 15%–20% energy bill reduction attributed to U.S. DOE & ENERGY STAR benchmarks.
-     - Turning Off AC When Away: Explains that safe thermostat setbacks depend dynamically on climate, humidity, pets, health needs, construction, and HVAC equipment capacity (not presented as universally identical).
-     - Attic Insulation: Recommended depths (10–22 inches for R-30 to R-60) attributed directly to U.S. DOE climate zone guidelines.
-  6. Accessibility Framing: Implemented and reviewed toward WCAG 2.2 AA (heading structure H1->H2->H3, scoped table headers, local table scrolling wrappers). Unverified visual contrast and keyboard claims removed; Browser Review marked Skipped.
+  5. Search-Intent Separation: Reading an Electric Bill (line items & effective rate), Time-of-Use Rates (scheduled time pricing & load shifting), Peak vs Off-Peak Hours (grid demand windows & seasonal variations), Fixed vs Variable Rates (supply contracts & market volatility), Demand Charges (kW vs kWh peak interval billing), Estimated vs Actual Meter Reading (smart meters & true-up catch-up bills), Budget Billing (12-month payment smoothing & deferred balances), Why Electricity Rates Change (generation fuels, transmission grid, & rate cases), Fuel Adjustments & Riders (FAC, storm recovery fees, & regulatory surcharges), Net Metering & Solar Credits (imported vs exported kWh, NEM 1.0/2.0/3.0, & minimum bills).
+  6. Formulas & Regulatory Classifications: Deterministic formulas included for Effective Rate, TOU Cost, Demand Charge, Meter Adjustment, and Net Metering. All exact values labeled as official tariff/regulator values, official national benchmarks, utility-specific examples, or illustrative calculation assumptions.
   7. Quality Gate Execution Results:
      - `pnpm format:check` — PASSED (Prettier compliant)
      - `pnpm typecheck` — PASSED (0 errors across 9 packages)
      - `pnpm lint` — PASSED (10/10 tasks)
-     - `pnpm --filter=@energy-bill-lab/web test` — PASSED (19 test files, 104 tests)
-     - `pnpm --filter=@energy-bill-lab/database test` — PASSED (2 test files, 11 tests)
-     - `pnpm --filter=@energy-bill-lab/api test` — PASSED (1 test file, 3 tests)
-     - `pnpm build:web` — PASSED (40 guide routes & 50 state paths prerendered)
+     - `pnpm test` — PASSED (19 test files, 104 tests passed)
+     - `pnpm --filter=@energy-bill-lab/web test` — PASSED
+     - `pnpm --filter=@energy-bill-lab/database test` — PASSED
+     - `pnpm --filter=@energy-bill-lab/api test` — PASSED
+     - `pnpm build:web` — PASSED (50 guide routes & 50 state paths prerendered)
      - `pnpm build:api` — PASSED
      - `git diff --check` — PASSED (0 whitespace warnings)
   8. Protected Files Unchanged: `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` remain 100% untouched (0 diff).
 - Strict Git Rules: Read-only commands used by agent. All changes remain unstaged in working tree.
-- Suggested Commit: `feat(guides): publish fourth home efficiency guide batch`
+- Suggested Commit: `feat(guides): publish fifth electricity billing guide batch`
+- Next Phase Shift: Shift from publishing new guides to improving existing pages with Search Console performance data, stronger internal links, richer comparison tools, and one new high-demand calculator.

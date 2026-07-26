@@ -79,11 +79,12 @@ export default function GuidesPage() {
     const guide = energyGuides[slug]!;
     const category =
       slug.startsWith('why-is-my-electric-bill') ||
-      slug === 'electricity-supply-charge-vs-delivery-charge' ||
-      slug === 'how-to-calculate-electricity-cost-per-kwh-from-your-bill' ||
-      slug === 'how-billing-cycle-length-affects-electricity-bills' ||
-      slug === 'what-is-vampire-power-and-how-much-does-it-cost'
-        ? 'Electric Bill Diagnostics'
+      slug.includes('bill') ||
+      slug.includes('rate') ||
+      slug.includes('meter') ||
+      slug.includes('peak') ||
+      slug.includes('charge')
+        ? 'Electric Bill Diagnostics & Rates'
         : slug.includes('air-condition') ||
             slug.includes('mini-split') ||
             slug.includes('furnace') ||
@@ -103,7 +104,7 @@ export default function GuidesPage() {
     };
   });
 
-  const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics');
+  const problemGuides = allGuides.filter((g) => g.category === 'Electric Bill Diagnostics & Rates');
   const hvacGuides = allGuides.filter((g) => g.category === 'Heating, Cooling & Home Efficiency');
   const fundamentalGuides = allGuides.filter((g) => g.category === 'Energy Fundamentals');
   const applianceGuides = allGuides.filter((g) => g.category === 'Appliance Energy Guides');

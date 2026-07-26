@@ -2010,6 +2010,490 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sitemapEligible: true,
     adEligible: true,
   },
+  'how-to-read-an-electric-bill-line-by-line': {
+    slug: 'how-to-read-an-electric-bill-line-by-line',
+    href: '/guides/how-to-read-an-electric-bill-line-by-line',
+    title: 'How to Read an Electric Bill Line by Line: Line Item Guide',
+    h1Title: 'How to Read an Electric Bill Line by Line',
+    breadcrumbLabel: 'Reading Your Electric Bill',
+    description:
+      'Understand every section of your utility statement, including supply vs. delivery charges, customer fees, meter readings, billing cycles, riders, and taxes.',
+    eyebrow: 'Utility Billing Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Upload or enter your statement line items to calculate your true effective cost per kWh.',
+    actionLabel: 'Analyze Your Electric Bill',
+    summaryTakeaways: [
+      'Electric bills break down into supply (generation), delivery (transmission/distribution), fixed customer charges, riders, and government taxes.',
+      'Supply charges pay for generating electricity, while delivery charges fund utility power lines, substations, and local grid maintenance.',
+      'Calculating effective rate ($/kWh) requires dividing total eligible bill charges by total billed kilowatt-hours.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Understanding Your Electric Utility Bill Components',
+        topic: 'Residential electricity bill breakdown, supply vs delivery charges, and fixed fees',
+        url: 'https://www.eia.gov/energyexplained/electricity/prices-and-factors-affecting-prices.php',
+      },
+      {
+        organization: 'Federal Energy Regulatory Commission',
+        title: 'Consumer Guide to Electric Power Distribution & Generation Charges',
+        topic:
+          'Transmission rates, wholesale electricity markets, and retail utility billing structures',
+        url: 'https://www.ferc.gov/electric',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/electricity-supply-charge-vs-delivery-charge',
+      '/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill',
+      '/guides/how-billing-cycle-length-affects-electricity-bills',
+      '/electricity-rates',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'what-is-a-time-of-use-electricity-rate': {
+    slug: 'what-is-a-time-of-use-electricity-rate',
+    href: '/guides/what-is-a-time-of-use-electricity-rate',
+    title: 'What Is a Time-of-Use (TOU) Electricity Rate? Schedule & Savings',
+    h1Title: 'What Is a Time-of-Use Electricity Rate?',
+    breadcrumbLabel: 'Time-of-Use Rates',
+    description:
+      'Learn how time-of-use (TOU) utility tariffs charge varying electricity rates during peak, off-peak, and shoulder hours to incentivize off-peak load shifting.',
+    eyebrow: 'Utility Rates Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Compare flat-rate vs. time-of-use monthly electric bill costs based on your appliance schedules.',
+    actionLabel: 'Analyze TOU Rates',
+    summaryTakeaways: [
+      'Time-of-use (TOU) rates charge different kWh prices based on the time of day, day of the week, and season.',
+      'Peak hours occur when grid electricity demand is highest (typically late afternoon to evening in summer), resulting in higher rates.',
+      'Shifting major electricity usage (EV charging, laundry, dishwasher) to off-peak hours can lower monthly electricity costs.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Time-of-Use Rate Structures & Demand Response Programs',
+        topic:
+          'Time-variable electricity pricing, peak period schedules, and load shifting incentives',
+        url: 'https://www.energy.gov/cmei/femp/demand-response-and-time-variable-pricing-programs',
+      },
+      {
+        organization: 'National Renewable Energy Laboratory',
+        title: 'Utility Rate Database & Time-of-Use Tariff Analysis',
+        topic: 'Residential TOU schedules, seasonal rate variations, and smart meter interval data',
+        url: 'https://www.nrel.gov/',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/peak-vs-off-peak-electricity-hours-explained',
+      '/guides/fixed-vs-variable-electricity-rates',
+      '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+      '/electricity-rates',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'peak-vs-off-peak-electricity-hours-explained': {
+    slug: 'peak-vs-off-peak-electricity-hours-explained',
+    href: '/guides/peak-vs-off-peak-electricity-hours-explained',
+    title: 'Peak vs. Off-Peak Electricity Hours Explained: Hours & Savings',
+    h1Title: 'Peak vs. Off-Peak Electricity Hours Explained',
+    breadcrumbLabel: 'Peak vs. Off-Peak Hours',
+    description:
+      'Discover when utility peak electricity hours occur, how peak pricing works across winter and summer seasons, and how to shift heavy appliance usage off-peak.',
+    eyebrow: 'Peak Hours Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Calculate potential monthly savings from shifting high-wattage appliance usage to off-peak hours.',
+    actionLabel: 'Calculate Off-Peak Savings',
+    summaryTakeaways: [
+      'Peak hours are scheduled daily time windows when total utility grid demand reaches maximum levels.',
+      'Peak period timing varies by region, season, and utility tariff—some utilities set late afternoon/evening summer windows or morning/evening winter windows, while others use different schedules.',
+      'Off-peak hours (nights and weekends) offer lower electricity prices when grid capacity is underutilized.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Daily and Seasonal Electricity Demand Profiles',
+        topic: 'Grid peak demand curves, regional load profiles, and peak pricing mechanisms',
+        url: 'https://www.eia.gov/todayinenergy/detail.php?id=42915',
+      },
+      {
+        organization: 'Federal Energy Regulatory Commission',
+        title: 'Demand Response & Time-Variable Rate Design in Regional Markets',
+        topic: 'Peak hour definitions, critical peak pricing, and consumer demand elasticity',
+        url: 'https://www.ferc.gov/electric',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/what-is-a-time-of-use-electricity-rate',
+      '/guides/how-much-electricity-does-central-air-conditioning-use',
+      '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+      '/electricity-rates',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'fixed-vs-variable-electricity-rates': {
+    slug: 'fixed-vs-variable-electricity-rates',
+    href: '/guides/fixed-vs-variable-electricity-rates',
+    title: 'Fixed vs. Variable Electricity Rates: Which Is Better?',
+    h1Title: 'Fixed vs. Variable Electricity Rates',
+    breadcrumbLabel: 'Fixed vs. Variable Rates',
+    description:
+      'Compare fixed-rate supply plans vs. variable market electricity contracts, contract renewal terms, cancellation fees, and retail choice options.',
+    eyebrow: 'Rate Selection Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Evaluate supply contract options by calculating bill impacts across fixed and variable rate scenarios.',
+    actionLabel: 'Analyze Rate Plans',
+    summaryTakeaways: [
+      'Fixed-rate supply plans lock in a constant cost per kWh for the duration of a contract (typically 12 to 36 months).',
+      'Variable-rate supply plans fluctuate monthly based on wholesale energy market prices, weather conditions, and utility adjustments.',
+      'Delivery charges (utility distribution fees) remain separate and are regulated regardless of whether you choose a fixed or variable supply rate.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'Federal Trade Commission',
+        title: 'Shopping for Competitive Retail Electricity Contracts',
+        topic:
+          'Retail choice, fixed vs variable supply plans, early termination fees, and contract terms',
+        url: 'https://consumer.ftc.gov/articles/shopping-electricity-or-natural-gas',
+      },
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Retail Electricity Electricity Market Restructuring & Pricing',
+        topic: 'Competitive supply markets, price volatility, and default utility service rates',
+        url: 'https://www.eia.gov/electricity/policies/restructuring/restructure_app.html',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/electricity-supply-charge-vs-delivery-charge',
+      '/guides/why-electricity-rates-change',
+      '/electricity-rates',
+      '/data-sources',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'what-is-a-demand-charge-on-an-electric-bill': {
+    slug: 'what-is-a-demand-charge-on-an-electric-bill',
+    href: '/guides/what-is-a-demand-charge-on-an-electric-bill',
+    title: 'What Is a Demand Charge on an Electric Bill? (kW vs. kWh)',
+    h1Title: 'What Is a Demand Charge on an Electric Bill?',
+    breadcrumbLabel: 'Demand Charges Explained',
+    description:
+      'Learn how electric demand charges ($/kW) bill for maximum 15-to-30-minute power spikes separately from total energy consumption (kWh).',
+    eyebrow: 'Demand Charge Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Analyze your peak demand (kW) and energy consumption (kWh) to evaluate demand charge billing impacts.',
+    actionLabel: 'Analyze Demand Charges',
+    summaryTakeaways: [
+      'Demand charges ($/kW) measure the maximum rate of electricity consumption over a short window (typically 15 to 30 minutes) during a billing cycle.',
+      'Energy charges ($/kWh) measure total volume consumed over time, whereas demand charges measure peak grid capacity draw.',
+      'While demand charges are standard for commercial customers, select residential tariffs and EV/electrification pilots also incorporate demand charges.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'National Renewable Energy Laboratory',
+        title: 'Understanding Electric Utility Demand Charges',
+        topic:
+          'Peak demand kW measurement, 15-minute billing windows, and commercial/residential rate structures',
+        url: 'https://www.nrel.gov/docs/fy17osti/68942.pdf',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Demand Management & Load Management Strategies',
+        topic: 'Peak power draw, coincidence factors, and electrification load controls',
+        url: 'https://www.energy.gov/cmei/femp/demand-response-and-time-variable-pricing-programs',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/kw-vs-kwh-explained',
+      '/guides/what-is-a-time-of-use-electricity-rate',
+      '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+      '/electricity-rates',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'estimated-vs-actual-meter-reading': {
+    slug: 'estimated-vs-actual-meter-reading',
+    href: '/guides/estimated-vs-actual-meter-reading',
+    title: 'Estimated vs. Actual Meter Reading: Why Bills Spike & Fixes',
+    h1Title: 'Estimated vs. Actual Meter Reading',
+    breadcrumbLabel: 'Estimated Meter Readings',
+    description:
+      'Understand the difference between actual meter readings and estimated utility statements, true-up bills, smart meter interval data, and meter access rules.',
+    eyebrow: 'Meter Reading Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Identify whether an estimated meter reading caused a sudden electric bill increase or catch-up adjustment.',
+    actionLabel: 'Analyze Meter Reading',
+    summaryTakeaways: [
+      'An actual meter reading records physical cumulative kWh from a smart meter or manual reader on your billing date.',
+      'An estimated meter reading uses historical usage and weather patterns when physical or wireless meter access is interrupted.',
+      'When an actual reading follows several estimated bills, a true-up adjustment occurs—which can trigger a sudden bill increase or credit.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Smart Meter Deployment & Automated Metering Infrastructure (AMI)',
+        topic:
+          'Advanced metering infrastructure, interval data collection, and estimated billing practices',
+        url: 'https://www.eia.gov/electricity/data/eia861/',
+      },
+      {
+        organization: 'Federal Energy Regulatory Commission',
+        title: 'Consumer Standards for Utility Meter Reading & Billing Accuracy',
+        topic:
+          'Meter reading access regulations, estimation algorithms, and customer dispute rights',
+        url: 'https://www.ferc.gov/electric',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/why-is-my-electric-bill-so-high',
+      '/guides/how-billing-cycle-length-affects-electricity-bills',
+      '/guides/how-to-read-an-electric-bill-line-by-line',
+      '/electricity-rates',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-budget-billing-works': {
+    slug: 'how-budget-billing-works',
+    href: '/guides/how-budget-billing-works',
+    title: 'How Budget Billing Works: Equal Payment Plans Explained',
+    h1Title: 'How Budget Billing Works',
+    breadcrumbLabel: 'Budget Billing Guide',
+    description:
+      'Discover how utility budget billing (balanced payment plans) smooths seasonal heating and cooling electric bill spikes into predictable monthly amounts.',
+    eyebrow: 'Budget Billing Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Calculate average annual monthly utility payments to compare against budget billing plan offers.',
+    actionLabel: 'Calculate Average Monthly Spend',
+    summaryTakeaways: [
+      'Budget billing (levelized payment plans) calculates a fixed monthly bill based on your past 12 months of electricity usage.',
+      'Budget billing does not reduce total kWh consumed or lower your electricity rate; it merely evens out summer and winter bill spikes.',
+      'Utilities periodically recalculate monthly budget amounts and perform an annual true-up reconciliation for accumulated credits or debits.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Managing Household Energy Expenses & Equal Payment Plans',
+        topic:
+          'Levelized billing methods, annual reconciliation, deferred balance accounts, and seasonal smoothing',
+        url: 'https://www.energy.gov/energysaver/managing-your-utility-bills',
+      },
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Seasonal Variations in Residential Electricity Expenditures',
+        topic:
+          'Heating and cooling seasonal peak demand, expenditure fluctuations, and budget billing uptake',
+        url: 'https://www.eia.gov/consumption/residential/',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/why-is-my-electric-bill-so-high',
+      '/guides/how-to-read-an-electric-bill-line-by-line',
+      '/electricity-rates',
+      '/data-sources',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'why-electricity-rates-change': {
+    slug: 'why-electricity-rates-change',
+    href: '/guides/why-electricity-rates-change',
+    title: 'Why Electricity Rates Change: Causes of Price Increases',
+    h1Title: 'Why Electricity Rates Change',
+    breadcrumbLabel: 'Why Rates Change',
+    description:
+      'Learn why residential electricity rates increase, covering fuel costs, power grid investments, weather extremes, regulatory rate cases, and inflation.',
+    eyebrow: 'Rate Drivers Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Determine whether your bill increase was caused by a rate increase ($/kWh) or higher energy consumption (kWh).',
+    actionLabel: 'Analyze Rate Increases',
+    summaryTakeaways: [
+      'Electricity rate changes are driven by fuel generation costs (natural gas, coal), grid maintenance, regulatory approvals, and extreme weather.',
+      'A rate increase ($/kWh rate change) is distinct from a usage increase (higher kWh volume drawn by HVAC or appliances).',
+      'Regulated electric utilities must submit formal rate cases to state public utility commissions before raising base residential rates.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Factors Affecting Electricity Prices & Cost Components',
+        topic:
+          'Fuel generation costs, transmission/distribution grid investments, regulatory rate cases, and taxes',
+        url: 'https://www.eia.gov/energyexplained/electricity/prices-and-factors-affecting-prices.php',
+      },
+      {
+        organization: 'Federal Energy Regulatory Commission',
+        title: 'Electric Power Markets & Wholesale Cost Dynamics',
+        topic:
+          'Wholesale power market pricing, generation capacity markets, and transmission cost allocations',
+        url: 'https://www.ferc.gov/electric',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/why-is-my-electric-bill-so-high',
+      '/guides/fuel-adjustment-charges-and-utility-riders-explained',
+      '/electricity-rates',
+      '/data-sources',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'fuel-adjustment-charges-and-utility-riders-explained': {
+    slug: 'fuel-adjustment-charges-and-utility-riders-explained',
+    href: '/guides/fuel-adjustment-charges-and-utility-riders-explained',
+    title: 'Fuel Adjustment Charges & Utility Riders Explained: Line Items',
+    h1Title: 'Fuel Adjustment Charges and Utility Riders Explained',
+    breadcrumbLabel: 'Fuel Adjustments & Riders',
+    description:
+      'Understand variable line items on your electric bill, including fuel adjustment clauses (FAC), purchased power riders, storm recovery fees, and environmental charges.',
+    eyebrow: 'Utility Riders Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Separate base energy charges from variable utility riders and fuel adjustment line items.',
+    actionLabel: 'Analyze Utility Riders',
+    summaryTakeaways: [
+      'Fuel adjustment clauses (FAC) pass fluctuating fuel costs (such as natural gas or purchased power) directly to consumers without a full rate case.',
+      'Utility riders are temporary or recurring line-item surcharges that fund specific projects, such as storm damage recovery, grid upgrades, or energy efficiency programs.',
+      'Riders and fuel adjustments are regulated by state public utility commissions and adjust monthly or quarterly.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'U.S. Energy Information Administration',
+        title: 'Fuel Cost Adjustment Clauses & Variable Utility Surcharges',
+        topic:
+          'Fuel adjustment clauses, purchased power adjustments, and state regulatory oversight',
+        url: 'https://www.eia.gov/electricity/monthly/',
+      },
+      {
+        organization: 'Federal Energy Regulatory Commission',
+        title: 'Transmission & Distribution Rider Cost Recovery Standards',
+        topic:
+          'Grid modernization riders, securitization bonds, and environmental compliance surcharges',
+        url: 'https://www.ferc.gov/electric',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/how-to-read-an-electric-bill-line-by-line',
+      '/guides/why-electricity-rates-change',
+      '/electricity-rates',
+      '/data-sources',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
+  'how-net-metering-affects-your-electric-bill': {
+    slug: 'how-net-metering-affects-your-electric-bill',
+    href: '/guides/how-net-metering-affects-your-electric-bill',
+    title: 'How Net Metering Affects Your Electric Bill: Credits & Rules',
+    h1Title: 'How Net Metering Affects Your Electric Bill',
+    breadcrumbLabel: 'Net Metering & Solar Credits',
+    description:
+      'Learn how rooftop solar net metering (and state-specific policies like California Net Billing / NEM rules) calculates imported vs. exported kWh, bill credits, annual true-ups, minimum bills, and fixed customer fees.',
+    eyebrow: 'Solar Billing Guide',
+    datePublished: '2026-07-26',
+    updatedAt: '2026-07-26',
+    category: 'Electric Bill Diagnostics & Rates',
+    primaryCalculatorHref: '/electricity-bill-analyzer',
+    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorDescription:
+      'Analyze net grid energy consumption (Imported kWh − Exported kWh) and monthly utility minimum charges.',
+    actionLabel: 'Analyze Solar Net Metering',
+    summaryTakeaways: [
+      'Net metering tracks the bi-directional flow of electricity: kWh imported from the grid minus surplus solar kWh exported back to the grid.',
+      'Compensation structures vary by state and utility—ranging from 1:1 full retail rate credits to avoided-cost or net-billing tariffs (such as California Net Billing / NEM 3.0 rules).',
+      'Net metering does not eliminate all electric charges; solar customers still pay fixed monthly customer fees, grid interconnection charges, and minimum bills.',
+    ],
+    sections: [],
+    sources: [
+      {
+        organization: 'National Renewable Energy Laboratory',
+        title: 'Net Energy Metering (NEM) Policy & Compensation Models',
+        topic:
+          'Bi-directional metering, 1:1 retail credit, avoided cost compensation, and annual true-up rules',
+        url: 'https://www.nrel.gov/state-local-tribal/net-metering.html',
+      },
+      {
+        organization: 'U.S. Department of Energy',
+        title: 'Homeowner Guide to Solar Net Metering & Utility Interconnection',
+        topic:
+          'Imported vs exported kWh, grid interconnection fees, minimum monthly bills, and TOU interaction',
+        url: 'https://www.energy.gov/eere/solar/homeowners-guide-going-solar',
+      },
+    ],
+    relatedRoutes: [
+      '/electricity-bill-analyzer',
+      '/guides/how-to-read-an-electric-bill-line-by-line',
+      '/guides/what-is-a-time-of-use-electricity-rate',
+      '/electricity-rates',
+      '/data-sources',
+    ],
+    sitemapEligible: true,
+    adEligible: true,
+  },
 };
 
 export const guideSlugs = Object.keys(energyGuides);
