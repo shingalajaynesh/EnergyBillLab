@@ -668,9 +668,7 @@ export default async function NationalRateReportPage() {
               </h2>
               <p className={styles.publisherText}>
                 This report is researched, built, and technically published by Jaynesh Shingala,
-                Founder & Technical Publisher of Energy Bill Lab (Surat, Gujarat, India). Jaynesh is
-                a Full-Stack Software Engineer specializing in deterministic energy data tools and
-                transparent public calculators.
+                Founder & Technical Publisher of Energy Bill Lab.
               </p>
               <p className={styles.publisherContact}>
                 For custom data extracts, media inquiries, or technical methodology questions,

@@ -18,7 +18,7 @@ export const contentPages = {
   '/about': {
     title: 'About Energy Bill Lab',
     description:
-      'Energy Bill Lab is an independent informational website created and maintained by Jaynesh Shingala, a Full-Stack Software Engineer based in Surat, Gujarat, India.',
+      'Energy Bill Lab is an independent informational website published by Jaynesh Shingala.',
     path: '/about',
     updatedAt: '2026-07-24',
     related: ['/methodology', '/data-sources', '/editorial-policy', '/contact'],
@@ -33,8 +33,8 @@ export const contentPages = {
       {
         heading: 'Who Creates & Maintains Energy Bill Lab',
         paragraphs: [
-          'Energy Bill Lab was founded and is independently published by Jaynesh Shingala, a Full-Stack Software Engineer based in Surat, Gujarat, India.',
-          'Jaynesh develops and maintains the site’s calculation algorithms, data integrations, technical publishing workflow, and public educational tools.',
+          'Energy Bill Lab is published by Jaynesh Shingala.',
+          'For questions, corrections, or feedback, contact shingala.jaynesh@gmail.com.',
         ],
       },
       {
@@ -63,7 +63,7 @@ export const contentPages = {
   '/contact': {
     title: 'Contact Energy Bill Lab',
     description:
-      'Contact Jaynesh Shingala, Founder and Technical Publisher of Energy Bill Lab, for site feedback, source corrections, and accessibility inquiries.',
+      'Contact Jaynesh Shingala, Founder & Technical Publisher of Energy Bill Lab, for site feedback, source corrections, and accessibility inquiries.',
     path: '/contact',
     updatedAt: '2026-07-24',
     related: ['/about', '/accessibility', '/privacy', '/editorial-policy'],
@@ -71,7 +71,7 @@ export const contentPages = {
       {
         heading: 'Publisher Contact Details',
         paragraphs: [
-          'Energy Bill Lab is published by Jaynesh Shingala (Founder & Technical Publisher), based in Surat, Gujarat, India.',
+          'Energy Bill Lab is published by Jaynesh Shingala, Founder & Technical Publisher.',
           'For general questions, calculation corrections, data-source inquiries, accessibility issues, editorial corrections, media inquiries, or technical site feedback, email: shingala.jaynesh@gmail.com.',
         ],
       },
@@ -152,7 +152,7 @@ export const contentPages = {
       {
         heading: 'Ownership & Technical Publishing',
         paragraphs: [
-          'Energy Bill Lab is owned and published by Jaynesh Shingala, Founder & Technical Publisher (Surat, Gujarat, India; contact: shingala.jaynesh@gmail.com).',
+          'Energy Bill Lab is owned and published by Jaynesh Shingala (contact: shingala.jaynesh@gmail.com).',
           'All published calculators, state rate reports, and educational guides undergo human technical review before publication.',
         ],
       },

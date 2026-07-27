@@ -96,8 +96,7 @@ _Important Note: Domain Authority is a third-party proprietary metric. Unmeasure
 ## Public Publisher Identity
 
 - **Founder & Technical Publisher:** Jaynesh Shingala
-- **Public Role:** Founder & Technical Publisher, Energy Bill Lab; Full-Stack Software Engineer
-- **Public Location:** Surat, Gujarat, India
+- **Public Role:** Founder & Technical Publisher, Energy Bill Lab
 - **Public Contact Email:** `shingala.jaynesh@gmail.com`
 - **Public Pages:** `/about`, `/contact`, `/editorial-policy`
 
