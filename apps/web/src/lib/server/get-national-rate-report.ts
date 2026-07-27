@@ -368,7 +368,7 @@ function createUnavailableReportModel(generatedAt: string): NationalRateReportMo
 
 export const getNationalRateReport = unstable_cache(
   getNationalRateReportUncached,
-  ['national-electricity-rate-report'],
+  ['national-electricity-rate-report-v2'],
   {
     revalidate: 86400, // 24 hours
     tags: ['national-electricity-rate-report'],
