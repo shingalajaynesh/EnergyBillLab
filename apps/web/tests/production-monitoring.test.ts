@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { APPROVED_STATE_SLUGS } from '../src/config/published-states';
 import { createPageMetadata } from '../src/lib/metadata';
+import { ADSENSE_CLIENT_ID } from '../src/lib/site';
 
 const CRITICAL_ROUTES = [
   '/',
@@ -101,5 +102,44 @@ describe('Production Monitoring & Quality Gates', () => {
 
     expect(content).not.toContain('non-commercial');
     expect(content).toContain('independent, source-transparent');
+  });
+
+  it('verifies AdSense loads via standard native script in document head without next/script or data-nscript', () => {
+    const layoutFilePath = path.resolve(__dirname, '../src/app/layout.tsx');
+    const layoutContent = fs.readFileSync(layoutFilePath, 'utf8');
+
+    // 1. Exactly one AdSense library URL exists
+    const adsbygoogleMatches = layoutContent.match(/adsbygoogle\.js/g) || [];
+    expect(adsbygoogleMatches).toHaveLength(1);
+
+    // 2. Publisher ID is correct
+    expect(ADSENSE_CLIENT_ID).toBe('ca-pub-6303291083449043');
+
+    // 3. AdSense loader does not use next/script
+    expect(layoutContent).not.toMatch(/import\s+Script\s+from\s+['"]next\/script['"]/);
+    expect(layoutContent).not.toMatch(/<Script[^>]*adsbygoogle/);
+
+    // 4. AdSense loader has no data-nscript attribute
+    expect(layoutContent).not.toContain('data-nscript');
+
+    // 5. Loader uses async and crossOrigin="anonymous" inside <head>
+    expect(layoutContent).toContain('<head>');
+    expect(layoutContent).toContain('async');
+    expect(layoutContent).toContain('crossOrigin="anonymous"');
+
+    // 6. Existing CMP integration remains present
+    expect(layoutContent).toContain('<GoogleTagManager');
+  });
+
+  it('verifies CSP restrictions remain strict without wildcard frame-src or frame-ancestors', () => {
+    const workspaceRoot = path.resolve(__dirname, '../../../');
+    const vercelConfigPath = path.resolve(workspaceRoot, 'vercel.json');
+    const vercelContent = fs.existsSync(vercelConfigPath)
+      ? fs.readFileSync(vercelConfigPath, 'utf8')
+      : '';
+
+    expect(vercelContent).not.toContain('frame-src *');
+    expect(vercelContent).not.toContain('frame-ancestors *');
+    expect(vercelContent).not.toContain('default-src *');
   });
 });

@@ -3,7 +3,6 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import type { ReactNode } from 'react';
 
 import { AppFooter } from '@/components/app-footer';
@@ -26,6 +25,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <GoogleTagManager gtmId={GTM_ID} />
         <a className="skip-link" href="#main-content">
@@ -34,12 +40,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
-        />
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
         <AntdRegistry>
           <AppThemeProvider>
