@@ -45,6 +45,7 @@ export default async function ElectricWaterHeaterCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
     '/tools/appliance-energy-cost-calculator',
     '/tools/refrigerator-cost-calculator',
     '/tools/clothes-dryer-cost-calculator',

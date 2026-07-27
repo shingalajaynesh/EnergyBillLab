@@ -34,6 +34,7 @@ export default async function ApplianceEnergyCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-electricity-do-household-appliances-use',
     '/electricity-bill-analyzer',
     '/electricity-rates',
     '/methodology',

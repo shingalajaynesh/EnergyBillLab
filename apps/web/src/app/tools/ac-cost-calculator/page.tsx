@@ -34,6 +34,7 @@ export default async function AcCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
     '/tools/appliance-energy-cost-calculator',
     '/electricity-bill-analyzer',
     '/electricity-rates',

@@ -34,6 +34,7 @@ export default async function SpaceHeaterCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-a-space-heater',
     '/tools/ac-cost-calculator',
     '/tools/appliance-energy-cost-calculator',
     '/electricity-bill-analyzer',

@@ -40,6 +40,7 @@ export default async function DehumidifierCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-a-dehumidifier',
     '/tools/appliance-energy-cost-calculator',
     '/tools/ac-cost-calculator',
     '/tools/space-heater-cost-calculator',

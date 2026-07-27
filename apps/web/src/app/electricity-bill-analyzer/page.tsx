@@ -135,14 +135,20 @@ export default async function ElectricityBillAnalyzerPage() {
           understand household energy expenses.
         </p>
         <div className={styles.linkButtons}>
+          <Link className={styles.linkButton} href="/guides/why-is-my-electric-bill-so-high">
+            Why Is My Electric Bill So High? Guide &rarr;
+          </Link>
+          <Link
+            className={styles.linkButton}
+            href="/guides/how-to-read-an-electric-bill-line-by-line"
+          >
+            How to Read Your Electric Bill Line by Line &rarr;
+          </Link>
           <Link className={styles.linkButton} href="/tools">
             View All Energy Tools &rarr;
           </Link>
           <Link className={styles.linkButton} href="/methodology">
             Read Calculation Methodology &rarr;
-          </Link>
-          <Link className={styles.linkButton} href="/editorial-policy">
-            Our Editorial Standards &rarr;
           </Link>
         </div>
       </section>

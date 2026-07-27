@@ -8,6 +8,7 @@ export type FetchEiaParams = {
   endPeriod?: string; // YYYY-MM
   offset?: number;
   length?: number;
+  sortDirection?: 'asc' | 'desc';
 };
 
 export type FetchEiaResult = {
@@ -32,6 +33,7 @@ export class EiaClientService {
 
     const offset = params.offset ?? 0;
     const length = params.length ?? 5000;
+    const sortDirection = params.sortDirection ?? 'asc';
 
     endpointUrl.searchParams.set('api_key', apiKey);
     endpointUrl.searchParams.set('frequency', 'monthly');
@@ -41,7 +43,7 @@ export class EiaClientService {
     endpointUrl.searchParams.append('data[]', 'sales');
     endpointUrl.searchParams.append('data[]', 'customers');
     endpointUrl.searchParams.set('sort[0][column]', 'period');
-    endpointUrl.searchParams.set('sort[0][direction]', 'asc');
+    endpointUrl.searchParams.set('sort[0][direction]', sortDirection);
     endpointUrl.searchParams.set('offset', offset.toString());
     endpointUrl.searchParams.set('length', length.toString());
 

@@ -3,9 +3,12 @@ import 'reflect-metadata';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
+import { loadCliEnv } from '../../config/load-cli-env';
 import { EiaClientService } from '../../infrastructure/eia/eia-client.service';
 import { AppModule } from '../app.module';
 import { ElectricityRateImportService } from './electricity-rate-import.service';
+
+loadCliEnv();
 
 async function main() {
   const logger = new Logger('EiaCli');
@@ -36,10 +39,12 @@ async function main() {
         verifyProduction: !skipVerifyProd,
       });
 
-      logger.log(`Sync-latest finished with status: ${result.status} (mode=${result.mode})`);
-      logger.log(
-        `EIA Period: ${result.eiaPeriod || 'N/A'}, DB Period: ${result.dbPeriod || 'N/A'}, Inserted: ${result.insertedRows}, Revalidated: ${result.revalidated}, Verified: ${result.productionVerified}`,
-      );
+      logger.log(`EIA Latest Period: ${result.eiaPeriod || 'N/A'}`);
+      logger.log(`DB Latest Period: ${result.dbPeriod || 'N/A'}`);
+      logger.log(`status: ${result.status}`);
+      logger.log(`mode: ${result.mode}`);
+      logger.log(`Inserted: ${result.insertedRows}`);
+      logger.log(`Verified: ${result.productionVerified}`);
 
       if (result.status === 'failed') {
         process.exit(1);

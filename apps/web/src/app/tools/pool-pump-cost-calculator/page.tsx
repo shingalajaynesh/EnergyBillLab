@@ -40,6 +40,7 @@ export default async function PoolPumpCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-a-pool-pump',
     '/tools/appliance-energy-cost-calculator',
     '/tools/ac-cost-calculator',
     '/tools/dehumidifier-cost-calculator',

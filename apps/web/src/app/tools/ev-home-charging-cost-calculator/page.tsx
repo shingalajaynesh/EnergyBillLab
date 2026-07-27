@@ -34,6 +34,7 @@ export default async function EvHomeChargingCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
     '/tools/appliance-energy-cost-calculator',
     '/tools/ac-cost-calculator',
     '/tools/space-heater-cost-calculator',

@@ -40,6 +40,7 @@ export default async function ClothesDryerCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
     '/tools/appliance-energy-cost-calculator',
     '/tools/refrigerator-cost-calculator',
     '/tools/electric-water-heater-cost-calculator',

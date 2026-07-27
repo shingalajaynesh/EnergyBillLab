@@ -45,12 +45,13 @@ export type SyncLatestOptions = {
 export type SyncLatestResult = {
   importRunId: string;
   status: 'succeeded' | 'failed' | 'no-op';
-  mode: 'no-op' | 'import-and-publish' | 'publish-recovery';
+  mode: 'no-op' | 'import-and-publish' | 'publish-recovery' | 'failed' | 'stale-source';
   eiaPeriod: string | null;
   dbPeriod: string | null;
   insertedRows: number;
   revalidated: boolean;
   productionVerified: boolean;
+  verificationSkipped: boolean;
   durationMs: number;
 };
 
@@ -293,17 +294,20 @@ export class ElectricityRateImportService {
     const result: SyncLatestResult = {
       importRunId,
       status: 'failed',
-      mode: 'no-op',
+      mode: 'failed',
       eiaPeriod: null,
       dbPeriod: null,
       insertedRows: 0,
       revalidated: false,
       productionVerified: false,
+      verificationSkipped: false,
       durationMs: 0,
     };
 
     if (!db) {
       this.logger.error('DATABASE_URL is not configured for EIA sync execution.');
+      result.status = 'failed';
+      result.mode = 'failed';
       return result;
     }
 
@@ -312,7 +316,8 @@ export class ElectricityRateImportService {
       this.logger.warn(
         'Another import process holds the advisory lock (987654321). Exiting cleanly.',
       );
-      result.status = 'no-op';
+      result.status = 'failed';
+      result.mode = 'failed';
       result.durationMs = Date.now() - startTime;
       return result;
     }
@@ -320,98 +325,47 @@ export class ElectricityRateImportService {
     try {
       await this.ensureGeographiesSeeded(db);
 
-      // 1. Discover latest EIA reporting period
-      const sample = await this.eiaClient.fetchRetailSalesData({ length: 100 });
-      const rawPeriods: string[] = sample.rows
+      // 1. Discover latest EIA reporting period using descending sort
+      const PERIOD_REGEX = /^\d{4}-(?:0[1-9]|1[0-2])$/;
+      const sample = await this.eiaClient.fetchRetailSalesData({
+        length: 200,
+        sortDirection: 'desc',
+      });
+
+      const rawCandidatePeriods: string[] = sample.rows
         .filter((r: EiaRow) => {
           const p = typeof r.price === 'number' ? r.price : parseFloat(String(r.price ?? '0'));
-          return VALID_GEOGRAPHY_CODES.has(r.stateid.toUpperCase()) && p > 0;
+          const rawSector = (r as Record<string, unknown>).sector;
+          const sector = String(r.sectorid || rawSector || '').toUpperCase();
+          return (
+            sector === 'RES' &&
+            VALID_GEOGRAPHY_CODES.has(r.stateid.toUpperCase()) &&
+            p > 0 &&
+            PERIOD_REGEX.test(r.period)
+          );
         })
         .map((r: EiaRow) => r.period);
 
-      const sortedEiaPeriods: string[] = Array.from(new Set(rawPeriods)).sort();
-      const latestEiaPeriod: string | undefined = sortedEiaPeriods[sortedEiaPeriods.length - 1];
+      const candidatePeriodsDesc: string[] = Array.from(new Set(rawCandidatePeriods))
+        .sort()
+        .reverse();
 
-      if (!latestEiaPeriod) {
-        this.logger.error('Failed to discover latest EIA reporting period.');
-        return result;
-      }
-      result.eiaPeriod = latestEiaPeriod;
+      let latestEiaPeriod: string | null = null;
+      let validRowsForLatestPeriod: Array<{
+        geographyCode: string;
+        period: string;
+        sector: 'RES';
+        priceCentsPerKwh: string;
+        revenueMillionUsd: string | null;
+        salesMillionKwh: string | null;
+        customers: number | null;
+      }> = [];
 
-      // 2. Query latest database period
-      const dbRes = await db.execute<{ latest_period: string | null }>(
-        sql`SELECT MAX(period)::text as latest_period FROM electricity_retail_sales_monthly WHERE sector = 'RES'`,
-      );
-      const dbRows =
-        (dbRes as unknown as { rows: Array<{ latest_period: string | null }> }).rows || dbRes;
-      const firstRow = Array.isArray(dbRows) ? dbRows[0] : undefined;
-      const rawDbPeriod = firstRow?.latest_period;
-      const latestDbPeriod: string | null =
-        typeof rawDbPeriod === 'string' ? rawDbPeriod.substring(0, 7) : null;
-      result.dbPeriod = latestDbPeriod;
-
-      this.logger.log(
-        `EIA Latest Period: ${latestEiaPeriod} | DB Latest Period: ${latestDbPeriod || 'NONE'}`,
-      );
-
-      // 3. Determine Execution Mode
-      const prodBaseUrl =
-        process.env.ENERGY_DATA_PRODUCTION_BASE_URL || 'https://energybilllab.com';
-
-      if (latestDbPeriod && latestEiaPeriod < latestDbPeriod) {
-        this.logger.warn(
-          `EIA period (${latestEiaPeriod}) is older than DB period (${latestDbPeriod}). No-op.`,
-        );
-        result.mode = 'no-op';
-        result.status = 'succeeded';
-        result.durationMs = Date.now() - startTime;
-        return result;
-      }
-
-      let mode: 'no-op' | 'import-and-publish' | 'publish-recovery' = 'import-and-publish';
-
-      if (latestDbPeriod && latestEiaPeriod === latestDbPeriod) {
-        const prodCheck = await this.checkProductionIsCurrent(prodBaseUrl, latestEiaPeriod);
-        if (prodCheck && !options.forceRevalidate) {
-          this.logger.log(
-            `EIA period equals DB period (${latestEiaPeriod}) and production is verified current. No-op.`,
-          );
-          result.mode = 'no-op';
-          result.status = 'succeeded';
-          result.durationMs = Date.now() - startTime;
-          return result;
-        }
-        this.logger.log(
-          `EIA period equals DB period (${latestEiaPeriod}) but production is stale. Entering publish-recovery mode.`,
-        );
-        mode = 'publish-recovery';
-      }
-
-      result.mode = mode;
-
-      // 4. Record data_import_runs row with status "running"
-      await db.insert(dataImportRuns).values({
-        id: importRunId,
-        source: 'EIA',
-        dataset: 'electricity/retail-sales',
-        importType: 'incremental',
-        status: 'running',
-        requestedStartPeriod: `${latestEiaPeriod}-01`,
-        requestedEndPeriod: `${latestEiaPeriod}-01`,
-        sourceTotalRows: sample.total,
-        fetchedRows: sample.rows.length,
-        validatedRows: 0,
-        insertedRows: 0,
-        updatedRows: 0,
-        unchangedRows: 0,
-        rejectedRows: 0,
-      });
-
-      // 5. Complete-Dataset Validation & Database Transaction (if import-and-publish)
-      if (mode === 'import-and-publish') {
+      // 2. Validate complete 52-geography dataset for candidate periods
+      for (const candidatePeriod of candidatePeriodsDesc) {
         const fullRes = await this.eiaClient.fetchRetailSalesData({
-          startPeriod: latestEiaPeriod,
-          endPeriod: latestEiaPeriod,
+          startPeriod: candidatePeriod,
+          endPeriod: candidatePeriod,
           length: 5000,
         });
 
@@ -429,7 +383,9 @@ export class ElectricityRateImportService {
 
         for (const row of fullRes.rows) {
           const stateCode = row.stateid.toUpperCase();
-          if (!VALID_GEOGRAPHY_CODES.has(stateCode)) {
+          const rawSector = (row as Record<string, unknown>).sector;
+          const sector = String(row.sectorid || rawSector || '').toUpperCase();
+          if (sector !== 'RES' || !VALID_GEOGRAPHY_CODES.has(stateCode)) {
             continue;
           }
 
@@ -466,7 +422,7 @@ export class ElectricityRateImportService {
           geographiesSet.add(stateCode);
           validRows.push({
             geographyCode: stateCode,
-            period: `${latestEiaPeriod}-01`,
+            period: `${candidatePeriod}-01`,
             sector: 'RES',
             priceCentsPerKwh: priceNum.toFixed(4),
             revenueMillionUsd: revenueNum !== null ? revenueNum.toFixed(4) : null,
@@ -475,13 +431,125 @@ export class ElectricityRateImportService {
           });
         }
 
-        if (geographiesSet.size !== 52 || !geographiesSet.has('US') || !geographiesSet.has('NC')) {
-          const errMsg = `Complete-dataset validation failed for ${latestEiaPeriod}: expected 52 geographies, got ${geographiesSet.size}`;
+        if (geographiesSet.size === 52 && geographiesSet.has('US') && geographiesSet.has('NC')) {
+          latestEiaPeriod = candidatePeriod;
+          validRowsForLatestPeriod = validRows;
+          break;
+        }
+
+        this.logger.warn(
+          `Candidate EIA period ${candidatePeriod} is incomplete (${geographiesSet.size}/52 geographies); trying previous period.`,
+        );
+      }
+
+      if (!latestEiaPeriod) {
+        this.logger.error(
+          'Failed to discover a valid EIA reporting period with 52 complete geographies.',
+        );
+        result.status = 'failed';
+        result.mode = 'failed';
+        result.durationMs = Date.now() - startTime;
+        return result;
+      }
+
+      result.eiaPeriod = latestEiaPeriod;
+
+      // 3. Query latest database period
+      const dbRes = await db.execute<{ latest_period: string | null }>(
+        sql`SELECT MAX(period)::text as latest_period FROM electricity_retail_sales_monthly WHERE sector = 'RES'`,
+      );
+      const dbRows =
+        (dbRes as unknown as { rows: Array<{ latest_period: string | null }> }).rows || dbRes;
+      const firstRow = Array.isArray(dbRows) ? dbRows[0] : undefined;
+      const rawDbPeriod = firstRow?.latest_period;
+      const latestDbPeriod: string | null =
+        typeof rawDbPeriod === 'string' ? rawDbPeriod.substring(0, 7) : null;
+      result.dbPeriod = latestDbPeriod;
+
+      this.logger.log(
+        `EIA Latest Period: ${latestEiaPeriod} | DB Latest Period: ${latestDbPeriod || 'NONE'}`,
+      );
+
+      // 4. Determine Execution Mode & Handle Stale Source
+      const prodBaseUrl =
+        process.env.ENERGY_DATA_PRODUCTION_BASE_URL || 'https://energybilllab.com';
+
+      if (latestDbPeriod && latestEiaPeriod < latestDbPeriod) {
+        this.logger.error(
+          `EIA period (${latestEiaPeriod}) is older than DB period (${latestDbPeriod}). Stale source failure.`,
+        );
+        result.mode = 'stale-source';
+        result.status = 'failed';
+        result.durationMs = Date.now() - startTime;
+        return result;
+      }
+
+      let mode: 'no-op' | 'import-and-publish' | 'publish-recovery' = 'import-and-publish';
+
+      if (latestDbPeriod && latestEiaPeriod === latestDbPeriod) {
+        if (options.verifyProduction === false) {
+          this.logger.log(
+            `EIA period equals DB period (${latestEiaPeriod}). Production verification was skipped.`,
+          );
+          result.mode = 'no-op';
+          result.status = 'succeeded';
+          result.productionVerified = false;
+          result.verificationSkipped = true;
+          result.durationMs = Date.now() - startTime;
+          return result;
+        }
+
+        const prodCheck = await this.checkProductionIsCurrent(prodBaseUrl, latestEiaPeriod);
+        if (prodCheck && !options.forceRevalidate) {
+          this.logger.log(
+            `EIA period equals DB period (${latestEiaPeriod}) and production is verified current. No-op.`,
+          );
+          result.mode = 'no-op';
+          result.status = 'succeeded';
+          result.productionVerified = true;
+          result.verificationSkipped = false;
+          result.durationMs = Date.now() - startTime;
+          return result;
+        }
+        this.logger.log(
+          `EIA period equals DB period (${latestEiaPeriod}) but production is stale. Entering publish-recovery mode.`,
+        );
+        mode = 'publish-recovery';
+      }
+
+      result.mode = mode;
+
+      // 5. Record data_import_runs row with status "running"
+      await db.insert(dataImportRuns).values({
+        id: importRunId,
+        source: 'EIA',
+        dataset: 'electricity/retail-sales',
+        importType: 'incremental',
+        status: 'running',
+        requestedStartPeriod: `${latestEiaPeriod}-01`,
+        requestedEndPeriod: `${latestEiaPeriod}-01`,
+        sourceTotalRows: sample.total,
+        fetchedRows: sample.rows.length,
+        validatedRows: 0,
+        insertedRows: 0,
+        updatedRows: 0,
+        unchangedRows: 0,
+        rejectedRows: 0,
+      });
+
+      // 6. Complete-Dataset Database Transaction (if import-and-publish)
+      if (mode === 'import-and-publish') {
+        const validRows = validRowsForLatestPeriod;
+
+        if (validRows.length !== 52) {
+          const errMsg = `Complete-dataset validation failed for ${latestEiaPeriod}: expected 52 geographies, got ${validRows.length}`;
           this.logger.error(errMsg);
           await db
             .update(dataImportRuns)
             .set({ status: 'failed', completedAt: new Date() })
             .where(eq(dataImportRuns.id, importRunId));
+          result.status = 'failed';
+          result.mode = 'failed';
           return result;
         }
 
@@ -529,11 +597,11 @@ export class ElectricityRateImportService {
         );
       }
 
-      // 6. Cache Revalidation Stage
+      // 6. Cache Revalidation Endpoint Trigger
       const revalidationSecret = process.env.ENERGY_DATA_REVALIDATION_SECRET;
       const revalidationUrl =
         process.env.ENERGY_DATA_REVALIDATION_URL ||
-        'https://energybilllab.com/api/internal/revalidate-energy-data';
+        'http://localhost:3000/api/internal/revalidate-energy-data';
 
       if (revalidationSecret) {
         try {
@@ -568,6 +636,7 @@ export class ElectricityRateImportService {
         this.logger.log(`Verifying live production output against ${prodBaseUrl}...`);
         const isLiveCurrent = await this.verifyProductionWithRetries(prodBaseUrl, latestEiaPeriod);
         result.productionVerified = isLiveCurrent;
+        result.verificationSkipped = false;
 
         if (!isLiveCurrent) {
           this.logger.error(
@@ -577,11 +646,14 @@ export class ElectricityRateImportService {
             .update(dataImportRuns)
             .set({ status: 'failed', completedAt: new Date() })
             .where(eq(dataImportRuns.id, importRunId));
+          result.status = 'failed';
+          result.mode = 'failed';
           result.durationMs = Date.now() - startTime;
           return result;
         }
       } else {
-        result.productionVerified = true;
+        result.productionVerified = false;
+        result.verificationSkipped = true;
       }
 
       // 8. Mark Run Succeeded
@@ -606,6 +678,8 @@ export class ElectricityRateImportService {
         .update(dataImportRuns)
         .set({ status: 'failed', completedAt: new Date() })
         .where(eq(dataImportRuns.id, importRunId));
+      result.status = 'failed';
+      result.mode = 'failed';
     } finally {
       await this.releaseAdvisoryLock(db, 987654321);
       result.durationMs = Date.now() - startTime;

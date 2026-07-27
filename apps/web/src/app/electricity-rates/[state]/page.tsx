@@ -76,10 +76,15 @@ export default async function StateElectricityRatePage({ params }: Props) {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/electricity-rates',
+    '/research/us-residential-electricity-rate-report',
     '/electricity-bill-analyzer',
     '/tools/appliance-energy-cost-calculator',
     '/tools/ac-cost-calculator',
+    '/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill',
+    '/guides/how-to-read-an-electric-bill-line-by-line',
     '/methodology',
+    '/data-sources',
   ];
 
   const approvedRelatedSlugs = config.relatedStateSlugs.filter((s) => isApprovedStateSlug(s));
@@ -115,7 +120,49 @@ export default async function StateElectricityRatePage({ params }: Props) {
       {/* State Market Drivers Grid */}
       <StateDriverGrid config={config} />
 
-      {/* Why Bills Differ Educational Section */}
+      {/* Educational & Rate Guide Contextual Section */}
+      <section className={styles.sectionCard} aria-labelledby="rate-guides-heading">
+        <h2 id="rate-guides-heading" className={styles.sectionTitle}>
+          Understand & Lower Your {config.name} Electricity Bill
+        </h2>
+        <p className={styles.sectionIntro}>
+          Compare {config.name}&apos;s average residential electricity rate against national
+          benchmarks, calculate your true effective cost per kWh, and analyze statement charges:
+        </p>
+        <ul className={styles.factorsList}>
+          <li>
+            <Link
+              href="/research/us-residential-electricity-rate-report"
+              style={{ fontWeight: 600, color: '#1677ff' }}
+            >
+              U.S. National Electricity-Rate Benchmark Report
+            </Link>
+            : Compare {config.name}&apos;s rate ranking and price movements against all 50 U.S.
+            states.
+          </li>
+          <li>
+            <Link
+              href="/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill"
+              style={{ fontWeight: 600, color: '#1677ff' }}
+            >
+              How to Calculate Your Effective Cost per kWh
+            </Link>
+            : Step-by-step formula for calculating your true all-in electricity rate from monthly
+            statement dollars.
+          </li>
+          <li>
+            <Link
+              href="/guides/how-to-read-an-electric-bill-line-by-line"
+              style={{ fontWeight: 600, color: '#1677ff' }}
+            >
+              How to Read Your Electric Bill Line by Line
+            </Link>
+            : Understand supply charges, delivery tariffs, customer fees, and seasonal riders.
+          </li>
+        </ul>
+      </section>
+
+      {/* Why Bills Differ Section */}
       <section className={styles.sectionCard} aria-labelledby="bill-variance-heading">
         <h2 id="bill-variance-heading" className={styles.sectionTitle}>
           Why Your Individual Electric Bill May Differ

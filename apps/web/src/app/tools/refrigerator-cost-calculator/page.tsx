@@ -40,6 +40,7 @@ export default async function RefrigeratorCostCalculatorPage() {
   ];
 
   const relatedLinks: PublicRouteHref[] = [
+    '/guides/how-much-electricity-does-a-refrigerator-use',
     '/tools/appliance-energy-cost-calculator',
     '/tools/clothes-dryer-cost-calculator',
     '/tools/electric-water-heater-cost-calculator',
