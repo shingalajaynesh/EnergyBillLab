@@ -255,6 +255,93 @@ export async function getElectricityRateDataStatus(
   }
 }
 
+export type DataFreshnessDetailsDTO = {
+  latestPeriod: string | null;
+  geographyCount: number;
+  isGeographyCountComplete: boolean;
+  ageDays: number | null;
+  latestSuccessfulImportAt: string | null;
+  latestFailedImportAt: string | null;
+};
+
+export async function getDataFreshnessDetails(
+  db: DatabaseInstance,
+): Promise<DataFreshnessDetailsDTO> {
+  try {
+    interface FreshnessRow extends Record<string, unknown> {
+      latestPeriod?: string | null;
+      geoCount?: string | number | null;
+      lastSuccess?: Date | string | null;
+      lastFailure?: Date | string | null;
+    }
+
+    const res = await db.execute<FreshnessRow>(sql`
+      WITH latest AS (
+        SELECT MAX(period) as max_period
+        FROM electricity_retail_sales_monthly
+        WHERE sector = 'RES'
+      ),
+      counts AS (
+        SELECT COUNT(DISTINCT geography_code) as count
+        FROM electricity_retail_sales_monthly
+        WHERE sector = 'RES' AND period = (SELECT max_period FROM latest)
+      ),
+      last_succ AS (
+        SELECT MAX(completed_at) as last_success
+        FROM data_import_runs
+        WHERE status = 'succeeded'
+      ),
+      last_fail AS (
+        SELECT MAX(completed_at) as last_failure
+        FROM data_import_runs
+        WHERE status = 'failed'
+      )
+      SELECT
+        l.max_period::text as "latestPeriod",
+        c.count as "geoCount",
+        s.last_success as "lastSuccess",
+        f.last_failure as "lastFailure"
+      FROM latest l
+      CROSS JOIN counts c
+      LEFT JOIN last_succ s ON true
+      LEFT JOIN last_fail f ON true
+    `);
+
+    const rawRows = Array.isArray(res.rows) ? res.rows : (res as unknown as FreshnessRow[]);
+    const row = rawRows[0];
+    const latestPeriod = row?.latestPeriod ? String(row.latestPeriod) : null;
+    const geographyCount = row?.geoCount ? Number(row.geoCount) : 0;
+    const lastSuccess = row?.lastSuccess ? new Date(row.lastSuccess).toISOString() : null;
+    const lastFailure = row?.lastFailure ? new Date(row.lastFailure).toISOString() : null;
+
+    let ageDays: number | null = null;
+    if (latestPeriod) {
+      const periodDate = new Date(latestPeriod);
+      const now = new Date();
+      const diffTime = Math.abs(now.getTime() - periodDate.getTime());
+      ageDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    return {
+      latestPeriod,
+      geographyCount,
+      isGeographyCountComplete: geographyCount === 52,
+      ageDays,
+      latestSuccessfulImportAt: lastSuccess,
+      latestFailedImportAt: lastFailure,
+    };
+  } catch {
+    return {
+      latestPeriod: null,
+      geographyCount: 0,
+      isGeographyCountComplete: false,
+      ageDays: null,
+      latestSuccessfulImportAt: null,
+      latestFailedImportAt: null,
+    };
+  }
+}
+
 export type RawStateReportRow = {
   code: string;
   slug: string;

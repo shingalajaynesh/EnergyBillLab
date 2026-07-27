@@ -18,8 +18,14 @@ type PageMetadataInput = {
 export function createPageMetadata({ description, path, title }: PageMetadataInput): Metadata {
   const url = getSiteUrl(path);
 
+  // If title already ends with ` | SITE_NAME`, strip it so Next.js `%s | SITE_NAME` template does not duplicate brand
+  const brandSuffix = ` | ${SITE_NAME}`;
+  const cleanTitle = title.endsWith(brandSuffix) ? title.slice(0, -brandSuffix.length) : title;
+
+  const fullTitle = cleanTitle === SITE_NAME ? SITE_NAME : `${cleanTitle}${brandSuffix}`;
+
   return {
-    title,
+    title: cleanTitle,
     description,
     alternates: {
       canonical: path,
@@ -27,14 +33,14 @@ export function createPageMetadata({ description, path, title }: PageMetadataInp
     openGraph: {
       description,
       siteName: SITE_NAME,
-      title,
+      title: fullTitle,
       type: 'website',
       url,
     },
     twitter: {
       card: 'summary',
       description,
-      title,
+      title: fullTitle,
     },
   };
 }

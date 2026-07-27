@@ -15,7 +15,7 @@ import { PopularComparisonsGrid } from './popular-comparisons-grid';
 import { QuickComparisonLauncher } from './quick-comparison-launcher';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Home Energy Cost Comparisons | Energy Bill Lab',
+  title: 'Home Energy Cost Comparisons & Calculators',
   description:
     'Compare household appliances, heating systems, cooling equipment, EV charging, and electricity-rate plans using transparent energy-use and cost formulas.',
   path: '/comparisons',

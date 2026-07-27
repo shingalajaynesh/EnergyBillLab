@@ -25,7 +25,7 @@ describe('/comparisons page & routing integrity', () => {
   });
 
   it('exports correct metadata title, description, and canonical URL', () => {
-    expect(metadata.title).toBe('Home Energy Cost Comparisons | Energy Bill Lab');
+    expect(metadata.title).toBe('Home Energy Cost Comparisons & Calculators');
     expect(metadata.description).toBe(
       'Compare household appliances, heating systems, cooling equipment, EV charging, and electricity-rate plans using transparent energy-use and cost formulas.',
     );

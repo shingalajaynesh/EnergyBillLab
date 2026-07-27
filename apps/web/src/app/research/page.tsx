@@ -105,7 +105,7 @@ export default async function ResearchHubPage() {
           <p className={styles.publisherText}>
             Energy Bill Lab research reports are founded and technically published by Jaynesh
             Shingala, a Full-Stack Software Engineer based in Surat, Gujarat, India. Our goal is to
-            provide non-commercial, source-transparent data tools and data journalism for U.S.
+            provide independent, source-transparent data tools and data journalism for U.S.
             homeowners, researchers, and journalists.
           </p>
           <p className={styles.publisherContact}>
