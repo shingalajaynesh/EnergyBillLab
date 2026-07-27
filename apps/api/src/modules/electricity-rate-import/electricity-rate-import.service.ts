@@ -44,15 +44,25 @@ export type SyncLatestOptions = {
 
 export type SyncLatestResult = {
   importRunId: string;
-  status: 'succeeded' | 'failed' | 'no-op';
-  mode: 'no-op' | 'import-and-publish' | 'publish-recovery' | 'failed' | 'stale-source';
+  status: 'succeeded' | 'failed' | 'no-op' | 'skipped_incomplete_period' | 'locked';
+  mode:
+    | 'no-op'
+    | 'import-and-publish'
+    | 'publish-recovery'
+    | 'failed'
+    | 'stale-source'
+    | 'skipped_incomplete_period'
+    | 'locked';
   eiaPeriod: string | null;
   dbPeriod: string | null;
   insertedRows: number;
+  rejectedRows?: number;
+  missingGeographies?: string[];
   revalidated: boolean;
   productionVerified: boolean;
   verificationSkipped: boolean;
   durationMs: number;
+  message?: string;
 };
 
 @Injectable()
@@ -316,14 +326,27 @@ export class ElectricityRateImportService {
       this.logger.warn(
         'Another import process holds the advisory lock (987654321). Exiting cleanly.',
       );
-      result.status = 'failed';
-      result.mode = 'failed';
+      result.status = 'locked';
+      result.mode = 'locked';
+      result.message = 'Import locked by concurrent active process.';
       result.durationMs = Date.now() - startTime;
       return result;
     }
 
     try {
       await this.ensureGeographiesSeeded(db);
+
+      // Query latest database period
+      const dbRes = await db.execute<{ latest_period: string | null }>(
+        sql`SELECT MAX(period)::text as latest_period FROM electricity_retail_sales_monthly WHERE sector = 'RES'`,
+      );
+      const dbRows =
+        (dbRes as unknown as { rows: Array<{ latest_period: string | null }> }).rows || dbRes;
+      const firstRow = Array.isArray(dbRows) ? dbRows[0] : undefined;
+      const rawDbPeriod = firstRow?.latest_period;
+      const latestDbPeriod: string | null =
+        typeof rawDbPeriod === 'string' ? rawDbPeriod.substring(0, 7) : null;
+      result.dbPeriod = latestDbPeriod;
 
       // 1. Discover latest EIA reporting period using descending sort
       const PERIOD_REGEX = /^\d{4}-(?:0[1-9]|1[0-2])$/;
@@ -437,9 +460,25 @@ export class ElectricityRateImportService {
           break;
         }
 
-        this.logger.warn(
-          `Candidate EIA period ${candidatePeriod} is incomplete (${geographiesSet.size}/52 geographies); trying previous period.`,
+        const missingGeographies = Array.from(VALID_GEOGRAPHY_CODES).filter(
+          (code) => !geographiesSet.has(code),
         );
+
+        this.logger.warn(
+          `Candidate EIA period ${candidatePeriod} is incomplete (${geographiesSet.size}/52 geographies; missing ${missingGeographies.join(', ')}).`,
+        );
+
+        // If the newest discovered EIA period is newer than DB period but incomplete, stop and return skipped_incomplete_period
+        if (latestDbPeriod && candidatePeriod > latestDbPeriod) {
+          result.status = 'skipped_incomplete_period';
+          result.mode = 'skipped_incomplete_period';
+          result.eiaPeriod = candidatePeriod;
+          result.dbPeriod = latestDbPeriod;
+          result.missingGeographies = missingGeographies;
+          result.message = `Newest EIA period ${candidatePeriod} is incomplete (${geographiesSet.size}/52 geographies).`;
+          result.durationMs = Date.now() - startTime;
+          return result;
+        }
       }
 
       if (!latestEiaPeriod) {
@@ -453,18 +492,6 @@ export class ElectricityRateImportService {
       }
 
       result.eiaPeriod = latestEiaPeriod;
-
-      // 3. Query latest database period
-      const dbRes = await db.execute<{ latest_period: string | null }>(
-        sql`SELECT MAX(period)::text as latest_period FROM electricity_retail_sales_monthly WHERE sector = 'RES'`,
-      );
-      const dbRows =
-        (dbRes as unknown as { rows: Array<{ latest_period: string | null }> }).rows || dbRes;
-      const firstRow = Array.isArray(dbRows) ? dbRows[0] : undefined;
-      const rawDbPeriod = firstRow?.latest_period;
-      const latestDbPeriod: string | null =
-        typeof rawDbPeriod === 'string' ? rawDbPeriod.substring(0, 7) : null;
-      result.dbPeriod = latestDbPeriod;
 
       this.logger.log(
         `EIA Latest Period: ${latestEiaPeriod} | DB Latest Period: ${latestDbPeriod || 'NONE'}`,

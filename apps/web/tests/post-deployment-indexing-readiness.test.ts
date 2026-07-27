@@ -148,6 +148,7 @@ describe('Post-Deployment Cleanup and Indexing Readiness', () => {
 
     const sitemapEntries = sitemap();
     expect(sitemapEntries.every((e) => e.url.startsWith('https://energybilllab.com'))).toBe(true);
+    expect(sitemapEntries.every((e) => !e.url.includes('www.'))).toBe(true);
   });
 
   // Test 7: Research HTML and CSV periods match

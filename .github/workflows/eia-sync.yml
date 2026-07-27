@@ -1,0 +1,56 @@
+name: Scheduled EIA Rate Sync
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-eia-rates:
+    name: Sync EIA Electricity Rates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Trigger EIA Sync API Endpoint
+        env:
+          EIA_SYNC_SECRET: ${{ secrets.EIA_SYNC_SECRET }}
+          API_SYNC_URL: ${{ secrets.API_SYNC_URL || 'https://energybilllab.com/api/v1/electricity-rate-import/sync' }}
+        run: |
+          if [ -z "$EIA_SYNC_SECRET" ]; then
+            echo "::error::EIA_SYNC_SECRET environment variable is missing."
+            exit 1
+          fi
+
+          echo "Sending sync request to $API_SYNC_URL..."
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST "$API_SYNC_URL" \
+            -H "Content-Type: application/json" \
+            -H "x-sync-secret: $EIA_SYNC_SECRET")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS:" | cut -d':' -f2)
+          BODY=$(echo "$RESPONSE" | sed '/HTTP_STATUS:/d')
+
+          echo "Response HTTP Status: $HTTP_STATUS"
+          echo "Response Body: $BODY"
+
+          if [ "$HTTP_STATUS" -ne 200 ] && [ "$HTTP_STATUS" -ne 201 ]; then
+            echo "::error::EIA rate sync endpoint returned failed status code $HTTP_STATUS"
+            exit 1
+          fi
+
+          STATUS=$(echo "$BODY" | grep -o '"status":"[^"]*"' | head -n 1 | cut -d'"' -f4)
+
+          if [ "$STATUS" = "no_update" ]; then
+            echo "EIA sync completed: No new period available (no-op)."
+          elif [ "$STATUS" = "imported" ]; then
+            echo "EIA sync completed: New 52-geography period successfully imported and published."
+          elif [ "$STATUS" = "skipped_incomplete_period" ]; then
+            echo "::warning::EIA published an incomplete period; import skipped safely."
+          elif [ "$STATUS" = "locked" ]; then
+            echo "::warning::EIA sync process locked by active process."
+          elif [ "$STATUS" = "failed" ]; then
+            echo "::error::EIA sync failed."
+            exit 1
+          else
+            echo "EIA sync completed with status: $STATUS"
+          fi

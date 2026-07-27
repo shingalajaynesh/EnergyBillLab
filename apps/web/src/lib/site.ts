@@ -1,6 +1,10 @@
 function validateSiteUrl(value: string | undefined) {
   try {
-    return new URL(value ?? 'https://energybilllab.com').origin;
+    const url = new URL(value ?? 'https://energybilllab.com');
+    if (url.hostname === 'www.energybilllab.com') {
+      url.hostname = 'energybilllab.com';
+    }
+    return url.origin;
   } catch {
     return 'https://energybilllab.com';
   }

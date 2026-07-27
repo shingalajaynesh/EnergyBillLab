@@ -118,6 +118,11 @@ describe('ElectricityRateImportService.syncLatestPeriod & Result Semantics', () 
     delete process.env.DATABASE_URL;
     try {
       const service = new ElectricityRateImportService(mockEiaClient);
+      vi.spyOn(
+        service as unknown as { acquireAdvisoryLock: () => Promise<boolean> },
+        'acquireAdvisoryLock',
+      ).mockResolvedValue(true);
+
       const result = await service.syncLatestPeriod();
 
       expect(result.status).toBe('failed');
@@ -343,6 +348,80 @@ describe('ElectricityRateImportService.syncLatestPeriod & Result Semantics', () 
       expect(process.env.TEST_OVERRIDE_VAR).toBe('PROCESS_VALUE');
     } finally {
       delete process.env.TEST_OVERRIDE_VAR;
+    }
+  });
+
+  it('8. Incomplete newest EIA period is skipped and returns status=skipped_incomplete_period', async () => {
+    const mockEiaClient = {
+      fetchRetailSalesData: vi.fn().mockImplementation((params: FetchEiaParams) => {
+        if (params.sortDirection === 'desc') {
+          return Promise.resolve({
+            total: 1,
+            offset: 0,
+            length: 1,
+            rows: [{ period: '2026-06', stateid: 'NC', sectorid: 'RES', price: 15.0 }],
+          });
+        }
+        if (params.startPeriod === '2026-06') {
+          // Return only 50 rows (missing HI and AK)
+          return Promise.resolve({
+            total: 50,
+            offset: 0,
+            length: 50,
+            rows: ALL_52_GEOGRAPHIES.filter((g) => g !== 'HI' && g !== 'AK').map((geo) => ({
+              period: '2026-06',
+              stateid: geo,
+              sectorid: 'RES',
+              price: 15.0,
+            })),
+          });
+        }
+        return Promise.resolve({ total: 0, offset: 0, length: 0, rows: [] });
+      }),
+    } as unknown as EiaClientService;
+
+    const service = new ElectricityRateImportService(mockEiaClient);
+    vi.spyOn(
+      service as unknown as { ensureGeographiesSeeded: () => Promise<void> },
+      'ensureGeographiesSeeded',
+    ).mockResolvedValue();
+    vi.spyOn(
+      service as unknown as { acquireAdvisoryLock: () => Promise<boolean> },
+      'acquireAdvisoryLock',
+    ).mockResolvedValue(true);
+
+    process.env.DATABASE_URL = 'postgresql://localhost:5432/test';
+    mockDbLatestPeriod = '2026-05-01';
+    try {
+      const result = await service.syncLatestPeriod();
+      expect(result.status).toBe('skipped_incomplete_period');
+      expect(result.mode).toBe('skipped_incomplete_period');
+      expect(result.eiaPeriod).toBe('2026-06');
+      expect(result.dbPeriod).toBe('2026-05');
+      expect(result.missingGeographies).toEqual(expect.arrayContaining(['HI', 'AK']));
+    } finally {
+      delete process.env.DATABASE_URL;
+    }
+  });
+
+  it('9. Advisory lock rejection returns status=locked and mode=locked', async () => {
+    const mockEiaClient = {
+      fetchRetailSalesData: vi.fn(),
+    } as unknown as EiaClientService;
+
+    const service = new ElectricityRateImportService(mockEiaClient);
+    vi.spyOn(
+      service as unknown as { acquireAdvisoryLock: () => Promise<boolean> },
+      'acquireAdvisoryLock',
+    ).mockResolvedValue(false);
+
+    process.env.DATABASE_URL = 'postgresql://localhost:5432/test';
+    try {
+      const result = await service.syncLatestPeriod();
+      expect(result.status).toBe('locked');
+      expect(result.mode).toBe('locked');
+    } finally {
+      delete process.env.DATABASE_URL;
     }
   });
 });
