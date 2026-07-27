@@ -178,13 +178,13 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
       path: '/research/us-residential-electricity-rate-report',
       datePublished: '2026-07-24',
       dateModified: '2026-07-24',
-      reportingPeriod: '2026-04',
+      reportingPeriod: '2026-05',
     });
 
     expect(jsonLd['@type']).toBe('Report');
     expect(jsonLd.name).toBe('U.S. Residential Electricity-Rate Report');
     expect(jsonLd.spatialCoverage.name).toBe('United States');
-    expect(jsonLd.temporalCoverage).toBe('2026-04');
+    expect(jsonLd.temporalCoverage).toBe('2026-05');
     expect(jsonLd.author.name).toBe('Jaynesh Shingala');
     expect(jsonLd.publisher.name).toBe('Energy Bill Lab');
   });

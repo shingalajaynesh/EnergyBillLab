@@ -6,6 +6,7 @@
     "prebuild": "pnpm --filter=@energy-bill-lab/database build",
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsx watch src/main.ts",
+    "eia:sync-latest": "tsx src/modules/electricity-rate-import/electricity-rate-import.cli.ts sync-latest",
     "lint": "eslint .",
     "start": "node dist/main.js",
     "test": "vitest run --passWithNoTests",

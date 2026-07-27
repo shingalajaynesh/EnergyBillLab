@@ -26,6 +26,24 @@ async function main() {
         process.exit(1);
       }
       logger.log('EIA metadata contract verified successfully.');
+    } else if (command === 'sync-latest') {
+      const forceRevalidate = process.argv.includes('--force-revalidate');
+      const skipVerifyProd = process.argv.includes('--skip-verify');
+
+      logger.log('Starting automated EIA sync-latest pipeline...');
+      const result = await importService.syncLatestPeriod({
+        forceRevalidate,
+        verifyProduction: !skipVerifyProd,
+      });
+
+      logger.log(`Sync-latest finished with status: ${result.status} (mode=${result.mode})`);
+      logger.log(
+        `EIA Period: ${result.eiaPeriod || 'N/A'}, DB Period: ${result.dbPeriod || 'N/A'}, Inserted: ${result.insertedRows}, Revalidated: ${result.revalidated}, Verified: ${result.productionVerified}`,
+      );
+
+      if (result.status === 'failed') {
+        process.exit(1);
+      }
     } else if (command === 'backfill' || command === 'sync') {
       const isDryRun = process.argv.includes('--dry-run');
       const startArg = process.argv.find((arg) => arg.startsWith('--start='));
@@ -51,10 +69,9 @@ async function main() {
       }
     } else if (command === 'verify') {
       logger.log('Running EIA data verification check...');
-      // Verification logic: checks DB data status
       process.exit(0);
     } else {
-      logger.log('Usage: pnpm data:eia:[metadata|backfill|sync|verify]');
+      logger.log('Usage: pnpm data:eia:[metadata|backfill|sync|sync-latest|verify]');
     }
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

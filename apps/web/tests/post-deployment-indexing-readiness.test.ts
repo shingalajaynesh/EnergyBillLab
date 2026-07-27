@@ -31,8 +31,8 @@ const mockAllStates: StateRateRanking[] = CANONICAL_50_STATE_CODES.map((code, id
     slug: geo?.slug || code.toLowerCase(),
     isPublished: true,
     priceCentsPerKwh: price,
-    period: '2026-04',
-    periodFormatted: 'April 2026',
+    period: '2026-05',
+    periodFormatted: 'May 2026',
   };
 }).sort((a, b) => b.priceCentsPerKwh - a.priceCentsPerKwh);
 
@@ -43,15 +43,15 @@ const mockLowest = [...mockAllStates]
 
 const mockNationalReport: NationalRateReportModel = {
   available: true,
-  reportingPeriod: '2026-04',
-  reportingPeriodFormatted: 'April 2026',
+  reportingPeriod: '2026-05',
+  reportingPeriodFormatted: 'May 2026',
   generatedAt: '2026-07-26T22:00:00.000Z',
   provenance: {
     status: 'live_database',
-    sourcePeriod: '2026-04',
+    sourcePeriod: '2026-05',
     sourceName: 'U.S. EIA Form EIA-861M Monthly Retail Sales',
   },
-  nationalAverageCentsPerKwh: 16.88,
+  nationalAverageCentsPerKwh: 18.44,
   statesIncludedCount: 50,
   statesExcluded: [],
   highestRates: mockHighest,
