@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
   // 1. Revalidate Next.js cache tags
   revalidateTag('eia-residential-rates');
   revalidateTag('state-page-data');
+  revalidateTag('national-electricity-rate-report');
 
   // 2. Revalidate static / ISR page paths
   const paths: string[] = [
