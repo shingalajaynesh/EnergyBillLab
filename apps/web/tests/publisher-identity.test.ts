@@ -41,7 +41,7 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     expect(editorialText).not.toContain('India');
   });
 
-  it('6 & 7. Public content does not contain "Full-Stack Software Engineer" or "Full-Stack Developer"', () => {
+  it('6 & 7. Public content does not contain software engineering job titles or fake credentials', () => {
     const allContentText = JSON.stringify(contentPages);
     expect(allContentText).not.toContain('Full-Stack Software Engineer');
     expect(allContentText).not.toContain('Full-Stack Developer');
@@ -49,12 +49,7 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     expect(allContentText).not.toContain('Full Stack Developer');
   });
 
-  it('8. Public content retains "Founder & Technical Publisher"', () => {
-    const allContentText = JSON.stringify(contentPages);
-    expect(allContentText).toContain('Founder & Technical Publisher');
-  });
-
-  it('9. Person JSON-LD retains jobTitle and excludes personal location/address fields', () => {
+  it('8. Person JSON-LD retains name "Jaynesh Shingala" without extra title or location fields', () => {
     const reportSchema = createReportStructuredData({
       title: 'U.S. Residential Electricity-Rate Report',
       description: 'National electricity rate report.',
@@ -67,7 +62,7 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     const author = reportSchema.author;
     expect(author['@type']).toBe('Person');
     expect(author.name).toBe('Jaynesh Shingala');
-    expect(author.jobTitle).toBe('Founder & Technical Publisher');
+    expect((author as Record<string, unknown>).jobTitle).toBeUndefined();
     expect((author as Record<string, unknown>).address).toBeUndefined();
     expect((author as Record<string, unknown>).homeLocation).toBeUndefined();
     expect((author as Record<string, unknown>).nationality).toBeUndefined();
@@ -75,20 +70,21 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     expect((author as Record<string, unknown>).worksFor).toBeUndefined();
   });
 
-  it('10 & 11. Article author names and Organization schema remain valid', () => {
+  it('9 & 10. Organization schema remains valid with apex logo', () => {
     const orgSchema = createOrganizationStructuredData();
     expect(orgSchema['@type']).toBe('Organization');
     expect(orgSchema.name).toBe('Energy Bill Lab');
+    expect(orgSchema.logo).toBe('https://energybilllab.com/icon.png');
   });
 
-  it('12 & 13. Contact mailto link is valid and no private phone numbers or physical addresses are exposed', () => {
+  it('11 & 12. Contact mailto link is valid and no private phone numbers or physical addresses are exposed', () => {
     const contactText = JSON.stringify(contentPages['/contact']);
     expect(contactText).toContain('shingala.jaynesh@gmail.com');
     expect(contactText).not.toMatch(/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/);
     expect(contactText).not.toContain('Street Address');
   });
 
-  it('14. Canonical route metadata remains correct', () => {
+  it('13. Canonical route metadata remains correct', () => {
     const aboutMeta = createPageMetadata(contentPages['/about']);
     const contactMeta = createPageMetadata(contentPages['/contact']);
 
@@ -96,7 +92,7 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     expect(contactMeta.alternates?.canonical).toBe('/contact');
   });
 
-  it('15. Protected files remain untouched', () => {
+  it('14. Protected files remain untouched', () => {
     const root = process.cwd();
     expect(
       fs.existsSync(path.resolve(root, '../../packages/database/src/clients/db-client.ts')),

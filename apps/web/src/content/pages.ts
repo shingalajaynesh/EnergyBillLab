@@ -139,6 +139,12 @@ export const contentPages = {
           'Rate benchmarks are periodically synchronized to ensure accuracy while preserving historical comparison baselines.',
         ],
       },
+      {
+        heading: 'Data update history',
+        paragraphs: [
+          'May 2026 Rates — Imported: July 27, 2026 | Records: 50 states + District of Columbia + U.S. national baseline | Source: EIA Form EIA-861M monthly residential retail-sales dataset | Status: Published',
+        ],
+      },
     ],
   },
   '/editorial-policy': {

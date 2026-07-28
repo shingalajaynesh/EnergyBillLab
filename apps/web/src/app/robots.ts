@@ -14,6 +14,18 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Mediapartners-Google',
         allow: '/',
       },
+      {
+        userAgent: 'OAI-SearchBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'GPTBot',
+        disallow: '/',
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

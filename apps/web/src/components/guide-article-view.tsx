@@ -55,8 +55,8 @@ export function GuideArticleView({
     datePublished: guide.datePublished,
     dateModified: guide.updatedAt,
     author: {
-      '@type': 'Organization',
-      name: 'Energy Bill Lab Editorial Team',
+      '@type': 'Person',
+      name: 'Jaynesh Shingala',
       url: getSiteUrl('/about'),
     },
     publisher: {
@@ -82,9 +82,9 @@ export function GuideArticleView({
           <h1 className={styles.title}>{guide.h1Title}</h1>
           <p className={styles.lead}>{guide.description}</p>
           <div className={styles.metaRow}>
-            <span>By Energy Bill Lab Editorial Team</span>
+            <span>By Jaynesh Shingala</span>
             <span>•</span>
-            <span>Reviewed for data accuracy</span>
+            <span>Written and data-checked by Jaynesh Shingala</span>
             <span>•</span>
             <time dateTime={guide.updatedAt}>Updated {formatHumanDate(guide.updatedAt)}</time>
           </div>
@@ -113,7 +113,7 @@ export function GuideArticleView({
 
         {guide.sources.length > 0 ? (
           <section className={styles.sourcesSection}>
-            <h2>Government & Official Data Sources</h2>
+            <h2>References & Official Data Sources</h2>
             <ul className={styles.sourceList}>
               {guide.sources.map((src) => (
                 <li key={src.url} className={styles.sourceItem}>
