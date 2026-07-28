@@ -60,7 +60,6 @@ export function createReportStructuredData({
     author: {
       '@type': 'Person',
       name: 'Jaynesh Shingala',
-      jobTitle: 'Founder & Technical Publisher',
     },
     sourceOrganization: {
       '@type': 'GovernmentOrganization',

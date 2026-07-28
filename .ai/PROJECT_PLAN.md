@@ -731,28 +731,54 @@ Quality gate:
 
 ### Next Planned Phase: Source, editorial-quality, SEO and real-browser review of the first five guides
 
-### Days 28–30: Production and AdSense audit [COMPLETED FULL 50-STATE AUDIT]
+### Days 28–30: Production, Branding & Documentation Synchronization [COMPLETED]
 
 Deliver:
 
-- Core Web Vitals pass-oriented optimization
-- accessibility audit
-- broken-link audit
-- content and source review
-- analytics verification
-- Search Console verification
-- ads.txt verification when configured
-- production monitoring
-- backup and rollback runbook
-- review-safe deployment
+- Core Web Vitals pass-oriented optimization [COMPLETED]
+- Canonical apex host protection (`https://energybilllab.com`) [COMPLETED]
+- 50 published U.S. state pages & 50 guides [COMPLETED]
+- App Router favicon, apple-icon, and social preview cards [COMPLETED]
+- Privacy-limited publisher identity (`Jaynesh Shingala`, `shingala.jaynesh@gmail.com`) [COMPLETED]
+- Real-person author byline (`By Jaynesh Shingala`) [COMPLETED]
+- OpenAI crawler access rules in `robots.ts` [COMPLETED]
+- Data Update History log on `/data-sources` [COMPLETED]
+- Minimal Person & Organization JSON-LD schemas [COMPLETED]
+- Manual CLI EIA import architecture (`eia:sync-latest`) [COMPLETED]
+- Protected Vercel cache revalidation API endpoint [COMPLETED]
+- Complete repository documentation synchronization [COMPLETED]
 
-Quality gate:
+---
 
-- no critical errors
-- no placeholder content
-- no indexation blockers
-- public calculators work without login
-- production build and tests pass
+## 11.1 Classified Feature Milestone Status
+
+### Completed
+- Canonical apex host protection (`https://energybilllab.com`)
+- 50 problem-solving guides & 10 energy calculators
+- 50 published U.S. state rate pages
+- Canonical favicon, apple-icon, and social preview assets
+- Privacy-limited publisher identity (`Jaynesh Shingala`, `shingala.jaynesh@gmail.com`)
+- Real-person author bylines (`By Jaynesh Shingala`)
+- AI crawler rules in `robots.ts` (`OAI-SearchBot`, `ChatGPT-User` allowed; `GPTBot` blocked)
+- Data Update History log on `/data-sources`
+- Minimal Person & Organization JSON-LD schemas
+- Manual CLI EIA import architecture (`eia:sync-latest`)
+- Protected Vercel cache revalidation capability
+
+### Pending / Ongoing
+- Production verification after Vercel deployment
+- Google Search favicon recrawl and display
+- Social preview cache refresh on LinkedIn / Facebook
+- Claim-level inline citations where incomplete
+- State-specific content improvements driven by Search Console metrics
+- Charts and original research data visualizer enhancements
+- Future manual monthly EIA imports
+- Data update history log maintenance
+
+### Discarded
+- Scheduled GitHub EIA synchronization workflows
+- Manually triggered GitHub EIA `workflow_dispatch`
+- Remote GitHub-triggered EIA import orchestration
 
 ---
 

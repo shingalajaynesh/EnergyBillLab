@@ -1,32 +1,42 @@
 # Owner Verification & Account Action Items
 
 **Domain:** energybilllab.com  
-**Audit Date:** July 23, 2026
+**Audit Date:** July 28, 2026 (Documentation Synchronization)
 
-This document outlines items that require human site owner verification or external account setup to complete full AdSense review readiness.
+This document outlines unresolved manual site owner actions and post-deployment verification items for Energy Bill Lab.
 
 ---
 
-## Required Verification Checklist
+## Required Owner Actions & Verification Checklist
 
-### 1. AdSense Publisher ID Confirmation
+### 1. Production Deployment & Live Branding Assets
 
-- [x] **Repository Publisher ID:** `ca-pub-6303291083449043`
-- [x] **ads.txt Seller Line:** `google.com, pub-6303291083449043, DIRECT, f08c47fec0942fa0`
-- [ ] **Owner Verification:** Verify that `pub-6303291083449043` is the exact active AdSense account ID linked to your Google AdSense console.
+- [ ] **Deploy Latest Web Build:** Trigger production deployment on Vercel for current branding, metadata, and authorship updates.
+- [ ] **Verify Live Branding HTTP Status:** Confirm live HTTP 200 response for canonical assets:
+  - `https://energybilllab.com/favicon.ico`
+  - `https://energybilllab.com/icon.png`
+  - `https://energybilllab.com/apple-icon.png`
+  - `https://energybilllab.com/opengraph-image.png`
+  - `https://energybilllab.com/twitter-image.png`
 
-### 2. Contact Email Inbox Verification
+### 2. Search Console & Indexing Verification
 
-- [x] **Configured Email:** `support@energybilllab.com`
-- [ ] **Owner Verification:** Confirm that `support@energybilllab.com` (or an active MX forwarder) is live and monitored for user inquiries, data corrections, and accessibility feedback.
+- [ ] **Google Search Console Indexing Request:** Inspect `https://energybilllab.com/` in Google Search Console and click "Request Indexing" once to notify Google of homepage updates.
+- [ ] **Sitemap Submission:** Submit or verify `https://energybilllab.com/sitemap.xml` status in Search Console.
+- [ ] **Google Favicon Crawl:** Note that Google Search favicon updating is asynchronous and may take days or weeks after indexing request.
 
-### 3. Google Search Console & AdSense Console Registration
+### 3. Social Media Link Preview Refresh
 
-- [x] Canonical domain set to `https://energybilllab.com`.
-- [x] `sitemap.xml` generated at `https://energybilllab.com/sitemap.xml`.
-- [ ] **Owner Action:** In Google Search Console, submit `https://energybilllab.com/sitemap.xml` and request URL indexing for `/` and `/electricity-bill-analyzer`.
-- [ ] **Owner Action:** In Google AdSense Console -> Sites -> Verify `energybilllab.com` status is active or pending review.
+- [ ] **LinkedIn Post Inspector:** Paste `https://energybilllab.com/` into LinkedIn Post Inspector to purge stale open graph caches.
+- [ ] **Facebook Sharing Debugger:** Paste `https://energybilllab.com/` into Facebook Debugger and click "Fetch new scrape information".
 
-### 4. Domain & SSL Status
+### 4. Publisher Contact & Privacy Verification
 
-- [ ] **Owner Verification:** Ensure apex domain (`energybilllab.com`) and `www.energybilllab.com` both resolve cleanly with valid HTTPS certificates and a single 301 canonical redirect.
+- [ ] **Contact Email Monitoring:** Confirm `shingala.jaynesh@gmail.com` is actively monitored for user inquiries, data corrections, and accessibility feedback.
+- [ ] **Live Author Byline Verification:** Confirm live guides and research report display `By Jaynesh Shingala`.
+
+### 5. Manual EIA Ingestion Workflow
+
+- [ ] **Terminal EIA Import:** When a new monthly EIA dataset is released, execute `pnpm --filter=@energy-bill-lab/api eia:sync-latest` from the terminal.
+- [ ] **Vercel Cache Revalidation:** Trigger `/api/internal/revalidate-energy-data` using `x-revalidation-secret` or redeploy Vercel to update static SSG pages.
+- [ ] **Maintain Data Update History:** Log new imported reporting periods in `apps/web/src/content/pages.ts` under `/data-sources`.

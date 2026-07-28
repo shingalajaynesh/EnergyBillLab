@@ -8,10 +8,13 @@ Energy Bill Lab is a production-ready monorepo featuring:
 
 - **State Electricity Rate Pages (50 of 50 States)**: Full coverage across all 50 U.S. states (`/electricity-rates/[state]`), backed by official PostgreSQL U.S. EIA monthly data provenance, state regulatory sources, and dynamic research report integration.
 - **Energy Calculators (10)**: Electricity Bill Analyzer, Appliance Energy Cost Calculator, Air Conditioner Cost Calculator, Space Heater Cost Calculator, EV Home Charging Cost Calculator, Refrigerator Cost Calculator, Clothes Dryer Cost Calculator, Electric Water Heater Cost Calculator, Pool Pump Cost Calculator, and Dehumidifier Cost Calculator.
-- **Problem-Solving Energy Guides (10)**: 10 high-intent energy guides providing diagnostic advice, appliance power consumption benchmarks, and calculator integration.
+- **Problem-Solving Energy Guides (50)**: 50 high-intent energy guides providing diagnostic advice, appliance power consumption benchmarks, inline citations, and calculator integration.
 - **Original Research & Data Export (1)**: National U.S. Residential Electricity-Rate Report (`/research/us-residential-electricity-rate-report`) dynamically linking all 50 states, plus safe CSV data export (`/research/us-residential-electricity-rate-report/csv`).
-- **Trust & Policy System**: About, Contact, Editorial Policy, Data Sources, Methodology, Accessibility, Privacy Policy, Terms of Service, Disclaimer, Cookies.
-- **Backend API & Scheduled Sync**: NestJS API service with Fastify adapter, PostgreSQL Drizzle ORM, and automated EIA monthly data importer.
+- **Trust & Policy System**: About, Contact, Editorial Policy, Data Sources (with Data Update History log), Methodology, Accessibility, Privacy Policy, Terms of Service, Disclaimer, Cookies.
+- **Canonical Favicon & Social Preview**: Next.js App Router canonical metadata files (`/favicon.ico`, `/icon.png`, `/apple-icon.png`, `/opengraph-image.png`, `/twitter-image.png`) with zero public duplicate assets and `https://energybilllab.com/` metadata base.
+- **Author Identity & Privacy**: Direct publisher attribution to Jaynesh Shingala (`shingala.jaynesh@gmail.com`) across guides, research reports, and JSON-LD schemas, with strict exclusion of personal location or software developer titles.
+- **AI Crawler Controls**: `robots.txt` configured with explicit rules allowing `OAI-SearchBot` and `ChatGPT-User` for search discovery while blocking `GPTBot`.
+- **Backend API & Data Sync**: NestJS API service with Fastify adapter, PostgreSQL Drizzle ORM, and terminal/CLI EIA monthly data importer (`pnpm --filter=@energy-bill-lab/api eia:sync-latest`).
 
 ## Monorepo Overview
 
@@ -19,7 +22,7 @@ This is a pnpm and Turborepo TypeScript monorepo.
 
 ```text
 apps/
-  web/      Next.js App Router public website (71 prerendered static pages)
+  web/      Next.js App Router public website (137 prerendered static pages)
   api/      NestJS Fastify API service and EIA ingestion sync job
 packages/
   calculation-engine/  Pure calculation formulas package (100% unit tested)

@@ -1,34 +1,44 @@
-# Deployment
+# Deployment Overview
 
-See the root `README.md` for the deployment overview.
+This document describes the deployment architecture and environment configuration for Energy Bill Lab.
 
-## Frontend
+---
 
-The public web application deploys to Vercel from the monorepo root. The tracked root `vercel.json` is the repository deployment configuration:
+## Web Application (Vercel)
 
-- framework: Next.js
-- build command: `pnpm build:web`
-- output directory: `apps/web/.next`
+The public web application deploys to Vercel from the monorepo root using the tracked root `vercel.json`:
 
-The previous `apps/web/vercel.json` duplicated Vercel configuration and used a different build command. It was removed so the repository has one Vercel deployment owner.
+- **Framework**: Next.js (App Router)
+- **Build Command**: `pnpm build:web`
+- **Output Directory**: `apps/web/.next`
+- **Canonical Host**: `https://energybilllab.com` (apex domain; `www` permanently redirects to apex)
 
-## API And Jobs
+---
 
-The NestJS API and scheduled monthly EIA sync job deploy to Render using the root `render.yaml` blueprint:
+## API Application (Render)
+
+The NestJS API service deploys to Render using the tracked root `render.yaml` blueprint:
 
 - **Build Command**: `pnpm install --frozen-lockfile && pnpm db:migrate && pnpm build:api`
-- **Pre-Deploy Command**: `pnpm db:migrate` (runs automatically on every git commit push before new code goes live)
+- **Pre-Deploy Command**: `pnpm db:migrate` (executes database migrations before new API builds go live)
 - **Start Command**: `node apps/api/dist/src/main.js`
-- **Cron Job**: Scheduled monthly rate sync running `pnpm data:eia:sync` on the 5th of every month.
 
-## Automated Database Migrations
+_Note: EIA data updates are executed manually from the owner's terminal via `pnpm --filter=@energy-bill-lab/api eia:sync-latest`. GitHub Actions cron schedules and remote sync triggers are not used._
 
-When you push code to GitHub:
+---
 
-1. **Render (API)** executes `preDeployCommand: pnpm db:migrate` automatically before building and starting the API. Tables are auto-created in Neon.
-2. **Vercel (Web)** build command can be set to `pnpm db:migrate && pnpm build:web` in Vercel project settings to ensure Neon tables exist before Next.js pre-renders SSG pages.
+## Database Migrations (Neon PostgreSQL)
 
-## Secrets
+1. **Render (API)** executes `preDeployCommand: pnpm db:migrate` automatically before building the API.
+2. **Vercel (Web)** executes `pnpm build:web` to pre-render static SSG pages using validated PostgreSQL snapshot data.
 
-Deployment secrets (`DATABASE_URL`, `DATABASE_READ_URL`, `EIA_API_KEY`) must be configured in Render and Vercel dashboard environment settings, not committed to git.
-Deployment secrets (`DATABASE_URL`, `DATABASE_READ_URL`, `EIA_API_KEY`) must be configured in Render and Vercel dashboard environment settings, not committed to git.
+---
+
+## Environment Secrets
+
+Deployment secrets must be configured in Render and Vercel dashboard environment settings and never committed to Git:
+
+- `DATABASE_URL`: PostgreSQL connection string (Neon DB).
+- `DATABASE_READ_URL`: Read-replica connection string (optional).
+- `EIA_API_KEY`: Official U.S. EIA API Key.
+- `ENERGY_DATA_REVALIDATION_SECRET`: Secret token for Vercel cache revalidation endpoint.
