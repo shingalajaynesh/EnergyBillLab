@@ -31,3 +31,4 @@ When you push code to GitHub:
 ## Secrets
 
 Deployment secrets (`DATABASE_URL`, `DATABASE_READ_URL`, `EIA_API_KEY`) must be configured in Render and Vercel dashboard environment settings, not committed to git.
+Deployment secrets (`DATABASE_URL`, `DATABASE_READ_URL`, `EIA_API_KEY`) must be configured in Render and Vercel dashboard environment settings, not committed to git.

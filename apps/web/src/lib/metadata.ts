@@ -15,6 +15,8 @@ type PageMetadataInput = {
   title: string;
 };
 
+const DEFAULT_OG_IMAGE_ALT = 'Energy Bill Lab — U.S. Electricity Rates and Home Energy Calculators';
+
 export function createPageMetadata({ description, path, title }: PageMetadataInput): Metadata {
   const url = getSiteUrl(path);
 
@@ -23,6 +25,8 @@ export function createPageMetadata({ description, path, title }: PageMetadataInp
   const cleanTitle = title.endsWith(brandSuffix) ? title.slice(0, -brandSuffix.length) : title;
 
   const fullTitle = cleanTitle === SITE_NAME ? SITE_NAME : `${cleanTitle}${brandSuffix}`;
+  const ogImageUrl = getSiteUrl('/opengraph-image.png');
+  const twitterImageUrl = getSiteUrl('/twitter-image.png');
 
   return {
     title: cleanTitle,
@@ -36,16 +40,34 @@ export function createPageMetadata({ description, path, title }: PageMetadataInp
       title: fullTitle,
       type: 'website',
       url,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: DEFAULT_OG_IMAGE_ALT,
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       description,
       title: fullTitle,
+      images: [
+        {
+          url: twitterImageUrl,
+          alt: DEFAULT_OG_IMAGE_ALT,
+        },
+      ],
     },
   };
 }
 
 export function createRootMetadata(): Metadata {
+  const ogImageUrl = getSiteUrl('/opengraph-image.png');
+  const twitterImageUrl = getSiteUrl('/twitter-image.png');
+
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -55,11 +77,6 @@ export function createRootMetadata(): Metadata {
     description: SITE_DESCRIPTION,
     alternates: {
       canonical: '/',
-    },
-    icons: {
-      icon: [{ url: '/icon.svg', type: 'image/svg+xml' }, { url: '/favicon.ico' }],
-      shortcut: '/favicon.ico',
-      apple: '/icon.svg',
     },
     verification: {
       google: GOOGLE_SITE_VERIFICATION,
@@ -74,12 +91,27 @@ export function createRootMetadata(): Metadata {
       siteName: SITE_NAME,
       title: SITE_NAME,
       type: 'website',
-      url: '/',
+      url: getSiteUrl('/'),
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: DEFAULT_OG_IMAGE_ALT,
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       description: SITE_DESCRIPTION,
       title: SITE_NAME,
+      images: [
+        {
+          url: twitterImageUrl,
+          alt: DEFAULT_OG_IMAGE_ALT,
+        },
+      ],
     },
   };
 }

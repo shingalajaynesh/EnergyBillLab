@@ -15,6 +15,7 @@ export function createOrganizationStructuredData() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: getSiteUrl('/'),
+    logo: getSiteUrl('/icon.png'),
   };
 }
 
@@ -54,6 +55,7 @@ export function createReportStructuredData({
       '@type': 'Organization',
       name: SITE_NAME,
       url: getSiteUrl('/'),
+      logo: getSiteUrl('/icon.png'),
     },
     author: {
       '@type': 'Person',
