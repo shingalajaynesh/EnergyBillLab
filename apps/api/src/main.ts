@@ -13,6 +13,7 @@ async function bootstrap() {
     bufferLogs: true,
   });
 
+  await app.register(helmet);
   app.setGlobalPrefix('api/v1', {
     exclude: ['/'],
   });
