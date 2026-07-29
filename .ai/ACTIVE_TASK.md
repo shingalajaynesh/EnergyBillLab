@@ -24,4 +24,3 @@
   10. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
   11. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
 - Suggested Commit: `feat(seo): improve priority pages using search and behavior data`
-
