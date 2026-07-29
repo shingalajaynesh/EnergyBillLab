@@ -1,17 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Head } from '@nestjs/common';
 
 import { HealthService } from './health.service.js';
 
-@Controller('health')
+@Controller()
 export class HealthController {
   constructor(private readonly healthService: HealthService) {}
 
-  @Get('live')
+  @Get('/')
+  @Head('/')
+  root() {
+    return this.healthService.live();
+  }
+
+  @Get('health/live')
   live() {
     return this.healthService.live();
   }
 
-  @Get('ready')
+  @Get('health/ready')
   async ready() {
     return this.healthService.ready();
   }
