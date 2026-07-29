@@ -86,6 +86,70 @@
   margin: 2px 0 0;
 }
 
+.taskSelectionSection {
+  border-top: 1px solid #eaecf0;
+  padding: 40px 0;
+}
+
+.taskSelectionSection h2 {
+  color: #182230;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+
+.taskSelectionGrid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.taskCard {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  border-top: 3px solid #176b5b;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  min-height: 160px;
+}
+
+.taskCard:hover,
+.taskCard:focus-visible {
+  border-color: #176b5b;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+}
+
+.taskTitle {
+  color: #104c41;
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.taskDesc {
+  color: #475467;
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.taskAction {
+  color: #176b5b;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
 .section {
   border-top: 1px solid #eaecf0;
   padding: 40px 0;

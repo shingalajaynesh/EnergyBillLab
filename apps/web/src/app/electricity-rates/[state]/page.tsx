@@ -109,6 +109,45 @@ export default async function StateElectricityRatePage({ params }: Props) {
             </div>
           ) : null}
 
+          {/* EIA Query Relevance Section */}
+          <section className={styles.sectionCard} aria-labelledby="eia-query-relevance-heading">
+            <h2 id="eia-query-relevance-heading" className={styles.sectionTitle}>
+              {config.name} Residential Electricity Price from EIA Data
+            </h2>
+            <p className={styles.sectionIntro}>
+              The residential electricity rate displayed for {config.name} is compiled directly from
+              the U.S. Energy Information Administration (EIA) Form EIA-861M Monthly Retail Sales
+              dataset:
+            </p>
+            <ul className={styles.factorsList}>
+              <li>
+                <strong>Reporting Period:</strong> The latest verified figure reflects{' '}
+                {pageData.latestSourceMonthFormatted} monthly retail utility sales.
+              </li>
+              <li>
+                <strong>Unit of Measurement:</strong> All rates are expressed in cents per
+                kilowatt-hour (¢/kWh), representing total residential revenue divided by total kWh
+                sales.
+              </li>
+              <li>
+                <strong>Monthly Rate vs. Annual Average:</strong> The figure displayed is a monthly
+                reporting rate snapshot rather than a single calendar-year average.
+              </li>
+              <li>
+                <strong>Historical Monthly Rates:</strong> Historical monthly values from prior
+                reporting periods are displayed in the rate history table below.
+              </li>
+            </ul>
+            {pageData.history.some(
+              (h) => h.periodFormatted.includes('2025') || h.period.startsWith('2025'),
+            ) ? (
+              <p style={{ marginTop: 12, fontSize: '0.9375rem', color: '#475467' }}>
+                Looking for a 2025 value? Use the historical table below to review the monthly rates
+                available for that year.
+              </p>
+            ) : null}
+          </section>
+
           <HouseholdCostExamplesTable data={pageData} />
 
           <RateHistoryTable data={pageData} />

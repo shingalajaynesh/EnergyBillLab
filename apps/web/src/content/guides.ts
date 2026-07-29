@@ -353,8 +353,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     relatedRoutes: [
       '/tools/refrigerator-cost-calculator',
       '/guides/how-much-electricity-do-household-appliances-use',
-      '/appliances',
       '/tools/appliance-energy-cost-calculator',
+      '/appliances',
+      '/electricity-rates',
       '/data-sources',
     ],
     sitemapEligible: true,
@@ -401,8 +402,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     relatedRoutes: [
       '/tools/clothes-dryer-cost-calculator',
       '/guides/how-much-electricity-do-household-appliances-use',
-      '/appliances',
       '/tools/appliance-energy-cost-calculator',
+      '/appliances',
+      '/electricity-rates',
       '/methodology',
     ],
     sitemapEligible: true,

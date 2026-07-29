@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 import { DataSourceNote } from '@/components/data-source-note';
+import { HomepageTaskSelection } from '@/components/homepage-task-selection';
 import { PageContainer } from '@/components/page-container';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -99,32 +100,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="user-problems-heading">
-        <h2 id="user-problems-heading">Three core user problems we solve</h2>
-        <div className={styles.problemGrid}>
-          <div className={styles.problemCard}>
-            <h3>1. Understanding bill changes</h3>
-            <p>
-              Compare two billing cycles to separate usage increases from rate changes, fixed fees,
-              or billing-day differences.
-            </p>
-          </div>
-          <div className={styles.problemCard}>
-            <h3>2. Estimating appliance costs</h3>
-            <p>
-              Calculate daily, monthly, and annual operating costs for air conditioners, space
-              heaters, EV home chargers, water heaters, refrigerators, and major home appliances.
-            </p>
-          </div>
-          <div className={styles.problemCard}>
-            <h3>3. 50-State rate context</h3>
-            <p>
-              View residential electricity rate benchmarks across all 50 U.S. states with clear
-              source attribution to official U.S. EIA reports and state regulatory agencies.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HomepageTaskSelection />
 
       <section className={styles.section} aria-labelledby="foundation-links">
         <h2 id="foundation-links">Explore energy resources</h2>

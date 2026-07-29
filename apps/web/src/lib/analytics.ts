@@ -18,7 +18,9 @@ export type EventName =
   | 'comparison_tool_click'
   | 'csv_download'
   | 'methodology_click'
-  | 'data_source_click';
+  | 'data_source_click'
+  | 'homepage_task_click'
+  | 'recommendation_click';
 
 export type EventParams = {
   tool_slug?: string;
@@ -27,6 +29,7 @@ export type EventParams = {
   source_page?: string;
   destination_page?: string;
   reporting_period?: string;
+  task_name?: string;
 };
 
 // Prohibited keys that must NEVER be passed to tracking

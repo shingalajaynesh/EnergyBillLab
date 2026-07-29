@@ -37,6 +37,7 @@ export default async function AcCostCalculatorPage() {
     '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
     '/tools/appliance-energy-cost-calculator',
     '/electricity-bill-analyzer',
+    '/research/us-residential-electricity-rate-report',
     '/electricity-rates',
     '/methodology',
   ];

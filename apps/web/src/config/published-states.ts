@@ -312,9 +312,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     code: 'OH',
     slug: 'ohio',
     name: 'Ohio',
-    metaTitle: 'Ohio Residential Electricity Rates & Monthly Cost',
+    metaTitle: 'Ohio Residential Electricity Rates: Latest EIA Data',
     metaDescription:
-      'Find Ohio residential electricity rates, PUCO Choice benchmarks, PJM regional power costs, and average household utility estimates.',
+      'Compare Ohio residential electricity rates, average monthly power costs, PUCO Standard Service Offer benchmarks, CRES supplier choice, and PJM market context.',
     overview:
       'Ohio residential customers operate within a deregulated retail electric choice market served by PJM. Households can choose an independent Certified Retail Electric Service (CRES) provider or default to local utility Standard Service Offer (SSO) rates.',
     marketType: 'Retail Choice / Deregulated Market',
@@ -404,9 +404,9 @@ export const PUBLISHED_STATES: Record<string, PublishedStateConfig> = {
     code: 'NC',
     slug: 'north-carolina',
     name: 'North Carolina',
-    metaTitle: 'North Carolina Residential Electricity Rates & Monthly Cost',
+    metaTitle: 'North Carolina Residential Electricity Rates: Latest EIA Data',
     metaDescription:
-      'Learn about North Carolina residential electricity rates, Duke Energy regulated tariffs, solar generation growth, and average bill drivers.',
+      'Explore North Carolina average residential electricity rates, monthly power bills, EIA Form EIA-861M retail sales data, Duke Energy regulated tariffs, and NCUC regulatory context.',
     overview:
       'North Carolina operates a regulated electricity market with service primarily provided by Duke Energy Carolinas and Duke Energy Progress. Rates are competitively priced compared to national benchmarks, supported by nuclear baseload and rapid utility solar growth.',
     marketType: 'Regulated Utility Market',

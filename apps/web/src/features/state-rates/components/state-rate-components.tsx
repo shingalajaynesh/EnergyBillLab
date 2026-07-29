@@ -132,7 +132,16 @@ export function RateSummaryGrid({ data }: { data: StatePageViewModel }) {
         </div>
         <div className={styles.metricPrimary}>{statePrice.toFixed(2)} ¢/kWh</div>
         <div className={styles.metricSubtext}>
-          Verified database rate for {data.latestSourceMonthFormatted}
+          Verified database rate for {data.latestSourceMonthFormatted} (
+          <a
+            href="https://www.eia.gov/electricity/monthly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#176b5b', fontWeight: 600 }}
+          >
+            Source: U.S. EIA
+          </a>
+          )
         </div>
       </div>
 
