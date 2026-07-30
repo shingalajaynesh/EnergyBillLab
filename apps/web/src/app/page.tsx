@@ -1,83 +1,54 @@
 import Button from 'antd/es/button';
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import { DataSourceNote } from '@/components/data-source-note';
 import { HomepageTaskSelection } from '@/components/homepage-task-selection';
 import { LatestInsightsSection } from '@/components/latest-insights-section';
 import { PageContainer } from '@/components/page-container';
 import { createPageMetadata } from '@/lib/metadata';
+import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
 
 import styles from './page.module.css';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Energy Bill Lab | Electricity Rates & Home Energy Calculators',
+  title: 'Energy Bill Lab | Electricity Rates, Natural Gas & Home Energy Calculators',
   description:
-    'Compare residential electricity rates across all 50 U.S. states, analyze your electric bill, and estimate appliance energy costs using transparent formulas and U.S. EIA data.',
+    'Compare residential electricity and natural gas rates across all U.S. states, analyze your electric bill, and estimate household energy costs using transparent formulas and U.S. EIA data.',
   path: '/',
 });
 
-const priorityLinks = [
-  {
-    href: '/electricity-bill-analyzer',
-    title: 'Electricity Bill Analyzer',
-    text: 'Compare two billing statements, normalize usage by billing days, and isolate usage effects from rate/fee changes.',
-  },
-  {
-    href: '/electricity-rates',
-    title: '50-State Electricity Rates Hub',
-    text: 'Explore detailed residential electricity rate reports for all 50 U.S. states with official EIA monthly data provenance.',
-  },
-  {
-    href: '/research/us-residential-electricity-rate-report',
-    title: 'U.S. Electricity Rate Research Report',
-    text: 'Review our original national research report analyzing residential rate benchmarks, rankings, and trends across all 50 states.',
-  },
-  {
-    href: '/tools',
-    title: 'Interactive Energy Calculators (10)',
-    text: 'Calculate operating costs for air conditioners, space heaters, EV chargers, refrigerators, water heaters, dryers, pool pumps, and dehumidifiers.',
-  },
-  {
-    href: '/tools/appliance-energy-cost-calculator',
-    title: 'Appliance Energy Cost Calculator',
-    text: 'Estimate electricity usage (kWh) and operating costs for major household appliances with transparent duty cycle controls.',
-  },
-  {
-    href: '/tools/ac-cost-calculator',
-    title: 'Air Conditioner Cost Calculator',
-    text: 'Calculate AC electricity costs using cooling capacity (BTU/hr), EER efficiency ratings, wattage, and duty cycle.',
-  },
-  {
-    href: '/tools/ev-home-charging-cost-calculator',
-    title: 'EV Home Charging Cost Calculator',
-    text: 'Calculate EV home charging electricity usage (kWh), grid charging losses, session costs, and cost per mile.',
-  },
-  {
-    href: '/guides',
-    title: 'Problem-Solving Energy Guides (50)',
-    text: 'Understand seasonal bill spikes, appliance usage benchmarks, heat pump costs, fixed charges, and estimated meter readings.',
-  },
-];
+export default async function HomePage() {
+  const gasData = await getNaturalGasHubData();
 
-export default function HomePage() {
+  const gasRateMcf = gasData.latestNationalRate
+    ? `$${gasData.latestNationalRate.priceDollarsPerMcf.toFixed(2)} / Mcf`
+    : null;
+  const gasRateTherm = gasData.latestNationalRate
+    ? `$${gasData.latestNationalRate.priceDollarsPerTherm.toFixed(2)} / therm`
+    : null;
+  const gasMonthText = gasData.latestSourceMonthFormatted
+    ? `Data through ${gasData.latestSourceMonthFormatted}`
+    : 'Data through April 2026';
+
   return (
     <PageContainer>
+      {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.badge}>Independent U.S. Home Energy Data</span>
+          <span className={styles.badge}>Independent U.S. Home Energy Intelligence</span>
           <h1>Understand what drives your home energy bill</h1>
           <p className={styles.lede}>
-            Energy Bill Lab helps U.S. households understand electricity costs, appliance usage, and
-            state-rate differences across all 50 U.S. states with transparent formulas, official EIA
-            data, and plain-English methodology.
+            Energy Bill Lab helps U.S. households understand electricity costs, natural gas rates,
+            appliance usage, and utility rate differences across all 50 U.S. states with transparent
+            formulas, official EIA data, and plain-English methodology.
           </p>
           <div className={styles.actions}>
             <Button type="primary" size="large" href="/electricity-bill-analyzer">
               Analyze your electric bill
             </Button>
-            <Button size="large" href="/electricity-rates">
-              View 50-state rate reports
+            <Button size="large" href="/natural-gas-rates">
+              Explore natural gas rates
             </Button>
           </div>
         </div>
@@ -91,32 +62,171 @@ export default function HomePage() {
             </div>
             <div>
               <dt>Data Provenance</dt>
-              <dd>U.S. EIA Form EIA-861M</dd>
+              <dd>U.S. EIA Monthly Data</dd>
             </div>
             <div>
               <dt>Calculation Tools</dt>
-              <dd>10 Interactive Calculators</dd>
+              <dd>12 Household Calculators</dd>
             </div>
           </dl>
         </div>
       </section>
 
+      {/* Task Selection */}
       <HomepageTaskSelection />
 
-      <section className={styles.section} aria-labelledby="foundation-links">
-        <h2 id="foundation-links">Explore energy resources</h2>
-        <div className={styles.linkGrid}>
-          {priorityLinks.map((item) => (
-            <Link key={item.href} className={styles.linkCard} href={item.href}>
-              <span>{item.title}</span>
-              <small>{item.text}</small>
+      {/* Homepage Category Cards: Explore Home Energy Costs */}
+      <section className={styles.categorySection} aria-labelledby="energy-categories-heading">
+        <h2 id="energy-categories-heading">Explore Home Energy Costs</h2>
+        <p className={styles.categoryIntro}>
+          Compare official electricity and natural-gas data, estimate household usage costs, and
+          understand how energy prices affect your bill.
+        </p>
+        <div className={styles.categoryGrid}>
+          {/* Electricity Card */}
+          <div className={styles.categoryCard}>
+            <div className={styles.categoryHeader}>
+              <h3>Electricity Rates</h3>
+              <p>
+                Compare U.S. residential electricity prices, state averages, historical data and
+                monthly household costs.
+              </p>
+            </div>
+            <div>
+              <Link className={styles.primaryCategoryBtn} href="/electricity-rates">
+                Explore Electricity Rates →
+              </Link>
+              <ul className={styles.secondaryLinksList}>
+                <li>
+                  <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>
+                </li>
+                <li>
+                  <Link href="/electricity-rates">State Electricity Rates</Link>
+                </li>
+                <li>
+                  <Link href="/research/us-residential-electricity-rate-report">
+                    U.S. Residential Electricity-Rate Report
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Natural Gas Card */}
+          <div className={styles.categoryCard}>
+            <div className={styles.categoryHeader}>
+              <h3>Natural Gas Rates</h3>
+              <p>
+                Explore EIA residential natural-gas prices, historical trends and household cost
+                calculators.
+              </p>
+            </div>
+            <div>
+              <Link className={styles.primaryCategoryBtn} href="/natural-gas-rates">
+                Explore Natural Gas Rates →
+              </Link>
+              <ul className={styles.secondaryLinksList}>
+                <li>
+                  <Link href="/tools/natural-gas-bill-calculator">Natural Gas Bill Calculator</Link>
+                </li>
+                <li>
+                  <Link href="/tools/gas-furnace-cost-calculator">Gas Furnace Cost Calculator</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest U.S. Energy Benchmarks Section */}
+      <section className={styles.benchmarkSection} aria-labelledby="benchmarks-heading">
+        <h2 id="benchmarks-heading">Latest U.S. Energy Benchmarks</h2>
+        <div className={styles.benchmarkGrid}>
+          {/* Electricity Benchmark */}
+          <div className={styles.benchmarkCard}>
+            <div>
+              <span className={styles.benchmarkLabel}>U.S. Residential Electricity</span>
+              <div className={styles.benchmarkValue}>18.44 ¢/kWh</div>
+              <div className={styles.benchmarkPeriod}>Reporting period: May 2026</div>
+            </div>
+            <Link className={styles.benchmarkLink} href="/electricity-rates">
+              View state electricity rates →
             </Link>
-          ))}
+          </div>
+
+          {/* Natural Gas Benchmark */}
+          <div className={styles.benchmarkCard}>
+            <div>
+              <span className={styles.benchmarkLabel}>U.S. Residential Natural Gas</span>
+              {gasRateMcf ? (
+                <>
+                  <div className={styles.benchmarkValue}>{gasRateMcf}</div>
+                  <div className={styles.benchmarkSubValue}>Estimated {gasRateTherm}</div>
+                </>
+              ) : (
+                <div className={styles.benchmarkValue}>Data temporarily unavailable</div>
+              )}
+              <div className={styles.benchmarkPeriod}>
+                Latest available EIA residential natural-gas price ({gasMonthText})
+              </div>
+            </div>
+            <Link className={styles.benchmarkLink} href="/natural-gas-rates">
+              View natural gas trends →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* High-Value Household Energy Tools Section */}
+      <section className={styles.toolsSection} aria-labelledby="homepage-tools-heading">
+        <h2 id="homepage-tools-heading">High-Value Household Energy Tools</h2>
+        <div className={styles.toolsGrid}>
+          <Link className={styles.toolCard} href="/electricity-bill-analyzer">
+            <div>
+              <span className={styles.toolTitle}>Electricity Bill Analyzer</span>
+              <p className={styles.toolDesc}>
+                Compare two utility statements and isolate usage changes from rate adjustments.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Analyze bill →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/tools/natural-gas-bill-calculator">
+            <div>
+              <span className={styles.toolTitle}>Natural Gas Bill Calculator</span>
+              <p className={styles.toolDesc}>
+                Calculate monthly gas spending from therms, fixed account fees, and local riders.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Calculate gas bill →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/tools/appliance-energy-cost-calculator">
+            <div>
+              <span className={styles.toolTitle}>Appliance Cost Calculator</span>
+              <p className={styles.toolDesc}>
+                Estimate kWh usage and operating costs for any household appliance.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Estimate appliance →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/tools/gas-furnace-cost-calculator">
+            <div>
+              <span className={styles.toolTitle}>Gas Furnace Cost Calculator</span>
+              <p className={styles.toolDesc}>
+                Calculate furnace operating costs based on input Btu/hr, AFUE rating, and therm
+                rates.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Calculate furnace →</span>
+          </Link>
         </div>
       </section>
 
       <LatestInsightsSection />
 
+      {/* Trust & Foundation Section */}
       <section className={styles.trustSection} aria-labelledby="trust-heading">
         <h2 id="trust-heading">Built on transparent engineering</h2>
         <div className={styles.trustColumns}>

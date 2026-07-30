@@ -1,0 +1,192 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.summaryCard {
+  background: var(--surface-card, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summaryLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summaryValue {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  font-feature-settings: 'tnum';
+}
+
+.summaryNote {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.sectionCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.sectionSubtitle {
+  font-size: 14.5px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-top: -8px;
+}
+
+.prose {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prose h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 8px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.dataTable caption {
+  font-size: 13px;
+  color: #6b7280;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dataTable th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.numericCol {
+  text-align: right;
+  font-feature-settings: 'tnum';
+  font-weight: 600;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.toolCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.toolCard:hover {
+  border-color: var(--ebl-primary, #176b5b);
+}
+
+.toolCardTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ebl-primary, #176b5b);
+}
+
+.toolCardText {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.availabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.availabilityItem {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.stateName {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.stateRate {
+  font-size: 13px;
+  color: var(--ebl-primary, #176b5b);
+  font-weight: 600;
+  font-feature-settings: 'tnum';
+}
+
+.unavailableNotice {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 8px;
+  padding: 20px;
+  color: #595959;
+  font-size: 14.5px;
+  line-height: 1.6;
+}

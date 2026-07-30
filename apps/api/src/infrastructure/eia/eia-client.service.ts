@@ -2,6 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import type { EiaRow } from './eia-client.schema';
 import { EiaResponseSchema } from './eia-client.schema';
+import type { NaturalGasEiaRow } from './natural-gas-eia-client.schema';
+import { NaturalGasEiaResponseSchema } from './natural-gas-eia-client.schema';
 
 export type FetchEiaParams = {
   startPeriod?: string; // YYYY-MM
@@ -14,6 +16,13 @@ export type FetchEiaParams = {
 export type FetchEiaResult = {
   total: number;
   rows: EiaRow[];
+  offset: number;
+  length: number;
+};
+
+export type FetchNaturalGasResult = {
+  total: number;
+  rows: NaturalGasEiaRow[];
   offset: number;
   length: number;
 };
@@ -111,6 +120,95 @@ export class EiaClientService {
     }
 
     throw new Error('EIA API request failed after maximum retries');
+  }
+
+  async fetchNaturalGasData(params: FetchEiaParams = {}): Promise<FetchNaturalGasResult> {
+    const apiKey = process.env.EIA_API_KEY;
+    if (!apiKey) {
+      throw new Error('EIA_API_KEY is not configured in environment variables.');
+    }
+
+    const baseUrl = process.env.EIA_API_BASE_URL || 'https://api.eia.gov/v2/';
+    const endpointUrl = new URL('natural-gas/pri/sum/data', baseUrl);
+
+    const offset = params.offset ?? 0;
+    const length = params.length ?? 5000;
+    const sortDirection = params.sortDirection ?? 'desc';
+
+    endpointUrl.searchParams.set('api_key', apiKey);
+    endpointUrl.searchParams.set('frequency', 'monthly');
+    endpointUrl.searchParams.append('facets[process][]', 'PIN');
+    endpointUrl.searchParams.append('facets[product][]', 'EPG0');
+    endpointUrl.searchParams.append('data[]', 'value');
+    endpointUrl.searchParams.set('sort[0][column]', 'period');
+    endpointUrl.searchParams.set('sort[0][direction]', sortDirection);
+    endpointUrl.searchParams.set('offset', offset.toString());
+    endpointUrl.searchParams.set('length', length.toString());
+
+    if (params.startPeriod) {
+      endpointUrl.searchParams.set('start', params.startPeriod);
+    }
+    if (params.endPeriod) {
+      endpointUrl.searchParams.set('end', params.endPeriod);
+    }
+
+    const timeoutMs = parseInt(process.env.EIA_REQUEST_TIMEOUT_MS || '15000', 10);
+    const maxRetries = 3;
+    let attempt = 0;
+
+    while (attempt <= maxRetries) {
+      attempt++;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+      try {
+        this.logger.log(
+          `Fetching EIA natural-gas page (attempt=${attempt}, offset=${offset}, length=${length})`,
+        );
+
+        const res = await fetch(endpointUrl.toString(), { signal: controller.signal });
+        clearTimeout(timer);
+
+        if (!res.ok) {
+          const status = res.status;
+          this.logger.warn(`EIA API natural gas returned HTTP ${status} (attempt=${attempt})`);
+
+          if ([429, 500, 502, 503, 504].includes(status) && attempt <= maxRetries) {
+            const backoffMs = Math.pow(2, attempt) * 1000 + Math.random() * 500;
+            await new Promise((r) => setTimeout(r, backoffMs));
+            continue;
+          }
+
+          throw new Error(`EIA API natural gas failed with status ${status}`);
+        }
+
+        const json = await res.json();
+        const parsed = NaturalGasEiaResponseSchema.safeParse(json);
+
+        if (!parsed.success) {
+          this.logger.error(`EIA natural gas response schema mismatch: ${parsed.error.message}`);
+          throw new Error('EIA_CONTRACT_MISMATCH: Natural gas response schema validation failed.');
+        }
+
+        return {
+          total: parsed.data.response.total,
+          rows: parsed.data.response.data,
+          offset,
+          length,
+        };
+      } catch (err: unknown) {
+        clearTimeout(timer);
+        const errName = err instanceof Error ? err.name : '';
+        if (attempt <= maxRetries && errName !== 'Error') {
+          const backoffMs = Math.pow(2, attempt) * 1000 + Math.random() * 500;
+          await new Promise((r) => setTimeout(r, backoffMs));
+          continue;
+        }
+        throw err;
+      }
+    }
+
+    throw new Error('EIA API natural gas request failed after maximum retries');
   }
 
   async verifyMetadataContract(): Promise<boolean> {

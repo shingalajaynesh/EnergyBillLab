@@ -1066,7 +1066,17 @@ This file may be changed only through an intentional architecture or governance 
 
 ---
 
-## 26. Energy Insights Publishing System Constitution
+## 26. Natural Gas Governance & Unit Rules
+
+- **Residential Data Sector Only:** Use only residential sector prices (`process=PRS`) from Form EIA-857 for household rates.
+- **Therm Unit Conversion Baseline:** Original EIA source unit is `$/MCF` (dollars per 1,000 cubic feet). Standard residential heat content baseline is 1,036 Btu per cubic foot (1 Mcf = 1,036,000 Btu = 10.36 therms). Estimated price per therm is calculated as `Price per Mcf / 10.36`.
+- **State Pages Policy:** Phase 1 displays state natural gas data availability on `/natural-gas-rates` without publishing 50 state page routes (`/natural-gas-rates/[state]`).
+- **No Data Fabrication:** Missing state data is never copied, interpolated, or populated with national averages.
+- **Data Disclaimer:** EIA monthly values are delayed averages and must be labeled as *"Latest available EIA residential natural-gas price"*, not *"live rates"* or utility quotes.
+
+---
+
+## 27. Energy Insights Publishing System Constitution
 
 1. **Purpose:** Dated, data-driven analysis interpreting official EIA releases, natural gas trends, appliance costs, solar generation, and battery storage.
 2. **Separation:** Keep Insights distinct from evergreen Guides (`/guides`), State pages (`/electricity-rates/[state]`), Calculators (`/tools`), and formal Research reports (`/research`).

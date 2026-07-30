@@ -10,7 +10,7 @@
 .inner {
   align-items: center;
   display: flex;
-  gap: 24px;
+  gap: 20px;
   justify-content: space-between;
   min-height: 64px;
 }
@@ -20,6 +20,7 @@
   display: inline-flex;
   gap: 8px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brandMark {
@@ -32,13 +33,15 @@
   justify-content: center;
   height: 32px;
   width: 32px;
+  flex-shrink: 0;
 }
 
 .brandText {
   color: #104c41;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .nav {
@@ -48,46 +51,185 @@
 }
 
 .navLink,
-.mobileNavLink {
+.navDropdownTrigger {
+  align-items: center;
+  background: transparent;
+  border: none;
   border-radius: 6px;
   color: #475467;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
   font-size: 0.9375rem;
   font-weight: 600;
+  gap: 4px;
+  line-height: 1.4;
+  padding: 8px 12px;
   text-decoration: none;
   transition: all 0.15s ease;
-}
-
-.navLink {
-  padding: 8px 14px;
+  white-space: nowrap;
 }
 
 .navLink:hover,
-.mobileNavLink:hover {
+.navDropdownTrigger:hover {
   background: #f6f8f7;
   color: #176b5b;
 }
 
 .navLink[aria-current='page'],
-.mobileNavLink[aria-current='page'] {
+.activeNav {
   background: #e8f5e9;
   color: #104c41;
 }
 
-.mobileNav {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.dropdownWrapper {
+  position: relative;
 }
 
-.mobileNavLink {
-  padding: 12px 14px;
+.dropdownIcon {
+  font-size: 10px;
+  margin-left: 2px;
+  transition: transform 0.15s ease;
+}
+
+.dropdownMenu {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(16, 24, 40, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  left: 0;
+  min-width: 250px;
+  padding: 6px;
+  position: absolute;
+  top: calc(100% + 4px);
+  z-index: 200;
+}
+
+.dropdownItem {
+  border-radius: 6px;
+  color: #344054;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.dropdownItem:hover {
+  background: #f8faf9;
+  color: #176b5b;
+}
+
+.dropdownItem[aria-current='page'] {
+  background: #e8f5e9;
+  color: #104c41;
+  font-weight: 700;
+}
+
+.dropdownItemBold {
+  border-radius: 6px;
+  color: #176b5b;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+
+.dropdownItemBold:hover {
+  background: #e8f5e9;
+  color: #104c41;
+}
+
+.dropdownDivider {
+  background: #eaecf0;
+  height: 1px;
+  margin: 4px 0;
 }
 
 .menuButton {
   display: none;
 }
 
-@media (max-width: 767px) {
+/* Mobile Drawer Navigation Styles */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.mobileNavGroup {
+  border-bottom: 1px solid #eaecf0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 12px;
+}
+
+.mobileNavGroup:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mobileGroupTitle {
+  color: #667085;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.mobileNavLink,
+.mobileNavLinkTop,
+.mobileNavLinkBold {
+  align-items: center;
+  border-radius: 6px;
+  color: #344054;
+  display: flex;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  min-height: 44px;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.mobileNavLinkTop {
+  font-weight: 700;
+  color: #182230;
+}
+
+.mobileNavLinkBold {
+  color: #176b5b;
+  font-weight: 700;
+}
+
+.mobileNavLink:hover,
+.mobileNavLinkTop:hover,
+.mobileNavLinkBold:hover {
+  background: #f8faf9;
+  color: #176b5b;
+}
+
+.mobileNavLink[aria-current='page'],
+.mobileNavLinkTop[aria-current='page'],
+.mobileNavLinkBold[aria-current='page'] {
+  background: #e8f5e9;
+  color: #104c41;
+  font-weight: 700;
+}
+
+/* Responsive Breakpoint: Show Hamburger below 1100px */
+@media (max-width: 1100px) {
   .nav {
     display: none;
   }
@@ -96,5 +238,12 @@
     align-items: center;
     display: inline-flex;
     justify-content: center;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brandText {
+    font-size: 0.9375rem;
   }
 }

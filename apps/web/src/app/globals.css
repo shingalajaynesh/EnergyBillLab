@@ -78,6 +78,149 @@ button:focus-visible {
   transform: translateY(0);
 }
 
+/* ====================================================
+   SCOPED RESPONSIVE CALCULATOR COMPONENT LAYOUT RULES
+   ==================================================== */
+
+.calculatorPage,
+.energyCalculatorShell,
+[class*='calculatorSection'],
+[class*='calculatorContainer'] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* On mobile screens, reduce calculator card padding and ensure clean border-radius */
+@media (max-width: 600px) {
+  .calculatorPage [class*='formCard'],
+  .calculatorPage [class*='formContainer'],
+  .calculatorPage [class*='calculatorCard'],
+  .energyCalculatorShell [class*='formCard'],
+  .energyCalculatorShell [class*='calculatorCard'],
+  [class*='calculatorSection'] [class*='formCard'],
+  [class*='calculatorContainer'] [class*='formCard'] {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}
+
+/* Preset Grids & Preset Buttons inside calculator containers */
+.calculatorPage [class*='presetGrid'],
+.energyCalculatorShell [class*='presetGrid'],
+[class*='calculatorSection'] [class*='presetGrid'],
+[class*='calculatorContainer'] [class*='presetGrid'] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .calculatorPage [class*='presetGrid'],
+  .energyCalculatorShell [class*='presetGrid'],
+  [class*='calculatorSection'] [class*='presetGrid'],
+  [class*='calculatorContainer'] [class*='presetGrid'] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calculatorPage [class*='presetBtn'],
+.energyCalculatorShell [class*='presetBtn'],
+[class*='calculatorSection'] [class*='presetBtn'],
+[class*='calculatorContainer'] [class*='presetBtn'] {
+  width: 100%;
+  height: auto;
+  min-height: 48px;
+  font-weight: 500;
+  border-radius: 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: left;
+  line-height: 1.4;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Mode Switchers & Ant Design Radio Groups inside calculator components */
+.calculatorPage :global(.ant-radio-group),
+.energyCalculatorShell :global(.ant-radio-group),
+[class*='calculatorSection'] :global(.ant-radio-group),
+[class*='calculatorContainer'] :global(.ant-radio-group) {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  gap: 8px;
+}
+
+.calculatorPage :global(.ant-radio-button-wrapper),
+.energyCalculatorShell :global(.ant-radio-button-wrapper),
+[class*='calculatorSection'] :global(.ant-radio-button-wrapper),
+[class*='calculatorContainer'] :global(.ant-radio-button-wrapper) {
+  flex: 1 1 200px;
+  min-width: 0;
+  height: auto;
+  min-height: 44px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+  padding: 10px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .calculatorPage :global(.ant-radio-group),
+  .energyCalculatorShell :global(.ant-radio-group),
+  [class*='calculatorSection'] :global(.ant-radio-group),
+  [class*='calculatorContainer'] :global(.ant-radio-group) {
+    flex-direction: column;
+  }
+
+  .calculatorPage :global(.ant-radio-button-wrapper),
+  .energyCalculatorShell :global(.ant-radio-button-wrapper),
+  [class*='calculatorSection'] :global(.ant-radio-button-wrapper),
+  [class*='calculatorContainer'] :global(.ant-radio-button-wrapper) {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+/* Input Fields & Number Input Units inside calculator components */
+.calculatorPage :global(.ant-input-number-group-wrapper),
+.energyCalculatorShell :global(.ant-input-number-group-wrapper),
+[class*='calculatorSection'] :global(.ant-input-number-group-wrapper),
+[class*='calculatorContainer'] :global(.ant-input-number-group-wrapper) {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.calculatorPage :global(.ant-input-number),
+.energyCalculatorShell :global(.ant-input-number),
+[class*='calculatorSection'] :global(.ant-input-number),
+[class*='calculatorContainer'] :global(.ant-input-number) {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.calculatorPage :global(.ant-input-number-group-addon),
+.energyCalculatorShell :global(.ant-input-number-group-addon),
+[class*='calculatorSection'] :global(.ant-input-number-group-addon),
+[class*='calculatorContainer'] :global(.ant-input-number-group-addon) {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

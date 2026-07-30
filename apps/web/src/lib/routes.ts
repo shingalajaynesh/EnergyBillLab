@@ -13,6 +13,15 @@ export type PublicRoute = {
   sitemap?: boolean;
 };
 
+export function isNaturalGasHubSitemapEligible(): boolean {
+  const launchEnabled =
+    process.env.NATURAL_GAS_LAUNCH_ENABLED === 'true' ||
+    process.env.NATURAL_GAS_DATA_AVAILABLE === 'true';
+  const verifiedData = process.env.NATURAL_GAS_DATA_VERIFIED === 'true';
+
+  return launchEnabled && verifiedData;
+}
+
 export const guidePublicRoutes: PublicRoute[] = guideSlugs.map((slug) => {
   const g = energyGuides[slug]!;
   return {
@@ -120,6 +129,31 @@ const basePublicRoutes = [
     href: '/tools/dehumidifier-cost-calculator',
     label: 'Dehumidifier Cost Calculator',
     sitemap: true,
+  },
+  {
+    description:
+      'Estimate natural gas usage costs, fixed customer charges, taxes, and total monthly billing for residential natural gas service.',
+    group: 'tools',
+    href: '/tools/natural-gas-bill-calculator',
+    label: 'Natural Gas Bill Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'Calculate gas furnace operating costs based on input Btu/hr rating or heating output capacity, AFUE seasonal efficiency, runtime hours, and therm pricing.',
+    group: 'tools',
+    href: '/tools/gas-furnace-cost-calculator',
+    label: 'Gas Furnace Cost Calculator',
+    sitemap: true,
+  },
+  {
+    description:
+      'U.S. residential natural gas prices, Mcf and therm rate explanations, historical EIA benchmarks, and household cost calculators.',
+    group: 'research',
+    href: '/natural-gas-rates',
+    label: 'Natural Gas Rates',
+    nav: true,
+    sitemap: isNaturalGasHubSitemapEligible(),
   },
   {
     description:

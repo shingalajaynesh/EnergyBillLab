@@ -42,7 +42,7 @@ describe('public route registry', () => {
     const calculators = paths.filter(
       (path) => path === '/electricity-bill-analyzer' || path.startsWith('/tools/'),
     );
-    expect(calculators).toHaveLength(10);
+    expect(calculators).toHaveLength(12);
 
     const statePages = paths.filter((path) => path.startsWith('/electricity-rates/'));
     expect(statePages).toHaveLength(50);

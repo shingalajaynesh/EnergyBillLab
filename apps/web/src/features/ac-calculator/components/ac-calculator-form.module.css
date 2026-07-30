@@ -5,12 +5,24 @@
   padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   margin-bottom: 24px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .formCard {
+    padding: 16px;
+    border-radius: 12px;
+  }
 }
 
 .modeToggleSection {
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--color-border-secondary, #f0f0f0);
+  width: 100%;
 }
 
 .modeHeader {
@@ -24,6 +36,7 @@
   margin-bottom: 24px;
   padding-bottom: 20px;
   border-bottom: 1px border-dashed var(--color-border-secondary, #e8e8e8);
+  width: 100%;
 }
 
 .presetHeader {
@@ -34,16 +47,34 @@
 }
 
 .presetGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
   margin-bottom: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .presetGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .presetBtn {
-  min-height: 44px;
+  width: 100%;
+  height: auto;
+  min-height: 48px;
   font-weight: 500;
   border-radius: 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: left;
+  line-height: 1.4;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .presetCaveat {
@@ -57,12 +88,22 @@
 
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .inputGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .inputGroup {
   margin-bottom: 16px;
+  width: 100%;
+  min-width: 0;
 }
 
 .fieldHint {
