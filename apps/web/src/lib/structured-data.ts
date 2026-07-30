@@ -23,6 +23,19 @@ export function serializeStructuredData(data: unknown) {
   return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
+export function createBreadcrumbStructuredData(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: getSiteUrl(item.path),
+    })),
+  };
+}
+
 export function createReportStructuredData({
   title,
   description,
@@ -31,12 +44,12 @@ export function createReportStructuredData({
   dateModified,
   reportingPeriod,
 }: {
-  title: string;
+  dateModified: string;
+  datePublished: string;
   description: string;
   path: string;
-  datePublished: string;
-  dateModified: string;
   reportingPeriod: string;
+  title: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -66,5 +79,49 @@ export function createReportStructuredData({
       name: 'U.S. Energy Information Administration (EIA)',
     },
     temporalCoverage: reportingPeriod,
+  };
+}
+
+export function createInsightArticleStructuredData({
+  category,
+  dateModified,
+  datePublished,
+  description,
+  image,
+  path,
+  title,
+}: {
+  category?: string;
+  dateModified?: string | null;
+  datePublished: string;
+  description: string;
+  image?: string;
+  path: string;
+  title: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': getSiteUrl(path),
+    },
+    url: getSiteUrl(path),
+    datePublished,
+    dateModified: dateModified || datePublished,
+    articleSection: category,
+    image: image ? getSiteUrl(image) : getSiteUrl('/opengraph-image.png'),
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: getSiteUrl('/'),
+      logo: getSiteUrl('/icon.png'),
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Jaynesh Shingala',
+    },
   };
 }

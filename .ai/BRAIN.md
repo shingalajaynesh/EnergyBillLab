@@ -1063,3 +1063,14 @@ When documentation, temporary prompts, code comments, and implementation disagre
 6. Code comments are lowest trust and must be corrected when stale.
 
 This file may be changed only through an intentional architecture or governance update with a clear commit and review.
+
+---
+
+## 26. Energy Insights Publishing System Constitution
+
+1. **Purpose:** Dated, data-driven analysis interpreting official EIA releases, natural gas trends, appliance costs, solar generation, and battery storage.
+2. **Separation:** Keep Insights distinct from evergreen Guides (`/guides`), State pages (`/electricity-rates/[state]`), Calculators (`/tools`), and formal Research reports (`/research`).
+3. **Intent Governance:** Reject topics matching existing owned intents using deterministic `intentFingerprint` and `canonicalTopic` checks.
+4. **Canonical Apex Host:** All Insights target `https://energybilllab.com/insights/[slug]`.
+5. **Quality & Ethics:** No fake author credentials, no fake reviews, no unsupported claims ("guaranteed", "100% accurate"), and no real-time data misrepresentation.
+6. **Publication Thresholds:** `/insights` remains `noindex` and excluded from `sitemap.xml`, primary navigation, and homepage promotion until **at least 3 published Insights** exist.

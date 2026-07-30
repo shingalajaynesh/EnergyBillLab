@@ -1,5 +1,6 @@
 import { PUBLISHED_STATE_CONFIGS } from '@/config/published-states';
 import { energyGuides, guideSlugs } from '@/content/guides';
+import { isInsightsHubEligible } from '@/content/insights';
 
 export type RouteGroup = 'tools' | 'research' | 'company' | 'legal';
 
@@ -157,6 +158,15 @@ const statePublicRoutes = PUBLISHED_STATE_CONFIGS.map((conf) => ({
 }));
 
 const restPublicRoutes = [
+  {
+    description:
+      'Data-driven analysis of U.S. electricity rates, household energy costs, appliances, natural gas, solar and battery storage.',
+    group: 'research',
+    href: '/insights',
+    label: 'Insights',
+    nav: isInsightsHubEligible(),
+    sitemap: isInsightsHubEligible(),
+  },
   {
     description:
       'Appliance power consumption data, typical wattage benchmarks, and operating cost guides.',

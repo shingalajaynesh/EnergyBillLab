@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 import { DataSourceNote } from '@/components/data-source-note';
 import { HomepageTaskSelection } from '@/components/homepage-task-selection';
+import { LatestInsightsSection } from '@/components/latest-insights-section';
 import { PageContainer } from '@/components/page-container';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -113,6 +114,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <LatestInsightsSection />
 
       <section className={styles.trustSection} aria-labelledby="trust-heading">
         <h2 id="trust-heading">Built on transparent engineering</h2>

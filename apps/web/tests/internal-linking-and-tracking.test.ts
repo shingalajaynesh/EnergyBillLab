@@ -102,7 +102,7 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
   // Test 4: No internal-link target is missing from canonical route registries
   it('4. No internal-link target in publicRoutes is missing from sitemap or registry', () => {
     const validHrefs = new Set(publicRoutes.map((r) => r.href));
-    expect(validHrefs.size).toBe(128);
+    expect(validHrefs.size).toBe(129);
 
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(validHrefs.has(`/electricity-rates/${slug}`)).toBe(true);
