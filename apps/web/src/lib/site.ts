@@ -4,6 +4,10 @@ function validateSiteUrl(value: string | undefined) {
     if (url.hostname === 'www.energybilllab.com') {
       url.hostname = 'energybilllab.com';
     }
+    if (url.hostname !== 'energybilllab.com') {
+      return 'https://energybilllab.com';
+    }
+    url.protocol = 'https:';
     return url.origin;
   } catch {
     return 'https://energybilllab.com';

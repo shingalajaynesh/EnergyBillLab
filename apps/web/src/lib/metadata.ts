@@ -29,6 +29,7 @@ export function createPageMetadata({ description, path, title }: PageMetadataInp
   const twitterImageUrl = getSiteUrl('/twitter-image.png');
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: cleanTitle,
     description,
     alternates: {
