@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PageContainer } from '@/components/page-container';
 import { RelatedLinks } from '@/components/related-links';
-import { getInsightBySlug, INSIGHT_CATEGORIES } from '@/content/insights';
+import { formatHumanDate, getInsightBySlug, INSIGHT_CATEGORIES } from '@/content/insights';
 import { createPageMetadata } from '@/lib/metadata';
 import {
   createBreadcrumbStructuredData,
@@ -92,9 +92,13 @@ export default async function InsightDetailPage(props: InsightPageProps) {
             <h1 className={styles.h1}>{article.title}</h1>
             <div className={styles.metaRow}>
               <span className={styles.author}>By Jaynesh Shingala</span>
-              <span>Published: {article.publishedAt}</span>
-              {article.updatedAt ? <span>Updated: {article.updatedAt}</span> : null}
-              {article.reportingPeriod ? <span>Data Period: {article.reportingPeriod}</span> : null}
+              <span>Published {formatHumanDate(article.publishedAt)}</span>
+              {article.updatedAt ? (
+                <span> · Updated {formatHumanDate(article.updatedAt)}</span>
+              ) : null}
+              {article.reportingPeriod ? (
+                <span> · Data period: {article.reportingPeriod}</span>
+              ) : null}
             </div>
           </header>
 

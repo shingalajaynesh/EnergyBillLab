@@ -148,9 +148,9 @@ describe('Analytics, Usability, & Internal Linking Sprint Verification', () => {
     expect(JSON.stringify(pageMeta)).not.toContain('www.energybilllab.com');
   });
 
-  it('10. Sitemap inventory remains unchanged at 128 canonical entries', () => {
+  it('10. Sitemap inventory includes the Insights launch batch and daily updates', () => {
     const entries = sitemap();
-    expect(entries.length).toBe(128);
+    expect(entries.length).toBe(133);
   });
 
   it('11. Public publisher identity remains limited to name and email', () => {

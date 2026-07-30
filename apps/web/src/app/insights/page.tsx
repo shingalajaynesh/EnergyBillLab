@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import {
+  formatHumanDate,
   getPublishedInsights,
   INSIGHT_CATEGORIES,
   isInsightsHubEligible,
@@ -119,9 +120,9 @@ export default function InsightsHubPage() {
                   </Link>
                   <p className={styles.cardSummary}>{article.summary}</p>
                   <div className={styles.cardMeta}>
-                    <span>Published: {article.publishedAt}</span>
+                    <span>Published {formatHumanDate(article.publishedAt)}</span>
                     {article.reportingPeriod ? (
-                      <span> • Period: {article.reportingPeriod}</span>
+                      <span> · Data period: {article.reportingPeriod}</span>
                     ) : null}
                   </div>
                 </article>
@@ -131,23 +132,36 @@ export default function InsightsHubPage() {
 
           <section className={styles.trustSection} aria-labelledby="trust-links-heading">
             <h3 id="trust-links-heading" className={styles.trustHeading}>
-              Data Sources & Publishing Standards
+              How we source and review our data
             </h3>
-            <div className={styles.trustGrid}>
-              <Link className={styles.trustCard} href="/data-sources">
-                Data Sources & EIA Snapshots
+            <p className={styles.trustDescription}>
+              EnergyBillLab Insights use official energy datasets, transparent calculations,
+              documented methodology, and a public corrections process.
+            </p>
+            <div className={styles.trustLinks}>
+              <Link className={styles.trustLink} href="/data-sources">
+                Data sources
               </Link>
-              <Link className={styles.trustCard} href="/methodology">
-                Calculation Methodology
+              <span className={styles.trustSeparator} aria-hidden="true">
+                ·
+              </span>
+              <Link className={styles.trustLink} href="/methodology">
+                Calculation methodology
               </Link>
-              <Link className={styles.trustCard} href="/editorial-policy">
-                Editorial & Corrections Policy
+              <span className={styles.trustSeparator} aria-hidden="true">
+                ·
+              </span>
+              <Link className={styles.trustLink} href="/editorial-policy">
+                Editorial and corrections policy
               </Link>
+              <span className={styles.trustSeparator} aria-hidden="true">
+                ·
+              </span>
               <Link
-                className={styles.trustCard}
+                className={styles.trustLink}
                 href="/research/us-residential-electricity-rate-report"
               >
-                U.S. Rate Benchmarks
+                U.S. Electricity-Rate Report
               </Link>
             </div>
           </section>

@@ -141,3 +141,15 @@ export type InsightTopicResearchRecord = {
 };
 
 export const INSIGHTS_PUBLICATION_THRESHOLD = 3;
+
+export function formatHumanDate(dateStr: string | null | undefined): string {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return dateStr;
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+}

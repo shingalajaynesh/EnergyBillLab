@@ -2,12 +2,21 @@ import { validateInsightsRegistry } from '@/lib/insights-validation';
 
 import type { InsightCategory, InsightRecord } from './types';
 import { INSIGHTS_PUBLICATION_THRESHOLD } from './types';
+import { april2026ResidentialNaturalGasPriceHeatingCost } from './articles/april-2026-residential-natural-gas-price-heating-cost';
+import { may2026CoolingDemandResidentialSales } from './articles/may-2026-cooling-demand-residential-sales';
+import { may2026EvHomeChargingCostBenchmark } from './articles/may-2026-ev-home-charging-cost-benchmark';
+import { may2026ResidentialElectricityPriceBillImpact } from './articles/may-2026-residential-electricity-price-bill-impact';
 
 /**
  * Array of individual article modules imported from ./articles/
- * Currently 0 published articles during setup phase.
+ * Draft records are intentionally registered before the first-three launch.
  */
-const rawArticles: InsightRecord[] = [];
+const rawArticles: InsightRecord[] = [
+  may2026EvHomeChargingCostBenchmark,
+  may2026ResidentialElectricityPriceBillImpact,
+  may2026CoolingDemandResidentialSales,
+  april2026ResidentialNaturalGasPriceHeatingCost,
+];
 
 // Automatic Registry Validation at initialization time
 const validation = validateInsightsRegistry(rawArticles);

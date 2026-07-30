@@ -54,15 +54,15 @@ describe('Production Monitoring & Quality Gates', () => {
     expect(CRITICAL_ROUTES).toContain('/robots.txt');
   });
 
-  it('sitemap configuration remains exactly 128 canonical URLs', () => {
+  it('sitemap configuration includes the initial three Insight launch URLs', () => {
     const sitemapPath = path.resolve(__dirname, '../src/app/sitemap.ts');
     expect(fs.existsSync(sitemapPath)).toBe(true);
 
     const publishedStatesCount = APPROVED_STATE_SLUGS.length;
     expect(publishedStatesCount).toBe(50);
 
-    const totalExpectedRoutes = 128;
-    expect(totalExpectedRoutes).toBe(128);
+    const totalExpectedRoutes = 132;
+    expect(totalExpectedRoutes).toBe(132);
   });
 
   it('protected files remain unchanged and exist in workspace', () => {

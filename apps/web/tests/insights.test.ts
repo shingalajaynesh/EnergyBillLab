@@ -1,9 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import sitemap from '../src/app/sitemap';
 import type { InsightRecord } from '../src/content/insights';
 import {
+  formatHumanDate,
   getInsightsByCategory,
+  getInsightBySlug,
   getPublishedInsights,
   INSIGHTS_PUBLICATION_THRESHOLD,
   insightsRegistry,
@@ -56,33 +60,34 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(route?.label).toBe('Insights');
   });
 
-  // Test 2: Empty registry does not render fake articles
-  it('2. empty production registry returns 0 published articles', () => {
-    expect(insightsRegistry).toHaveLength(0);
-    expect(getPublishedInsights()).toHaveLength(0);
+  // Test 2: Published registry renders public articles
+  it('2. production registry contains the published launch Insights plus daily updates', () => {
+    expect(insightsRegistry).toHaveLength(4);
+    expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
+    expect(getPublishedInsights()).toHaveLength(4);
   });
 
-  // Test 3: Empty hub is noindex
-  it('3. empty hub is not eligible for search indexation', () => {
-    expect(isInsightsHubEligible()).toBe(false);
+  // Test 3: Hub is indexable after launch threshold
+  it('3. hub is eligible for search indexation after threshold is met', () => {
+    expect(isInsightsHubEligible()).toBe(true);
   });
 
-  // Test 4: Empty hub is excluded from sitemap
-  it('4. empty hub is excluded from sitemapRoutes', () => {
+  // Test 4: Published hub is included in sitemap routes
+  it('4. published hub is included in sitemapRoutes', () => {
     const isSitemapEligible = sitemapRoutes.some((r) => r.href === '/insights');
-    expect(isSitemapEligible).toBe(false);
+    expect(isSitemapEligible).toBe(true);
   });
 
-  // Test 5: Insights do not appear in primary navigation before activation threshold
-  it('5. Insights route is absent from primary navigation when published count < threshold', () => {
+  // Test 5: Insights appear in primary navigation after activation threshold
+  it('5. Insights route appears in primary navigation when published count meets threshold', () => {
     const navHrefs = primaryNavigation.map((r) => r.href);
-    expect(navHrefs).not.toContain('/insights');
+    expect(navHrefs).toContain('/insights');
   });
 
-  // Test 6: Insights do not appear on homepage before activation threshold
+  // Test 6: Insights appear on homepage after activation threshold
   it('6. homepage promotion threshold is 3 published articles', () => {
     expect(INSIGHTS_PUBLICATION_THRESHOLD).toBe(3);
-    expect(isInsightsHubEligible()).toBe(false);
+    expect(isInsightsHubEligible()).toBe(true);
   });
 
   // Test 7: Draft articles are non-public
@@ -290,54 +295,36 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(eligible).toHaveLength(0);
   });
 
-  // Test 26: Existing sitemap inventory remains unchanged with zero published Insights
-  it('26. existing sitemap inventory count remains baseline 128 entries when zero insights published', () => {
+  // Test 26: Published sitemap inventory includes hub and article URLs
+  it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(128);
-    expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(false);
+    expect(entries).toHaveLength(133);
+    expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
+    expect(
+      entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
+    ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith('/insights/may-2026-residential-electricity-price-bill-impact'),
+      ),
+    ).toBe(true);
+    expect(
+      entries.some((e) => e.url.endsWith('/insights/may-2026-cooling-demand-residential-sales')),
+    ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith('/insights/april-2026-residential-natural-gas-price-heating-cost'),
+      ),
+    ).toBe(true);
   });
 
-  // Test 26b: Positive 1-article sitemap behavior & exclusions
-  it('26b. simulates sitemap output for 1 eligible Insight vs 3 eligible Insights and verifies activation', () => {
-    const baseline = sitemap();
-    const baselineCount = baseline.length; // 128
-
-    // 1 eligible article scenario
-    const singleArticleList: InsightRecord[] = [mockValidInsight];
-    const singleEligible = singleArticleList.filter(
-      (r) => r.status === 'published' && !r.noindex && r.publishedAt <= '2026-07-30T00:00:00.000Z',
-    );
-    const singleIsHubEligible = singleEligible.length >= INSIGHTS_PUBLICATION_THRESHOLD; // false (1 < 3)
-
-    // Expected sitemap entries with 1 article = baseline (128) + 1 article URL = 129
-    const singleSitemapUrls = [
-      ...baseline.map((e) => e.url),
-      `https://energybilllab.com/insights/${mockValidInsight.slug}`,
-    ];
-    expect(singleSitemapUrls).toHaveLength(baselineCount + 1);
-    expect(singleIsHubEligible).toBe(false);
-
-    // 3 eligible articles scenario in category 'electricity-rates'
-    const threeArticlesList: InsightRecord[] = [
-      { ...mockValidInsight, id: 'art-1', slug: 'art-1-slug', category: 'electricity-rates' },
-      { ...mockValidInsight, id: 'art-2', slug: 'art-2-slug', category: 'electricity-rates' },
-      { ...mockValidInsight, id: 'art-3', slug: 'art-3-slug', category: 'electricity-rates' },
-    ];
-    const threeEligible = threeArticlesList.filter(
-      (r) => r.status === 'published' && !r.noindex && r.publishedAt <= '2026-07-30T00:00:00.000Z',
-    );
-    const threeIsHubEligible = threeEligible.length >= INSIGHTS_PUBLICATION_THRESHOLD; // true (3 >= 3)
-    const catEligible =
-      threeEligible.filter((r) => r.category === 'electricity-rates').length >=
-      INSIGHTS_PUBLICATION_THRESHOLD; // true
-
-    expect(threeIsHubEligible).toBe(true);
-    expect(catEligible).toBe(true);
-
-    // Dynamic expected sitemap count: baseline (128) + 3 articles + 1 hub + 1 category = 133
-    const totalExpectedWithThree =
-      baselineCount + 3 + (threeIsHubEligible ? 1 : 0) + (catEligible ? 1 : 0);
-    expect(totalExpectedWithThree).toBe(133);
+  // Test 26b: Category archives stay out of sitemap until category threshold
+  it('26b. excludes category archive URLs when each category has fewer than 3 published articles', () => {
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.some((url) => url.includes('/insights/category/'))).toBe(false);
+    expect(getInsightsByCategory('electricity-rates')).toHaveLength(1);
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(2);
+    expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
   });
 
   // Test 26c: Sitemap canonical URL syntax validation
@@ -372,25 +359,130 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   it('28. verifies pagination pageSize is 12 and activates when article count exceeds 12', () => {
     const articles = getPublishedInsights();
     const totalPages = Math.ceil(articles.length / 12);
-    expect(totalPages).toBe(0);
+    expect(totalPages).toBe(1);
   });
 
-  // Test 29: Empty category pages are not indexable
-  it('29. empty category queries return 0 articles and trigger noindex status', () => {
+  // Test 29: Thin category pages are not indexable
+  it('29. thin category queries stay below category indexing threshold', () => {
     const catArticles = getInsightsByCategory('electricity-rates');
-    expect(catArticles).toHaveLength(0);
+    expect(catArticles).toHaveLength(1);
     expect(catArticles.length >= INSIGHTS_PUBLICATION_THRESHOLD).toBe(false);
   });
 
   // Test 30: No production placeholder Insight exists
-  it('30. central registry contains zero demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(0);
+  it('30. central registry contains real published Insights and no demo or placeholder records', () => {
+    expect(insightsRegistry).toHaveLength(4);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
+    for (const record of insightsRegistry) {
+      expect(record.slug).not.toMatch(/sample|test|placeholder|article-1|blog-1/);
+    }
   });
 
-  // Test 31: Protected files remain unchanged
-  it('31. confirms protected files list is respected', () => {
+  // Test 31: First launch Insight is public and source-backed
+  it('31. validates the May 2026 price launch Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('may-2026-residential-electricity-price-bill-impact');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.reportingPeriod).toBe('May 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44 cents/kWh');
+    expect(article?.summary).toContain('6.2%');
+    expect(article?.summary.toLowerCase()).not.toContain('live rate');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    expect(article?.relatedRoutes).toContain('/electricity-bill-analyzer');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+  });
+
+  // Test 32: Second launch Insight is public and source-backed
+  it('32. validates the May 2026 cooling-demand launch Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('may-2026-cooling-demand-residential-sales');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('home-energy-costs');
+    expect(article?.reportingPeriod).toBe('May 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('106,659 million kWh');
+    expect(article?.summary).toContain('1.7%');
+    expect(article?.keyFindings?.join(' ')).toContain('250 kWh');
+    expect(article?.keyFindings?.join(' ')).toContain('$46.10');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    expect(article?.relatedRoutes).toContain('/tools/ac-cost-calculator');
+    expect(article?.relatedRoutes).toContain('/electricity-bill-analyzer');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+  });
+
+  // Test 33: Third launch Insight is public and source-backed
+  it('33. validates the April 2026 natural-gas launch Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('april-2026-residential-natural-gas-price-heating-cost');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('natural-gas');
+    expect(article?.reportingPeriod).toBe('April 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('$18.17 per thousand cubic feet');
+    expect(article?.summary).toContain('$1.75 per therm');
+    expect(article?.keyFindings?.join(' ')).toContain('100-therm');
+    expect(article?.keyFindings?.join(' ')).toContain('$175.39');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(4);
+    expect(article?.relatedRoutes).toContain('/tools/space-heater-cost-calculator');
+    expect(article?.relatedRoutes).toContain('/comparisons');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+  });
+
+  // Test 33b: Daily EV charging Insight is public and source-backed
+  it('33b. validates the May 2026 EV charging Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('may-2026-ev-home-charging-cost-benchmark');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('home-energy-costs');
+    expect(article?.reportingPeriod).toBe('May 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44 cents/kWh');
+    expect(article?.summary).toContain('$8.20');
+    expect(article?.keyFindings?.join(' ')).toContain('44.44 kWh');
+    expect(article?.keyFindings?.join(' ')).toContain('$6.15');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(4);
+    expect(article?.relatedRoutes).toContain('/tools/ev-home-charging-cost-calculator');
+    expect(article?.relatedRoutes).toContain(
+      '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+    );
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+  });
+
+  // Test 34: Protected files remain unchanged
+  it('34. confirms protected files list is respected', () => {
     const protectedFiles = [
       'packages/database/src/clients/db-client.ts',
       'apps/web/package.json',
@@ -401,8 +493,8 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(protectedFiles).toHaveLength(5);
   });
 
-  // Test 32: Existing guides, state pages, calculators and research routes remain intact
-  it('32. maintains exact baseline count of 10 calculators, 50 state pages, and 50 guides', () => {
+  // Test 35: Existing guides, state pages, calculators and research routes remain intact
+  it('35. maintains exact baseline count of 10 calculators, 50 state pages, and 50 guides', () => {
     const paths = publicRoutes.map((r) => r.href);
     const calculators = paths.filter(
       (path) => path === '/electricity-bill-analyzer' || path.startsWith('/tools/'),
@@ -414,5 +506,70 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
     const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');
     expect(guides).toHaveLength(50);
+  });
+
+  // Test 36: Human-readable publication date presentation
+  it('36. formatHumanDate converts ISO date strings to human-readable format', () => {
+    expect(formatHumanDate('2026-07-30T00:00:00.000Z')).toBe('July 30, 2026');
+    expect(formatHumanDate('2026-05-15T12:00:00.000Z')).toBe('May 15, 2026');
+  });
+
+  // Test 37: Brand green CSS styling verification
+  it('37. confirms Insights CSS modules use brand green var(--ebl-primary) and no hardcoded blue #0284c7', () => {
+    const hubCss = fs.readFileSync(
+      path.resolve(__dirname, '../src/app/insights/insights-hub.module.css'),
+      'utf-8',
+    );
+    const articleCss = fs.readFileSync(
+      path.resolve(__dirname, '../src/app/insights/[slug]/insight-article.module.css'),
+      'utf-8',
+    );
+    const homepageCss = fs.readFileSync(
+      path.resolve(__dirname, '../src/components/latest-insights-section.module.css'),
+      'utf-8',
+    );
+
+    expect(hubCss).toContain('var(--ebl-primary');
+    expect(hubCss).not.toContain('#0284c7');
+
+    expect(articleCss).toContain('var(--ebl-primary');
+    expect(articleCss).not.toContain('#0284c7');
+
+    expect(homepageCss).toContain('var(--ebl-primary');
+    expect(homepageCss).not.toContain('#0284c7');
+  });
+
+  // Test 38: Compact trust section verification
+  it('38. confirms Insights hub uses compact trust section without oversized cards', () => {
+    const hubTsx = fs.readFileSync(
+      path.resolve(__dirname, '../src/app/insights/page.tsx'),
+      'utf-8',
+    );
+    const hubCss = fs.readFileSync(
+      path.resolve(__dirname, '../src/app/insights/insights-hub.module.css'),
+      'utf-8',
+    );
+
+    // Required heading & description
+    expect(hubTsx).toContain('How we source and review our data');
+    expect(hubTsx).toContain('EnergyBillLab Insights use official energy datasets');
+
+    // Required trust link routes
+    expect(hubTsx).toContain('href="/data-sources"');
+    expect(hubTsx).toContain('href="/methodology"');
+    expect(hubTsx).toContain('href="/editorial-policy"');
+    expect(hubTsx).toContain('href="/research/us-residential-electricity-rate-report"');
+
+    // Wording replacement: "U.S. Rate Benchmarks" removed from trust section
+    expect(hubTsx).not.toContain('U.S. Rate Benchmarks');
+    expect(hubTsx).toContain('U.S. Electricity-Rate Report');
+
+    // Oversized card CSS classes removed, compact semantic classes present
+    expect(hubCss).not.toContain('.trustCard');
+    expect(hubCss).not.toContain('.trustGrid');
+    expect(hubCss).toContain('.trustLinks');
+    expect(hubCss).toContain('.trustLink');
+    expect(hubCss).toContain(':focus-visible');
+    expect(hubCss).toContain('@media (max-width: 640px)');
   });
 });

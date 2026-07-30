@@ -7,6 +7,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import type { InsightCategory } from '@/content/insights';
 import {
+  formatHumanDate,
   getInsightsByCategory,
   INSIGHT_CATEGORIES,
   INSIGHTS_PUBLICATION_THRESHOLD,
@@ -125,9 +126,9 @@ export default async function InsightCategoryPage(props: CategoryPageProps) {
                   </Link>
                   <p className={hubStyles.cardSummary}>{article.summary}</p>
                   <div className={hubStyles.cardMeta}>
-                    <span>Published: {article.publishedAt}</span>
+                    <span>Published {formatHumanDate(article.publishedAt)}</span>
                     {article.reportingPeriod ? (
-                      <span> • Period: {article.reportingPeriod}</span>
+                      <span> · Data period: {article.reportingPeriod}</span>
                     ) : null}
                   </div>
                 </article>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import {
+  formatHumanDate,
   getPublishedInsights,
   INSIGHT_CATEGORIES,
   isInsightsHubEligible,
@@ -40,7 +41,10 @@ export function LatestInsightsSection() {
               {article.title}
             </Link>
             <p className={styles.summary}>{article.summary}</p>
-            <div className={styles.meta}>Published: {article.publishedAt}</div>
+            <div className={styles.meta}>
+              Published {formatHumanDate(article.publishedAt)}
+              {article.reportingPeriod ? ` · Data period: ${article.reportingPeriod}` : ''}
+            </div>
           </article>
         ))}
       </div>

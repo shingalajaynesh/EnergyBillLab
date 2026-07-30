@@ -18,7 +18,7 @@
 .viewAll {
   font-size: 14px;
   font-weight: 600;
-  color: #0284c7;
+  color: var(--ebl-primary, #176b5b);
   text-decoration: none;
 }
 
@@ -47,7 +47,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #0284c7;
+  color: var(--ebl-primary, #176b5b);
 }
 
 .title {
@@ -59,7 +59,7 @@
 }
 
 .title:hover {
-  color: #0284c7;
+  color: var(--ebl-primary, #176b5b);
 }
 
 .summary {

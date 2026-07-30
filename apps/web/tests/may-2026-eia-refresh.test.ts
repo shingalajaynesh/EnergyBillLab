@@ -74,7 +74,8 @@ describe('May 2026 EIA Data Refresh & Validation', () => {
     expect(rawReport.rows.length).toBe(50);
   });
 
-  it('confirms sitemap inventory count remains 128', () => {
-    expect(sitemapRoutes.length).toBe(128);
+  it('confirms sitemap route inventory includes the Insights hub after launch threshold', () => {
+    expect(sitemapRoutes.length).toBe(129);
+    expect(sitemapRoutes.some((route) => route.href === '/insights')).toBe(true);
   });
 });

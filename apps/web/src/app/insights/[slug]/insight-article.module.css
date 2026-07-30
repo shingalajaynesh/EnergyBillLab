@@ -14,9 +14,9 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #0284c7;
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
+  color: var(--ebl-primary, #176b5b);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   padding: 4px 10px;
   border-radius: 4px;
   margin-bottom: 12px;
@@ -47,8 +47,8 @@
 }
 
 .summaryBox {
-  background: #f8fafc;
-  border-left: 4px solid #0284c7;
+  background: #f6f8f7;
+  border-left: 4px solid var(--ebl-primary, #176b5b);
   padding: 16px 20px;
   border-radius: 0 6px 6px 0;
   margin: 24px 0;
@@ -59,7 +59,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #0369a1;
+  color: var(--ebl-primary, #176b5b);
   margin-bottom: 8px;
 }
 
@@ -153,9 +153,13 @@
 }
 
 .sourceLink {
-  color: #0284c7;
+  color: var(--ebl-primary, #176b5b);
   font-weight: 500;
   text-decoration: underline;
+}
+
+.sourceLink:hover {
+  color: var(--ebl-primary-strong, #104c41);
 }
 
 .corrections {
@@ -167,5 +171,5 @@
 }
 
 .correctionsLink {
-  color: #0284c7;
+  color: var(--ebl-primary, #176b5b);
 }

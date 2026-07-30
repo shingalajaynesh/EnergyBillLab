@@ -1,6 +1,6 @@
 import { PUBLISHED_STATE_CONFIGS } from '@/config/published-states';
-import type { InsightRecord, InsightStatus } from '@/content/insights';
-import { INSIGHT_CATEGORIES } from '@/content/insights';
+import type { InsightRecord, InsightStatus } from '@/content/insights/types';
+import { INSIGHT_CATEGORIES } from '@/content/insights/types';
 
 export type ValidationResult = {
   errors: string[];

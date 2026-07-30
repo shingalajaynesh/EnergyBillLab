@@ -5,7 +5,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
-import { getPublishedInsights, INSIGHT_CATEGORIES } from '@/content/insights';
+import { formatHumanDate, getPublishedInsights, INSIGHT_CATEGORIES } from '@/content/insights';
 import { createPageMetadata } from '@/lib/metadata';
 
 import hubStyles from '../../insights-hub.module.css';
@@ -96,8 +96,10 @@ export default async function InsightsPaginationPage(props: PaginationPageProps)
               </Link>
               <p className={hubStyles.cardSummary}>{article.summary}</p>
               <div className={hubStyles.cardMeta}>
-                <span>Published: {article.publishedAt}</span>
-                {article.reportingPeriod ? <span> • Period: {article.reportingPeriod}</span> : null}
+                <span>Published {formatHumanDate(article.publishedAt)}</span>
+                {article.reportingPeriod ? (
+                  <span> · Data period: {article.reportingPeriod}</span>
+                ) : null}
               </div>
             </article>
           ))}

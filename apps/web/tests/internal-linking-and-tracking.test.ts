@@ -210,13 +210,20 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
     expect(event['tool_slug']).toBe('appliance-energy-cost-calculator');
   });
 
-  // Test 11: Sitemap remains exactly 128 canonical routes
-  it('11. Sitemap remains exactly 128 canonical routes', () => {
+  // Test 11: Sitemap includes Insights launch batch and daily updates
+  it('11. Sitemap includes Insights launch batch and daily updates', () => {
     const sitemapEntries = sitemap();
-    expect(sitemapEntries).toHaveLength(128);
+    expect(sitemapEntries).toHaveLength(133);
 
     const urls = sitemapEntries.map((e) => e.url);
-    expect(new Set(urls).size).toBe(128);
+    expect(new Set(urls).size).toBe(133);
+    expect(urls).toContain('https://energybilllab.com/insights');
+    expect(urls).toContain(
+      'https://energybilllab.com/insights/may-2026-ev-home-charging-cost-benchmark',
+    );
+    expect(urls).toContain(
+      'https://energybilllab.com/insights/april-2026-residential-natural-gas-price-heating-cost',
+    );
   });
 
   // Test 12: Protected files remain unchanged on disk
