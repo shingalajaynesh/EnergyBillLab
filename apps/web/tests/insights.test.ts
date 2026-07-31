@@ -67,6 +67,17 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(getPublishedInsights()).toHaveLength(6);
   });
 
+  // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
+  it('2b. getPublishedInsights sorts articles descending by publishedAt (latest first)', () => {
+    const published = getPublishedInsights();
+    for (let i = 0; i < published.length - 1; i++) {
+      const current = new Date(published[i]!.publishedAt).getTime();
+      const next = new Date(published[i + 1]!.publishedAt).getTime();
+      expect(current).toBeGreaterThanOrEqual(next);
+    }
+    expect(published[0]?.slug).toBe('july-2026-summer-wholesale-electricity-price-forecast');
+  });
+
   // Test 3: Hub is indexable after launch threshold
   it('3. hub is eligible for search indexation after threshold is met', () => {
     expect(isInsightsHubEligible()).toBe(true);

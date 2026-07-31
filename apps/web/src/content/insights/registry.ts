@@ -31,12 +31,14 @@ if (!validation.valid) {
 export const insightsRegistry: InsightRecord[] = rawArticles;
 
 export function getPublishedInsights(now = new Date().toISOString()): InsightRecord[] {
-  return insightsRegistry.filter((item) => {
-    if (item.status !== 'published') return false;
-    if (item.noindex) return false;
-    if (item.publishedAt > now) return false;
-    return true;
-  });
+  return insightsRegistry
+    .filter((item) => {
+      if (item.status !== 'published') return false;
+      if (item.noindex) return false;
+      if (item.publishedAt > now) return false;
+      return true;
+    })
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export function getInsightBySlug(slug: string): InsightRecord | undefined {
