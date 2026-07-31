@@ -88,13 +88,15 @@ export const august2026StateResidentialElectricityPriceSpreadBenchmark: InsightR
       organization: 'U.S. Energy Information Administration',
       title: 'Monthly Energy Review — Table 9.8 Residential Electricity Prices',
       url: 'https://www.eia.gov/totalenergy/data/monthly/',
-      topic: 'U.S. national average residential price benchmark (18.44 cents per kWh) and historic trends.',
+      topic:
+        'U.S. national average residential price benchmark (18.44 cents per kWh) and historic trends.',
     },
     {
       organization: 'U.S. Department of Energy',
       title: 'Office of Energy Efficiency & Renewable Energy — State Energy Data',
       url: 'https://www.energy.gov/eere/state-and-local-solution-center',
-      topic: 'Regional energy market factors, state regulatory frameworks, and utility cost drivers.',
+      topic:
+        'Regional energy market factors, state regulatory frameworks, and utility cost drivers.',
     },
   ],
   relatedRoutes: [
