@@ -1,4 +1,3 @@
-import Button from 'antd/es/button';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -44,12 +43,12 @@ export default async function HomePage() {
             formulas, official EIA data, and plain-English methodology.
           </p>
           <div className={styles.actions}>
-            <Button type="primary" size="large" href="/electricity-bill-analyzer">
+            <Link className={styles.heroButtonPrimary} href="/electricity-bill-analyzer">
               Analyze your electric bill
-            </Button>
-            <Button size="large" href="/natural-gas-rates">
+            </Link>
+            <Link className={styles.heroButtonSecondary} href="/natural-gas-rates">
               Explore natural gas rates
-            </Button>
+            </Link>
           </div>
         </div>
 

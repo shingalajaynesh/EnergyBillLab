@@ -236,9 +236,24 @@
 
   .menuButton {
     align-items: center;
+    background: transparent;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    color: #344054;
+    cursor: pointer;
     display: inline-flex;
+    font-size: 1.125rem;
     justify-content: center;
-    min-height: 44px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    transition: all 0.15s ease;
+  }
+
+  .menuButton:hover {
+    background: #f8faf9;
+    border-color: #176b5b;
+    color: #176b5b;
   }
 }
 

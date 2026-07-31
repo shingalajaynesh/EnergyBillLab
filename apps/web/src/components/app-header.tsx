@@ -1,7 +1,6 @@
 'use client';
 
 import { DownOutlined, MenuOutlined, ThunderboltOutlined } from '@ant-design/icons';
-import Button from 'antd/es/button';
 import Drawer from 'antd/es/drawer';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -290,12 +289,16 @@ export function AppHeader() {
           </nav>
 
           {/* Mobile Navigation Hamburger Button */}
-          <Button
+          <button
+            type="button"
             className={styles.menuButton}
             aria-label="Open navigation menu"
-            icon={<MenuOutlined />}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation-drawer"
             onClick={() => setIsOpen(true)}
-          />
+          >
+            <MenuOutlined />
+          </button>
         </div>
       </PageContainer>
 

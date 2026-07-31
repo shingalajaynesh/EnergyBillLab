@@ -44,6 +44,47 @@
   gap: 12px;
 }
 
+.heroButtonPrimary {
+  background: #176b5b;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+  min-height: 48px;
+}
+
+.heroButtonPrimary:hover {
+  background: #104c41;
+}
+
+.heroButtonSecondary {
+  background: #ffffff;
+  color: #344054 !important;
+  border: 1px solid #d0d5dd;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  min-height: 48px;
+}
+
+.heroButtonSecondary:hover {
+  background: #f8faf9;
+  border-color: #176b5b;
+  color: #176b5b !important;
+}
+
 .readinessPanel {
   border: 1px solid #eaecf0;
   border-radius: 8px;
