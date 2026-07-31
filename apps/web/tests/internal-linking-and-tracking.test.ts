@@ -213,10 +213,10 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
   // Test 11: Sitemap includes Insights launch batch and daily updates
   it('11. Sitemap includes Insights launch batch and daily updates', () => {
     const sitemapEntries = sitemap();
-    expect(sitemapEntries).toHaveLength(137);
+    expect(sitemapEntries).toHaveLength(138);
 
     const urls = sitemapEntries.map((e) => e.url);
-    expect(new Set(urls).size).toBe(137);
+    expect(new Set(urls).size).toBe(138);
     expect(urls).toContain('https://energybilllab.com/insights');
     expect(urls).toContain(
       'https://energybilllab.com/insights/may-2026-ev-home-charging-cost-benchmark',

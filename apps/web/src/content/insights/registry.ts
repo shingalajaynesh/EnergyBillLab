@@ -8,6 +8,7 @@ import { may2026HeatPumpWaterHeaterSavingsBenchmark } from './articles/may-2026-
 import { may2026CoolingDemandResidentialSales } from './articles/may-2026-cooling-demand-residential-sales';
 import { may2026EvHomeChargingCostBenchmark } from './articles/may-2026-ev-home-charging-cost-benchmark';
 import { may2026ResidentialElectricityPriceBillImpact } from './articles/may-2026-residential-electricity-price-bill-impact';
+import { may2026RooftopSolarGenerationRetailSavingsBenchmark } from './articles/may-2026-rooftop-solar-generation-retail-savings-benchmark';
 
 /**
  * Array of individual article modules imported from ./articles/
@@ -20,6 +21,7 @@ const rawArticles: InsightRecord[] = [
   april2026ResidentialNaturalGasPriceHeatingCost,
   may2026HeatPumpWaterHeaterSavingsBenchmark,
   july2026SummerWholesaleElectricityPriceForecast,
+  may2026RooftopSolarGenerationRetailSavingsBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time

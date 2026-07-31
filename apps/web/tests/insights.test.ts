@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(6);
+    expect(insightsRegistry).toHaveLength(7);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(6);
+    expect(getPublishedInsights()).toHaveLength(7);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -75,7 +75,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe('july-2026-summer-wholesale-electricity-price-forecast');
+    expect(published[0]?.slug).toBe('may-2026-rooftop-solar-generation-retail-savings-benchmark');
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -309,7 +309,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(137);
+    expect(entries).toHaveLength(138);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -337,6 +337,11 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/july-2026-summer-wholesale-electricity-price-forecast'),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith('/insights/may-2026-rooftop-solar-generation-retail-savings-benchmark'),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives stay out of sitemap until category threshold
@@ -348,6 +353,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(getInsightsByCategory('appliances')).toHaveLength(1);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
+    expect(getInsightsByCategory('solar')).toHaveLength(1);
   });
 
   // Test 26c: Sitemap canonical URL syntax validation
@@ -394,7 +400,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(6);
+    expect(insightsRegistry).toHaveLength(7);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -559,6 +565,34 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(articleJson).not.toContain('live rate');
     expect(articleJson).not.toContain('real-time');
     expect(articleJson).not.toContain('guaranteed');
+  });
+
+  // Test 33e: Daily rooftop solar generation Insight is public and source-backed
+  it('33e. validates the May 2026 rooftop solar generation Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('may-2026-rooftop-solar-generation-retail-savings-benchmark');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('solar');
+    expect(article?.reportingPeriod).toBe('May 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('7,420 million kWh');
+    expect(article?.summary).toContain('$1.37 billion');
+    expect(article?.keyFindings?.join(' ')).toContain('6.66 GW');
+    expect(article?.keyFindings?.join(' ')).toContain('$156.74');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(4);
+    expect(article?.relatedRoutes).toContain('/tools/appliance-energy-cost-calculator');
+    expect(article?.relatedRoutes).toContain('/electricity-rates');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+    expect(articleJson).not.toContain('guaranteed payback');
   });
 
   // Test 34: Protected files remain unchanged
