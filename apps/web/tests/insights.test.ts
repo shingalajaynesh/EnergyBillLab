@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(5);
+    expect(insightsRegistry).toHaveLength(6);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(5);
+    expect(getPublishedInsights()).toHaveLength(6);
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -298,7 +298,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(136);
+    expect(entries).toHaveLength(137);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -321,6 +321,11 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/may-2026-heat-pump-water-heater-savings-benchmark'),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith('/insights/july-2026-summer-wholesale-electricity-price-forecast'),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives stay out of sitemap until category threshold
@@ -331,6 +336,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(2);
     expect(getInsightsByCategory('appliances')).toHaveLength(1);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
+    expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
   });
 
   // Test 26c: Sitemap canonical URL syntax validation
@@ -377,7 +383,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(5);
+    expect(insightsRegistry).toHaveLength(6);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -504,6 +510,34 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.relatedRoutes).toContain(
       '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',
     );
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+    expect(articleJson).not.toContain('guaranteed');
+  });
+
+  // Test 33d: Daily summer wholesale electricity forecast Insight is public and source-backed
+  it('33d. validates the July 2026 wholesale electricity forecast Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('july-2026-summer-wholesale-electricity-price-forecast');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('energy-markets');
+    expect(article?.reportingPeriod).toBe('Summer 2026 forecast');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('$45/MWh');
+    expect(article?.summary).toContain('4.5 cents/kWh');
+    expect(article?.keyFindings?.join(' ')).toContain('$4/MWh');
+    expect(article?.keyFindings?.join(' ')).toContain('$4');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(5);
+    expect(article?.relatedRoutes).toContain('/electricity-bill-analyzer');
+    expect(article?.relatedRoutes).toContain('/tools/ac-cost-calculator');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
 
     const articleJson = JSON.stringify(article).toLowerCase();
     expect(articleJson).not.toContain('software engineer');

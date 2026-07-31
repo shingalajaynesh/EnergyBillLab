@@ -3,6 +3,7 @@ import { validateInsightsRegistry } from '@/lib/insights-validation';
 import type { InsightCategory, InsightRecord } from './types';
 import { INSIGHTS_PUBLICATION_THRESHOLD } from './types';
 import { april2026ResidentialNaturalGasPriceHeatingCost } from './articles/april-2026-residential-natural-gas-price-heating-cost';
+import { july2026SummerWholesaleElectricityPriceForecast } from './articles/july-2026-summer-wholesale-electricity-price-forecast';
 import { may2026HeatPumpWaterHeaterSavingsBenchmark } from './articles/may-2026-heat-pump-water-heater-savings-benchmark';
 import { may2026CoolingDemandResidentialSales } from './articles/may-2026-cooling-demand-residential-sales';
 import { may2026EvHomeChargingCostBenchmark } from './articles/may-2026-ev-home-charging-cost-benchmark';
@@ -18,6 +19,7 @@ const rawArticles: InsightRecord[] = [
   may2026CoolingDemandResidentialSales,
   april2026ResidentialNaturalGasPriceHeatingCost,
   may2026HeatPumpWaterHeaterSavingsBenchmark,
+  july2026SummerWholesaleElectricityPriceForecast,
 ];
 
 // Automatic Registry Validation at initialization time
