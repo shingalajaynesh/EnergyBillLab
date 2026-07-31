@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(7);
+    expect(insightsRegistry).toHaveLength(9);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(7);
+    expect(getPublishedInsights()).toHaveLength(9);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -75,7 +75,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe('may-2026-rooftop-solar-generation-retail-savings-benchmark');
+    expect(published[0]?.slug).toBe(
+      'august-2026-state-residential-electricity-price-spread-benchmark',
+    );
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -309,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(138);
+    expect(entries).toHaveLength(140);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -342,18 +344,33 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/may-2026-rooftop-solar-generation-retail-savings-benchmark'),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark',
+        ),
+      ),
+    ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-state-residential-electricity-price-spread-benchmark',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives stay out of sitemap until category threshold
   it('26b. excludes category archive URLs when each category has fewer than 3 published articles', () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(urls.some((url) => url.includes('/insights/category/'))).toBe(false);
-    expect(getInsightsByCategory('electricity-rates')).toHaveLength(1);
+    expect(getInsightsByCategory('electricity-rates')).toHaveLength(2);
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(2);
     expect(getInsightsByCategory('appliances')).toHaveLength(1);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
     expect(getInsightsByCategory('solar')).toHaveLength(1);
+    expect(getInsightsByCategory('battery-storage')).toHaveLength(1);
   });
 
   // Test 26c: Sitemap canonical URL syntax validation
@@ -394,13 +411,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 29: Thin category pages are not indexable
   it('29. thin category queries stay below category indexing threshold', () => {
     const catArticles = getInsightsByCategory('electricity-rates');
-    expect(catArticles).toHaveLength(1);
+    expect(catArticles).toHaveLength(2);
     expect(catArticles.length >= INSIGHTS_PUBLICATION_THRESHOLD).toBe(false);
   });
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(7);
+    expect(insightsRegistry).toHaveLength(9);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -583,6 +600,66 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.relatedRoutes).toContain('/tools/appliance-energy-cost-calculator');
     expect(article?.relatedRoutes).toContain('/electricity-rates');
     expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+    expect(articleJson).not.toContain('guaranteed payback');
+  });
+
+  // Test 33f: Daily home battery storage Insight is public and source-backed
+  it('33f. validates the August 2026 home battery storage Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('battery-storage');
+    expect(article?.reportingPeriod).toBe('August 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('13.5 kWh');
+    expect(article?.summary).toContain('10.33 kWh');
+    expect(article?.keyFindings?.join(' ')).toContain('90% Depth of Discharge');
+    expect(article?.keyFindings?.join(' ')).toContain('$2.07');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(4);
+    expect(article?.relatedRoutes).toContain('/tools/appliance-energy-cost-calculator');
+    expect(article?.relatedRoutes).toContain('/electricity-rates');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+    expect(articleJson).not.toContain('guaranteed payback');
+  });
+
+  // Test 33g: Daily state electricity price spread Insight is public and source-backed
+  it('33g. validates the August 2026 state rate spread Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-state-residential-electricity-price-spread-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('electricity-rates');
+    expect(article?.reportingPeriod).toBe('August 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('3.3x');
+    expect(article?.summary).toContain('$176.80');
+    expect(article?.keyFindings?.join(' ')).toContain('Rhode Island (26.71¢/kWh)');
+    expect(article?.keyFindings?.join(' ')).toContain('Oklahoma ($90.30)');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    expect(article?.relatedRoutes).toContain('/electricity-rates');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+    expect(article?.relatedRoutes).toContain('/electricity-bill-analyzer');
 
     const articleJson = JSON.stringify(article).toLowerCase();
     expect(articleJson).not.toContain('software engineer');
