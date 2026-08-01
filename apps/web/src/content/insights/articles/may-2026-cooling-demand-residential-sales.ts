@@ -23,7 +23,7 @@ export const may2026CoolingDemandResidentialSales: InsightRecord = {
   canonicalTopic: 'may-2026-us-residential-electricity-sales-cooling-demand',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-07-30T00:00:00.000Z',
+  publishedAt: '2026-07-23T12:00:00.000Z',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

@@ -24,7 +24,7 @@ export const august2026TimeOfUsePeakRateSpreadApplianceLoadShiftingBenchmark: In
   canonicalTopic: 'august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-07-31T20:00:00.000Z',
+  publishedAt: '2026-07-31T12:00:00.000Z',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

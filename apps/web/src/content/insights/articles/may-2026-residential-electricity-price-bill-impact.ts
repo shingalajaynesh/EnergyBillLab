@@ -22,7 +22,7 @@ export const may2026ResidentialElectricityPriceBillImpact: InsightRecord = {
   canonicalTopic: 'may-2026-us-residential-electricity-price-household-bill-impact',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-07-30T00:00:00.000Z',
+  publishedAt: '2026-07-22T12:00:00.000Z',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',
