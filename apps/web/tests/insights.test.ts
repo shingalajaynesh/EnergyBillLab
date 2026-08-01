@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(10);
+    expect(insightsRegistry).toHaveLength(11);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(10);
+    expect(getPublishedInsights()).toHaveLength(11);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark',
+      'may-2026-residential-natural-gas-price-off-season-bill-impact',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(142);
+    expect(entries).toHaveLength(143);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -365,6 +365,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/may-2026-residential-natural-gas-price-off-season-bill-impact',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
@@ -375,7 +382,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(3);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(2);
     expect(getInsightsByCategory('appliances')).toHaveLength(1);
-    expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
+    expect(getInsightsByCategory('natural-gas')).toHaveLength(2);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
     expect(getInsightsByCategory('solar')).toHaveLength(1);
     expect(getInsightsByCategory('battery-storage')).toHaveLength(1);
@@ -425,7 +432,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(10);
+    expect(insightsRegistry).toHaveLength(11);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -664,6 +671,35 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.summary).toContain('$176.80');
     expect(article?.keyFindings?.join(' ')).toContain('Rhode Island (26.71¢/kWh)');
     expect(article?.keyFindings?.join(' ')).toContain('Oklahoma ($90.30)');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    expect(article?.relatedRoutes).toContain('/electricity-rates');
+    expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
+    expect(article?.relatedRoutes).toContain('/electricity-bill-analyzer');
+
+    const articleJson = JSON.stringify(article).toLowerCase();
+    expect(articleJson).not.toContain('software engineer');
+    expect(articleJson).not.toContain('founder');
+    expect(articleJson).not.toContain('surat');
+    expect(articleJson).not.toContain('gujarat');
+    expect(articleJson).not.toContain('india');
+    expect(articleJson).not.toContain('live rate');
+    expect(articleJson).not.toContain('real-time');
+    expect(articleJson).not.toContain('guaranteed payback');
+  });
+
+  // Test 33i: Daily natural gas off-season Insight is public and source-backed
+  it('33i. validates the May 2026 natural gas off-season Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'may-2026-residential-natural-gas-price-off-season-bill-impact',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('natural-gas');
+    expect(article?.reportingPeriod).toBe('May 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('$19.24');
+    expect(article?.summary).toContain('$1.86 per therm');
+    expect(article?.keyFindings?.join(' ')).toContain('$55.80');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     expect(article?.relatedRoutes).toContain('/electricity-rates');
     expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
