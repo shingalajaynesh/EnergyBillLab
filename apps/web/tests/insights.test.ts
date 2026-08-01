@@ -367,9 +367,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     ).toBe(true);
     expect(
       entries.some((e) =>
-        e.url.endsWith(
-          '/insights/may-2026-residential-natural-gas-price-off-season-bill-impact',
-        ),
+        e.url.endsWith('/insights/may-2026-residential-natural-gas-price-off-season-bill-impact'),
       ),
     ).toBe(true);
   });
