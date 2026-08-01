@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(9);
+    expect(insightsRegistry).toHaveLength(10);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(9);
+    expect(getPublishedInsights()).toHaveLength(10);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-state-residential-electricity-price-spread-benchmark',
+      'august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(140);
+    expect(entries).toHaveLength(142);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -358,14 +358,22 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark',
+        ),
+      ),
+    ).toBe(true);
   });
 
-  // Test 26b: Category archives stay out of sitemap until category threshold
-  it('26b. excludes category archive URLs when each category has fewer than 3 published articles', () => {
+  // Test 26b: Category archives enter sitemap when category threshold is reached
+  it('26b. includes category archive URL when category reaches 3 published articles threshold', () => {
     const urls = sitemap().map((entry) => entry.url);
-    expect(urls.some((url) => url.includes('/insights/category/'))).toBe(false);
+    expect(urls).toContain('https://energybilllab.com/insights/category/home-energy-costs');
+    expect(urls.some((url) => url.includes('/insights/category/electricity-rates'))).toBe(false);
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(3);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(2);
-    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(2);
     expect(getInsightsByCategory('appliances')).toHaveLength(1);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(1);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
@@ -417,7 +425,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(9);
+    expect(insightsRegistry).toHaveLength(10);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -762,5 +770,22 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(hubCss).toContain('.trustLink');
     expect(hubCss).toContain(':focus-visible');
     expect(hubCss).toContain('@media (max-width: 640px)');
+  });
+
+  // Test 39: August 2026 TOU rate spread Insight verification
+  it('39. validates the August 2026 TOU rate spread Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('home-energy-costs');
+    expect(article?.reportingPeriod).toBe('August 2026');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('2.5x peak-to-off-peak price spread');
+    expect(article?.summary).toContain('$77.09 in monthly utility bill reductions');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    const validation = validateInsightRecord(article!);
+    expect(validation.valid).toBe(true);
   });
 });

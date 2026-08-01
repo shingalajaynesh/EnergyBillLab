@@ -5,6 +5,7 @@ import { INSIGHTS_PUBLICATION_THRESHOLD } from './types';
 import { april2026ResidentialNaturalGasPriceHeatingCost } from './articles/april-2026-residential-natural-gas-price-heating-cost';
 import { august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchmark } from './articles/august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark';
 import { august2026StateResidentialElectricityPriceSpreadBenchmark } from './articles/august-2026-state-residential-electricity-price-spread-benchmark';
+import { august2026TimeOfUsePeakRateSpreadApplianceLoadShiftingBenchmark } from './articles/august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark';
 import { july2026SummerWholesaleElectricityPriceForecast } from './articles/july-2026-summer-wholesale-electricity-price-forecast';
 import { may2026HeatPumpWaterHeaterSavingsBenchmark } from './articles/may-2026-heat-pump-water-heater-savings-benchmark';
 import { may2026CoolingDemandResidentialSales } from './articles/may-2026-cooling-demand-residential-sales';
@@ -26,6 +27,7 @@ const rawArticles: InsightRecord[] = [
   may2026RooftopSolarGenerationRetailSavingsBenchmark,
   august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchmark,
   august2026StateResidentialElectricityPriceSpreadBenchmark,
+  august2026TimeOfUsePeakRateSpreadApplianceLoadShiftingBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time
