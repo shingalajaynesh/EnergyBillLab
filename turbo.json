@@ -12,7 +12,8 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "outputs": [".next/**", "dist/**"],
+      "env": ["NATURAL_GAS_LAUNCH_ENABLED"]
     },
     "dev": {
       "cache": false,
