@@ -201,7 +201,7 @@ export async function getNaturalGasHubData(): Promise<NaturalGasHubViewModel> {
 
     const trend = buildHistoricalTrendRows(history);
 
-    const allStateCodes = Object.keys(stateRates).filter((c) => c !== 'US');
+    const allStateCodes = Object.keys(stateRates).filter((c) => c !== 'US' && c !== 'DC');
     const commonPeriod = commonPeriodInfo.latestCommonPeriod || nationalRate?.period || null;
 
     const eligibleStateCodes = allStateCodes.filter(

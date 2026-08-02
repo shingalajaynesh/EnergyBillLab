@@ -8,6 +8,7 @@ import { RelatedLinks } from '@/components/related-links';
 import { GasFurnaceCalculatorIsland } from '@/features/gas-furnace-calculator/components/gas-furnace-calculator-island';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
+import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
 import {
   createBreadcrumbStructuredData,
   createOrganizationStructuredData,
@@ -22,7 +23,18 @@ export const metadata: Metadata = createPageMetadata({
   path: '/tools/gas-furnace-cost-calculator',
 });
 
-export default function GasFurnaceCostCalculatorPage() {
+export default async function GasFurnaceCostCalculatorPage() {
+  const hubData = await getNaturalGasHubData();
+
+  const benchmarkProps = {
+    reportingPeriod: hubData.latestSourceMonthFormatted,
+    estimatedPricePerTherm: hubData.latestNationalRate?.priceDollarsPerTherm ?? 19.83 / 10.36,
+    sourceLabel:
+      hubData.latestNationalRate?.source === 'EIA'
+        ? 'U.S. EIA Form EIA-857'
+        : 'U.S. EIA Delivered Price',
+  };
+
   const breadcrumbs = [
     { href: '/' as const, label: 'Home' },
     { href: '/tools' as const, label: 'Tools' },
@@ -69,7 +81,7 @@ export default function GasFurnaceCostCalculatorPage() {
           description="Calculate residential gas furnace heating costs by input capacity (Btu/hr) or heating output rating with AFUE efficiency percentage, runtime hours, and therm gas pricing."
         />
 
-        <GasFurnaceCalculatorIsland />
+        <GasFurnaceCalculatorIsland initialBenchmark={benchmarkProps} />
 
         <div style={{ marginTop: 32 }}>
           <DataSourceNote>

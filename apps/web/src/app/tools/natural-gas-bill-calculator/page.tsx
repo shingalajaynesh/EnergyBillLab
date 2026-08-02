@@ -8,6 +8,7 @@ import { RelatedLinks } from '@/components/related-links';
 import { NaturalGasBillCalculatorIsland } from '@/features/natural-gas-bill-calculator/components/natural-gas-bill-calculator-island';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
+import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
 import {
   createBreadcrumbStructuredData,
   createOrganizationStructuredData,
@@ -22,7 +23,19 @@ export const metadata: Metadata = createPageMetadata({
   path: '/tools/natural-gas-bill-calculator',
 });
 
-export default function NaturalGasBillCalculatorPage() {
+export default async function NaturalGasBillCalculatorPage() {
+  const hubData = await getNaturalGasHubData();
+
+  const benchmarkProps = {
+    reportingPeriod: hubData.latestSourceMonthFormatted,
+    priceDollarsPerMcf: hubData.latestNationalRate?.priceDollarsPerMcf ?? 19.83,
+    estimatedPricePerTherm: hubData.latestNationalRate?.priceDollarsPerTherm ?? 19.83 / 10.36,
+    sourceLabel:
+      hubData.latestNationalRate?.source === 'EIA'
+        ? 'U.S. EIA Form EIA-857'
+        : 'U.S. EIA Delivered Price',
+  };
+
   const breadcrumbs = [
     { href: '/' as const, label: 'Home' },
     { href: '/tools' as const, label: 'Tools' },
@@ -69,7 +82,7 @@ export default function NaturalGasBillCalculatorPage() {
           description="Estimate your monthly natural gas bill by calculating volumetric usage charges in therms or Mcf, adding fixed account fees, and analyzing all-in cost per unit."
         />
 
-        <NaturalGasBillCalculatorIsland />
+        <NaturalGasBillCalculatorIsland initialBenchmark={benchmarkProps} />
 
         <div style={{ marginTop: 32 }}>
           <DataSourceNote>

@@ -6,12 +6,26 @@ import { Alert, Card, Form, InputNumber, Radio, Typography } from 'antd';
 
 const { Title, Text, Paragraph } = Typography;
 
-export function NaturalGasBillCalculatorIsland() {
+export type NaturalGasBenchmarkProps = {
+  reportingPeriod?: string | null;
+  priceDollarsPerMcf?: number | null;
+  estimatedPricePerTherm?: number | null;
+  sourceLabel?: string | null;
+};
+
+export function NaturalGasBillCalculatorIsland({
+  initialBenchmark,
+}: {
+  initialBenchmark?: NaturalGasBenchmarkProps;
+}) {
+  const mcfPrice = initialBenchmark?.priceDollarsPerMcf ?? 19.83;
+  const thermPrice = initialBenchmark?.estimatedPricePerTherm ?? mcfPrice / 10.36;
+
   const [unit, setUnit] = useState<'therms' | 'mcf'>('therms');
   const [usage, setUsage] = useState<number | null>(80);
-  const [pricePerUnit, setPricePerUnit] = useState<number | null>(1.75);
-  const [fixedCharge, setFixedCharge] = useState<number | null>(15);
-  const [taxesAndFees, setTaxesAndFees] = useState<number | null>(10);
+  const [pricePerUnit, setPricePerUnit] = useState<number | null>(Number(thermPrice.toFixed(4)));
+  const [fixedCharge, setFixedCharge] = useState<number | null>(0);
+  const [taxesAndFees, setTaxesAndFees] = useState<number | null>(0);
 
   const safeUsage = usage ?? 0;
   const safePrice = pricePerUnit ?? 0;
@@ -28,6 +42,15 @@ export function NaturalGasBillCalculatorIsland() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {initialBenchmark?.reportingPeriod && (
+        <Alert
+          type="info"
+          showIcon
+          message={`EIA Residential Benchmark Rate (${initialBenchmark.sourceLabel || 'U.S. EIA Delivered Price'})`}
+          description={`Default benchmark is based on ${initialBenchmark.reportingPeriod} official EIA residential natural gas data ($${mcfPrice.toFixed(2)}/Mcf, approximately $${thermPrice.toFixed(4)}/therm). Fixed charges and taxes default to $0 because EIA published prices represent total all-in delivered end-user rates.`}
+        />
+      )}
+
       <Card title="Natural Gas Bill Calculator Inputs" bordered>
         <Form layout="vertical">
           <Form.Item label="Billing Unit">
@@ -36,14 +59,15 @@ export function NaturalGasBillCalculatorIsland() {
               onChange={(e) => {
                 const newUnit = e.target.value as 'therms' | 'mcf';
                 setUnit(newUnit);
-                if (newUnit === 'mcf' && (pricePerUnit === 1.75 || pricePerUnit === null)) {
-                  setPricePerUnit(18.17);
+                if (newUnit === 'mcf') {
+                  const mcfVal =
+                    initialBenchmark?.priceDollarsPerMcf ?? (pricePerUnit ?? 0) * 10.36;
+                  setPricePerUnit(Number(mcfVal.toFixed(2)));
                   setUsage(8);
-                } else if (
-                  newUnit === 'therms' &&
-                  (pricePerUnit === 18.17 || pricePerUnit === null)
-                ) {
-                  setPricePerUnit(1.75);
+                } else if (newUnit === 'therms') {
+                  const thermVal =
+                    initialBenchmark?.estimatedPricePerTherm ?? (pricePerUnit ?? 0) / 10.36;
+                  setPricePerUnit(Number(thermVal.toFixed(4)));
                   setUsage(80);
                 }
               }}
@@ -76,7 +100,7 @@ export function NaturalGasBillCalculatorIsland() {
                 style={{ width: '100%' }}
                 min={0}
                 max={100}
-                step={0.01}
+                step={0.0001}
                 value={pricePerUnit}
                 onChange={(val) => setPricePerUnit(val)}
                 addonBefore="$"

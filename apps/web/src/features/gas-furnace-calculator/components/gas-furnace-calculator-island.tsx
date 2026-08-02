@@ -6,14 +6,28 @@ import { Alert, Card, Form, InputNumber, Radio, Typography } from 'antd';
 
 const { Title, Text, Paragraph } = Typography;
 
-export function GasFurnaceCalculatorIsland() {
+export type GasFurnaceBenchmarkProps = {
+  reportingPeriod?: string | null;
+  estimatedPricePerTherm?: number | null;
+  sourceLabel?: string | null;
+};
+
+export function GasFurnaceCalculatorIsland({
+  initialBenchmark,
+}: {
+  initialBenchmark?: GasFurnaceBenchmarkProps;
+}) {
+  const defaultThermRate = initialBenchmark?.estimatedPricePerTherm ?? 19.83 / 10.36;
+
   const [mode, setMode] = useState<'input_capacity' | 'heating_output'>('heating_output');
   const [inputBtu, setInputBtu] = useState<number | null>(100000);
   const [outputBtu, setOutputBtu] = useState<number | null>(80000);
   const [afue, setAfue] = useState<number | null>(80);
   const [runtimeHours, setRuntimeHours] = useState<number | null>(5);
   const [days, setDays] = useState<number | null>(30);
-  const [ratePerTherm, setRatePerTherm] = useState<number | null>(1.75);
+  const [ratePerTherm, setRatePerTherm] = useState<number | null>(
+    Number(defaultThermRate.toFixed(4)),
+  );
 
   const safeRuntime = runtimeHours ?? 0;
   const safeDays = days ?? 30;
@@ -39,6 +53,15 @@ export function GasFurnaceCalculatorIsland() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      {initialBenchmark?.reportingPeriod && (
+        <Alert
+          type="info"
+          showIcon
+          message={`EIA Residential Benchmark Gas Rate (${initialBenchmark.sourceLabel || 'U.S. EIA Delivered Price'})`}
+          description={`Default natural gas pricing derives from ${initialBenchmark.reportingPeriod} official EIA residential dataset ($${defaultThermRate.toFixed(4)}/therm).`}
+        />
+      )}
+
       <Card title="Gas Furnace Cost Calculator Inputs" bordered>
         <Form layout="vertical">
           <Form.Item label="Calculation Mode">
@@ -125,7 +148,7 @@ export function GasFurnaceCalculatorIsland() {
                 style={{ width: '100%' }}
                 min={0}
                 max={50}
-                step={0.05}
+                step={0.0001}
                 value={ratePerTherm}
                 onChange={(val) => setRatePerTherm(val)}
                 addonBefore="$"
@@ -192,7 +215,7 @@ export function GasFurnaceCalculatorIsland() {
           } runtime hours/day over ${result.days} days, the furnace uses ${
             result.thermsUsed
           } therms of gas ($${result.totalUsageCostUsd.toFixed(2)} total at $${result.ratePerThermUsd.toFixed(
-            2,
+            4,
           )}/therm).`}
         />
       </Card>

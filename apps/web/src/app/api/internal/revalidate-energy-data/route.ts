@@ -32,6 +32,8 @@ export function POST(request: NextRequest) {
       '/electricity-rates',
       '/research/us-residential-electricity-rate-report',
       '/insights',
+      '/insights/may-2026-residential-natural-gas-price-off-season-bill-impact',
+      '/sitemap.xml',
     ];
 
     const defaultTags = ['natural-gas-rates', 'electricity-rates', 'insights'];
