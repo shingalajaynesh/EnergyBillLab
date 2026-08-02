@@ -4,7 +4,7 @@ export const NaturalGasEiaRowSchema = z.object({
   period: z.string().regex(/^\d{4}-\d{2}$/, 'Period must be in YYYY-MM format'),
   duoarea: z.string().min(2),
   'area-name': z.string().optional(),
-  process: z.string().optional().default('PIN'),
+  process: z.string().optional().default('PRS'),
   'process-name': z.string().optional(),
   product: z.string().optional().default('EPG0'),
   'product-name': z.string().optional(),

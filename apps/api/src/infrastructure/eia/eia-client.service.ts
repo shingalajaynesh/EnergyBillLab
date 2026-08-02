@@ -137,7 +137,7 @@ export class EiaClientService {
 
     endpointUrl.searchParams.set('api_key', apiKey);
     endpointUrl.searchParams.set('frequency', 'monthly');
-    endpointUrl.searchParams.append('facets[process][]', 'PIN');
+    endpointUrl.searchParams.append('facets[process][]', 'PRS');
     endpointUrl.searchParams.append('facets[product][]', 'EPG0');
     endpointUrl.searchParams.append('data[]', 'value');
     endpointUrl.searchParams.set('sort[0][column]', 'period');

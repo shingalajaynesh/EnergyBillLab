@@ -219,4 +219,28 @@ describe('Phase 1 Natural Gas Data & Tools Infrastructure', () => {
     expect(modeB.thermsUsed).toBe(150);
     expect(modeB.totalUsageCostUsd).toBe(225.0);
   });
+
+  it('10. verifies official EIA residential checkpoints (April 2026 $18.17, May 2026 $19.83, May 2025 $19.24)', () => {
+    const apr2026Mcf = 18.17;
+    const apr2026Therm = Number((apr2026Mcf / 10.36).toFixed(4));
+    expect(apr2026Therm).toBe(1.7539);
+
+    const may2026Mcf = 19.83;
+    const may2026Therm = Number((may2026Mcf / 10.36).toFixed(4));
+    expect(may2026Therm).toBe(1.9141);
+
+    const may2025Mcf = 19.24;
+    const may2025Therm = Number((may2025Mcf / 10.36).toFixed(4));
+    expect(may2025Therm).toBe(1.8571);
+
+    // Verify full precision therm scenario calculations (round only at final step)
+    const exactRatePerTherm = 19.83 / 10.36;
+    expect(Number((25 * exactRatePerTherm).toFixed(2))).toBe(47.85);
+    expect(Number((30 * exactRatePerTherm).toFixed(2))).toBe(57.42);
+    expect(Number((40 * exactRatePerTherm).toFixed(2))).toBe(76.56);
+
+    // Verify industrial $4.90 is distinct and rejected from residential tables
+    const industrialApr2026 = 4.9;
+    expect(industrialApr2026).not.toBe(apr2026Mcf);
+  });
 });

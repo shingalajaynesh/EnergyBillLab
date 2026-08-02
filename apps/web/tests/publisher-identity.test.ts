@@ -47,6 +47,7 @@ describe('Public Publisher Identity & Trust Integrity Whitelist', () => {
     expect(allContentText).not.toContain('Full-Stack Developer');
     expect(allContentText).not.toContain('Full Stack Software Engineer');
     expect(allContentText).not.toContain('Full Stack Developer');
+    expect(allContentText).not.toContain('Founder & Technical Publisher');
   });
 
   it('8. Person JSON-LD retains name "Jaynesh Shingala" without extra title or location fields', () => {

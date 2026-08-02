@@ -63,7 +63,7 @@ export const contentPages = {
   '/contact': {
     title: 'Contact Energy Bill Lab',
     description:
-      'Contact Jaynesh Shingala, Founder & Technical Publisher of Energy Bill Lab, for site feedback, source corrections, and accessibility inquiries.',
+      'Contact Jaynesh Shingala for site feedback, source corrections, and accessibility inquiries.',
     path: '/contact',
     updatedAt: '2026-07-24',
     related: ['/about', '/accessibility', '/privacy', '/editorial-policy'],
@@ -71,7 +71,7 @@ export const contentPages = {
       {
         heading: 'Publisher Contact Details',
         paragraphs: [
-          'Energy Bill Lab is published by Jaynesh Shingala, Founder & Technical Publisher.',
+          'Energy Bill Lab is published by Jaynesh Shingala.',
           'For general questions, calculation corrections, data-source inquiries, accessibility issues, editorial corrections, media inquiries, or technical site feedback, email: shingala.jaynesh@gmail.com.',
         ],
       },

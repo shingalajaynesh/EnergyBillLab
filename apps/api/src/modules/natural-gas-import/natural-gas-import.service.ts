@@ -324,7 +324,7 @@ export class NaturalGasImportService {
     const rawDuoarea = row.duoarea;
     const rawValue = row.value;
 
-    if (row.process && row.process !== 'PIN') {
+    if (row.process && row.process !== 'PRS') {
       return { success: false, reason: 'WRONG_PROCESS', rawPeriod, rawDuoarea, rawValue };
     }
 

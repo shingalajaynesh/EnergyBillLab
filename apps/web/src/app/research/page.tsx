@@ -103,10 +103,9 @@ export default async function ResearchHubPage() {
             About Energy Bill Lab Research
           </h2>
           <p className={styles.publisherText}>
-            Energy Bill Lab research reports are founded and technically published by Jaynesh
-            Shingala, Founder & Technical Publisher of Energy Bill Lab. Our goal is to provide
-            independent, source-transparent data tools and data journalism for U.S. homeowners,
-            researchers, and journalists.
+            Energy Bill Lab research reports are written and technically published by Jaynesh
+            Shingala. Our goal is to provide independent, source-transparent data tools and data
+            journalism for U.S. homeowners, researchers, and journalists.
           </p>
           <p className={styles.publisherContact}>
             Direct research inquiries or data clarification requests to:{' '}

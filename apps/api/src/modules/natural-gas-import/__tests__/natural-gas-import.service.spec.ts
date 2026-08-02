@@ -9,7 +9,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
     const zeroRow = NaturalGasEiaRowSchema.parse({
       period: '2026-04',
       duoarea: 'SCA',
-      process: 'PIN',
+      process: 'PRS',
       product: 'EPG0',
       value: 0,
       units: '$/MCF',
@@ -19,14 +19,14 @@ describe('NaturalGasImportService & Transport Validation', () => {
     expect(zeroRow.duoarea).toBe('SCA');
   });
 
-  it('2. parses valid EIA natural gas rows correctly (PIN process & duoarea)', () => {
+  it('2. parses valid EIA natural gas rows correctly (PRS process & duoarea)', () => {
     const mockEiaClient = {} as EiaClientService;
     const service = new NaturalGasImportService(mockEiaClient);
 
     const result = service.parseAndValidateRow({
       period: '2026-04',
       duoarea: 'SCA',
-      process: 'PIN',
+      process: 'PRS',
       product: 'EPG0',
       value: 18.45,
       units: '$/MCF',
@@ -41,6 +41,25 @@ describe('NaturalGasImportService & Transport Validation', () => {
     }
   });
 
+  it('2b. strictly rejects PIN process rows as industrial natural gas data', () => {
+    const mockEiaClient = {} as EiaClientService;
+    const service = new NaturalGasImportService(mockEiaClient);
+
+    const result = service.parseAndValidateRow({
+      period: '2026-04',
+      duoarea: 'SCA',
+      process: 'PIN',
+      product: 'EPG0',
+      value: 4.9,
+      units: '$/MCF',
+    });
+
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.reason).toBe('WRONG_PROCESS');
+    }
+  });
+
   it('3. rejects zero-value row with NON_POSITIVE_SOURCE_VALUE reason', () => {
     const mockEiaClient = {} as EiaClientService;
     const service = new NaturalGasImportService(mockEiaClient);
@@ -48,7 +67,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
     const res = service.parseAndValidateRow({
       period: '2026-04',
       duoarea: 'SCA',
-      process: 'PIN',
+      process: 'PRS',
       product: 'EPG0',
       value: 0,
       units: '$/MCF',
@@ -67,7 +86,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
     const res = service.parseAndValidateRow({
       period: '2026-04',
       duoarea: 'SCA',
-      process: 'PIN',
+      process: 'PRS',
       product: 'EPG0',
       value: -15.5,
       units: '$/MCF',
@@ -86,7 +105,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
     const res = service.parseAndValidateRow({
       period: '2026-04',
       duoarea: 'SCA',
-      process: 'PIN',
+      process: 'PRS',
       product: 'EPG0',
       value: NaN,
       units: '$/MCF',
@@ -107,7 +126,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
             {
               period: '2026-04',
               duoarea: 'SCA',
-              process: 'PIN',
+              process: 'PRS',
               product: 'EPG0',
               value: 0,
               units: '$/MCF',
@@ -115,7 +134,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
             {
               period: '2026-04',
               duoarea: 'STX',
-              process: 'PIN',
+              process: 'PRS',
               product: 'EPG0',
               value: 12.5,
               units: '$/MCF',
@@ -143,7 +162,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
             {
               period: '2026-04',
               duoarea: 'SCA',
-              process: 'PIN',
+              process: 'PRS',
               product: 'EPG0',
               value: 0,
               units: '$/MCF',
@@ -151,7 +170,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
             {
               period: '2026-04',
               duoarea: 'STX',
-              process: 'PIN',
+              process: 'PRS',
               product: 'EPG0',
               value: 0,
               units: '$/MCF',
@@ -174,7 +193,7 @@ describe('NaturalGasImportService & Transport Validation', () => {
       NaturalGasEiaRowSchema.parse({
         period: '2026-04',
         duoarea: 'SCA',
-        process: 'PIN',
+        process: 'PRS',
         product: 'EPG0',
         value: 'invalid-number',
         units: '$/MCF',

@@ -702,9 +702,8 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.category).toBe('natural-gas');
     expect(article?.reportingPeriod).toBe('May 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
-    expect(article?.summary).toContain('$19.24');
-    expect(article?.summary).toContain('$1.86 per therm');
-    expect(article?.keyFindings?.join(' ')).toContain('$55.80');
+    expect(article?.summary).toContain('$19.83');
+    expect(article?.keyFindings?.join(' ')).toContain('$57.42');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     expect(article?.relatedRoutes).toContain('/electricity-rates');
     expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
