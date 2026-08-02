@@ -3,10 +3,9 @@ import {
   dataImportRuns,
   getReadDatabaseClient,
   getWriteDatabaseClient,
-  naturalGasGeographies,
   naturalGasResidentialPricesMonthly,
 } from '@energy-bill-lab/database';
-import { eq, inArray, sql } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 
 import { EiaClientService } from '../../infrastructure/eia/eia-client.service';
 import { NaturalGasImportService } from './natural-gas-import.service';
@@ -353,7 +352,6 @@ export class NaturalGasCleanupService {
     }
 
     const prsImportRunId = `eia-ng-prs-${Date.now()}`;
-    const audit = await this.auditDatabase();
 
     return writeDb.transaction(async (tx) => {
       // Step 1: Delete PIN price rows attached to TARGET_PIN_IMPORT_RUN_ID
