@@ -5,7 +5,6 @@ import {
   getInsightsByCategory,
   getInsightBySlug,
   getPublishedInsights,
-  insightsRegistry,
 } from '../src/content/insights';
 import { validateInsightRecord } from '../src/lib/insights-validation';
 
