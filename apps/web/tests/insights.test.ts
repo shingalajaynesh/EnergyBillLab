@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(12);
+    expect(insightsRegistry).toHaveLength(13);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(12);
+    expect(getPublishedInsights()).toHaveLength(13);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-central-air-conditioner-seer2-cooling-cost-benchmark',
+      'august-2026-census-division-residential-electricity-rate-breakdown',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(144);
+    expect(entries).toHaveLength(146);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -377,15 +377,23 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-census-division-residential-electricity-rate-breakdown',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
   it('26b. includes category archive URL when category reaches 3 published articles threshold', () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(urls).toContain('https://energybilllab.com/insights/category/home-energy-costs');
-    expect(urls.some((url) => url.includes('/insights/category/electricity-rates'))).toBe(false);
+    expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
+    expect(urls.some((url) => url.includes('/insights/category/appliances'))).toBe(false);
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(3);
-    expect(getInsightsByCategory('electricity-rates')).toHaveLength(2);
+    expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
     expect(getInsightsByCategory('appliances')).toHaveLength(2);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(2);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
@@ -425,19 +433,19 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   it('28. verifies pagination pageSize is 12 and activates when article count exceeds 12', () => {
     const articles = getPublishedInsights();
     const totalPages = Math.ceil(articles.length / 12);
-    expect(totalPages).toBe(1);
+    expect(totalPages).toBe(2);
   });
 
   // Test 29: Thin category pages are not indexable
   it('29. thin category queries stay below category indexing threshold', () => {
-    const catArticles = getInsightsByCategory('electricity-rates');
+    const catArticles = getInsightsByCategory('natural-gas');
     expect(catArticles).toHaveLength(2);
     expect(catArticles.length >= INSIGHTS_PUBLICATION_THRESHOLD).toBe(false);
   });
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(12);
+    expect(insightsRegistry).toHaveLength(13);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
