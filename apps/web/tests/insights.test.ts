@@ -386,9 +386,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     ).toBe(true);
     expect(
       entries.some((e) =>
-        e.url.endsWith(
-          '/insights/august-2026-home-appliance-operating-cost-hierarchy-benchmark',
-        ),
+        e.url.endsWith('/insights/august-2026-home-appliance-operating-cost-hierarchy-benchmark'),
       ),
     ).toBe(true);
   });
