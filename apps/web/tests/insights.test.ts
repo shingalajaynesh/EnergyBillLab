@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(13);
+    expect(insightsRegistry).toHaveLength(14);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(13);
+    expect(getPublishedInsights()).toHaveLength(14);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-census-division-residential-electricity-rate-breakdown',
+      'august-2026-home-appliance-operating-cost-hierarchy-benchmark',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(146);
+    expect(entries).toHaveLength(148);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -384,6 +384,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-home-appliance-operating-cost-hierarchy-benchmark',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
@@ -391,10 +398,10 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     const urls = sitemap().map((entry) => entry.url);
     expect(urls).toContain('https://energybilllab.com/insights/category/home-energy-costs');
     expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
-    expect(urls.some((url) => url.includes('/insights/category/appliances'))).toBe(false);
+    expect(urls).toContain('https://energybilllab.com/insights/category/appliances');
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(3);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(2);
+    expect(getInsightsByCategory('appliances')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(2);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
     expect(getInsightsByCategory('solar')).toHaveLength(1);
@@ -445,7 +452,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(13);
+    expect(insightsRegistry).toHaveLength(14);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
