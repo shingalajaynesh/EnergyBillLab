@@ -104,7 +104,12 @@ export default function GuideMicrowaveElectricityPage() {
         <p>
           For single portions or reheating, microwaves use 50% to 70% less energy than full-size
           electric ovens because they heat food directly rather than warming a large oven cavity and
-          surrounding air.
+          surrounding air. For boiling water specifically, see our{' '}
+          <Link href="/guides/how-much-electricity-does-an-electric-kettle-use">
+            Electric Kettle Power Consumption Guide
+          </Link>
+          , which demonstrates why submerged resistance heating elements outperform microwaves in
+          thermal efficiency for liquids.
         </p>
         <p>
           Calculate your exact kitchen appliance energy costs with our{' '}

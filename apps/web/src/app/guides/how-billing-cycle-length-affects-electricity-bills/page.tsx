@@ -126,14 +126,20 @@ export default function GuideBillingCycleLengthPage() {
         <p>
           If your utility uses tiered tariffs (where kWh prices increase above a monthly threshold,
           such as 800 kWh), extra billing days push additional consumption into higher-priced rate
-          tiers, amplifying the bill increase.
+          tiers, amplifying the bill increase. For example, at the EIA national average rate of{' '}
+          <strong>18.44 ¢/kWh</strong> (May 2026 benchmark release), 4 extra billing days in a
+          33-day cycle add 120 kWh ($22.13) in baseline power before tiered multipliers apply.
         </p>
         <p>
           Normalize your monthly statements using our{' '}
-          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, or read our
-          guide on{' '}
-          <Link href="/guides/why-is-my-electric-bill-high-when-usage-is-low">
-            Why Bills Stay High When Usage Drops
+          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, check if your
+          meter was estimated in our{' '}
+          <Link href="/guides/estimated-vs-actual-meter-reading">
+            Estimated vs. Actual Meter Reading Guide
+          </Link>
+          , or understand line-item surcharges in our{' '}
+          <Link href="/guides/fuel-adjustment-charges-and-utility-riders-explained">
+            Fuel Adjustment Charges & Riders Guide
           </Link>
           .
         </p>

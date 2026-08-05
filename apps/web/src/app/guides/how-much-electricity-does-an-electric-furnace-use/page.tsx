@@ -120,14 +120,23 @@ export default function GuideElectricFurnaceElectricityPage() {
         <p>
           Because electric resistance furnaces convert 100% of electrical energy directly into heat
           (COP 1.0), upgrading to an air-source heat pump (COP 2.5–3.5) reduces winter heating kWh
-          consumption by 50% to 60%.
+          consumption by 50% to 60%. At the U.S. EIA national average rate of{' '}
+          <strong>18.44 ¢/kWh</strong> (May 2026 benchmark release), a 15 kW furnace operating 6
+          hours daily costs $248.94 per month, whereas a heat pump delivering identical warmth costs
+          $83.00 to $99.50.
         </p>
         <p>
-          Calculate space heating operating costs with our{' '}
-          <Link href="/tools/space-heater-cost-calculator">Space Heater Cost Calculator</Link> or
+          Calculate room heating operating costs with our{' '}
+          <Link href="/tools/space-heater-cost-calculator">Space Heater Cost Calculator</Link>,
           evaluate heat pump upgrades in our{' '}
           <Link href="/guides/heat-pump-vs-electric-resistance-heating-cost">
             Heat Pump vs. Resistance Heating Guide
+          </Link>
+          , analyze overall bill spikes with our{' '}
+          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, or compare
+          delivered thermal costs in our{' '}
+          <Link href="/insights/august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark">
+            August 2026 Gas vs. Electric Heating $/MMBtu Benchmark
           </Link>
           .
         </p>

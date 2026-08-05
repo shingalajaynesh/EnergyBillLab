@@ -126,13 +126,16 @@ export default function GuideFuelAdjustmentsAndRidersPage() {
         </p>
         <p>
           Separate riders from base charges using our{' '}
-          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link> or learn more in
+          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, learn more in
           our{' '}
           <Link href="/guides/how-to-read-an-electric-bill-line-by-line">
             Reading Your Electric Bill Guide
-          </Link>{' '}
-          or rate increase guide:{' '}
-          <Link href="/guides/why-electricity-rates-change">Why Electricity Rates Change</Link>.
+          </Link>
+          , or see how wholesale market volatility drives rider surcharges in our{' '}
+          <Link href="/insights/july-2026-summer-wholesale-electricity-price-forecast">
+            Summer Wholesale Electricity Price Forecast
+          </Link>
+          .
         </p>
       </section>
     </GuideArticleView>

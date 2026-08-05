@@ -1,5 +1,6 @@
 import { calculateApplianceCost } from '@energy-bill-lab/calculation-engine';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
@@ -70,6 +71,14 @@ export default function GuideApplianceUsagePage() {
           <li>
             <strong>1,500W Toaster (3 min/day for 30 days):</strong> 1,500W × 0.05 hrs × 30 days ÷
             1,000 = <strong>2.25 kWh/month</strong> ($0.37/month at 16.5¢/kWh).
+          </li>
+          <li>
+            <strong>1,200W Electric Kettle (5 min/boil, 3 boils/day):</strong> 1,200W × 0.25 hrs ×
+            30 days ÷ 1,000 = <strong>9.00 kWh/month</strong> ($1.49/month). See our detailed{' '}
+            <Link href="/guides/how-much-electricity-does-an-electric-kettle-use">
+              Electric Kettle Electricity Usage Guide
+            </Link>
+            .
           </li>
           <li>
             <strong>1,500W Space Heater (8 hrs/day for 30 days):</strong> 1,500W × 8.0 hrs × 30 days

@@ -129,10 +129,14 @@ export default function GuideVampirePowerPage() {
         </p>
         <p>
           Diagnose your total electric bill with our{' '}
-          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link> or evaluate
-          router standby draw in our{' '}
-          <Link href="/guides/how-much-electricity-does-a-wifi-router-use">
-            Wi-Fi Router Energy Guide
+          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, calculate
+          individual standby loads with our{' '}
+          <Link href="/tools/appliance-energy-cost-calculator">
+            Appliance Energy Cost Calculator
+          </Link>
+          , or see how phantom load ranks against major appliances in our{' '}
+          <Link href="/insights/august-2026-home-appliance-operating-cost-hierarchy-benchmark">
+            August 2026 Home Appliance Operating Cost Hierarchy Benchmark
           </Link>
           .
         </p>

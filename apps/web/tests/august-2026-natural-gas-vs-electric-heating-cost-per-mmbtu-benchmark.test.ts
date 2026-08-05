@@ -28,7 +28,8 @@ describe('August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu Insight', 
   it('3. is included in published insights', () => {
     const published = getPublishedInsights('2026-08-05T12:00:00.000Z');
     const found = published.find(
-      (item) => item.slug === 'august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark',
+      (item) =>
+        item.slug === 'august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark',
     );
     expect(found).toBeDefined();
     expect(found?.status).toBe('published');

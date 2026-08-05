@@ -117,14 +117,14 @@ export default function GuideEstimatedVsActualMeterPage() {
         </p>
         <p>
           Analyze your meter statement with our{' '}
-          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link> or learn more
-          about billing cycles in our{' '}
+          <Link href="/electricity-bill-analyzer">Electricity Bill Analyzer</Link>, learn how cycle
+          days impact statements in our{' '}
           <Link href="/guides/how-billing-cycle-length-affects-electricity-bills">
             Billing Cycle Length Guide
-          </Link>{' '}
-          or high bill diagnostics:{' '}
-          <Link href="/guides/why-is-my-electric-bill-so-high">
-            Why Is My Electric Bill So High?
+          </Link>
+          , or inspect line-item codes in our{' '}
+          <Link href="/guides/how-to-read-an-electric-bill-line-by-line">
+            Line-by-Line Electric Bill Reading Guide
           </Link>
           .
         </p>

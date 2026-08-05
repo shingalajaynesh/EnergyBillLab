@@ -186,4 +186,48 @@ describe('Analytics, Usability, & Internal Linking Sprint Verification', () => {
     expect(fs.existsSync(vercelPath)).toBe(true);
     expect(fs.existsSync(renderPath)).toBe(true);
   });
+
+  it('13. Kettle guide contains the 1,200-watt, 5-minute, 0.1-kWh worked example', () => {
+    const kettlePageFile = fs.readFileSync(
+      path.join(
+        rootDir,
+        'src/app/guides/how-much-electricity-does-an-electric-kettle-use/page.tsx',
+      ),
+      'utf-8',
+    );
+    expect(kettlePageFile).toContain(
+      '1,200-watt electric kettle running for 5 minutes uses 0.1 kWh',
+    );
+    expect(kettlePageFile).toContain('1,200 W ÷ 1,000 = 1.2 kW');
+    expect(kettlePageFile).toContain('5 minutes ÷ 60 = 0.0833 hours');
+    expect(kettlePageFile).toContain('0.10 kWh');
+  });
+
+  it('14. Kettle page links to appliance calculator and appliance hub links to kettle guide', () => {
+    const kettlePageFile = fs.readFileSync(
+      path.join(
+        rootDir,
+        'src/app/guides/how-much-electricity-does-an-electric-kettle-use/page.tsx',
+      ),
+      'utf-8',
+    );
+    expect(kettlePageFile).toContain('/tools/appliance-energy-cost-calculator');
+    expect(kettlePageFile).toContain(
+      '/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill',
+    );
+
+    const appliancesHubFile = fs.readFileSync(
+      path.join(rootDir, 'src/app/appliances/page.tsx'),
+      'utf-8',
+    );
+    expect(appliancesHubFile).toContain('/guides/how-much-electricity-does-an-electric-kettle-use');
+  });
+
+  it('15. Sitemap contains zero www URLs and all sitemap URLs are unique apex host URLs', () => {
+    const entries = sitemap();
+    const urls = entries.map((e) => e.url);
+    expect(urls.every((u) => u.startsWith('https://energybilllab.com/'))).toBe(true);
+    expect(urls.some((u) => u.includes('www.energybilllab.com'))).toBe(false);
+    expect(new Set(urls).size).toBe(entries.length);
+  });
 });

@@ -93,6 +93,7 @@ export default function AppliancesPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-electricity-do-household-appliances-use',
+    '/guides/how-much-electricity-does-an-electric-kettle-use',
     '/guides/how-much-electricity-does-a-refrigerator-use',
     '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
     '/guides/how-much-does-it-cost-to-run-an-electric-water-heater',

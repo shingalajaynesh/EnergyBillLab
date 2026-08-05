@@ -4,8 +4,10 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   id: 'insight-2026-08-05-august-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark',
   slug: 'august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark',
   status: 'published',
-  title: 'August 2026 Residential Natural Gas vs. Electric Heating Cost-per-MMBtu & AFUE Efficiency Benchmark',
-  metaTitle: 'August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu & AFUE Efficiency Benchmark',
+  title:
+    'August 2026 Residential Natural Gas vs. Electric Heating Cost-per-MMBtu & AFUE Efficiency Benchmark',
+  metaTitle:
+    'August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu & AFUE Efficiency Benchmark',
   metaDescription:
     'EIA May 2026 price data benchmarked across heating fuels: Heat pumps (COP 3.0, $18.01/MMBtu) save 6.8% vs 96% gas furnaces ($19.33/MMBtu), while electric resistance ($54.04/MMBtu) costs 179.6% more.',
   summary:
@@ -41,7 +43,8 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   ],
   sections: [
     {
-      heading: 'Delivered thermal heating cost per MMBtu across fuel types and equipment efficiency',
+      heading:
+        'Delivered thermal heating cost per MMBtu across fuel types and equipment efficiency',
       paragraphs: [
         'To establish a direct economic comparison, raw fuel consumption must account for equipment thermal efficiency losses. Standard natural gas furnaces lose energy up flue vents, achieving 80% to 96% Annual Fuel Utilization Efficiency (AFUE). Electric resistance systems convert 100% of electrical energy into heat (COP 1.0). Heat pumps move ambient heat rather than creating it, achieving Coefficients of Performance (COP) from 2.0 to 3.5.',
         'The table below summarizes the raw fuel input required to deliver 1 MMBtu of net warmth into a home, calculating national average operating costs and seasonal expenses based on a baseline 50-MMBtu winter heating requirement.',
@@ -75,7 +78,8 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   sources: [
     {
       organization: 'U.S. Energy Information Administration',
-      title: 'Natural Gas Monthly — Table 18 Average Price of Natural Gas Delivered to Residential Consumers by State',
+      title:
+        'Natural Gas Monthly — Table 18 Average Price of Natural Gas Delivered to Residential Consumers by State',
       url: 'https://www.eia.gov/naturalgas/monthly/pdf/table_18.pdf',
       topic:
         'Official monthly U.S. residential natural gas prices, volume consumption, and state-level benchmark data.',
@@ -90,7 +94,8 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
     },
     {
       organization: 'U.S. Department of Energy',
-      title: 'Office of Energy Efficiency & Renewable Energy — Heat Pump Systems and Furnaces Standards',
+      title:
+        'Office of Energy Efficiency & Renewable Energy — Heat Pump Systems and Furnaces Standards',
       url: 'https://www.energy.gov/energysaver/furnaces-and-boilers',
       topic:
         'AFUE testing standards, COP performance curves, and energy efficiency ratings for residential heating equipment.',
