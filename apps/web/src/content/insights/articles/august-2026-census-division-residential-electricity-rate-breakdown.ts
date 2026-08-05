@@ -35,7 +35,7 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
   ],
   bodyParagraphs: [
     'Residential electricity prices in the United States are heavily influenced by geographic location, regional generation fuel mix, transmission infrastructure investment, and state regulatory structures. While national metrics provide useful top-line benchmarks, regional analysis across the nine official U.S. Census Divisions exposes stark cost disparities faced by American households.',
-    'Data published by the U.S. Energy Information Administration (EIA) in the May 2026 Electric Power Monthly release (published July 31, 2026) reveals that regional residential rates span from 14.75 cents per kWh in the central Midwest to 28.14 cents per kWh in the Northeast. Understanding these regional baseline rates helps consumers evaluate utility bill benchmarks, assess moving costs, and identify realistic energy savings potential.',
+    'Data published by the U.S. Energy Information Administration (EIA) in the May 2026 Electric Power Monthly release (published July 23, 2026) reveals that regional residential rates span from 14.75 cents per kWh in the central Midwest to 28.14 cents per kWh in the Northeast. Understanding these regional baseline rates helps consumers evaluate utility bill benchmarks, assess moving costs, and identify realistic energy savings potential.',
     'This report analyzes residential electricity rate structures, monthly bill burdens, and year-over-year percentage trends across all nine U.S. Census Divisions for the August 2026 benchmark period.',
   ],
   sections: [
@@ -67,7 +67,7 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
     {
       heading: 'Methodology and limits',
       paragraphs: [
-        'Data is sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M "Monthly Electric Power Industry Report" (May 2026 reporting period, released July 31, 2026). Regional figures represent weighted average revenue per kilowatt-hour for residential end-use customers across each Census Division.',
+        'Data is sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M "Monthly Electric Power Industry Report" (May 2026 reporting period, released July 23, 2026). Regional figures represent weighted average revenue per kilowatt-hour for residential end-use customers across each Census Division.',
         'Formula: Monthly Bill Burden ($) = 1,000 kWh * (Regional Rate ¢/kWh / 100). Regional Spread Ratio = Highest Regional Rate / Lowest Regional Rate. Annual Cost Variance = (Highest Monthly Bill Burden - Lowest Monthly Bill Burden) * 12.',
         'Calculations model volumetric energy usage charges. Utility fixed monthly account fees, local franchise taxes, and utility rider surcharges vary by specific service territory and are excluded from regional average retail rate comparisons.',
       ],
