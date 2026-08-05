@@ -7,6 +7,7 @@ import { august2026CensusDivisionResidentialElectricityRateBreakdown } from './a
 import { august2026CentralAirConditionerSeer2CoolingCostBenchmark } from './articles/august-2026-central-air-conditioner-seer2-cooling-cost-benchmark';
 import { august2026HomeApplianceOperatingCostHierarchyBenchmark } from './articles/august-2026-home-appliance-operating-cost-hierarchy-benchmark';
 import { august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchmark } from './articles/august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark';
+import { august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark } from './articles/august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark';
 import { august2026StateResidentialElectricityPriceSpreadBenchmark } from './articles/august-2026-state-residential-electricity-price-spread-benchmark';
 import { august2026TimeOfUsePeakRateSpreadApplianceLoadShiftingBenchmark } from './articles/august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark';
 import { july2026SummerWholesaleElectricityPriceForecast } from './articles/july-2026-summer-wholesale-electricity-price-forecast';
@@ -36,6 +37,7 @@ const rawArticles: InsightRecord[] = [
   august2026CentralAirConditionerSeer2CoolingCostBenchmark,
   august2026CensusDivisionResidentialElectricityRateBreakdown,
   august2026HomeApplianceOperatingCostHierarchyBenchmark,
+  august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time
