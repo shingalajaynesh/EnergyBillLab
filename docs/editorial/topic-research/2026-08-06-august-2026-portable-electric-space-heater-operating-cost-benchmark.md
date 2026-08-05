@@ -2,7 +2,7 @@
 
 **Topic:** August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark  
 **Research Date:** August 6, 2026  
-**Status:** Approved & Completed  
+**Status:** Approved & Completed
 
 ---
 

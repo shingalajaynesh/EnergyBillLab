@@ -30,9 +30,7 @@ describe('August 2026 Portable Electric Space Heater Operating Cost Benchmark In
   it('3. is included in published insights', () => {
     const published = getPublishedInsights('2026-08-05T12:00:00.000Z');
     const found = published.find(
-      (item) =>
-        item.slug ===
-        'august-2026-portable-electric-space-heater-operating-cost-benchmark',
+      (item) => item.slug === 'august-2026-portable-electric-space-heater-operating-cost-benchmark',
     );
     expect(found).toBeDefined();
     expect(found?.status).toBe('published');

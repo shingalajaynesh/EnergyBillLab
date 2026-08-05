@@ -4,10 +4,8 @@ export const august2026PortableElectricSpaceHeaterOperatingCostBenchmark: Insigh
   id: 'insight-2026-08-06-august-portable-electric-space-heater-operating-cost-benchmark',
   slug: 'august-2026-portable-electric-space-heater-operating-cost-benchmark',
   status: 'published',
-  title:
-    'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
-  metaTitle:
-    'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
+  title: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
+  metaTitle: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
   metaDescription:
     'EIA May 2026 electricity rates benchmarked for space heaters: A 1,500W heater costs $0.28/hr ($66.38/mo @ 8h/day). Compare wattage levels, state rates, and zone heating rules.',
   summary:
@@ -44,8 +42,7 @@ export const august2026PortableElectricSpaceHeaterOperatingCostBenchmark: Insigh
   ],
   sections: [
     {
-      heading:
-        'Space heater wattage scaling & hourly operating cost hierarchy',
+      heading: 'Space heater wattage scaling & hourly operating cost hierarchy',
       paragraphs: [
         'Portable electric space heaters feature internal wattage selector switches (typically Low, Medium, High, or Eco mode) or adjustable thermostatic duty-cycling controls. Lowering the wattage setting reduces the instantaneous rate of electrical current drawn by the heating elements, proportionately lowering the hourly cost.',
         'The table below summarizes electricity consumption and operating costs across common space heater wattage ratings at the national average rate of 18.44¢/kWh, assuming continuous operation (100% duty cycle).',
