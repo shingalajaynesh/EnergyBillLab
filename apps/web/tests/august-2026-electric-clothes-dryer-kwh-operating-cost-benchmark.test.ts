@@ -10,9 +10,7 @@ import { validateInsightRecord } from '../src/lib/insights-validation';
 
 describe('August 2026 Electric Clothes Dryer kWh Operating Cost Benchmark Insight', () => {
   it('1. passes full automated registry record validation', () => {
-    const result = validateInsightRecord(
-      august2026ElectricClothesDryerKwhOperatingCostBenchmark,
-    );
+    const result = validateInsightRecord(august2026ElectricClothesDryerKwhOperatingCostBenchmark);
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
   });
@@ -37,10 +35,7 @@ describe('August 2026 Electric Clothes Dryer kWh Operating Cost Benchmark Insigh
   });
 
   it('4. activates appliances category with published articles', () => {
-    const applianceInsights = getInsightsByCategory(
-      'appliances',
-      '2026-08-07T12:00:00.000Z',
-    );
+    const applianceInsights = getInsightsByCategory('appliances', '2026-08-07T12:00:00.000Z');
     expect(applianceInsights.length).toBeGreaterThanOrEqual(1);
   });
 
