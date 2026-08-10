@@ -6,6 +6,7 @@ import { april2026ResidentialNaturalGasPriceHeatingCost } from './articles/april
 import { august2026CensusDivisionResidentialElectricityRateBreakdown } from './articles/august-2026-census-division-residential-electricity-rate-breakdown';
 import { august2026CentralAirConditionerSeer2CoolingCostBenchmark } from './articles/august-2026-central-air-conditioner-seer2-cooling-cost-benchmark';
 import { august2026ElectricClothesDryerKwhOperatingCostBenchmark } from './articles/august-2026-electric-clothes-dryer-kwh-operating-cost-benchmark';
+import { august2026RefrigeratorKwhAnnualOperatingCostBenchmark } from './articles/august-2026-refrigerator-kwh-annual-operating-cost-benchmark';
 import { august2026HomeApplianceOperatingCostHierarchyBenchmark } from './articles/august-2026-home-appliance-operating-cost-hierarchy-benchmark';
 import { august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchmark } from './articles/august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark';
 import { august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark } from './articles/august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark';
@@ -42,6 +43,7 @@ const rawArticles: InsightRecord[] = [
   august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark,
   august2026PortableElectricSpaceHeaterOperatingCostBenchmark,
   august2026ElectricClothesDryerKwhOperatingCostBenchmark,
+  august2026RefrigeratorKwhAnnualOperatingCostBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time
