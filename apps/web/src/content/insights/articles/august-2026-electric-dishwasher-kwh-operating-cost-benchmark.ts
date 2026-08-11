@@ -5,8 +5,7 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
   slug: 'august-2026-electric-dishwasher-kwh-operating-cost-benchmark',
   title:
     'August 2026 Electric Dishwasher kWh Consumption & Heated Dry vs. Air-Dry Operating Cost Benchmark',
-  metaTitle:
-    'August 2026 Dishwasher Electricity Cost & Heated Dry Benchmark | EnergyBillLab',
+  metaTitle: 'August 2026 Dishwasher Electricity Cost & Heated Dry Benchmark | EnergyBillLab',
   metaDescription:
     'Dishwasher electricity cost benchmark for August 2026 using May 2026 EIA rate data (18.44¢/kWh). Disabling heated dry saves $19.82/year nationally ($34.83 in CA). Running a dishwasher costs 65% less electricity than hand washing.',
   status: 'published',
@@ -93,13 +92,15 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
       organization: 'U.S. Department of Energy (DOE)',
       title: '10 CFR Part 430 — Energy Conservation Program: Test Procedures for Dishwashers',
       url: 'https://www.energy.gov/eere/buildings/appliance-and-equipment-standards-program',
-      topic: 'Dishwasher standard cycle test protocols, annual cycle frequency (215 cycles/yr), and energy measurement',
+      topic:
+        'Dishwasher standard cycle test protocols, annual cycle frequency (215 cycles/yr), and energy measurement',
     },
     {
       organization: 'ENERGY STAR Program',
       title: 'ENERGY STAR Product Specifications for Residential Dishwashers (Version 6.0)',
       url: 'https://www.energystar.gov/products/appliances/dishwashers',
-      topic: 'ENERGY STAR standard (240 kWh/yr max) and compact (155 kWh/yr max) energy efficiency criteria',
+      topic:
+        'ENERGY STAR standard (240 kWh/yr max) and compact (155 kWh/yr max) energy efficiency criteria',
     },
   ],
   relatedRoutes: [

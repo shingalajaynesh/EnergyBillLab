@@ -16,9 +16,7 @@ describe('August 2026 Residential Refrigerator kWh Operating Cost Benchmark Insi
   });
 
   it('2. is registered in the global insights registry', () => {
-    const found = getInsightBySlug(
-      'august-2026-refrigerator-kwh-annual-operating-cost-benchmark',
-    );
+    const found = getInsightBySlug('august-2026-refrigerator-kwh-annual-operating-cost-benchmark');
     expect(found).toBeDefined();
     expect(found?.id).toBe(
       'insight-2026-08-10-august-refrigerator-kwh-annual-operating-cost-benchmark',

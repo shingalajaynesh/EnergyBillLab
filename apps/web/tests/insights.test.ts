@@ -75,9 +75,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe(
-      'august-2026-electric-dishwasher-kwh-operating-cost-benchmark',
-    );
+    expect(published[0]?.slug).toBe('august-2026-electric-dishwasher-kwh-operating-cost-benchmark');
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -398,9 +396,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     ).toBe(true);
     expect(
       entries.some((e) =>
-        e.url.endsWith(
-          '/insights/august-2026-electric-dishwasher-kwh-operating-cost-benchmark',
-        ),
+        e.url.endsWith('/insights/august-2026-electric-dishwasher-kwh-operating-cost-benchmark'),
       ),
     ).toBe(true);
   });
