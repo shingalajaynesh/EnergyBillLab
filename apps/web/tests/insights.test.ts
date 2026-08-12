@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(19);
+    expect(insightsRegistry).toHaveLength(20);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(19);
+    expect(getPublishedInsights()).toHaveLength(20);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -75,7 +75,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe('august-2026-electric-dishwasher-kwh-operating-cost-benchmark');
+    expect(published[0]?.slug).toBe(
+      'august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
+    );
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -309,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(154);
+    expect(entries).toHaveLength(155);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -399,6 +401,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/august-2026-electric-dishwasher-kwh-operating-cost-benchmark'),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
@@ -410,7 +419,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(4);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(6);
+    expect(getInsightsByCategory('appliances')).toHaveLength(7);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
@@ -462,7 +471,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(19);
+    expect(insightsRegistry).toHaveLength(20);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
