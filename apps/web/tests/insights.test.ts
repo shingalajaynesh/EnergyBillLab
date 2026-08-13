@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(20);
+    expect(insightsRegistry).toHaveLength(21);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(20);
+    expect(getPublishedInsights()).toHaveLength(21);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
+      'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(155);
+    expect(entries).toHaveLength(156);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -408,6 +408,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
+        ),
+      ),
+    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
@@ -419,7 +426,8 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(4);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(7);
+    expect(getInsightsByCategory('appliances')).toHaveLength(8);
+    expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
@@ -471,7 +479,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(20);
+    expect(insightsRegistry).toHaveLength(21);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -905,6 +913,23 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.authorName).toBe('Jaynesh Shingala');
     expect(article?.summary).toContain('18.44¢/kWh');
     expect(article?.summary).toContain('360 kWh per year');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    const validation = validateInsightRecord(article!);
+    expect(validation.valid).toBe(true);
+  });
+
+  // Test 41: August 2026 Electric Dehumidifier kWh Consumption & Operating Cost Benchmark Insight verification
+  it('41. validates the August 2026 Electric Dehumidifier kWh Consumption & Operating Cost Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('appliances');
+    expect(article?.reportingPeriod).toBe('August 2026 (May 2026 EIA Release)');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44¢/kWh');
+    expect(article?.summary).toContain('198.0 kWh per month');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     const validation = validateInsightRecord(article!);
     expect(validation.valid).toBe(true);
