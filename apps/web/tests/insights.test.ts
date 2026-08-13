@@ -410,9 +410,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     ).toBe(true);
     expect(
       entries.some((e) =>
-        e.url.endsWith(
-          '/insights/august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
-        ),
+        e.url.endsWith('/insights/august-2026-electric-dehumidifier-kwh-operating-cost-benchmark'),
       ),
     ).toBe(true);
   });
