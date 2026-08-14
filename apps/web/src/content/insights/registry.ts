@@ -25,6 +25,7 @@ import { may2026ResidentialNaturalGasPriceOffSeasonBillImpact } from './articles
 import { may2026RooftopSolarGenerationRetailSavingsBenchmark } from './articles/may-2026-rooftop-solar-generation-retail-savings-benchmark';
 import { august2026RooftopSolarNem3NetBillingExportValueBenchmark } from './articles/august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark';
 import { august2026SwimmingPoolPumpKwhOperatingCostBenchmark } from './articles/august-2026-swimming-pool-pump-kwh-operating-cost-benchmark';
+import { august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark } from './articles/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark';
 
 /**
  * Array of individual article modules imported from ./articles/
@@ -54,6 +55,7 @@ const rawArticles: InsightRecord[] = [
   august2026ElectricDehumidifierKwhOperatingCostBenchmark,
   august2026SwimmingPoolPumpKwhOperatingCostBenchmark,
   august2026RooftopSolarNem3NetBillingExportValueBenchmark,
+  august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time

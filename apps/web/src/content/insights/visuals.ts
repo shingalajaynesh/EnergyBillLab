@@ -916,4 +916,40 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Retail Buffer: Regulated fixed retail tariffs protect residential consumers from volatile hourly wholesale electricity market price spikes.',
   },
+
+  // 24. August 2026 Induction vs Electric Radiant vs Gas Cooktop Energy Cost Benchmark
+  'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark': {
+    title: 'Cooktop Annual Operating Cost & Thermal Efficiency Benchmark',
+    subtitle:
+      'Annual energy expense for 1 hour of daily cooking at 18.44¢/kWh electricity and $1.44/therm natural gas',
+    badge: 'Efficiency Matrix',
+    badgeType: 'primary',
+    items: [
+      {
+        label: 'Smooth Radiant Electric Range (74% efficiency · 588 kWh/yr)',
+        displayValue: '$108.43/yr',
+        value: 108.43,
+        color: 'danger',
+        subLabel: 'Intermittent surface conduction with 26% wasted thermal heat transfer',
+      },
+      {
+        label: 'Induction Cooktop (85% efficiency · 511 kWh/yr)',
+        displayValue: '$94.23/yr',
+        value: 94.23,
+        color: 'success',
+        highlight: true,
+        badge: 'Best Thermal Efficiency',
+        subLabel: 'Direct electromagnetic pan heating saves 77 kWh/yr vs radiant electric',
+      },
+      {
+        label: 'Standard Natural Gas Range (40% efficiency · 32.85 therms/yr)',
+        displayValue: '$47.30/yr',
+        value: 47.3,
+        color: 'warning',
+        subLabel: 'Low commodity fuel cost but 60% of combustion heat escapes into kitchen air',
+      },
+    ],
+    footerNote:
+      'Thermal Physics: Induction transfers 85% to 90% of energy directly into cookware, generating minimal ambient waste heat compared to 5,400 BTU/hr of waste heat from open gas flames.',
+  },
 };

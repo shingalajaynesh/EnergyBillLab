@@ -6,7 +6,12 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PageContainer } from '@/components/page-container';
 import { RelatedLinks } from '@/components/related-links';
 import { TechnicalVisualCard } from '@/components/technical-visual-card';
-import { formatHumanDate, getInsightBySlug, INSIGHT_CATEGORIES } from '@/content/insights';
+import {
+  formatHumanDate,
+  getInsightBySlug,
+  getPublishedInsights,
+  INSIGHT_CATEGORIES,
+} from '@/content/insights';
 import { INSIGHT_VISUAL_CONFIGS } from '@/content/insights/visuals';
 import { createPageMetadata } from '@/lib/metadata';
 import {
@@ -23,11 +28,26 @@ type InsightPageProps = {
   }>;
 };
 
+export function generateStaticParams() {
+  const published = getPublishedInsights();
+  return published.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
 export async function generateMetadata(props: InsightPageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const article = getInsightBySlug(slug);
+  const nowCalendarDate = new Date().toISOString().slice(0, 10);
+  const localCalendarDate = new Date().toLocaleDateString('en-CA');
+  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
 
-  if (!article || article.status !== 'published' || article.noindex) {
+  if (
+    !article ||
+    article.status !== 'published' ||
+    article.noindex ||
+    article.publishedAt.slice(0, 10) > maxValidDate
+  ) {
     return createPageMetadata({
       title: 'Insight Not Found',
       description: 'The requested energy insight is unavailable.',
@@ -45,9 +65,16 @@ export async function generateMetadata(props: InsightPageProps): Promise<Metadat
 export default async function InsightDetailPage(props: InsightPageProps) {
   const { slug } = await props.params;
   const article = getInsightBySlug(slug);
-  const nowIso = new Date().toISOString();
+  const nowCalendarDate = new Date().toISOString().slice(0, 10);
+  const localCalendarDate = new Date().toLocaleDateString('en-CA');
+  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
 
-  if (!article || article.status !== 'published' || article.publishedAt > nowIso) {
+  if (
+    !article ||
+    article.status !== 'published' ||
+    article.noindex ||
+    article.publishedAt.slice(0, 10) > maxValidDate
+  ) {
     notFound();
   }
 
