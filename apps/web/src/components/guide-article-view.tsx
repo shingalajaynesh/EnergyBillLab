@@ -5,7 +5,9 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { DataSourceNote } from '@/components/data-source-note';
 import { PageContainer } from '@/components/page-container';
 import { RelatedLinks } from '@/components/related-links';
+import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import type { GuideDefinition } from '@/content/guides';
+import { GUIDE_VISUAL_CONFIGS } from '@/content/guides-visuals';
 import { getSiteUrl } from '@/lib/site';
 import { serializeStructuredData } from '@/lib/structured-data';
 
@@ -66,6 +68,8 @@ export function GuideArticleView({
     },
   };
 
+  const visualConfig = GUIDE_VISUAL_CONFIGS[guide.slug];
+
   return (
     <PageContainer>
       <Breadcrumbs
@@ -115,6 +119,17 @@ export function GuideArticleView({
               ))}
             </ul>
           </div>
+        ) : null}
+
+        {visualConfig ? (
+          <TechnicalVisualCard
+            title={visualConfig.title}
+            subtitle={visualConfig.subtitle}
+            badge={visualConfig.badge}
+            badgeType={visualConfig.badgeType}
+            items={visualConfig.items}
+            footerNote={visualConfig.footerNote}
+          />
         ) : null}
 
         <div>{children}</div>

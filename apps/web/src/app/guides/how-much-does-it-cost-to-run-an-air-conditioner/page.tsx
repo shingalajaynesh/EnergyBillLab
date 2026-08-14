@@ -2,7 +2,6 @@ import { calculateAcCost } from '@energy-bill-lab/calculation-engine';
 import type { Metadata } from 'next';
 
 import { GuideArticleView } from '@/components/guide-article-view';
-import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -68,49 +67,10 @@ export default function GuideAcCostPage() {
       <section className={styles.section}>
         <h2>3. Monthly Operating Cost Comparison by AC Type</h2>
         <p>
-          Below is a comparison showing estimated monthly cooling costs across standard air
+          Below is a comparison table showing estimated monthly cooling costs across standard air
           conditioner configurations based on a 30-day billing period at an electricity rate of
           16.5¢/kWh:
         </p>
-        <TechnicalVisualCard
-          title="Air Conditioner Monthly Operating Cost Benchmarks"
-          subtitle="Monthly electricity cost across common AC unit sizes and efficiency ratings at 16.5¢/kWh"
-          badge="Cooling Cost Breakdown"
-          badgeType="primary"
-          items={[
-            {
-              label: 'Central AC 3-Ton (36,000 BTU @ 3,272W, 9h/day, 60% cycle)',
-              displayValue: '$87.47/mo',
-              value: 87.47,
-              color: 'danger',
-              subLabel: '530.1 kWh/month · Cools whole single-family home',
-            },
-            {
-              label: 'Ductless Mini-Split (18,000 BTU @ 1,440W, 10h/day, 50% cycle)',
-              displayValue: '$35.64/mo',
-              value: 35.64,
-              color: 'primary',
-              subLabel: '216.0 kWh/month · Inverter variable-speed multi-zone efficiency',
-            },
-            {
-              label: 'Living Room Window AC (12,000 BTU @ 1,200W, 8h/day, 65% cycle)',
-              displayValue: '$30.89/mo',
-              value: 30.89,
-              color: 'warning',
-              subLabel: '187.2 kWh/month · Medium living area cooling',
-            },
-            {
-              label: 'Bedroom Window AC (6,000 BTU @ 545W, 8h/day, 60% cycle)',
-              displayValue: '$12.95/mo',
-              value: 12.95,
-              color: 'success',
-              highlight: true,
-              badge: 'Zone Cooling',
-              subLabel: '78.5 kWh/month · Single bedroom overnight cooling',
-            },
-          ]}
-          footerNote="Efficiency Tip: Upgrading from an older 10 SEER central AC to an ENERGY STAR 16+ SEER2 unit saves 35% to 45% on seasonal cooling bills."
-        />
         <div className={styles.tableWrapper}>
           <table aria-label="Air Conditioner Operating Cost Benchmarks">
             <caption>Air Conditioner Monthly Electricity Cost Benchmarks by Unit Type</caption>

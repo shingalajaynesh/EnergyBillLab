@@ -2,7 +2,6 @@ import { calculateEvChargingCost } from '@energy-bill-lab/calculation-engine';
 import type { Metadata } from 'next';
 
 import { GuideArticleView } from '@/components/guide-article-view';
-import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -66,49 +65,10 @@ export default function GuideEvChargingCostPage() {
       <section className={styles.section}>
         <h2>3. EV Home Charging Session Cost Benchmarks</h2>
         <p>
-          Below is a reference benchmark comparison showing grid energy draw and session costs across
+          Below is a reference benchmark table showing grid energy draw and session costs across
           common EV battery capacities when charging from 20% to 80% (adding 60% state-of-charge) at
           a Level 2 efficiency of 88% and a rate of 16.5¢/kWh:
         </p>
-        <TechnicalVisualCard
-          title="EV Home Charging Session Cost (20% to 80% Charge)"
-          subtitle="Grid electricity cost per charging session across vehicle classes at 16.5¢/kWh"
-          badge="EV vs Gas Benchmark"
-          badgeType="primary"
-          items={[
-            {
-              label: 'Full-Size Truck (131 kWh Battery · 89.3 kWh Grid Draw)',
-              displayValue: '$14.74/charge',
-              value: 14.74,
-              color: 'warning',
-              subLabel: '6.1¢ per mile · Adds ~180 miles of highway driving range',
-            },
-            {
-              label: 'Long-Range SUV (75 kWh Battery · 51.1 kWh Grid Draw)',
-              displayValue: '$8.44/charge',
-              value: 8.44,
-              color: 'primary',
-              subLabel: '4.7¢ per mile · Adds ~180-200 miles of driving range',
-            },
-            {
-              label: 'Standard Sedan (60 kWh Battery · 40.9 kWh Grid Draw)',
-              displayValue: '$6.75/charge',
-              value: 6.75,
-              color: 'primary',
-              subLabel: '4.5¢ per mile · Adds ~160-180 miles of commuter range',
-            },
-            {
-              label: 'Compact EV (40 kWh Battery · 27.3 kWh Grid Draw)',
-              displayValue: '$4.50/charge',
-              value: 4.50,
-              color: 'success',
-              highlight: true,
-              badge: 'Lowest Cost',
-              subLabel: '4.5¢ per mile · Adds ~100-120 miles of city driving range',
-            },
-          ]}
-          footerNote="Fuel Cost Comparison: Driving an EV at 4.5¢–4.7¢ per mile is equivalent to paying $1.35 to $1.41 per gallon in a 30-MPG gasoline vehicle."
-        />
         <div className={styles.tableWrapper}>
           <table aria-label="EV Home Charging Cost Benchmarks">
             <caption>

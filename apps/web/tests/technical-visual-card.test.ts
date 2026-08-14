@@ -3,9 +3,12 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 import { TechnicalVisualCard } from '../src/components/technical-visual-card';
+import { guideSlugs } from '../src/content/guides';
+import { GUIDE_VISUAL_CONFIGS } from '../src/content/guides-visuals';
+import { getPublishedInsights } from '../src/content/insights';
 import { INSIGHT_VISUAL_CONFIGS } from '../src/content/insights/visuals';
 
-describe('TechnicalVisualCard Component & Insights Visual Configs', () => {
+describe('TechnicalVisualCard Component & Full Visual Coverage', () => {
   it('1. renders comparison bars with accessible labels and formatted values', () => {
     const html = renderToString(
       React.createElement(TechnicalVisualCard, {
@@ -47,33 +50,36 @@ describe('TechnicalVisualCard Component & Insights Visual Configs', () => {
     expect(html).toContain('role="img"');
   });
 
-  it('2. provides valid visual configs for high-traffic Insight articles', () => {
-    expect(
-      INSIGHT_VISUAL_CONFIGS['august-2026-swimming-pool-pump-kwh-operating-cost-benchmark'],
-    ).toBeDefined();
-    expect(
-      INSIGHT_VISUAL_CONFIGS['august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark'],
-    ).toBeDefined();
-    expect(
-      INSIGHT_VISUAL_CONFIGS['august-2026-electric-dehumidifier-kwh-operating-cost-benchmark'],
-    ).toBeDefined();
-    expect(
-      INSIGHT_VISUAL_CONFIGS['august-2026-central-air-conditioner-seer2-cooling-cost-benchmark'],
-    ).toBeDefined();
-    expect(
-      INSIGHT_VISUAL_CONFIGS['august-2026-portable-electric-space-heater-operating-cost-benchmark'],
-    ).toBeDefined();
-  });
+  it('2. provides valid visual configs for all 23 published Insight articles', () => {
+    const publishedInsights = getPublishedInsights();
+    expect(publishedInsights).toHaveLength(23);
 
-  it('3. ensures every visual config item has valid positive values and display strings', () => {
-    for (const [_slug, config] of Object.entries(INSIGHT_VISUAL_CONFIGS)) {
-      expect(config.title).toBeTruthy();
-      expect(config.items.length).toBeGreaterThanOrEqual(2);
-      for (const item of config.items) {
+    publishedInsights.forEach((insight) => {
+      const config = INSIGHT_VISUAL_CONFIGS[insight.slug];
+      expect(config).toBeDefined();
+      expect(config?.title).toBeTruthy();
+      expect(config?.items.length).toBeGreaterThanOrEqual(2);
+      for (const item of config!.items) {
         expect(item.label).toBeTruthy();
         expect(item.displayValue).toBeTruthy();
         expect(item.value).toBeGreaterThan(0);
       }
-    }
+    });
+  });
+
+  it('3. provides valid visual configs for all 50 energy guides', () => {
+    expect(guideSlugs).toHaveLength(50);
+
+    guideSlugs.forEach((slug) => {
+      const config = GUIDE_VISUAL_CONFIGS[slug];
+      expect(config).toBeDefined();
+      expect(config?.title).toBeTruthy();
+      expect(config?.items.length).toBeGreaterThanOrEqual(2);
+      for (const item of config!.items) {
+        expect(item.label).toBeTruthy();
+        expect(item.displayValue).toBeTruthy();
+        expect(item.value).toBeGreaterThan(0);
+      }
+    });
   });
 });
