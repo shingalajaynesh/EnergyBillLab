@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { GuideArticleView } from '@/components/guide-article-view';
+import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -30,6 +31,50 @@ export default function GuideHighElectricBillPage() {
           statement against the same billing month from last year. Look closely at billing cycle
           days, total kWh used, and whether your meter reading was marked as actual or estimated.
         </p>
+        <TechnicalVisualCard
+          title="Where Electricity Goes in a Typical U.S. Home"
+          subtitle="U.S. Energy Information Administration (EIA) residential end-use consumption breakdown"
+          badge="End-Use Shares"
+          badgeType="primary"
+          items={[
+            {
+              label: 'Heating & Air Conditioning (HVAC)',
+              displayValue: '46% of total electricity',
+              value: 46,
+              color: 'danger',
+              subLabel: 'Largest single driver of summer heatwave and winter cold-snap bill spikes',
+            },
+            {
+              label: 'Water Heating (Electric Water Heater)',
+              displayValue: '18% of total electricity',
+              value: 18,
+              color: 'warning',
+              subLabel: 'Continuous thermal standby loss + daily family shower recovery',
+            },
+            {
+              label: 'Major Appliances (Refrigeration, Dryer, Washer)',
+              displayValue: '14% of total electricity',
+              value: 14,
+              color: 'primary',
+              subLabel: 'Electric clothes drying (5 kW) and constant 24/7 refrigeration baseload',
+            },
+            {
+              label: 'Lighting & Electronics (TVs, PCs, Plug Loads)',
+              displayValue: '12% of total electricity',
+              value: 12,
+              color: 'primary',
+              subLabel: 'Vampire standby power, entertainment setups, and smart home devices',
+            },
+            {
+              label: 'Other Miscellaneous Plug Loads',
+              displayValue: '10% of total electricity',
+              value: 10,
+              color: 'neutral',
+              subLabel: 'Small kitchen appliances, chargers, routers, and power adapters',
+            },
+          ]}
+          footerNote="Diagnostic Takeaway: Over 64% of total household electricity is consumed by heating, cooling, and water heating alone."
+        />
       </section>
 
       <section className={styles.section}>

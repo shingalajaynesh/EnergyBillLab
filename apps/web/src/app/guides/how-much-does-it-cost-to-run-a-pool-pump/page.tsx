@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { GuideArticleView } from '@/components/guide-article-view';
+import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -97,6 +98,45 @@ export default function PoolPumpGuidePage() {
 
       <section className={styles.section}>
         <h2>4. Single-Speed vs. Variable-Speed (VSP) Energy Comparison</h2>
+        <TechnicalVisualCard
+          title="Pool Pump Seasonal Operating Cost Comparison"
+          subtitle="Estimated 20-week summer pool season electricity expense at 16.5¢/kWh"
+          badge="80% Savings Potential"
+          badgeType="success"
+          items={[
+            {
+              label: '1.5 HP Single-Speed (1,800W, 8h/day)',
+              displayValue: '$332.64',
+              value: 332.64,
+              color: 'danger',
+              subLabel: '14.4 kWh/day · High turbulent pipe friction & constant full RPM',
+            },
+            {
+              label: '1.0 HP Single-Speed (1,200W, 8h/day)',
+              displayValue: '$221.76',
+              value: 221.76,
+              color: 'warning',
+              subLabel: '9.6 kWh/day · Standard baseline single-speed motor',
+            },
+            {
+              label: 'Variable Speed @ Medium RPM (450W, 12h/day)',
+              displayValue: '$124.74',
+              value: 124.74,
+              color: 'primary',
+              subLabel: '5.4 kWh/day · 62.5% seasonal savings vs. 1.5 HP baseline',
+            },
+            {
+              label: 'Variable Speed @ Low RPM (180W, 16h/day)',
+              displayValue: '$66.53',
+              value: 66.53,
+              color: 'success',
+              highlight: true,
+              badge: 'Best Efficiency',
+              subLabel: '2.88 kWh/day · 80.0% seasonal savings via Pump Affinity Law',
+            },
+          ]}
+          footerNote="Physics Fact: Power varies with the cube of motor speed. Reducing pump RPM by 50% lowers motor shaft power demand by 87.5%."
+        />
         <div className={styles.tableWrapper}>
           <table aria-label="Pool Pump Single Speed vs Variable Speed Cost Comparison">
             <caption>Table 1: Filtration Cost Comparison (20-Week Season @ 16.5¢/kWh)</caption>

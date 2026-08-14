@@ -5,7 +5,9 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PageContainer } from '@/components/page-container';
 import { RelatedLinks } from '@/components/related-links';
+import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { formatHumanDate, getInsightBySlug, INSIGHT_CATEGORIES } from '@/content/insights';
+import { INSIGHT_VISUAL_CONFIGS } from '@/content/insights/visuals';
 import { createPageMetadata } from '@/lib/metadata';
 import {
   createBreadcrumbStructuredData,
@@ -71,6 +73,8 @@ export default async function InsightDetailPage(props: InsightPageProps) {
     image: article.featuredImage,
   });
 
+  const visualConfig = INSIGHT_VISUAL_CONFIGS[article.slug];
+
   return (
     <>
       <script
@@ -115,6 +119,17 @@ export default async function InsightDetailPage(props: InsightPageProps) {
             <div className={styles.summaryHeading}>Direct Answer & Summary</div>
             <p className={styles.summaryText}>{article.summary}</p>
           </div>
+
+          {visualConfig ? (
+            <TechnicalVisualCard
+              title={visualConfig.title}
+              subtitle={visualConfig.subtitle}
+              badge={visualConfig.badge}
+              badgeType={visualConfig.badgeType}
+              items={visualConfig.items}
+              footerNote={visualConfig.footerNote}
+            />
+          ) : null}
 
           {article.keyFindings && article.keyFindings.length > 0 ? (
             <div className={styles.keyFindings}>

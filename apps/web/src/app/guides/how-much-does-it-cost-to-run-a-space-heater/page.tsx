@@ -2,6 +2,7 @@ import { calculateSpaceHeaterCost } from '@energy-bill-lab/calculation-engine';
 import type { Metadata } from 'next';
 
 import { GuideArticleView } from '@/components/guide-article-view';
+import { TechnicalVisualCard } from '@/components/technical-visual-card';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
 
@@ -64,9 +65,55 @@ export default function GuideSpaceHeaterCostPage() {
       <section className={styles.section}>
         <h2>3. Space Heater Operating Cost Benchmarks</h2>
         <p>
-          Below is an operating cost reference table comparing different space heater power levels
+          Below is an operating cost reference comparison comparing different space heater power levels
           and runtimes over a 30-day billing month at a rate of 16.5¢/kWh:
         </p>
+        <TechnicalVisualCard
+          title="Space Heater Monthly Electricity Cost Benchmarks"
+          subtitle="Estimated 30-day electric bill impact based on run time and wattage settings at 16.5¢/kWh"
+          badge="High-Power Draw"
+          badgeType="primary"
+          items={[
+            {
+              label: 'Two 1,500W Heaters (8h/day, 75% thermostat cycle)',
+              displayValue: '$89.10/mo',
+              value: 89.10,
+              color: 'danger',
+              subLabel: '540 kWh/month · Multi-room supplemental heating burden',
+            },
+            {
+              label: 'Single 1,500W Heater (12h/day continuous high)',
+              displayValue: '$89.10/mo',
+              value: 89.10,
+              color: 'danger',
+              subLabel: '540 kWh/month · Running continuously as primary heat source',
+            },
+            {
+              label: 'Single 1,500W Heater (8h/day, 75% thermostat cycle)',
+              displayValue: '$44.55/mo',
+              value: 44.55,
+              color: 'warning',
+              subLabel: '270 kWh/month · Standard overnight bedroom supplemental heat',
+            },
+            {
+              label: 'Single 1,500W Heater (4h/day continuous high)',
+              displayValue: '$29.70/mo',
+              value: 29.70,
+              color: 'primary',
+              subLabel: '180 kWh/month · Evening living room space heating',
+            },
+            {
+              label: 'Single 750W Low Setting (4h/day continuous low)',
+              displayValue: '$14.85/mo',
+              value: 14.85,
+              color: 'success',
+              highlight: true,
+              badge: 'Eco Setting',
+              subLabel: '90 kWh/month · Low-power localized desk heating',
+            },
+          ]}
+          footerNote="Cost Reality: Running two 1,500W space heaters draws 3.0 kW—more continuous electrical power than a central heat pump warming an entire home."
+        />
         <div className={styles.tableWrapper}>
           <table aria-label="Space Heater Operating Cost Benchmarks">
             <caption>Electric Space Heater Operating Costs by Power Level & Duty Cycle</caption>
