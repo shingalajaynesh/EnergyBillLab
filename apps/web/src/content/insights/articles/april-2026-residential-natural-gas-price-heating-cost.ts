@@ -23,7 +23,7 @@ export const april2026ResidentialNaturalGasPriceHeatingCost: InsightRecord = {
   canonicalTopic: 'april-2026-us-residential-natural-gas-price-household-heating-cost',
   geography: 'united-states',
   reportingPeriod: 'April 2026',
-  publishedAt: '2026-07-24T12:00:00.000Z',
+  publishedAt: '2026-07-24',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

@@ -22,7 +22,7 @@ export const may2026EvHomeChargingCostBenchmark: InsightRecord = {
   canonicalTopic: 'may-2026-us-residential-electricity-price-ev-home-charging-benchmark',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-07-25T12:00:00.000Z',
+  publishedAt: '2026-07-25',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

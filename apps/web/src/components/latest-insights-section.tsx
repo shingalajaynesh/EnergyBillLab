@@ -34,16 +34,27 @@ export function LatestInsightsSection() {
       <div className={styles.grid}>
         {latestThree.map((article) => (
           <article key={article.id} className={styles.card}>
-            <span className={styles.category}>
-              {INSIGHT_CATEGORIES[article.category]?.name || article.category}
-            </span>
+            <div className={styles.cardHeader}>
+              <span className={styles.category}>
+                {INSIGHT_CATEGORIES[article.category]?.name || article.category}
+              </span>
+              <span className={styles.date}>{formatHumanDate(article.publishedAt)}</span>
+            </div>
             <Link className={styles.title} href={`/insights/${article.slug}`}>
               {article.title}
             </Link>
             <p className={styles.summary}>{article.summary}</p>
-            <div className={styles.meta}>
-              Published {formatHumanDate(article.publishedAt)}
-              {article.reportingPeriod ? ` · Data period: ${article.reportingPeriod}` : ''}
+            <div className={styles.cardFooter}>
+              {article.reportingPeriod ? (
+                <span className={styles.period} title={article.reportingPeriod}>
+                  Data: {article.reportingPeriod}
+                </span>
+              ) : (
+                <span />
+              )}
+              <Link className={styles.readMoreLink} href={`/insights/${article.slug}`}>
+                Read Entire Insight →
+              </Link>
             </div>
           </article>
         ))}

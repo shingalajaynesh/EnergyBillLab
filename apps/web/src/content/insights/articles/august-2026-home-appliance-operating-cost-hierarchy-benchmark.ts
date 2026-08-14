@@ -23,7 +23,7 @@ export const august2026HomeApplianceOperatingCostHierarchyBenchmark: InsightReco
   canonicalTopic: 'august-2026-appliance-operating-cost-hierarchy',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-04T04:00:00.000Z',
+  publishedAt: '2026-08-04',
   updatedAt: null,
   updateCadence: 'monthly',
   authorName: 'Jaynesh Shingala',

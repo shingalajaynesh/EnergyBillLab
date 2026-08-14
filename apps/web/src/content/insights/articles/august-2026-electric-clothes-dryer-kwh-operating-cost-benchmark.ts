@@ -24,7 +24,7 @@ export const august2026ElectricClothesDryerKwhOperatingCostBenchmark: InsightRec
   canonicalTopic: 'electric-clothes-dryer-operating-cost-benchmark',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-05T12:00:00.000Z',
+  publishedAt: '2026-08-05',
   updatedAt: null,
   updateCadence: 'monthly',
   authorName: 'Jaynesh Shingala',

@@ -23,7 +23,7 @@ export const may2026HeatPumpWaterHeaterSavingsBenchmark: InsightRecord = {
   canonicalTopic: 'may-2026-heat-pump-water-heater-savings-benchmark',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-07-26T12:00:00.000Z',
+  publishedAt: '2026-07-26',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

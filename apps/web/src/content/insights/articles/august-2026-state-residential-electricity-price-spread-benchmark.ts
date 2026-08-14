@@ -23,7 +23,7 @@ export const august2026StateResidentialElectricityPriceSpreadBenchmark: InsightR
   canonicalTopic: 'august-2026-state-residential-electricity-price-spread',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-07-30T12:00:00.000Z',
+  publishedAt: '2026-07-30',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

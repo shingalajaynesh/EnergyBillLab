@@ -23,7 +23,7 @@ export const july2026SummerWholesaleElectricityPriceForecast: InsightRecord = {
   canonicalTopic: 'july-2026-summer-wholesale-electricity-price-forecast-household-bill-context',
   geography: 'united-states',
   reportingPeriod: 'Summer 2026 forecast',
-  publishedAt: '2026-07-27T12:00:00.000Z',
+  publishedAt: '2026-07-27',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

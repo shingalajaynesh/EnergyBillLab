@@ -7,7 +7,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { RelatedLinks } from '@/components/related-links';
 import { energyGuides, guideSlugs } from '@/content/guides';
-import { getPublishedInsights } from '@/content/insights';
+import { formatHumanDate, getPublishedInsights } from '@/content/insights';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { createPersonStructuredData, serializeStructuredData } from '@/lib/structured-data';
@@ -69,11 +69,11 @@ export default function AuthorProfilePage() {
               <h2 id="author-bio-heading" className={styles.authorName}>
                 Jaynesh Shingala
               </h2>
-              <p className={styles.authorRole}>
-                Creator & Technical Lead · Energy Bill Lab
-              </p>
+              <p className={styles.authorRole}>Creator & Technical Lead · Energy Bill Lab</p>
               <div className={styles.contactRow}>
-                <span>Email: <a href="mailto:shingala.jaynesh@gmail.com">shingala.jaynesh@gmail.com</a></span>
+                <span>
+                  Email: <a href="mailto:shingala.jaynesh@gmail.com">shingala.jaynesh@gmail.com</a>
+                </span>
                 <span>•</span>
                 <span>Location: India & U.S. Energy Focus</span>
                 <span>•</span>
@@ -94,8 +94,8 @@ export default function AuthorProfilePage() {
               Frustrated by generic AI-generated blogs and opaque commercial lead-generation tools,
               Jaynesh founded Energy Bill Lab as a public-first, evidence-led utility platform. All
               tools and reference reports on Energy Bill Lab are built with transparent formulas,
-              deterministic rounding, explicit boundary checks, and direct citations to official U.S.
-              government datasets (primarily Form EIA-861M monthly retail sales reports).
+              deterministic rounding, explicit boundary checks, and direct citations to official
+              U.S. government datasets (primarily Form EIA-861M monthly retail sales reports).
             </p>
           </div>
         </section>
@@ -108,8 +108,9 @@ export default function AuthorProfilePage() {
               <h3>Calculation Engine Architecture</h3>
               <p>
                 Author and maintainer of all 12 pure TypeScript calculation packages in Energy Bill
-                Lab, ensuring IEEE-754 decimal safety, explicit unit conversions (Watts, kWh, BTU/hr,
-                therms, Mcf), and zero third-party framework dependencies in the mathematical core.
+                Lab, ensuring IEEE-754 decimal safety, explicit unit conversions (Watts, kWh,
+                BTU/hr, therms, Mcf), and zero third-party framework dependencies in the
+                mathematical core.
               </p>
             </div>
             <div className={styles.featureCard}>
@@ -156,8 +157,19 @@ export default function AuthorProfilePage() {
                 </Link>
                 <p className={styles.articleSummary}>{art.summary}</p>
                 <div className={styles.articleMeta}>
-                  <span>Published {art.publishedAt}</span>
+                  <span>Published {formatHumanDate(art.publishedAt)}</span>
                   {art.reportingPeriod ? <span> · Period: {art.reportingPeriod}</span> : null}
+                  <Link
+                    href={`/insights/${art.slug}`}
+                    style={{
+                      marginLeft: 'auto',
+                      fontWeight: 600,
+                      color: '#176b5b',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Read Entire Insight →
+                  </Link>
                 </div>
               </div>
             ))}
@@ -181,7 +193,9 @@ export default function AuthorProfilePage() {
                   {g.h1Title}
                 </Link>
                 <p className={styles.guideDesc}>{g.description}</p>
-                <span className={styles.guideAuthor}>Written & data-checked by Jaynesh Shingala</span>
+                <span className={styles.guideAuthor}>
+                  Written & data-checked by Jaynesh Shingala
+                </span>
               </div>
             ))}
           </div>

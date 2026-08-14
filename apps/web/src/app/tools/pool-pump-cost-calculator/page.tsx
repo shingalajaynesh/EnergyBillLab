@@ -42,7 +42,8 @@ const faqs = [
       'Due to the pump Affinity Laws, cutting motor RPM in half reduces electrical power draw by a factor of eight (cubed relationship). Running a variable-speed pump at low speed for 12 hours moves the same volume of water as a single-speed pump in 6 hours while using up to 70% less electricity.',
   },
   {
-    question: 'What is the annual operating cost difference between single-speed and variable-speed pumps?',
+    question:
+      'What is the annual operating cost difference between single-speed and variable-speed pumps?',
     answer:
       'According to ENERGY STAR, upgrading from an old single-speed pool pump to a certified variable-speed pump saves an average of $350 to $560 per year on household electric bills, paying for itself in under two seasons.',
   },

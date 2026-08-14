@@ -83,11 +83,23 @@ export function GuideArticleView({
           <p className={styles.lead}>{guide.description}</p>
           <div className={styles.metaRow}>
             <span>
-              By <Link href="/authors/jaynesh-shingala" style={{ color: 'inherit', textDecoration: 'underline' }}>Jaynesh Shingala</Link>
+              By{' '}
+              <Link
+                href="/authors/jaynesh-shingala"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
+                Jaynesh Shingala
+              </Link>
             </span>
             <span>•</span>
             <span>
-              Written & reviewed by <Link href="/authors/jaynesh-shingala" style={{ color: 'inherit', textDecoration: 'underline' }}>Jaynesh Shingala</Link>
+              Written & reviewed by{' '}
+              <Link
+                href="/authors/jaynesh-shingala"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
+                Jaynesh Shingala
+              </Link>
             </span>
             <span>•</span>
             <time dateTime={guide.updatedAt}>Updated {formatHumanDate(guide.updatedAt)}</time>

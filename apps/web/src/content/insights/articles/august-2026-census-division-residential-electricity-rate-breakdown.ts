@@ -23,7 +23,7 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
   canonicalTopic: 'august-2026-census-division-electricity-rates',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-03T06:00:00.000Z',
+  publishedAt: '2026-08-03',
   updatedAt: null,
   updateCadence: 'monthly',
   authorName: 'Jaynesh Shingala',

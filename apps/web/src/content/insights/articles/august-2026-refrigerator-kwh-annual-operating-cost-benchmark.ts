@@ -25,7 +25,7 @@ export const august2026RefrigeratorKwhAnnualOperatingCostBenchmark: InsightRecor
   canonicalTopic: 'refrigerator-kwh-annual-operating-cost-benchmark',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-05T12:00:00.000Z',
+  publishedAt: '2026-08-05',
   updatedAt: null,
   updateCadence: 'annual',
   authorName: 'Jaynesh Shingala',

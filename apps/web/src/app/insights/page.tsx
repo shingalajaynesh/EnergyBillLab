@@ -112,18 +112,27 @@ export default function InsightsHubPage() {
             <section className={styles.grid} aria-label="Published Energy Insights">
               {published.map((article) => (
                 <article key={article.id} className={styles.articleCard}>
-                  <span className={styles.cardCategory}>
-                    {INSIGHT_CATEGORIES[article.category]?.name || article.category}
-                  </span>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardCategory}>
+                      {INSIGHT_CATEGORIES[article.category]?.name || article.category}
+                    </span>
+                    <span className={styles.cardDate}>{formatHumanDate(article.publishedAt)}</span>
+                  </div>
                   <Link className={styles.cardTitle} href={`/insights/${article.slug}`}>
                     {article.title}
                   </Link>
                   <p className={styles.cardSummary}>{article.summary}</p>
-                  <div className={styles.cardMeta}>
-                    <span>Published {formatHumanDate(article.publishedAt)}</span>
+                  <div className={styles.cardFooter}>
                     {article.reportingPeriod ? (
-                      <span> · Data period: {article.reportingPeriod}</span>
-                    ) : null}
+                      <span className={styles.cardPeriod} title={article.reportingPeriod}>
+                        Data: {article.reportingPeriod}
+                      </span>
+                    ) : (
+                      <span />
+                    )}
+                    <Link className={styles.readMoreLink} href={`/insights/${article.slug}`}>
+                      Read Entire Insight →
+                    </Link>
                   </div>
                 </article>
               ))}

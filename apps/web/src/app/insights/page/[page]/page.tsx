@@ -88,18 +88,27 @@ export default async function InsightsPaginationPage(props: PaginationPageProps)
         <section className={hubStyles.grid} aria-label={`Insights Page ${pageNum}`}>
           {pageArticles.map((article) => (
             <article key={article.id} className={hubStyles.articleCard}>
-              <span className={hubStyles.cardCategory}>
-                {INSIGHT_CATEGORIES[article.category]?.name || article.category}
-              </span>
+              <div className={hubStyles.cardHeader}>
+                <span className={hubStyles.cardCategory}>
+                  {INSIGHT_CATEGORIES[article.category]?.name || article.category}
+                </span>
+                <span className={hubStyles.cardDate}>{formatHumanDate(article.publishedAt)}</span>
+              </div>
               <Link className={hubStyles.cardTitle} href={`/insights/${article.slug}`}>
                 {article.title}
               </Link>
               <p className={hubStyles.cardSummary}>{article.summary}</p>
-              <div className={hubStyles.cardMeta}>
-                <span>Published {formatHumanDate(article.publishedAt)}</span>
+              <div className={hubStyles.cardFooter}>
                 {article.reportingPeriod ? (
-                  <span> · Data period: {article.reportingPeriod}</span>
-                ) : null}
+                  <span className={hubStyles.cardPeriod} title={article.reportingPeriod}>
+                    Data: {article.reportingPeriod}
+                  </span>
+                ) : (
+                  <span />
+                )}
+                <Link className={hubStyles.readMoreLink} href={`/insights/${article.slug}`}>
+                  Read Entire Insight →
+                </Link>
               </div>
             </article>
           ))}

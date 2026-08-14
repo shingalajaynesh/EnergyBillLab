@@ -25,7 +25,7 @@ export const august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchm
     canonicalTopic: 'august-2026-home-battery-storage-usable-capacity-benchmark',
     geography: 'united-states',
     reportingPeriod: 'August 2026',
-    publishedAt: '2026-07-29T12:00:00.000Z',
+    publishedAt: '2026-07-29',
     updatedAt: null,
     updateCadence: 'one-time',
     authorName: 'Jaynesh Shingala',

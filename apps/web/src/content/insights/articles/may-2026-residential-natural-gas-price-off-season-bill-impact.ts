@@ -23,7 +23,7 @@ export const may2026ResidentialNaturalGasPriceOffSeasonBillImpact: InsightRecord
   canonicalTopic: 'may-2026-us-residential-natural-gas-price-off-season-bill-impact',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-08-01T12:00:00.000Z',
+  publishedAt: '2026-08-01',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

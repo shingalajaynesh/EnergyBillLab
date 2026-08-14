@@ -160,13 +160,7 @@ export const contentPages = {
       'Energy Bill Lab editorial rules for useful, sourced, transparent home-energy content.',
     path: '/editorial-policy',
     updatedAt: '2026-07-24',
-    related: [
-      '/authors/jaynesh-shingala',
-      '/methodology',
-      '/data-sources',
-      '/about',
-      '/contact',
-    ],
+    related: ['/authors/jaynesh-shingala', '/methodology', '/data-sources', '/about', '/contact'],
     sections: [
       {
         heading: 'Ownership & Technical Publishing',

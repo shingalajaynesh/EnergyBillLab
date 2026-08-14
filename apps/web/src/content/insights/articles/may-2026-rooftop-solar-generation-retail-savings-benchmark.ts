@@ -23,7 +23,7 @@ export const may2026RooftopSolarGenerationRetailSavingsBenchmark: InsightRecord 
   canonicalTopic: 'may-2026-us-small-scale-solar-generation-benchmark',
   geography: 'united-states',
   reportingPeriod: 'May 2026',
-  publishedAt: '2026-07-28T12:00:00.000Z',
+  publishedAt: '2026-07-28',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

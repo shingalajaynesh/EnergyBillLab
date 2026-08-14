@@ -133,7 +133,7 @@ Leave all changes unstaged.
 
 Use only:
 
-https://energybilllab.com
+<https://energybilllab.com>
 
 Do not generate production metadata containing:
 
@@ -205,13 +205,13 @@ Publish all three in the same implementation only when:
 - no article conflicts with a Guide, calculator, state page, or Research report;
 - tests and production builds pass.
 
-Set publication timestamps using explicit ISO 8601 UTC timestamps, for example:
+Set publication dates using clean calendar date format (YYYY-MM-DD), for example:
 
 ```text
-2026-07-30T12:00:00Z
+publishedAt: '2026-08-14'
 ```
 
-Do not use timezone-ambiguous dates.
+Do not include arbitrary time components or timezone offsets.
 
 When the first three are published together, verify:
 
@@ -260,39 +260,52 @@ Do not use ChatGPT-generated summaries as sources.
 Do not use random blogs as the primary support for numerical, regulatory,
 technical, or market claims.
 
-## Current Topics to Research
+## High-Intent Trending Topics to Research (1K+ Daily Visit Target)
 
-Search for useful developments in:
+Prioritize high-search-volume, high-intent household energy queries that U.S. homeowners, renters, and EV drivers actively search for:
 
-- residential electricity rates
-- monthly EIA electricity data
-- state electricity-rate changes
-- household electricity costs
-- natural-gas residential prices
-- heating costs
-- appliance operating costs
-- air-conditioning costs
-- electric water heating
-- EV home charging
-- rooftop solar generation
-- solar payback assumptions
-- net-metering changes
-- battery backup capacity
-- battery runtime
-- time-of-use electricity rates
-- utility supplier choice
-- state assistance and efficiency programs
-- seasonal household-energy patterns
+### 1. Seasonal HVAC & Extreme Weather Cost Spikes (Highest Search Volume)
 
-Do not expand into unrelated EIA topics such as:
+- **Summer AC Operating Costs**:
+  - Cost per hour to run a 3-ton, 4-ton, or window air conditioner at regional electricity rates.
+  - SEER2 14.3 vs 18+ efficiency dollar savings curve across a full cooling season.
+  - Thermostat setting financial curve: What 72°F vs 75°F vs 78°F actually adds to a monthly bill.
+- **Winter Heating Economics**:
+  - Heat pump vs natural gas furnace vs electric baseboard heating cost per 100,000 BTU (MMBtu).
+  - Electric space heater true cost: The financial impact of running a 1,500W unit 8–12 hours/day ($1.80–$3.50/day).
+  - Sub-zero heat pump COP degradation and auxiliary heat strip power surges.
 
-- crude-oil trading
-- refinery operations
-- industrial fuel markets
-- international petroleum exports
-- commercial power-plant operations
+### 2. Everyday Appliance Wattage & Bill Impact (High-Intent Troubleshooting)
 
-unless the topic has a direct and practical U.S. household-energy connection.
+- **High-Consumption Appliances**:
+  - Electric clothes dryer: Standard 3,000W–5,000W cycle cost vs heat pump dryer savings.
+  - Electric water heater: Standby loss vs recovery energy cost for a 4-person family (400 kWh/mo).
+  - Hybrid heat pump water heater (UEF 3.75): Real-world $330+/year electricity bill savings.
+  - Basement dehumidifier: 50-pint continuous compressor wattage (450W–600W) monthly bill burden ($35–$65/mo).
+  - Refrigerator defrost and door-seal duty cycle power draw in summer vs winter.
+  - Electric clothes washer: 90% water heating energy savings of cold-water vs hot-water cycles.
+
+### 3. EV Home Charging & Fuel Cost Comparisons
+
+- **Electric Vehicle Home Charging**:
+  - Level 1 (120V) vs Level 2 (240V) charging efficiency losses (15%–20% vs 8%–10%).
+  - Real-world cost per 100 miles (EV @ 30 kWh/100mi vs 30 MPG gas car @ $3.50/gal).
+  - Off-peak super-off-peak EV charging schedules: Slashing charging bills by 60%–75%.
+
+### 4. Time-of-Use (TOU) Rate Arbitrage & Grid Spike Avoidance
+
+- **TOU Peak Hour Navigation**:
+  - The true financial cost of running heavy appliances during 4 PM – 9 PM peak utility hours.
+  - California NEM 3.0 / Solar Billing: How battery load-shifting protects solar investment value.
+  - Regional utility rate increase cases (PG&E, ConEd, FPL, Duke Energy, ComEd) bill impacts.
+
+### 5. Clean Energy Storage & Solar Economics
+
+- **Home Batteries & Rooftop Solar**:
+  - Home battery storage usable capacity vs 80%–90% AC round-trip efficiency losses.
+  - Rooftop solar generation seasonal variance: Summer peak vs winter production drops.
+
+Do not write about industrial fuel markets, crude oil trading, commercial power plants, or wholesale derivatives that have no practical meaning for a homeowner's monthly budget.
 
 # Analytics Evidence
 
@@ -366,7 +379,7 @@ Select exactly one topic with the strongest combined evidence.
 
 Before approving the selected topic, determine who owns its primary intent.
 
-## Guide owns the intent when:
+## Guide owns the intent when
 
 - the question is evergreen;
 - the answer is primarily educational or troubleshooting;
@@ -380,7 +393,7 @@ UPDATE GUIDE
 
 Do not create an Insight.
 
-## State page owns the intent when:
+## State page owns the intent when
 
 - the primary query is a current state electricity rate;
 - the user wants a cost-per-kWh value;
@@ -394,7 +407,7 @@ UPDATE STATE PAGE
 
 Do not create an Insight targeting a synonym.
 
-## Calculator owns the intent when:
+## Calculator owns the intent when
 
 - the main value is a user-specific calculation;
 - user inputs determine the answer.
@@ -405,7 +418,7 @@ Result:
 BUILD OR IMPROVE CALCULATOR
 ```
 
-## Research owns the intent when:
+## Research owns the intent when
 
 - it is a permanent national report;
 - it includes a complete dataset;
@@ -418,7 +431,7 @@ Result:
 UPDATE RESEARCH REPORT
 ```
 
-## Insight owns the intent when:
+## Insight owns the intent when
 
 - the article is dated;
 - it explains a trend, change, comparison, ranking, or new finding;
@@ -690,21 +703,35 @@ Use applicable sections:
 
 Do not render empty sections.
 
-# Opening
+# Authentic Human Voice & Tone
 
-The first paragraph must directly answer the main question.
+Write as **Jaynesh Shingala**, an experienced software and calculations engineer who respects the reader's time and intelligence.
 
-Target approximately 40–90 words.
+### Tone Principles (Designed for High User Engagement & E-E-A-T):
 
-Include, where relevant:
+1. **Direct and Conversational yet Rigorous**:
+   - Write like a knowledgeable friend explaining energy bills over a coffee table, backed by real engineering physics and official EIA spreadsheets.
+   - Use active voice, crisp sentences, and clear transitions.
+2. **Transparent Mathematical Formulas**:
+   - Always show the exact math behind every dollar figure:
+     $$\text{Cost} = \left(\frac{\text{Watts} \times \text{Hours}}{1,000}\right) \times \text{Electricity Rate (\$/kWh)}$$
+   - Show worked examples with realistic numbers so homeowners can substitute their own utility rate and usage.
+3. **Actionable Financial Takeaway**:
+   - Every section must answer: _"What does this mean for my monthly bank account balance, and what can I do about it today?"_
 
-- central finding;
-- reporting period;
-- source;
-- unit;
-- practical meaning.
+# Direct-Answer Opening (Zero Throat Clearing)
 
-Do not begin with:
+The very first 2 sentences must state the exact numerical answer, dollar cost, and EIA data source.
+
+Target 40–80 words.
+
+**Required Opening Elements**:
+
+- Exact dollar/kWh finding or cost range;
+- Official data period and primary source (e.g., EIA Electric Power Monthly / Form EIA-861M);
+- Practical household context (e.g., impact on a standard 1,000 kWh/month bill).
+
+**Strictly Prohibited AI Clichés & Throat-Clearing**:
 
 - “In today’s rapidly changing world…”
 - “Energy costs are more important than ever…”
@@ -713,40 +740,27 @@ Do not begin with:
 - “In this comprehensive guide…”
 - “In the modern era…”
 - “As homeowners navigate…”
+- “It’s no secret that…”
+- “Let’s delve into…”
+- “In conclusion, it is important to remember…”
 
-# Article Length
-
-Use topic-appropriate depth:
+# Article Length & Quality Bar
 
 ```text
-Short data update: 700–1,100 words
-Standard Insight: 1,100–1,800 words
-Major analysis: 1,500–2,500 words
+Short Data Update: 800–1,100 words (dense calculations + 1 comparison table)
+Standard Insight: 1,100–1,800 words (deep breakdown + worked formulas + table)
+Major Analysis: 1,500–2,500 words (national/regional deep dive + multi-scenario models)
 ```
 
-Do not pad the article.
+Do not pad with generic fluff. Every paragraph must provide distinct data, physics, or financial utility.
 
-Do not reduce clarity to reach a word count.
+# Writing Style Rules
 
-# Writing Style
-
-Use simple, professional U.S. English.
-
-Requirements:
-
-- two to four sentences per paragraph where practical;
-- descriptive headings;
-- define technical units;
-- no emojis;
-- no all-capital headings;
-- no marketing hype;
-- no excessive bold text;
-- no repeated conclusions;
-- no unnecessary jargon;
-- no keyword stuffing;
-- no invented quotations;
-- no generic filler;
-- no repetitive AI-style transitions.
+- **Paragraph Length**: 2 to 4 punchy sentences per paragraph.
+- **Headings**: Descriptive, query-focused H2s and H3s that reflect how humans search.
+- **Formatting**: Use clean bullet points, numbered steps for calculations, and responsive markdown tables.
+- **Zero Jargon**: Explain technical terms immediately in plain English (e.g., _"SEER2 measures how efficiently your AC converts electricity into cooling over an entire season—higher numbers mean lower bills"_).
+- **No Marketing Hype**: No exaggerated superlatives ("revolutionary", "miracle savings", "game-changer"). Stick to verified facts and clear math.
 
 # Prohibited or Restricted Claims
 

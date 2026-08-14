@@ -25,7 +25,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   canonicalTopic: 'august-2026-natural-gas-vs-electric-heating-efficiency-cost-comparison',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-05T04:00:00.000Z',
+  publishedAt: '2026-08-05',
   updatedAt: null,
   updateCadence: 'monthly',
   authorName: 'Jaynesh Shingala',

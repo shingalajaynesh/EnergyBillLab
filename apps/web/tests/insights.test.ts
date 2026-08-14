@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(21);
+    expect(insightsRegistry).toHaveLength(22);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(21);
+    expect(getPublishedInsights()).toHaveLength(22);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -76,7 +76,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
+      'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
     );
   });
 
@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(157);
+    expect(entries).toHaveLength(158);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -429,7 +429,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
-    expect(getInsightsByCategory('solar')).toHaveLength(1);
+    expect(getInsightsByCategory('solar')).toHaveLength(2);
     expect(getInsightsByCategory('battery-storage')).toHaveLength(1);
   });
 
@@ -471,13 +471,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 29: Thin category pages are not indexable
   it('29. thin category queries stay below category indexing threshold', () => {
     const catArticles = getInsightsByCategory('solar');
-    expect(catArticles).toHaveLength(1);
+    expect(catArticles).toHaveLength(2);
     expect(catArticles.length >= INSIGHTS_PUBLICATION_THRESHOLD).toBe(false);
   });
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(21);
+    expect(insightsRegistry).toHaveLength(22);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {

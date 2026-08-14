@@ -9,7 +9,7 @@ export const august2026ElectricDehumidifierKwhOperatingCostBenchmark: InsightRec
   metaDescription:
     'Dehumidifier electricity benchmark using EIA rate data. Running a 50-pint unit costs $36.51/mo nationally ($64.15 in CA). ENERGY STAR saves 24%.',
   status: 'published',
-  publishedAt: '2026-08-13T04:00:00.000Z',
+  publishedAt: '2026-08-13',
   updatedAt: null,
   category: 'appliances',
   canonicalTopic: 'electric-dehumidifier-kwh-operating-cost-benchmark',

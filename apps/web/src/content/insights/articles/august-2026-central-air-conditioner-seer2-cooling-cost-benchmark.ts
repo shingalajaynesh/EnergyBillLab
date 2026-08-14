@@ -23,7 +23,7 @@ export const august2026CentralAirConditionerSeer2CoolingCostBenchmark: InsightRe
   canonicalTopic: 'august-2026-central-ac-seer2-efficiency-cooling-cost',
   geography: 'united-states',
   reportingPeriod: 'August 2026',
-  publishedAt: '2026-08-01T18:00:00.000Z',
+  publishedAt: '2026-08-01',
   updatedAt: null,
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',

@@ -269,7 +269,8 @@ export default async function StateElectricityRatePage({ params }: Props) {
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
               Energy Bill Lab synchronizes state rates monthly following official U.S. EIA Form
-              EIA-861M publication cycles, reflecting the most recent verified utility reporting period.
+              EIA-861M publication cycles, reflecting the most recent verified utility reporting
+              period.
             </p>
           </div>
         </div>

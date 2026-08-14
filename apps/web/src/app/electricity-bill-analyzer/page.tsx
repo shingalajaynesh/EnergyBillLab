@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { DataSourceNote } from '@/components/data-source-note';

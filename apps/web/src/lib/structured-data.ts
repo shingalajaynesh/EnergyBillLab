@@ -251,4 +251,3 @@ export function createFaqStructuredData(faqs: Array<{ answer: string; question: 
     })),
   };
 }
-
