@@ -13,6 +13,7 @@ import {
   INSIGHT_CATEGORIES,
 } from '@/content/insights';
 import { INSIGHT_VISUAL_CONFIGS } from '@/content/insights/visuals';
+import { getMaxValidPublicationDate } from '@/lib/insights-validation';
 import { createPageMetadata } from '@/lib/metadata';
 import {
   createBreadcrumbStructuredData,
@@ -38,9 +39,7 @@ export function generateStaticParams() {
 export async function generateMetadata(props: InsightPageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const article = getInsightBySlug(slug);
-  const nowCalendarDate = new Date().toISOString().slice(0, 10);
-  const localCalendarDate = new Date().toLocaleDateString('en-CA');
-  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
+  const maxValidDate = getMaxValidPublicationDate();
 
   if (
     !article ||
@@ -65,9 +64,7 @@ export async function generateMetadata(props: InsightPageProps): Promise<Metadat
 export default async function InsightDetailPage(props: InsightPageProps) {
   const { slug } = await props.params;
   const article = getInsightBySlug(slug);
-  const nowCalendarDate = new Date().toISOString().slice(0, 10);
-  const localCalendarDate = new Date().toLocaleDateString('en-CA');
-  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
+  const maxValidDate = getMaxValidPublicationDate();
 
   if (
     !article ||

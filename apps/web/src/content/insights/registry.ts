@@ -1,4 +1,4 @@
-import { validateInsightsRegistry } from '@/lib/insights-validation';
+import { getMaxValidPublicationDate, validateInsightsRegistry } from '@/lib/insights-validation';
 
 import type { InsightCategory, InsightRecord } from './types';
 import { INSIGHTS_PUBLICATION_THRESHOLD } from './types';
@@ -66,10 +66,8 @@ if (!validation.valid) {
 
 export const insightsRegistry: InsightRecord[] = rawArticles;
 
-export function getPublishedInsights(now = new Date().toISOString()): InsightRecord[] {
-  const nowCalendarDate = now.slice(0, 10);
-  const localCalendarDate = new Date().toLocaleDateString('en-CA');
-  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
+export function getPublishedInsights(now?: string): InsightRecord[] {
+  const maxValidDate = getMaxValidPublicationDate(now);
   return insightsRegistry
     .filter((item) => {
       if (item.status !== 'published') return false;

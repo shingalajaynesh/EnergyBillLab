@@ -95,6 +95,27 @@ export function normalizeFingerprint(text: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+/**
+ * Computes the maximum valid calendar date string (YYYY-MM-DD) for published articles.
+ * Accounts for global timezones (up to UTC+14) so articles published "today" in local time
+ * (e.g., UTC+5:30 in India or UTC+12 in New Zealand) remain valid on CI runners and servers running in UTC.
+ */
+export function getMaxValidPublicationDate(nowInput?: string | Date): string {
+  const baseDate = nowInput ? new Date(nowInput) : new Date();
+  const validDate = isNaN(baseDate.getTime()) ? new Date() : baseDate;
+
+  const utcDateStr = validDate.toISOString().slice(0, 10);
+  const globalMaxDateStr = new Date(validDate.getTime() + 14 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  const localDateStr = !nowInput ? new Date().toLocaleDateString('en-CA') : utcDateStr;
+
+  return [utcDateStr, localDateStr, globalMaxDateStr].reduce(
+    (max, cur) => (cur > max ? cur : max),
+    utcDateStr,
+  );
+}
+
 export function validateInsightRecord(
   record: InsightRecord,
   allRecords: InsightRecord[] = [],
@@ -136,9 +157,7 @@ export function validateInsightRecord(
   }
 
   // Future scheduled check (timezone-aware calendar date comparison)
-  const nowCalendarDate = nowIso.slice(0, 10);
-  const localCalendarDate = new Date().toLocaleDateString('en-CA');
-  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
+  const maxValidDate = getMaxValidPublicationDate(nowIso);
   if (record.status === 'published' && record.publishedAt.slice(0, 10) > maxValidDate) {
     errors.push(
       `Article "${record.slug}" status is "published" but has future publication date (${record.publishedAt}). Must use status "scheduled".`,
