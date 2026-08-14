@@ -7,7 +7,7 @@ export const august2026TimeOfUsePeakRateSpreadApplianceLoadShiftingBenchmark: In
   title: 'August 2026 Time-of-Use Peak Rate Spread & Appliance Load-Shifting Savings Benchmark',
   metaTitle: 'August 2026 Time-of-Use Peak Rate Spread & Appliance Load-Shifting Benchmark',
   metaDescription:
-    'TOU rate benchmark: a 2.5x peak-to-off-peak price spread (32.0¢ vs 12.8¢/kWh) lets U.S. households save $77+ monthly ($925+ yearly) by shifting clothes dryer, dishwasher, and EV charging cycles outside 4–9 PM peak hours.',
+    'TOU benchmark: a 2.5x peak price spread (32.0¢ vs 12.8¢/kWh) lets households save $77+ monthly ($925+ yearly) by shifting heavy appliances off-peak.',
   summary:
     'Residential Time-of-Use (TOU) utility rate plans with a 2.5x peak-to-off-peak price spread (32.00¢/kWh peak vs. 12.80¢/kWh off-peak) create major household bill savings opportunities. Shifting heavy appliance cycles—such as electric clothes drying (4.0 kWh/load), dishwashing (1.5 kWh/load), and EV home charging (30.0 kWh/session)—outside peak hours saves $0.77 per dryer load, $0.29 per dishwasher cycle, and $5.76 per EV charging session. A household executing 16 dryer loads, 25 dishwasher loads, and 10 EV charging sessions off-peak achieves $77.09 in monthly utility bill reductions ($925.08 annually) without altering overall energy consumption.',
   category: 'home-energy-costs',

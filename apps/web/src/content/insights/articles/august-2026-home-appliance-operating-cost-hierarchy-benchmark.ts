@@ -7,7 +7,7 @@ export const august2026HomeApplianceOperatingCostHierarchyBenchmark: InsightReco
   title: 'August 2026 Home Appliance Operating Cost Hierarchy & Monthly Expense Benchmark',
   metaTitle: 'August 2026 Home Appliance Operating Cost Hierarchy & Monthly Expense Benchmark',
   metaDescription:
-    'EIA May 2026 benchmark analyzed across 10 major home appliances: Central AC ($116.17/mo) and water heating ($74.68/mo) drive 58.2% of household electric bill expenses.',
+    'EIA benchmark analyzed across 10 home appliances: Central AC ($116.17/mo) and water heating ($74.68/mo) drive 58.2% of household electric expenses.',
   summary:
     'An empirical analysis of U.S. residential energy consumption based on official U.S. Energy Information Administration (EIA) May 2026 electricity rate data (18.44 cents per kWh national average) establishes the August 2026 Home Appliance Operating Cost Hierarchy. Central air conditioning (3-ton SEER2 14) and electric resistance water heating rank as the nation’s highest energy-consuming appliances, drawing 630 kWh ($116.17/month) and 405 kWh ($74.68/month) respectively. Combined, thermal HVAC cooling and water heating account for 58.2% of typical monthly household electricity consumption (1,777.65 kWh total across 9 core appliances). In high-rate states like California (32.40¢/kWh), operating these identical 9 appliances costs $575.96 per month—a $248.16 monthly premium compared to the national average.',
   category: 'appliances',

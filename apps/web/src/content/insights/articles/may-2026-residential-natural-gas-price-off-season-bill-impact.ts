@@ -7,7 +7,7 @@ export const may2026ResidentialNaturalGasPriceOffSeasonBillImpact: InsightRecord
   title: 'May 2026 U.S. Residential Natural Gas Price & Off-Season Bill Impact',
   metaTitle: 'May 2026 U.S. Residential Natural Gas Price & Off-Season Bill Impact',
   metaDescription:
-    'EIA May 2026 residential natural gas data analyzed: $19.83/Mcf ($1.9141/therm) average delivered price creates a $57.42 monthly off-season baseline for water heating and cooking.',
+    'EIA residential natural gas data analyzed: $19.83/Mcf ($1.9141/therm) average delivered price creates a $57.42 monthly off-season baseline expense.',
   summary:
     'The U.S. Energy Information Administration (EIA) reported the May 2026 national average delivered residential natural gas price at $19.83 per thousand cubic feet (Mcf), equivalent to an estimated $1.9141 per therm based on the EIA average heat-content conversion of 1,036 Btu per cubic foot (10.36 therms per Mcf). During off-season summer months when space heating is dormant, typical household gas usage drops to 25–40 therms for water heating and cooking, modeling a total delivered baseline of $47.85 to $76.56 per month based on aggregate national EIA delivered rates.',
   category: 'natural-gas',

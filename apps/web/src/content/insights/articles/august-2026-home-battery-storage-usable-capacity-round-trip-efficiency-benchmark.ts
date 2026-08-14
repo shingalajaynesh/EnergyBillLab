@@ -8,7 +8,7 @@ export const august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchm
     title: 'August 2026 Home Battery Storage Usable Capacity & Round-Trip Efficiency Benchmark',
     metaTitle: 'August 2026 Home Battery Storage Usable Capacity & Efficiency Benchmark',
     metaDescription:
-      'EIA and DOE technical benchmarks analyzed: nominal capacity vs usable kWh, 85% round-trip AC efficiency, and time-of-use peak shaving economics for home battery storage.',
+      'EIA and DOE technical benchmarks: nominal capacity vs usable kWh, 85% round-trip AC efficiency, and TOU peak shaving economics for home batteries.',
     summary:
       'Translating nameplate battery storage into household utility impact requires accounting for Depth of Discharge (DoD) and AC-to-AC round-trip efficiency (RTE). Under Department of Energy (DOE) and National Renewable Energy Laboratory (NREL) benchmarks, a typical 13.5 kWh nominal residential battery with 90% DoD provides 12.15 kWh of usable energy, delivering approximately 10.33 kWh of net AC electricity to household circuits at an 85% round-trip efficiency. Under a 20-cent/kWh time-of-use rate differential, daily peak shaving models to about $2.07 per cycle in net energy value.',
     category: 'battery-storage',

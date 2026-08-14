@@ -23,6 +23,12 @@ import {
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getStatePageData } from '@/lib/server/get-state-page-data';
+import {
+  createBreadcrumbStructuredData,
+  createDatasetStructuredData,
+  createFaqStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 import styles from './state-page.module.css';
 
@@ -231,6 +237,44 @@ export default async function StateElectricityRatePage({ params }: Props) {
         </ul>
       </section>
 
+      {/* Frequently Asked Questions Section */}
+      <section className={styles.sectionCard} aria-labelledby="state-faq-heading">
+        <h2 id="state-faq-heading" className={styles.sectionTitle}>
+          Frequently Asked Questions About {config.name} Electricity Rates
+        </h2>
+        <div className={styles.factorsList}>
+          <div style={{ marginBottom: 16 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: '#1f1f1f', marginBottom: 4 }}>
+              How is the {config.name} average residential electricity rate calculated?
+            </h3>
+            <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
+              The statewide average rate is calculated by the U.S. Energy Information Administration
+              (EIA) by dividing total monthly residential utility revenues by total megawatt-hours
+              delivered across all regulated and municipal utilities operating in {config.name}.
+            </p>
+          </div>
+          <div style={{ marginBottom: 16 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: '#1f1f1f', marginBottom: 4 }}>
+              Why is my electric bill in {config.name} higher than the state average?
+            </h3>
+            <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
+              Individual electric bills include fixed meter service fees ($10 to $25/month), tiered
+              seasonal rates, local city taxes, and fuel adjustment charges. Your specific utility
+              service territory may have higher delivery costs than the statewide aggregate.
+            </p>
+          </div>
+          <div style={{ marginBottom: 16 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: '#1f1f1f', marginBottom: 4 }}>
+              How often are {config.name} electricity rate datasets updated?
+            </h3>
+            <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
+              Energy Bill Lab synchronizes state rates monthly following official U.S. EIA Form
+              EIA-861M publication cycles, reflecting the most recent verified utility reporting period.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Calculator CTA Box */}
       <CalculatorCtaBox stateName={config.name} />
 
@@ -289,6 +333,57 @@ export default async function StateElectricityRatePage({ params }: Props) {
       <section style={{ marginTop: 32, marginBottom: 64 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeStructuredData(
+            createDatasetStructuredData({
+              name: `${config.name} Residential Electricity Rates Dataset`,
+              description: config.overview,
+              path: `/electricity-rates/${config.slug}`,
+              spatialCoverage: config.name,
+              temporalCoverage:
+                isPeriodMatched && pageData.provenance.status !== 'unavailable'
+                  ? pageData.provenance.sourcePeriod
+                  : '2024/2026',
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeStructuredData(
+            createBreadcrumbStructuredData([
+              { name: 'Home', path: '/' },
+              { name: 'Electricity Rates', path: '/electricity-rates' },
+              { name: config.name, path: `/electricity-rates/${config.slug}` },
+            ]),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeStructuredData(
+            createFaqStructuredData([
+              {
+                question: `How is the ${config.name} average residential electricity rate calculated?`,
+                answer: `The statewide average rate is calculated by the U.S. EIA by dividing total monthly residential utility revenues by total megawatt-hours delivered in ${config.name}.`,
+              },
+              {
+                question: `Why is my electric bill in ${config.name} higher than the state average?`,
+                answer: `Individual electric bills include fixed meter service fees ($10 to $25/month), tiered seasonal rates, local city taxes, and fuel adjustment charges.`,
+              },
+              {
+                question: `How often are ${config.name} electricity rate datasets updated?`,
+                answer: `Energy Bill Lab synchronizes state rates monthly following official U.S. EIA Form EIA-861M publication cycles.`,
+              },
+            ]),
+          ),
+        }}
+      />
     </PageContainer>
   );
 }

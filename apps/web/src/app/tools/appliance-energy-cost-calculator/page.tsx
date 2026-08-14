@@ -8,6 +8,12 @@ import { ApplianceCalculatorContainer } from '@/features/appliance-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/appliance-energy-cost-calculator')!;
 
@@ -16,6 +22,29 @@ export const metadata: Metadata = createPageMetadata({
   description: routeInfo.description,
   path: routeInfo.href,
 });
+
+const faqs = [
+  {
+    question: 'How do I find the wattage of my home appliance?',
+    answer:
+      'Look for the electrical specification label (nameplate) on the back or bottom of the appliance. It states power in Watts (W) or Amps (A) and Volts (V). If only Amps are listed, multiply Volts (usually 120V or 240V in the U.S.) by Amps to calculate Watts (W = V × A).',
+  },
+  {
+    question: 'What is an appliance duty cycle?',
+    answer:
+      'The duty cycle is the percentage of time an appliance motor or compressor actively draws power while turned on. For example, a refrigerator plugged in 24/7 typically has a 33% duty cycle because its compressor only runs for about 8 hours total per day.',
+  },
+  {
+    question: 'How does appliance energy use translate to electric bill costs?',
+    answer:
+      'Energy usage is measured in kilowatt-hours (kWh). One kWh equals 1,000 Watts used for one hour. Your electric utility multiplies total monthly kWh by your per-kWh electricity rate (national average ~18.4¢/kWh) plus fixed account fees and taxes.',
+  },
+  {
+    question: 'Which home appliances use the most electricity?',
+    answer:
+      'Central air conditioning, heat pumps, electric furnaces, water heaters, and clothes dryers consume the most power. A 1,500W space heater or electric kettle draws high instantaneous power, but total cost depends on daily operating runtime.',
+  },
+];
 
 export default async function ApplianceEnergyCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -35,10 +64,27 @@ export default async function ApplianceEnergyCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-electricity-do-household-appliances-use',
+    '/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill',
     '/electricity-bill-analyzer',
+    '/appliances',
     '/electricity-rates',
     '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Appliance Energy Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/appliance-energy-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Appliance Energy Cost Calculator', path: '/tools/appliance-energy-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -157,6 +203,38 @@ export default async function ApplianceEnergyCostCalculatorPage() {
           </div>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About Appliance Power
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Transparent Source Methodology
         </h3>
@@ -182,9 +260,22 @@ export default async function ApplianceEnergyCostCalculatorPage() {
       </section>
 
       {/* Related Tools & Navigation */}
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

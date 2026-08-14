@@ -9,7 +9,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   metaTitle:
     'August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu & AFUE Efficiency Benchmark',
   metaDescription:
-    'EIA May 2026 price data benchmarked across heating fuels: Heat pumps (COP 3.0, $18.01/MMBtu) save 6.8% vs 96% gas furnaces ($19.33/MMBtu), while electric resistance ($54.04/MMBtu) costs 179.6% more.',
+    'EIA price data benchmarked: Heat pumps ($18.01/MMBtu) save 6.8% vs 96% gas furnaces ($19.33/MMBtu), while electric baseboards ($54.04/MMBtu) cost 180% more.',
   summary:
     'A delivered thermal energy economic report based on official U.S. Energy Information Administration (EIA) May 2026 price releases ($19.24/Mcf residential natural gas; 18.44¢/kWh residential electricity) establishes the August 2026 Heating Cost-per-MMBtu Benchmark. Delivering 1 MMBtu (1,000,000 BTU) of useful space warmth costs $54.04 with 100% electric resistance heating—a 179.6% premium over a 96% AFUE condensing gas furnace ($19.33/MMBtu). However, a high-efficiency electric air-source heat pump operating at an average seasonal COP of 3.0 delivers heat at $18.01 per MMBtu, undercutting a 96% gas furnace by 6.8% ($1.32/MMBtu) and an 80% mid-efficiency gas furnace ($23.19/MMBtu) by 22.3% nationally.',
   category: 'natural-gas',

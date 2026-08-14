@@ -7,7 +7,7 @@ export const august2026ElectricDehumidifierKwhOperatingCostBenchmark: InsightRec
     'August 2026 Electric Dehumidifier kWh Consumption & Humidity Control Operating Cost Benchmark',
   metaTitle: 'August 2026 Dehumidifier Electricity Cost & Energy Star Benchmark | EnergyBillLab',
   metaDescription:
-    'Portable electric dehumidifier electricity cost benchmark for August 2026 using May 2026 EIA rate data (18.44¢/kWh). Running a 50-pint basement dehumidifier costs $36.51/mo nationally ($64.15 in CA). ENERGY STAR saves 24%.',
+    'Dehumidifier electricity benchmark using EIA rate data. Running a 50-pint unit costs $36.51/mo nationally ($64.15 in CA). ENERGY STAR saves 24%.',
   status: 'published',
   publishedAt: '2026-08-13T04:00:00.000Z',
   updatedAt: null,

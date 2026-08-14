@@ -8,6 +8,12 @@ import { RefrigeratorContainer } from '@/features/refrigerator-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/refrigerator-cost-calculator')!;
 
@@ -18,6 +24,29 @@ export const metadata: Metadata = createPageMetadata({
     : 'Estimate refrigerator electricity usage (kWh) and operating cost using rated wattage, compressor duty cycle, or annual EnergyGuide rating.',
   path: '/tools/refrigerator-cost-calculator',
 });
+
+const faqs = [
+  {
+    question: 'How much electricity does a typical refrigerator use per year?',
+    answer:
+      'A modern standard residential refrigerator (20–25 cu ft) consumes between 400 and 600 kWh annually ($73 to $110/year at 18.4¢/kWh). Older refrigerators built before 2000 often consume 1,000 to 1,500 kWh per year ($184 to $276/year).',
+  },
+  {
+    question: 'Why does refrigerator power draw vary throughout the day?',
+    answer:
+      'Refrigerators operate in cycles. When the compressor is actively chilling the compartment, it draws 100W–250W. When the target temperature is reached, the compressor shuts off, dropping power draw to 2W–5W (standby). During the automatic defrost cycle, electric resistance heaters briefly draw 400W–600W.',
+  },
+  {
+    question: 'Does keeping the refrigerator full save electricity?',
+    answer:
+      'Yes. Solid food and chilled liquids act as thermal mass, holding temperature better than empty air. When you open the door, less cold air spills out into the room, reducing the recovery time the compressor needs to run.',
+  },
+  {
+    question: 'How does kitchen ambient temperature affect refrigerator bills?',
+    answer:
+      'For every 10°F increase in ambient room temperature above 70°F (such as in a hot garage or during summer without AC), refrigerator energy consumption increases by roughly 20% to 25% due to higher thermal transfer through the door seals.',
+  },
+];
 
 export default async function RefrigeratorCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -41,12 +70,29 @@ export default async function RefrigeratorCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-electricity-does-a-refrigerator-use',
+    '/guides/how-much-electricity-do-household-appliances-use',
     '/tools/appliance-energy-cost-calculator',
     '/tools/clothes-dryer-cost-calculator',
     '/tools/electric-water-heater-cost-calculator',
-    '/guides/how-much-electricity-do-household-appliances-use',
     '/electricity-bill-analyzer',
+    '/electricity-rates',
+    '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Refrigerator Electricity Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/refrigerator-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Refrigerator Cost Calculator', path: '/tools/refrigerator-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -100,6 +146,38 @@ export default async function RefrigeratorCostCalculatorPage() {
           </code>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About Refrigerator Power
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Data Sources & Methodology
         </h3>
@@ -116,9 +194,22 @@ export default async function RefrigeratorCostCalculatorPage() {
         </DataSourceNote>
       </section>
 
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

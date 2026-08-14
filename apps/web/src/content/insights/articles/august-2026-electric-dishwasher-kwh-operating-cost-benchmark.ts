@@ -7,7 +7,7 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
     'August 2026 Electric Dishwasher kWh Consumption & Heated Dry vs. Air-Dry Operating Cost Benchmark',
   metaTitle: 'August 2026 Dishwasher Electricity Cost & Heated Dry Benchmark | EnergyBillLab',
   metaDescription:
-    'Dishwasher electricity cost benchmark for August 2026 using May 2026 EIA rate data (18.44¢/kWh). Disabling heated dry saves $19.82/year nationally ($34.83 in CA). Running a dishwasher costs 65% less electricity than hand washing.',
+    'Dishwasher electricity cost benchmark using EIA rate data. Disabling heated dry saves $19.82/year. Dishwashers use 65% less energy than hand washing.',
   status: 'published',
   publishedAt: '2026-08-11T08:00:00.000Z',
   updatedAt: null,

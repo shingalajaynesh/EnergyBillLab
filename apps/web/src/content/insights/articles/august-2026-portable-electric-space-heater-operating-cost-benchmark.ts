@@ -7,7 +7,7 @@ export const august2026PortableElectricSpaceHeaterOperatingCostBenchmark: Insigh
   title: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
   metaTitle: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
   metaDescription:
-    'EIA May 2026 electricity rates benchmarked for space heaters: A 1,500W heater costs $0.28/hr ($66.38/mo @ 8h/day). Compare wattage levels, state rates, and zone heating rules.',
+    'EIA electricity rates benchmarked for space heaters: A 1,500W heater costs $0.28/hr ($66.38/mo @ 8h/day). Compare wattage levels and state rates.',
   summary:
     'An operating cost analysis based on official U.S. Energy Information Administration (EIA) May 2026 electricity price releases (18.44¢/kWh national average) establishes the August 2026 Portable Electric Space Heater Operating Cost Benchmark. Operating a standard 1,500-watt portable space heater continuously draws 1.5 kWh of electrical energy per hour, resulting in an hourly operating cost of 27.66 cents ($0.277/hour). Operating a single 1,500W unit for 8 hours daily adds 240 kWh ($66.38) per month to a household electric bill, while running two 1,500W heaters for 12 hours daily draws 1,080 kWh—adding $298.73 per month. In high-rate states like California (32.55¢/kWh), a single 1,500W heater running 8 hours daily costs $117.18 per month, whereas in low-rate states like Washington (11.52¢/kWh), the same heater costs $41.47 per month.',
   category: 'home-energy-costs',

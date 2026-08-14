@@ -8,6 +8,12 @@ import { EvContainer } from '@/features/ev-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/ev-home-charging-cost-calculator')!;
 
@@ -16,6 +22,29 @@ export const metadata: Metadata = createPageMetadata({
   description: routeInfo.description,
   path: routeInfo.href,
 });
+
+const faqs = [
+  {
+    question: 'How much does it cost to fully charge an EV at home?',
+    answer:
+      'For a typical 75 kWh EV battery (e.g., Tesla Model Y, Ford Mustang Mach-E), adding a 20% to 80% charge (45 kWh net) at 90% Level 2 efficiency draws 50 kWh from the grid. At national average rates (~18.4¢/kWh), this costs about $9.20 per charging session, providing ~180–220 miles of range.',
+  },
+  {
+    question: 'What is the efficiency difference between Level 1 and Level 2 home charging?',
+    answer:
+      'Level 1 (120V outlet) charging operates at approximately 80%–85% efficiency because onboard vehicle computers and cooling pumps stay awake for 24+ hours. Level 2 (240V, 32–48A) completes the charge in 5–8 hours, reaching 88%–92% efficiency and reducing phantom standby losses.',
+  },
+  {
+    question: 'Is home EV charging cheaper than gas per mile?',
+    answer:
+      'Yes. An EV driving 3.5 miles per kWh at 18.4¢/kWh costs approximately 5.3¢ per mile. A gasoline vehicle averaging 30 MPG with gas at $3.50/gallon costs about 11.7¢ per mile—making home EV charging more than 50% cheaper per mile driven.',
+  },
+  {
+    question: 'How do Time-of-Use (TOU) utility rates lower EV charging costs?',
+    answer:
+      'Many utilities offer special EV Time-of-Use rates where overnight off-peak electricity (e.g., midnight to 6 AM) is discounted to 8¢–12¢/kWh. Scheduling your EV charger to run overnight cuts your monthly home charging bill in half.',
+  },
+];
 
 export default async function EvHomeChargingCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -35,13 +64,27 @@ export default async function EvHomeChargingCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-does-it-cost-to-charge-an-ev-at-home',
+    '/guides/what-is-a-time-of-use-electricity-rate',
     '/tools/appliance-energy-cost-calculator',
-    '/tools/ac-cost-calculator',
-    '/tools/space-heater-cost-calculator',
     '/electricity-bill-analyzer',
     '/electricity-rates',
     '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'EV Home Charging Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/ev-home-charging-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'EV Home Charging Cost Calculator', path: '/tools/ev-home-charging-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -160,6 +203,38 @@ export default async function EvHomeChargingCostCalculatorPage() {
           </div>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About EV Home Charging
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Data Sources & Methodology
         </h3>
@@ -185,9 +260,22 @@ export default async function EvHomeChargingCostCalculatorPage() {
       </section>
 
       {/* Related Tools */}
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

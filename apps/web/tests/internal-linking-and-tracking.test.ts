@@ -102,7 +102,7 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
   // Test 4: No internal-link target is missing from canonical route registries
   it('4. No internal-link target in publicRoutes is missing from sitemap or registry', () => {
     const validHrefs = new Set(publicRoutes.map((r) => r.href));
-    expect(validHrefs.size).toBe(132);
+    expect(validHrefs.size).toBe(133);
 
     APPROVED_STATE_SLUGS.forEach((slug) => {
       expect(validHrefs.has(`/electricity-rates/${slug}`)).toBe(true);
@@ -213,10 +213,10 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
   // Test 11: Sitemap includes Insights launch batch and daily updates
   it('11. Sitemap includes Insights launch batch and daily updates', () => {
     const sitemapEntries = sitemap();
-    expect(sitemapEntries).toHaveLength(156);
+    expect(sitemapEntries).toHaveLength(157);
 
     const urls = sitemapEntries.map((e) => e.url);
-    expect(new Set(urls).size).toBe(156);
+    expect(new Set(urls).size).toBe(157);
     expect(urls).toContain('https://energybilllab.com/insights');
     expect(urls).toContain(
       'https://energybilllab.com/insights/may-2026-ev-home-charging-cost-benchmark',

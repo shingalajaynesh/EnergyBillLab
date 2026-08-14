@@ -1,19 +1,40 @@
 import type { MetadataRoute } from 'next';
 
+import { energyGuides } from '@/content/guides';
 import {
   getPublishedInsights,
   INSIGHT_CATEGORIES,
   INSIGHTS_PUBLICATION_THRESHOLD,
 } from '@/content/insights';
+import { contentPages } from '@/content/pages';
 import { sitemapRoutes } from '@/lib/routes';
 import { getSiteUrl } from '@/lib/site';
 
-const LAST_MODIFIED = new Date('2026-07-22T00:00:00.000Z');
+const DEFAULT_LAST_MODIFIED = new Date('2026-08-01T00:00:00.000Z');
+
+function resolveRouteLastModified(href: string): Date {
+  // Check if it's a guide
+  if (href.startsWith('/guides/')) {
+    const slug = href.replace('/guides/', '');
+    const guide = energyGuides[slug];
+    if (guide?.updatedAt) {
+      return new Date(`${guide.updatedAt}T00:00:00.000Z`);
+    }
+  }
+
+  // Check if it's a static content page
+  const page = (contentPages as Record<string, { updatedAt?: string }>)[href];
+  if (page?.updatedAt) {
+    return new Date(`${page.updatedAt}T00:00:00.000Z`);
+  }
+
+  return DEFAULT_LAST_MODIFIED;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routeEntries = sitemapRoutes.map((route) => ({
     url: getSiteUrl(route.href),
-    lastModified: LAST_MODIFIED,
+    lastModified: resolveRouteLastModified(route.href),
     changeFrequency: route.href === '/' ? ('weekly' as const) : ('monthly' as const),
     priority: route.href === '/' ? 1 : 0.7,
   }));
@@ -35,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     )
     .map((category) => ({
       url: getSiteUrl(`/insights/category/${category.slug}`),
-      lastModified: LAST_MODIFIED,
+      lastModified: DEFAULT_LAST_MODIFIED,
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     }));

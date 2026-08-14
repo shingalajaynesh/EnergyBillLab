@@ -43,7 +43,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'Why Is My Electric Bill So High? 10 Causes & Diagnostic Checklist',
     breadcrumbLabel: 'Why Is My Bill High?',
     description:
-      'Diagnose sudden electric bill increases by separating kilowatt-hour usage spikes, rate adjustments, billing cycle days, seasonal HVAC loads, and utility charges.',
+      'Diagnose sudden electric bill increases by analyzing kilowatt-hour usage spikes, rate changes, billing cycle days, HVAC loads, and utility charges.',
     eyebrow: 'Electric Bill Diagnostic Guide',
     updatedAt: '2026-07-23',
     datePublished: '2026-07-23',
@@ -561,7 +561,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How to Calculate Your Effective Electricity Cost per kWh',
     breadcrumbLabel: 'Calculate Cost per kWh',
     description:
-      'Learn how to calculate your effective all-in electricity rate per kWh from your monthly electric bill, including supply, delivery, riders, and fixed customer fees.',
+      'Calculate your true all-in electricity rate per kWh from your monthly electric bill, including supply, delivery tariffs, riders, and fixed customer fees.',
     eyebrow: 'Electric Bill Rate Calculation Guide',
     updatedAt: '2026-07-26',
     datePublished: '2026-07-26',
@@ -609,7 +609,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'Why Is My Electric Bill High When Usage Is Low?',
     breadcrumbLabel: 'High Bill Low Usage',
     description:
-      'Understand why your electric bill remains high despite lower energy consumption, including fixed customer fees, utility rate increases, fuel surcharges, and estimated meter reads.',
+      'Understand why your electric bill remains high despite lower usage, including fixed meter fees, rate increases, fuel surcharges, and estimated meter reads.',
     eyebrow: 'Electric Bill Diagnostic Guide',
     updatedAt: '2026-07-26',
     datePublished: '2026-07-26',
@@ -1138,7 +1138,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does a Television Use?',
     breadcrumbLabel: 'TV Electricity Cost',
     description:
-      'Calculate television electricity usage (kWh) and monthly cost based on screen size (32"-75"+), display technology (LED vs OLED), brightness settings, and standby power.',
+      'Calculate TV electricity usage (kWh) and monthly cost based on screen size (32" to 75"+), display type (LED vs OLED), brightness, and standby power.',
     eyebrow: 'Television Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1382,7 +1382,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does a Window Air Conditioner Use?',
     breadcrumbLabel: 'Window AC Electricity Cost',
     description:
-      'Calculate window air conditioner electricity usage (kWh) and monthly cooling cost based on BTU capacity (5,000–12,000), EER/CEER rating, and thermostat duty cycle.',
+      'Calculate window AC electricity usage (kWh) and monthly cost based on BTU capacity (5,000–12,000), CEER efficiency rating, and thermostat duty cycle.',
     eyebrow: 'Window AC Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1529,7 +1529,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does Central Air Conditioning Use?',
     breadcrumbLabel: 'Central AC Electricity Usage',
     description:
-      'Calculate central air conditioning power consumption (3,000W–5,000W), cooling tonnage (2.5–5.0 tons), SEER2 efficiency ratings, compressor duty cycles, and monthly electric bill impact.',
+      'Calculate central AC power draw (3,000W–5,000W), cooling tonnage (2.5–5.0 tons), SEER2 efficiency ratings, duty cycles, and monthly electric bill impact.',
     eyebrow: 'Central Cooling Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1578,7 +1578,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does a Portable Air Conditioner Use?',
     breadcrumbLabel: 'Portable AC Electricity Usage',
     description:
-      'Discover portable air conditioner power consumption (900W–1,400W), DOE SACC cooling ratings, single-hose vs dual-hose efficiency, exhaust heat losses, and operating costs.',
+      'Discover portable AC power draw (900W–1,400W), DOE SACC cooling ratings, single vs dual hose efficiency, exhaust heat losses, and monthly operating costs.',
     eyebrow: 'Portable Cooling Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1627,7 +1627,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does a Ductless Mini-Split Use?',
     breadcrumbLabel: 'Mini-Split Electricity Usage',
     description:
-      'Calculate ductless mini-split heat pump power draw (200W idle modulation to 2,000W full load), variable-speed inverter efficiency (SEER2 18–30+), zone heating/cooling, and electric bill savings.',
+      'Calculate mini-split power draw (200W idle to 2,000W full load), variable-speed inverter efficiency (SEER2 18–30+), zone control, and electric bill savings.',
     eyebrow: 'Mini-Split Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1676,7 +1676,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does a Heat Pump Use?',
     breadcrumbLabel: 'Heat Pump Electricity Usage',
     description:
-      'Calculate annual and monthly heat pump electricity usage (kWh) in heating and cooling modes, Coefficient of Performance (COP 2.0–4.0), defrost cycles, and backup auxiliary heat strip spikes.',
+      'Calculate heat pump electricity usage (kWh) in heating and cooling modes, COP efficiency (2.0–4.0), defrost cycles, and auxiliary heat strip power spikes.',
     eyebrow: 'Heat Pump Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1725,7 +1725,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does an Electric Furnace Use?',
     breadcrumbLabel: 'Electric Furnace Usage',
     description:
-      'Calculate electric furnace power draw (10 kW–25 kW), heating element staging, blower motor power, monthly winter kWh consumption (1,500–3,500 kWh), and operating costs.',
+      'Calculate electric furnace power draw (10 kW–25 kW), heating element staging, blower motor draw, monthly winter kWh usage, and heating operating costs.',
     eyebrow: 'Electric Furnace Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1774,7 +1774,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Electricity Does Electric Baseboard Heating Use?',
     breadcrumbLabel: 'Baseboard Heating Usage',
     description:
-      'Calculate electric baseboard heater power consumption (250 Watts per linear foot), room-by-room zone control, line-voltage thermostats, and winter monthly operating costs.',
+      'Calculate baseboard heater power draw (250 Watts per linear foot), room-by-room zone control, line-voltage thermostats, and winter monthly heating costs.',
     eyebrow: 'Baseboard Heating Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1823,7 +1823,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Much Can a Smart Thermostat Save on Your Energy Bill?',
     breadcrumbLabel: 'Smart Thermostat Savings',
     description:
-      'Discover smart thermostat energy savings (ENERGY STAR benchmarks: 8%–12% heating, 15% cooling), automated schedule setbacks, geofencing occupancy detection, and ROI payback periods.',
+      'Discover smart thermostat energy savings (ENERGY STAR: 8%–12% heating, 15% cooling), automated setbacks, geofencing detection, and ROI payback periods.',
     eyebrow: 'Thermostat Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1872,7 +1872,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'Should You Turn Off the Air Conditioner When Away?',
     breadcrumbLabel: 'Turning Off AC When Away',
     description:
-      'Learn whether to turn off your AC or raise the thermostat when away, short vs all-day absences, indoor humidity control, heat gain thermodynamics, and safe temperature limits (78°F–80°F).',
+      'Learn whether to turn off your AC or raise the thermostat when away, humidity control impact, heat gain thermodynamics, and safe temperature limits.',
     eyebrow: 'AC Strategy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1921,7 +1921,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Air Leaks Increase Your Electric Bill',
     breadcrumbLabel: 'Air Leaks & Draft Costs',
     description:
-      'Discover how air infiltration and exfiltration force HVAC systems to work harder, the stack effect in multi-story homes, leak locations, weatherstripping ROI, and blower door test benefits.',
+      'Discover how air infiltration forces HVAC systems to work harder, stack effects, common leak locations, weatherstripping ROI, and blower door testing.',
     eyebrow: 'Air Sealing Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -1970,7 +1970,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'How Attic Insulation Affects Your Energy Bill',
     breadcrumbLabel: 'Attic Insulation & R-Value',
     description:
-      'Understand R-value thermal resistance (R-30 to R-60), climate zone insulation recommendations, air sealing before insulating, thermal bridging, and HVAC energy bill savings.',
+      'Understand R-value thermal resistance (R-30 to R-60), climate zone recommendations, air sealing, thermal bridging, and HVAC energy bill savings.',
     eyebrow: 'Insulation Energy Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',
@@ -2405,7 +2405,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'Fuel Adjustment Charges and Utility Riders Explained',
     breadcrumbLabel: 'Fuel Adjustments & Riders',
     description:
-      'Understand variable line items on your electric bill, including fuel adjustment clauses (FAC), purchased power riders, storm recovery fees, and environmental charges.',
+      'Understand variable line items on electric bills, including fuel adjustment clauses (FAC), purchased power riders, storm fees, and environmental charges.',
     eyebrow: 'Utility Riders Guide',
     datePublished: '2026-07-26',
     updatedAt: '2026-07-26',

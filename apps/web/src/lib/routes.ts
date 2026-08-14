@@ -301,6 +301,14 @@ const restPublicRoutes = [
     label: 'Accessibility',
     sitemap: true,
   },
+  {
+    description:
+      'Author profile, engineering background, and published energy research by Jaynesh Shingala.',
+    group: 'company',
+    href: '/authors/jaynesh-shingala',
+    label: 'Jaynesh Shingala',
+    sitemap: true,
+  },
 ] as const satisfies readonly PublicRoute[];
 
 export const publicRoutes = [
@@ -350,6 +358,7 @@ export function getFooterGroups() {
       title: 'Company',
       links: [
         getRouteByHref('/about'),
+        getRouteByHref('/authors/jaynesh-shingala'),
         getRouteByHref('/contact'),
         getRouteByHref('/methodology'),
         getRouteByHref('/data-sources'),

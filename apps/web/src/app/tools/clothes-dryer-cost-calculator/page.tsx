@@ -8,6 +8,12 @@ import { DryerContainer } from '@/features/dryer-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/clothes-dryer-cost-calculator')!;
 
@@ -18,6 +24,29 @@ export const metadata: Metadata = createPageMetadata({
     : 'Estimate electric clothes dryer cost per load, weekly cost, and annual energy usage using wattage, cycle length, and utility rates.',
   path: '/tools/clothes-dryer-cost-calculator',
 });
+
+const faqs = [
+  {
+    question: 'How much electricity does an electric clothes dryer use per cycle?',
+    answer:
+      'A standard electric clothes dryer (rated at 3,000W to 5,000W) running a 45-minute cycle consumes approximately 2.5 to 3.5 kWh of electricity per load ($0.46 to $0.64 at 18.4¢/kWh).',
+  },
+  {
+    question: 'Are heat pump clothes dryers more efficient than standard electric dryers?',
+    answer:
+      'Yes. Heat pump ventless dryers recycle ambient heat rather than exhausting hot air outdoors. They draw roughly 1,000W to 1,500W and consume 40% to 60% less energy per cycle compared to conventional resistance element dryers.',
+  },
+  {
+    question: 'How many loads of laundry does an average household do per week?',
+    answer:
+      'According to ENERGY STAR data, the average American family does 5 to 7 loads of laundry per week (approximately 300 loads per year), totaling 750–1,050 kWh annually for drying alone.',
+  },
+  {
+    question: 'Does cleaning the lint trap reduce electric dryer bills?',
+    answer:
+      'Yes. A clogged lint filter or restricted ductwork impedes airflow, causing the moisture sensor to extend cycle duration by 15–20 minutes per load, increasing energy consumption by 25% to 35%.',
+  },
+];
 
 export default async function ClothesDryerCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -41,12 +70,29 @@ export default async function ClothesDryerCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',
+    '/guides/how-much-electricity-do-household-appliances-use',
     '/tools/appliance-energy-cost-calculator',
     '/tools/refrigerator-cost-calculator',
     '/tools/electric-water-heater-cost-calculator',
-    '/guides/how-much-electricity-do-household-appliances-use',
     '/electricity-bill-analyzer',
+    '/electricity-rates',
+    '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Clothes Dryer Electricity Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/clothes-dryer-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Clothes Dryer Cost Calculator', path: '/tools/clothes-dryer-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -101,6 +147,38 @@ export default async function ClothesDryerCostCalculatorPage() {
           </code>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About Clothes Dryer Energy
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Electric Only Notice & Data Sources
         </h3>
@@ -117,9 +195,22 @@ export default async function ClothesDryerCostCalculatorPage() {
         </DataSourceNote>
       </section>
 
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

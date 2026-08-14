@@ -325,7 +325,7 @@ export default function AppliancesPage() {
         <p style={{ fontSize: 15, color: '#434343', marginTop: 16 }}>
           Explore our in-depth appliance energy guides:{' '}
           <Link href="/guides" style={{ color: '#176b5b', fontWeight: 600 }}>
-            View All 10 Home Energy Guides →
+            View All 50 Home Energy Guides →
           </Link>
         </p>
       </section>

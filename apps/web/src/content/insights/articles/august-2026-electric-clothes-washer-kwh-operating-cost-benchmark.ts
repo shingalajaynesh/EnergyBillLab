@@ -7,7 +7,7 @@ export const august2026ElectricClothesWasherKwhOperatingCostBenchmark: InsightRe
     'August 2026 Electric Clothes Washer kWh Consumption & Hot vs. Cold Water Wash Operating Cost Benchmark',
   metaTitle: 'August 2026 Clothes Washer Electricity Cost & Cold Wash Benchmark | EnergyBillLab',
   metaDescription:
-    'Washing machine electricity cost benchmark for August 2026 using May 2026 EIA rate data (18.44¢/kWh). Switching from hot to cold wash saves $124.47/year nationally ($218.70 in CA). Front-load washers cut power use by 50%.',
+    'Washing machine energy benchmark using EIA rate data (18.44¢/kWh). Switching to cold wash saves $124.47/year nationally. Front-loaders cut power 50%.',
   status: 'published',
   publishedAt: '2026-08-12T04:00:00.000Z',
   updatedAt: null,

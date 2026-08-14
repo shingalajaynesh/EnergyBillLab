@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -91,7 +92,15 @@ export default async function InsightDetailPage(props: InsightPageProps) {
             </span>
             <h1 className={styles.h1}>{article.title}</h1>
             <div className={styles.metaRow}>
-              <span className={styles.author}>By Jaynesh Shingala</span>
+              <span className={styles.author}>
+                By{' '}
+                <Link
+                  href="/authors/jaynesh-shingala"
+                  style={{ color: 'inherit', textDecoration: 'underline' }}
+                >
+                  Jaynesh Shingala
+                </Link>
+              </span>
               <span>Published {formatHumanDate(article.publishedAt)}</span>
               {article.updatedAt ? (
                 <span> · Updated {formatHumanDate(article.updatedAt)}</span>

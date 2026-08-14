@@ -122,6 +122,133 @@ export function createInsightArticleStructuredData({
     author: {
       '@type': 'Person',
       name: 'Jaynesh Shingala',
+      url: getSiteUrl('/authors/jaynesh-shingala'),
     },
   };
 }
+
+export function createWebApplicationStructuredData({
+  name,
+  description,
+  path,
+  applicationCategory = 'UtilityApplication',
+}: {
+  applicationCategory?: string;
+  description: string;
+  name: string;
+  path: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name,
+    description,
+    url: getSiteUrl(path),
+    applicationCategory,
+    operatingSystem: 'All',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    offers: {
+      '@type': 'Offer',
+      price: '0.00',
+      priceCurrency: 'USD',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: getSiteUrl('/'),
+      logo: getSiteUrl('/icon.png'),
+    },
+    creator: {
+      '@type': 'Person',
+      name: 'Jaynesh Shingala',
+      url: getSiteUrl('/authors/jaynesh-shingala'),
+    },
+  };
+}
+
+export function createDatasetStructuredData({
+  name,
+  description,
+  path,
+  spatialCoverage = 'United States',
+  temporalCoverage,
+  variableMeasured = 'Residential Electricity Price (cents per kWh)',
+}: {
+  description: string;
+  name: string;
+  path: string;
+  spatialCoverage?: string;
+  temporalCoverage?: string;
+  variableMeasured?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name,
+    description,
+    url: getSiteUrl(path),
+    spatialCoverage: {
+      '@type': 'Place',
+      name: spatialCoverage,
+    },
+    temporalCoverage: temporalCoverage || '2024/2026',
+    variableMeasured,
+    isAccessibleForFree: true,
+    creator: {
+      '@type': 'Organization',
+      name: 'U.S. Energy Information Administration (EIA)',
+      url: 'https://www.eia.gov',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: getSiteUrl('/'),
+      logo: getSiteUrl('/icon.png'),
+    },
+  };
+}
+
+export function createPersonStructuredData({
+  name = 'Jaynesh Shingala',
+  url = '/authors/jaynesh-shingala',
+  jobTitle = 'Software Engineer & Energy Data Analyst',
+  description = 'Jaynesh Shingala is a software engineer, energy data analyst, and the publisher of Energy Bill Lab, focusing on transparent calculation engines and U.S. utility rate modeling.',
+  sameAs = [],
+}: {
+  description?: string;
+  jobTitle?: string;
+  name?: string;
+  sameAs?: string[];
+  url?: string;
+} = {}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name,
+    url: getSiteUrl(url),
+    jobTitle,
+    description,
+    worksFor: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: getSiteUrl('/'),
+    },
+    sameAs,
+  };
+}
+
+export function createFaqStructuredData(faqs: Array<{ answer: string; question: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+

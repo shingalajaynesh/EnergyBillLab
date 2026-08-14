@@ -8,6 +8,12 @@ import { SpaceHeaterContainer } from '@/features/space-heater-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/space-heater-cost-calculator')!;
 
@@ -16,6 +22,29 @@ export const metadata: Metadata = createPageMetadata({
   description: routeInfo.description,
   path: routeInfo.href,
 });
+
+const faqs = [
+  {
+    question: 'How much does it cost to run a 1,500W space heater for 8 hours?',
+    answer:
+      'A 1,500 Watt heater running continuously for 8 hours consumes 12.0 kWh (1.5 kW × 8 hr). At national average electricity rates (~18.4¢/kWh), this costs approximately $2.21 per day, or about $66.24 per month.',
+  },
+  {
+    question: 'Is running a space heater cheaper than central heating?',
+    answer:
+      'Only if you use zone heating—heating a single occupied room (like a home office) while lowering the central thermostat for the rest of the house by 5°F to 10°F. If you try to heat multiple rooms with electric space heaters, it is far more expensive than central heat pumps or natural gas furnaces.',
+  },
+  {
+    question: 'Do infrared space heaters use less electricity than ceramic or oil-filled heaters?',
+    answer:
+      'No. All 1,500W electric resistance space heaters produce the exact same amount of heat (5,118 BTU/hr) per kWh consumed. Infrared heaters feel warmer immediately because they radiate heat directly to occupants rather than warming the surrounding air first.',
+  },
+  {
+    question: 'Can running two space heaters trip my electrical circuit breaker?',
+    answer:
+      'Yes. Standard U.S. residential outlets are on 15-Amp (1,800W max continuous) or 20-Amp (2,400W max) circuits. Two 1,500W heaters draw 3,000W combined, which exceeds circuit breaker limits and will trip the breaker if plugged into the same electrical circuit.',
+  },
+];
 
 export default async function SpaceHeaterCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -35,12 +64,28 @@ export default async function SpaceHeaterCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-does-it-cost-to-run-a-space-heater',
+    '/guides/how-much-electricity-do-household-appliances-use',
     '/tools/ac-cost-calculator',
     '/tools/appliance-energy-cost-calculator',
     '/electricity-bill-analyzer',
     '/electricity-rates',
     '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Space Heater Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/space-heater-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Space Heater Cost Calculator', path: '/tools/space-heater-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -158,6 +203,38 @@ export default async function SpaceHeaterCostCalculatorPage() {
           </div>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About Space Heater Costs
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Data Sources & Methodology
         </h3>
@@ -183,9 +260,22 @@ export default async function SpaceHeaterCostCalculatorPage() {
       </section>
 
       {/* Related Tools */}
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

@@ -2,23 +2,82 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { DataSourceNote } from '@/components/data-source-note';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
+import { RelatedLinks } from '@/components/related-links';
 import { CalculatorIsland } from '@/features/electricity-bill-analyzer';
 import { createPageMetadata } from '@/lib/metadata';
+import type { PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 import styles from './page.module.css';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Electricity Bill Analyzer: Compare Usage and Effective Cost',
+  title: 'Electricity Bill Analyzer: Compare Usage & Effective Cost',
   description:
-    'Compare two electricity bills, normalize usage by billing days, estimate your all-in cost per kWh, and understand what may be driving the change.',
+    'Compare two electricity bills, normalize usage by billing days, calculate your effective cost per kWh, and isolate usage changes from utility rate increases.',
   path: '/electricity-bill-analyzer',
 });
 
+const faqs = [
+  {
+    question: 'How do I calculate my true all-in cost per kWh?',
+    answer:
+      'Divide your total monthly bill amount (including all fixed account fees, delivery charges, fuel riders, and local taxes) by the total kilowatt-hours (kWh) consumed during that billing cycle.',
+  },
+  {
+    question: 'Why does billing period length cause sudden bill changes?',
+    answer:
+      'Utility billing cycles vary from 28 to 35 days depending on weekends and meter routes. A 34-day statement contains 21% more days than a 28-day cycle, raising total energy cost even if your daily consumption stayed identical.',
+  },
+  {
+    question: 'What is the difference between an estimated and actual meter reading?',
+    answer:
+      'If severe weather or access issues prevent a manual read, utilities estimate consumption based on historical averages. When an actual read occurs later, any previous underestimation is billed as a one-time catch-up charge.',
+  },
+  {
+    question: 'Can fixed customer charges raise my cost per kWh when usage drops?',
+    answer:
+      'Yes. Fixed customer fees ($5 to $25/month) are charged regardless of usage. When monthly kWh draw drops, fixed charges are spread over fewer units, mathematically increasing your effective cost per kWh.',
+  },
+];
+
+const relatedLinks: PublicRouteHref[] = [
+  '/guides/why-is-my-electric-bill-so-high',
+  '/guides/how-to-read-an-electric-bill-line-by-line',
+  '/guides/how-to-calculate-electricity-cost-per-kwh-from-your-bill',
+  '/guides/why-is-my-electric-bill-high-when-usage-is-low',
+  '/tools/appliance-energy-cost-calculator',
+  '/electricity-rates',
+  '/methodology',
+  '/data-sources',
+];
+
 export default async function ElectricityBillAnalyzerPage() {
   const stateRatesSnapshot = await getStateRatesSnapshot();
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Electricity Bill Analyzer',
+    description:
+      'Compare two utility statements, normalize usage by calendar days, estimate all-in cost per kWh, and isolate usage drivers from rate increases.',
+    path: '/electricity-bill-analyzer',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Electricity Bill Analyzer', path: '/electricity-bill-analyzer' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -128,30 +187,41 @@ export default async function ElectricityBillAnalyzerPage() {
         </div>
       </section>
 
-      <section className={styles.navigationSection}>
-        <h2>Explore More Energy Tools & Research</h2>
-        <p>
-          Energy Bill Lab provides transparent calculations and source-led research to help you
-          understand household energy expenses.
-        </p>
-        <div className={styles.linkButtons}>
-          <Link className={styles.linkButton} href="/guides/why-is-my-electric-bill-so-high">
-            Why Is My Electric Bill So High? Guide &rarr;
-          </Link>
-          <Link
-            className={styles.linkButton}
-            href="/guides/how-to-read-an-electric-bill-line-by-line"
-          >
-            How to Read Your Electric Bill Line by Line &rarr;
-          </Link>
-          <Link className={styles.linkButton} href="/tools">
-            View All Energy Tools &rarr;
-          </Link>
-          <Link className={styles.linkButton} href="/methodology">
-            Read Calculation Methodology &rarr;
-          </Link>
+      {/* Frequently Asked Questions Section */}
+      <section className={styles.methodologySection} aria-labelledby="analyzer-faq-heading">
+        <h2 id="analyzer-faq-heading">Frequently Asked Questions</h2>
+        <div className={styles.checklistGrid}>
+          {faqs.map((faq) => (
+            <div key={faq.question} className={styles.checkCard}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
+
+      <DataSourceNote>
+        Energy Bill Lab calculations provide informational estimates. Actual utility bills may
+        differ because of local taxes, fixed customer charges, fuel riders, tier structures, demand
+        fees, and household billing cycle variations.
+      </DataSourceNote>
+
+      <section style={{ marginTop: 32, marginBottom: 48 }}>
+        <RelatedLinks links={relatedLinks} />
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

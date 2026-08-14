@@ -8,6 +8,12 @@ import { AcCalculatorContainer } from '@/features/ac-calculator';
 import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
+import {
+  createBreadcrumbStructuredData,
+  createFaqStructuredData,
+  createWebApplicationStructuredData,
+  serializeStructuredData,
+} from '@/lib/structured-data';
 
 const routeInfo = publicRoutes.find((r) => r.href === '/tools/ac-cost-calculator')!;
 
@@ -16,6 +22,29 @@ export const metadata: Metadata = createPageMetadata({
   description: routeInfo.description,
   path: routeInfo.href,
 });
+
+const faqs = [
+  {
+    question: 'How do I convert AC BTU/hr cooling capacity to electrical Watts?',
+    answer:
+      'Divide the cooling capacity in BTU/hr by the Energy Efficiency Ratio (EER). For example, a 12,000 BTU/hr window AC with an EER of 10.0 draws approximately 1,200 Watts (12,000 ÷ 10 = 1,200 W) of electrical input power.',
+  },
+  {
+    question: 'What is the difference between EER and SEER2 ratings?',
+    answer:
+      'EER measures instantaneous cooling efficiency at a fixed outdoor temperature of 95°F. SEER2 (Seasonal Energy Efficiency Ratio 2) measures average cooling efficiency across an entire variable summer cooling season according to updated DOE M1 testing standards.',
+  },
+  {
+    question: 'How much does it cost to run a central AC vs a window AC per hour?',
+    answer:
+      'At national average rates (~18.4¢/kWh), a 1,200W window AC costs about $0.22 per active hour ($0.11/hr at 50% duty cycle). A central 3.5-ton AC drawing 3,500W costs about $0.64 per active hour ($0.32/hr at 50% duty cycle).',
+  },
+  {
+    question: 'Does raising the thermostat by 2°F really lower electric bills?',
+    answer:
+      'Yes. According to the U.S. Department of Energy (DOE), setting your thermostat 7°F–10°F higher for 8 hours a day can save up to 10% on annual cooling costs by reducing total compressor run-time and indoor-outdoor heat transfer.',
+  },
+];
 
 export default async function AcCostCalculatorPage() {
   const snapshot = await getStateRatesSnapshot();
@@ -35,12 +64,29 @@ export default async function AcCostCalculatorPage() {
 
   const relatedLinks: PublicRouteHref[] = [
     '/guides/how-much-does-it-cost-to-run-an-air-conditioner',
+    '/guides/how-much-electricity-does-central-air-conditioning-use',
+    '/guides/how-much-electricity-does-a-window-air-conditioner-use',
+    '/guides/should-you-turn-off-the-air-conditioner-when-away',
     '/tools/appliance-energy-cost-calculator',
     '/electricity-bill-analyzer',
-    '/research/us-residential-electricity-rate-report',
     '/electricity-rates',
     '/methodology',
   ];
+
+  const webAppSchema = createWebApplicationStructuredData({
+    name: 'Air Conditioner Cost Calculator',
+    description: routeInfo.description,
+    path: '/tools/ac-cost-calculator',
+    applicationCategory: 'UtilityApplication',
+  });
+
+  const breadcrumbSchema = createBreadcrumbStructuredData([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Air Conditioner Cost Calculator', path: '/tools/ac-cost-calculator' },
+  ]);
+
+  const faqSchema = createFaqStructuredData(faqs);
 
   return (
     <PageContainer>
@@ -158,6 +204,38 @@ export default async function AcCostCalculatorPage() {
           </div>
         </div>
 
+        {/* Frequently Asked Questions Section */}
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginTop: 32, marginBottom: 16 }}>
+          Frequently Asked Questions About Air Conditioning Costs
+        </h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              style={{
+                background: '#ffffff',
+                padding: 18,
+                borderRadius: 8,
+                border: '1px solid #e8e8e8',
+              }}
+            >
+              <h4 style={{ fontSize: 15, fontWeight: 600, color: '#1f1f1f', marginBottom: 8 }}>
+                {faq.question}
+              </h4>
+              <p style={{ fontSize: 14, color: '#595959', lineHeight: 1.6, margin: 0 }}>
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 12 }}>
           Data Sources & Methodology
         </h3>
@@ -183,9 +261,22 @@ export default async function AcCostCalculatorPage() {
       </section>
 
       {/* Related Tools & Navigation */}
-      <section style={{ marginTop: 40 }}>
+      <section style={{ marginTop: 40, marginBottom: 48 }}>
         <RelatedLinks links={relatedLinks} />
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
+      />
     </PageContainer>
   );
 }

@@ -21,7 +21,13 @@ export const contentPages = {
       'Energy Bill Lab is an independent informational website published by Jaynesh Shingala.',
     path: '/about',
     updatedAt: '2026-07-24',
-    related: ['/methodology', '/data-sources', '/editorial-policy', '/contact'],
+    related: [
+      '/authors/jaynesh-shingala',
+      '/methodology',
+      '/data-sources',
+      '/editorial-policy',
+      '/contact',
+    ],
     sections: [
       {
         heading: 'What Energy Bill Lab Does',
@@ -33,7 +39,8 @@ export const contentPages = {
       {
         heading: 'Who Creates & Maintains Energy Bill Lab',
         paragraphs: [
-          'Energy Bill Lab is published by Jaynesh Shingala.',
+          'Energy Bill Lab is founded, engineered, and published by Jaynesh Shingala.',
+          'Review the complete engineering credentials, calculation methodology responsibilities, and research portfolio on the Jaynesh Shingala Author Profile (/authors/jaynesh-shingala).',
           'For questions, corrections, or feedback, contact shingala.jaynesh@gmail.com.',
         ],
       },
@@ -153,7 +160,13 @@ export const contentPages = {
       'Energy Bill Lab editorial rules for useful, sourced, transparent home-energy content.',
     path: '/editorial-policy',
     updatedAt: '2026-07-24',
-    related: ['/methodology', '/data-sources', '/about', '/contact'],
+    related: [
+      '/authors/jaynesh-shingala',
+      '/methodology',
+      '/data-sources',
+      '/about',
+      '/contact',
+    ],
     sections: [
       {
         heading: 'Ownership & Technical Publishing',
@@ -313,8 +326,8 @@ export const contentPages = {
       {
         heading: 'Feedback & assistance',
         paragraphs: [
-          'We welcome feedback on the accessibility of Energy Bill Lab. If you encounter an accessibility barrier or require assistance, email our support team at support@energybilllab.com.',
-          'Please describe the nature of the issue and the web page URL so we can address it promptly.',
+          'We welcome feedback on the accessibility of Energy Bill Lab. If you encounter an accessibility barrier or require assistance, email our publisher and editorial team at shingala.jaynesh@gmail.com.',
+          'Please describe the nature of the issue and the web page URL so we can address it promptly within 48 hours.',
         ],
       },
     ],

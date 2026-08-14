@@ -57,7 +57,7 @@ export function GuideArticleView({
     author: {
       '@type': 'Person',
       name: 'Jaynesh Shingala',
-      url: getSiteUrl('/about'),
+      url: getSiteUrl('/authors/jaynesh-shingala'),
     },
     publisher: {
       '@type': 'Organization',
@@ -82,9 +82,13 @@ export function GuideArticleView({
           <h1 className={styles.title}>{guide.h1Title}</h1>
           <p className={styles.lead}>{guide.description}</p>
           <div className={styles.metaRow}>
-            <span>By Jaynesh Shingala</span>
+            <span>
+              By <Link href="/authors/jaynesh-shingala" style={{ color: 'inherit', textDecoration: 'underline' }}>Jaynesh Shingala</Link>
+            </span>
             <span>•</span>
-            <span>Written and data-checked by Jaynesh Shingala</span>
+            <span>
+              Written & reviewed by <Link href="/authors/jaynesh-shingala" style={{ color: 'inherit', textDecoration: 'underline' }}>Jaynesh Shingala</Link>
+            </span>
             <span>•</span>
             <time dateTime={guide.updatedAt}>Updated {formatHumanDate(guide.updatedAt)}</time>
           </div>

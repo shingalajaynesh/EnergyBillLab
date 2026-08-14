@@ -7,7 +7,7 @@ export const august2026StateResidentialElectricityPriceSpreadBenchmark: InsightR
   title: 'August 2026 U.S. State Electricity Rate Spread & Regional Cost Disparity Report',
   metaTitle: 'August 2026 U.S. State Electricity Price Spread & Cost Disparity Report',
   metaDescription:
-    'EIA state residential price data analyzed: 3.3x price spread from Oklahoma (9.03¢/kWh) to Rhode Island (26.71¢/kWh) and California (26.27¢/kWh) creates a $176 monthly bill gap.',
+    'EIA state residential price data: 3.3x price spread from Oklahoma (9.03¢/kWh) to Rhode Island (26.71¢/kWh) creates a $176 monthly household bill gap.',
   summary:
     'The U.S. residential electricity price spread across contiguous states reaches 3.3x according to EIA reporting, ranging from 8.07¢/kWh in New Mexico and 9.03¢/kWh in Oklahoma to 26.27¢/kWh in California and 26.71¢/kWh in Rhode Island. For a standard 1,000 kWh monthly household consumption, this regional rate disparity creates a $176.80 monthly energy cost gap ($2,121.60 annually) before utility fixed fees and taxes.',
   category: 'electricity-rates',

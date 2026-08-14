@@ -311,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(156);
+    expect(entries).toHaveLength(157);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),

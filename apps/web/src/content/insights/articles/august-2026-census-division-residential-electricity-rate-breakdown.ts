@@ -7,7 +7,7 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
   title: 'August 2026 U.S. Census Division Residential Electricity Rate Breakdown',
   metaTitle: 'August 2026 U.S. Census Division Residential Electricity Rate Breakdown',
   metaDescription:
-    'EIA May 2026 dataset analyzed across 9 U.S. Census Divisions: New England leads at 28.14¢/kWh ($281.40/mo for 1,000 kWh) vs West North Central at 14.75¢/kWh ($147.50/mo)—a 1.91x regional spread.',
+    'EIA dataset analyzed across 9 U.S. Census Divisions: New England leads at 28.14¢/kWh vs West North Central at 14.75¢/kWh—a 1.91x regional rate spread.',
   summary:
     'According to official U.S. Energy Information Administration (EIA) data from the May 2026 Electric Power Monthly release, residential electricity rates vary significantly across the nine U.S. Census Divisions. While the national residential electricity price averaged 18.44 cents per kWh ($0.1844/kWh), regional averages ranged from a high of 28.14 cents per kWh in New England to a low of 14.75 cents per kWh in the West North Central division. For a standard household consuming 1,000 kWh per month, this regional pricing disparity translates into a monthly bill burden spread of $133.90—from $281.40 per month in New England down to $147.50 per month in the Midwest.',
   category: 'electricity-rates',

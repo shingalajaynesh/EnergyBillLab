@@ -95,6 +95,31 @@ export default async function NationalRateReportPage() {
           description="An original, source-led data report analyzing residential electricity rates across all U.S. states for one common reporting period. Features national benchmarks, state rankings, month-over-month rate movements, annual price shifts, and normalized household energy charge comparisons."
         />
 
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            marginBottom: 24,
+            fontSize: 14,
+            color: '#595959',
+          }}
+        >
+          <span>
+            Research & analysis by{' '}
+            <Link
+              href="/authors/jaynesh-shingala"
+              style={{ fontWeight: 600, color: '#176b5b', textDecoration: 'underline' }}
+            >
+              Jaynesh Shingala
+            </Link>
+          </span>
+          <span>•</span>
+          <span>Lead Energy Data Analyst & Publisher</span>
+          <span>•</span>
+          <span>Source: U.S. EIA Form EIA-861M</span>
+        </div>
+
         {!report.available ? (
           <DataUnavailablePanel data={unavailableViewModel} />
         ) : (
