@@ -897,7 +897,26 @@ For every source, record:
 
 ---
 
-# Phase 9 — Tables, Charts, and Calculations
+# Phase 9 — Tables, Charts, and Technical Visual Benchmark Cards
+
+## Technical Visual Benchmark Card Requirement
+
+Every new published or draft Insight must define a dedicated comparison configuration in:
+
+```text
+apps/web/src/content/insights/visuals.ts
+```
+
+Configure `INSIGHT_VISUAL_CONFIGS[slug]` with:
+
+- `title`: Descriptive technical benchmark title;
+- `subtitle`: Explicit reporting period, rate assumption (e.g. May 2026 EIA average), and scope;
+- `badge`: Concise value badge (e.g., "68% Savings Potential", "Peak Cost Spread");
+- `badgeType`: `'primary' | 'success' | 'warning' | 'danger'`;
+- `items`: 2 to 5 comparison benchmark bars with `label`, `displayValue`, numeric `value`, `color`, and `subLabel` explaining underlying physics or calculation factors;
+- `footerNote`: Practical takeaway or physics fact (e.g., Pump Affinity Law, SEER2 conversion, heating degree days).
+
+## Data Tables and Markdown Charts
 
 Every data table must include:
 
@@ -1140,6 +1159,7 @@ At minimum verify:
 22. No prohibited placeholder content exists.
 23. Existing guide, state, calculator, and research routes remain intact.
 24. Protected files remain unchanged.
+25. Visual benchmark configuration is registered in `apps/web/src/content/insights/visuals.ts` and covered in `apps/web/tests/technical-visual-card.test.ts`.
 
 Tests must inspect actual implementation behavior.
 

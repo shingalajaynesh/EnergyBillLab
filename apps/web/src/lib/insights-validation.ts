@@ -135,8 +135,11 @@ export function validateInsightRecord(
     errors.push(`Invalid status "${record.status}". Must be one of: ${validStatuses.join(', ')}.`);
   }
 
-  // Future scheduled check
-  if (record.status === 'published' && record.publishedAt > nowIso) {
+  // Future scheduled check (timezone-aware calendar date comparison)
+  const nowCalendarDate = nowIso.slice(0, 10);
+  const localCalendarDate = new Date().toLocaleDateString('en-CA');
+  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
+  if (record.status === 'published' && record.publishedAt.slice(0, 10) > maxValidDate) {
     errors.push(
       `Article "${record.slug}" status is "published" but has future publication date (${record.publishedAt}). Must use status "scheduled".`,
     );

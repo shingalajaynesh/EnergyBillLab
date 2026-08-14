@@ -3,13 +3,12 @@ import type { InsightRecord } from '../types';
 export const august2026SwimmingPoolPumpKwhOperatingCostBenchmark: InsightRecord = {
   id: 'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
   slug: 'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
-  title:
-    'August 2026 Swimming Pool Pump kWh Consumption & Variable-Speed Operating Cost Benchmark',
+  title: 'August 2026 Swimming Pool Pump kWh Consumption & Variable-Speed Operating Cost Benchmark',
   metaTitle: 'August 2026 Pool Pump Electricity Cost & Variable Speed Benchmark | EnergyBillLab',
   metaDescription:
     'Pool pump electricity benchmark using EIA rate data. A single-speed pump costs $96.81/mo nationally ($170.10 in CA). Variable-speed saves 68% ($66.38/mo).',
   status: 'published',
-  publishedAt: '2026-08-14',
+  publishedAt: '2026-08-15',
   updatedAt: null,
   category: 'appliances',
   canonicalTopic: 'swimming-pool-pump-kwh-operating-cost-benchmark',

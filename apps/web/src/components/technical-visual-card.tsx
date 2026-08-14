@@ -45,7 +45,11 @@ export function TechnicalVisualCard({
         : styles.badge;
 
   return (
-    <figure className={styles.card} role="img" aria-label={`${title}${subtitle ? `: ${subtitle}` : ''}`}>
+    <figure
+      className={styles.card}
+      role="img"
+      aria-label={`${title}${subtitle ? `: ${subtitle}` : ''}`}
+    >
       <figcaption className={styles.header}>
         <div className={styles.topRow}>
           <h3 className={styles.title}>{title}</h3>
@@ -100,10 +104,7 @@ export function TechnicalVisualCard({
                 </div>
 
                 <div className={styles.barTrack} aria-hidden="true">
-                  <div
-                    className={`${styles.barFill} ${colorClass}`}
-                    style={{ width: `${pct}%` }}
-                  />
+                  <div className={`${styles.barFill} ${colorClass}`} style={{ width: `${pct}%` }} />
                 </div>
 
                 {item.subLabel ? <div className={styles.barSubtext}>{item.subLabel}</div> : null}

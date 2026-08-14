@@ -75,9 +75,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe(
-      'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
-    );
+    expect(published[0]?.slug).toBe('august-2026-swimming-pool-pump-kwh-operating-cost-benchmark');
   });
 
   // Test 3: Hub is indexable after launch threshold

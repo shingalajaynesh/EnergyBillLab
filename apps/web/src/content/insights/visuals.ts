@@ -13,7 +13,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 1. Pool Pump Benchmark
   'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark': {
     title: 'Pool Pump Monthly Operating Cost & Electricity Draw Benchmark',
-    subtitle: 'Calculated for a 24,000-gallon pool at national average electricity rate of 18.44¢/kWh',
+    subtitle:
+      'Calculated for a 24,000-gallon pool at national average electricity rate of 18.44¢/kWh',
     badge: '68%–72% Savings',
     badgeType: 'success',
     items: [
@@ -55,7 +56,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 2. Rooftop Solar NEM 3.0 Benchmark
   'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark': {
     title: 'Rooftop Solar Annual Utility Bill Savings by Tariff Structure',
-    subtitle: 'Annual bill reduction for a 6 kW solar system (9,000 kWh/yr) on a 10,000 kWh/yr household',
+    subtitle:
+      'Annual bill reduction for a 6 kW solar system (9,000 kWh/yr) on a 10,000 kWh/yr household',
     badge: 'NEM 3.0 Economics',
     badgeType: 'primary',
     items: [
@@ -80,7 +82,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$1,418/yr',
         value: 1418,
         color: 'danger',
-        subLabel: 'Exports credited at wholesale avoided cost (~6.8¢/kWh) · 51.4% savings reduction',
+        subLabel:
+          'Exports credited at wholesale avoided cost (~6.8¢/kWh) · 51.4% savings reduction',
       },
     ],
     footerNote:
@@ -125,7 +128,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 4. Central AC SEER2 Benchmark
   'august-2026-central-air-conditioner-seer2-cooling-cost-benchmark': {
     title: 'Central Air Conditioner Seasonal Cooling Cost by SEER2 Rating',
-    subtitle: 'Estimated seasonal electricity expense for a 3-ton central AC system (1,200 cooling hours)',
+    subtitle:
+      'Estimated seasonal electricity expense for a 3-ton central AC system (1,200 cooling hours)',
     badge: 'Efficiency Curve',
     badgeType: 'primary',
     items: [
@@ -167,7 +171,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 5. Space Heater Benchmark
   'august-2026-portable-electric-space-heater-operating-cost-benchmark': {
     title: 'Portable Electric Space Heater Daily & Monthly Operating Cost',
-    subtitle: 'Calculated at 1,500 Watts continuous draw at U.S. average electricity rate of 18.44¢/kWh',
+    subtitle:
+      'Calculated at 1,500 Watts continuous draw at U.S. average electricity rate of 18.44¢/kWh',
     badge: '1,500W Power Draw',
     badgeType: 'primary',
     items: [
@@ -195,7 +200,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
       {
         label: 'Localized 4 Hours / Day Low Setting (750W)',
         displayValue: '$16.60/mo',
-        value: 16.60,
+        value: 16.6,
         color: 'success',
         highlight: true,
         badge: 'Eco Use',
@@ -251,7 +256,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
       {
         label: 'Pre-2000 Legacy Refrigerator (1,000+ kWh/year baseload)',
         displayValue: '$184.40/yr',
-        value: 184.40,
+        value: 184.4,
         color: 'danger',
         subLabel: 'Common secondary refrigerator kept running in an unconditioned garage',
       },
@@ -307,7 +312,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
       {
         label: 'ENERGY STAR Normal Wash + Air Dry / Condensation (0.85 kWh/load)',
         displayValue: '$33.70/yr',
-        value: 33.70,
+        value: 33.7,
         color: 'success',
         highlight: true,
         badge: '52.8% Savings',
@@ -346,7 +351,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: '92% Bill Savings',
-        subLabel: '105 kWh/year · Switching to cold water saves $229.58/year on electric water heating',
+        subLabel:
+          '105 kWh/year · Switching to cold water saves $229.58/year on electric water heating',
       },
     ],
     footerNote:
@@ -356,7 +362,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 10. Home Battery Storage Usable Capacity & Round-Trip Efficiency
   'august-2026-home-battery-storage-usable-capacity-round-trip-efficiency-benchmark': {
     title: '13.5 kWh Home Battery Usable Energy & AC Efficiency Delivery',
-    subtitle: 'Energy retained after Depth of Discharge (DoD) limits and AC round-trip conversion losses',
+    subtitle:
+      'Energy retained after Depth of Discharge (DoD) limits and AC round-trip conversion losses',
     badge: 'Efficiency Physics',
     badgeType: 'primary',
     items: [
@@ -381,7 +388,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: 'Real-World Output',
-        subLabel: 'Actual usable electricity available to power home circuits during outage or peak TOU',
+        subLabel:
+          'Actual usable electricity available to power home circuits during outage or peak TOU',
       },
     ],
     footerNote:
@@ -391,7 +399,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 11. Natural Gas vs Electric Heating Cost Per MMBtu Benchmark
   'august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark': {
     title: 'Delivered Heating Cost per Million BTU (MMBtu) Benchmark',
-    subtitle: 'Calculated using May 2026 EIA rates: $16.14/Mcf natural gas vs 18.44¢/kWh electricity',
+    subtitle:
+      'Calculated using May 2026 EIA rates: $16.14/Mcf natural gas vs 18.44¢/kWh electricity',
     badge: 'Heating Fuel Economics',
     badgeType: 'primary',
     items: [
@@ -433,7 +442,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 12. Home Appliance Operating Cost Hierarchy Benchmark
   'august-2026-home-appliance-operating-cost-hierarchy-benchmark': {
     title: 'Top Residential Electricity Consumers: Annual Operating Cost Hierarchy',
-    subtitle: 'Annual electricity expense based on typical U.S. household operating patterns at 18.44¢/kWh',
+    subtitle:
+      'Annual electricity expense based on typical U.S. household operating patterns at 18.44¢/kWh',
     badge: 'Load Hierarchy',
     badgeType: 'primary',
     items: [
@@ -573,8 +583,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         subLabel: 'Low-cost Tennessee Valley Authority hydro and nuclear generation resources',
       },
     ],
-    footerNote:
-      'Source: U.S. EIA Electric Power Monthly Table 5.6.A (May 2026 data period).',
+    footerNote: 'Source: U.S. EIA Electric Power Monthly Table 5.6.A (May 2026 data period).',
   },
 
   // 15. Time of Use Peak Rate Spread & Appliance Load Shifting Benchmark
@@ -724,7 +733,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: 'High Value / kWh',
-        subLabel: 'Moderate solar yield creates high financial value due to 24.8¢/kWh electricity rates',
+        subLabel:
+          'Moderate solar yield creates high financial value due to 24.8¢/kWh electricity rates',
       },
     ],
     footerNote:
@@ -778,7 +788,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$258.16/mo',
         value: 258.16,
         color: 'danger',
-        subLabel: '+65% bill increase driven by 95°F+ outdoor temperatures and continuous AC cycling',
+        subLabel:
+          '+65% bill increase driven by 95°F+ outdoor temperatures and continuous AC cycling',
       },
       {
         label: 'Moderate July Summer (1,150 kWh/mo · Normal Cooling)',
@@ -839,7 +850,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 22. May 2026 Residential Natural Gas Price Off-Season Bill Impact
   'may-2026-residential-natural-gas-price-off-season-bill-impact': {
     title: 'Summer Off-Season Natural Gas Bill: Fixed Customer Charge vs Usage',
-    subtitle: 'Monthly natural gas bill breakdown during low summer usage (20 Therms/mo for water/cooking)',
+    subtitle:
+      'Monthly natural gas bill breakdown during low summer usage (20 Therms/mo for water/cooking)',
     badge: 'Fixed Charge Share',
     badgeType: 'primary',
     items: [
@@ -872,7 +884,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 23. July 2026 Summer Wholesale Electricity Price Forecast
   'july-2026-summer-wholesale-electricity-price-forecast': {
     title: 'Summer Wholesale Power Price Forecast vs Retail Electricity Rates',
-    subtitle: 'Wholesale peak generation clearing prices vs residential retail customer tariff rates',
+    subtitle:
+      'Wholesale peak generation clearing prices vs residential retail customer tariff rates',
     badge: 'Wholesale vs Retail',
     badgeType: 'primary',
     items: [
@@ -881,7 +894,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$5,000 / MWh',
         value: 500.0,
         color: 'danger',
-        subLabel: 'Wholesale market cap triggered during severe grid reserve emergencies ($5.00/kWh)',
+        subLabel:
+          'Wholesale market cap triggered during severe grid reserve emergencies ($5.00/kWh)',
       },
       {
         label: 'PJM / NYISO On-Peak Wholesale Summer Average',
@@ -895,7 +909,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$184.40 / MWh',
         value: 184.4,
         color: 'primary',
-        subLabel: '18.44¢/kWh retail rate includes generation, transmission, distribution, and taxes',
+        subLabel:
+          '18.44¢/kWh retail rate includes generation, transmission, distribution, and taxes',
       },
     ],
     footerNote:

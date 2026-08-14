@@ -189,6 +189,7 @@ const INSIGHT_SLUGS = [
   'august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
   'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
   'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
+  'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
 ];
 const INSIGHT_URLS = INSIGHT_SLUGS.map((i) => `https://${HOST}/insights/${i}`);
 

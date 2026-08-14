@@ -12,7 +12,8 @@ export interface GuideVisualConfig {
 export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
   'why-is-my-electric-bill-so-high': {
     title: 'Where Electricity Goes in a Typical U.S. Home',
-    subtitle: 'U.S. Energy Information Administration (EIA) residential end-use consumption breakdown',
+    subtitle:
+      'U.S. Energy Information Administration (EIA) residential end-use consumption breakdown',
     badge: 'End-Use Shares',
     badgeType: 'primary',
     items: [
@@ -106,7 +107,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-much-does-it-cost-to-run-an-air-conditioner': {
     title: 'Air Conditioner Monthly Operating Cost Benchmarks',
-    subtitle: 'Monthly electricity cost across common AC unit sizes and efficiency ratings at 16.5¢/kWh',
+    subtitle:
+      'Monthly electricity cost across common AC unit sizes and efficiency ratings at 16.5¢/kWh',
     badge: 'Cooling Breakdown',
     badgeType: 'primary',
     items: [
@@ -147,7 +149,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-much-does-it-cost-to-run-a-space-heater': {
     title: 'Space Heater Monthly Electricity Cost Benchmarks',
-    subtitle: 'Estimated 30-day electric bill impact based on run time and wattage settings at 16.5¢/kWh',
+    subtitle:
+      'Estimated 30-day electric bill impact based on run time and wattage settings at 16.5¢/kWh',
     badge: 'High-Power Draw',
     badgeType: 'primary',
     items: [
@@ -420,7 +423,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-to-calculate-electricity-cost-per-kwh-from-your-bill': {
     title: 'Electric Bill Breakdown: Generation vs Delivery vs Fixed Fees',
-    subtitle: 'Components of an all-in effective electricity rate on a $184.40 statement (1,000 kWh)',
+    subtitle:
+      'Components of an all-in effective electricity rate on a $184.40 statement (1,000 kWh)',
     badge: 'All-In Rate Anatomy',
     badgeType: 'primary',
     items: [
@@ -550,7 +554,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-billing-cycle-length-affects-electricity-bills': {
     title: 'Billing Cycle Length Impact on Total Monthly Statements',
-    subtitle: 'How calendar drift in utility meter read schedules alters total billed cost (30 kWh/day usage)',
+    subtitle:
+      'How calendar drift in utility meter read schedules alters total billed cost (30 kWh/day usage)',
     badge: 'Cycle Days Impact',
     badgeType: 'primary',
     items: [
@@ -559,7 +564,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         displayValue: '$188.09 / statement',
         value: 188.09,
         color: 'danger',
-        subLabel: '6 extra billing days increases statement by +21.4% with zero change in daily habits',
+        subLabel:
+          '6 extra billing days increases statement by +21.4% with zero change in daily habits',
       },
       {
         label: '30-Day Standard Cycle (900 kWh consumed)',
@@ -1162,7 +1168,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-much-electricity-does-central-air-conditioning-use': {
     title: 'Central Air Conditioner Electricity Draw by System Tonnage',
-    subtitle: 'Hourly and monthly electricity consumption at standard 14.3 SEER2 rating (18.44¢/kWh)',
+    subtitle:
+      'Hourly and monthly electricity consumption at standard 14.3 SEER2 rating (18.44¢/kWh)',
     badge: 'Cooling Capacity',
     badgeType: 'primary',
     items: [
@@ -1212,7 +1219,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         displayValue: '$42.49 / mo ($170/season)',
         value: 42.49,
         color: 'danger',
-        subLabel: 'Creates negative air pressure pulling hot outdoor air into the room through cracks',
+        subLabel:
+          'Creates negative air pressure pulling hot outdoor air into the room through cracks',
       },
       {
         label: 'Dual-Hose Inverter Portable AC (10,000 BTU @ 850W · CEER 9.0)',
@@ -1380,7 +1388,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-much-can-a-smart-thermostat-save': {
     title: 'Smart Thermostat Energy Savings Breakdown',
-    subtitle: 'Annual household heating and cooling bill reductions verified by EPA and Energy Star',
+    subtitle:
+      'Annual household heating and cooling bill reductions verified by EPA and Energy Star',
     badge: '8%–12% Annual Cut',
     badgeType: 'success',
     items: [
@@ -1405,7 +1414,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: '11.2% Savings',
-        subLabel: 'Automatically setbacks temperature when occupants leave; pre-cools before peak TOU',
+        subLabel:
+          'Automatically setbacks temperature when occupants leave; pre-cools before peak TOU',
       },
     ],
     footerNote:
@@ -1423,7 +1433,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         displayValue: '28.5 kWh / day ($5.25)',
         value: 28.5,
         color: 'danger',
-        subLabel: 'Continuous compressor cycling against highest indoor-outdoor temperature difference',
+        subLabel:
+          'Continuous compressor cycling against highest indoor-outdoor temperature difference',
       },
       {
         label: 'Smart Setback: Raising Thermostat to 78°F While Away',
@@ -1432,14 +1443,16 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: '24.5% Savings',
-        subLabel: 'Reduces heat transfer through walls during hottest hours; quick recovery in evening',
+        subLabel:
+          'Reduces heat transfer through walls during hottest hours; quick recovery in evening',
       },
       {
         label: 'Turning AC Completely Off (Indoor Temp Reaches 86°F)',
         displayValue: '20.2 kWh / day ($3.72)',
         value: 20.2,
         color: 'warning',
-        subLabel: 'Slightly lower energy, but high indoor humidity can cause wall condensation and long recovery',
+        subLabel:
+          'Slightly lower energy, but high indoor humidity can cause wall condensation and long recovery',
       },
     ],
     footerNote:
@@ -1494,7 +1507,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-attic-insulation-affects-your-energy-bill': {
     title: 'Attic Insulation R-Value vs Annual HVAC Energy Cost',
-    subtitle: 'Annual heating and cooling cost for a 2,000 sq ft home across insulation levels (18.44¢/kWh)',
+    subtitle:
+      'Annual heating and cooling cost for a 2,000 sq ft home across insulation levels (18.44¢/kWh)',
     badge: 'Thermal Barrier',
     badgeType: 'success',
     items: [
@@ -1708,7 +1722,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: '$180/mo Saved',
-        subLabel: 'Staggering appliance runtimes uses the exact same kWh but cuts demand charge by 66%',
+        subLabel:
+          'Staggering appliance runtimes uses the exact same kWh but cuts demand charge by 66%',
       },
       {
         label: 'Standard Volumetric Energy Charge (1,000 kWh @ 12¢/kWh)',
@@ -1724,7 +1739,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'estimated-vs-actual-meter-reading': {
     title: 'Estimated vs Actual Meter Reading: Catch-Up Charge Mechanics',
-    subtitle: 'How 2 months of under-estimated utility meter reads trigger a massive 3rd month catch-up bill',
+    subtitle:
+      'How 2 months of under-estimated utility meter reads trigger a massive 3rd month catch-up bill',
     badge: 'Billing Discrepancy',
     badgeType: 'primary',
     items: [
@@ -1783,7 +1799,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         color: 'success',
         highlight: true,
         badge: 'Predictable',
-        subLabel: 'Rolling 12-month average distributes summer cooling and winter heating costs evenly',
+        subLabel:
+          'Rolling 12-month average distributes summer cooling and winter heating costs evenly',
       },
       {
         label: 'April Mild Spring on Actual Billing (550 kWh used)',
@@ -1872,7 +1889,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
 
   'how-net-metering-affects-your-electric-bill': {
     title: 'Solar Net Metering: NEM 1.0/2.0 vs NEM 3.0 Net Billing Bill Impact',
-    subtitle: 'Monthly electric bill for a 6 kW solar system producing 800 kWh on 1,000 kWh home load',
+    subtitle:
+      'Monthly electric bill for a 6 kW solar system producing 800 kWh on 1,000 kWh home load',
     badge: 'Solar Policy',
     badgeType: 'primary',
     items: [
@@ -1888,7 +1906,8 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         displayValue: '$88.50 / mo ($95.90 saved)',
         value: 88.5,
         color: 'warning',
-        subLabel: 'Exports credited at wholesale avoided cost (~6.8¢/kWh) plus grid interconnection fee',
+        subLabel:
+          'Exports credited at wholesale avoided cost (~6.8¢/kWh) plus grid interconnection fee',
       },
       {
         label: 'NEM 3.0 Net Billing + 10 kWh Battery Storage',

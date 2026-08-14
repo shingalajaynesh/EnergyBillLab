@@ -65,11 +65,14 @@ if (!validation.valid) {
 export const insightsRegistry: InsightRecord[] = rawArticles;
 
 export function getPublishedInsights(now = new Date().toISOString()): InsightRecord[] {
+  const nowCalendarDate = now.slice(0, 10);
+  const localCalendarDate = new Date().toLocaleDateString('en-CA');
+  const maxValidDate = nowCalendarDate > localCalendarDate ? nowCalendarDate : localCalendarDate;
   return insightsRegistry
     .filter((item) => {
       if (item.status !== 'published') return false;
       if (item.noindex) return false;
-      if (item.publishedAt > now) return false;
+      if (item.publishedAt.slice(0, 10) > maxValidDate) return false;
       return true;
     })
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());

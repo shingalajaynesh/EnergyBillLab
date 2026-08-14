@@ -188,3 +188,11 @@ Place source links adjacent to numerical values and regulatory claims. Remove tr
   2. Primary navigation link (`Insights`) activates.
   3. Homepage promotion section (`Latest Energy Insights`) activates.
   4. All 3 initial Insights link contextually to each other, to permanent calculators (`/tools/...`), state pages (`/electricity-rates/...`), and research reports.
+
+---
+
+## 13. Technical Visual Benchmark Cards System
+
+- Every published and draft Insight must define a data-rich comparison configuration in `apps/web/src/content/insights/visuals.ts` (`INSIGHT_VISUAL_CONFIGS[slug]`).
+- Visual cards render a lightweight, server-side accessible comparison bar chart (`TechnicalVisualCard`) with normalized scaling, status colors (`danger`, `warning`, `primary`, `success`), formatted values, sub-labels with calculation details, and an explanatory footnote.
+- All configurations are automatically validated in unit tests (`apps/web/tests/technical-visual-card.test.ts`).

@@ -16,13 +16,9 @@ describe('August 2026 Swimming Pool Pump kWh Consumption & Operating Cost Benchm
   });
 
   it('2. is registered in the global insights registry', () => {
-    const found = getInsightBySlug(
-      'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
-    );
+    const found = getInsightBySlug('august-2026-swimming-pool-pump-kwh-operating-cost-benchmark');
     expect(found).toBeDefined();
-    expect(found?.id).toBe(
-      'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
-    );
+    expect(found?.id).toBe('august-2026-swimming-pool-pump-kwh-operating-cost-benchmark');
   });
 
   it('3. is included in published insights', () => {
