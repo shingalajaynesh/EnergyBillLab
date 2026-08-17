@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(24);
+    expect(insightsRegistry).toHaveLength(25);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(24);
+    expect(getPublishedInsights()).toHaveLength(25);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -75,7 +75,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe('august-2026-swimming-pool-pump-kwh-operating-cost-benchmark');
+    expect(published[0]?.slug).toBe(
+      'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
+    );
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -309,7 +311,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(160);
+    expect(entries).toHaveLength(161);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -420,7 +422,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
     expect(urls).toContain('https://energybilllab.com/insights/category/appliances');
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
-    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(4);
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(5);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
     expect(getInsightsByCategory('appliances')).toHaveLength(10);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
@@ -463,7 +465,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   it('28. verifies pagination pageSize is 12 and activates when article count exceeds 12', () => {
     const articles = getPublishedInsights();
     const totalPages = Math.ceil(articles.length / 12);
-    expect(totalPages).toBe(2);
+    expect(totalPages).toBe(3);
   });
 
   // Test 29: Thin category pages are not indexable
@@ -475,7 +477,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(24);
+    expect(insightsRegistry).toHaveLength(25);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {

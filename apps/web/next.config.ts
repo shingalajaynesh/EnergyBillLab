@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     '@ant-design/cssinjs',
     '@ant-design/nextjs-registry',
   ],
+  // eslint-disable-next-line @typescript-eslint/require-await
   async redirects() {
     return [
       {

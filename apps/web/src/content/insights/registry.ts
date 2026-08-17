@@ -26,6 +26,7 @@ import { may2026RooftopSolarGenerationRetailSavingsBenchmark } from './articles/
 import { august2026RooftopSolarNem3NetBillingExportValueBenchmark } from './articles/august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark';
 import { august2026SwimmingPoolPumpKwhOperatingCostBenchmark } from './articles/august-2026-swimming-pool-pump-kwh-operating-cost-benchmark';
 import { august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark } from './articles/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark';
+import { august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark } from './articles/august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark';
 
 /**
  * Array of individual article modules imported from ./articles/
@@ -56,6 +57,7 @@ const rawArticles: InsightRecord[] = [
   august2026SwimmingPoolPumpKwhOperatingCostBenchmark,
   august2026RooftopSolarNem3NetBillingExportValueBenchmark,
   august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark,
+  august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time

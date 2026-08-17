@@ -194,6 +194,7 @@ const INSIGHT_SLUGS = [
   'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
   'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
   'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
+  'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
 ];
 const INSIGHT_URLS = INSIGHT_SLUGS.map((i) => `https://${HOST}/insights/${i}`);
 

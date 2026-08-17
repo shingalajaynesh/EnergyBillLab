@@ -952,4 +952,47 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermal Physics: Induction transfers 85% to 90% of energy directly into cookware, generating minimal ambient waste heat compared to 5,400 BTU/hr of waste heat from open gas flames.',
   },
+
+  // 25. August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark
+  'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark': {
+    title: 'Single-Zone (12,000 BTU) Monthly Heating & Cooling Cost Benchmark',
+    subtitle:
+      'Calculated for 8h cooling / 10h heating daily at May 2026 EIA national average electricity rate of 18.44¢/kWh',
+    badge: '46%–51% Savings',
+    badgeType: 'success',
+    items: [
+      {
+        label: 'Electric Resistance Baseboard Heating (1.0 COP · 1,055 kWh/mo)',
+        displayValue: '$194.56/mo',
+        value: 194.56,
+        color: 'danger',
+        subLabel: '3,517W direct resistance heating with 0% thermodynamic multiplier',
+      },
+      {
+        label: 'Standard Ducted Central Heat Pump (7.5 HSPF2 + 25% Duct Loss)',
+        displayValue: '$118.02/mo',
+        value: 118.02,
+        color: 'warning',
+        subLabel: '2,133W power draw · Attic air leakage and thermal conduction losses',
+      },
+      {
+        label: 'Ductless Inverter Mini-Split Heating (10.5 HSPF2 · 343 kWh/mo)',
+        displayValue: '$63.23/mo',
+        value: 63.23,
+        color: 'primary',
+        subLabel: '1,143W power draw · Cold-climate variable speed compressor (3.08 COP)',
+      },
+      {
+        label: 'Ductless Inverter Mini-Split Cooling (22 SEER2 · 131 kWh/mo)',
+        displayValue: '$24.14/mo',
+        value: 24.14,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Operating Cost',
+        subLabel: '545W power draw · Direct room air delivery saves $25.38/mo vs central AC',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Principle: Point-of-use inverter heat pumps eliminate 20% to 30% unconditioned attic duct losses while delivering 3+ units of heat per unit of electricity consumed.',
+  },
 };
