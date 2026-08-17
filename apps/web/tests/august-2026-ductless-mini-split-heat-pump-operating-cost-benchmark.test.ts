@@ -10,9 +10,7 @@ import { validateInsightRecord } from '../src/lib/insights-validation';
 
 describe('August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark Insight', () => {
   it('1. passes full automated registry record validation', () => {
-    const result = validateInsightRecord(
-      august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark,
-    );
+    const result = validateInsightRecord(august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark);
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
   });
@@ -22,26 +20,20 @@ describe('August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark Ins
       'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
     );
     expect(found).toBeDefined();
-    expect(found?.id).toBe(
-      'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
-    );
+    expect(found?.id).toBe('august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark');
   });
 
   it('3. is included in published insights', () => {
     const published = getPublishedInsights('2026-08-17T00:00:00.000Z');
     const found = published.find(
-      (item) =>
-        item.slug === 'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
+      (item) => item.slug === 'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
     );
     expect(found).toBeDefined();
     expect(found?.status).toBe('published');
   });
 
   it('4. activates home-energy-costs category with published articles', () => {
-    const homeCostInsights = getInsightsByCategory(
-      'home-energy-costs',
-      '2026-08-17T00:00:00.000Z',
-    );
+    const homeCostInsights = getInsightsByCategory('home-energy-costs', '2026-08-17T00:00:00.000Z');
     expect(homeCostInsights.length).toBeGreaterThanOrEqual(4);
   });
 

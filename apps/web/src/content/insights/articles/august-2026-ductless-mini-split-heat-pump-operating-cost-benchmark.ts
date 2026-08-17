@@ -5,8 +5,7 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
   slug: 'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
   title:
     'August 2026 Ductless Mini-Split Heat Pump Operating Cost: Monthly Electricity & Efficiency Benchmark',
-  metaTitle:
-    'August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark | EnergyBillLab',
+  metaTitle: 'August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark | EnergyBillLab',
   metaDescription:
     'Ductless mini-split operating cost benchmark using May 2026 EIA data. A 12,000 BTU unit at 22 SEER2 costs $24.14/mo to cool vs $49.52/mo for ducted central AC.',
   status: 'published',

@@ -34,4 +34,3 @@
   4. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
   5. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
 - Suggested Commit: `content(insights): publish august 2026 ductless mini split heat pump operating cost benchmark`
-

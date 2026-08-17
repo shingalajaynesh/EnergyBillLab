@@ -15,10 +15,7 @@ import {
 import { INSIGHT_VISUAL_CONFIGS } from '@/content/insights/visuals';
 import { getMaxValidPublicationDate } from '@/lib/insights-validation';
 import { createPageMetadata } from '@/lib/metadata';
-import {
-  createInsightArticleStructuredData,
-  serializeStructuredData,
-} from '@/lib/structured-data';
+import { createInsightArticleStructuredData, serializeStructuredData } from '@/lib/structured-data';
 
 import styles from './insight-article.module.css';
 

@@ -414,7 +414,8 @@ export default function ComparisonsPage() {
               Frequently Asked Questions About Energy Cost Comparisons
             </h2>
             <p className={styles.sectionIntro}>
-              Clear answers on comparing heating fuels, efficiency ratings, equipment types, and utility billing structures.
+              Clear answers on comparing heating fuels, efficiency ratings, equipment types, and
+              utility billing structures.
             </p>
           </div>
 
