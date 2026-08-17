@@ -8,7 +8,7 @@
 const https = require('https');
 
 const HOST = 'energybilllab.com';
-const KEY = '589b5670849d4689863427c43f772083';
+const KEY = 'b6a2eb9d2dea479ebea8af8497314cfa';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
 // 50 U.S. State Slugs
