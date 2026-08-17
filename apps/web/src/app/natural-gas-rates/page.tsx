@@ -10,7 +10,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
 import {
-  createBreadcrumbStructuredData,
   createOrganizationStructuredData,
   createWebsiteStructuredData,
   serializeStructuredData,
@@ -58,10 +57,6 @@ export default async function NaturalGasRatesPage() {
 
   const websiteSchema = createWebsiteStructuredData();
   const orgSchema = createOrganizationStructuredData();
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Natural Gas Rates', path: '/natural-gas-rates' },
-  ]);
 
   const latestMonthText = data.latestSourceMonthFormatted
     ? `Data through ${data.latestSourceMonthFormatted}`
@@ -76,10 +71,6 @@ export default async function NaturalGasRatesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(orgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
 
       <PageContainer>

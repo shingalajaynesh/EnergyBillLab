@@ -10,7 +10,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 import {
-  createBreadcrumbStructuredData,
   createFaqStructuredData,
   createWebApplicationStructuredData,
   serializeStructuredData,
@@ -69,12 +68,6 @@ export default async function ElectricityBillAnalyzerPage() {
     path: '/electricity-bill-analyzer',
     applicationCategory: 'UtilityApplication',
   });
-
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Tools', path: '/tools' },
-    { name: 'Electricity Bill Analyzer', path: '/electricity-bill-analyzer' },
-  ]);
 
   const faqSchema = createFaqStructuredData(faqs);
 
@@ -212,10 +205,6 @@ export default async function ElectricityBillAnalyzerPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

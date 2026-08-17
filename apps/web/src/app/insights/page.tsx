@@ -12,7 +12,6 @@ import {
 } from '@/content/insights';
 import { createPageMetadata } from '@/lib/metadata';
 import {
-  createBreadcrumbStructuredData,
   createOrganizationStructuredData,
   createWebsiteStructuredData,
   serializeStructuredData,
@@ -48,10 +47,6 @@ export default function InsightsHubPage() {
 
   const websiteSchema = createWebsiteStructuredData();
   const orgSchema = createOrganizationStructuredData();
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Insights', path: '/insights' },
-  ]);
 
   return (
     <>
@@ -62,10 +57,6 @@ export default function InsightsHubPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(orgSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
 
       <PageContainer>

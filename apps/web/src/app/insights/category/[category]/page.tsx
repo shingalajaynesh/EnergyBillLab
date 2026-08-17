@@ -13,7 +13,6 @@ import {
   INSIGHTS_PUBLICATION_THRESHOLD,
 } from '@/content/insights';
 import { createPageMetadata } from '@/lib/metadata';
-import { createBreadcrumbStructuredData, serializeStructuredData } from '@/lib/structured-data';
 
 import hubStyles from '../../insights-hub.module.css';
 
@@ -70,21 +69,9 @@ export default async function InsightCategoryPage(props: CategoryPageProps) {
     { href: `/insights/category/${catMeta.slug}` as const, label: catMeta.name },
   ];
 
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Insights', path: '/insights' },
-    { name: catMeta.name, path: `/insights/category/${catMeta.slug}` },
-  ]);
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
-      />
-
-      <PageContainer>
-        <Breadcrumbs items={breadcrumbItems} />
+    <PageContainer>
+      <Breadcrumbs items={breadcrumbItems} />
         <PageHeader
           eyebrow="Energy Category Analysis"
           title={`${catMeta.name} Insights`}
@@ -148,6 +135,5 @@ export default async function InsightCategoryPage(props: CategoryPageProps) {
           )}
         </div>
       </PageContainer>
-    </>
   );
 }

@@ -16,7 +16,6 @@ import { INSIGHT_VISUAL_CONFIGS } from '@/content/insights/visuals';
 import { getMaxValidPublicationDate } from '@/lib/insights-validation';
 import { createPageMetadata } from '@/lib/metadata';
 import {
-  createBreadcrumbStructuredData,
   createInsightArticleStructuredData,
   serializeStructuredData,
 } from '@/lib/structured-data';
@@ -81,12 +80,6 @@ export default async function InsightDetailPage(props: InsightPageProps) {
     { href: `/insights/${article.slug}` as const, label: article.title },
   ];
 
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Insights', path: '/insights' },
-    { name: article.title, path: `/insights/${article.slug}` },
-  ]);
-
   const articleSchema = createInsightArticleStructuredData({
     title: article.title,
     description: article.summary,
@@ -101,10 +94,6 @@ export default async function InsightDetailPage(props: InsightPageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(articleSchema) }}

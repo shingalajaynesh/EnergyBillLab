@@ -9,7 +9,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 import {
-  createBreadcrumbStructuredData,
   createFaqStructuredData,
   createWebApplicationStructuredData,
   serializeStructuredData,
@@ -77,12 +76,6 @@ export default async function ApplianceEnergyCostCalculatorPage() {
     path: '/tools/appliance-energy-cost-calculator',
     applicationCategory: 'UtilityApplication',
   });
-
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Tools', path: '/tools' },
-    { name: 'Appliance Energy Cost Calculator', path: '/tools/appliance-energy-cost-calculator' },
-  ]);
 
   const faqSchema = createFaqStructuredData(faqs);
 
@@ -267,10 +260,6 @@ export default async function ApplianceEnergyCostCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

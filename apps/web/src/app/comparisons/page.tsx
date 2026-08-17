@@ -7,7 +7,7 @@ import { PageContainer } from '@/components/page-container';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getSiteUrl, SITE_NAME } from '@/lib/site';
-import { serializeStructuredData } from '@/lib/structured-data';
+import { createFaqStructuredData, serializeStructuredData } from '@/lib/structured-data';
 
 import { CategoryNavSection } from './category-nav-section';
 import styles from './comparisons-hub.module.css';
@@ -26,46 +26,54 @@ const breadcrumbs = [
   { label: 'Comparisons', href: '/comparisons' as PublicRouteHref },
 ];
 
-const collectionStructuredData = [
+const faqs = [
   {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Home Energy Cost Comparisons',
-    description:
-      'Analytical evaluations comparing energy consumption scenarios, rate tier impacts, and appliance heating/cooling trade-offs.',
-    url: getSiteUrl('/comparisons'),
-    isPartOf: {
-      '@type': 'WebSite',
-      name: SITE_NAME,
-      url: getSiteUrl('/'),
-    },
+    question: 'How do I fairly compare operating costs between gas and electric appliances?',
+    answer:
+      'Convert all energy units to a common heating unit (BTU or kWh). One Therm of natural gas equals 100,000 BTU or approximately 29.3 kWh of electric equivalent. Multiply fuel usage by your utility rate per therm ($/therm) versus electricity rate per kWh ($/kWh), factoring in equipment AFUE combustion or COP heat pump efficiency.',
   },
   {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: getSiteUrl('/'),
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Comparisons',
-        item: getSiteUrl('/comparisons'),
-      },
-    ],
+    question: 'Why are heat pumps significantly cheaper to run than electric resistance heating?',
+    answer:
+      'Electric resistance heaters convert 1 unit of electricity into 1 unit of heat (100% efficiency, COP 1.0). Heat pumps move ambient outdoor thermal energy indoors, delivering 2.5 to 4.0 units of heat per unit of electricity (250%–400% efficiency, COP 2.5–4.0), cutting heating bills by 50% to 60%.',
+  },
+  {
+    question: 'What is the operating cost difference between window AC and portable AC units?',
+    answer:
+      'Window air conditioners achieve higher efficiency (EER 11.0–12.0) and seal directly into the window. Single-hose portable AC units expel exhaust through a duct that pulls warm outdoor air back into the room through cracks, increasing energy consumption by 30% to 40%.',
+  },
+  {
+    question: 'How do Time-of-Use (TOU) electricity rates impact appliance cost comparisons?',
+    answer:
+      'Under TOU pricing, electricity costs 2x to 3x more during peak demand hours (typically 4 PM to 9 PM). Running high-draw appliances like clothes dryers, EV chargers, or pool pumps during off-peak morning or overnight hours cuts operating expenses in half compared to peak-period operation.',
   },
 ];
 
+const collectionStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Home Energy Cost Comparisons',
+  description:
+    'Analytical evaluations comparing energy consumption scenarios, rate tier impacts, and appliance heating/cooling trade-offs.',
+  url: getSiteUrl('/comparisons'),
+  isPartOf: {
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: getSiteUrl('/'),
+  },
+};
+
 export default function ComparisonsPage() {
+  const faqSchema = createFaqStructuredData(faqs);
   return (
     <PageContainer>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(collectionStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqSchema) }}
       />
       <Breadcrumbs items={breadcrumbs} />
 
@@ -395,6 +403,28 @@ export default function ComparisonsPage() {
                 Browse State Rates →
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* SECTION 8: FREQUENTLY ASKED QUESTIONS */}
+        <section className={styles.section} aria-labelledby="faq-heading">
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrow}>COMMON QUESTIONS</span>
+            <h2 id="faq-heading" className={styles.sectionTitle}>
+              Frequently Asked Questions About Energy Cost Comparisons
+            </h2>
+            <p className={styles.sectionIntro}>
+              Clear answers on comparing heating fuels, efficiency ratings, equipment types, and utility billing structures.
+            </p>
+          </div>
+
+          <div className={styles.faqGrid}>
+            {faqs.map((faq) => (
+              <div key={faq.question} className={styles.faqCard}>
+                <h3 className={styles.faqQuestion}>{faq.question}</h3>
+                <p className={styles.faqAnswer}>{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
       </div>

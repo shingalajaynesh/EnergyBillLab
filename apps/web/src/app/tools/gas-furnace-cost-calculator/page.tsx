@@ -10,7 +10,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
 import {
-  createBreadcrumbStructuredData,
   createFaqStructuredData,
   createWebApplicationStructuredData,
   serializeStructuredData,
@@ -79,12 +78,6 @@ export default async function GasFurnaceCostCalculatorPage() {
     path: '/tools/gas-furnace-cost-calculator',
     applicationCategory: 'UtilityApplication',
   });
-
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Tools', path: '/tools' },
-    { name: 'Gas Furnace Cost Calculator', path: '/tools/gas-furnace-cost-calculator' },
-  ]);
 
   const faqSchema = createFaqStructuredData(faqs);
 
@@ -174,10 +167,6 @@ export default async function GasFurnaceCostCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

@@ -9,7 +9,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import { publicRoutes, type PublicRouteHref } from '@/lib/routes';
 import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 import {
-  createBreadcrumbStructuredData,
   createFaqStructuredData,
   createWebApplicationStructuredData,
   serializeStructuredData,
@@ -85,12 +84,6 @@ export default async function RefrigeratorCostCalculatorPage() {
     path: '/tools/refrigerator-cost-calculator',
     applicationCategory: 'UtilityApplication',
   });
-
-  const breadcrumbSchema = createBreadcrumbStructuredData([
-    { name: 'Home', path: '/' },
-    { name: 'Tools', path: '/tools' },
-    { name: 'Refrigerator Cost Calculator', path: '/tools/refrigerator-cost-calculator' },
-  ]);
 
   const faqSchema = createFaqStructuredData(faqs);
 
@@ -201,10 +194,6 @@ export default async function RefrigeratorCostCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(webAppSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

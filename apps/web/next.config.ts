@@ -11,6 +11,25 @@ const nextConfig: NextConfig = {
     '@ant-design/cssinjs',
     '@ant-design/nextjs-registry',
   ],
+  async redirects() {
+    return [
+      {
+        source: '/tools/electricity-bill-analyzer',
+        destination: '/electricity-bill-analyzer',
+        permanent: true,
+      },
+      {
+        source: '/cookie-policy',
+        destination: '/cookies',
+        permanent: true,
+      },
+      {
+        source: '/insights/category',
+        destination: '/insights',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -24,7 +24,6 @@ import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getStatePageData } from '@/lib/server/get-state-page-data';
 import {
-  createBreadcrumbStructuredData,
   createDatasetStructuredData,
   createFaqStructuredData,
   serializeStructuredData,
@@ -349,18 +348,6 @@ export default async function StateElectricityRatePage({ params }: Props) {
                   ? pageData.provenance.sourcePeriod
                   : '2024/2026',
             }),
-          ),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeStructuredData(
-            createBreadcrumbStructuredData([
-              { name: 'Home', path: '/' },
-              { name: 'Electricity Rates', path: '/electricity-rates' },
-              { name: config.name, path: `/electricity-rates/${config.slug}` },
-            ]),
           ),
         }}
       />

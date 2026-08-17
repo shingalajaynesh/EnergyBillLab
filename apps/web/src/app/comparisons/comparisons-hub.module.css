@@ -1090,3 +1090,47 @@
   color: var(--ebl-primary);
   text-decoration: underline;
 }
+
+/* ==========================================================================
+   9. FAQ SECTION
+   ========================================================================== */
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .faqGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.faqCard {
+  background: var(--ebl-surface);
+  border: 1px solid var(--ebl-border-subtle);
+  border-radius: 0.625rem;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.faqCard:hover {
+  border-color: var(--ebl-border);
+}
+
+.faqQuestion {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ebl-text);
+  margin: 0 0 0.625rem 0;
+  line-height: 1.35;
+}
+
+.faqAnswer {
+  font-size: 0.9375rem;
+  color: var(--ebl-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
