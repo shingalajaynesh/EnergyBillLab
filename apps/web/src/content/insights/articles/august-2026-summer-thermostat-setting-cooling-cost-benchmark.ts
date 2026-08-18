@@ -5,8 +5,7 @@ export const august2026SummerThermostatSettingCoolingCostBenchmark: InsightRecor
   slug: 'august-2026-summer-thermostat-setting-cooling-cost-benchmark',
   title:
     'August 2026 Summer Thermostat Setting Financial Curve: 72°F vs. 75°F vs. 78°F Air Conditioning Cost Benchmark',
-  metaTitle:
-    'Summer Thermostat Cost Curve: 72°F vs 75°F vs 78°F AC Bill Benchmark | EnergyBillLab',
+  metaTitle: 'Summer Thermostat Cost Curve: 72°F vs 75°F vs 78°F AC Bill Benchmark | EnergyBillLab',
   metaDescription:
     'Summer AC thermostat financial benchmark using May 2026 EIA data. Setting your AC to 72°F costs $128.10/mo vs $83.53/mo at 78°F—a +$44.57/mo (+53.4%) bill penalty.',
   status: 'published',
@@ -120,25 +119,29 @@ export const august2026SummerThermostatSettingCoolingCostBenchmark: InsightRecor
       organization: 'U.S. Energy Information Administration (EIA)',
       title: 'Electric Power Monthly (May 2026 Data Release), Table 5.6.A',
       url: 'https://www.eia.gov/electricity/monthly/',
-      topic: 'May 2026 U.S. national and state residential electricity rates (18.44¢/kWh national average)',
+      topic:
+        'May 2026 U.S. national and state residential electricity rates (18.44¢/kWh national average)',
     },
     {
       organization: 'U.S. Department of Energy (DOE)',
       title: 'Thermostats Energy Saver Guidelines and Temperature Setback Benchmarks',
       url: 'https://www.energy.gov/energysaver/thermostats',
-      topic: 'Official guidance on 78°F summer setpoints and 3% to 5% per-degree cooling energy savings',
+      topic:
+        'Official guidance on 78°F summer setpoints and 3% to 5% per-degree cooling energy savings',
     },
     {
       organization: 'ENERGY STAR Program',
       title: 'Smart Thermostats & Residential Energy Efficiency Research',
       url: 'https://www.energystar.gov/products/heating_cooling/smart_thermostats',
-      topic: 'Data on automated temperature setback savings, programmable scheduling, and cooling bill reductions',
+      topic:
+        'Data on automated temperature setback savings, programmable scheduling, and cooling bill reductions',
     },
     {
       organization: 'National Renewable Energy Laboratory (NREL)',
       title: 'ResStock Building Energy Modeling & Cooling Load Profiles',
       url: 'https://www.nrel.gov/buildings/resstock.html',
-      topic: 'Reference data for residential building envelope thermal loads, indoor-outdoor delta-T scaling, and air infiltration metrics',
+      topic:
+        'Reference data for residential building envelope thermal loads, indoor-outdoor delta-T scaling, and air infiltration metrics',
     },
   ],
   relatedRoutes: [

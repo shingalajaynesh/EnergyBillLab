@@ -1202,9 +1202,10 @@ inspection alone.
 
 # Phase 16 — Validation Commands
 
-After final edits, run:
+After final edits, always run Prettier formatting first to ensure zero code-style issues, followed by the full quality validation sequence:
 
 ```text
+pnpm format
 pnpm format:check
 pnpm typecheck
 pnpm lint
