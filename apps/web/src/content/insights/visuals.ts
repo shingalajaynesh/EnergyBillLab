@@ -995,4 +995,47 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Principle: Point-of-use inverter heat pumps eliminate 20% to 30% unconditioned attic duct losses while delivering 3+ units of heat per unit of electricity consumed.',
   },
+
+  // 26. August 2026 Summer Thermostat Setting Cooling Cost Benchmark
+  'august-2026-summer-thermostat-setting-cooling-cost-benchmark': {
+    title: 'Summer Thermostat Setting Monthly AC Electricity Cost Benchmark',
+    subtitle:
+      'Calculated for a 3-ton (14.3 SEER2) central AC at May 2026 national average rate of 18.44¢/kWh',
+    badge: '+$44.57/mo at 72°F',
+    badgeType: 'primary',
+    items: [
+      {
+        label: 'Setpoint 78°F (DOE / ENERGY STAR Recommended Baseline)',
+        displayValue: '$83.53/mo',
+        value: 83.53,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Bill',
+        subLabel: '453.0 kWh/month · 6.0 hr/day runtime · Optimal balance of comfort & efficiency',
+      },
+      {
+        label: 'Setpoint 75°F (Typical American Household Setpoint)',
+        displayValue: '$101.64/mo',
+        value: 101.64,
+        color: 'primary',
+        subLabel: '551.2 kWh/month · 7.3 hr/day runtime · +$18.11/mo (+21.7% increase vs 78°F)',
+      },
+      {
+        label: 'Setpoint 72°F (Heavy Cooling Setting)',
+        displayValue: '$128.10/mo',
+        value: 128.1,
+        color: 'warning',
+        subLabel: '694.7 kWh/month · 9.2 hr/day runtime · +$44.57/mo (+53.4% increase vs 78°F)',
+      },
+      {
+        label: 'Setpoint 70°F (Maximum Comfort / Over-Cooling Penalty)',
+        displayValue: '$150.38/mo',
+        value: 150.38,
+        color: 'danger',
+        subLabel: '815.5 kWh/month · 10.8 hr/day runtime · +$66.85/mo (+80.0% increase vs 78°F)',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Law: Building heat gain is proportional to outdoor-indoor delta-T. Lowering thermostat setpoints increases cooling load by 3% to 5% per degree Fahrenheit.',
+  },
 };
