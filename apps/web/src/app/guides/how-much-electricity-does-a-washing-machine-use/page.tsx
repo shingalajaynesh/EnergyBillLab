@@ -90,6 +90,38 @@ export default function GuideWashingMachineElectricityPage() {
       </section>
 
       <section className={styles.section}>
+        <h2>How Many Units of Electricity Does a Washing Machine Use?</h2>
+        <p>
+          In electric utility billing,{' '}
+          <strong>1 unit of electricity equals exactly 1 kilowatt-hour (1 kWh)</strong>. The number
+          of units your washing machine consumes per cycle depends directly on your water
+          temperature selection:
+        </p>
+        <ul>
+          <li>
+            <strong>Cold Water Wash:</strong> Uses approximately{' '}
+            <strong>0.3 to 0.5 units (kWh) per cycle</strong>. Only the electric motor and pump
+            consume power.
+          </li>
+          <li>
+            <strong>Warm Water Wash:</strong> Uses approximately{' '}
+            <strong>1.0 to 1.3 units (kWh) per cycle</strong> due to moderate water heater power
+            draw.
+          </li>
+          <li>
+            <strong>Hot Water / Heavy Duty Wash:</strong> Uses approximately{' '}
+            <strong>1.8 to 2.3 units (kWh) per cycle</strong> because heating 15–20 gallons of water
+            requires high electrical energy.
+          </li>
+        </ul>
+        <p>
+          For a typical household running 5 loads per week on cold water, a washing machine uses
+          only <strong>7 to 10 units (kWh) per month</strong>, costing about{' '}
+          <strong>$1.30 to $1.85 monthly</strong> on your electric bill.
+        </p>
+      </section>
+
+      <section className={styles.section}>
         <h2>Related Appliances & Tools</h2>
         <p>
           Calculate laundry costs with our{' '}

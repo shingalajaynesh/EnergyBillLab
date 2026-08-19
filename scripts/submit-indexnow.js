@@ -168,7 +168,7 @@ const GUIDE_SLUGS = [
 ];
 const GUIDE_URLS = GUIDE_SLUGS.map((g) => `https://${HOST}/guides/${g}`);
 
-// 22 Published Insight URLs
+// 27 Published Insight URLs
 const INSIGHT_SLUGS = [
   'may-2026-ev-home-charging-cost-benchmark',
   'may-2026-residential-electricity-price-bill-impact',
@@ -195,6 +195,8 @@ const INSIGHT_SLUGS = [
   'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
   'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
   'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
+  'august-2026-summer-thermostat-setting-cooling-cost-benchmark',
+  'august-2026-ev-home-charging-efficiency-losses-benchmark',
 ];
 const INSIGHT_URLS = INSIGHT_SLUGS.map((i) => `https://${HOST}/insights/${i}`);
 
@@ -205,6 +207,7 @@ const CATEGORY_URLS = [
   `https://${HOST}/insights/category/appliances`,
   `https://${HOST}/insights/category/natural-gas`,
   `https://${HOST}/insights/page/2`,
+  `https://${HOST}/insights/page/3`,
 ];
 
 const ALL_SITE_URLS = Array.from(

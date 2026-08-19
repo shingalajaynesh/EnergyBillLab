@@ -147,6 +147,15 @@ export default function GuideElectricKettleElectricityPage() {
           <strong>0.15 kWh</strong>.
         </p>
 
+        <h3>A 1,200-W electric kettle operates for 5 minutes. How much energy does it use?</h3>
+        <p>
+          A 1,200-watt (1,200-W) electric kettle operating for 5 minutes uses exactly{' '}
+          <strong>0.10 kilowatt-hours (kWh)</strong> (equivalent to <strong>360,000 Joules</strong>{' '}
+          or 360 kJ / 100 watt-hours). The formula is: (1,200 W × (5 ÷ 60) hours) ÷ 1,000 = 0.10
+          kWh. At the U.S. national average rate of 18.44 ¢/kWh, this single 5-minute operation
+          costs <strong>$0.018 (1.8 cents)</strong>.
+        </p>
+
         <h3>How much does it cost to boil a kettle?</h3>
         <p>
           At national average power rates, boiling a full kettle costs approximately{' '}
