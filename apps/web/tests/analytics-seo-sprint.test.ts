@@ -150,7 +150,7 @@ describe('Analytics, Usability, & Internal Linking Sprint Verification', () => {
 
   it('10. Sitemap inventory includes the Insights launch batch and daily updates', () => {
     const entries = sitemap();
-    expect(entries.length).toBe(162);
+    expect(entries.length).toBe(163);
   });
 
   it('11. Public publisher identity remains limited to name and email', () => {

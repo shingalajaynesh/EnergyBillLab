@@ -1038,4 +1038,51 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Law: Building heat gain is proportional to outdoor-indoor delta-T. Lowering thermostat setpoints increases cooling load by 3% to 5% per degree Fahrenheit.',
   },
+
+  // 27. August 2026 EV Home Charging Efficiency Benchmark
+  'august-2026-ev-home-charging-efficiency-losses-benchmark': {
+    title: 'EV Home Charging Efficiency & Annual Grid Power Loss Benchmark',
+    subtitle:
+      'Calculated for 12,000 annual driving miles (3,600 kWh battery delivery) at May 2026 U.S. average 18.44¢/kWh',
+    badge: '408 kWh/yr Saved',
+    badgeType: 'success',
+    items: [
+      {
+        label: 'Level 1 Standard (120V @ 12A / 1.44 kW · 82.5% Efficiency)',
+        displayValue: '$804.65/yr',
+        value: 804.65,
+        color: 'danger',
+        subLabel:
+          '4,363.6 kWh grid draw · 763.6 kWh ($140.81/yr) wasted in 250W continuous auxiliary overhead',
+      },
+      {
+        label: 'Level 2 Low-Power (240V @ 16A / 3.84 kW · 88.0% Efficiency)',
+        displayValue: '$754.36/yr',
+        value: 754.36,
+        color: 'warning',
+        subLabel:
+          '4,090.9 kWh grid draw · 490.9 kWh ($90.52/yr) wasted in auxiliary and conversion losses',
+      },
+      {
+        label: 'Level 2 Standard (240V @ 32A / 7.68 kW · 91.0% Efficiency)',
+        displayValue: '$729.49/yr',
+        value: 729.49,
+        color: 'primary',
+        subLabel:
+          '3,956.0 kWh grid draw · 356.0 kWh ($65.65/yr) wasted · Fast 4.3h session minimizes BMS awake time',
+      },
+      {
+        label: 'Level 2 High-Power (240V @ 48A / 11.52 kW · 92.0% Efficiency)',
+        displayValue: '$721.56/yr',
+        value: 721.56,
+        color: 'success',
+        highlight: true,
+        badge: 'Highest Efficiency',
+        subLabel:
+          '3,913.0 kWh grid draw · 313.0 kWh ($57.72/yr) wasted · Saves $83.09/yr (450.6 kWh) vs Level 1',
+      },
+    ],
+    footerNote:
+      'Engineering Principle: Fixed auxiliary systems (BMS, telematics, coolant pumps) consume ~250W whenever the EV is awake. Fast 240V Level 2 charging minimizes total hours awake, cutting energy loss by more than half.',
+  },
 };
