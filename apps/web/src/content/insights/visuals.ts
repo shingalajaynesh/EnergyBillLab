@@ -1085,4 +1085,54 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Engineering Principle: Fixed auxiliary systems (BMS, telematics, coolant pumps) consume ~250W whenever the EV is awake. Fast 240V Level 2 charging minimizes total hours awake, cutting energy loss by more than half.',
   },
+
+  // 28. August 2026 Window Air Conditioner Wattage & Hourly Operating Cost Benchmark
+  'august-2026-window-air-conditioner-wattage-operating-cost-benchmark': {
+    title: 'Window Air Conditioner Monthly Operating Cost Benchmark by BTU Capacity',
+    subtitle:
+      'Calculated for 8 hours/day operation (55% compressor duty cycle) at May 2026 U.S. average 18.44¢/kWh',
+    badge: 'Room Cooling Economics',
+    badgeType: 'primary',
+    items: [
+      {
+        label: 'Heavy 15,000 BTU Living Area (770W effective / 184.8 kWh/mo)',
+        displayValue: '$34.08/mo',
+        value: 34.08,
+        color: 'danger',
+        subLabel: 'Cools 700–1,000 sq ft · 1,400W peak compressor draw (10.8 CEER)',
+      },
+      {
+        label: 'Large 12,000 BTU Master Suite (578W effective / 138.6 kWh/mo)',
+        displayValue: '$25.56/mo',
+        value: 25.56,
+        color: 'warning',
+        subLabel: 'Cools 450–550 sq ft · 1,050W peak compressor draw (11.4 CEER)',
+      },
+      {
+        label: 'Medium 8,000 BTU Bedroom Standard (385W effective / 92.4 kWh/mo)',
+        displayValue: '$17.04/mo',
+        value: 17.04,
+        color: 'primary',
+        subLabel: 'Cools 300–350 sq ft · 700W peak compressor draw (11.4 CEER)',
+      },
+      {
+        label: 'Small 5,000 BTU Studio / Small Bedroom (248W effective / 59.4 kWh/mo)',
+        displayValue: '$10.95/mo',
+        value: 10.95,
+        color: 'success',
+        subLabel: 'Cools 100–250 sq ft · 450W peak compressor draw (11.0 CEER)',
+      },
+      {
+        label: 'ENERGY STAR 8,000 BTU Inverter (275W effective / 66.0 kWh/mo)',
+        displayValue: '$12.17/mo',
+        value: 12.17,
+        color: 'success',
+        highlight: true,
+        badge: 'Inverter Eco',
+        subLabel: 'Cools 350 sq ft · Variable-speed inverter throttling (15.0 CEER) saves $4.87/mo',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Zoning: Cooling only an occupied bedroom with an 8,000 BTU window unit overnight saves up to 50% compared to running whole-home central air conditioning.',
+  },
 };
