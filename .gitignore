@@ -29,6 +29,24 @@ yarn-error.log*
 !.env.example
 !**/.env.example
 
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+
+# AI Tooling & Local Scratch
+.agents/
+.gemini/
+scratch/
+*.tmp
+
 # OS Generated Files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
