@@ -25,6 +25,7 @@ jobs:
           echo "Sending sync request to $API_SYNC_URL..."
           RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST "$API_SYNC_URL" \
             -H "Content-Type: application/json" \
+            -d '{}' \
             -H "x-sync-secret: $EIA_SYNC_SECRET")
 
           HTTP_STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS:" | cut -d':' -f2)
