@@ -8,7 +8,7 @@
 const https = require('https');
 
 const HOST = 'energybilllab.com';
-const KEY = 'b6a2eb9d2dea479ebea8af8497314cfa';
+const KEY = '426feebd617b42e2bf0b8b58378c56aa';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
 // 50 U.S. State Slugs
@@ -197,6 +197,8 @@ const INSIGHT_SLUGS = [
   'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
   'august-2026-summer-thermostat-setting-cooling-cost-benchmark',
   'august-2026-ev-home-charging-efficiency-losses-benchmark',
+  'august-2026-window-air-conditioner-wattage-operating-cost-benchmark',
+  'august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark',
 ];
 const INSIGHT_URLS = INSIGHT_SLUGS.map((i) => `https://${HOST}/insights/${i}`);
 
