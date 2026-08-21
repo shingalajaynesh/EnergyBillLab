@@ -1135,4 +1135,47 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Zoning: Cooling only an occupied bedroom with an 8,000 BTU window unit overnight saves up to 50% compared to running whole-home central air conditioning.',
   },
+
+  // 29. August 2026 Electric Water Heater Standby Heat Loss & Temperature Setpoint Benchmark
+  'august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark': {
+    title: 'Electric Water Heater Annual Electricity Expense by Setpoint & Insulation',
+    subtitle:
+      'Calculated for a 50-gallon tank (60 gal/day hot water demand) at May 2026 EIA average of 18.44¢/kWh',
+    badge: '19% Total Savings',
+    badgeType: 'success',
+    items: [
+      {
+        label: '140°F Factory Setting (Uninsulated Tank · 4,866 kWh/yr)',
+        displayValue: '$897.19/yr',
+        value: 897.19,
+        color: 'danger',
+        subLabel: '876 kWh/yr wasted in standby loss · Scald risk in 5 seconds',
+      },
+      {
+        label: '140°F + R-10 Insulation Blanket (4,515 kWh/yr)',
+        displayValue: '$832.57/yr',
+        value: 832.57,
+        color: 'warning',
+        subLabel: '526 kWh/yr standby loss · Saves $64.62/yr via external thermal barrier',
+      },
+      {
+        label: '120°F DOE Recommended Setting (Uninsulated Tank · 4,194 kWh/yr)',
+        displayValue: '$773.35/yr',
+        value: 773.35,
+        color: 'primary',
+        subLabel: '642 kWh/yr standby loss · Saves $123.84/yr with zero scald risk',
+      },
+      {
+        label: '120°F + R-10 Blanket & Pipe Foam (3,938 kWh/yr)',
+        displayValue: '$726.24/yr',
+        value: 726.24,
+        color: 'success',
+        highlight: true,
+        badge: 'Optimal Efficiency',
+        subLabel: '387 kWh/yr standby loss · Saves $170.95/yr ($14.25/mo) vs factory baseline',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Principle: Standby heat loss is proportional to delta-T (tank vs ambient temperature). Lowering setpoint from 140°F to 120°F reduces continuous heat transmission by 26.7% while eliminating tap scalding hazards.',
+  },
 };
