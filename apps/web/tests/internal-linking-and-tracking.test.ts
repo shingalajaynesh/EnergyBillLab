@@ -213,10 +213,10 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
   // Test 11: Sitemap includes Insights launch batch and daily updates
   it('11. Sitemap includes Insights launch batch and daily updates', () => {
     const sitemapEntries = sitemap();
-    expect(sitemapEntries).toHaveLength(166);
+    expect(sitemapEntries).toHaveLength(167);
 
     const urls = sitemapEntries.map((e) => e.url);
-    expect(new Set(urls).size).toBe(166);
+    expect(new Set(urls).size).toBe(167);
     expect(urls).toContain('https://energybilllab.com/insights');
     expect(urls).toContain(
       'https://energybilllab.com/insights/may-2026-ev-home-charging-cost-benchmark',
@@ -235,6 +235,9 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
     );
     expect(urls).toContain(
       'https://energybilllab.com/insights/august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark',
+    );
+    expect(urls).toContain(
+      'https://energybilllab.com/insights/august-2026-hot-tub-electricity-consumption-operating-cost-benchmark',
     );
   });
 

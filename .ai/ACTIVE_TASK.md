@@ -3,7 +3,7 @@
 ## Current Task
 
 - Phase: Daily Energy Insight Production Task
-- Date: August 22, 2026
+- Date: August 23, 2026
 - Status:
   - PASS - scalable Insights infrastructure completed locally and initial batch publication prepared
   - PASS - first launch Insight prepared and included in the initial published batch
@@ -31,13 +31,14 @@
   - PASS - August 20, 2026 Daily Insight "August 2026 Window Air Conditioner Wattage & Hourly Operating Cost Benchmark: 5,000 to 15,000 BTU Electricity Costs & Zone-Cooling Savings" completed, validated, and marked `published`
   - PASS - August 21, 2026 Daily Insight "August 2026 Electric Water Heater Standby Heat Loss & Temperature Setpoint Benchmark: 120°F vs. 140°F Electricity Costs & Tank Insulation Savings" completed, validated, and marked `published`
   - PASS - August 22, 2026 Daily Insight "August 2026 Heat Pump Auxiliary Electric Resistance Heat Strip Benchmark: 5 kW to 15 kW Operating Costs & Thermostat Lockout Savings" completed, validated, and marked `published`
+  - PASS - August 23, 2026 Daily Insight "August 2026 Hot Tub Electricity Consumption & Monthly Operating Cost Benchmark: Standby Heat Losses vs. Active Jet Heating Costs (120V vs. 240V)" completed, validated, and marked `published`
   - PENDING - production deployment and browser verification
 - Scope & Governance Completed:
-  1. **Daily Insight Production:** Completed full research, conflict audit, calculation modeling, isolated article module creation, registry registration, visual card integration, and comprehensive test suite verification for the 30th published Insight (`august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark`).
-  2. **Original-Value Calculations:** Formulated electrical power draw and hourly cost equations ($\text{Cost} = \text{kW} \times \text{Rate}$), modeled thermodynamic COP efficiency collapse (COP = 3.2 compressor @ 3.13 kW vs COP = 1.0 aux strips @ 10.0 kW to deliver 34,120 BTU/hr), proving that 10 kW auxiliary heat strips cost **$1.84/hr vs $0.58/hr (3.2x cost increase)** at the May 2026 EIA national average rate of 18.44¢/kWh.
-  3. **"Gas Pedal" Morning Setback Penalty:** Modeled an 8°F morning thermostat setback recovery (62°F to 70°F), demonstrating that triggering auxiliary heat draws 19.5 kWh ($3.60/morning) vs 5.25 kWh ($0.97/morning) for gentle compressor modulation, wasting **+$78.82/month** in unnecessary resistance staging.
-  4. **State-Level Matrix & Run Time Modeling:** Benchmarked 10 kW monthly operating costs across 8 state tariffs for 2h, 4h, 6h, and 8h daily run times (at 6h/day: WA @ $207.36/mo; TX @ $279.00/mo; FL @ $284.76/mo; National @ $331.92/mo; PA @ $346.68/mo; NY @ $446.40/mo; New England @ $513.00/mo; CA @ $583.20/mo; HI @ $936.00/mo). Detailed stuck sequencer relay failure consuming 7,200 kWh/mo ($1,327.68/mo).
-  5. **Outdoor Lockout Savings:** Quantified annual heating season savings from calibrating outdoor thermostat lockout controls at 30°F–35°F, preventing premature resistance heat staging during mild shoulder weather and saving **$150 to $320 per winter season**.
+  1. **Daily Insight Production:** Completed full research, conflict audit, calculation modeling, isolated article module creation, registry registration, visual card integration, and comprehensive test suite verification for the 31st published Insight (`august-2026-hot-tub-electricity-consumption-operating-cost-benchmark`).
+  2. **Original-Value Calculations:** Formulated standby thermal loss equations ($P_{\text{standby}}$ Watts) under CEC Title 20 / ANSI-APSP-14 and active jet heating equations, demonstrating that maintaining 102°F consumes 105.8 to 189.7 kWh/mo in summer ($19.51 to $34.98/mo) and surges to 455 to 730 kWh/mo in cold winter ($83.90 to $134.61/mo) at the May 2026 EIA national average rate of 18.44¢/kWh.
+  3. **120V vs. 240V Circuit Thermodynamics:** Modeled the 120V / 15A hardware interlock (disabling 1.44 kW heater during high-speed jet use, dropping water temp 2°F–4°F/hr during winter soaks) vs. 240V / 50A hardwired continuous 5.5 kW heating + 3.0 kW dual jet operation.
+  4. **State-Level Matrix & Insulation Degradation:** Benchmarked standard 350-gallon monthly costs across 8 state tariffs (Summer: WA @ $30.87/mo, TX @ $41.49/mo, FL @ $42.35/mo, National @ $49.36/mo, PA @ $51.56/mo, NY @ $66.39/mo, New England @ $76.29/mo, CA @ $86.73/mo, HI @ $139.20/mo; Winter: WA @ $65.66/mo, National @ $105.11/mo, CA @ $184.68/mo, HI @ $296.40/mo). Detailed waterlogged cover failure adding +$35 to +$55/month in wasted heat conduction.
+  5. **Actionable Engineering Savings:** Quantified annual energy savings from floating thermal blankets (15%–25% standby reduction, saving $96–$216/yr), R-18 tapered cover replacement ($204+/winter saved), and off-peak TOU filtration scheduling.
   6. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
   7. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
-- Suggested Commit: `content(insights): publish august 2026 heat pump auxiliary electric heat strip cost benchmark`
+- Suggested Commit: `content(insights): publish august 2026 hot tub electricity consumption and operating cost benchmark`

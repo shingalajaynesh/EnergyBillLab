@@ -1222,4 +1222,51 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Principle: Electric resistance heat strips have a COP of 1.0 (1W = 3.412 BTU). Running 10 kW heat strips costs 3.2 times more per hour than heating with the heat pump compressor.',
   },
+
+  // 31. August 2026 Hot Tub Electricity Consumption & Operating Cost Benchmark
+  'august-2026-hot-tub-electricity-consumption-operating-cost-benchmark': {
+    title: 'Hot Tub Monthly Electricity Expense & Power Consumption Benchmark',
+    subtitle:
+      'Calculated for a standard 350-gallon spa across insulation grades and operating conditions at May 2026 U.S. average 18.44¢/kWh',
+    badge: 'Standby vs Active Impact',
+    badgeType: 'primary',
+    items: [
+      {
+        label: 'Winter Cold Climate + Waterlogged Cover (570 kWh/mo · 770W effective)',
+        displayValue: '$105.11/mo',
+        value: 105.11,
+        color: 'danger',
+        subLabel:
+          '35°F ambient · Saturated cover causes massive top-surface convective & evaporative heat loss',
+      },
+      {
+        label: 'Standard 240V Spa in Winter (35°F Ambient · 450 kWh/mo · 608W effective)',
+        displayValue: '$82.98/mo',
+        value: 82.98,
+        color: 'warning',
+        subLabel:
+          'R-12 cover · 67°F temperature delta increases standby heater cycling to maintain 102°F',
+      },
+      {
+        label: 'Standard 240V Spa in Summer (75°F Ambient · 268 kWh/mo · 362W effective)',
+        displayValue: '$49.36/mo',
+        value: 49.36,
+        color: 'primary',
+        subLabel:
+          '190 kWh standby + 78 kWh active jet use (3x/wk @ 45 min) · Typical warm-weather baseline',
+      },
+      {
+        label: 'ENERGY STAR / Full-Foam Optimized Spa (Summer · 160 kWh/mo · 216W effective)',
+        displayValue: '$29.65/mo',
+        value: 29.65,
+        color: 'success',
+        highlight: true,
+        badge: 'High-Efficiency Eco',
+        subLabel:
+          'R-18 full foam + floating thermal blanket · Saves $19.71/mo (40.8% reduction vs standard)',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Fact: Over 70% of a hot tub’s monthly electrical consumption comes from continuous standby heat maintenance, not the jet pumps. Top surface evaporative loss accounts for up to 60% of total standby heat loss.',
+  },
 };
