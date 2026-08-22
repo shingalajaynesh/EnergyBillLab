@@ -62,9 +62,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(29);
+    expect(insightsRegistry).toHaveLength(30);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(29);
+    expect(getPublishedInsights()).toHaveLength(30);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -75,9 +75,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe(
-      'august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark',
-    );
+    expect(published[0]?.slug).toBe('august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark');
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -311,7 +309,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(165);
+    expect(entries).toHaveLength(166);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -441,7 +439,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
     expect(urls).toContain('https://energybilllab.com/insights/category/appliances');
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
-    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(6);
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(7);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
     expect(getInsightsByCategory('appliances')).toHaveLength(13);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
@@ -496,7 +494,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(29);
+    expect(insightsRegistry).toHaveLength(30);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -965,6 +963,22 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.summary).toContain('18.44¢/kWh');
     expect(article?.summary).toContain('120°F');
     expect(article?.summary).toContain('140°F');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    const validation = validateInsightRecord(article!);
+    expect(validation.valid).toBe(true);
+  });
+
+  // Test 43: August 2026 Heat Pump Auxiliary Electric Resistance Heat Strip Benchmark Insight verification
+  it('43. validates the August 2026 Heat Pump Auxiliary Heat Strip Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug('august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark');
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('home-energy-costs');
+    expect(article?.reportingPeriod).toBe('August 2026 (May 2026 EIA Electricity Releases)');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44¢/kWh');
+    expect(article?.summary).toContain('10 kW');
+    expect(article?.summary).toContain('COP');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     const validation = validateInsightRecord(article!);
     expect(validation.valid).toBe(true);

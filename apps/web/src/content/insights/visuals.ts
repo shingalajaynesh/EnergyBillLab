@@ -1178,4 +1178,48 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Principle: Standby heat loss is proportional to delta-T (tank vs ambient temperature). Lowering setpoint from 140°F to 120°F reduces continuous heat transmission by 26.7% while eliminating tap scalding hazards.',
   },
+
+  // 30. August 2026 Heat Pump Auxiliary Electric Resistance Heat Strip Benchmark
+  'august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark': {
+    title: 'Heat Pump Heating Cost per Hour: Compressor vs 5 kW–15 kW Auxiliary Heat Strips',
+    subtitle:
+      'Hourly electricity cost and power draw delivering 34,120 BTU/hr of heat at May 2026 U.S. average rate of 18.44¢/kWh',
+    badge: '3.2x Cost Spread',
+    badgeType: 'primary',
+    items: [
+      {
+        label: '15 kW Heavy Auxiliary Heat Strips (COP = 1.0 · 15,000W)',
+        displayValue: '$2.77 / hr',
+        value: 2.77,
+        color: 'danger',
+        subLabel: '15.0 kWh/hr · Extreme cold snap or large home secondary heating stage',
+      },
+      {
+        label: '10 kW Standard Auxiliary Heat Strips (COP = 1.0 · 10,000W)',
+        displayValue: '$1.84 / hr',
+        value: 1.84,
+        color: 'danger',
+        subLabel: '10.0 kWh/hr · Standard 3-ton residential air handler backup resistance elements',
+      },
+      {
+        label: '5 kW Single-Stage Auxiliary Strip (COP = 1.0 · 5,000W)',
+        displayValue: '$0.92 / hr',
+        value: 0.92,
+        color: 'warning',
+        subLabel: '5.0 kWh/hr · Low-stage supplemental heat or defrost cycle air tempering',
+      },
+      {
+        label: 'Inverter Heat Pump Compressor Mode (COP = 3.2 @ 40°F · 3,125W)',
+        displayValue: '$0.58 / hr',
+        value: 0.58,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Cost',
+        subLabel:
+          '3.13 kWh/hr · Moves ambient heat with 320% efficiency, saving $1.26/hr vs 10 kW strips',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Principle: Electric resistance heat strips have a COP of 1.0 (1W = 3.412 BTU). Running 10 kW heat strips costs 3.2 times more per hour than heating with the heat pump compressor.',
+  },
 };
