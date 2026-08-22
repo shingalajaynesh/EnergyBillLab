@@ -67,9 +67,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(31);
+    expect(insightsRegistry).toHaveLength(32);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(31);
+    expect(getPublishedInsights()).toHaveLength(32);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -316,7 +316,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(167);
+    expect(entries).toHaveLength(168);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -455,7 +455,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(7);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(14);
+    expect(getInsightsByCategory('appliances')).toHaveLength(15);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
@@ -508,7 +508,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(31);
+    expect(insightsRegistry).toHaveLength(32);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -1029,5 +1029,23 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(html).toContain('<td>5 kW Element</td>');
     expect(html).toContain('<caption>Table: Residential Auxiliary Electric Resistance');
     expect(html).not.toContain('| Heat Strip Size |');
+  });
+
+  // Test 46: August 2026 Ceiling Fan Electricity Consumption & AC Thermostat Setback Savings Benchmark Insight verification
+  it('46. validates the August 2026 Ceiling Fan Electricity & AC Setback Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-ceiling-fan-electricity-consumption-ac-thermostat-setback-savings-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('appliances');
+    expect(article?.reportingPeriod).toBe('August 2026 (May 2026 EIA Electricity Releases)');
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44¢/kWh');
+    expect(article?.summary).toContain('wind-chill');
+    expect(article?.summary).toContain('78°F');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    const validation = validateInsightRecord(article!);
+    expect(validation.valid).toBe(true);
   });
 });

@@ -33,6 +33,7 @@ import { august2026WindowAirConditionerWattageOperatingCostBenchmark } from './a
 import { august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmark } from './articles/august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark';
 import { august2026HeatPumpAuxiliaryHeatStripCostBenchmark } from './articles/august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark';
 import { august2026HotTubElectricityConsumptionOperatingCostBenchmark } from './articles/august-2026-hot-tub-electricity-consumption-operating-cost-benchmark';
+import { august2026CeilingFanElectricityConsumptionAcThermostatSetbackSavingsBenchmark } from './articles/august-2026-ceiling-fan-electricity-consumption-ac-thermostat-setback-savings-benchmark';
 
 /**
  * Array of individual article modules imported from ./articles/
@@ -70,6 +71,7 @@ const rawArticles: InsightRecord[] = [
   august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmark,
   august2026HeatPumpAuxiliaryHeatStripCostBenchmark,
   august2026HotTubElectricityConsumptionOperatingCostBenchmark,
+  august2026CeilingFanElectricityConsumptionAcThermostatSetbackSavingsBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time

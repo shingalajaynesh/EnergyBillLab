@@ -50,9 +50,9 @@ describe('TechnicalVisualCard Component & Full Visual Coverage', () => {
     expect(html).toContain('role="img"');
   });
 
-  it('2. provides valid visual configs for all 31 published Insight articles', () => {
+  it('2. provides valid visual configs for all 32 published Insight articles', () => {
     const publishedInsights = getPublishedInsights();
-    expect(publishedInsights).toHaveLength(31);
+    expect(publishedInsights).toHaveLength(32);
 
     publishedInsights.forEach((insight) => {
       const config = INSIGHT_VISUAL_CONFIGS[insight.slug];

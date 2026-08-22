@@ -1269,4 +1269,50 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Fact: Over 70% of a hot tub’s monthly electrical consumption comes from continuous standby heat maintenance, not the jet pumps. Top surface evaporative loss accounts for up to 60% of total standby heat loss.',
   },
+
+  // 32. August 2026 Ceiling Fan Electricity Consumption & AC Thermostat Setback Savings Benchmark
+  'august-2026-ceiling-fan-electricity-consumption-ac-thermostat-setback-savings-benchmark': {
+    title: 'Ceiling Fan vs Central AC Power Draw & Net 4°F Setback Savings',
+    subtitle:
+      'Modeled for 3-ton central AC (3,500W) vs 2 ceiling fans (70W total) at May 2026 U.S. average 18.44¢/kWh',
+    badge: '50-to-1 Power Arbitrage',
+    badgeType: 'success',
+    items: [
+      {
+        label: 'Baseline Central AC @ 74°F (8.0 hrs/day · 840 kWh/mo)',
+        displayValue: '$154.90/mo',
+        value: 154.9,
+        color: 'danger',
+        subLabel:
+          'Standard cooling schedule · AC compressor & blower draw 3,500 Watts continuous power',
+      },
+      {
+        label: 'Adjusted Central AC @ 78°F (+4°F Setback · 6.88 hrs/day · 722.4 kWh/mo)',
+        displayValue: '$133.21/mo',
+        value: 133.21,
+        color: 'primary',
+        subLabel: '14.0% runtime reduction saves $21.69/mo in avoided air conditioning electricity',
+      },
+      {
+        label: 'Running 2 Medium-Speed AC Ceiling Fans (70W Total · 12 hrs/day · 25.2 kWh/mo)',
+        displayValue: '$4.65/mo',
+        value: 4.65,
+        color: 'warning',
+        subLabel:
+          'Generates 250 FPM convective airflow, restoring 4.0°F perceived thermal comfort to occupants',
+      },
+      {
+        label: 'Net Household Cash Savings (AC Savings minus Ceiling Fan Electricity)',
+        displayValue: '+$17.04/mo',
+        value: 17.04,
+        color: 'success',
+        highlight: true,
+        badge: 'Net Profit',
+        subLabel:
+          '$68.16 saved across a 4-month summer season ($93.20/season in California @ 33.82¢/kWh)',
+      },
+    ],
+    footerNote:
+      'Convective Cooling Principle: Ceiling fans cool people by evaporating skin moisture, not by cooling room air. Raising your AC thermostat 4°F with fans running captures 14% in AC savings while maintaining identical perceived comfort.',
+  },
 };
