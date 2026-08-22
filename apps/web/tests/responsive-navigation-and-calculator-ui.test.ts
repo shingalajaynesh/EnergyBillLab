@@ -124,4 +124,14 @@ describe('Responsive Navigation & Calculator UI Cleanup', () => {
     expect(paths).toContain('/research');
     expect(paths).toContain('/about');
   });
+
+  it('11. mobile drawer uses dynamic published insights count and latest insight links', () => {
+    const tsxPath = resolve(__dirname, '../src/components/app-header.tsx');
+    const tsxContent = readFileSync(tsxPath, 'utf-8');
+
+    expect(tsxContent).toContain('getPublishedInsights');
+    expect(tsxContent).toContain('{publishedInsights.length} Reports');
+    expect(tsxContent).toContain('latestInsights.map');
+    expect(tsxContent).not.toContain('24 Reports');
+  });
 });

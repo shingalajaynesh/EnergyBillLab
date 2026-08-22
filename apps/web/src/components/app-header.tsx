@@ -20,6 +20,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
+import { getPublishedInsights } from '@/content/insights';
+
 import styles from './app-header.module.css';
 import { PageContainer } from './page-container';
 
@@ -38,6 +40,9 @@ export function AppHeader() {
   });
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+
+  const publishedInsights = getPublishedInsights();
+  const latestInsights = publishedInsights.slice(0, 3);
 
   // Close dropdown on Escape key press or click outside
   useEffect(() => {
@@ -724,7 +729,7 @@ export function AppHeader() {
                 <LineChartOutlined className={styles.groupIcon} />
                 <span className={styles.mobileGroupTitle}>Energy Insights</span>
               </div>
-              <span className={styles.groupBadge}>24 Reports</span>
+              <span className={styles.groupBadge}>{publishedInsights.length} Reports</span>
               <DownOutlined
                 className={`${styles.accordionChevron} ${
                   expandedSections.insights ? styles.chevronOpen : ''
@@ -745,50 +750,26 @@ export function AppHeader() {
                   <span className={styles.linkDot} />
                   Insights Hub
                 </Link>
-                <Link
-                  href="/insights/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark"
-                  className={`${styles.mobileNavLink} ${
-                    pathname ===
-                    '/insights/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark'
-                      ? styles.activeMobileLink
-                      : ''
-                  }`}
-                  aria-current={
-                    pathname ===
-                    '/insights/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark'
-                      ? 'page'
-                      : undefined
-                  }
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className={styles.linkDot} />
-                  Induction vs Electric vs Gas Cooktop
-                </Link>
-                <Link
-                  href="/insights/august-2026-swimming-pool-pump-kwh-operating-cost-benchmark"
-                  className={`${styles.mobileNavLink} ${
-                    pathname ===
-                    '/insights/august-2026-swimming-pool-pump-kwh-operating-cost-benchmark'
-                      ? styles.activeMobileLink
-                      : ''
-                  }`}
-                  aria-current={
-                    pathname ===
-                    '/insights/august-2026-swimming-pool-pump-kwh-operating-cost-benchmark'
-                      ? 'page'
-                      : undefined
-                  }
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className={styles.linkDot} />
-                  Swimming Pool Pump Benchmark
-                </Link>
+                {latestInsights.map((insight) => (
+                  <Link
+                    key={insight.slug}
+                    href={`/insights/${insight.slug}`}
+                    className={`${styles.mobileNavLink} ${
+                      pathname === `/insights/${insight.slug}` ? styles.activeMobileLink : ''
+                    }`}
+                    aria-current={pathname === `/insights/${insight.slug}` ? 'page' : undefined}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className={styles.linkDot} />
+                    {insight.title}
+                  </Link>
+                ))}
                 <Link
                   href="/insights"
                   className={styles.mobileNavLinkBold}
                   onClick={() => setIsOpen(false)}
                 >
-                  View All Market Insights →
+                  View All {publishedInsights.length} Market Insights →
                 </Link>
               </div>
             )}
