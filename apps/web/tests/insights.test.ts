@@ -1,7 +1,12 @@
+import React from 'react';
 import fs from 'node:fs';
 import path from 'node:path';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
+(globalThis as unknown as { React: typeof React }).React = React;
+
+import InsightDetailPage from '../src/app/insights/[slug]/page';
 import sitemap from '../src/app/sitemap';
 import type { InsightRecord } from '../src/content/insights';
 import {
@@ -1008,5 +1013,21 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     const validation = validateInsightRecord(article!);
     expect(validation.valid).toBe(true);
+  });
+
+  // Test 45: Verifies that markdown tables in Insights render into accessible HTML table elements
+  it('45. renders markdown tables into structured HTML table elements for heat pump auxiliary benchmark', async () => {
+    const page = await InsightDetailPage({
+      params: Promise.resolve({
+        slug: 'august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark',
+      }),
+    });
+    expect(page).toBeDefined();
+    const html = renderToStaticMarkup(page);
+    expect(html).toContain('<table');
+    expect(html).toContain('<th scope="col">Heat Strip Size</th>');
+    expect(html).toContain('<td>5 kW Element</td>');
+    expect(html).toContain('<caption>Table: Residential Auxiliary Electric Resistance');
+    expect(html).not.toContain('| Heat Strip Size |');
   });
 });
