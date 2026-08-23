@@ -36,15 +36,17 @@ describe('public route registry', () => {
     expect(sitemapUrls.some((url) => url.endsWith('/electricity-bill-analyzer'))).toBe(true);
   });
 
-  it('maintains expected 10 calculators, 50 state rate pages, and 50 energy guides', () => {
+  it('maintains expected 15 calculators, 50 state rate pages, and 50 energy guides', () => {
     const paths = publicRoutes.map((route) => route.href);
 
     const calculators = paths.filter(
       (path) => path === '/electricity-bill-analyzer' || path.startsWith('/tools/'),
     );
-    expect(calculators).toHaveLength(13);
+    expect(calculators).toHaveLength(15);
 
-    const statePages = paths.filter((path) => path.startsWith('/electricity-rates/'));
+    const statePages = paths.filter(
+      (path) => path.startsWith('/electricity-rates/') && path !== '/electricity-rates/map',
+    );
     expect(statePages).toHaveLength(50);
 
     const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');

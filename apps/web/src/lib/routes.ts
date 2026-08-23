@@ -68,6 +68,22 @@ const basePublicRoutes = [
   },
   {
     description:
+      'Comprehensive virtual home energy audit. Calculate your home thermal efficiency grade (A+ to F), annual energy waste, and prioritized retrofit ROI roadmap.',
+    group: 'tools',
+    href: '/tools/home-energy-scorecard',
+    label: 'Home Energy Scorecard',
+    sitemap: true,
+  },
+  {
+    description:
+      'Compare delivered heating cost per Million BTU (MMBtu) across Natural Gas, Heat Pumps, Heating Oil, Propane, and Electric Resistance.',
+    group: 'tools',
+    href: '/tools/heating-fuel-comparator',
+    label: 'Heating Fuel Comparator',
+    sitemap: true,
+  },
+  {
+    description:
       'Estimate the electricity usage and operating cost of any household appliance based on wattage, usage hours, and duty cycle.',
     group: 'tools',
     href: '/tools/appliance-energy-cost-calculator',
@@ -241,6 +257,14 @@ const restPublicRoutes = [
     group: 'research',
     href: '/compare-states',
     label: 'Compare States',
+    sitemap: true,
+  },
+  {
+    description:
+      'Interactive 50-state residential electricity rate map. Compare ¢/kWh pricing tiers, regional rate spreads, and average monthly household utility bills across all U.S. states.',
+    group: 'research',
+    href: '/electricity-rates/map',
+    label: 'Rate Heatmap',
     sitemap: true,
   },
   {

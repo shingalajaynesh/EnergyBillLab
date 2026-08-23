@@ -2,6 +2,8 @@ export * from './calculate-ac-cost';
 export * from './calculate-appliance-cost';
 export * from './calculate-ev-charging-cost';
 export * from './calculate-gas-furnace-cost';
+export * from './calculate-heating-fuel-comparison';
+export * from './calculate-home-energy-score';
 export * from './calculate-natural-gas-bill';
 export * from './calculate-space-heater-cost';
 export * from './calculate-state-comparison';

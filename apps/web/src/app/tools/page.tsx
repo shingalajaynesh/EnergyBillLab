@@ -22,19 +22,25 @@ export default function ToolsPage() {
 
   const categories = [
     {
-      title: 'Bill Analysis & Rate Benchmarks',
+      title: 'Whole-Home Diagnostics & Rate Benchmarks',
       tools: [
         {
-          href: '/electricity-bill-analyzer' as PublicRouteHref,
-          name: 'Electricity Bill Analyzer',
+          href: '/tools/home-energy-scorecard' as PublicRouteHref,
+          name: 'Whole-Home Energy Scorecard',
           description:
-            'Analyze bill spikes, normalize billing cycle length, and calculate your all-in cost per kWh.',
+            'Comprehensive virtual home energy audit delivering a thermal efficiency letter grade (A+ to F), energy waste estimate, and prioritized retrofit ROI roadmap.',
         },
         {
           href: '/tools/bill-spike-detective' as PublicRouteHref,
           name: 'Bill Spike Detective & Diagnostic Tool',
           description:
             'Forensic diagnostic triage to isolate whether your spike was caused by weather, equipment cycling, or rate hikes.',
+        },
+        {
+          href: '/electricity-bill-analyzer' as PublicRouteHref,
+          name: 'Electricity Bill Analyzer',
+          description:
+            'Analyze bill spikes, normalize billing cycle length, and calculate your all-in cost per kWh.',
         },
         {
           href: '/compare-states' as PublicRouteHref,
@@ -58,6 +64,12 @@ export default function ToolsPage() {
     {
       title: 'Heating, Cooling & Environmental Control',
       tools: [
+        {
+          href: '/tools/heating-fuel-comparator' as PublicRouteHref,
+          name: 'Heating Fuel & Heat Pump Breakeven Comparator',
+          description:
+            'Benchmark delivered heating cost per MMBtu across Gas, Heat Pumps, Oil, Propane, and Resistance.',
+        },
         {
           href: '/tools/ac-cost-calculator' as PublicRouteHref,
           name: 'Air Conditioner Cost Calculator',

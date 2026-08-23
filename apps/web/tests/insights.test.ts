@@ -316,7 +316,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(170);
+    expect(entries).toHaveLength(173);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
@@ -839,9 +839,11 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     const calculators = paths.filter(
       (path) => path === '/electricity-bill-analyzer' || path.startsWith('/tools/'),
     );
-    expect(calculators).toHaveLength(13);
+    expect(calculators).toHaveLength(15);
 
-    const statePages = paths.filter((path) => path.startsWith('/electricity-rates/'));
+    const statePages = paths.filter(
+      (path) => path.startsWith('/electricity-rates/') && path !== '/electricity-rates/map',
+    );
     expect(statePages).toHaveLength(50);
 
     const guides = paths.filter((path) => path.startsWith('/guides/') && path !== '/guides');

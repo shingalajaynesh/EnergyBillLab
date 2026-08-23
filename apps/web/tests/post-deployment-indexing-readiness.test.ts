@@ -122,7 +122,9 @@ describe('Post-Deployment Cleanup and Indexing Readiness', () => {
 
   // Test 4: Fifty state routes exist
   it('4. Fifty state routes exist in public routes registry', () => {
-    const stateRoutes = publicRoutes.filter((r) => r.href.startsWith('/electricity-rates/'));
+    const stateRoutes = publicRoutes.filter(
+      (r) => r.href.startsWith('/electricity-rates/') && r.href !== '/electricity-rates/map',
+    );
     expect(stateRoutes).toHaveLength(50);
   });
 
@@ -131,7 +133,9 @@ describe('Post-Deployment Cleanup and Indexing Readiness', () => {
     const entries = sitemap();
     const stateUrls = entries
       .map((e) => e.url)
-      .filter((url) => url.includes('/electricity-rates/'));
+      .filter(
+        (url) => url.includes('/electricity-rates/') && !url.endsWith('/electricity-rates/map'),
+      );
 
     expect(stateUrls).toHaveLength(50);
     expect(new Set(stateUrls).size).toBe(50);

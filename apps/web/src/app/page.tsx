@@ -178,16 +178,16 @@ export default async function HomePage() {
 
       {/* High-Value Household Energy Tools Section */}
       <section className={styles.toolsSection} aria-labelledby="homepage-tools-heading">
-        <h2 id="homepage-tools-heading">High-Value Household Energy Tools</h2>
+        <h2 id="homepage-tools-heading">High-Value Household Energy Tools & Diagnostics</h2>
         <div className={styles.toolsGrid}>
-          <Link className={styles.toolCard} href="/electricity-bill-analyzer">
+          <Link className={styles.toolCard} href="/tools/home-energy-scorecard">
             <div>
-              <span className={styles.toolTitle}>Electricity Bill Analyzer</span>
+              <span className={styles.toolTitle}>Whole-Home Energy Scorecard</span>
               <p className={styles.toolDesc}>
-                Compare two utility statements and isolate usage changes from rate adjustments.
+                Virtual home energy audit. Calculate your efficiency letter grade (A+ to F), energy waste, and retrofit ROI roadmap.
               </p>
             </div>
-            <span className={styles.toolAction}>Analyze bill →</span>
+            <span className={styles.toolAction}>Audit home →</span>
           </Link>
 
           <Link className={styles.toolCard} href="/tools/bill-spike-detective">
@@ -210,14 +210,34 @@ export default async function HomePage() {
             <span className={styles.toolAction}>Compare states →</span>
           </Link>
 
-          <Link className={styles.toolCard} href="/tools/appliance-energy-cost-calculator">
+          <Link className={styles.toolCard} href="/tools/heating-fuel-comparator">
             <div>
-              <span className={styles.toolTitle}>Appliance Cost Calculator</span>
+              <span className={styles.toolTitle}>Heating Fuel & Heat Pump Breakeven</span>
               <p className={styles.toolDesc}>
-                Estimate kWh usage and operating costs for any household appliance.
+                Benchmark delivered heating cost per MMBtu across Gas, Heat Pumps, Oil, Propane, and Resistance.
               </p>
             </div>
-            <span className={styles.toolAction}>Estimate appliance →</span>
+            <span className={styles.toolAction}>Compare heating →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/electricity-rates/map">
+            <div>
+              <span className={styles.toolTitle}>Interactive 50-State Rate Map</span>
+              <p className={styles.toolDesc}>
+                Explore residential electricity pricing tiers (¢/kWh) and average monthly household utility bills across all states.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Explore map →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/electricity-bill-analyzer">
+            <div>
+              <span className={styles.toolTitle}>Electricity Bill Analyzer</span>
+              <p className={styles.toolDesc}>
+                Compare two utility statements and isolate usage changes from rate adjustments.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Analyze bill →</span>
           </Link>
         </div>
       </section>

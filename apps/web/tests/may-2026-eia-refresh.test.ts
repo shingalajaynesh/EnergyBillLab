@@ -75,7 +75,7 @@ describe('May 2026 EIA Data Refresh & Validation', () => {
   });
 
   it('confirms sitemap route inventory includes the Insights hub after launch threshold', () => {
-    expect(sitemapRoutes.length).toBe(134);
+    expect(sitemapRoutes.length).toBe(137);
     expect(sitemapRoutes.some((route) => route.href === '/insights')).toBe(true);
   });
 });
