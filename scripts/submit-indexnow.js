@@ -1,8 +1,8 @@
 /**
  * IndexNow Batch Submission Script for Energy Bill Lab
  *
- * Submits all public URLs to Microsoft Bing and the IndexNow protocol
- * to accelerate search engine discovery and real-time indexation.
+ * Submits all public URLs to Microsoft Bing, Yandex, and the universal IndexNow protocol
+ * (api.indexnow.org) to trigger real-time search engine discovery and indexation.
  */
 
 const https = require('https');
@@ -65,7 +65,7 @@ const US_STATES = [
   'wyoming',
 ];
 
-// Core static & hub URLs
+// Core static, hub, and interactive tool URLs
 const STATIC_URLS = [
   `https://${HOST}/`,
   `https://${HOST}/about`,
@@ -86,9 +86,11 @@ const STATIC_URLS = [
   `https://${HOST}/appliances`,
   `https://${HOST}/guides`,
   `https://${HOST}/comparisons`,
+  `https://${HOST}/compare-states`,
   `https://${HOST}/research`,
   `https://${HOST}/insights`,
   `https://${HOST}/research/us-residential-electricity-rate-report`,
+  `https://${HOST}/tools/bill-spike-detective`,
   `https://${HOST}/tools/appliance-energy-cost-calculator`,
   `https://${HOST}/tools/ac-cost-calculator`,
   `https://${HOST}/tools/space-heater-cost-calculator`,
@@ -168,7 +170,7 @@ const GUIDE_SLUGS = [
 ];
 const GUIDE_URLS = GUIDE_SLUGS.map((g) => `https://${HOST}/guides/${g}`);
 
-// 27 Published Insight URLs
+// All 32 Published Daily Insight URLs
 const INSIGHT_SLUGS = [
   'may-2026-ev-home-charging-cost-benchmark',
   'may-2026-residential-electricity-price-bill-impact',
@@ -191,18 +193,21 @@ const INSIGHT_SLUGS = [
   'august-2026-electric-dishwasher-kwh-operating-cost-benchmark',
   'august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
   'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
-  'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
   'august-2026-swimming-pool-pump-kwh-operating-cost-benchmark',
+  'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
   'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
   'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
   'august-2026-summer-thermostat-setting-cooling-cost-benchmark',
   'august-2026-ev-home-charging-efficiency-losses-benchmark',
   'august-2026-window-air-conditioner-wattage-operating-cost-benchmark',
   'august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark',
+  'august-2026-heat-pump-auxiliary-heat-strip-cost-benchmark',
+  'august-2026-hot-tub-electricity-consumption-operating-cost-benchmark',
+  'august-2026-ceiling-fan-electricity-consumption-ac-thermostat-setback-savings-benchmark',
 ];
 const INSIGHT_URLS = INSIGHT_SLUGS.map((i) => `https://${HOST}/insights/${i}`);
 
-// Category URLs
+// Category and Pagination URLs
 const CATEGORY_URLS = [
   `https://${HOST}/insights/category/electricity-rates`,
   `https://${HOST}/insights/category/home-energy-costs`,
@@ -225,6 +230,13 @@ async function submitIndexNow(urlList = ALL_SITE_URLS) {
   });
 
   const endpoints = ['api.indexnow.org', 'www.bing.com'];
+
+  console.log(`========================================`);
+  console.log(`IndexNow Submission for ${HOST}`);
+  console.log(`Total URLs to submit: ${urlList.length}`);
+  console.log(`Key: ${KEY}`);
+  console.log(`Key Location: ${KEY_LOCATION}`);
+  console.log(`========================================`);
 
   for (const endpoint of endpoints) {
     console.log(`Submitting ${urlList.length} URLs to https://${endpoint}/indexnow ...`);
@@ -271,7 +283,7 @@ async function submitIndexNow(urlList = ALL_SITE_URLS) {
 
 if (require.main === module) {
   submitIndexNow(ALL_SITE_URLS).then(() => {
-    console.log('IndexNow submission finished.');
+    console.log('IndexNow submission complete.');
   });
 }
 

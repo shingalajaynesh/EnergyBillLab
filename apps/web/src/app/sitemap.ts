@@ -10,7 +10,7 @@ import { contentPages } from '@/content/pages';
 import { sitemapRoutes } from '@/lib/routes';
 import { getSiteUrl } from '@/lib/site';
 
-const DEFAULT_LAST_MODIFIED = new Date('2026-08-01T00:00:00.000Z');
+const DEFAULT_LAST_MODIFIED = new Date('2026-08-23T00:00:00.000Z');
 
 function resolveRouteLastModified(href: string): Date {
   // Check if it's a guide
