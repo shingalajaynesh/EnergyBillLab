@@ -109,9 +109,9 @@ export function diagnoseBillSpike(input: DiagnoseBillSpikeInput): DiagnoseBillSp
 
   // Forensics math
   const dollarChange = currentBill - prevBill;
-  const dollarChangePercent = prevBill > 0 ? ((dollarChange) / prevBill) * 100 : 0;
+  const dollarChangePercent = prevBill > 0 ? (dollarChange / prevBill) * 100 : 0;
   const kwhChange = currentKwh - prevKwh;
-  const kwhChangePercent = prevKwh > 0 ? ((kwhChange) / prevKwh) * 100 : 0;
+  const kwhChangePercent = prevKwh > 0 ? (kwhChange / prevKwh) * 100 : 0;
 
   const dailyKwhCurrent = currentKwh / daysCurrent;
   const dailyKwhPrevious = prevKwh / daysPrev;
@@ -122,7 +122,8 @@ export function diagnoseBillSpike(input: DiagnoseBillSpikeInput): DiagnoseBillSp
   const effectiveRatePreviousCents = (prevBill / prevKwh) * 100;
   const effectiveRateChangePercent =
     effectiveRatePreviousCents > 0
-      ? ((effectiveRateCurrentCents - effectiveRatePreviousCents) / effectiveRatePreviousCents) * 100
+      ? ((effectiveRateCurrentCents - effectiveRatePreviousCents) / effectiveRatePreviousCents) *
+        100
       : 0;
 
   const billingDaysDelta = daysCurrent - daysPrev;
@@ -142,7 +143,12 @@ export function diagnoseBillSpike(input: DiagnoseBillSpikeInput): DiagnoseBillSp
   const relatedGuideSlugs: string[] = [];
 
   // --- 1. Cooling Load / AC Compressor Runtime ---
-  if (season === 'summer' || equipment.has('central_ac') || equipment.has('window_ac') || events.has('heat_wave')) {
+  if (
+    season === 'summer' ||
+    equipment.has('central_ac') ||
+    equipment.has('window_ac') ||
+    events.has('heat_wave')
+  ) {
     let coolingScore = 20;
     if (season === 'summer') coolingScore += 25;
     if (events.has('heat_wave')) coolingScore += 30;
@@ -279,7 +285,12 @@ export function diagnoseBillSpike(input: DiagnoseBillSpikeInput): DiagnoseBillSp
   }
 
   // --- 7. EV / Pool Pump / Hot Tub / New Appliances ---
-  if (equipment.has('ev') || equipment.has('pool_pump') || equipment.has('hot_tub') || events.has('new_appliance')) {
+  if (
+    equipment.has('ev') ||
+    equipment.has('pool_pump') ||
+    equipment.has('hot_tub') ||
+    events.has('new_appliance')
+  ) {
     const heavyLoads: string[] = [];
     if (equipment.has('ev')) heavyLoads.push('EV Home Charging');
     if (equipment.has('pool_pump')) heavyLoads.push('Pool Pump');
@@ -298,8 +309,10 @@ export function diagnoseBillSpike(input: DiagnoseBillSpikeInput): DiagnoseBillSp
         ? 'how-much-does-it-cost-to-charge-an-ev-at-home'
         : 'how-much-does-it-cost-to-run-a-pool-pump',
     });
-    if (equipment.has('ev')) relatedGuideSlugs.push('how-much-does-it-cost-to-charge-an-ev-at-home');
-    if (equipment.has('pool_pump')) relatedGuideSlugs.push('how-much-does-it-cost-to-run-a-pool-pump');
+    if (equipment.has('ev'))
+      relatedGuideSlugs.push('how-much-does-it-cost-to-charge-an-ev-at-home');
+    if (equipment.has('pool_pump'))
+      relatedGuideSlugs.push('how-much-does-it-cost-to-run-a-pool-pump');
   }
 
   // --- 8. Occupancy / Work From Home / Guests ---

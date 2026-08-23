@@ -111,7 +111,8 @@ export function FuelComparatorTool({ initialRates }: FuelComparatorToolProps) {
               Estimated Annual Heating Load (MMBtu)
             </span>
             <span style={{ fontSize: 13, fontWeight: 700, color: '#0f172a' }}>
-              {params.annualHeatingDemandMbtu} MMBtu (~{params.annualHeatingDemandMbtu! * 40} sq ft climate equivalent)
+              {params.annualHeatingDemandMbtu} MMBtu (~{params.annualHeatingDemandMbtu! * 40} sq ft
+              climate equivalent)
             </span>
           </div>
           <Slider

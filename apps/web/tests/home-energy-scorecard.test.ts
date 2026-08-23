@@ -58,7 +58,7 @@ describe('Home Energy Scorecard Feature Integration', () => {
       waterHeaterType: 'electric_tank',
       windowType: 'single_pane',
       electricityRateCentsPerKwh: 16.5,
-      gasPriceDollarsPerTherm: 1.40,
+      gasPriceDollarsPerTherm: 1.4,
     });
 
     expect(output.score).toBeGreaterThan(0);

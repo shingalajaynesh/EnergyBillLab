@@ -70,10 +70,17 @@ export default function HomeEnergyScorecardPage() {
       <section style={{ marginTop: 40 }}>
         <h2>Methodology & Building Physics Model</h2>
         <p>
-          Energy Bill Lab's Whole-Home Energy Efficiency Scorecard benchmarks residential properties against the International Energy Conservation Code (IECC) and regional heating degree day (HDD) / cooling degree day (CDD) baselines.
+          Energy Bill Lab's Whole-Home Energy Efficiency Scorecard benchmarks residential properties
+          against the International Energy Conservation Code (IECC) and regional heating degree day
+          (HDD) / cooling degree day (CDD) baselines.
         </p>
         <p>
-          Thermal envelope resistance accounts for 30% of total score weighting because air leakage through unsealed top plates, recessed lighting cans, and attic hatches creates continuous convective thermal bypass. Mechanical systems (heating, cooling, and water heating) constitute 55% of the score because equipment efficiency (AFUE, SEER2, HSPF2, and UEF) dictates how much raw utility energy is required to deliver each unit of conditioned air or hot water.
+          Thermal envelope resistance accounts for 30% of total score weighting because air leakage
+          through unsealed top plates, recessed lighting cans, and attic hatches creates continuous
+          convective thermal bypass. Mechanical systems (heating, cooling, and water heating)
+          constitute 55% of the score because equipment efficiency (AFUE, SEER2, HSPF2, and UEF)
+          dictates how much raw utility energy is required to deliver each unit of conditioned air
+          or hot water.
         </p>
       </section>
 
@@ -90,7 +97,8 @@ export default function HomeEnergyScorecardPage() {
       </section>
 
       <DataSourceNote>
-        Calculations benchmarked against U.S. Department of Energy (DOE) RECS baseline data and ASHRAE Standard 90.2 residential building energy models (August 2026 Reference Baseline).
+        Calculations benchmarked against U.S. Department of Energy (DOE) RECS baseline data and
+        ASHRAE Standard 90.2 residential building energy models (August 2026 Reference Baseline).
       </DataSourceNote>
 
       <RelatedLinks links={relatedLinks} />

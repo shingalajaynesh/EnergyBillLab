@@ -37,7 +37,9 @@ export function EfficiencyGradeCard({ scorecard, onReset }: EfficiencyGradeCardP
       {/* Score Header */}
       <div className={styles.scoreHeader}>
         <div>
-          <span style={{ fontSize: 13, textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}>
+          <span
+            style={{ fontSize: 13, textTransform: 'uppercase', letterSpacing: 1, opacity: 0.9 }}
+          >
             Virtual Home Energy Audit Report
           </span>
           <h2 style={{ fontSize: 26, fontWeight: 700, color: '#ffffff', margin: '4px 0 8px 0' }}>
@@ -58,24 +60,33 @@ export function EfficiencyGradeCard({ scorecard, onReset }: EfficiencyGradeCardP
       <div className={styles.metricsRow}>
         <div className={styles.metricCard}>
           <div className={styles.metricLabel}>Annual Electric Consumption</div>
-          <div className={styles.metricValue}>{estimatedAnnualElectricityKwh.toLocaleString()} kWh</div>
+          <div className={styles.metricValue}>
+            {estimatedAnnualElectricityKwh.toLocaleString()} kWh
+          </div>
         </div>
 
         <div className={styles.metricCard}>
           <div className={styles.metricLabel}>Annual Natural Gas</div>
           <div className={styles.metricValue}>
-            {estimatedAnnualGasTherms > 0 ? `${estimatedAnnualGasTherms.toLocaleString()} Therms` : 'N/A (All-Electric)'}
+            {estimatedAnnualGasTherms > 0
+              ? `${estimatedAnnualGasTherms.toLocaleString()} Therms`
+              : 'N/A (All-Electric)'}
           </div>
         </div>
 
         <div className={styles.metricCard}>
           <div className={styles.metricLabel}>Estimated Annual Energy Cost</div>
-          <div className={styles.metricValue}>${estimatedAnnualTotalCostDollars.toLocaleString()}</div>
+          <div className={styles.metricValue}>
+            ${estimatedAnnualTotalCostDollars.toLocaleString()}
+          </div>
         </div>
 
         <div className={styles.metricCard}>
           <div className={styles.metricLabel}>Preventable Energy Waste</div>
-          <div className={styles.metricValue} style={{ color: estimatedAnnualWasteDollars > 0 ? '#e11d48' : '#16a34a' }}>
+          <div
+            className={styles.metricValue}
+            style={{ color: estimatedAnnualWasteDollars > 0 ? '#e11d48' : '#16a34a' }}
+          >
             ${estimatedAnnualWasteDollars.toLocaleString()}/yr
           </div>
         </div>
@@ -97,7 +108,13 @@ export function EfficiencyGradeCard({ scorecard, onReset }: EfficiencyGradeCardP
             <Progress
               percent={Math.round((comp.score / comp.maxScore) * 100)}
               showInfo={false}
-              strokeColor={comp.status === 'good' ? '#16a34a' : comp.status === 'average' ? '#f59e0b' : '#ef4444'}
+              strokeColor={
+                comp.status === 'good'
+                  ? '#16a34a'
+                  : comp.status === 'average'
+                    ? '#f59e0b'
+                    : '#ef4444'
+              }
               size="small"
             />
             <div className={styles.componentNote}>{comp.note}</div>

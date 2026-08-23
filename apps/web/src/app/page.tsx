@@ -184,7 +184,8 @@ export default async function HomePage() {
             <div>
               <span className={styles.toolTitle}>Whole-Home Energy Scorecard</span>
               <p className={styles.toolDesc}>
-                Virtual home energy audit. Calculate your efficiency letter grade (A+ to F), energy waste, and retrofit ROI roadmap.
+                Virtual home energy audit. Calculate your efficiency letter grade (A+ to F), energy
+                waste, and retrofit ROI roadmap.
               </p>
             </div>
             <span className={styles.toolAction}>Audit home →</span>
@@ -194,7 +195,8 @@ export default async function HomePage() {
             <div>
               <span className={styles.toolTitle}>Bill Spike Detective</span>
               <p className={styles.toolDesc}>
-                Forensic diagnostic triage to isolate whether weather, equipment cycling, or tariff hikes caused your spike.
+                Forensic diagnostic triage to isolate whether weather, equipment cycling, or tariff
+                hikes caused your spike.
               </p>
             </div>
             <span className={styles.toolAction}>Run triage →</span>
@@ -204,7 +206,8 @@ export default async function HomePage() {
             <div>
               <span className={styles.toolTitle}>State-to-State Rate Comparator</span>
               <p className={styles.toolDesc}>
-                Compare electricity ¢/kWh, natural gas $/therm, and appliance costs between any two U.S. states.
+                Compare electricity ¢/kWh, natural gas $/therm, and appliance costs between any two
+                U.S. states.
               </p>
             </div>
             <span className={styles.toolAction}>Compare states →</span>
@@ -214,7 +217,8 @@ export default async function HomePage() {
             <div>
               <span className={styles.toolTitle}>Heating Fuel & Heat Pump Breakeven</span>
               <p className={styles.toolDesc}>
-                Benchmark delivered heating cost per MMBtu across Gas, Heat Pumps, Oil, Propane, and Resistance.
+                Benchmark delivered heating cost per MMBtu across Gas, Heat Pumps, Oil, Propane, and
+                Resistance.
               </p>
             </div>
             <span className={styles.toolAction}>Compare heating →</span>
@@ -224,7 +228,8 @@ export default async function HomePage() {
             <div>
               <span className={styles.toolTitle}>Interactive 50-State Rate Map</span>
               <p className={styles.toolDesc}>
-                Explore residential electricity pricing tiers (¢/kWh) and average monthly household utility bills across all states.
+                Explore residential electricity pricing tiers (¢/kWh) and average monthly household
+                utility bills across all states.
               </p>
             </div>
             <span className={styles.toolAction}>Explore map →</span>

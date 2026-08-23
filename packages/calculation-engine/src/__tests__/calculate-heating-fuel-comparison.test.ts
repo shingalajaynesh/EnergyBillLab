@@ -5,7 +5,7 @@ describe('calculateHeatingFuelComparison', () => {
   it('correctly calculates cost per delivered MMBtu and ranks fuels', () => {
     const result = calculateHeatingFuelComparison({
       electricityRateCentsPerKwh: 15.0,
-      naturalGasDollarsPerTherm: 1.20,
+      naturalGasDollarsPerTherm: 1.2,
       annualHeatingDemandMbtu: 50,
     });
 
@@ -40,7 +40,7 @@ describe('calculateHeatingFuelComparison', () => {
   it('handles expensive electricity and cheap natural gas scenarios', () => {
     const result = calculateHeatingFuelComparison({
       electricityRateCentsPerKwh: 32.0, // High California/Hawaii electricity
-      naturalGasDollarsPerTherm: 1.10, // Moderate gas
+      naturalGasDollarsPerTherm: 1.1, // Moderate gas
     });
 
     // Gas furnace should be significantly cheaper than heat pump

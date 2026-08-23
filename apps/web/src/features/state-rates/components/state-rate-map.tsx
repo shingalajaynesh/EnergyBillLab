@@ -59,9 +59,7 @@ export function StateRateMap({ states, nationalAverageRate }: StateRateMapProps)
     <div className={styles.mapWrapper} aria-label="Interactive U.S. Electricity Rate Map">
       {/* Legend Bar */}
       <div className={styles.legendBar}>
-        <span style={{ fontSize: 13, fontWeight: 700, color: '#1e293b' }}>
-          Rate Tiers (¢/kWh):
-        </span>
+        <span style={{ fontSize: 13, fontWeight: 700, color: '#1e293b' }}>Rate Tiers (¢/kWh):</span>
         <div className={styles.legendItem}>
           <span className={styles.legendColorBox} style={{ background: '#16a34a' }} />
           <span>&lt; 13.0¢ (Lowest)</span>
@@ -93,42 +91,58 @@ export function StateRateMap({ states, nationalAverageRate }: StateRateMapProps)
           <Button
             type={selectedRegion === 'all' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('all')}
-            style={selectedRegion === 'all' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'all' ? { background: '#176b5b', borderColor: '#176b5b' } : {}
+            }
           >
             All 50 States ({states.length})
           </Button>
           <Button
             type={selectedRegion === 'New England' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('New England')}
-            style={selectedRegion === 'New England' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'New England'
+                ? { background: '#176b5b', borderColor: '#176b5b' }
+                : {}
+            }
           >
             New England
           </Button>
           <Button
             type={selectedRegion === 'Middle Atlantic' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('Middle Atlantic')}
-            style={selectedRegion === 'Middle Atlantic' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'Middle Atlantic'
+                ? { background: '#176b5b', borderColor: '#176b5b' }
+                : {}
+            }
           >
             Mid-Atlantic
           </Button>
           <Button
             type={selectedRegion === 'Midwest' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('Midwest')}
-            style={selectedRegion === 'Midwest' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'Midwest' ? { background: '#176b5b', borderColor: '#176b5b' } : {}
+            }
           >
             Midwest
           </Button>
           <Button
             type={selectedRegion === 'South' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('South')}
-            style={selectedRegion === 'South' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'South' ? { background: '#176b5b', borderColor: '#176b5b' } : {}
+            }
           >
             South
           </Button>
           <Button
             type={selectedRegion === 'West' ? 'primary' : 'default'}
             onClick={() => setSelectedRegion('West')}
-            style={selectedRegion === 'West' ? { background: '#176b5b', borderColor: '#176b5b' } : {}}
+            style={
+              selectedRegion === 'West' ? { background: '#176b5b', borderColor: '#176b5b' } : {}
+            }
           >
             West & Pacific
           </Button>
@@ -170,9 +184,7 @@ export function StateRateMap({ states, nationalAverageRate }: StateRateMapProps)
                 {st.rateCentsPerKwh.toFixed(1)}¢
                 <span style={{ fontSize: 12, fontWeight: 500, color: '#64748b' }}>/kWh</span>
               </div>
-              <div className={styles.stateBill}>
-                Avg Bill: ~${typicalMonthlyBill}/mo
-              </div>
+              <div className={styles.stateBill}>Avg Bill: ~${typicalMonthlyBill}/mo</div>
             </Link>
           );
         })}

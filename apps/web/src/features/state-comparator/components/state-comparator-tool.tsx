@@ -3,9 +3,7 @@
 import React, { useMemo, useState } from 'react';
 import { Select, InputNumber, Button, Tag } from 'antd';
 import { SwapOutlined, CheckCircleOutlined, ThunderboltOutlined } from '@ant-design/icons';
-import {
-  calculateStateComparison,
-} from '@energy-bill-lab/calculation-engine';
+import { calculateStateComparison } from '@energy-bill-lab/calculation-engine';
 
 import { StateComparisonTable } from './state-comparison-table';
 import styles from './state-comparator.module.css';
@@ -142,7 +140,15 @@ export function StateComparatorTool({
         {/* Baseline adjustments */}
         <div className={styles.baselineControls}>
           <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: '#595959', display: 'block', marginBottom: 4 }}>
+            <label
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: '#595959',
+                display: 'block',
+                marginBottom: 4,
+              }}
+            >
               Monthly Household Electricity Usage
             </label>
             <InputNumber
@@ -157,7 +163,15 @@ export function StateComparatorTool({
           </div>
 
           <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: '#595959', display: 'block', marginBottom: 4 }}>
+            <label
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                color: '#595959',
+                display: 'block',
+                marginBottom: 4,
+              }}
+            >
               Monthly Household Natural Gas Usage
             </label>
             <InputNumber

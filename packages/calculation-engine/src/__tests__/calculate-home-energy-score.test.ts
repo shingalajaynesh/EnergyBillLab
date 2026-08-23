@@ -62,7 +62,7 @@ describe('calculateHomeEnergyScore', () => {
       waterHeaterType: 'gas_tank',
       windowType: 'double_clear',
       electricityRateCentsPerKwh: 15.0,
-      gasPriceDollarsPerTherm: 1.40,
+      gasPriceDollarsPerTherm: 1.4,
     });
 
     const largeHome = calculateHomeEnergyScore({
@@ -75,7 +75,7 @@ describe('calculateHomeEnergyScore', () => {
       waterHeaterType: 'gas_tank',
       windowType: 'double_clear',
       electricityRateCentsPerKwh: 15.0,
-      gasPriceDollarsPerTherm: 1.40,
+      gasPriceDollarsPerTherm: 1.4,
     });
 
     expect(largeHome.estimatedAnnualTotalCostDollars).toBeGreaterThan(

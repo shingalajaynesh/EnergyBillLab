@@ -11,11 +11,7 @@ import {
   Select,
   type RadioChangeEvent,
 } from 'antd';
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  ExperimentOutlined,
-} from '@ant-design/icons';
+import { ArrowLeftOutlined, ArrowRightOutlined, ExperimentOutlined } from '@ant-design/icons';
 import {
   diagnoseBillSpike,
   type DiagnoseBillSpikeOutput,
@@ -107,12 +103,7 @@ export function DiagnosticWizard() {
 
   return (
     <div className={styles.detectiveContainer} aria-label="Bill Spike Detective Wizard">
-      <Steps
-        current={currentStep}
-        items={steps}
-        style={{ marginBottom: 32 }}
-        responsive={true}
-      />
+      <Steps current={currentStep} items={steps} style={{ marginBottom: 32 }} responsive={true} />
 
       {/* STEP 0: Statement Data */}
       {currentStep === 0 && (
@@ -120,7 +111,8 @@ export function DiagnosticWizard() {
           <div className={styles.stepHeader}>
             <h2 className={styles.stepTitle}>Step 1: Enter Your Bill & Usage Numbers</h2>
             <p className={styles.stepSubtitle}>
-              Compare your current high bill with your previous normal statement to isolate kilowatt-hour changes from rate adjustments.
+              Compare your current high bill with your previous normal statement to isolate
+              kilowatt-hour changes from rate adjustments.
             </p>
           </div>
 
@@ -146,9 +138,7 @@ export function DiagnosticWizard() {
                     min={1}
                     max={20000}
                     value={formState.currentKwh}
-                    onChange={(val) =>
-                      setFormState((prev) => ({ ...prev, currentKwh: val ?? 1 }))
-                    }
+                    onChange={(val) => setFormState((prev) => ({ ...prev, currentKwh: val ?? 1 }))}
                     addonAfter="kWh"
                     style={{ width: '100%' }}
                   />
@@ -190,9 +180,7 @@ export function DiagnosticWizard() {
                     min={1}
                     max={20000}
                     value={formState.previousKwh}
-                    onChange={(val) =>
-                      setFormState((prev) => ({ ...prev, previousKwh: val ?? 1 }))
-                    }
+                    onChange={(val) => setFormState((prev) => ({ ...prev, previousKwh: val ?? 1 }))}
                     addonAfter="kWh"
                     style={{ width: '100%' }}
                   />
@@ -236,18 +224,30 @@ export function DiagnosticWizard() {
                 }}
                 style={{ width: '100%' }}
               >
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: 12,
+                  }}
+                >
                   <Radio.Button value="summer" style={{ height: 60, padding: 10 }}>
                     <strong>Summer</strong>
-                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>Hot weather & air conditioning</div>
+                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>
+                      Hot weather & air conditioning
+                    </div>
                   </Radio.Button>
                   <Radio.Button value="winter" style={{ height: 60, padding: 10 }}>
                     <strong>Winter</strong>
-                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>Cold snaps & space/heat pump heating</div>
+                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>
+                      Cold snaps & space/heat pump heating
+                    </div>
                   </Radio.Button>
                   <Radio.Button value="shoulder" style={{ height: 60, padding: 10 }}>
                     <strong>Spring / Fall</strong>
-                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>Moderate transition weather</div>
+                    <div style={{ fontSize: 12, color: '#8c8c8c' }}>
+                      Moderate transition weather
+                    </div>
                   </Radio.Button>
                 </div>
               </Radio.Group>
@@ -256,9 +256,7 @@ export function DiagnosticWizard() {
             <Form.Item label="Did any of these climate or timeline events happen?">
               <Checkbox.Group<HouseholdEvent>
                 value={formState.events}
-                onChange={(checked) =>
-                  setFormState((prev) => ({ ...prev, events: checked }))
-                }
+                onChange={(checked) => setFormState((prev) => ({ ...prev, events: checked }))}
                 style={{ width: '100%' }}
               >
                 <div className={styles.choiceGrid}>
@@ -270,7 +268,9 @@ export function DiagnosticWizard() {
                     <Checkbox value="heat_wave" />
                     <div>
                       <span className={styles.choiceLabel}>Extreme Heat Wave</span>
-                      <span className={styles.choiceDesc}>90°F+ temperatures forcing continuous AC</span>
+                      <span className={styles.choiceDesc}>
+                        90°F+ temperatures forcing continuous AC
+                      </span>
                     </div>
                   </label>
 
@@ -282,7 +282,9 @@ export function DiagnosticWizard() {
                     <Checkbox value="cold_snap" />
                     <div>
                       <span className={styles.choiceLabel}>Extreme Cold Snap / Polar Vortex</span>
-                      <span className={styles.choiceDesc}>Sub-freezing temperatures triggering heat strips</span>
+                      <span className={styles.choiceDesc}>
+                        Sub-freezing temperatures triggering heat strips
+                      </span>
                     </div>
                   </label>
 
@@ -296,7 +298,9 @@ export function DiagnosticWizard() {
                     <Checkbox value="longer_billing_cycle" />
                     <div>
                       <span className={styles.choiceLabel}>Longer Billing Cycle</span>
-                      <span className={styles.choiceDesc}>32–36 days instead of normal 28–30 days</span>
+                      <span className={styles.choiceDesc}>
+                        32–36 days instead of normal 28–30 days
+                      </span>
                     </div>
                   </label>
 
@@ -308,7 +312,9 @@ export function DiagnosticWizard() {
                     <Checkbox value="rate_increase" />
                     <div>
                       <span className={styles.choiceLabel}>Recent Utility Rate Hike</span>
-                      <span className={styles.choiceDesc}>Utility announced higher base or fuel charges</span>
+                      <span className={styles.choiceDesc}>
+                        Utility announced higher base or fuel charges
+                      </span>
                     </div>
                   </label>
                 </div>
@@ -324,15 +330,14 @@ export function DiagnosticWizard() {
           <div className={styles.stepHeader}>
             <h2 className={styles.stepTitle}>Step 3: Household Equipment & Appliances</h2>
             <p className={styles.stepSubtitle}>
-              Select the major power-drawing equipment present in your home during this billing cycle.
+              Select the major power-drawing equipment present in your home during this billing
+              cycle.
             </p>
           </div>
 
           <Checkbox.Group<HouseholdEquipment>
             value={formState.equipment}
-            onChange={(checked) =>
-              setFormState((prev) => ({ ...prev, equipment: checked }))
-            }
+            onChange={(checked) => setFormState((prev) => ({ ...prev, equipment: checked }))}
             style={{ width: '100%' }}
           >
             <div className={styles.choiceGrid}>
@@ -452,9 +457,7 @@ export function DiagnosticWizard() {
             <Form.Item label="Check any special billing indicators or household changes:">
               <Checkbox.Group<HouseholdEvent>
                 value={formState.events}
-                onChange={(checked) =>
-                  setFormState((prev) => ({ ...prev, events: checked }))
-                }
+                onChange={(checked) => setFormState((prev) => ({ ...prev, events: checked }))}
                 style={{ width: '100%' }}
               >
                 <div className={styles.choiceGrid}>
@@ -468,35 +471,39 @@ export function DiagnosticWizard() {
                     <Checkbox value="estimated_meter_reading" />
                     <div>
                       <span className={styles.choiceLabel}>"Estimated" Meter Reading on Bill</span>
-                      <span className={styles.choiceDesc}>Utility estimated usage or did a catch-up true-up</span>
+                      <span className={styles.choiceDesc}>
+                        Utility estimated usage or did a catch-up true-up
+                      </span>
                     </div>
                   </label>
 
                   <label
                     className={`${styles.choiceCard} ${
-                      formState.events.includes('guests_or_wfh')
-                        ? styles.choiceCardSelected
-                        : ''
+                      formState.events.includes('guests_or_wfh') ? styles.choiceCardSelected : ''
                     }`}
                   >
                     <Checkbox value="guests_or_wfh" />
                     <div>
-                      <span className={styles.choiceLabel}>Visiting Guests or Working from Home</span>
-                      <span className={styles.choiceDesc}>More people home during daytime hours</span>
+                      <span className={styles.choiceLabel}>
+                        Visiting Guests or Working from Home
+                      </span>
+                      <span className={styles.choiceDesc}>
+                        More people home during daytime hours
+                      </span>
                     </div>
                   </label>
 
                   <label
                     className={`${styles.choiceCard} ${
-                      formState.events.includes('new_appliance')
-                        ? styles.choiceCardSelected
-                        : ''
+                      formState.events.includes('new_appliance') ? styles.choiceCardSelected : ''
                     }`}
                   >
                     <Checkbox value="new_appliance" />
                     <div>
                       <span className={styles.choiceLabel}>Added New Major Appliance</span>
-                      <span className={styles.choiceDesc}>New second fridge, freezer, dehumidifier, etc.</span>
+                      <span className={styles.choiceDesc}>
+                        New second fridge, freezer, dehumidifier, etc.
+                      </span>
                     </div>
                   </label>
                 </div>
@@ -506,9 +513,7 @@ export function DiagnosticWizard() {
             <Form.Item label="Utility Rate Structure (if known)">
               <Select<RateStructure>
                 value={formState.rateStructure}
-                onChange={(val) =>
-                  setFormState((prev) => ({ ...prev, rateStructure: val }))
-                }
+                onChange={(val) => setFormState((prev) => ({ ...prev, rateStructure: val }))}
                 options={[
                   { value: 'unknown', label: "I don't know / Standard Flat Rate" },
                   { value: 'tiered', label: 'Tiered Pricing (Rates increase as usage increases)' },

@@ -86,9 +86,7 @@ export default async function CompareStatesPage() {
     const gasRate = gasData.stateRates[code];
 
     const priceCents =
-      dbRate && dbRate.priceCentsPerKwh
-        ? dbRate.priceCentsPerKwh
-        : fallbackRates[code] || 18.44;
+      dbRate && dbRate.priceCentsPerKwh ? dbRate.priceCentsPerKwh : fallbackRates[code] || 18.44;
 
     statesData[code] = {
       code,
@@ -116,11 +114,7 @@ export default async function CompareStatesPage() {
         description="Compare residential electricity prices, natural gas tariffs, and typical household appliance operating expenses side-by-side across all 50 U.S. states using verified U.S. Energy Information Administration (EIA) data."
       />
 
-      <StateComparatorTool
-        initialStateA="CA"
-        initialStateB="TX"
-        statesData={statesData}
-      />
+      <StateComparatorTool initialStateA="CA" initialStateB="TX" statesData={statesData} />
 
       {/* Deep Regional Context & Analysis Section */}
       <section style={{ marginTop: 48, marginBottom: 32 }}>
@@ -128,7 +122,10 @@ export default async function CompareStatesPage() {
           Understanding Regional Energy Cost Differences
         </h2>
         <p style={{ fontSize: 15, color: '#595959', lineHeight: 1.6, maxWidth: 840 }}>
-          Electricity and natural gas prices vary widely across the United States. While residents in the Pacific Northwest benefit from abundant low-cost hydroelectric generation, households in Hawaii and California pay 2x to 3x higher rates due to isolated island grids, transmission constraints, and infrastructure investments.
+          Electricity and natural gas prices vary widely across the United States. While residents
+          in the Pacific Northwest benefit from abundant low-cost hydroelectric generation,
+          households in Hawaii and California pay 2x to 3x higher rates due to isolated island
+          grids, transmission constraints, and infrastructure investments.
         </p>
 
         <div
@@ -140,30 +137,57 @@ export default async function CompareStatesPage() {
             marginBottom: 36,
           }}
         >
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               Generation Mix & Fuel Economics
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              States reliant on natural gas peaker plants experience price volatility tied to wholesale Henry Hub gas benchmarks, whereas states with high nuclear and hydro generation maintain more stable baseline tariffs.
+              States reliant on natural gas peaker plants experience price volatility tied to
+              wholesale Henry Hub gas benchmarks, whereas states with high nuclear and hydro
+              generation maintain more stable baseline tariffs.
             </p>
           </div>
 
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               Distribution Grid Investments
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              Undergrounding distribution lines, hardening transformers against severe weather, and deploying utility-scale battery storage increase the delivery component of residential electricity bills.
+              Undergrounding distribution lines, hardening transformers against severe weather, and
+              deploying utility-scale battery storage increase the delivery component of residential
+              electricity bills.
             </p>
           </div>
 
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               Market Structure & Regulation
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              States with competitive retail choice (such as Texas, Pennsylvania, and Ohio) separate generation supply contracts from regulated utility delivery wires, creating different pricing dynamics than traditional vertically integrated utilities.
+              States with competitive retail choice (such as Texas, Pennsylvania, and Ohio) separate
+              generation supply contracts from regulated utility delivery wires, creating different
+              pricing dynamics than traditional vertically integrated utilities.
             </p>
           </div>
         </div>
@@ -197,7 +221,9 @@ export default async function CompareStatesPage() {
       </section>
 
       <DataSourceNote>
-        Rate data derived from U.S. Energy Information Administration (EIA) Form EIA-861M (Monthly Electric Power Industry Report) and Natural Gas Monthly. State comparisons reflect average residential class retail revenues divided by total kilowatt-hours/therms sold.
+        Rate data derived from U.S. Energy Information Administration (EIA) Form EIA-861M (Monthly
+        Electric Power Industry Report) and Natural Gas Monthly. State comparisons reflect average
+        residential class retail revenues divided by total kilowatt-hours/therms sold.
       </DataSourceNote>
 
       <section style={{ marginTop: 40 }}>

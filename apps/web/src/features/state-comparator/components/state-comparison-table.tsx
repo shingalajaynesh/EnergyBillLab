@@ -15,7 +15,8 @@ interface StateComparisonTableProps {
 }
 
 export function StateComparisonTable({ comparison }: StateComparisonTableProps) {
-  const { stateA, stateB, electricity, naturalGas, totalHouseholdCombined, appliances } = comparison;
+  const { stateA, stateB, electricity, naturalGas, totalHouseholdCombined, appliances } =
+    comparison;
 
   // General rate comparison data rows
   const overviewRows = [
@@ -26,7 +27,7 @@ export function StateComparisonTable({ comparison }: StateComparisonTableProps) 
       stateAValue: `${electricity.rateStateA.toFixed(2)} ¢`,
       stateBValue: `${electricity.rateStateB.toFixed(2)} ¢`,
       delta: `${Math.abs(electricity.rateDeltaCents).toFixed(2)} ¢ (${Math.abs(
-        electricity.rateDeltaPercent
+        electricity.rateDeltaPercent,
       ).toFixed(1)}%)`,
       winner:
         electricity.cheaperState === 'stateA'
@@ -152,9 +153,7 @@ export function StateComparisonTable({ comparison }: StateComparisonTableProps) 
       dataIndex: 'winner',
       key: 'winner',
       align: 'center',
-      render: (winner) => (
-        <Tag color={winner === 'Tie' ? 'default' : 'success'}>{winner}</Tag>
-      ),
+      render: (winner) => <Tag color={winner === 'Tie' ? 'default' : 'success'}>{winner}</Tag>,
     },
   ];
 

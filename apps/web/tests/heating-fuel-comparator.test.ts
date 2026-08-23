@@ -28,7 +28,7 @@ describe('Heating Fuel & Heat Pump Breakeven Feature Integration', () => {
   it('calculates MMBtu delivered costs and thermal balance point', () => {
     const output = calculateHeatingFuelComparison({
       electricityRateCentsPerKwh: 16.0,
-      naturalGasDollarsPerTherm: 1.40,
+      naturalGasDollarsPerTherm: 1.4,
       annualHeatingDemandMbtu: 60,
     });
 

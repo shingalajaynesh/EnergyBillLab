@@ -50,12 +50,61 @@ const relatedLinks: PublicRouteHref[] = [
   '/tools/bill-spike-detective',
 ];
 
-const REGION_LOOKUP: Record<string, 'New England' | 'Middle Atlantic' | 'Midwest' | 'South' | 'West'> = {
-  ME: 'New England', NH: 'New England', VT: 'New England', MA: 'New England', RI: 'New England', CT: 'New England',
-  NY: 'Middle Atlantic', NJ: 'Middle Atlantic', PA: 'Middle Atlantic',
-  OH: 'Midwest', IN: 'Midwest', IL: 'Midwest', MI: 'Midwest', WI: 'Midwest', MN: 'Midwest', IA: 'Midwest', MO: 'Midwest', ND: 'Midwest', SD: 'Midwest', NE: 'Midwest', KS: 'Midwest',
-  DE: 'South', MD: 'South', DC: 'South', VA: 'South', WV: 'South', NC: 'South', SC: 'South', GA: 'South', FL: 'South', KY: 'South', TN: 'South', AL: 'South', MS: 'South', AR: 'South', LA: 'South', OK: 'South', TX: 'South',
-  MT: 'West', ID: 'West', WY: 'West', CO: 'West', NM: 'West', AZ: 'West', UT: 'West', NV: 'West', WA: 'West', OR: 'West', CA: 'West', AK: 'West', HI: 'West',
+const REGION_LOOKUP: Record<
+  string,
+  'New England' | 'Middle Atlantic' | 'Midwest' | 'South' | 'West'
+> = {
+  ME: 'New England',
+  NH: 'New England',
+  VT: 'New England',
+  MA: 'New England',
+  RI: 'New England',
+  CT: 'New England',
+  NY: 'Middle Atlantic',
+  NJ: 'Middle Atlantic',
+  PA: 'Middle Atlantic',
+  OH: 'Midwest',
+  IN: 'Midwest',
+  IL: 'Midwest',
+  MI: 'Midwest',
+  WI: 'Midwest',
+  MN: 'Midwest',
+  IA: 'Midwest',
+  MO: 'Midwest',
+  ND: 'Midwest',
+  SD: 'Midwest',
+  NE: 'Midwest',
+  KS: 'Midwest',
+  DE: 'South',
+  MD: 'South',
+  DC: 'South',
+  VA: 'South',
+  WV: 'South',
+  NC: 'South',
+  SC: 'South',
+  GA: 'South',
+  FL: 'South',
+  KY: 'South',
+  TN: 'South',
+  AL: 'South',
+  MS: 'South',
+  AR: 'South',
+  LA: 'South',
+  OK: 'South',
+  TX: 'South',
+  MT: 'West',
+  ID: 'West',
+  WY: 'West',
+  CO: 'West',
+  NM: 'West',
+  AZ: 'West',
+  UT: 'West',
+  NV: 'West',
+  WA: 'West',
+  OR: 'West',
+  CA: 'West',
+  AK: 'West',
+  HI: 'West',
 };
 
 export default async function StateRateMapPage() {
@@ -90,18 +139,20 @@ export default async function StateRateMapPage() {
         description="Explore residential electricity pricing tiers (¢/kWh) and average monthly household utility expenses across all 50 states + DC."
       />
 
-      <StateRateMap
-        states={stateRecords}
-        nationalAverageRate={nationalAvg}
-      />
+      <StateRateMap states={stateRecords} nationalAverageRate={nationalAvg} />
 
       <section style={{ marginTop: 40 }}>
         <h2>National Rate Dispersion & Geography</h2>
         <p>
-          U.S. residential electricity prices vary widely by geography, with rates spanning from under 11¢/kWh in low-cost hydro and fossil-producing states to over 40¢/kWh in island and remote grids.
+          U.S. residential electricity prices vary widely by geography, with rates spanning from
+          under 11¢/kWh in low-cost hydro and fossil-producing states to over 40¢/kWh in island and
+          remote grids.
         </p>
         <p>
-          State-to-state differences stem from four primary cost drivers: regional generation fuel mix (hydropower, nuclear, natural gas, coal, renewables), transmission infrastructure density, state regulatory market structure (regulated monopolies vs. retail choice), and state clean energy transition riders.
+          State-to-state differences stem from four primary cost drivers: regional generation fuel
+          mix (hydropower, nuclear, natural gas, coal, renewables), transmission infrastructure
+          density, state regulatory market structure (regulated monopolies vs. retail choice), and
+          state clean energy transition riders.
         </p>
       </section>
 
@@ -118,7 +169,8 @@ export default async function StateRateMapPage() {
       </section>
 
       <DataSourceNote>
-        Data sourced directly from U.S. Energy Information Administration (EIA) Form EIA-861M monthly residential sales reports ({stateRecords[0]?.periodFormatted ?? 'May 2026'}).
+        Data sourced directly from U.S. Energy Information Administration (EIA) Form EIA-861M
+        monthly residential sales reports ({stateRecords[0]?.periodFormatted ?? 'May 2026'}).
       </DataSourceNote>
 
       <RelatedLinks links={relatedLinks} />

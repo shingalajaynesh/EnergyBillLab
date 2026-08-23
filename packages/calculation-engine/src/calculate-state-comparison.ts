@@ -71,7 +71,7 @@ export interface CalculateStateComparisonOutput {
 }
 
 export function calculateStateComparison(
-  input: CalculateStateComparisonInput
+  input: CalculateStateComparisonInput,
 ): CalculateStateComparisonOutput {
   const kwhBaseline = Math.max(100, input.monthlyKwhBaseline ?? 900);
   const thermBaseline = Math.max(10, input.monthlyThermsBaseline ?? 60);
@@ -174,7 +174,8 @@ export function calculateStateComparison(
       stateBCost: acCostB,
       differenceDollars: Math.abs(acCostB - acCostA),
       cheaperState: acCostA < acCostB ? 'stateA' : acCostB < acCostA ? 'stateB' : 'equal',
-      description: 'Typical 3-ton central cooling system operating 6 hours daily during warm months.',
+      description:
+        'Typical 3-ton central cooling system operating 6 hours daily during warm months.',
     },
     {
       id: 'electric_water_heater',
@@ -203,7 +204,8 @@ export function calculateStateComparison(
       stateACost: dryerCostA,
       stateBCost: dryerCostB,
       differenceDollars: Math.abs(dryerCostB - dryerCostA),
-      cheaperState: dryerCostA < dryerCostB ? 'stateA' : dryerCostB < dryerCostA ? 'stateB' : 'equal',
+      cheaperState:
+        dryerCostA < dryerCostB ? 'stateA' : dryerCostB < dryerCostA ? 'stateB' : 'equal',
       description: 'Standard 240V residential electric dryer running 5 loads per week.',
     },
     {
@@ -213,7 +215,8 @@ export function calculateStateComparison(
       stateACost: heaterCostA,
       stateBCost: heaterCostB,
       differenceDollars: Math.abs(heaterCostB - heaterCostA),
-      cheaperState: heaterCostA < heaterCostB ? 'stateA' : heaterCostB < heaterCostA ? 'stateB' : 'equal',
+      cheaperState:
+        heaterCostA < heaterCostB ? 'stateA' : heaterCostB < heaterCostA ? 'stateB' : 'equal',
       description: 'Single 1,500W electric resistance ceramic heater running 5 hours per day.',
     },
   ];

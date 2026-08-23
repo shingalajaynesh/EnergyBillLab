@@ -88,9 +88,7 @@ export function MmbtuBenchmarkTable({ fuels, annualDemandMbtu }: MmbtuBenchmarkT
             Lowest Cost Winner
           </Tag>
         ) : (
-          <span style={{ color: '#e11d48', fontWeight: 600 }}>
-            +${diff.toLocaleString()}/yr
-          </span>
+          <span style={{ color: '#e11d48', fontWeight: 600 }}>+${diff.toLocaleString()}/yr</span>
         ),
     },
   ];
@@ -99,7 +97,8 @@ export function MmbtuBenchmarkTable({ fuels, annualDemandMbtu }: MmbtuBenchmarkT
     <div className={styles.tableSection}>
       <h3 className={styles.sectionHeading}>Delivered Fuel Cost & Heating System Ranking</h3>
       <p className={styles.sectionSub}>
-        Comparing 1 Million BTU (MMBtu) of delivered thermal heat energy accounting for system efficiency (AFUE and COP).
+        Comparing 1 Million BTU (MMBtu) of delivered thermal heat energy accounting for system
+        efficiency (AFUE and COP).
       </p>
       <Table<FuelComparisonItem>
         columns={columns}

@@ -71,7 +71,7 @@ export function calculateHeatingFuelComparison(
   const gasHighCostPerMbtu = (gasPriceDollars * 10) / 0.96;
 
   // 2. Standard Natural Gas (80% AFUE)
-  const gasStdCostPerMbtu = (gasPriceDollars * 10) / 0.80;
+  const gasStdCostPerMbtu = (gasPriceDollars * 10) / 0.8;
 
   // 3. High-Efficiency Cold-Climate Heat Pump (COP ~3.2 seasonal average, HSPF2 10.0)
   const heatPumpInverterCostPerMbtu = (elecRateDollars * 293.071) / 3.2;
@@ -88,7 +88,9 @@ export function calculateHeatingFuelComparison(
   // 7. Baseboard / Strip Electric Resistance (100% / COP 1.0)
   const resistanceCostPerMbtu = elecRateDollars * 293.071;
 
-  const rawFuels: Array<Omit<FuelComparisonItem, 'rank' | 'differenceVsLowestDollars' | 'isLowest'>> = [
+  const rawFuels: Array<
+    Omit<FuelComparisonItem, 'rank' | 'differenceVsLowestDollars' | 'isLowest'>
+  > = [
     {
       fuelType: 'natural_gas_high',
       name: 'High-Efficiency Natural Gas Furnace',
@@ -162,7 +164,9 @@ export function calculateHeatingFuelComparison(
   const fuels: FuelComparisonItem[] = rawFuels.map((f, idx) => ({
     ...f,
     rank: idx + 1,
-    differenceVsLowestDollars: Math.round((f.costPerMbtuDeliveredDollars - lowestCost) * demandMbtu),
+    differenceVsLowestDollars: Math.round(
+      (f.costPerMbtuDeliveredDollars - lowestCost) * demandMbtu,
+    ),
     isLowest: idx === 0,
   }));
 

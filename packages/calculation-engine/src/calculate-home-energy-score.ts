@@ -7,25 +7,12 @@
  * Retrofit ROI Roadmap.
  */
 
-export type YearBuiltTier =
-  | 'pre_1975'
-  | '1975_1990'
-  | '1991_2005'
-  | '2006_2015'
-  | '2016_plus';
+export type YearBuiltTier = 'pre_1975' | '1975_1990' | '1991_2005' | '2006_2015' | '2016_plus';
 
-export type ClimateZone =
-  | 'cold'
-  | 'moderate'
-  | 'hot_humid'
-  | 'hot_dry'
-  | 'marine';
+export type ClimateZone = 'cold' | 'moderate' | 'hot_humid' | 'hot_dry' | 'marine';
 
 export type InsulationLevel =
-  | 'poor_uninsulated'
-  | 'average_batt'
-  | 'high_r38_r49'
-  | 'air_sealed_super';
+  'poor_uninsulated' | 'average_batt' | 'high_r38_r49' | 'air_sealed_super';
 
 export type HeatingType =
   | 'electric_resistance'
@@ -35,23 +22,11 @@ export type HeatingType =
   | 'heat_pump_inverter';
 
 export type CoolingType =
-  | 'none'
-  | 'window_units'
-  | 'central_old_seer10'
-  | 'central_standard_seer14'
-  | 'heat_pump_seer2_16';
+  'none' | 'window_units' | 'central_old_seer10' | 'central_standard_seer14' | 'heat_pump_seer2_16';
 
-export type WaterHeaterType =
-  | 'electric_tank'
-  | 'gas_tank'
-  | 'heat_pump_hybrid'
-  | 'tankless_gas';
+export type WaterHeaterType = 'electric_tank' | 'gas_tank' | 'heat_pump_hybrid' | 'tankless_gas';
 
-export type WindowType =
-  | 'single_pane'
-  | 'double_clear'
-  | 'double_low_e'
-  | 'triple_pane';
+export type WindowType = 'single_pane' | 'double_clear' | 'double_low_e' | 'triple_pane';
 
 export interface CalculateHomeEnergyScoreInput {
   squareFootage: number;
@@ -142,7 +117,8 @@ export function calculateHomeEnergyScore(
   switch (input.heatingType) {
     case 'electric_resistance':
       heatingScore = 4;
-      heatingNote = 'Electric baseboard / strips consume 1 kWh per 3,412 BTU (COP 1.0) with very high operating cost.';
+      heatingNote =
+        'Electric baseboard / strips consume 1 kWh per 3,412 BTU (COP 1.0) with very high operating cost.';
       break;
     case 'gas_standard_80':
       heatingScore = 14;
@@ -154,11 +130,13 @@ export function calculateHomeEnergyScore(
       break;
     case 'heat_pump_standard':
       heatingScore = 20;
-      heatingNote = 'Standard heat pump (HSPF2 7.5–8.5) delivering 2.5–3.0x thermal efficiency vs resistance.';
+      heatingNote =
+        'Standard heat pump (HSPF2 7.5–8.5) delivering 2.5–3.0x thermal efficiency vs resistance.';
       break;
     case 'heat_pump_inverter':
       heatingScore = 25;
-      heatingNote = 'Variable-speed cold-climate inverter heat pump (HSPF2 10+) maintaining efficiency down to -15°F.';
+      heatingNote =
+        'Variable-speed cold-climate inverter heat pump (HSPF2 10+) maintaining efficiency down to -15°F.';
       break;
   }
 
@@ -172,11 +150,13 @@ export function calculateHomeEnergyScore(
       break;
     case 'window_units':
       coolingScore = 6;
-      coolingNote = 'Window/portable AC units with low CEER ratings and air infiltration around sashes.';
+      coolingNote =
+        'Window/portable AC units with low CEER ratings and air infiltration around sashes.';
       break;
     case 'central_old_seer10':
       coolingScore = 5;
-      coolingNote = 'Aging SEER 10 AC compressor drawing ~40% more electricity than modern minimums.';
+      coolingNote =
+        'Aging SEER 10 AC compressor drawing ~40% more electricity than modern minimums.';
       break;
     case 'central_standard_seer14':
       coolingScore = 11;
@@ -206,7 +186,8 @@ export function calculateHomeEnergyScore(
       break;
     case 'heat_pump_hybrid':
       waterScore = 15;
-      waterNote = 'Hybrid heat pump water heater (3.5+ UEF) cutting water heating electricity by ~70%.';
+      waterNote =
+        'Hybrid heat pump water heater (3.5+ UEF) cutting water heating electricity by ~70%.';
       break;
   }
 
@@ -275,10 +256,10 @@ export function calculateHomeEnergyScore(
     annualElecHeatingKwh = totalThermalLoad / (3412 * 3.4);
   } else if (input.heatingType === 'gas_standard_80') {
     annualGasHeatingTherms = totalThermalLoad / (100000 * 0.8);
-    annualElecHeatingKwh = (annualGasHeatingTherms * 2.5); // blower fan electricity
+    annualElecHeatingKwh = annualGasHeatingTherms * 2.5; // blower fan electricity
   } else if (input.heatingType === 'gas_high_96') {
     annualGasHeatingTherms = totalThermalLoad / (100000 * 0.96);
-    annualElecHeatingKwh = (annualGasHeatingTherms * 2.0);
+    annualElecHeatingKwh = annualGasHeatingTherms * 2.0;
   }
 
   // Cooling Consumption
@@ -292,7 +273,8 @@ export function calculateHomeEnergyScore(
           : input.coolingType === 'central_standard_seer14'
             ? 1.0
             : 0.75;
-  const annualCoolingKwh = baseCoolingKwhPerSqft * sqft * envelopeModifier * coolingEfficiencyMultiplier;
+  const annualCoolingKwh =
+    baseCoolingKwhPerSqft * sqft * envelopeModifier * coolingEfficiencyMultiplier;
 
   // Water Heating Consumption
   let annualWaterKwh = 0;
@@ -310,7 +292,9 @@ export function calculateHomeEnergyScore(
   // Base Plug Loads & Lighting (~2.2 kWh/sqft/yr baseline)
   const basePlugLoadKwh = sqft * 2.2;
 
-  const totalElecKwh = Math.round(annualElecHeatingKwh + annualCoolingKwh + annualWaterKwh + basePlugLoadKwh);
+  const totalElecKwh = Math.round(
+    annualElecHeatingKwh + annualCoolingKwh + annualWaterKwh + basePlugLoadKwh,
+  );
   const totalGasTherms = Math.round(annualGasHeatingTherms + annualWaterTherms);
 
   const totalAnnualCost = totalElecKwh * elecRateDollars + totalGasTherms * gasPriceDollars;
@@ -323,13 +307,16 @@ export function calculateHomeEnergyScore(
   const roadmap: RetrofitUpgradeItem[] = [];
 
   if (input.insulationLevel === 'poor_uninsulated' || input.insulationLevel === 'average_batt') {
-    const savings = Math.round((totalElecKwh * elecRateDollars + totalGasTherms * gasPriceDollars) * 0.16);
+    const savings = Math.round(
+      (totalElecKwh * elecRateDollars + totalGasTherms * gasPriceDollars) * 0.16,
+    );
     const cost = sqft > 2500 ? 2400 : 1600;
     roadmap.push({
       id: 'attic_insulation',
       title: 'Attic Air Sealing & R-49 Blown-in Insulation',
       category: 'envelope',
-      description: 'Seal thermal bypass penetrations around recessed lights, top plates, and chases, then blow cellulose/fiberglass to R-49.',
+      description:
+        'Seal thermal bypass penetrations around recessed lights, top plates, and chases, then blow cellulose/fiberglass to R-49.',
       estimatedCostRange: `$${cost.toLocaleString()} – $${(cost * 1.4).toLocaleString()}`,
       estimatedAnnualSavingsDollars: Math.max(120, savings),
       simplePaybackYears: parseFloat((cost / Math.max(120, savings)).toFixed(1)),
@@ -344,7 +331,8 @@ export function calculateHomeEnergyScore(
       id: 'heat_pump_water_heater',
       title: 'Upgrade to Hybrid Heat Pump Water Heater',
       category: 'water_heating',
-      description: 'Replaces electric resistance tank with a 3.5+ UEF heat pump unit (eligible for 30% IRA 25C tax credit up to $2,000).',
+      description:
+        'Replaces electric resistance tank with a 3.5+ UEF heat pump unit (eligible for 30% IRA 25C tax credit up to $2,000).',
       estimatedCostRange: '$1,800 – $2,600',
       estimatedAnnualSavingsDollars: savings,
       simplePaybackYears: parseFloat((cost / savings).toFixed(1)),
@@ -353,13 +341,15 @@ export function calculateHomeEnergyScore(
   }
 
   if (input.heatingType === 'electric_resistance' || input.coolingType === 'central_old_seer10') {
-    const heatingSavings = annualElecHeatingKwh > 0 ? Math.round(annualElecHeatingKwh * 0.55 * elecRateDollars) : 250;
+    const heatingSavings =
+      annualElecHeatingKwh > 0 ? Math.round(annualElecHeatingKwh * 0.55 * elecRateDollars) : 250;
     const cost = sqft > 2200 ? 9500 : 7000;
     roadmap.push({
       id: 'inverter_heat_pump',
       title: 'High-Efficiency Inverter Heat Pump Conversion',
       category: 'hvac',
-      description: 'Replace aging SEER 10 AC or resistance baseboards with a modern variable-speed cold-climate heat pump (SEER2 16+, HSPF2 9.5+).',
+      description:
+        'Replace aging SEER 10 AC or resistance baseboards with a modern variable-speed cold-climate heat pump (SEER2 16+, HSPF2 9.5+).',
       estimatedCostRange: `$${cost.toLocaleString()} – $${(cost * 1.5).toLocaleString()}`,
       estimatedAnnualSavingsDollars: Math.max(350, heatingSavings),
       simplePaybackYears: parseFloat((cost / Math.max(350, heatingSavings)).toFixed(1)),
@@ -368,12 +358,13 @@ export function calculateHomeEnergyScore(
   }
 
   if (input.windowType === 'single_pane') {
-    const windowSavings = Math.round((totalAnnualCost) * 0.09);
+    const windowSavings = Math.round(totalAnnualCost * 0.09);
     roadmap.push({
       id: 'low_e_window_inserts',
       title: 'Low-E Insulating Window Inserts or Storm Panels',
       category: 'windows',
-      description: 'Install interior custom acrylic or Low-E glass inserts to stop drafts and double thermal resistance without replacing frames.',
+      description:
+        'Install interior custom acrylic or Low-E glass inserts to stop drafts and double thermal resistance without replacing frames.',
       estimatedCostRange: '$800 – $1,800',
       estimatedAnnualSavingsDollars: Math.max(80, windowSavings),
       simplePaybackYears: parseFloat((1200 / Math.max(80, windowSavings)).toFixed(1)),
@@ -382,12 +373,13 @@ export function calculateHomeEnergyScore(
   }
 
   // Always include smart thermostat if not already optimized
-  const thermostatSavings = Math.round((totalAnnualCost) * 0.07);
+  const thermostatSavings = Math.round(totalAnnualCost * 0.07);
   roadmap.push({
     id: 'smart_thermostat',
     title: 'Smart Programmable Thermostat with Geofencing',
     category: 'controls',
-    description: 'Automates 7°F–10°F nighttime and away temperature setbacks, eliminating wasted heating and cooling in unoccupied hours.',
+    description:
+      'Automates 7°F–10°F nighttime and away temperature setbacks, eliminating wasted heating and cooling in unoccupied hours.',
     estimatedCostRange: '$120 – $220',
     estimatedAnnualSavingsDollars: Math.max(60, thermostatSavings),
     simplePaybackYears: parseFloat((160 / Math.max(60, thermostatSavings)).toFixed(1)),

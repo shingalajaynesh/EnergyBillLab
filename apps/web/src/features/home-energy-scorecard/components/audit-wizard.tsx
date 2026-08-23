@@ -1,18 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  Steps,
-  Form,
-  InputNumber,
-  Select,
-  Button,
-} from 'antd';
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  ExperimentOutlined,
-} from '@ant-design/icons';
+import { Steps, Form, InputNumber, Select, Button } from 'antd';
+import { ArrowLeftOutlined, ArrowRightOutlined, ExperimentOutlined } from '@ant-design/icons';
 import {
   calculateHomeEnergyScore,
   type CalculateHomeEnergyScoreOutput,
@@ -103,12 +93,7 @@ export function AuditWizard() {
 
   return (
     <div className={styles.auditContainer} aria-label="Whole-Home Energy Audit Wizard">
-      <Steps
-        current={currentStep}
-        items={steps}
-        style={{ marginBottom: 32 }}
-        responsive={true}
-      />
+      <Steps current={currentStep} items={steps} style={{ marginBottom: 32 }} responsive={true} />
 
       {/* STEP 0: Home & Climate */}
       {currentStep === 0 && (
@@ -116,7 +101,8 @@ export function AuditWizard() {
           <div className={styles.stepHeader}>
             <h2 className={styles.stepTitle}>Step 1: Home Structure & Thermal Envelope</h2>
             <p className={styles.stepSubtitle}>
-              Building vintage and insulation resistance determine your home's baseline heating and cooling load.
+              Building vintage and insulation resistance determine your home's baseline heating and
+              cooling load.
             </p>
           </div>
 
@@ -171,10 +157,19 @@ export function AuditWizard() {
                   value={formState.insulationLevel}
                   onChange={(val) => setFormState((prev) => ({ ...prev, insulationLevel: val }))}
                   options={[
-                    { value: 'poor_uninsulated', label: 'Poor / Uninsulated (Drafty, <R-19 Attic)' },
-                    { value: 'average_batt', label: 'Average (Standard Fiberglass Batts R-19 to R-30)' },
+                    {
+                      value: 'poor_uninsulated',
+                      label: 'Poor / Uninsulated (Drafty, <R-19 Attic)',
+                    },
+                    {
+                      value: 'average_batt',
+                      label: 'Average (Standard Fiberglass Batts R-19 to R-30)',
+                    },
                     { value: 'high_r38_r49', label: 'High (R-38 to R-49 Blown Attic Insulation)' },
-                    { value: 'air_sealed_super', label: 'Super-Insulated & Air Sealed (Spray Foam / R-60)' },
+                    {
+                      value: 'air_sealed_super',
+                      label: 'Super-Insulated & Air Sealed (Spray Foam / R-60)',
+                    },
                   ]}
                   style={{ width: '100%' }}
                 />
@@ -204,8 +199,14 @@ export function AuditWizard() {
                     { value: 'gas_standard_80', label: 'Standard Natural Gas Furnace (80% AFUE)' },
                     { value: 'gas_high_96', label: 'High-Efficiency Gas Furnace (96%+ AFUE)' },
                     { value: 'heat_pump_standard', label: 'Standard Heat Pump (HSPF2 7.5–8.5)' },
-                    { value: 'heat_pump_inverter', label: 'Cold-Climate Inverter Heat Pump (HSPF2 10+)' },
-                    { value: 'electric_resistance', label: 'Electric Baseboard / Strip Resistance (COP 1.0)' },
+                    {
+                      value: 'heat_pump_inverter',
+                      label: 'Cold-Climate Inverter Heat Pump (HSPF2 10+)',
+                    },
+                    {
+                      value: 'electric_resistance',
+                      label: 'Electric Baseboard / Strip Resistance (COP 1.0)',
+                    },
                   ]}
                   style={{ width: '100%' }}
                 />
@@ -216,8 +217,14 @@ export function AuditWizard() {
                   value={formState.coolingType}
                   onChange={(val) => setFormState((prev) => ({ ...prev, coolingType: val }))}
                   options={[
-                    { value: 'central_standard_seer14', label: 'Standard Central AC (SEER 14 / SEER2 13.4)' },
-                    { value: 'heat_pump_seer2_16', label: 'High-Efficiency Inverter AC / Heat Pump (SEER2 16+)' },
+                    {
+                      value: 'central_standard_seer14',
+                      label: 'Standard Central AC (SEER 14 / SEER2 13.4)',
+                    },
+                    {
+                      value: 'heat_pump_seer2_16',
+                      label: 'High-Efficiency Inverter AC / Heat Pump (SEER2 16+)',
+                    },
                     { value: 'central_old_seer10', label: 'Aging Central AC (SEER 10 or older)' },
                     { value: 'window_units', label: 'Window / Portable AC Units' },
                     { value: 'none', label: 'No Active Cooling' },
@@ -232,8 +239,14 @@ export function AuditWizard() {
                   onChange={(val) => setFormState((prev) => ({ ...prev, waterHeaterType: val }))}
                   options={[
                     { value: 'gas_tank', label: 'Standard Natural Gas Tank (0.60 UEF)' },
-                    { value: 'electric_tank', label: 'Standard Electric Resistance Tank (0.92 UEF)' },
-                    { value: 'heat_pump_hybrid', label: 'Hybrid Heat Pump Water Heater (3.5+ UEF)' },
+                    {
+                      value: 'electric_tank',
+                      label: 'Standard Electric Resistance Tank (0.92 UEF)',
+                    },
+                    {
+                      value: 'heat_pump_hybrid',
+                      label: 'Hybrid Heat Pump Water Heater (3.5+ UEF)',
+                    },
                     { value: 'tankless_gas', label: 'Condensing Gas Tankless (0.90+ UEF)' },
                   ]}
                   style={{ width: '100%' }}
@@ -264,7 +277,8 @@ export function AuditWizard() {
           <div className={styles.stepHeader}>
             <h2 className={styles.stepTitle}>Step 3: Energy Utility Rates</h2>
             <p className={styles.stepSubtitle}>
-              Adjust your local utility rates to accurately calculate annual waste and retrofit payback timelines.
+              Adjust your local utility rates to accurately calculate annual waste and retrofit
+              payback timelines.
             </p>
           </div>
 

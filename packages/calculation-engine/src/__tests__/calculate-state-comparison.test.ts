@@ -67,6 +67,8 @@ describe('calculateStateComparison', () => {
 
     expect(result.naturalGas.available).toBe(false);
     expect(result.electricity.cheaperState).toBe('stateB');
-    expect(result.summaryVerdict).toContain('Hawaii electricity rates are 275.7% higher than in Washington');
+    expect(result.summaryVerdict).toContain(
+      'Hawaii electricity rates are 275.7% higher than in Washington',
+    );
   });
 });

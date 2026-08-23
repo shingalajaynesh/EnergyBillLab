@@ -38,9 +38,7 @@ export function RetrofitRoiTable({ upgrades }: RetrofitRoiTableProps) {
       align: 'right',
       width: 140,
       render: (savings: number) => (
-        <span style={{ fontWeight: 700, color: '#16a34a' }}>
-          ${savings.toLocaleString()}/yr
-        </span>
+        <span style={{ fontWeight: 700, color: '#16a34a' }}>${savings.toLocaleString()}/yr</span>
       ),
     },
     {
@@ -61,7 +59,8 @@ export function RetrofitRoiTable({ upgrades }: RetrofitRoiTableProps) {
     <div className={styles.roadmapContainer}>
       <h3 className={styles.roadmapTitle}>Prioritized Energy Retrofit & ROI Roadmap</h3>
       <p className={styles.roadmapSubtitle}>
-        Recommended capital improvements ranked by shortest payback period and highest utility bill return.
+        Recommended capital improvements ranked by shortest payback period and highest utility bill
+        return.
       </p>
       <Table<RetrofitUpgradeItem>
         columns={columns}

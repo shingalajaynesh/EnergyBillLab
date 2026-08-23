@@ -70,20 +70,25 @@ export default function HeatingFuelComparatorPage() {
       <section style={{ marginTop: 40 }}>
         <h2>Thermodynamic Conversion Formulas</h2>
         <p>
-          To normalize disparate energy units, Energy Bill Lab converts each raw fuel into Million British Thermal Units (MMBtu) delivered into the conditioned living space:
+          To normalize disparate energy units, Energy Bill Lab converts each raw fuel into Million
+          British Thermal Units (MMBtu) delivered into the conditioned living space:
         </p>
         <ul>
           <li>
-            <strong>Natural Gas:</strong> 1 Therm = 100,000 BTU. Delivered Cost/MMBtu = (Price/Therm &times; 10) / AFUE
+            <strong>Natural Gas:</strong> 1 Therm = 100,000 BTU. Delivered Cost/MMBtu = (Price/Therm
+            &times; 10) / AFUE
           </li>
           <li>
-            <strong>Electricity (Heat Pump):</strong> 1 kWh = 3,412.14 BTU (293.071 kWh per MMBtu at 100%). Delivered Cost/MMBtu = (Rate in $/kWh &times; 293.071) / COP
+            <strong>Electricity (Heat Pump):</strong> 1 kWh = 3,412.14 BTU (293.071 kWh per MMBtu at
+            100%). Delivered Cost/MMBtu = (Rate in $/kWh &times; 293.071) / COP
           </li>
           <li>
-            <strong>Propane:</strong> 1 Gallon = 91,500 BTU. Delivered Cost/MMBtu = (Price/Gallon &times; 10.929) / AFUE
+            <strong>Propane:</strong> 1 Gallon = 91,500 BTU. Delivered Cost/MMBtu = (Price/Gallon
+            &times; 10.929) / AFUE
           </li>
           <li>
-            <strong>Heating Oil #2:</strong> 1 Gallon = 138,500 BTU. Delivered Cost/MMBtu = (Price/Gallon &times; 7.22) / AFUE
+            <strong>Heating Oil #2:</strong> 1 Gallon = 138,500 BTU. Delivered Cost/MMBtu =
+            (Price/Gallon &times; 7.22) / AFUE
           </li>
         </ul>
       </section>
@@ -101,7 +106,9 @@ export default function HeatingFuelComparatorPage() {
       </section>
 
       <DataSourceNote>
-        Energy conversion constants from U.S. Energy Information Administration (EIA) Thermal Equivalence Tables and U.S. DOE Building America Research Benchmarks (August 2026 Reference Data).
+        Energy conversion constants from U.S. Energy Information Administration (EIA) Thermal
+        Equivalence Tables and U.S. DOE Building America Research Benchmarks (August 2026 Reference
+        Data).
       </DataSourceNote>
 
       <RelatedLinks links={relatedLinks} />

@@ -77,7 +77,10 @@ export default function BillSpikeDetectivePage() {
           How the Forensic Diagnostic Triage Works
         </h2>
         <p style={{ fontSize: 15, color: '#595959', lineHeight: 1.6, maxWidth: 800 }}>
-          Utility bills can jump for multiple interconnected reasons. A single 10-day summer heatwave can double air conditioner compressor runtime, while a simultaneous 3-day calendar extension in your billing period adds baseline overhead. The Bill Spike Detective isolates:
+          Utility bills can jump for multiple interconnected reasons. A single 10-day summer
+          heatwave can double air conditioner compressor runtime, while a simultaneous 3-day
+          calendar extension in your billing period adds baseline overhead. The Bill Spike Detective
+          isolates:
         </p>
 
         <div
@@ -89,30 +92,57 @@ export default function BillSpikeDetectivePage() {
             marginBottom: 36,
           }}
         >
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               1. Weather & Climate Drivers
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              HVAC cooling and heating represent over 50% of typical home electricity. Extreme outdoor temperatures force compressors and resistance heat strips to run extended duty cycles.
+              HVAC cooling and heating represent over 50% of typical home electricity. Extreme
+              outdoor temperatures force compressors and resistance heat strips to run extended duty
+              cycles.
             </p>
           </div>
 
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               2. Billing Cycle Calendar Days
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              Utility billing cycles vary from 27 to 36 days. Comparing total dollars without normalizing for calendar days creates false alarms that mask steady daily usage habits.
+              Utility billing cycles vary from 27 to 36 days. Comparing total dollars without
+              normalizing for calendar days creates false alarms that mask steady daily usage
+              habits.
             </p>
           </div>
 
-          <div style={{ background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 8, padding: 20 }}>
+          <div
+            style={{
+              background: '#fafafa',
+              border: '1px solid #e8e8e8',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
             <h3 style={{ fontSize: 16, fontWeight: 700, color: '#176b5b', marginBottom: 8 }}>
               3. Tariff Hikes & Fuel Riders
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.5 }}>
-              Utilities frequently adjust generation supply charges, distribution riders, and fuel adjustment surcharges, resulting in higher bills even when total kWh consumption remains flat.
+              Utilities frequently adjust generation supply charges, distribution riders, and fuel
+              adjustment surcharges, resulting in higher bills even when total kWh consumption
+              remains flat.
             </p>
           </div>
         </div>
@@ -146,7 +176,10 @@ export default function BillSpikeDetectivePage() {
       </section>
 
       <DataSourceNote>
-        Energy Bill Lab calculations provide forensic estimates based on standard thermodynamic and electrical engineering models (ASHRAE Standard 55, U.S. DOE Energy Saver). Actual utility statements may include utility-specific riders, taxes, tier thresholds, and demand surcharges.
+        Energy Bill Lab calculations provide forensic estimates based on standard thermodynamic and
+        electrical engineering models (ASHRAE Standard 55, U.S. DOE Energy Saver). Actual utility
+        statements may include utility-specific riders, taxes, tier thresholds, and demand
+        surcharges.
       </DataSourceNote>
 
       <section style={{ marginTop: 40 }}>

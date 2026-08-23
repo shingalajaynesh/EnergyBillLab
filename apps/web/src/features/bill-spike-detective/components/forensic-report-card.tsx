@@ -68,7 +68,8 @@ export function ForensicReportCard({ diagnosis, onReset }: ForensicReportCardPro
         <div className={styles.metricBox}>
           <span className={styles.metricBoxLabel}>Energy Consumption</span>
           <div className={styles.metricBoxValue}>
-            {metrics.kwhChange >= 0 ? '+' : '-'}{Math.abs(metrics.kwhChange).toLocaleString()} kWh
+            {metrics.kwhChange >= 0 ? '+' : '-'}
+            {Math.abs(metrics.kwhChange).toLocaleString()} kWh
           </div>
           <div
             className={`${styles.metricBoxDelta} ${
@@ -83,9 +84,7 @@ export function ForensicReportCard({ diagnosis, onReset }: ForensicReportCardPro
         {/* Metric 3: Normalized Daily kWh */}
         <div className={styles.metricBox}>
           <span className={styles.metricBoxLabel}>Daily Average Burn</span>
-          <div className={styles.metricBoxValue}>
-            {metrics.dailyKwhCurrent.toFixed(1)} kWh/day
-          </div>
+          <div className={styles.metricBoxValue}>{metrics.dailyKwhCurrent.toFixed(1)} kWh/day</div>
           <div
             className={`${styles.metricBoxDelta} ${
               metrics.dailyKwhChangePercent > 0 ? styles.deltaUp : styles.deltaDown
@@ -117,7 +116,8 @@ export function ForensicReportCard({ diagnosis, onReset }: ForensicReportCardPro
         <div className={styles.sectionTitle}>
           <span>Ranked Culprits & Probability Scoring</span>
           <span style={{ fontSize: 13, color: '#8c8c8c', fontWeight: 500 }}>
-            Usage: {metrics.usageVsRateAttribution.usageSharePercent}% | Rate: {metrics.usageVsRateAttribution.rateSharePercent}%
+            Usage: {metrics.usageVsRateAttribution.usageSharePercent}% | Rate:{' '}
+            {metrics.usageVsRateAttribution.rateSharePercent}%
           </span>
         </div>
 
@@ -146,9 +146,7 @@ export function ForensicReportCard({ diagnosis, onReset }: ForensicReportCardPro
               </div>
 
               {culprit.estimatedDollarImpact > 0 && (
-                <div className={styles.culpritImpact}>
-                  Est. +${culprit.estimatedDollarImpact}
-                </div>
+                <div className={styles.culpritImpact}>Est. +${culprit.estimatedDollarImpact}</div>
               )}
             </div>
 
@@ -187,7 +185,15 @@ export function ForensicReportCard({ diagnosis, onReset }: ForensicReportCardPro
 
       {/* 5. Additional Guides */}
       {relatedGuideSlugs.length > 0 && (
-        <div style={{ marginTop: 24, padding: 20, background: '#f6ffed', borderRadius: 8, border: '1px solid #b7eb8f' }}>
+        <div
+          style={{
+            marginTop: 24,
+            padding: 20,
+            background: '#f6ffed',
+            borderRadius: 8,
+            border: '1px solid #b7eb8f',
+          }}
+        >
           <h4 style={{ fontSize: 15, fontWeight: 700, color: '#135200', marginBottom: 8 }}>
             Recommended Deep-Dive Research
           </h4>

@@ -2,11 +2,7 @@
 
 import React from 'react';
 import { Tag } from 'antd';
-import {
-  CheckCircleOutlined,
-  ThunderboltOutlined,
-  ToolOutlined,
-} from '@ant-design/icons';
+import { CheckCircleOutlined, ThunderboltOutlined, ToolOutlined } from '@ant-design/icons';
 import type { ActionItem } from '@energy-bill-lab/calculation-engine';
 
 import styles from './bill-spike-detective.module.css';
