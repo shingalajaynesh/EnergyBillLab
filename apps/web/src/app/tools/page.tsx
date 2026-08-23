@@ -30,6 +30,18 @@ export default function ToolsPage() {
           description:
             'Analyze bill spikes, normalize billing cycle length, and calculate your all-in cost per kWh.',
         },
+        {
+          href: '/tools/bill-spike-detective' as PublicRouteHref,
+          name: 'Bill Spike Detective & Diagnostic Tool',
+          description:
+            'Forensic diagnostic triage to isolate whether your spike was caused by weather, equipment cycling, or rate hikes.',
+        },
+        {
+          href: '/compare-states' as PublicRouteHref,
+          name: 'State-to-State Rate Comparator',
+          description:
+            'Compare residential electricity and gas rates, typical bills, and appliance operating costs across any 2 states.',
+        },
       ],
     },
     {

@@ -190,14 +190,24 @@ export default async function HomePage() {
             <span className={styles.toolAction}>Analyze bill →</span>
           </Link>
 
-          <Link className={styles.toolCard} href="/tools/natural-gas-bill-calculator">
+          <Link className={styles.toolCard} href="/tools/bill-spike-detective">
             <div>
-              <span className={styles.toolTitle}>Natural Gas Bill Calculator</span>
+              <span className={styles.toolTitle}>Bill Spike Detective</span>
               <p className={styles.toolDesc}>
-                Calculate monthly gas spending from therms, fixed account fees, and local riders.
+                Forensic diagnostic triage to isolate whether weather, equipment cycling, or tariff hikes caused your spike.
               </p>
             </div>
-            <span className={styles.toolAction}>Calculate gas bill →</span>
+            <span className={styles.toolAction}>Run triage →</span>
+          </Link>
+
+          <Link className={styles.toolCard} href="/compare-states">
+            <div>
+              <span className={styles.toolTitle}>State-to-State Rate Comparator</span>
+              <p className={styles.toolDesc}>
+                Compare electricity ¢/kWh, natural gas $/therm, and appliance costs between any two U.S. states.
+              </p>
+            </div>
+            <span className={styles.toolAction}>Compare states →</span>
           </Link>
 
           <Link className={styles.toolCard} href="/tools/appliance-energy-cost-calculator">
@@ -208,17 +218,6 @@ export default async function HomePage() {
               </p>
             </div>
             <span className={styles.toolAction}>Estimate appliance →</span>
-          </Link>
-
-          <Link className={styles.toolCard} href="/tools/gas-furnace-cost-calculator">
-            <div>
-              <span className={styles.toolTitle}>Gas Furnace Cost Calculator</span>
-              <p className={styles.toolDesc}>
-                Calculate furnace operating costs based on input Btu/hr, AFUE rating, and therm
-                rates.
-              </p>
-            </div>
-            <span className={styles.toolAction}>Calculate furnace →</span>
           </Link>
         </div>
       </section>

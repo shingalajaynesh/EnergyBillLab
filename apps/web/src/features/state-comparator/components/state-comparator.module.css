@@ -1,0 +1,170 @@
+.comparatorContainer {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 768px) {
+  .comparatorContainer {
+    padding: 20px 16px;
+  }
+}
+
+.selectorBar {
+  background: #f9fbfb;
+  border: 1px solid #e0eeea;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.selectorGrid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .selectorGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.selectorColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selectorLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #176b5b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vsDivider {
+  font-size: 16px;
+  font-weight: 800;
+  color: #8c8c8c;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.baselineControls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.verdictCard {
+  background: linear-gradient(135deg, #0d3830 0%, #176b5b 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.verdictTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.verdictText {
+  font-size: 15px;
+  color: #e6f4f1;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dualScoreGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .dualScoreGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stateScoreCard {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.stateScoreCardWinner {
+  border-color: #52c41a;
+  background: #f6ffed;
+}
+
+.stateCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stateName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 0;
+}
+
+.rateStatRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.rateStatRow:last-child {
+  border-bottom: none;
+}
+
+.rateStatLabel {
+  color: #595959;
+}
+
+.rateStatValue {
+  font-weight: 700;
+  color: #1f1f1f;
+  font-variant-numeric: tabular-nums;
+}
+
+.tableSection {
+  margin-bottom: 32px;
+}
+
+.tableSectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 16px;
+}
+
+.diffCheaper {
+  color: #389e0d;
+  font-weight: 700;
+}
+
+.diffCostlier {
+  color: #cf1322;
+  font-weight: 700;
+}

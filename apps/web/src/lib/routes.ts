@@ -60,6 +60,14 @@ const basePublicRoutes = [
   },
   {
     description:
+      'Forensic electric bill diagnostic triage. Isolate whether a bill spike was caused by weather, equipment duty cycles, rate hikes, or estimated meter readings.',
+    group: 'tools',
+    href: '/tools/bill-spike-detective',
+    label: 'Bill Spike Detective',
+    sitemap: true,
+  },
+  {
+    description:
       'Estimate the electricity usage and operating cost of any household appliance based on wattage, usage hours, and duty cycle.',
     group: 'tools',
     href: '/tools/appliance-energy-cost-calculator',
@@ -229,6 +237,14 @@ const restPublicRoutes = [
   },
   {
     description:
+      'Compare residential electricity rates (¢/kWh), natural gas prices ($/therm), and appliance operating expenses across any two U.S. states.',
+    group: 'research',
+    href: '/compare-states',
+    label: 'Compare States',
+    sitemap: true,
+  },
+  {
+    description:
       'Transparent formulas, calculation assumptions, and estimate limitations at Energy Bill Lab.',
     group: 'research',
     href: '/methodology',
@@ -338,6 +354,7 @@ export function getFooterGroups() {
       title: 'Tools',
       links: [
         getRouteByHref('/electricity-bill-analyzer'),
+        getRouteByHref('/tools/bill-spike-detective'),
         getRouteByHref('/tools/appliance-energy-cost-calculator'),
         getRouteByHref('/tools/ac-cost-calculator'),
         getRouteByHref('/tools/space-heater-cost-calculator'),
@@ -348,6 +365,7 @@ export function getFooterGroups() {
       title: 'Learn',
       links: [
         getRouteByHref('/research'),
+        getRouteByHref('/compare-states'),
         getRouteByHref('/guides'),
         getRouteByHref('/appliances'),
         getRouteByHref('/comparisons'),
