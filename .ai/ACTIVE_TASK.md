@@ -2,22 +2,18 @@
 
 ## Current Task
 
-- Phase: Platform Transformation & Deep Interactive Energy Tools Implementation (Phase 2)
-- Date: August 23, 2026
+- Phase: Daily Energy Insight Production — August 24, 2026
+- Date: August 24, 2026
 - Status:
-  - PASS - Identified missing platform pieces that caused the site to appear as a basic calculator site.
-  - PASS - Designed and built 3 deep interactive flagship features:
-    1. **Whole-Home Energy Efficiency Audit & Retrofit Scorecard** (`/tools/home-energy-scorecard`): Physics-based virtual audit modeling building envelope, HVAC loads, letter grade (A+ to F), annual energy waste ($/yr), and a prioritized Retrofit ROI Roadmap with payback timelines.
-    2. **Heating Fuel & Heat Pump Breakeven Comparator** (`/tools/heating-fuel-comparator`): Thermodynamic cost benchmark converting gas (80% & 96% AFUE), heat pumps (standard & inverter COP), propane, heating oil, and electric resistance into delivered $/MMBtu, plus thermal balance point crossover temperature analysis.
-    3. **Interactive U.S. Electricity Rate Map & 50-State Price Heatmap** (`/electricity-rates/map`): Regional rate tier choropleth grid with real EIA monthly pricing, regional filters, and direct state profile links.
-  - PASS - Developed pure TypeScript calculation modules (`calculate-home-energy-score.ts` and `calculate-heating-fuel-comparison.ts` in `packages/calculation-engine`).
-  - PASS - Integrated into global navigation, route registry, sitemap inventory, homepage, and tools hub.
-  - PASS - Submitted 184 platform URLs via IndexNow protocol with HTTP 200 responses from Bing and api.indexnow.org.
-  - PASS - Verified 53/53 test suites and 414/414 tests in web app, 9/9 test suites and 39/39 tests in calculation engine (453/453 total tests passing), 0 type errors, 0 lint errors, and 180/180 prerendered static pages in Next.js production build.
-  - PENDING - Production deployment and live browser verification
+  - PASS - Researched current primary data from Lawrence Berkeley National Laboratory (LBNL Standby Power Group), U.S. Department of Energy (DOE), ENERGY STAR, and EIA Form EIA-861M May 2026 residential rate release.
+  - PASS - Completed topic research and conflict validation: approved new insight `august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark` under `appliances` category with zero conflict across all 50 guides, 50 state pages, calculators, research reports, and 32 existing insights.
+  - PASS - Authored isolated article module (`apps/web/src/content/insights/articles/august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark.ts`) adhering to human editorial voice, zero AI fluff, exact math formulas ($1\text{ continuous Watt} = 8.76\text{ kWh/yr} = \$1.62\text{/yr}$ nationally), device-by-device active vs. eco standby comparisons, 3 household baseload tiers, 10-state 150W continuous draw cost matrix, and smart power strip 5-month payback ROI model.
+  - PASS - Configured Technical Visual Benchmark Card in `apps/web/src/content/insights/visuals.ts`.
+  - PASS - Registered article in `apps/web/src/content/insights/registry.ts` with automated registry validation.
+  - PASS - Created dedicated test suite (`apps/web/tests/august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark.test.ts`) and updated visual card, sitemap, and registry tests.
+  - PENDING - Validation sequence (format, typecheck, lint, test, build).
 - Scope & Governance Completed:
-  1. **Pure Calculation Engine:** Pure TypeScript formulas with unit tests in `packages/calculation-engine` with zero external runtime dependencies.
-  2. **Zero-Error Quality Gates:** 100% test pass rate, strict TypeScript typechecking, zero ESLint warnings/errors, clean static page generation.
-  3. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
-  4. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
-- Suggested Commit: `feat(tools): add home energy audit scorecard, heating fuel breakeven comparator, and 50-state rate map`
+  1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history, employer records, or location details.
+  2. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
+  3. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
+- Suggested Commit: `content(insights): publish august 2026 vampire power and standby electricity cost benchmark`

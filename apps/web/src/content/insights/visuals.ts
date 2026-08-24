@@ -1315,4 +1315,51 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Convective Cooling Principle: Ceiling fans cool people by evaporating skin moisture, not by cooling room air. Raising your AC thermostat 4°F with fans running captures 14% in AC savings while maintaining identical perceived comfort.',
   },
+
+  // 33. August 2026 Household Vampire Power & Standby Electricity Cost Benchmark
+  'august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark': {
+    title: 'Household Vampire Power Standby Baseload & Annual Electricity Cost Benchmark',
+    subtitle:
+      'Continuous 24/7 idle electrical draw across household profiles at May 2026 U.S. average 18.44¢/kWh',
+    badge: '100W–200W Baseload Impact',
+    badgeType: 'primary',
+    items: [
+      {
+        label: 'Minimalist 1-Bed Apartment (45W continuous · 394.2 kWh/yr)',
+        displayValue: '$72.69/yr',
+        value: 72.69,
+        color: 'success',
+        subLabel:
+          'Modem, refrigerator electronics, microwave clock · Baseline eco standby defaults ($6.06/mo)',
+      },
+      {
+        label: 'Standard Suburban Home (115W continuous · 1,007.4 kWh/yr)',
+        displayValue: '$185.76/yr',
+        value: 185.76,
+        color: 'warning',
+        subLabel:
+          'Cable DVR box, smart TV quick-start, game console standby, Wi-Fi mesh nodes ($15.48/mo)',
+      },
+      {
+        label: 'Tech-Heavy Connected Smart Home (220W continuous · 1,927.2 kWh/yr)',
+        displayValue: '$355.38/yr',
+        value: 355.38,
+        color: 'danger',
+        subLabel:
+          'Dual mesh nodes, AV receivers, multiple game consoles, 15+ IoT switches ($29.61/mo national · $52.03/mo in CA)',
+      },
+      {
+        label: 'Tier 1 Smart Power Strip (Eliminates 45W idle draw · 328.5 kWh/yr saved)',
+        displayValue: '-$60.58/yr',
+        value: 60.58,
+        color: 'success',
+        highlight: true,
+        badge: '5-Month Payback',
+        subLabel:
+          'Cuts peripheral TV/PC power when master device shuts down · $106.43/yr saved in California ($25.00 MSRP)',
+      },
+    ],
+    footerNote:
+      'Baseload Rule of Thumb: Every 1 Watt of continuous 24/7 idle phantom power draws 8.76 kWh per year, costing $1.62/year nationally ($2.84/year in California and $3.69/year in Hawaii).',
+  },
 };
