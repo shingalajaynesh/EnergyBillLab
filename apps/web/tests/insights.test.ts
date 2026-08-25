@@ -67,9 +67,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(33);
+    expect(insightsRegistry).toHaveLength(34);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(33);
+    expect(getPublishedInsights()).toHaveLength(34);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -81,7 +81,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       expect(current).toBeGreaterThanOrEqual(next);
     }
     expect(published[0]?.slug).toBe(
-      'august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark',
+      'august-2026-whole-house-fan-vs-central-ac-cooling-cost-benchmark',
     );
   });
 
@@ -316,8 +316,15 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(174);
+    expect(entries).toHaveLength(175);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-whole-house-fan-vs-central-ac-cooling-cost-benchmark',
+        ),
+      ),
+    ).toBe(true);
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
     ).toBe(true);
@@ -453,7 +460,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
     expect(urls).toContain('https://energybilllab.com/insights/category/appliances');
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
-    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(7);
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(8);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
     expect(getInsightsByCategory('appliances')).toHaveLength(16);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
@@ -508,7 +515,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(33);
+    expect(insightsRegistry).toHaveLength(34);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {

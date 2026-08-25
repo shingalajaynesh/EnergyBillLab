@@ -1362,4 +1362,49 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Baseload Rule of Thumb: Every 1 Watt of continuous 24/7 idle phantom power draws 8.76 kWh per year, costing $1.62/year nationally ($2.84/year in California and $3.69/year in Hawaii).',
   },
+
+  // 34. August 2026 Whole-House Fan vs Central AC Benchmark
+  'august-2026-whole-house-fan-vs-central-ac-cooling-cost-benchmark': {
+    title: 'Whole-House Fan vs Central AC Monthly Operating Cost & Power Draw Benchmark',
+    subtitle:
+      'Calculated for 6 hours/day evening cooling across equipment types at May 2026 U.S. average 18.44¢/kWh',
+    badge: '88%–96% Savings',
+    badgeType: 'success',
+    items: [
+      {
+        label: '3-Ton Central AC (3,000W effective · 540 kWh/mo)',
+        displayValue: '$99.58/mo',
+        value: 99.58,
+        color: 'danger',
+        subLabel:
+          'High compressor + condenser draw · Closed-loop refrigerant cooling for entire home',
+      },
+      {
+        label: 'Single-Speed Belt-Drive Whole-House Fan (550W · 99.0 kWh/mo)',
+        displayValue: '$18.26/mo',
+        value: 18.26,
+        color: 'warning',
+        subLabel: 'Traditional PSC motor · 4,500 CFM high-volume whole-house ventilation',
+      },
+      {
+        label: '2-Speed Direct-Drive Whole-House Fan (220W Low · 39.6 kWh/mo)',
+        displayValue: '$7.30/mo',
+        value: 7.3,
+        color: 'primary',
+        subLabel: 'Direct-drive PSC motor · 2,800 CFM quiet overnight continuous ventilation',
+      },
+      {
+        label: 'Variable-Speed High-Efficiency ECM Fan (120W Med · 21.6 kWh/mo)',
+        displayValue: '$3.98/mo',
+        value: 3.98,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Operating Cost',
+        subLabel:
+          'Electronically Commutated Motor · Saves $95.60/mo (96.0% reduction) vs 3-ton Central AC',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Principle: Whole-house fans cool by high-volume mechanical ventilation (30–60 ACH) and convective skin heat removal, consuming 85% to 96% less electricity than compressor-driven central AC.',
+  },
 };
