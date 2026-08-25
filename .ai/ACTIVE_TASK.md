@@ -11,9 +11,10 @@
   - PASS - Configured Technical Visual Benchmark Card in `apps/web/src/content/insights/visuals.ts`.
   - PASS - Registered article in `apps/web/src/content/insights/registry.ts` with automated registry validation.
   - PASS - Created dedicated test suite (`apps/web/tests/august-2026-whole-house-fan-vs-central-ac-cooling-cost-benchmark.test.ts`) and updated visual card, sitemap, and registry tests.
-  - PENDING - Validation sequence (format, typecheck, lint, test, build).
+  - PASS - Full validation sequence completed: `pnpm format:check` (pass), `pnpm typecheck` (10/10 pass), `pnpm lint` (10/10 pass), `pnpm test` (55 test files, 430 tests pass), `pnpm build:web` (182 static pages prerendered), `pnpm build:api` (NestJS production build pass).
 - Scope & Governance Completed:
   1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history, employer records, or location details.
   2. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
   3. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
 - Suggested Commit: `content(insights): publish august 2026 whole house fan vs central ac cooling cost benchmark`
+
