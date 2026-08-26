@@ -1407,4 +1407,58 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Principle: Whole-house fans cool by high-volume mechanical ventilation (30–60 ACH) and convective skin heat removal, consuming 85% to 96% less electricity than compressor-driven central AC.',
   },
+
+  // 35. August 2026 EV vs Gas Car Fuel Cost per 100 Miles Benchmark
+  'august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark': {
+    title: 'EV vs. Gasoline Vehicle Driving Cost Benchmark per 100 Miles',
+    subtitle:
+      'Calculated for 30 kWh/100-mi EV vs. 28 MPG Gas Car at August 2026 EIA Gas ($4.085/gal) & Electricity (18.44¢/kWh)',
+    badge: '58%–81% Fuel Savings',
+    badgeType: 'success',
+    items: [
+      {
+        label: 'Super-Off-Peak Residential EV Charging (8.5¢/kWh · 33.3 kWh grid)',
+        displayValue: '$2.83/100 mi',
+        value: 2.83,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Fuel Cost',
+        subLabel:
+          'Overnight TOU window (midnight–6 AM) · Slashes fuel cost by 80.6% ($1,411.20/yr saved vs 28 MPG gas)',
+      },
+      {
+        label: 'Standard Flat Home EV Charging (18.44¢/kWh · 33.3 kWh grid)',
+        displayValue: '$6.15/100 mi',
+        value: 6.15,
+        color: 'primary',
+        subLabel:
+          'U.S. national average residential rate · Level 2 (90% efficiency) · DOE eGallon equivalent = $1.72/gal',
+      },
+      {
+        label: 'High-Efficiency Compact Gas Car (35 MPG · 2.86 gal @ $4.085/gal)',
+        displayValue: '$11.67/100 mi',
+        value: 11.67,
+        color: 'warning',
+        subLabel: 'Civic / Corolla class · $1,400.40/yr fuel expense at 12,000 miles/yr',
+      },
+      {
+        label: 'Standard Passenger Gas Car Baseline (28 MPG · 3.57 gal @ $4.085/gal)',
+        displayValue: '$14.59/100 mi',
+        value: 14.59,
+        color: 'danger',
+        subLabel:
+          'EPA light-duty fleet baseline · $1,750.80/yr fuel expense · 3.6x more raw energy consumed than EV',
+      },
+      {
+        label: 'Commercial Public DC Fast Charging (45.0¢/kWh · 33.3 kWh grid)',
+        displayValue: '$15.00/100 mi',
+        value: 15.0,
+        color: 'danger',
+        subLabel:
+          '150–350 kW fast chargers · Commercial demand fees eliminate savings (+$0.41/100 mi vs 28 MPG gas)',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Principle: Electric motors convert 85%–90% of grid energy into wheel propulsion, whereas gas engines waste 70%–80% as heat. Home charging provides fuel at an eGallon price of $1.72 vs $4.085 pump gasoline.',
+  },
 };

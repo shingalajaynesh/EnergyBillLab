@@ -36,6 +36,7 @@ import { august2026HotTubElectricityConsumptionOperatingCostBenchmark } from './
 import { august2026CeilingFanElectricityConsumptionAcThermostatSetbackSavingsBenchmark } from './articles/august-2026-ceiling-fan-electricity-consumption-ac-thermostat-setback-savings-benchmark';
 import { august2026VampirePowerPhantomLoadStandbyElectricityCostBenchmark } from './articles/august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark';
 import { august2026WholeHouseFanVsCentralAcCoolingCostBenchmark } from './articles/august-2026-whole-house-fan-vs-central-ac-cooling-cost-benchmark';
+import { august2026EvVsGasCarFuelCostPer100MilesBenchmark } from './articles/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark';
 
 /**
  * Array of individual article modules imported from ./articles/
@@ -76,6 +77,7 @@ const rawArticles: InsightRecord[] = [
   august2026CeilingFanElectricityConsumptionAcThermostatSetbackSavingsBenchmark,
   august2026VampirePowerPhantomLoadStandbyElectricityCostBenchmark,
   august2026WholeHouseFanVsCentralAcCoolingCostBenchmark,
+  august2026EvVsGasCarFuelCostPer100MilesBenchmark,
 ];
 
 // Automatic Registry Validation at initialization time
