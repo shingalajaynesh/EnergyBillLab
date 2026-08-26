@@ -485,7 +485,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   it('27. validates that related routes exist in public route registry', () => {
     const invalidRouteRecord: InsightRecord = {
       ...mockValidInsight,
-      relatedRoutes: ['/non-existent-route-123' as any],
+      relatedRoutes: ['/non-existent-route-123'],
     };
     const res = validateInsightRecord(
       invalidRouteRecord,
