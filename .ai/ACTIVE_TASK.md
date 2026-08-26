@@ -2,18 +2,17 @@
 
 ## Current Task
 
-- Phase: Daily Energy Insight Production — August 26, 2026
+- Phase: Data Provenance & Claim Calibration Review — August 26, 2026
 - Date: August 26, 2026
 - Status:
-  - PASS - Researched current primary data from U.S. Energy Information Administration (EIA Weekly Retail Gasoline and Diesel Prices update of August 24, 2026: $4.085/gal regular gasoline; Form EIA-861M May 2026 residential rate release: 18.44¢/kWh national average), U.S. Department of Energy (DOE) Alternative Fuels Data Center (AFDC eGallon methodology), and EPA Fuel Economy ratings.
-  - PASS - Completed topic research and conflict validation: approved new insight `august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark` under `home-energy-costs` category with zero conflict across all 50 guides, 50 state pages, calculators, research reports, and 34 existing insights.
-  - PASS - Authored isolated article module (`apps/web/src/content/insights/articles/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark.ts`) adhering to human editorial voice, zero AI fluff, exact math formulas ($6.15 per 100 miles home EV charging vs $14.59 per 100 miles for 28 MPG gas car; $1.72/eGallon price vs $4.085/gal gas), 4-tier charging location breakdown (off-peak TOU $2.83/100 mi vs flat home $6.15/100 mi vs DC fast charging $15.00/100 mi), 10-state regional fuel parity matrix, and breakeven gasoline floor formulas ($1.72/gal national floor).
-  - PASS - Configured Technical Visual Benchmark Card in `apps/web/src/content/insights/visuals.ts`.
-  - PASS - Registered article in `apps/web/src/content/insights/registry.ts` with automated registry validation.
-  - PASS - Created dedicated test suite (`apps/web/tests/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark.test.ts`) and updated visual card, sitemap, and registry tests.
-  - PASS - Full validation sequence completed: `pnpm format:check` (pass), `pnpm typecheck` (10/10 pass), `pnpm lint` (10/10 pass), `pnpm test` (56 test files, 438 tests pass), `pnpm build:web` (183 static pages prerendered), `pnpm build:api` (NestJS production build pass).
+  - PASS - Conducted editorial quality audit of EnergyBillLab content and benchmark models per AdSense quality guidelines.
+  - PASS - Enhanced `august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark.ts` with explicit 3-tier data provenance structure clearly demarcating: (1) Official Government Data (EIA 18.44¢/kWh residential power, EIA $4.085/gal regular gas, DOE AFDC 33.705 kWh/GGE energy density), (2) EnergyBillLab Model Assumptions (90.0% Level 2 charging efficiency, 28 MPG ICE baseline, 30 kWh/100 mi EV rating, 8.5¢/kWh TOU scenario, 45.0¢/kWh DCFC scenario, 12,000 miles/year baseline), and (3) EnergyBillLab Calculated Results ($6.15/100 mi home EV cost, $14.59/100 mi gas cost, $1.72/eGallon, $1,012.80/yr savings, $1.72/gal breakeven floor).
+  - PASS - Calibrated claim language across article and technical visual card (`apps/web/src/content/insights/visuals.ts`) to eliminate overly absolute statements (e.g., replacing "commercial demand fees eliminate savings" and "realize zero fuel savings" with scenario-contextualized benchmarks explaining network and tariff variance).
+  - PASS - Expanded test suite (`apps/web/tests/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark.test.ts`) with dedicated test cases for 3-tier data provenance lineage and calibrated claim assertions (10/10 tests pass).
+  - PASS - Full verification suite passed: `pnpm format:check` (pass), `pnpm typecheck` (10/10 pass), `pnpm lint` (10/10 pass), `pnpm test` (56 test files, 440 tests pass), `pnpm build:web` (183 static pages prerendered), `pnpm build:api` (NestJS production build pass).
 - Scope & Governance Completed:
   1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history, employer records, or location details.
   2. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
   3. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
-- Suggested Commit: `content(insights): publish august 2026 ev vs gas car fuel cost per 100 miles benchmark`
+- Suggested Commit: `content(insights): calibrate claims and add 3-tier data provenance breakdown to ev benchmark`
+

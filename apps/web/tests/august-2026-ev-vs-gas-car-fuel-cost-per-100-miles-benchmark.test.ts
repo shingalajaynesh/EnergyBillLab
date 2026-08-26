@@ -79,4 +79,42 @@ describe('August 2026 EV vs. Gasoline Car Fuel Cost & eGallon Benchmark Insight'
     expect(record.summary).toContain('57.8%');
     expect(record.summary).toContain('$1,012.80');
   });
+
+  it('9. verifies explicit 3-tier data provenance structure (Official Data vs Model Assumptions vs Calculations)', () => {
+    const record = august2026EvVsGasCarFuelCostPer100MilesBenchmark;
+    const allContent = [
+      record.summary,
+      ...(record.keyFindings ?? []),
+      ...(record.bodyParagraphs ?? []),
+      ...(record.sections?.flatMap((s) => s.paragraphs) ?? []),
+      record.methodologyNotes ?? '',
+    ].join('\n');
+
+    expect(allContent).toContain('Data Provenance & Methodology Lineage Breakdown');
+    expect(allContent).toContain('Official Government Data');
+    expect(allContent).toContain('Model Assumption');
+    expect(allContent).toContain('EnergyBillLab Calculation');
+    expect(allContent).toContain('18.44 ¢/kWh');
+    expect(allContent).toContain('$4.085 / gallon');
+    expect(allContent).toContain('33.705 kWh / GGE');
+  });
+
+  it('10. verifies calibrated scenario-based wording without overly absolute claims', () => {
+    const record = august2026EvVsGasCarFuelCostPer100MilesBenchmark;
+    const allContent = [
+      record.summary,
+      ...(record.keyFindings ?? []),
+      ...(record.bodyParagraphs ?? []),
+      ...(record.sections?.flatMap((s) => s.paragraphs) ?? []),
+      record.methodologyNotes ?? '',
+    ].join('\n');
+
+    // Should not contain overly absolute assertions
+    expect(allContent).not.toContain('Commercial demand fees eliminate savings');
+    expect(allContent).not.toContain('will realize zero fuel savings');
+
+    // Should contain calibrated scenario language
+    expect(allContent).toContain('In this benchmark scenario');
+    expect(allContent).toContain('Modeled');
+  });
 });

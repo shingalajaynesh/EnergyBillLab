@@ -1424,7 +1424,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         highlight: true,
         badge: 'Lowest Fuel Cost',
         subLabel:
-          'Overnight TOU window (midnight–6 AM) · Slashes fuel cost by 80.6% ($1,411.20/yr saved vs 28 MPG gas)',
+          'Modeled overnight TOU window (midnight–6 AM) · Slashes fuel cost by 80.6% ($1,411.20/yr saved vs 28 MPG gas)',
       },
       {
         label: 'Standard Flat Home EV Charging (18.44¢/kWh · 33.3 kWh grid)',
@@ -1439,7 +1439,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$11.67/100 mi',
         value: 11.67,
         color: 'warning',
-        subLabel: 'Civic / Corolla class · $1,400.40/yr fuel expense at 12,000 miles/yr',
+        subLabel: 'Civic / Corolla class baseline · $1,400.40/yr fuel expense at 12,000 miles/yr',
       },
       {
         label: 'Standard Passenger Gas Car Baseline (28 MPG · 3.57 gal @ $4.085/gal)',
@@ -1455,10 +1455,10 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         value: 15.0,
         color: 'danger',
         subLabel:
-          '150–350 kW fast chargers · Commercial demand fees eliminate savings (+$0.41/100 mi vs 28 MPG gas)',
+          'Modeled 45.0¢/kWh fast-charging scenario · Adds $0.41/100 mi vs 28 MPG gas at $4.085/gal (rates vary by network)',
       },
     ],
     footerNote:
-      'Thermodynamic Principle: Electric motors convert 85%–90% of grid energy into wheel propulsion, whereas gas engines waste 70%–80% as heat. Home charging provides fuel at an eGallon price of $1.72 vs $4.085 pump gasoline.',
+      'Thermodynamic Principle: Electric motors convert 85%–90% of grid energy into wheel propulsion, whereas gas engines lose 70%–80% as heat. Home charging provides fuel at an eGallon price of $1.72 vs $4.085 pump gasoline.',
   },
 };
