@@ -58,7 +58,7 @@ export default function GuideAtticInsulationEnergyBillPage() {
           </li>
         </ul>
         <div className={styles.formulaBox}>
-          Conductive Heat Loss ($Q$) = Area ($A$) × $\Delta T$ (Temp Difference) ÷ R-Value
+          Conductive Heat Loss (Q) = Area (A) × ΔT (Temp Difference) ÷ R-Value
         </div>
       </section>
 

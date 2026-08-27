@@ -81,8 +81,8 @@ export default function GuideTurnOffAcWhenAwayPage() {
           </li>
         </ul>
         <div className={styles.formulaBox}>
-          Heat Flow Rate ($Q$) = Thermal Conductance ($U$) × Area ($A$) × $\Delta T$ (Indoor-Outdoor
-          Temp Difference)
+          Heat Flow Rate (Q) = Thermal Conductance (U) × Area (A) × ΔT (Indoor-Outdoor Temp
+          Difference)
         </div>
       </section>
 
