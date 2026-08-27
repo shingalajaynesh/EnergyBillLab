@@ -1461,4 +1461,43 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
     footerNote:
       'Thermodynamic Principle: Electric motors convert 85%–90% of grid energy into wheel propulsion, whereas gas engines lose 70%–80% as heat. Home charging provides fuel at an eGallon price of $1.72 vs $4.085 pump gasoline.',
   },
+
+  // 36. August 2026 Electric Tankless vs Storage vs Heat Pump Water Heater Cost Benchmark
+  'august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark': {
+    title: 'Water Heater Annual Electricity Cost & Peak Power Demand Benchmark',
+    subtitle:
+      'Calculated for 55 gal/day household (65°F rise) at May 2026 EIA average residential rate of 18.44¢/kWh',
+    badge: '73.5% Savings',
+    badgeType: 'success',
+    items: [
+      {
+        label: 'Standard 50-Gal Electric Resistance Tank (4.5 kW · UEF 0.92)',
+        displayValue: '$680.44/yr',
+        value: 680.44,
+        color: 'danger',
+        subLabel:
+          '3,690 kWh/year · 4.50 kW peak load (18.8A @ 240V) · 1.20 kWh/day standby jacket loss',
+      },
+      {
+        label: 'Whole-Home Electric Tankless Instantaneous (27–36 kW · UEF 0.98)',
+        displayValue: '$599.67/yr',
+        value: 599.67,
+        color: 'warning',
+        subLabel:
+          '3,252 kWh/year · 18.0–36.0 kW surge (75–150A @ 240V) · Saves only $80.77/yr over tank',
+      },
+      {
+        label: 'ENERGY STAR Hybrid Heat Pump Water Heater (UEF 3.75 Hybrid Mode)',
+        displayValue: '$180.34/yr',
+        value: 180.34,
+        color: 'success',
+        highlight: true,
+        badge: 'Lowest Bill & Grid Load',
+        subLabel:
+          '978 kWh/year · 0.45 kW compressor (1.88A @ 240V) · Saves $500.10/yr (73.5% reduction) on 30A circuit',
+      },
+    ],
+    footerNote:
+      'Thermodynamic Reality: Electric tankless only saves 10%–15% in standby loss while demanding a 18–36 kW electrical surge; hybrid heat pumps deliver 73.5% true energy savings by extracting ambient room heat.',
+  },
 };

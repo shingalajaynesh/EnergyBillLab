@@ -67,9 +67,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
-    expect(insightsRegistry).toHaveLength(35);
+    expect(insightsRegistry).toHaveLength(36);
     expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(35);
+    expect(getPublishedInsights()).toHaveLength(36);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -80,7 +80,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       const next = new Date(published[i + 1]!.publishedAt).getTime();
       expect(current).toBeGreaterThanOrEqual(next);
     }
-    expect(published[0]?.slug).toBe('august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark');
+    expect(published[0]?.slug).toBe(
+      'august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark',
+    );
   });
 
   // Test 3: Hub is indexable after launch threshold
@@ -314,8 +316,15 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(176);
+    expect(entries).toHaveLength(177);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
+    expect(
+      entries.some((e) =>
+        e.url.endsWith(
+          '/insights/august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark',
+        ),
+      ),
+    ).toBe(true);
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark'),
@@ -463,7 +472,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
     expect(getInsightsByCategory('home-energy-costs')).toHaveLength(9);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(16);
+    expect(getInsightsByCategory('appliances')).toHaveLength(17);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
     expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
     expect(getInsightsByCategory('solar')).toHaveLength(2);
@@ -514,7 +523,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
 
   // Test 30: No production placeholder Insight exists
   it('30. central registry contains real published Insights and no demo or placeholder records', () => {
-    expect(insightsRegistry).toHaveLength(35);
+    expect(insightsRegistry).toHaveLength(36);
     const validation = validateInsightsRegistry(insightsRegistry);
     expect(validation.valid).toBe(true);
     for (const record of insightsRegistry) {
@@ -1052,6 +1061,27 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.summary).toContain('18.44¢/kWh');
     expect(article?.summary).toContain('wind-chill');
     expect(article?.summary).toContain('78°F');
+    expect(article?.sources.length).toBeGreaterThanOrEqual(3);
+    const validation = validateInsightRecord(article!);
+    expect(validation.valid).toBe(true);
+  });
+
+  // Test 47: August 2026 Electric Tankless vs Storage vs Heat Pump Water Heater Benchmark Insight verification
+  it('47. validates the August 2026 Electric Tankless vs Storage vs Heat Pump Water Heater Insight metadata, sources, and privacy bounds', () => {
+    const article = getInsightBySlug(
+      'august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark',
+    );
+    expect(article).toBeDefined();
+    expect(article?.status).toBe('published');
+    expect(article?.category).toBe('appliances');
+    expect(article?.reportingPeriod).toBe(
+      'August 2026 (May 2026 EIA Form EIA-861M Electricity Releases)',
+    );
+    expect(article?.authorName).toBe('Jaynesh Shingala');
+    expect(article?.summary).toContain('18.44¢/kWh');
+    expect(article?.summary).toContain('$599.67');
+    expect(article?.summary).toContain('$680.44');
+    expect(article?.summary).toContain('$180.34');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     const validation = validateInsightRecord(article!);
     expect(validation.valid).toBe(true);
