@@ -31,6 +31,7 @@ export const august2026SummerThermostatSettingCoolingCostBenchmark: InsightRecor
   summary:
     'At the U.S. national average residential electricity rate of 18.44¢/kWh based on May 2026 EIA data releases, cooling a home with a standard 3-ton (14.3 SEER2) central air conditioner set to 72°F costs $128.10 per month (694.7 kWh; $4.27/day), compared to $83.53 per month (453.0 kWh; $2.78/day) at the DOE-recommended 78°F baseline. Lowering your thermostat from 78°F to 72°F adds $44.57 per month (+53.4%) to your electric bill ($178.28 across a 4-month cooling season), increasing continuous compressor runtime by 3.2 hours daily.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; DOE Energy Saver recommendations; NREL cooling load simulations) from EnergyBillLab model assumptions (2,000 sq ft home; 3-ton 14.3 SEER2 AC drawing 2,517W; 95°F outdoor ambient temperature baseline; 4-month cooling season) and derived calculated results ($83.53/mo @ 78°F vs $128.10/mo @ 72°F; $44.57/mo setback penalty; 3%–5% per-degree cost multiplier; $25.94/mo ceiling fan synergy savings).',
     'The 3% to 5% Per-Degree Rule: Every 1°F reduction in your summer thermostat setpoint increases compressor runtime and cooling electricity consumption by approximately 3% to 5% due to heightened envelope thermal conduction and indoor-outdoor temperature delta (ΔT).',
     '72°F vs. 78°F Dollar Penalty: For a typical 2,000 sq. ft. home with a 3-ton central AC, maintaining 72°F draws 694.7 kWh/month ($128.10/mo at 18.44¢/kWh) versus 453.0 kWh/month ($83.53/mo) at 78°F—a direct monthly expense increase of $44.57 (+53.4%).',
     'The 70°F Over-Cooling Extreme: Lowering the thermostat to 70°F forces the AC compressor to cycle for 10.8 hours daily (815.5 kWh/month), costing $150.38 per month—a steep $66.85 monthly (+80.0%) surcharge over the 78°F baseline.',
@@ -53,6 +54,19 @@ export const august2026SummerThermostatSettingCoolingCostBenchmark: InsightRecor
         'The relationship between thermostat setpoints and air conditioning power consumption is determined by building envelope heat transfer. Heat flows naturally from warmer outdoor air into cooler indoor living spaces according to Fourier’s Law of thermal conduction: Q_gain = U × A × (T_outdoor - T_indoor) + Q_solar + Q_internal.',
         'Where U represents the overall heat transmission coefficient of the building assembly, A is the surface area in square feet, and (T_outdoor - T_indoor) is the temperature delta (ΔT). When outdoor ambient temperatures hover at 95°F, setting 78°F creates a 17°F thermal gradient, whereas 72°F creates a 23°F gradient (+35.3% higher conductive heat gain) and 70°F creates a 25°F gradient (+47.1% higher conductive heat gain).',
         'Additionally, warm air infiltration through unsealed building envelope penetrations (Q_infil = 1.08 × CFM × ΔT) increases linearly with ΔT. Because the air conditioner must remove both sensible heat (air temperature) and latent heat (humidity), wider temperature deltas force the compressor to operate against lower evaporator suction pressures, slightly degrading instantaneous system efficiency.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Summer Baseline Setpoint Guideline | 78.0°F (25.6°C) energy conservation target | U.S. DOE Energy Saver & EPA ENERGY STAR |',
+        '| Model Assumption | Residential Floor Area Baseline | 2,000 sq. ft. single-family structure | Standard U.S. Residential Envelope Modeling Baseline |',
+        '| Model Assumption | Central AC Baseline Unit | 3-Ton (36,000 Btu/hr), 14.3 SEER2 | 2,517 Watts Active Continuous Power Draw |',
+        '| Model Assumption | Summer Peak Ambient Temperature | 95.0°F Outdoor Ambient Temperature | Peak August Thermal Gradient Baseline |',
+        '| Model Assumption | Cooling Season Length | 4 Months (June through September) | 120-Day Summer Operational Period |',
+        '| EnergyBillLab Calculation | 78°F Baseline Operating Cost (6.0 hrs/day) | $83.53 / month (453.0 kWh/mo) | 2.517 kW × 6.0 hrs × 30 days × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | 72°F Setting Operating Cost (9.2 hrs/day) | $128.10 / month (694.7 kWh/mo) | 2.517 kW × 9.2 hrs × 30 days × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Monthly Financial Penalty (72°F vs 78°F) | +$44.57 / month (+53.4% bill surge) | $128.10 cost @ 72°F - $83.53 cost @ 78°F ($178.28 / 4-mo season) |',
+        '| EnergyBillLab Calculation | 70°F Extreme Setting Cost (10.8 hrs/day) | $150.38 / month (815.5 kWh/mo) | +$66.85 / month (+80.0% surcharge over 78°F baseline) |',
       ],
     },
     {

@@ -105,7 +105,7 @@ export const contentPages = {
     description:
       'How Energy Bill Lab explains formulas, assumptions, source dates, and limitations for energy-cost estimates.',
     path: '/methodology',
-    updatedAt: '2026-07-23',
+    updatedAt: '2026-08-27',
     related: ['/data-sources', '/disclaimer', '/tools'],
     sections: [
       {
@@ -116,7 +116,16 @@ export const contentPages = {
         ],
       },
       {
-        heading: 'Formula transparency',
+        heading: '3-Tier Data Provenance Framework',
+        paragraphs: [
+          'To maintain mathematical defensibility and total transparency, all Energy Bill Lab benchmarks, tools, and research reports strictly categorize information into three distinct analytical tiers:',
+          '1. Official Source Data: Primary empirical datasets collected by official government agencies and accredited standards organizations, including U.S. Energy Information Administration (EIA Form EIA-861M) retail electricity and natural gas rates, U.S. Department of Energy (DOE) test procedures, National Renewable Energy Laboratory (NREL) modeling data, and EPA ENERGY STAR specifications.',
+          '2. EnergyBillLab Model Assumptions: Explicitly declared engineering and behavioral baseline parameters, such as equipment operating hours, seasonal heating/cooling degree days, appliance duty cycles, coefficient of performance (COP) baselines, water temperature differentials, and household floor area baselines.',
+          '3. Derived Calculated Results: Mathematical outputs derived deterministically by applying decimal-safe formulas to the combination of official source inputs and declared model assumptions (e.g., annual kWh consumption totals, monthly operating cost comparisons, multi-state rate impact matrices, and 10-year Total Cost of Ownership lifecycle models).',
+        ],
+      },
+      {
+        heading: 'Formula transparency & decimal-safe arithmetic',
         paragraphs: [
           'Each calculator displays its formula, input units, assumptions, warnings, rounding behavior, and the source of any default rate or appliance value used.',
           'Calculations use explicit unit conversions, decimal-safe arithmetic, and deterministic rounding formulas documented transparently on each tool page.',

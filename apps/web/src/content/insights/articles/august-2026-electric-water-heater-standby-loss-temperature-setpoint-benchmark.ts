@@ -32,6 +32,7 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
   summary:
     'Maintaining a standard 50-gallon electric storage water heater at the factory-set 140°F causes 2.40 kWh per day in standby heat loss (876.0 kWh/year), costing $161.53 annually at the May 2026 EIA national average electricity rate of 18.44¢/kWh. Lowering the thermostat to the Department of Energy recommended 120°F reduces standby heat loss to 1.76 kWh per day ($118.46/year) and cuts total household water heating electricity from 4,866 kWh to 4,194 kWh per year, delivering $123.84 in direct annual savings (a 13.8% reduction). Adding an R-10 external tank insulation blanket and pipe foam saves an additional $47.11 per year, paying back the $35 DIY installation cost in under 9 months.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; DOE 10 CFR Part 430 test standards; CDC anti-scald temperature data) from EnergyBillLab model assumptions (50-gallon tank baseline; 60 gal/day 4-person usage; 65°F ambient basement temp; 55°F groundwater inlet) and derived calculated results (2.40 kWh/day standby loss @ 140°F vs 1.76 kWh/day @ 120°F; $123.84/yr total savings from 20°F setback; $47.11/yr R-10 blanket savings; 9-month payback).',
     'Standby Heat Loss Magnitude: Continuous heat radiation through the steel jacket of an uninsulated 50-gallon water heater wastes 640 to 880 kWh per year ($118 to $162/year), accounting for 15% to 22% of total water heating electricity consumption.',
     'Setpoint Adjustment Savings: Reducing water heater temperature from 140°F to 120°F saves $43.08/year in pure standby loss and $80.77/year in pipe distribution and recovery losses, delivering $123.84/year ($10.32/month) in total utility bill reductions nationally.',
     'Tank Insulation Jacket ROI: Adding an external R-10 fiberglass blanket to a pre-2015 tank in an unconditioned basement or garage cuts standby heat loss by 40%, saving 255.5 kWh ($47.11/year) and achieving simple payback in less than 9 months on a $35 materials investment.',
@@ -58,6 +59,19 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
         'Hot water recovery energy is calculated using the specific heat of water (1.0 BTU/lb·°F) and water density (8.34 lbs/gallon):',
         'Recovery Energy (kWh/day) = [ Gallons Used × 8.34 lbs/gal × 1.0 BTU/lb·°F × (T_setpoint - T_inlet) ] ÷ (3,412 × η)',
         'Where T_inlet is the incoming groundwater supply temperature (~55°F national average) and η is the electric resistance heating conversion efficiency (~0.98 or 98%).',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Residential Storage Water Heater Test Procedure | 10 CFR Part 430 Subpart B App E | U.S. Department of Energy (DOE) |',
+        '| Official Government Data | Safe Domestic Hot Water Temperature Standard | 120.0°F (48.9°C) anti-scald guideline | U.S. DOE Energy Saver & Consumer Product Safety Commission |',
+        '| Model Assumption | Standard Single-Family Storage Vessel | 50.0 Gallons (25.3 sq. ft. surface area) | Standard R-12 Polyurethane Foam Storage Tank |',
+        '| Model Assumption | Household Hot Water Consumption Baseline | 60.0 Gallons / Day (4-person family) | DOE Building Technologies Office Standard |',
+        '| Model Assumption | Ambient Basement & Groundwater Temperatures | Ambient Air: 65.0°F; Inlet Water: 55.0°F | Standard U.S. Climatic Average Baselines |',
+        '| EnergyBillLab Calculation | Standby Heat Loss @ 140°F Setpoint | 2.40 kWh/day (876.0 kWh/yr = $161.53/yr) | (U × A × 75°F × 24 hrs) ÷ 3,412 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Standby Heat Loss @ 120°F Setpoint | 1.76 kWh/day (642.4 kWh/yr = $118.46/yr) | (U × A × 55°F × 24 hrs) ÷ 3,412 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Total Annual Savings from 120°F Setback | $123.84 / year ($10.32 / month) | $897.19 total @ 140°F - $773.35 total @ 120°F (13.8% saved) |',
+        '| EnergyBillLab Calculation | R-10 Tank Blanket Additional Savings | $47.11 / year (255.5 kWh/yr saved) | 40% reduction in surface conductive loss ($35 DIY payback in 8.9 mos) |',
       ],
     },
     {

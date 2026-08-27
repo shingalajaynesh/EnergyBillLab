@@ -31,6 +31,7 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
   summary:
     'At the U.S. national average residential electricity rate of 18.44¢/kWh based on May 2026 EIA data releases, cooling a single room with a 12,000 BTU (1-ton) ductless mini-split heat pump rated at 22 SEER2 for 8 hours daily costs $24.14 per month ($0.80/day; 130.9 kWh/mo), compared to $49.52 per month ($1.65/day; 268.5 kWh/mo) for a standard 14.3 SEER2 ducted central heat pump with typical 25% unconditioned attic duct losses. In winter heating mode, operating the same mini-split (10.5 HSPF2) for 10 hours daily costs $63.23 per month ($2.11/day; 342.9 kWh/mo)—slashing heating power bills by 46.4% compared to a ducted central heat pump ($118.02/mo) and by 67.5% compared to electric baseboard resistance heat ($194.56/mo).',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; DOE 10 CFR Part 430 Appendix M1 SEER2/HSPF2 test procedures; NREL duct thermal loss data) from EnergyBillLab model assumptions (12,000 BTU single-zone baseline; 22 SEER2 / 10.5 HSPF2 ratings; 8 hr/day cooling & 10 hr/day heating schedules; 25% unconditioned attic duct thermal loss) and derived calculated results ($24.14/mo mini-split cooling vs $49.52/mo ducted central; $63.23/mo mini-split heating vs $118.02/mo central; $1,061.59/yr whole-home savings).',
     'Cooling Mode Efficiency Spread: A 12,000 BTU (1-ton) ductless mini-split operating at 22 SEER2 draws an average of 545 Watts, consuming 130.9 kWh/month ($24.14/mo at 18.44¢/kWh), cutting cooling electricity expense by 51.3% compared to a 14.3 SEER2 ducted central system ($49.52/mo) due to superior ratings and zero duct thermal loss.',
     'Heating Mode Operating Economics: Cold-climate inverter mini-splits achieve 10.0 to 12.0 HSPF2 (Seasonal COP 2.9–3.5), delivering 12,000 BTU/hr of warmth at 1,143 Watts ($63.23/mo for 10 hr/day) versus 2,133 Watts ($118.02/mo) for standard ducted central heat pumps and 3,517 Watts ($194.56/mo) for electric resistance baseboards.',
     'The 25% Duct Loss Penalty: Department of Energy (DOE) and NREL field studies confirm that uninsulated or leaky ductwork in unconditioned attics and crawlspaces wastes 20% to 30% of conditioned heating and cooling energy, an efficiency loss completely eliminated by ductless point-of-use units.',
@@ -52,6 +53,20 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
         'Ductless mini-splits achieve industry-leading efficiency through two core thermodynamic advantages: modulating inverter refrigeration cycles and point-of-use direct air delivery.',
         'Variable-speed DC inverter compressors adjust motor frequency in real time, eliminating the inefficient start-stop cycling that plagues conventional single-stage central compressors.',
         'Eliminating attic ductwork bypasses the 20% to 30% thermal conduction and leakage losses documented in DOE building energy benchmarks, ensuring all consumed kilowatt-hours directly condition living space.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Heat Pump Efficiency Test Procedures | 10 CFR Part 430 Subpart B App M1 (SEER2 / HSPF2) | U.S. Department of Energy (DOE) |',
+        '| Official Government Data | Ducted Thermal Distribution Losses | 20% to 30% unconditioned attic duct losses | U.S. DOE Building Technologies & NREL |',
+        '| Model Assumption | Single-Zone Capacity Benchmark | 12,000 BTU/hr (1.0-Ton) zone capacity | Standard Single Room Conditioned Space Baseline |',
+        '| Model Assumption | High-Efficiency Mini-Split Ratings | 22.0 SEER2 Cooling / 10.5 HSPF2 Heating | Premium Variable-Speed Inverter System |',
+        '| Model Assumption | Standard Central Ducted Baseline | 14.3 SEER2 Cooling / 7.5 HSPF2 Heating (+25% duct loss) | Standard Federal Minimum Ducted System Baseline |',
+        '| Model Assumption | Operating Schedules | Cooling: 8 hrs/day; Heating: 10 hrs/day | Standard Active HVAC Operating Schedules |',
+        '| EnergyBillLab Calculation | 1-Ton Mini-Split Monthly Cooling Cost | $24.14 / month (130.9 kWh / month) | 0.545 kW × 8 hrs × 30 days × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | 1-Ton Ducted Central Monthly Cooling Cost | $49.52 / month (268.5 kWh / month) | 1.119 kW × 8 hrs × 30 days × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | 1-Ton Mini-Split Monthly Heating Cost | $63.23 / month (342.9 kWh / month) | 1.143 kW × 10 hrs × 30 days × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Whole-Home (3-Zone) Annual Savings | $1,061.59 / year (5,757.0 kWh / yr saved) | $2,389.27 ducted central vs $1,327.68 ductless mini-split |',
       ],
     },
     {

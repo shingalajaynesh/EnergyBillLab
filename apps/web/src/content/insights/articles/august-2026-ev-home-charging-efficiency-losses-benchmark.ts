@@ -32,6 +32,7 @@ export const august2026EvHomeChargingEfficiencyLossesBenchmark: InsightRecord = 
   summary:
     'At the U.S. national average residential electricity rate of 18.44¢/kWh based on May 2026 EIA data releases, Level 1 (120V @ 12A / 1.44 kW) electric vehicle charging operates at an average wall-to-battery efficiency of 82.5%, compared to 91.0% for standard Level 2 (240V @ 32A / 7.68 kW) charging. For an average EV driven 12,000 miles per year (3,600 kWh net battery energy), Level 1 draws 4,363.6 kWh from the grid ($804.65/yr) and wastes 763.6 kWh ($140.81/yr) as heat and parasitic overhead, while Level 2 draws 3,956.0 kWh ($729.49/yr). Upgrading to Level 2 charging directly avoids 407.6 kWh of grid waste annually, saving $75.16 per year nationally, $132.06 per year in California (32.40¢/kWh), and up to $646.80 per year when combined with off-peak Time-of-Use (TOU) charging schedules.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential electricity rate of 18.44¢/kWh; Idaho National Laboratory EV charging data; DOE AFDC standards) from EnergyBillLab model assumptions (12,000 miles/year baseline; 3.33 mi/kWh vehicle efficiency; 250W fixed auxiliary overhead; 82.5% L1 vs 91.0% L2 efficiency) and derived calculated results (4,363.6 kWh L1 vs 3,956.0 kWh L2 grid draw; 407.6 kWh/yr avoided grid waste; $75.16/yr direct efficiency savings; $646.80/yr TOU schedule savings).',
     'Wall-to-Battery Efficiency Spread: Level 1 charging delivers 82.5% efficiency (17.5% energy loss), whereas standard 32A Level 2 charging delivers 91.0% efficiency (9.0% loss) and 48A Level 2 reaches 92.0% efficiency (8.0% loss).',
     'The 250W Fixed Auxiliary Baseline: When an EV is awake and charging, internal electronics (BMS, thermal coolant pumps, telematics) draw a continuous ~250 Watts. On Level 1 (1,440W), this parasitic overhead consumes 17.36% of total grid power, compared to only 3.26% on Level 2 (7,680W).',
     'Annual Grid Draw (12,000 Miles/Year): Powering an EV with Level 1 requires 4,363.6 kWh of grid electricity annually ($804.65/yr at 18.44¢/kWh), whereas Level 2 requires 3,956.0 kWh ($729.49/yr)—a direct annual difference of 407.6 kWh and $75.16 in avoided utility bill costs.',
@@ -56,6 +57,19 @@ export const august2026EvHomeChargingEfficiencyLossesBenchmark: InsightRecord = 
         '2. Fixed Auxiliary Parasitic Power (P_aux): Continuous electrical draw required to operate the vehicle’s high-voltage Battery Management System (BMS), telematics, liquid thermal loop coolant pumps, and internal contactors. Empirical measurements from Idaho National Laboratory field benchmarks confirm this baseline draws approximately 200W to 300W (nominal 250W) regardless of charging speed.',
         '3. Variable Conversion Losses (P_loss): Resistive (I²R) thermal dissipation in wiring harnesses and semiconductor switching losses inside the vehicle onboard AC-to-DC rectifier (typically 5% to 6% of throughput power).',
         'Because P_aux is constant over time, a slow charging rate dramatically inflates the proportion of energy lost. On Level 1 (1.44 kW), 250 Watts represents 17.36% of all energy drawn from the wall. On Level 2 (7.68 kW), 250 Watts is diluted to just 3.26% of total power.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | EV Charging Infrastructure Test Data | SAE J1772 / Level 1 & Level 2 Protocols | Idaho National Laboratory (INL) & U.S. DOE |',
+        '| Model Assumption | Annual Driving Distance | 12,000 Miles / Year (1,000 miles/month) | Federal Highway Administration (FHWA) Average |',
+        '| Model Assumption | Vehicle Net Electrical Economy | 3.33 Miles / kWh (30.0 kWh / 100 miles) | EPA Rated Mid-Size EV Baseline (3,600 kWh net/yr) |',
+        '| Model Assumption | Fixed Parasitic Auxiliary Overhead | 250 Watts Continuous While Charging | Vehicle BMS, telemetry, and coolant pump baseline |',
+        '| EnergyBillLab Calculation | Level 1 Wall-to-Battery Efficiency | 82.5% Efficiency (17.5% total loss) | 1,440W total: 1,188W to battery, 250W aux, 74W conversion |',
+        '| EnergyBillLab Calculation | Level 2 Wall-to-Battery Efficiency (32A) | 91.0% Efficiency (9.0% total loss) | 7,680W total: 6,989W to battery, 250W aux, 441W conversion |',
+        '| EnergyBillLab Calculation | Annual Level 1 Grid Electricity Consumption | 4,363.6 kWh / year ($804.65 / year) | 3,600.0 kWh net ÷ 0.825 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Annual Level 2 Grid Electricity Consumption | 3,956.0 kWh / year ($729.49 / year) | 3,600.0 kWh net ÷ 0.910 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Annual Avoided Grid Waste from Level 2 | 407.6 kWh / year ($75.16 / year saved) | $804.65 Level 1 cost - $729.49 Level 2 cost |',
       ],
     },
     {

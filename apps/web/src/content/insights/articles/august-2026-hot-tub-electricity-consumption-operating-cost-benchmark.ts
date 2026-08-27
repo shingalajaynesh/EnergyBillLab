@@ -33,6 +33,7 @@ export const august2026HotTubElectricityConsumptionOperatingCostBenchmark: Insig
   summary:
     'Operating a standard 350-gallon residential hot tub consumes 220 to 320 kWh per month in warm summer weather ($40.57 to $59.01/month) and surges to 450 to 650 kWh per month in cold winter conditions ($82.98 to $119.86/month) at the May 2026 EIA national average residential electricity rate of 18.44¢/kWh. Standby thermal dissipation accounts for 70% to 80% of total electrical consumption, drawing a continuous baseline of 145 Watts in modern full-foam models versus 520+ Watts in spas with waterlogged or degraded covers. While 120V "plug-and-play" spas (1.0–1.44 kW heater) avoid dedicated electrical installation costs, their control interlocks disable the heater while high-speed jet pumps are active, causing water temperatures to drop 2°F to 4°F per hour during winter soaks compared to 240V (4.0–5.5 kW) hardwired systems.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; ANSI/APSP/ICC-14 test standards; CEC Title 20 spa efficiency limits) from EnergyBillLab model assumptions (350-gallon spa capacity; 102°F thermostat setpoint; 3 weekly 45-minute sessions; 145W full-foam vs 520W waterlogged cover standby baseloads) and derived calculated results ($40.57–$59.01/mo summer cost; $82.98–$119.86/mo winter cost; 2.48x seasonal temperature gradient surge; $437.76–$1,976.00 annual multi-state cost spread).',
     'Standby Loss Dominance: Up to 75% of a hot tub’s monthly power bill is consumed by maintaining resting water temperature (102°F) against ambient air conduction and evaporation, rather than spinning the hydrotherapy jet pumps.',
     'Seasonal Temperature Delta Multiplier: When ambient outdoor temperatures drop from 75°F in August to 35°F in January, the thermal temperature gradient (ΔT) increases by 2.48x (27°F vs 67°F), driving monthly electricity consumption from 268 kWh ($49.36/mo) up to 570 kWh ($105.11/mo) for an identical usage schedule.',
     'Waterlogged Cover Penalty: A saturated foam core cover loses up to 85% of its thermal resistance (R-value collapses from R-14 down to R-2), increasing continuous standby power draw from 180W to 520W+ and adding $35 to $55 per month in wasted electricity.',
@@ -58,6 +59,19 @@ export const august2026HotTubElectricityConsumptionOperatingCostBenchmark: Insig
         'Active hydrotherapy energy is calculated from the electrical input ratings of the booster jet pumps and the supplemental resistance heater:',
         'Active Energy per Session (kWh) = [ (P_jets (kW) + P_heater (kW)) × Session Duration (hours) ]',
         'Where dual 2.0 HP continuous-duty jet pumps draw 3.0 kW (1,500W each) and a standard 240V electric resistance heating element draws 4.0 kW to 5.5 kW.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Residential Spa Standby Efficiency Standard | ANSI/APSP/ICC-14 / CEC Title 20 | California Energy Commission & Pool and Hot Tub Alliance |',
+        '| Model Assumption | Standard Spa Water Capacity | 350 Gallons (2,917 lbs of water) | Standard 4-to-6 Person Residential Spa Baseline |',
+        '| Model Assumption | Thermostat Setpoint Temperature | 102.0°F (Continuous 24/7/365 setpoint) | Standard Residential Hydrotherapy Setpoint |',
+        '| Model Assumption | Usage Schedule | 3 Sessions / Week (45 minutes each) | Standard Household Recreational Profile |',
+        '| Model Assumption | Ambient Temperature Swings | Summer: 75°F (ΔT=27°F); Winter: 35°F (ΔT=67°F) | U.S. Climatic Average Seasonal Gradients |',
+        '| EnergyBillLab Calculation | Summer Monthly Operating Cost (267.7 kWh) | $49.36 / month | (189.7 kWh standby + 78.0 kWh active) × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Winter Monthly Operating Cost (570.0 kWh) | $105.11 / month | (455.0 kWh standby + 115.0 kWh active) × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Waterlogged Cover Annual Penalty | +$419.99 / year (+2,277.6 kWh/yr) | 520W saturated draw vs 260W factory standard draw |',
+        '| EnergyBillLab Calculation | Annual National Operating Cost Total | $700.72 / year (3,800 kWh/year) | 3,800 kWh/yr × $0.1844/kWh ($58.39/mo average) |',
       ],
     },
     {

@@ -32,6 +32,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
   summary:
     'At the U.S. national average residential electricity rate of 18.44¢/kWh and residential natural gas price of $1.44 per therm ($14.80/Mcf) based on May 2026 EIA data releases, cooking for one hour per day costs $94.23 per year ($7.85/month; 511.0 kWh/yr) on an induction cooktop, $108.43 per year ($9.04/month; 588.0 kWh/yr) on a smooth radiant electric range, and $47.30 per year ($3.94/month; 32.85 therms/yr) on a residential natural gas burner. Under Department of Energy (DOE) test procedures, induction achieves 85.0% thermal efficiency by transferring electromagnetic energy directly to cookware—wasting only 15% of input energy compared to 26% wasted by radiant electric elements and 60% wasted by open gas flames (venting 5,400 BTU/hr of waste heat into kitchen indoor air).',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; EIA natural gas price of $1.44/therm; DOE 10 CFR Part 430 Appendix I1 cooktop test standards) from EnergyBillLab model assumptions (1.0 hour/day active cooking baseline; 300 Wh standard task heat requirement; 85% induction vs 74% radiant vs 40% gas efficiency) and derived calculated results ($94.23/yr induction vs $108.43/yr radiant electric vs $47.30/yr gas; $14.20/yr induction efficiency dividend; $8.52 summer AC heat penalty).',
     'Thermal Transfer Efficiency Spread: U.S. Department of Energy (DOE) testing establishes that induction cooktops transfer 85.0% of input energy directly into food and cookware, compared to 74.0% for smooth radiant glass-top electric elements and 40.0% for standard residential natural gas burners.',
     'Annual Electricity vs. Gas Baseline: At 18.44¢/kWh and $1.44/therm, operating a 1,800W burner for 1 hour daily consumes 511.0 kWh/year ($94.23/yr) on induction, 588.0 kWh/year ($108.43/yr) on smooth radiant electric, and 32.85 therms/year ($47.30/yr) on natural gas.',
     'Efficiency Dividend Over Radiant Electric: Induction delivers identical cooking heat while consuming 77.0 fewer kWh per year than smooth radiant electric elements, reducing cooking electric utility expense by 13.1% ($14.20/yr nationally, $24.95/yr in California, and $40.04/yr in Hawaii).',
@@ -53,6 +54,19 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
         'The primary determinant of cooktop energy consumption is thermal efficiency—the percentage of total energy consumed by the appliance that is successfully transferred into the cooking vessel.',
         'Under Department of Energy (DOE) test procedures (10 CFR Part 430, Subpart B, Appendix I1), induction cooktops demonstrate an average thermal transfer efficiency of 85.0%, smooth radiant electric elements average 74.0%, and gas burners average 40.0%.',
         'Because induction generates heat directly within the metal of the pot rather than transferring heat across an air gap or glass surface, standby heat loss is negligible, pan response is instantaneous, and boil times are reduced by up to 50%.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | U.S. National Average Residential Natural Gas Price | $1.44 / therm ($14.80/Mcf) | EIA Natural Gas Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Cooktop Thermal Transfer Efficiency Standards | 10 CFR Part 430 Subpart B App I1 | U.S. Department of Energy (DOE) Cooking Test Procedures |',
+        '| Model Assumption | Daily Cooktop Active Operating Time | 1.0 Hour / Day (365 hours / year) | Standard Residential Active Daily Cooking Baseline |',
+        '| Model Assumption | Standard Cooking Heat Delivery Task | 300 Wh (1,024 BTU) useful delivered heat | Rapid Boil 2 Liters Water Reference Metric |',
+        '| EnergyBillLab Calculation | Annual Induction Cooking Consumption & Cost | 511.0 kWh / year ($94.23 / year) | 1.40 kWh/day × 365 days × $0.1844/kWh ($7.85/mo) |',
+        '| EnergyBillLab Calculation | Annual Radiant Electric Consumption & Cost | 588.0 kWh / year ($108.43 / year) | 1.61 kWh/day × 365 days × $0.1844/kWh ($9.04/mo) |',
+        '| EnergyBillLab Calculation | Annual Natural Gas Cooking Consumption & Cost | 32.85 therms / year ($47.30 / year) | 0.09 therms/day × 365 days × $1.44/therm ($3.94/mo) |',
+        '| EnergyBillLab Calculation | Induction Efficiency Savings vs Radiant Electric | $14.20 / year (77.0 kWh/yr saved) | $108.43 radiant cost - $94.23 induction cost (13.1% saved) |',
+        '| EnergyBillLab Calculation | Summer Gas Burner HVAC Cooling Heat Penalty | +$8.52 / season (46.2 kWh extra AC load) | 120 days × 5,400 BTU waste heat ÷ (14 SEER2 × 1,000) × $0.1844/kWh |',
       ],
     },
     {

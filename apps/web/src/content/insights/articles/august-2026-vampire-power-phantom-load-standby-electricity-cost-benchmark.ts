@@ -32,6 +32,7 @@ export const august2026VampirePowerPhantomLoadStandbyElectricityCostBenchmark: I
   summary:
     'A typical U.S. single-family home maintains a continuous "vampire power" or phantom standby load of 115 Watts (0.115 kW), drawing 1,007.4 kWh per year and adding $185.76 annually ($15.48 per month) to household electric bills at the May 2026 U.S. Energy Information Administration (EIA) national average residential rate of 18.44¢/kWh. In high-rate states such as California (32.40¢/kWh) and Hawaii (42.10¢/kWh), this identical 115W continuous draw costs $326.40 and $424.12 per year, respectively. Based on research from the Lawrence Berkeley National Laboratory (LBNL) Standby Power Group, individual idle electronics draw between 0.2 Watts (unloaded phone charger) and 22.0 Watts (active cable/DVR set-top box). Every 1 Watt of continuous 24/7 phantom load accumulates 8.76 kWh per year, creating an exact national baseline cost of $1.62 per continuous Watt annually. Installing an advanced Tier 1 smart power strip to eliminate 45 Watts of idle home-theater or home-office peripheral loads saves 328.5 kWh per year ($60.58/year nationally; $106.43/year in California), recovering the $25.00 purchase price in 4.95 months.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential electricity rate of 18.44¢/kWh; LBNL Standby Power Group laboratory measurements; DOE Energy Saver standards) from EnergyBillLab model assumptions (8,760 hours/year continuous operation; 45W apartment vs 115W suburban vs 220W smart home baseloads; Tier 1 smart strip peripheral shedding) and derived calculated results ($185.76/yr standard household baseload; $1.62/year per continuous Watt; $60.58/year smart strip savings; 4.95-month payback period).',
     'Rule of Continuous Power: Every 1 Watt of continuous 24/7 electrical draw consumes exactly 8.76 kWh over an 8,760-hour year, costing $1.62 per year nationally (18.44¢/kWh), $2.84/year in California (32.40¢/kWh), and $3.69/year in Hawaii (42.10¢/kWh).',
     'Top Standby Offenders: High-definition DVR cable set-top boxes (22.0W active standby; $35.54/year) and next-generation video game consoles in "Instant-On / Connected Standby" mode (15.0W; $24.23/year) represent the two largest individual consumer vampire loads.',
     'Household Profile Spectrum: Continuous phantom baseloads range from 45 Watts ($72.69/year) in a minimalist 1-bedroom apartment to 115 Watts ($185.76/year) in a standard suburban home and 220 Watts ($355.38/year nationally; $624.41/year in California) in a tech-heavy connected smart home.',
@@ -55,6 +56,18 @@ export const august2026VampirePowerPhantomLoadStandbyElectricityCostBenchmark: I
       heading: '2. Device-by-Device Standby Power & Annual Electricity Cost Benchmark',
       paragraphs: [
         'To establish clear cost benchmarks for consumer electronics, we evaluated 10 common household equipment categories under standard manufacturer default settings versus optimized energy-saver sleep settings, applying the May 2026 EIA national average residential electricity rate of 18.44¢/kWh.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Consumer Standby Power Measurement Protocols | IEC 62301 / 10 CFR Part 430 | Lawrence Berkeley National Laboratory (LBNL) Standby Power Group |',
+        '| Model Assumption | Annual Continuous Operating Hours | 8,760 Hours / Year (24/7/365 continuous) | Standard Calendar Year Continuous Baseline |',
+        '| Model Assumption | Typical Single-Family Baseload | 115 Watts Continuous Standby | Moderate Smart Suburban Home Profile |',
+        '| Model Assumption | Smart Power Strip Peripheral Shedding | 45 Watts Switched Off | TV/PC Peripheral Equipment Subsystem |',
+        '| EnergyBillLab Calculation | Continuous Power Cost Multiplier | $1.615 / continuous Watt-year | 1.0 W × 8,760 hrs ÷ 1,000 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Typical Household Standby Electricity Cost | $185.76 / year ($15.48 / month) | 115.0 W × 8,760 hrs ÷ 1,000 × $0.1844/kWh (1,007.4 kWh/yr) |',
+        '| EnergyBillLab Calculation | Smart Power Strip Annual Dollar Savings | $60.58 / year (328.5 kWh/yr saved) | 45.0 W × 8,760 hrs ÷ 1,000 × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Smart Strip Financial Payback Period | 4.95 Months ($25.00 purchase price) | $25.00 ÷ ($60.58 / 12 months) |',
         'Table 1: Household Electronics Standby Power & Annual Operating Cost Benchmark (National Average: 18.44¢/kWh; 8,760 Hours/Year)',
         '| Device Category | Default Standby Power (Watts) | Annual Electricity Draw (kWh/yr) | Annual Cost @ 18.44¢/kWh ($/yr) | Eco Mode Standby Power (Watts) | Eco Mode Annual Cost ($/yr) | Annual Savings by Mode Shift ($/yr) |',
         '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',

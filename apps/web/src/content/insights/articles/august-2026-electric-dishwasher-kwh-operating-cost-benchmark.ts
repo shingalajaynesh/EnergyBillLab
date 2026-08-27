@@ -31,6 +31,7 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
   summary:
     'Running a standard ENERGY STAR dishwasher on a normal heated-dry cycle consumes 1.35 kWh per load ($0.249 per cycle at the U.S. national average electricity rate of 18.44¢/kWh), resulting in an annual operating cost of $53.52 across the U.S. Department of Energy (DOE) benchmark of 215 cycles per year. Disabling heated dry in favor of Eco air-drying reduces cycle energy to 0.85 kWh ($0.157 per load), saving 107.5 kWh ($19.82/year nationally, $34.83/year in California). Thermodynamic energy modeling shows hand washing dishes using tap water heated by a standard electric tank water heater consumes 2.45 kWh of electricity per equivalent load ($0.452 per wash)—costing 2.88 times more in electricity alone ($73.75 higher annual power expense) than an ENERGY STAR dishwasher on Eco air-dry.',
   keyFindings: [
+    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; DOE 10 CFR Part 430 dishwasher test procedures; EPA ENERGY STAR water criteria) from EnergyBillLab model assumptions (215 cycles/year DOE benchmark; 1.35 kWh heated dry vs 0.85 kWh Eco air-dry consumption per cycle; 18 gallons hot water @ 2.45 kWh for hand-washing baseline) and derived calculated results (24.9¢ heated dry vs 15.7¢ air dry per cycle; $53.52/yr vs $33.70/yr; $19.82/yr air-dry savings; 65.3% savings vs hand washing).',
     'National Cycle Cost Baseline: At the May 2026 EIA national average residential electricity rate of 18.44¢/kWh, a standard ENERGY STAR dishwasher with heated dry costs $0.249 per load (1.35 kWh/cycle), amounting to $53.52 per year for a typical 215-cycle annual workload.',
     'Heated Dry vs. Eco Air-Dry Savings: Disabling the electric calrod heated-dry element saves 0.50 kWh per load (a 37.0% cycle energy reduction), cutting annual power consumption from 290.25 kWh to 182.75 kWh and saving $19.82 per year nationally ($34.83/year in California at 32.40¢/kWh).',
     'Hand Washing vs. Dishwasher Water-Heating Economics: Washing dishes by hand under running tap water consumes 18 gallons of hot water, requiring 2.45 kWh of grid electricity ($0.452 per wash at 18.44¢/kWh) when supplied by a standard electric resistance water heater. Modern ENERGY STAR dishwashers use only 3.2 gallons of water per load, reducing total electricity consumption by 65.3% per wash.',
@@ -47,6 +48,20 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
       paragraphs: [
         'A dishwasher consumes electrical energy through two distinct components: the mechanical wash system (circulating pump motor, drain pump, and control electronics) and the thermal heating elements (internal water booster heater and floor calrod drying coil). In standard operating modes, heating water from municipal tap temperatures (50°F–60°F) up to sanitizing wash temperatures (120°F–140°F) accounts for 65% to 75% of total cycle kWh draw, while the active heated-dry sequence accounts for 20% to 30%.',
         'Disabling the heated-dry option—allowing dishes to dry naturally via condensation or ambient air—eliminates the operation of the 600-to-1,200-Watt heating element during the 20-to-40-minute drying phase. As detailed in the benchmark table below, switching an ENERGY STAR unit from standard heated dry to Eco air-dry lowers per-cycle electricity draw from 1.35 kWh to 0.85 kWh.',
+        'Table: Data Provenance & Methodology Lineage Breakdown',
+        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
+        '| :--- | :--- | :--- | :--- |',
+        '| Official Government Data | U.S. National Average Residential Electricity Rate | 18.44 ¢/kWh ($0.1844/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
+        '| Official Government Data | Dishwasher Test Procedure | 10 CFR Part 430 Subpart B App C1 | U.S. Department of Energy (DOE) |',
+        '| Official Government Data | ENERGY STAR Dishwasher Water Consumption | ≤ 3.5 Gallons / Cycle standard size | U.S. Environmental Protection Agency (EPA) |',
+        '| Model Assumption | Annual Standard Dishwasher Usage | 215 Cycles / Year (4.13 loads / week) | Official U.S. DOE Test Procedure Baseline |',
+        '| Model Assumption | ENERGY STAR Heated-Dry Cycle Draw | 1.35 kWh / Cycle (wash booster + calrod dry) | Standard Modern ENERGY STAR Unit |',
+        '| Model Assumption | ENERGY STAR Eco Air-Dry Cycle Draw | 0.85 kWh / Cycle (wash booster only) | Condensation Air-Dry Mode |',
+        '| Model Assumption | Manual Hand Washing Hot Water Draw | 18.0 Gallons Hot Water / equivalent load | Faucet Flow & Thermal Recovery Baseline |',
+        '| EnergyBillLab Calculation | Heated-Dry Operating Cost (1.35 kWh/cycle) | 24.9 ¢ / cycle ($53.52 / year for 215 cycles) | 1.35 kWh × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Eco Air-Dry Operating Cost (0.85 kWh/cycle) | 15.7 ¢ / cycle ($33.70 / year for 215 cycles) | 0.85 kWh × $0.1844/kWh |',
+        '| EnergyBillLab Calculation | Annual Heated-Dry vs Eco Air-Dry Savings | $19.82 / year (107.5 kWh/yr saved) | $53.52 heated dry - $33.70 air dry (37.0% saved) |',
+        '| EnergyBillLab Calculation | Hand Washing Thermal Cost Disadvantage | +$0.295 / load (+2.88x higher electricity cost) | $0.452 hand wash vs $0.157 dishwasher air-dry |',
         'Table 1: Dishwasher Cycle Operating Cost & Energy Consumption Benchmark (U.S. National Average Rate: 18.44¢/kWh; DOE Standard Benchmark: 215 Cycles/Year)',
       ],
     },
