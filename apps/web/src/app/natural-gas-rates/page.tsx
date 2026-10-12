@@ -20,10 +20,11 @@ import styles from './natural-gas-hub.module.css';
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getNaturalGasHubData();
 
+  const monthLabel = data.latestSourceMonthFormatted || 'July 2026';
+
   const baseMeta = createPageMetadata({
     title: 'U.S. Residential Natural Gas Prices and Historical Trends',
-    description:
-      'Official EIA residential natural gas prices in $/Mcf and estimated $/therm, historical monthly data from June 2024 to April 2026, state data availability, and household cost calculators.',
+    description: `Official EIA residential natural gas prices in $/Mcf and estimated $/therm, historical monthly data from June 2024 to ${monthLabel}, state data availability, and household cost calculators.`,
     path: '/natural-gas-rates',
   });
 
@@ -60,7 +61,7 @@ export default async function NaturalGasRatesPage() {
 
   const latestMonthText = data.latestSourceMonthFormatted
     ? `Data through ${data.latestSourceMonthFormatted}`
-    : 'Data through April 2026';
+    : 'Data through July 2026';
 
   return (
     <>
@@ -79,7 +80,7 @@ export default async function NaturalGasRatesPage() {
         <PageHeader
           eyebrow="U.S. Household Energy Research"
           title="U.S. Residential Natural Gas Prices and Historical Trends"
-          description="Data-driven analysis of U.S. residential natural gas retail prices, Mcf to therm conversion standards, historical monthly trends from June 2024 to April 2026, and household cost calculators based on official U.S. Energy Information Administration (EIA) data."
+          description={`Data-driven analysis of U.S. residential natural gas retail prices, Mcf to therm conversion standards, historical monthly trends from June 2024 to ${data.latestSourceMonthFormatted || 'July 2026'}, and household cost calculators based on official U.S. Energy Information Administration (EIA) data.`}
         />
 
         <div className={styles.container}>
@@ -193,7 +194,7 @@ export default async function NaturalGasRatesPage() {
           {data.trend.length > 0 ? (
             <section className={styles.sectionCard} aria-labelledby="history-heading">
               <h2 id="history-heading" className={styles.sectionTitle}>
-                Historical U.S. Residential Natural Gas Trend (June 2024 – April 2026)
+                Historical U.S. Residential Natural Gas Trend
               </h2>
               <p className={styles.sectionSubtitle}>
                 Official U.S. Energy Information Administration (EIA) monthly residential natural
@@ -202,8 +203,8 @@ export default async function NaturalGasRatesPage() {
               <div className={styles.tableWrapper}>
                 <table className={styles.dataTable}>
                   <caption>
-                    U.S. residential natural gas retail prices by monthly reporting period (Form
-                    EIA-857)
+                    U.S. residential natural gas retail prices by monthly reporting period (EIA
+                    Natural Gas Monthly Table 20)
                   </caption>
                   <thead>
                     <tr>
@@ -244,7 +245,7 @@ export default async function NaturalGasRatesPage() {
               State Natural Gas Data Availability
             </h2>
             <p className={styles.sectionSubtitle}>
-              Reporting Period: {data.comparisonCohort.latestCommonPeriod || 'April 2026'}.{' '}
+              Reporting Period: {data.comparisonCohort.latestCommonPeriod || 'July 2026'}.{' '}
               {data.comparisonCohort.eligibleStatesCount > 0
                 ? `${data.comparisonCohort.eligibleStatesCount} geographies have verified residential natural gas price data for this period.`
                 : ''}{' '}

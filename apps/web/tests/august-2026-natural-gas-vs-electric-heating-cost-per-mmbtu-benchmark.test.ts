@@ -72,11 +72,11 @@ describe('August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu Insight', 
   it('8. provides original analytical calculations for delivered thermal heating cost per MMBtu', () => {
     const record = august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark;
     expect(record.summary).toContain('$54.04');
-    expect(record.summary).toContain('179.6%');
-    expect(record.summary).toContain('$19.33/MMBtu');
+    expect(record.summary).toContain('172.4%');
+    expect(record.summary).toContain('$19.84/MMBtu');
     expect(record.summary).toContain('$18.01 per MMBtu');
-    expect(record.practicalExample).toContain('$2,702.00 annually');
-    expect(record.practicalExample).toContain('$966.50');
-    expect(record.practicalExample).toContain('$900.50');
+    expect(record.practicalExample).toContain('$2,702.11');
+    expect(record.practicalExample).toContain('$991.90');
+    expect(record.practicalExample).toContain('$900.70');
   });
 });

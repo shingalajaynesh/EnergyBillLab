@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { calculateGasFurnaceCost } from '@energy-bill-lab/calculation-engine';
 import { Alert, Card, Form, InputNumber, Radio, Typography } from 'antd';
 
+import { CANONICAL_NATURAL_GAS_SNAPSHOT } from '@/lib/constants/natural-gas';
+
 const { Title, Text, Paragraph } = Typography;
 
 export type GasFurnaceBenchmarkProps = {
@@ -17,7 +19,8 @@ export function GasFurnaceCalculatorIsland({
 }: {
   initialBenchmark?: GasFurnaceBenchmarkProps;
 }) {
-  const defaultThermRate = initialBenchmark?.estimatedPricePerTherm ?? 19.83 / 10.36;
+  const defaultThermRate =
+    initialBenchmark?.estimatedPricePerTherm ?? CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm;
 
   const [mode, setMode] = useState<'input_capacity' | 'heating_output'>('heating_output');
   const [inputBtu, setInputBtu] = useState<number | null>(100000);

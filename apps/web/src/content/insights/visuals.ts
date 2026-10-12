@@ -400,7 +400,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   'august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark': {
     title: 'Delivered Heating Cost per Million BTU (MMBtu) Benchmark',
     subtitle:
-      'Calculated using May 2026 EIA rates: $16.14/Mcf natural gas vs 18.44¢/kWh electricity',
+      'Calculated using May 2026 EIA rates: $19.73/Mcf (≈ $1.90/therm) natural gas vs 18.44¢/kWh electricity',
     badge: 'Heating Fuel Economics',
     badgeType: 'primary',
     items: [
@@ -409,34 +409,34 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         displayValue: '$54.04 / MMBtu',
         value: 54.04,
         color: 'danger',
-        subLabel: 'Direct resistance heating is 2.8x more expensive than gas furnace heating',
+        subLabel: 'Direct resistance heating is 2.7x more expensive than 96% gas furnace heating',
       },
       {
-        label: 'Cold-Climate Heat Pump (COP = 2.5 @ 18.44¢/kWh)',
-        displayValue: '$21.62 / MMBtu',
-        value: 21.62,
-        color: 'primary',
-        subLabel: 'Transfers 2.5 units of heat per unit of electricity consumed',
-      },
-      {
-        label: 'Standard 80% AFUE Gas Furnace ($16.14/Mcf)',
-        displayValue: '$19.45 / MMBtu',
-        value: 19.45,
+        label: 'Standard 80% AFUE Gas Furnace ($19.73/Mcf)',
+        displayValue: '$23.81 / MMBtu',
+        value: 23.81,
         color: 'warning',
-        subLabel: 'Standard baseline gas furnace operating cost',
+        subLabel: 'Standard baseline mid-efficiency gas furnace operating cost',
       },
       {
-        label: 'High-Efficiency 96% AFUE Condensing Gas Furnace ($16.14/Mcf)',
-        displayValue: '$16.21 / MMBtu',
-        value: 16.21,
+        label: 'High-Efficiency 96% AFUE Condensing Gas Furnace ($19.73/Mcf)',
+        displayValue: '$19.84 / MMBtu',
+        value: 19.84,
+        color: 'primary',
+        subLabel: 'Condensing heat exchanger extracts latent heat from flue exhaust gases',
+      },
+      {
+        label: 'High-Efficiency Heat Pump (COP = 3.0 @ 18.44¢/kWh)',
+        displayValue: '$18.01 / MMBtu',
+        value: 18.01,
         color: 'success',
         highlight: true,
-        badge: 'Lowest Fuel Cost',
-        subLabel: 'Condensing heat exchanger extracts latent heat from flue exhaust gases',
+        badge: 'Lowest Operating Cost',
+        subLabel: 'Transfers 3.0 units of heat per unit of electricity consumed',
       },
     ],
     footerNote:
-      'Fuel Metric: 1 Mcf natural gas contains ~1,037,000 BTU; 1 kWh electricity contains 3,412 BTU. Direct electric resistance is the most expensive heating method.',
+      'Fuel Metric: 1 Mcf natural gas ≈ 10.36 therms (1,036,000 BTU); 1 kWh electricity contains 3,412 BTU. Heat pumps (COP 3.0) undercut 96% gas furnaces by 9.2% nationally.',
   },
 
   // 12. Home Appliance Operating Cost Hierarchy Benchmark
@@ -815,70 +815,71 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   // 21. April 2026 Residential Natural Gas Price Heating Cost
   'april-2026-residential-natural-gas-price-heating-cost': {
     title: 'Winter Space Heating Cost: Natural Gas vs Electric Resistance',
-    subtitle: 'Monthly heating cost for 75 Therms of space heating demand (April 2026 EIA rates)',
+    subtitle:
+      'Monthly heating cost for 50 useful therms of space heat (April 2026 EIA rate: $18.04/Mcf)',
     badge: 'Heating Fuel Comparison',
     badgeType: 'primary',
     items: [
       {
-        label: 'Electric Resistance Baseboards (2,200 kWh equivalent @ 18.44¢/kWh)',
-        displayValue: '$405.68/mo',
-        value: 405.68,
+        label: 'Electric Resistance Baseboards (1,465 kWh @ 18.44¢/kWh)',
+        displayValue: '$270.21/mo',
+        value: 270.21,
         color: 'danger',
         subLabel: 'Direct resistance heating creates severe winter utility bill spikes',
       },
       {
-        label: 'Standard 80% AFUE Gas Furnace ($16.14/Mcf)',
-        displayValue: '$146.00/mo',
-        value: 146.0,
+        label: 'Standard 80% AFUE Gas Furnace ($18.04/Mcf)',
+        displayValue: '$108.83/mo',
+        value: 108.83,
         color: 'warning',
-        subLabel: 'Standard natural gas heating expense across northern climate zones',
+        subLabel: 'Standard natural gas heating expense (62.5 therms fuel input)',
       },
       {
-        label: 'High-Efficiency 96% AFUE Gas Furnace ($16.14/Mcf)',
-        displayValue: '$121.60/mo',
-        value: 121.6,
+        label: 'High-Efficiency 95% AFUE Gas Furnace ($18.04/Mcf)',
+        displayValue: '$91.65/mo',
+        value: 91.65,
         color: 'success',
         highlight: true,
-        badge: '69% Lower Than Electric',
-        subLabel: 'Saves $284.08/mo compared to electric baseboard space heating',
+        badge: '66.1% Lower Than Electric',
+        subLabel: 'Saves $178.56/mo compared to electric baseboard space heating',
       },
     ],
     footerNote:
-      'Thermal Equivalence: 75 Therms of natural gas delivers ~7.5 MMBtu of heating output, equivalent to 2,200 kWh of electric resistance heat.',
+      'Thermal Equivalence: 50 useful therms = 5.0 MMBtu delivered heat (1,465.36 kWh electric resistance equivalent at 18.44¢/kWh).',
   },
 
   // 22. May 2026 Residential Natural Gas Price Off-Season Bill Impact
   'may-2026-residential-natural-gas-price-off-season-bill-impact': {
     title: 'Summer Off-Season Natural Gas Bill: Fixed Customer Charge vs Usage',
     subtitle:
-      'Monthly natural gas bill breakdown during low summer usage (20 Therms/mo for water/cooking)',
+      'Monthly natural gas bill breakdown during low summer usage (30 Therms/mo for water/cooking at May 2026 EIA rate)',
     badge: 'Fixed Charge Share',
     badgeType: 'primary',
     items: [
       {
-        label: 'Total Summer Natural Gas Bill ($16.14/Mcf + $18.00 Fixed Charge)',
-        displayValue: '$49.20/mo',
-        value: 49.2,
+        label: 'Total Summer Natural Gas Bill ($19.73/Mcf + $18.00 Fixed Charge)',
+        displayValue: '$75.13/mo',
+        value: 75.13,
         color: 'warning',
-        subLabel: 'Total billing amount for 20 Therms of off-season hot water and cooking',
+        subLabel: 'Total billing amount for 30 Therms of off-season hot water and cooking',
+      },
+      {
+        label: 'Volumetric Gas Commodity & Delivery Charge (30 Therms)',
+        displayValue: '$57.13/mo',
+        value: 57.13,
+        color: 'primary',
+        subLabel: '30 Therms @ $1.9044/therm delivered rate',
       },
       {
         label: 'Fixed Utility Customer Charge (Unavoidable Service Fee)',
         displayValue: '$18.00/mo',
         value: 18.0,
         color: 'danger',
-        subLabel: '36.6% of the summer bill is a fixed connection fee with zero gas consumed',
-      },
-      {
-        label: 'Volumetric Gas Commodity & Delivery Charge (20 Therms)',
-        displayValue: '$31.20/mo',
-        value: 31.2,
-        color: 'primary',
-        subLabel: 'Actual gas commodity and distribution volume consumed',
+        subLabel: '24.0% of the summer bill is a fixed connection fee independent of gas volume',
       },
     ],
     footerNote:
-      'Bill Reality: During summer off-season months, fixed customer service charges make up 35% to 50% of residential gas statements.',
+      'Bill Reality: During summer off-season months, fixed customer service charges make up 20% to 35% of residential gas statements.',
   },
 
   // 23. July 2026 Summer Wholesale Electricity Price Forecast
@@ -921,7 +922,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
   'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark': {
     title: 'Cooktop Annual Operating Cost & Thermal Efficiency Benchmark',
     subtitle:
-      'Annual energy expense for 1 hour of daily cooking at 18.44¢/kWh electricity and $1.44/therm natural gas',
+      'Annual energy expense for 1 hour of daily cooking at 18.44¢/kWh electricity and $19.73/Mcf (≈ $1.90/therm) natural gas',
     badge: 'Efficiency Matrix',
     badgeType: 'primary',
     items: [
@@ -943,8 +944,8 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
       },
       {
         label: 'Standard Natural Gas Range (40% efficiency · 32.85 therms/yr)',
-        displayValue: '$47.30/yr',
-        value: 47.3,
+        displayValue: '$62.56/yr',
+        value: 62.56,
         color: 'warning',
         subLabel: 'Low commodity fuel cost but 60% of combustion heat escapes into kitchen air',
       },

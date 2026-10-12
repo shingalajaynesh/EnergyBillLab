@@ -62,7 +62,7 @@ export async function getStateRatesSnapshotUncached(): Promise<StateRatesSnapsho
           ? {
               status: 'live_database',
               sourcePeriod: usRate.period,
-              sourceName: 'U.S. EIA Form EIA-861M',
+              sourceName: 'U.S. EIA Electric Power Monthly Table 5.3 / 5.6.A (Form EIA-861M)',
             }
           : { status: 'unavailable' },
       rates: available ? rates : {},

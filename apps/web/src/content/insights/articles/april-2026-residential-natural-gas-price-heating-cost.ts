@@ -9,7 +9,7 @@ export const april2026ResidentialNaturalGasPriceHeatingCost: InsightRecord = {
   metaDescription:
     'EIA April 2026 residential natural gas price data converted from dollars per thousand cubic feet into therm and useful-heat heating cost scenarios.',
   summary:
-    'EIA reported the U.S. residential natural gas price at $18.17 per thousand cubic feet in April 2026, up from $16.17 in April 2025. Using EIA heat-content factors, that equals about $1.75 per therm before local fixed charges, taxes, and utility-specific delivery rules.',
+    'EIA reported the revised U.S. residential natural gas price at $18.04 per thousand cubic feet in April 2026, up from $16.17 in April 2025. Using EIA heat-content factors, that equals about $1.74 per therm before local fixed charges, taxes, and utility-specific delivery rules.',
   category: 'natural-gas',
   primaryIntent:
     'explain April 2026 U.S. residential natural gas delivered price and household heating cost impact',
@@ -24,17 +24,17 @@ export const april2026ResidentialNaturalGasPriceHeatingCost: InsightRecord = {
   geography: 'united-states',
   reportingPeriod: 'April 2026',
   publishedAt: '2026-07-24',
-  updatedAt: null,
+  updatedAt: '2026-09-30',
   updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',
   keyFindings: [
-    'EIA reported the April 2026 U.S. residential natural gas price at $18.17 per thousand cubic feet, compared with $16.17 in April 2025.',
-    'Using EIA heat-content factors, one thousand cubic feet is about 10.36 therms, so $18.17/Mcf converts to about $1.75 per therm.',
-    'A 100-therm household gas-usage month models to about $175.39 in fuel cost at the April 2026 national residential value before fixed charges, taxes, and local utility rules.',
-    'For 50 useful therms of space heat, modeled fuel cost ranges from about $109.68 with an 80% AFUE furnace to about $92.36 with a 95% AFUE furnace, under the same gas price assumption.',
+    'EIA reported the revised April 2026 U.S. residential natural gas price at $18.04 per thousand cubic feet, compared with $16.17 in April 2025.',
+    'Using EIA heat-content factors, one thousand cubic feet is about 10.36 therms, so $18.04/Mcf converts to an estimated $1.7413 per therm ($1.74 display).',
+    'A 100-therm household gas-usage month models to about $174.13 in fuel cost at the April 2026 national residential value before fixed charges, taxes, and local utility rules.',
+    'For 50 useful therms of space heat, modeled fuel cost ranges from about $108.83 with an 80% AFUE furnace to about $91.65 with a 95% AFUE furnace, under the same gas price assumption.',
   ],
   bodyParagraphs: [
-    'The April 2026 EIA natural gas price data show a higher national delivered residential gas price than the year-earlier month. EIA reported $18.17 per thousand cubic feet for U.S. residential consumers in April 2026, compared with $16.17 in April 2025, and its natural gas data page identifies this as the average price of natural gas delivered to residential consumers by state.',
+    'The April 2026 EIA natural gas price data show a higher national delivered residential gas price than the year-earlier month. EIA reported $18.04 per thousand cubic feet for U.S. residential consumers in April 2026 (revised from preliminary $18.17/Mcf), compared with $16.17 in April 2025, and its natural gas data page identifies this as the average price of natural gas delivered to residential consumers by state.',
     'That value is not a gas utility tariff quote, and it is not the same as a wholesale hub price. It is a delivered residential end-use price reported in dollars per thousand cubic feet, a volume unit often abbreviated as Mcf.',
     'To make the number more useful for a household bill, this analysis converts the EIA Mcf value into an approximate therm value. EIA states that one cubic foot of natural gas contains about 1,036 Btu and that one therm equals 100,000 Btu, so one thousand cubic feet is about 10.36 therms.',
   ],
@@ -42,25 +42,25 @@ export const april2026ResidentialNaturalGasPriceHeatingCost: InsightRecord = {
     {
       heading: 'What changed in the April 2026 gas price',
       paragraphs: [
-        "EIA's U.S. residential natural gas history table lists April 2026 at $18.17/Mcf and April 2025 at $16.17/Mcf. The difference is $2.00 per thousand cubic feet, or about 12.4% year over year before rounding.",
-        'The same EIA data table shows the release date as June 30, 2026, with the next release scheduled for July 31, 2026. As of July 30, 2026, April 2026 is the latest available month shown in that residential natural gas price table.',
+        "EIA's U.S. residential natural gas history table lists April 2026 at $18.04/Mcf and April 2025 at $16.17/Mcf. The difference is $1.87 per thousand cubic feet, or about 11.6% year over year before rounding.",
+        'The same EIA data table shows the release date as June 30, 2026, with revisions incorporated in the August 31, 2026 release. As of September 2026, April 2026 is published as a finalized monthly benchmark in that residential natural gas price table.',
         'The timing matters. Natural gas price data arrive later than the electricity data used in the other launch Insights, so this article keeps the reporting period explicit and does not mix April gas data with May electricity values.',
       ],
     },
     {
       heading: 'Original Mcf-to-therm bill translation',
       paragraphs: [
-        'Original comparison table: April 2025 residential gas price was $16.17/Mcf, about $1.56 per therm. April 2026 was $18.17/Mcf, about $1.75 per therm. The modeled difference is about 19 cents per therm.',
-        'At the April 2026 national residential value, 50 therms model to about $87.74, 100 therms model to about $175.39, and 150 therms model to about $263.03 before fixed monthly charges, taxes, minimum bills, and utility-specific distribution charges.',
-        'Compared with the April 2025 value, those same usage levels add about $9.69 at 50 therms, $19.31 at 100 therms, and $28.91 at 150 therms. These are fuel-price scenarios, not full gas bills.',
+        'Original comparison table: April 2025 residential gas price was $16.17/Mcf, about $1.56 per therm. April 2026 was $18.04/Mcf, about $1.74 per therm. The modeled difference is about 18 cents per therm.',
+        'At the April 2026 national residential value, 50 therms model to about $87.07, 100 therms model to about $174.13, and 150 therms model to about $261.20 before fixed monthly charges, taxes, minimum bills, and utility-specific distribution charges.',
+        'Compared with the April 2025 value, those same usage levels add about $9.03 at 50 therms, $18.05 at 100 therms, and $27.08 at 150 therms. These are fuel-price scenarios, not full gas bills.',
       ],
     },
     {
       heading: 'Why furnace efficiency changes the useful-heat cost',
       paragraphs: [
         'A gas furnace does not turn every unit of fuel into room heat. ENERGY STAR describes annual fuel utilization efficiency, or AFUE, as the percentage of incoming fuel heat converted to space heat rather than lost.',
-        'At about $1.75 per fuel therm, a furnace operating at 80% AFUE has a modeled useful-heat cost near $2.19 per useful therm. A 90% AFUE unit models near $1.95 per useful therm, and a 95% AFUE unit models near $1.85 per useful therm.',
-        'For a household needing 50 useful therms of space heat, that translates to about $109.68 of fuel at 80% AFUE, $97.49 at 90% AFUE, and $92.36 at 95% AFUE under the April 2026 national price assumption.',
+        'At about $1.74 per fuel therm, a furnace operating at 80% AFUE has a modeled useful-heat cost near $2.18 per useful therm. A 90% AFUE unit models near $1.93 per useful therm, and a 95% AFUE unit models near $1.83 per useful therm.',
+        'For a household needing 50 useful therms of space heat, that translates to about $108.83 of fuel at 80% AFUE, $96.74 at 90% AFUE, and $91.65 at 95% AFUE under the April 2026 national price assumption.',
       ],
     },
     {
@@ -74,16 +74,16 @@ export const april2026ResidentialNaturalGasPriceHeatingCost: InsightRecord = {
     {
       heading: 'Methodology and limits',
       paragraphs: [
-        'This analysis uses EIA Natural Gas Navigator residential price data for April 2026 and April 2025. The geography is the United States, the sector is residential, and the unit is dollars per thousand cubic feet.',
+        'This analysis uses EIA Natural Gas Navigator residential price data for April 2026 (Table 20 series N3010US3) and April 2025. The geography is the United States, the sector is residential, and the unit is dollars per thousand cubic feet.',
         'The therm conversion uses EIA unit guidance: one cubic foot of natural gas equals about 1,036 Btu, and one therm equals 100,000 Btu. Therefore, one Mcf is modeled as 10.36 therms. Furnace useful-heat scenarios divide fuel cost by assumed AFUE values of 80%, 90%, and 95%.',
         'The article does not interpolate missing state values, does not compare citygate or electric-power gas prices with residential delivered prices, and does not present a national average as a local household tariff.',
       ],
     },
   ],
   practicalExample:
-    'At the April 2026 national residential gas price of $18.17/Mcf, a 100-therm usage month models to about $175.39 before fixed charges, taxes, riders, and utility-specific delivery charges. Compared with April 2025, the modeled fuel-price increase is about $19.31 for the same 100 therms.',
+    'At the April 2026 national residential gas price of $18.04/Mcf, a 100-therm usage month models to about $174.13 before fixed charges, taxes, riders, and utility-specific delivery charges. Compared with April 2025, the modeled fuel-price increase is about $18.05 for the same 100 therms.',
   methodologyNotes:
-    'Formula: therms per Mcf = 1,000 cubic feet multiplied by 1,036 Btu per cubic foot, divided by 100,000 Btu per therm = 10.36 therms. April 2026 price per therm = $18.17 / 10.36 = about $1.7548. Useful-heat cost per therm = fuel cost per therm divided by AFUE. Dollar figures are rounded at the presentation step.',
+    'Formula: therms per Mcf = 1,000 cubic feet multiplied by 1,036 Btu per cubic foot, divided by 100,000 Btu per therm = 10.36 therms. April 2026 price per therm = $18.04 / 10.36 = about $1.7413. Useful-heat cost per therm = fuel cost per therm divided by AFUE. Dollar figures use full precision and are rounded at the presentation step.',
   sources: [
     {
       organization: 'U.S. Energy Information Administration',

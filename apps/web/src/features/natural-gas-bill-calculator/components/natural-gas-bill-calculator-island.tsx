@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { calculateNaturalGasBill } from '@energy-bill-lab/calculation-engine';
 import { Alert, Card, Form, InputNumber, Radio, Typography } from 'antd';
 
+import { CANONICAL_NATURAL_GAS_SNAPSHOT } from '@/lib/constants/natural-gas';
+
 const { Title, Text, Paragraph } = Typography;
 
 export type NaturalGasBenchmarkProps = {
@@ -18,8 +20,10 @@ export function NaturalGasBillCalculatorIsland({
 }: {
   initialBenchmark?: NaturalGasBenchmarkProps;
 }) {
-  const mcfPrice = initialBenchmark?.priceDollarsPerMcf ?? 19.83;
-  const thermPrice = initialBenchmark?.estimatedPricePerTherm ?? mcfPrice / 10.36;
+  const mcfPrice =
+    initialBenchmark?.priceDollarsPerMcf ?? CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerMcf;
+  const thermPrice =
+    initialBenchmark?.estimatedPricePerTherm ?? CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm;
 
   const [unit, setUnit] = useState<'therms' | 'mcf'>('therms');
   const [usage, setUsage] = useState<number | null>(80);

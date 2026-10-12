@@ -5,8 +5,15 @@ import { DataSourceNote } from '@/components/data-source-note';
 import { HomepageTaskSelection } from '@/components/homepage-task-selection';
 import { LatestInsightsSection } from '@/components/latest-insights-section';
 import { PageContainer } from '@/components/page-container';
+import { CANONICAL_ELECTRICITY_SNAPSHOT } from '@/lib/constants/electricity';
+import {
+  CANONICAL_NATURAL_GAS_SNAPSHOT,
+  formatThermApproximate,
+} from '@/lib/constants/natural-gas';
 import { createPageMetadata } from '@/lib/metadata';
 import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
+import { formatSourcePeriod } from '@/lib/server/get-state-page-data';
+import { getStateRatesSnapshot } from '@/lib/server/get-state-rates';
 
 import styles from './page.module.css';
 
@@ -18,17 +25,33 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default async function HomePage() {
-  const gasData = await getNaturalGasHubData();
+  const [gasData, stateRatesSnapshot] = await Promise.all([
+    getNaturalGasHubData(),
+    getStateRatesSnapshot(),
+  ]);
 
-  const gasRateMcf = gasData.latestNationalRate
-    ? `$${gasData.latestNationalRate.priceDollarsPerMcf.toFixed(2)} / Mcf`
+  const nationalElec = stateRatesSnapshot.rates['US'];
+  const elecRateCents =
+    nationalElec?.priceCentsPerKwh ?? CANONICAL_ELECTRICITY_SNAPSHOT.priceCentsPerKwh;
+  const elecPeriodFormatted = nationalElec?.period
+    ? formatSourcePeriod(nationalElec.period)
+    : CANONICAL_ELECTRICITY_SNAPSHOT.reportingPeriodFormatted;
+
+  const effectiveGasRate = gasData.latestNationalRate ?? {
+    priceDollarsPerMcf: CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerMcf,
+    priceDollarsPerTherm: CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm,
+    period: `${CANONICAL_NATURAL_GAS_SNAPSHOT.reportingPeriod}-01`,
+  };
+
+  const gasRateMcf = effectiveGasRate
+    ? `$${effectiveGasRate.priceDollarsPerMcf.toFixed(2)} / Mcf`
     : null;
-  const gasRateTherm = gasData.latestNationalRate
-    ? `$${gasData.latestNationalRate.priceDollarsPerTherm.toFixed(2)} / therm`
+  const gasRateTherm = effectiveGasRate
+    ? formatThermApproximate(effectiveGasRate.priceDollarsPerTherm)
     : null;
   const gasMonthText = gasData.latestSourceMonthFormatted
     ? `Data through ${gasData.latestSourceMonthFormatted}`
-    : 'Data through April 2026';
+    : `Data through ${CANONICAL_NATURAL_GAS_SNAPSHOT.reportingPeriodFormatted}`;
 
   return (
     <PageContainer>
@@ -145,8 +168,8 @@ export default async function HomePage() {
           <div className={styles.benchmarkCard}>
             <div>
               <span className={styles.benchmarkLabel}>U.S. Residential Electricity</span>
-              <div className={styles.benchmarkValue}>18.44 ¢/kWh</div>
-              <div className={styles.benchmarkPeriod}>Reporting period: May 2026</div>
+              <div className={styles.benchmarkValue}>{elecRateCents.toFixed(2)} ¢/kWh</div>
+              <div className={styles.benchmarkPeriod}>Reporting period: {elecPeriodFormatted}</div>
             </div>
             <Link className={styles.benchmarkLink} href="/electricity-rates">
               View state electricity rates →
@@ -160,13 +183,13 @@ export default async function HomePage() {
               {gasRateMcf ? (
                 <>
                   <div className={styles.benchmarkValue}>{gasRateMcf}</div>
-                  <div className={styles.benchmarkSubValue}>Estimated {gasRateTherm}</div>
+                  <div className={styles.benchmarkSubValue}>{gasRateTherm}</div>
                 </>
               ) : (
                 <div className={styles.benchmarkValue}>Data temporarily unavailable</div>
               )}
               <div className={styles.benchmarkPeriod}>
-                Latest available EIA residential natural-gas price ({gasMonthText})
+                EIA Natural Gas Monthly Table 20 ({gasMonthText})
               </div>
             </div>
             <Link className={styles.benchmarkLink} href="/natural-gas-rates">

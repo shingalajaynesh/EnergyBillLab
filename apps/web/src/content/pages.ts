@@ -105,7 +105,7 @@ export const contentPages = {
     description:
       'How Energy Bill Lab explains formulas, assumptions, source dates, and limitations for energy-cost estimates.',
     path: '/methodology',
-    updatedAt: '2026-08-27',
+    updatedAt: '2026-09-29',
     related: ['/data-sources', '/disclaimer', '/tools'],
     sections: [
       {
@@ -119,9 +119,23 @@ export const contentPages = {
         heading: '3-Tier Data Provenance Framework',
         paragraphs: [
           'To maintain mathematical defensibility and total transparency, all Energy Bill Lab benchmarks, tools, and research reports strictly categorize information into three distinct analytical tiers:',
-          '1. Official Source Data: Primary empirical datasets collected by official government agencies and accredited standards organizations, including U.S. Energy Information Administration (EIA Form EIA-861M) retail electricity and natural gas rates, U.S. Department of Energy (DOE) test procedures, National Renewable Energy Laboratory (NREL) modeling data, and EPA ENERGY STAR specifications.',
+          '1. Official Source Data: Primary empirical datasets collected by official government agencies and accredited standards organizations. For residential electricity, we source the national average from U.S. EIA Electric Power Monthly Table 5.3 / ES1.A and state benchmarks from Table 5.6.A (Form EIA-861M). For residential natural gas, we source prices exclusively from U.S. EIA Natural Gas Monthly Table 20 (Average price of natural gas sold to residential consumers, by state). Note: Table 20 reports delivered consumer prices, distinct from Table 18 (deliveries to all consumers), Table 19 (citygate), Table 21 (commercial), Table 22 (industrial), and Table 23 (electric power). Equipment ratings reference U.S. Department of Energy (DOE 10 CFR Part 430) and EPA ENERGY STAR criteria.',
           '2. EnergyBillLab Model Assumptions: Explicitly declared engineering and behavioral baseline parameters, such as equipment operating hours, seasonal heating/cooling degree days, appliance duty cycles, coefficient of performance (COP) baselines, water temperature differentials, and household floor area baselines.',
           '3. Derived Calculated Results: Mathematical outputs derived deterministically by applying decimal-safe formulas to the combination of official source inputs and declared model assumptions (e.g., annual kWh consumption totals, monthly operating cost comparisons, multi-state rate impact matrices, and 10-year Total Cost of Ownership lifecycle models).',
+        ],
+      },
+      {
+        heading: 'Standardized Heating Energy & Therm Conversions',
+        paragraphs: [
+          'Natural gas billing structures vary across local utilities. While the EIA reports retail data in dollars per thousand cubic feet ($/Mcf), most local gas utilities bill residential customers in therms or hundred cubic feet (Ccf).',
+          'Standardized conversions on Energy Bill Lab use the EIA national average heat-content factor of approximately 1,036 Btu per cubic foot (10.36 therms per Mcf). Derived therm figures are explicit approximations (e.g., ≈ $2.33/therm using EIA average heat-content conversion of 1,036 Btu/cf) rather than an individual customer tariff, as local gas composition and billing factors vary.',
+        ],
+      },
+      {
+        heading: 'Validation Lag, Preliminary Data & Revisions Policy',
+        paragraphs: [
+          'We maintain a transparent distinction between three key dates: (1) Upstream EIA Release Date: when the EIA publishes raw monthly survey tables; (2) EnergyBillLab Import Date: when raw tables are ingested; and (3) EnergyBillLab Validation Date: when data passes automated schema, boundary, and editorial integrity gates.',
+          'Initial EIA monthly figures are subject to subsequent revision by the agency. When revised tables are validated, historical records are updated accordingly. Dated analytical insights preserve the empirical snapshot available at publication, while live benchmark tools and calculators read from the latest validated dataset. Missing or withheld observations (marked as "W" or "--" by EIA) are preserved as unavailable and never interpolated or replaced with zero.',
         ],
       },
       {
@@ -138,27 +152,32 @@ export const contentPages = {
     description:
       'Public and official data sources used for Energy Bill Lab rate benchmarks and appliance reference data.',
     path: '/data-sources',
-    updatedAt: '2026-07-23',
+    updatedAt: '2026-10-13',
     related: ['/methodology', '/electricity-rates', '/editorial-policy'],
     sections: [
       {
         heading: 'Official source standards',
         paragraphs: [
-          'Energy Bill Lab uses official public datasets for electricity-rate information, primarily U.S. Energy Information Administration (EIA) Form EIA-861M monthly retail sales reports.',
+          'Energy Bill Lab uses official public datasets for energy rate benchmarks. Residential electricity rates are sourced from the U.S. Energy Information Administration (EIA) Electric Power Monthly Table 5.3 / ES1.A (national residential benchmark) and Table 5.6.A (state residential rates), based on Form EIA-861M monthly retail sales reports. Residential natural gas rates are sourced from EIA Natural Gas Monthly Table 20 (Average price of natural gas sold to residential consumers, by state).',
           'Published rate pages identify the primary source, dataset name, geographic scope, unit, publication date, and the date Energy Bill Lab validated the snapshot.',
         ],
       },
       {
         heading: 'Data validation & integrity',
         paragraphs: [
-          'If an upstream import fails, the product maintains the last validated snapshot and displays its update date. It does not replace valid information with empty, partial, or invented values.',
-          'Rate benchmarks are periodically synchronized to ensure accuracy while preserving historical comparison baselines.',
+          'If an upstream import fails or is in transit, the product maintains the last validated snapshot and displays its update date. It does not replace valid information with empty, partial, or invented values.',
+          'Data validation gates enforce geographical separation (50 states evaluated separately from the District of Columbia), sector isolation (residential sales isolated from commercial or industrial tariffs), and boundary checks against non-positive numbers.',
         ],
       },
       {
-        heading: 'Data update history',
+        heading: 'Data update history & snapshot log',
         paragraphs: [
-          'May 2026 Rates — Imported: July 27, 2026 | Records: 50 states + District of Columbia + U.S. national baseline | Source: EIA Form EIA-861M monthly residential retail-sales dataset | Status: Published',
+          '• July 2026 Natural Gas Snapshot — EIA Release: September 30, 2026 | Imported: October 13, 2026 | Validated: October 13, 2026 | Deployed: October 13, 2026 | Records: 43 reporting states + District of Columbia ($31.62/Mcf) + U.S. national benchmark ($26.45/Mcf; 7 states withheld: CT, FL, KS, LA, NH, OH, WV) | Source: EIA Natural Gas Monthly Table 20 — Average price of natural gas sold to residential consumers (underlying survey: Form EIA-857; series N3010US3) | Status: Published Live Benchmark',
+          '• July 2026 Electricity Snapshot — EIA Release: September 24, 2026 | Imported: September 25, 2026 | Validated: September 25, 2026 | Deployed: October 13, 2026 | Records: 50 states + District of Columbia (25.21 ¢/kWh) + U.S. national benchmark (18.31 ¢/kWh) | Source: Electric Power Monthly Table 5.3 / ES1.A & Table 5.6.A (Form EIA-861M) | Status: Published Live Benchmark',
+          '• June 2026 Natural Gas Snapshot — EIA Release: August 31, 2026 | Imported: September 29, 2026 | Validated: September 29, 2026 | Records: 44 reporting states + District of Columbia ($27.28/Mcf) + U.S. national benchmark ($24.09/Mcf; 6 states withheld) | Source: Natural Gas Monthly Table 20 | Status: Superseded / Historical Archive',
+          '• June 2026 Electricity Snapshot — EIA Release: August 24, 2026 | Imported: August 27, 2026 | Validated: August 27, 2026 | Records: 50 states + District of Columbia + U.S. national baseline (18.37 ¢/kWh) | Source: Electric Power Monthly Table 5.3 & Table 5.6.A | Status: Superseded / Historical Archive',
+          '• May 2026 Natural Gas Snapshot — EIA Release: July 31, 2026 (Preliminary $19.83/Mcf); August 31, 2026 (Revised $19.73/Mcf) | Imported: August 2, 2026 | Validated: August 2, 2026 (Initial) / September 29, 2026 (Revised) | Records: 46 reporting states + District of Columbia ($22.01/Mcf) + U.S. benchmark ($19.73/Mcf; 4 states withheld) | Source: Natural Gas Monthly Table 20 | Status: Revised / Historical Archive',
+          '• May 2026 Electricity Snapshot — EIA Release: July 24, 2026 | Imported: July 27, 2026 | Validated: July 27, 2026 | Records: 50 states + District of Columbia + U.S. national baseline (18.44 ¢/kWh) | Source: Electric Power Monthly Table 5.3 & Table 5.6.A | Status: Superseded / Historical Archive',
         ],
       },
     ],

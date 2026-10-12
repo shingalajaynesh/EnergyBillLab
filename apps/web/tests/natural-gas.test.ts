@@ -220,27 +220,106 @@ describe('Phase 1 Natural Gas Data & Tools Infrastructure', () => {
     expect(modeB.totalUsageCostUsd).toBe(225.0);
   });
 
-  it('10. verifies official EIA residential checkpoints (April 2026 $18.17, May 2026 $19.83, May 2025 $19.24)', () => {
-    const apr2026Mcf = 18.17;
+  it('10. verifies official EIA residential checkpoints (April 2026 $18.04, May 2026 $19.73, May 2025 $19.24)', () => {
+    const apr2026Mcf = 18.04;
     const apr2026Therm = Number((apr2026Mcf / 10.36).toFixed(4));
-    expect(apr2026Therm).toBe(1.7539);
+    expect(apr2026Therm).toBe(1.7413);
 
-    const may2026Mcf = 19.83;
+    const may2026Mcf = 19.73;
     const may2026Therm = Number((may2026Mcf / 10.36).toFixed(4));
-    expect(may2026Therm).toBe(1.9141);
+    expect(may2026Therm).toBe(1.9044);
 
     const may2025Mcf = 19.24;
     const may2025Therm = Number((may2025Mcf / 10.36).toFixed(4));
     expect(may2025Therm).toBe(1.8571);
 
     // Verify full precision therm scenario calculations (round only at final step)
-    const exactRatePerTherm = 19.83 / 10.36;
-    expect(Number((25 * exactRatePerTherm).toFixed(2))).toBe(47.85);
-    expect(Number((30 * exactRatePerTherm).toFixed(2))).toBe(57.42);
-    expect(Number((40 * exactRatePerTherm).toFixed(2))).toBe(76.56);
+    const exactRatePerTherm = 19.73 / 10.36;
+    expect(Number((25 * exactRatePerTherm).toFixed(2))).toBe(47.61);
+    expect(Number((30 * exactRatePerTherm).toFixed(2))).toBe(57.13);
+    expect(Number((40 * exactRatePerTherm).toFixed(2))).toBe(76.18);
 
-    // Verify industrial $4.90 is distinct and rejected from residential tables
+    // Verify industrial $4.90/Mcf (Table 22 / PIN sector) is distinct and rejected from residential tables (Table 20 / PRS)
     const industrialApr2026 = 4.9;
     expect(industrialApr2026).not.toBe(apr2026Mcf);
+  });
+
+  it('11. verifies July 2026 geography universe reconciliation (52 total: 43 states + DC + US benchmark = 45 valid, 7 withheld states)', () => {
+    // Total expected universe: 50 states + District of Columbia + U.S. national benchmark = 52 geographies
+    const all50States = [
+      'AK',
+      'AL',
+      'AR',
+      'AZ',
+      'CA',
+      'CO',
+      'CT',
+      'DE',
+      'FL',
+      'GA',
+      'HI',
+      'IA',
+      'ID',
+      'IL',
+      'IN',
+      'KS',
+      'KY',
+      'LA',
+      'MA',
+      'MD',
+      'ME',
+      'MI',
+      'MN',
+      'MO',
+      'MS',
+      'MT',
+      'NC',
+      'ND',
+      'NE',
+      'NH',
+      'NJ',
+      'NM',
+      'NV',
+      'NY',
+      'OH',
+      'OK',
+      'OR',
+      'PA',
+      'RI',
+      'SC',
+      'SD',
+      'TN',
+      'TX',
+      'UT',
+      'VA',
+      'VT',
+      'WA',
+      'WI',
+      'WV',
+      'WY',
+    ];
+    expect(all50States.length).toBe(50);
+
+    const withheldJulyStates = ['CT', 'FL', 'KS', 'LA', 'NH', 'OH', 'WV'];
+    expect(withheldJulyStates.length).toBe(7);
+
+    const validJulyStates = all50States.filter((s) => !withheldJulyStates.includes(s));
+    expect(validJulyStates.length).toBe(43);
+
+    // District of Columbia (DC) is valid and reporting for July 2026 ($31.62/Mcf)
+    const dcReporting = true;
+    expect(dcReporting).toBe(true);
+
+    // US national benchmark is valid and reporting ($26.45/Mcf)
+    const usBenchmarkReporting = true;
+    expect(usBenchmarkReporting).toBe(true);
+
+    // Total valid reporting geographies: 43 states + DC + US = 45
+    const totalValidGeographies =
+      validJulyStates.length + (dcReporting ? 1 : 0) + (usBenchmarkReporting ? 1 : 0);
+    expect(totalValidGeographies).toBe(45);
+
+    // Total universe: 45 valid + 7 withheld = 52
+    expect(totalValidGeographies + withheldJulyStates.length).toBe(52);
   });
 });

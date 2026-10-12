@@ -23,12 +23,12 @@ describe('Natural Gas Calculation Engine', () => {
       const result = calculateNaturalGasBill({
         usage: 10,
         unit: 'mcf',
-        pricePerUnit: 18.17,
+        pricePerUnit: 18.04,
         fixedChargeUsd: 10.0,
       });
 
-      expect(result.usageChargeUsd).toBe(181.7);
-      expect(result.totalBillUsd).toBe(191.7);
+      expect(result.usageChargeUsd).toBe(180.4);
+      expect(result.totalBillUsd).toBe(190.4);
     });
 
     it('handles zero or negative inputs safely', () => {
@@ -88,6 +88,26 @@ describe('Natural Gas Calculation Engine', () => {
 
       expect(result.afuePercent).toBe(99);
       expect(result.runtimeHoursPerDay).toBe(24);
+    });
+
+    it('deterministically calculates delivered heating cost per MMBtu at 96% AFUE from $19.73/Mcf', () => {
+      // Baseline: EIA May 2026 residential benchmark = $19.73/Mcf
+      // Heat content standard: 1 Mcf ≈ 10.36 therms
+      const mcfPrice = 19.73;
+      const thermsPerMcf = 10.36;
+      const ratePerTherm = mcfPrice / thermsPerMcf; // ≈ 1.904439...
+
+      // 1 MMBtu delivered = 10.0 useful therms output
+      // At 96% AFUE (0.96), required input therms = 10.0 / 0.96 ≈ 10.416666...
+      const afue = 0.96;
+      const inputThermsPerMmbTu = 10.0 / afue;
+      const deliveredCostPerMmbTu = inputThermsPerMmbTu * ratePerTherm;
+
+      // Exact mathematical value: 19.83790856...
+      expect(deliveredCostPerMmbTu).toBeCloseTo(19.8379, 3);
+      // Standard 2-decimal rounded public display value: $19.84/MMBtu
+      const roundedDisplay = Number(deliveredCostPerMmbTu.toFixed(2));
+      expect(roundedDisplay).toBe(19.84);
     });
   });
 });

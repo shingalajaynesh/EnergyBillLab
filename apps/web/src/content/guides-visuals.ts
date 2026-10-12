@@ -1139,11 +1139,11 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
         subLabel: '100% efficient · 1 kWh of electricity generates 3,412 BTU of heat',
       },
       {
-        label: 'Standard 80% AFUE Gas Furnace ($16.14/Mcf gas rate)',
-        displayValue: '$19.45 / MMBtu',
-        value: 19.45,
+        label: 'Standard 80% AFUE Gas Furnace ($19.73/Mcf gas rate)',
+        displayValue: '$23.81 / MMBtu',
+        value: 23.81,
         color: 'warning',
-        subLabel: 'Standard residential gas furnace heating cost',
+        subLabel: 'Standard residential gas furnace heating cost (12.50 therms input)',
       },
       {
         label: 'Standard Air-Source Heat Pump (COP = 3.0 @ 47°F outdoor)',

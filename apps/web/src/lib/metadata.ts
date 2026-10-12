@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import {
+  ADSENSE_CLIENT_ID,
   BING_SITE_VERIFICATION,
   GOOGLE_SITE_VERIFICATION,
   getSiteUrl,
@@ -86,6 +87,9 @@ export function createRootMetadata(): Metadata {
             'msvalidate.01': [BING_SITE_VERIFICATION],
           }
         : undefined,
+    },
+    other: {
+      'google-adsense-account': ADSENSE_CLIENT_ID,
     },
     openGraph: {
       description: SITE_DESCRIPTION,

@@ -64,7 +64,8 @@ export async function GET() {
       'Content-Type': 'text/csv; charset=utf-8',
       'Content-Disposition': 'attachment; filename="us-residential-electricity-rate-report.csv"',
       'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
-      'X-Report-Period': report.reportingPeriod || '2026-04',
+      'X-Robots-Tag': 'noindex, noarchive',
+      'X-Report-Period': report.reportingPeriod || '2026-07',
     },
   });
 }

@@ -6,6 +6,7 @@ import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { RelatedLinks } from '@/components/related-links';
 import { GasFurnaceCalculatorIsland } from '@/features/gas-furnace-calculator/components/gas-furnace-calculator-island';
+import { CANONICAL_NATURAL_GAS_SNAPSHOT } from '@/lib/constants/natural-gas';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
 import { getNaturalGasHubData } from '@/lib/server/get-natural-gas-data';
@@ -26,7 +27,7 @@ const faqs = [
   {
     question: 'How do I calculate how much natural gas my furnace uses per hour?',
     answer:
-      'Divide your furnace input rating in BTU/hr by 100,000 to find Therms consumed per full burner hour. For example, an 80,000 BTU/hr furnace burns 0.80 Therms per active hour ($1.53/hr at $1.91/therm national average gas price).',
+      'Divide your furnace input rating in BTU/hr by 100,000 to find Therms consumed per full burner hour. For example, an 80,000 BTU/hr furnace burns 0.80 Therms per active hour ($2.04/hr at the July 2026 national residential average rate of $2.55/therm).',
   },
   {
     question: 'What is the difference between an 80% AFUE and 96% AFUE gas furnace?',
@@ -41,7 +42,7 @@ const faqs = [
   {
     question: 'Is natural gas heating cheaper than electric resistance heat?',
     answer:
-      'Yes. Natural gas delivered at $1.91 per therm provides 100,000 BTU of heat for $1.91. Delivering that same 100,000 BTU with electric resistance baseboards or space heaters (29.3 kWh at 18.4¢/kWh) costs $5.39—making natural gas nearly 65% cheaper per unit of thermal heat.',
+      'Yes. Natural gas delivered at $2.55 per therm provides 100,000 BTU of heat for $2.55. Delivering that same 100,000 BTU with electric resistance baseboards or space heaters (29.3 kWh at 18.31¢/kWh) costs $5.36—making natural gas nearly 52% cheaper per unit of thermal heat.',
   },
 ];
 
@@ -49,12 +50,12 @@ export default async function GasFurnaceCostCalculatorPage() {
   const hubData = await getNaturalGasHubData();
 
   const benchmarkProps = {
-    reportingPeriod: hubData.latestSourceMonthFormatted,
-    estimatedPricePerTherm: hubData.latestNationalRate?.priceDollarsPerTherm ?? 19.83 / 10.36,
-    sourceLabel:
-      hubData.latestNationalRate?.source === 'EIA'
-        ? 'U.S. EIA Form EIA-857'
-        : 'U.S. EIA Delivered Price',
+    reportingPeriod:
+      hubData.latestSourceMonthFormatted ?? CANONICAL_NATURAL_GAS_SNAPSHOT.reportingPeriodFormatted,
+    estimatedPricePerTherm:
+      hubData.latestNationalRate?.priceDollarsPerTherm ??
+      CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm,
+    sourceLabel: 'U.S. EIA Natural Gas Monthly Table 20',
   };
 
   const breadcrumbs = [

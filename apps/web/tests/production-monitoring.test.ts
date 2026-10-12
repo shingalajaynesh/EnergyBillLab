@@ -104,30 +104,27 @@ describe('Production Monitoring & Quality Gates', () => {
     expect(content).toContain('independent, source-transparent');
   });
 
-  it('verifies AdSense loads via standard native script in document head without next/script or data-nscript', () => {
+  it('verifies AdSense ownership verification is preserved via meta tag and ads.txt with zero active display scripts', () => {
     const layoutFilePath = path.resolve(__dirname, '../src/app/layout.tsx');
     const layoutContent = fs.readFileSync(layoutFilePath, 'utf8');
 
-    // 1. Exactly one AdSense library URL exists
+    // 1. Zero active AdSense display scripts exist in layout
     const adsbygoogleMatches = layoutContent.match(/adsbygoogle\.js/g) || [];
-    expect(adsbygoogleMatches).toHaveLength(1);
+    expect(adsbygoogleMatches).toHaveLength(0);
+    expect(layoutContent).not.toContain('pagead2.googlesyndication.com');
 
-    // 2. Publisher ID is correct
+    // 2. Ownership verification meta tag is present with correct client ID
     expect(ADSENSE_CLIENT_ID).toBe('ca-pub-6303291083449043');
+    expect(layoutContent).toContain('name="google-adsense-account"');
+    expect(layoutContent).toContain('content={ADSENSE_CLIENT_ID}');
 
-    // 3. AdSense loader does not use next/script
-    expect(layoutContent).not.toMatch(/import\s+Script\s+from\s+['"]next\/script['"]/);
-    expect(layoutContent).not.toMatch(/<Script[^>]*adsbygoogle/);
+    // 3. ads.txt is present and contains exact authorized publisher line
+    const adsTxtPath = path.resolve(__dirname, '../public/ads.txt');
+    expect(fs.existsSync(adsTxtPath)).toBe(true);
+    const adsTxtContent = fs.readFileSync(adsTxtPath, 'utf8');
+    expect(adsTxtContent).toContain('google.com, pub-6303291083449043, DIRECT, f08c47fec0942fa0');
 
-    // 4. AdSense loader has no data-nscript attribute
-    expect(layoutContent).not.toContain('data-nscript');
-
-    // 5. Loader uses async and crossOrigin="anonymous" inside <head>
-    expect(layoutContent).toContain('<head>');
-    expect(layoutContent).toContain('async');
-    expect(layoutContent).toContain('crossOrigin="anonymous"');
-
-    // 6. Existing CMP integration remains present
+    // 4. CMP integration remains present
     expect(layoutContent).toContain('<GoogleTagManager');
   });
 
