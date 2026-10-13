@@ -2,15 +2,18 @@
 
 ## Current Task
 
-- Phase: EnergyBillLab 3-Tier Data Provenance & Methodology Standardization + August 27, 2026 Daily Insight
-- Date: August 27, 2026
+- Phase: Cooktop Energy Cost Benchmark Provenance Convergence & Metadata Consistency
+- Date: October 14, 2026
 - Status:
-  - PASS - Conducted research and published August 27 daily benchmark: `apps/web/src/content/insights/articles/august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark.ts` (1,800+ words, 5 comparison tables, clean formulas, 10-state matrix, 10-year TCO).
-  - PASS - Site-Wide Methodology Enhancement: Formalized 3-Tier Data Provenance Framework (Official Government Data vs Model Assumptions vs Derived EnergyBillLab Calculations) in `apps/web/src/content/pages.ts` (`/methodology`).
-  - PASS - Integrated explicit Data Provenance key findings and `Table: Data Provenance & Methodology Lineage Breakdown` tables across 15+ high-traffic published benchmarks (Ceiling Fan, Heat Pump Strip, Standby Loss, Window AC, EV Charging, Cooktop, Refrigerator, Swimming Pool Pump, Summer Thermostat, Dehumidifier, Mini-Split, Central AC SEER2, Space Heater, Gas vs Electric Heating, Home Battery, Rooftop Solar NEM 3, TOU Load Shifting, Appliance Hierarchy, Census Divisions, State Spreads, Vampire Power, Hot Tub, Whole House Fan).
-  - PASS - Verified full quality test suites: `pnpm format:check`, `pnpm typecheck`, `pnpm lint`, `pnpm test` (57 test files, 450 tests pass), `pnpm build:web` (184 static routes), and `pnpm build:api`.
+  - PASS - Identified and resolved metadata description mismatch in `apps/web/src/content/insights/articles/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.ts`: corrected stale `$47.30/yr` to `$62.56/yr` in `metaDescription` (which was being crawled and indexed by search crawlers).
+  - PASS - Embedded explicit Markdown data tables for Table 1 (Standardized 300 Wh Cooking Task Benchmark) and Table 2 (Annual Cooktop Operating Cost Benchmark Across Major States) into sections 2 and 3 of the cooktop article.
+  - PASS - Added automated unit tests in `apps/web/tests/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.test.ts` verifying Table 20 provenance, absence of legacy Table 18 or $47.30 values, and consistent metaDescription.
+  - PASS - Extended internal revalidation route (`/api/internal/revalidate-energy-data`) with the cooktop benchmark and other natural gas insight paths, plus on-demand `?path=` query parameter support.
+  - PASS - Updated research documentation in `docs/editorial/topic-research/2026-08-15-august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.md`.
+  - PASS - Verified full quality test suites: `pnpm typecheck` (9 packages clean), `pnpm lint` (0 errors), `pnpm test` (58 test files, 457 tests pass), and `pnpm build:web` (all static routes prerendered).
 - Scope & Governance Completed:
-  1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history, employer records, or location details.
-  2. **Protected Files Unchanged:** `db-client.ts`, `apps/web/package.json`, `turbo.json`, `vercel.json`, and `render.yaml` have 0 diff.
+  1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history or location details.
+  2. **Protected Files Unchanged:** Protected infrastructure configurations (`turbo.json`, `vercel.json`, `render.yaml`) have 0 diff.
   3. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
-- Suggested Commit: `feat(insights): implement 3-tier data provenance labeling and methodology lineage across energy benchmarks`
+- Suggested Commit: `fix(insights): update cooktop benchmark metaDescription and add structured task tables`
+

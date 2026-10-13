@@ -34,7 +34,7 @@
 
 1. **U.S. Energy Information Administration (EIA):**
    - Electric Power Monthly (Table 5.6.A) — May 2026 U.S. residential average rate of 18.44¢/kWh.
-   - Natural Gas Monthly (Table 18) — May 2026 U.S. residential average rate of $14.80/Mcf ($1.44/therm).
+   - Natural Gas Monthly (Table 20) — May 2026 U.S. residential average rate of $19.73/Mcf (≈ $1.90/therm).
 2. **U.S. Department of Energy (DOE) & Lawrence Berkeley National Laboratory (LBNL):**
    - Residential Cooking Products Test Procedure (10 CFR Part 430, Subpart B, Appendix I1).
    - Thermal efficiency ratings: Induction (85%–89%), Smooth Radiant Electric (74%–78%), Gas Atmospheric Burner (38%–44%).
@@ -46,11 +46,11 @@
 - **Standard Cooking Task Benchmark (Boiling 2 Liters of Water / 300 Wh of useful heat to food):**
   - Induction (@ 85% efficiency): Consumes 0.353 kWh of grid electricity = 6.51¢ at 18.44¢/kWh.
   - Smooth Radiant Electric (@ 74% efficiency): Consumes 0.405 kWh of grid electricity = 7.47¢ at 18.44¢/kWh.
-  - Natural Gas Burner (@ 40% efficiency): Consumes 0.0256 therms (2,560 BTU) of gas = 3.69¢ at $1.44/therm.
+  - Natural Gas Burner (@ 40% efficiency): Consumes 0.0256 therms (2,560 BTU) of gas = 4.88¢ at $1.9044/therm.
 - **Annual Household Cooking Consumption (365 days @ 1 hr active daily burner use / 1.5 kW equivalent power demand):**
   - Induction (1,800W burner @ 85% effective heat delivery = 1.40 kWh/day; 511 kWh/yr): $94.23/year nationally ($165.56 in CA, $265.72 in HI).
   - Smooth Radiant Electric (1,800W burner @ 74% effective heat delivery = 1.61 kWh/day; 588 kWh/yr): $108.43/year nationally ($190.51 in CA, $305.76 in HI).
-  - Gas Range (9,000 BTU/hr burner @ 40% efficiency = 0.09 therms/day; 32.85 therms/yr): $47.30/year in commodity fuel nationally.
+  - Gas Range (9,000 BTU/hr burner @ 40% efficiency = 0.09 therms/day; 32.85 therms/yr): $62.56/year in commodity fuel nationally.
 - **The Hidden Summer Air Conditioning Penalty:**
   - Gas burners vent 60% of combustion heat into indoor room air (5,400 BTU/hr of waste heat). Removing 5,400 BTU of heat via a 14 SEER2 AC adds 0.385 kWh of cooling load ($0.071/hr).
   - Factoring summer cooling penalty narrows the total operating cost gap between gas and ultra-efficient induction.
@@ -60,7 +60,7 @@
 - **Visual Card:** `apps/web/src/content/insights/visuals.ts`
 - **Title:** Cooktop Annual Operating Cost & Efficiency Comparison
 - **Items:**
-  1. Standard Gas Range (40% thermal efficiency · 32.8 therms/yr): $47.30/yr (Warning / Gas baseline).
+  1. Standard Gas Range (40% thermal efficiency · 32.85 therms/yr): $62.56/yr (Warning / Gas baseline).
   2. Induction Cooktop (85% thermal efficiency · 511 kWh/yr): $94.23/yr (Success / Best Thermal Efficiency).
   3. Smooth Radiant Electric (74% thermal efficiency · 588 kWh/yr): $108.43/yr (Danger / Highest Electrical kWh Draw).
 - **Footer Note:** Thermal Physics: Induction transfers 85% to 90% of electromagnetic energy directly to cookware, venting less than 15% waste heat into your home compared to 60% waste heat from open gas flames.

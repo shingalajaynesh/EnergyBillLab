@@ -24,6 +24,8 @@ export function POST(request: NextRequest) {
   }
 
   try {
+    const customPath = request.nextUrl.searchParams.get('path');
+
     const defaultPaths = [
       '/',
       '/natural-gas-rates',
@@ -32,13 +34,20 @@ export function POST(request: NextRequest) {
       '/electricity-rates',
       '/research/us-residential-electricity-rate-report',
       '/insights',
+      '/insights/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
+      '/insights/august-2026-natural-gas-vs-electric-heating-cost-per-mmbtu-benchmark',
       '/insights/may-2026-residential-natural-gas-price-off-season-bill-impact',
+      '/insights/april-2026-residential-natural-gas-price-heating-cost',
       '/sitemap.xml',
     ];
 
+    const pathsToRevalidate = customPath
+      ? Array.from(new Set([customPath, ...defaultPaths]))
+      : defaultPaths;
+
     const defaultTags = ['natural-gas-rates', 'electricity-rates', 'insights'];
 
-    for (const path of defaultPaths) {
+    for (const path of pathsToRevalidate) {
       revalidatePath(path);
     }
 
@@ -48,7 +57,7 @@ export function POST(request: NextRequest) {
 
     return NextResponse.json({
       revalidated: true,
-      paths: defaultPaths,
+      paths: pathsToRevalidate,
       tags: defaultTags,
       timestamp: new Date().toISOString(),
     });

@@ -69,4 +69,29 @@ describe('August 2026 Induction vs Electric vs Gas Cooktop Energy Cost Benchmark
       expect(route.startsWith('/')).toBe(true);
     }
   });
+
+  it('8. strictly adheres to Table 20 natural gas pricing and avoids stale rates', () => {
+    const record = august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark;
+    // Check metaDescription
+    expect(record.metaDescription).toContain('$62.56/yr');
+    expect(record.metaDescription).not.toContain('$47.30');
+
+    // Stringify record and verify absence of old values
+    const jsonStr = JSON.stringify(record);
+    expect(jsonStr).not.toContain('$14.80/Mcf');
+    expect(jsonStr).not.toContain('$1.44/therm');
+    expect(jsonStr).not.toContain('$47.30');
+    expect(jsonStr).not.toContain('Table 18');
+
+    // Confirm presence of official Table 20 and $19.73/Mcf
+    expect(jsonStr).toContain('Table 20');
+    expect(jsonStr).toContain('$19.73');
+    expect(jsonStr).toContain('$62.56');
+
+    // Check sources
+    const gasSource = record.sources.find((s) => s.organization.includes('EIA') && s.title.includes('Natural Gas'));
+    expect(gasSource).toBeDefined();
+    expect(gasSource?.title).toContain('Table 20');
+  });
 });
+

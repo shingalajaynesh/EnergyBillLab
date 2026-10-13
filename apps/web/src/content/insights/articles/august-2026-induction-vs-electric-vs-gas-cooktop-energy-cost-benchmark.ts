@@ -8,7 +8,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
   metaTitle:
     'August 2026 Induction vs Electric vs Gas Cooktop Energy Cost Benchmark | EnergyBillLab',
   metaDescription:
-    'Cooktop operating cost benchmark using May 2026 EIA data. Induction is 85% efficient ($94.23/yr) vs radiant electric ($108.43/yr) and natural gas ($47.30/yr).',
+    'Cooktop operating cost benchmark using May 2026 EIA data. Induction is 85% efficient ($94.23/yr) vs radiant electric ($108.43/yr) and natural gas ($62.56/yr).',
   status: 'published',
   publishedAt: '2026-08-15',
   updatedAt: null,
@@ -73,12 +73,28 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
       heading: '2. Standardized Cooking Task Benchmark: Energy & Cost Matrix',
       paragraphs: [
         'Table 1 illustrates energy inputs, delivered heat, waste heat vented to room air, and session costs for delivering 300 Wh (1,024 BTU) of useful heat to cookware across all three technologies based on May 2026 EIA national utility rates (18.44¢/kWh electricity; $19.73/Mcf / ≈ $1.90/therm natural gas):',
+        'Table 1: Standardized Cooking Task Benchmark (Delivering 300 Wh Useful Heat)',
+        '| Cooking Technology | Thermal Efficiency (DOE) | Primary Energy Input | Delivered Heat to Food | Waste Heat Vented to Kitchen | Energy Cost per Session | Relative Efficiency Index |',
+        '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',
+        '| Electric Induction | 85.0% | 0.353 kWh (1,204 BTU) | 300 Wh (1,024 BTU) | 53 Wh (180 BTU / 15%) | 6.51 ¢ | 100 (Optimal Baseline) |',
+        '| Smooth Radiant Electric | 74.0% | 0.405 kWh (1,384 BTU) | 300 Wh (1,024 BTU) | 105 Wh (358 BTU / 26%) | 7.47 ¢ | 87 (13% More Energy) |',
+        '| Standard Natural Gas Burner | 40.0% | 0.0256 therms (2,560 BTU) | 300 Wh (1,024 BTU) | 1,536 BTU (60% waste) | 4.88 ¢ | 47 (53% Less Efficient) |',
       ],
     },
     {
       heading: '3. Annual Household Cooking Cost Benchmark by State',
       paragraphs: [
         'Table 2 outlines annual energy consumption and operating expenses for a household using cooktop burners for 1 hour daily (365 hours/year) across major U.S. states using May 2026 EIA residential retail rates:',
+        'Table 2: Annual Cooktop Operating Cost Benchmark Across Major States (1 Hour/Day Baseline)',
+        '| State / Geographic Region | Residential Electricity Rate (¢/kWh) | Residential Natural Gas Price ($/therm) | Annual Induction Cost ($94.23 Nat\'l) | Annual Radiant Electric Cost ($108.43 Nat\'l) | Annual Natural Gas Cost ($62.56 Nat\'l) | Induction vs. Radiant Savings ($/yr) |',
+        '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',
+        '| U.S. National Average | 18.44 ¢/kWh | $1.90 / therm ($19.73/Mcf) | $94.23 / yr | $108.43 / yr | $62.56 / yr | $14.20 / yr (13.1%) |',
+        '| Washington (Low-Cost Hydro) | 11.52 ¢/kWh | $1.35 / therm ($13.99/Mcf) | $58.87 / yr | $67.74 / yr | $44.35 / yr | $8.87 / yr (13.1%) |',
+        '| Texas (Competitive Retail) | 15.50 ¢/kWh | $1.72 / therm ($17.82/Mcf) | $79.21 / yr | $91.14 / yr | $56.50 / yr | $11.93 / yr (13.1%) |',
+        '| Florida (Southeastern Grid) | 15.80 ¢/kWh | $2.45 / therm ($25.38/Mcf) | $80.74 / yr | $92.90 / yr | $80.48 / yr | $12.16 / yr (13.1%) |',
+        '| New York (Northeastern Metro) | 24.80 ¢/kWh | $2.05 / therm ($21.24/Mcf) | $126.73 / yr | $145.82 / yr | $67.34 / yr | $19.09 / yr (13.1%) |',
+        '| California (High-Tier Tariffs) | 32.40 ¢/kWh | $1.85 / therm ($19.17/Mcf) | $165.56 / yr | $190.51 / yr | $60.77 / yr | $24.95 / yr (13.1%) |',
+        '| Hawaii (Isolated Island Grid) | 52.00 ¢/kWh | $4.85 / therm ($50.25/Mcf) | $265.72 / yr | $305.76 / yr | $159.32 / yr | $40.04 / yr (13.1%) |',
       ],
     },
     {
