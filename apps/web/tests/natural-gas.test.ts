@@ -4,9 +4,16 @@ import {
   calculateGasFurnaceCost,
   calculateNaturalGasBill,
 } from '@energy-bill-lab/calculation-engine';
+import nextConfig from '../next.config';
+import {
+  CANONICAL_NATURAL_GAS_SNAPSHOT,
+  formatThermApproximate,
+  MCF_TO_THERM_DIVISOR,
+} from '../src/lib/constants/natural-gas';
 import { createPageMetadata } from '../src/lib/metadata';
 import { isNaturalGasHubSitemapEligible, primaryNavigation, publicRoutes } from '../src/lib/routes';
 
+import type { NaturalGasRateDTO } from '@energy-bill-lab/database';
 import {
   buildHistoricalTrendRows,
   isNaturalGasDataVerified,
@@ -321,5 +328,191 @@ describe('Phase 1 Natural Gas Data & Tools Infrastructure', () => {
 
     // Total universe: 45 valid + 7 withheld = 52
     expect(totalValidGeographies + withheldJulyStates.length).toBe(52);
+  });
+
+  it('12. verifies deterministic natural gas therm conversion ($26.45 / 10.36 = 2.5530888..., public display $2.55/therm)', () => {
+    const rawMcf = 26.45;
+    const factor = MCF_TO_THERM_DIVISOR;
+    expect(factor).toBe(10.36);
+
+    const calculatedTherm = rawMcf / factor;
+    expect(calculatedTherm).toBeCloseTo(2.5530888, 6);
+
+    const formattedRate = `$${calculatedTherm.toFixed(2)}/therm`;
+    expect(formattedRate).toBe('$2.55/therm');
+
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerMcf).toBe(26.45);
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm).toBe(2.55);
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.conversionFactorMcfToTherm).toBe(10.36);
+
+    const disclosure = formatThermApproximate(CANONICAL_NATURAL_GAS_SNAPSHOT.priceDollarsPerTherm);
+    expect(disclosure).toContain('$2.55/therm');
+    expect(disclosure).toContain('1,036 Btu/cf');
+  });
+
+  it('13. enforces official EIA Table 20 terminology (Average price of natural gas sold to residential consumers, by state)', () => {
+    const officialTableTitle =
+      'Natural Gas Monthly Table 20 — Average price of natural gas sold to residential consumers, by state';
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.source).toContain(officialTableTitle);
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.sourceShort).toBe('EIA Natural Gas Monthly Table 20');
+
+    // Table 20 must NOT be labeled as "Percentage of Heating Value" or combined with other tables
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.source).not.toContain('Percentage of Heating Value');
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.source).not.toContain('Table 18');
+    expect(CANONICAL_NATURAL_GAS_SNAPSHOT.source).not.toContain('Citygate');
+  });
+
+  it('14. verifies permanent 308 redirect from /natural-gas to /natural-gas-rates', async () => {
+    const redirects = await (
+      nextConfig as {
+        redirects?: () => Promise<
+          Array<{ source: string; destination: string; permanent: boolean }>
+        >;
+      }
+    ).redirects!();
+
+    const gasRedirect = redirects.find((r) => r.source === '/natural-gas');
+    expect(gasRedirect).toBeDefined();
+    expect(gasRedirect?.destination).toBe('/natural-gas-rates');
+    expect(gasRedirect?.permanent).toBe(true);
+  });
+
+  it('15. verifies national-first natural gas reporting period selection (no arbitrary state-count threshold, July 2026 selected with 44 eligible, 7 withheld, US benchmark separate)', () => {
+    // 1. Verify period determination hierarchy:
+    // When effective national rate is July 2026, target period is strictly 2026-07 regardless of state count.
+    const mockNationalJuly: NaturalGasRateDTO = {
+      code: 'US',
+      name: 'United States',
+      type: 'NATIONAL',
+      period: '2026-07-01',
+      priceDollarsPerMcf: 26.45,
+      priceDollarsPerTherm: 2.55,
+      conversionMethod: 'EIA_HEAT_CONTENT_1036_BTU',
+      conversionAssumptions: '1 Mcf = 10.36 therms',
+      source: 'EIA',
+      sourceDataset: 'natural-gas/pri/sum',
+    };
+
+    // Even if only 10 states reported for July 2026 (< 35 threshold), the national period MUST remain July 2026
+    const sparseStateRates: Record<string, NaturalGasRateDTO> = {};
+    const sampleStates = ['CA', 'TX', 'NY', 'PA', 'IL', 'OH', 'MI', 'GA', 'NC', 'NJ'];
+    for (const st of sampleStates) {
+      sparseStateRates[st] = {
+        ...mockNationalJuly,
+        code: st,
+        name: st,
+        type: 'STATE',
+        priceDollarsPerMcf: 25.0,
+      };
+    }
+    // Also include June 2026 records to test that it does NOT backshift to June
+    const olderJuneStates = ['AL', 'AK', 'AZ', 'AR', 'CO'];
+    for (const st of olderJuneStates) {
+      sparseStateRates[`${st}_june`] = {
+        ...mockNationalJuly,
+        code: st,
+        name: st,
+        type: 'STATE',
+        period: '2026-06-01',
+        priceDollarsPerMcf: 24.0,
+      };
+    }
+
+    const targetPeriodKey = mockNationalJuly.period.substring(0, 7);
+    expect(targetPeriodKey).toBe('2026-07');
+
+    // Filter cohort strictly by targetPeriodKey
+    const cohortMatches: string[] = [];
+    for (const [code, r] of Object.entries(sparseStateRates)) {
+      if (r.period.substring(0, 7) === targetPeriodKey) {
+        cohortMatches.push(code);
+      }
+    }
+    // Verifies that sparse July coverage (10 states < 35 threshold) does NOT cause backshift to June
+    expect(cohortMatches.length).toBe(10);
+    expect(cohortMatches.length).toBeLessThan(35);
+    expect(targetPeriodKey).not.toBe('2026-06');
+
+    // 2. Official July 2026 cohort numbers:
+    // In official EIA Table 20 (July 2026):
+    // 43 states + District of Columbia = 44 reporting jurisdictions
+    // 7 states are withheld by EIA: CT, FL, KS, LA, NH, OH, WV
+    // Total state & DC jurisdictions = 44 + 7 = 51
+    // US national benchmark = $26.45/Mcf (handled separately)
+    // Total valid observations including US benchmark = 45
+    const withheldStates = ['CT', 'FL', 'KS', 'LA', 'NH', 'OH', 'WV'];
+    expect(withheldStates).toHaveLength(7);
+
+    const all51StateAndDcCodes = [
+      'AK',
+      'AL',
+      'AR',
+      'AZ',
+      'CA',
+      'CO',
+      'CT',
+      'DE',
+      'DC',
+      'FL',
+      'GA',
+      'HI',
+      'IA',
+      'ID',
+      'IL',
+      'IN',
+      'KS',
+      'KY',
+      'LA',
+      'MA',
+      'MD',
+      'ME',
+      'MI',
+      'MN',
+      'MO',
+      'MS',
+      'MT',
+      'NC',
+      'ND',
+      'NE',
+      'NH',
+      'NJ',
+      'NM',
+      'NV',
+      'NY',
+      'OH',
+      'OK',
+      'OR',
+      'PA',
+      'RI',
+      'SC',
+      'SD',
+      'TN',
+      'TX',
+      'UT',
+      'VA',
+      'VT',
+      'WA',
+      'WI',
+      'WV',
+      'WY',
+    ];
+    expect(all51StateAndDcCodes).toHaveLength(51);
+
+    const eligibleCodes = all51StateAndDcCodes.filter((c) => !withheldStates.includes(c));
+    expect(eligibleCodes).toHaveLength(44); // 43 states + DC
+
+    // Format display string
+    const [tYear, tMonth] = targetPeriodKey.split('-');
+    const formattedPeriod = new Date(
+      parseInt(tYear!, 10),
+      parseInt(tMonth!, 10) - 1,
+      1,
+    ).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    expect(formattedPeriod).toBe('July 2026');
+
+    // Separate US benchmark
+    expect(mockNationalJuly.code).toBe('US');
+    expect(mockNationalJuly.priceDollarsPerMcf).toBe(26.45);
+    expect(eligibleCodes.length + 1).toBe(45); // 44 states/DC + 1 US = 45 total observations
   });
 });

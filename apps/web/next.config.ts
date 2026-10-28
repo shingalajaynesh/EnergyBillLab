@@ -29,7 +29,12 @@ const nextConfig: NextConfig = {
         destination: '/insights',
         permanent: true,
       },
-      // Consolidated Appliance Insights (301 Permanent Redirects to Canonical Guides)
+      {
+        source: '/natural-gas',
+        destination: '/natural-gas-rates',
+        permanent: true,
+      },
+      // Consolidated Appliance Insights (HTTP 308 Permanent Redirects to Canonical Guides via permanent: true)
       {
         source: '/insights/august-2026-electric-clothes-dryer-kwh-operating-cost-benchmark',
         destination: '/guides/how-much-does-it-cost-to-run-an-electric-clothes-dryer',

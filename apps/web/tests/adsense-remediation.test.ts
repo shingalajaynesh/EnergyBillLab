@@ -193,15 +193,94 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
     });
 
     it('verifies key benchmark states match official EIA Table 5.6.A (Aug 2026)', () => {
+      const fl = BUNDLED_STATE_RATES_SNAPSHOT['FL'];
       const wa = BUNDLED_STATE_RATES_SNAPSHOT['WA'];
       const ca = BUNDLED_STATE_RATES_SNAPSHOT['CA'];
       const hi = BUNDLED_STATE_RATES_SNAPSHOT['HI'];
       const tx = BUNDLED_STATE_RATES_SNAPSHOT['TX'];
+      const dc = BUNDLED_STATE_RATES_SNAPSHOT['DC'];
+      const us = BUNDLED_STATE_RATES_SNAPSHOT['US'];
 
+      // Explicit verification of Florida August 2026 residential benchmark
+      expect(fl).toBeDefined();
+      expect(fl?.priceCentsPerKwh).toBe(14.99);
+      expect(fl?.priceCentsPerKwh).not.toBe(15.42);
+
+      // Explicit verification of key benchmark states
       expect(wa?.priceCentsPerKwh).toBe(14.63);
       expect(ca?.priceCentsPerKwh).toBe(29.75);
       expect(hi?.priceCentsPerKwh).toBe(47.18);
       expect(tx?.priceCentsPerKwh).toBe(15.91);
+      expect(dc?.priceCentsPerKwh).toBe(25.98);
+      expect(us?.priceCentsPerKwh).toBe(18.16);
+    });
+
+    it('verifies all 52 geographies in state snapshot match official EIA Table 5.6.A / 5.3 (Aug 2026) with zero mismatches', () => {
+      const OFFICIAL_EIA_AUG_2026_TABLE_5_6_A: Record<string, number> = {
+        AL: 16.33,
+        AK: 29.41,
+        AZ: 15.05,
+        AR: 14.37,
+        CA: 29.75,
+        CO: 17.17,
+        CT: 24.51,
+        DE: 18.7,
+        DC: 25.98,
+        FL: 14.99,
+        GA: 15.9,
+        HI: 47.18,
+        ID: 13.37,
+        IL: 19.32,
+        IN: 17.02,
+        IA: 17.06,
+        KS: 15.47,
+        KY: 13.8,
+        LA: 12.87,
+        ME: 32.11,
+        MD: 21.4,
+        MA: 30.48,
+        MI: 22.99,
+        MN: 17.2,
+        MS: 14.43,
+        MO: 16.02,
+        MT: 15.57,
+        NE: 13.54,
+        NV: 12.72,
+        NH: 27.64,
+        NJ: 24.61,
+        NM: 16.51,
+        NY: 28.65,
+        NC: 14.95,
+        ND: 13.31,
+        OH: 19.38,
+        OK: 14.82,
+        OR: 15.92,
+        PA: 21.77,
+        RI: 28.18,
+        SC: 15.76,
+        SD: 15.15,
+        TN: 13.42,
+        TX: 15.91,
+        UT: 13.31,
+        VT: 23.84,
+        VA: 17.64,
+        WA: 14.63,
+        WV: 16.31,
+        WI: 19.41,
+        WY: 14.43,
+        US: 18.16,
+      };
+
+      expect(Object.keys(OFFICIAL_EIA_AUG_2026_TABLE_5_6_A)).toHaveLength(52);
+
+      for (const [code, expectedPrice] of Object.entries(OFFICIAL_EIA_AUG_2026_TABLE_5_6_A)) {
+        const local = BUNDLED_STATE_RATES_SNAPSHOT[code];
+        expect(local, `Geography ${code} must exist in local snapshot`).toBeDefined();
+        expect(
+          local?.priceCentsPerKwh,
+          `Price for ${code} must match official EIA Table 5.6.A`,
+        ).toBe(expectedPrice);
+      }
     });
   });
 
@@ -225,7 +304,7 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
     });
   });
 
-  describe('5. Consolidated Redundant Insights (301 Permanent Redirects)', () => {
+  describe('5. Consolidated Redundant Insights (HTTP 308 Permanent Redirects)', () => {
     const EXPECTED_REDIRECTS = [
       {
         source: '/insights/august-2026-electric-clothes-dryer-kwh-operating-cost-benchmark',
@@ -278,7 +357,7 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
       },
     ];
 
-    it('defines all 12 permanent 301 redirects in next.config.ts', async () => {
+    it('defines all 12 permanent 308 redirects in next.config.ts', async () => {
       const redirects = await (
         nextConfig as {
           redirects?: () => Promise<
@@ -376,6 +455,86 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
       expect(urls).not.toContain(
         'https://energybilllab.com/insights/july-2026-summer-wholesale-electricity-price-forecast',
       );
+    });
+
+    it('reconciles the exact sitemap universe breakdown (13 core/trust + 1 author + 4 hubs + 51 state pages/map + 16 tools + 50 guides + 1 report + 23 insights = 159 total)', () => {
+      const entries = sitemap();
+      const urls = entries.map((e) => e.url);
+
+      const coreTrustUrls = urls.filter((u) => {
+        const path = u.replace('https://energybilllab.com', '');
+        return [
+          '/',
+          '/about',
+          '/accessibility',
+          '/compare-states',
+          '/comparisons',
+          '/contact',
+          '/cookies',
+          '/data-sources',
+          '/disclaimer',
+          '/editorial-policy',
+          '/methodology',
+          '/privacy',
+          '/terms',
+        ].includes(path);
+      });
+      expect(coreTrustUrls).toHaveLength(13);
+
+      const authorUrls = urls.filter((u) => u.includes('/authors/'));
+      expect(authorUrls).toHaveLength(1);
+
+      const hubUrls = urls.filter((u) => {
+        const path = u.replace('https://energybilllab.com', '');
+        return ['/appliances', '/electricity-rates', '/guides', '/insights'].includes(path);
+      });
+      expect(hubUrls).toHaveLength(4);
+
+      const stateUrls = urls.filter(
+        (u) =>
+          u.startsWith('https://energybilllab.com/electricity-rates/') &&
+          u !== 'https://energybilllab.com/electricity-rates',
+      );
+      expect(stateUrls).toHaveLength(51); // 50 states + DC + map
+
+      const toolUrls = urls.filter(
+        (u) =>
+          u === 'https://energybilllab.com/tools' ||
+          u.startsWith('https://energybilllab.com/tools/') ||
+          u === 'https://energybilllab.com/electricity-bill-analyzer',
+      );
+      expect(toolUrls).toHaveLength(16);
+
+      const guideUrls = urls.filter(
+        (u) =>
+          u.startsWith('https://energybilllab.com/guides/') &&
+          u !== 'https://energybilllab.com/guides',
+      );
+      expect(guideUrls).toHaveLength(50);
+
+      const researchUrls = urls.filter((u) => u.startsWith('https://energybilllab.com/research/'));
+      expect(researchUrls).toHaveLength(1);
+
+      const insightUrls = urls.filter(
+        (u) =>
+          u.startsWith('https://energybilllab.com/insights/') &&
+          u !== 'https://energybilllab.com/insights' &&
+          !u.includes('/insights/category/'),
+      );
+      expect(insightUrls).toHaveLength(23);
+
+      const totalCount =
+        coreTrustUrls.length +
+        authorUrls.length +
+        hubUrls.length +
+        stateUrls.length +
+        toolUrls.length +
+        guideUrls.length +
+        researchUrls.length +
+        insightUrls.length;
+
+      expect(totalCount).toBe(159);
+      expect(urls).toHaveLength(159);
     });
   });
 

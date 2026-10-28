@@ -254,9 +254,10 @@ export async function getNaturalGasCommonPeriod(
   try {
     interface PeriodRow extends Record<string, unknown> {
       period?: string | null;
-      cnt?: string | number | null;
     }
 
+    // Determine the reporting period from the official national U.S. residential benchmark
+    // (sector = 'RES', geography_code = 'US'). We do NOT use an arbitrary state-count threshold.
     const nationalQuery = await db.execute<PeriodRow>(sql`
       SELECT period::text as period
       FROM natural_gas_residential_prices_monthly
@@ -269,25 +270,9 @@ export async function getNaturalGasCommonPeriod(
       : (nationalQuery as unknown as PeriodRow[]);
     const latestNationalPeriod = natRows[0]?.period ? String(natRows[0].period) : null;
 
-    const commonQuery = await db.execute<PeriodRow>(sql`
-      SELECT period::text as period, COUNT(DISTINCT geography_code) as cnt
-      FROM natural_gas_residential_prices_monthly
-      WHERE sector = 'RES' AND geography_code != 'US'
-      GROUP BY period
-      HAVING COUNT(DISTINCT geography_code) >= 45
-      ORDER BY period DESC
-      LIMIT 1
-    `);
-    const commRows = Array.isArray(commonQuery.rows)
-      ? commonQuery.rows
-      : (commonQuery as unknown as PeriodRow[]);
-    const latestCommonPeriod = commRows[0]?.period
-      ? String(commRows[0].period)
-      : latestNationalPeriod;
-
     return {
       latestNationalPeriod,
-      latestCommonPeriod,
+      latestCommonPeriod: latestNationalPeriod,
     };
   } catch {
     return {

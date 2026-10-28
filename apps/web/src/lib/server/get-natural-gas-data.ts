@@ -251,28 +251,97 @@ export async function getNaturalGasHubData(): Promise<NaturalGasHubViewModel> {
     const mergedHistory = Array.from(periodMap.values());
     const trend = buildHistoricalTrendRows(mergedHistory);
 
-    const allJurisdictionCodes = Object.keys(stateRates).filter((c) => c !== 'US');
-    const commonPeriod =
-      commonPeriodInfo.latestCommonPeriod || effectiveNationalRate?.period || null;
+    // The target period is determined strictly by the official national U.S. residential benchmark
+    // (effectiveNationalRate), never by state count coverage.
+    const targetPeriodKey = (
+      effectiveNationalRate?.period || CANONICAL_NATURAL_GAS_SNAPSHOT.reportingPeriod
+    ).substring(0, 7);
 
-    const eligibleStateCodes = allJurisdictionCodes.filter(
-      (code) => stateRates[code]?.period === commonPeriod,
-    );
-    const excludedStateCodes = allJurisdictionCodes.filter(
-      (code) => stateRates[code]?.period !== commonPeriod,
-    );
+    // Only include state rates that belong to the active cohort reporting period
+    const cohortStateRates: Record<string, NaturalGasRateDTO> = {};
+    for (const [code, rate] of Object.entries(stateRates)) {
+      if (code !== 'US' && rate.period.substring(0, 7) === targetPeriodKey) {
+        cohortStateRates[code] = rate;
+      }
+    }
+
+    const allStateAndDcCodes = [
+      'AK',
+      'AL',
+      'AR',
+      'AZ',
+      'CA',
+      'CO',
+      'CT',
+      'DE',
+      'DC',
+      'FL',
+      'GA',
+      'HI',
+      'IA',
+      'ID',
+      'IL',
+      'IN',
+      'KS',
+      'KY',
+      'LA',
+      'MA',
+      'MD',
+      'ME',
+      'MI',
+      'MN',
+      'MO',
+      'MS',
+      'MT',
+      'NC',
+      'ND',
+      'NE',
+      'NH',
+      'NJ',
+      'NM',
+      'NV',
+      'NY',
+      'OH',
+      'OK',
+      'OR',
+      'PA',
+      'RI',
+      'SC',
+      'SD',
+      'TN',
+      'TX',
+      'UT',
+      'VA',
+      'VT',
+      'WA',
+      'WI',
+      'WV',
+      'WY',
+    ];
+
+    const eligibleStateCodes = allStateAndDcCodes.filter((code) => !!cohortStateRates[code]);
+    const excludedStateCodes = allStateAndDcCodes.filter((code) => !cohortStateRates[code]);
+
+    const [tYear, tMonth] = targetPeriodKey.split('-');
+    const targetPeriodFormatted =
+      tYear && tMonth
+        ? new Date(parseInt(tYear, 10), parseInt(tMonth, 10) - 1, 1).toLocaleDateString('en-US', {
+            month: 'long',
+            year: 'numeric',
+          })
+        : latestSourceMonthFormatted;
 
     const comparisonCohort: ComparisonCohortViewModel = {
       latestNationalPeriod:
         commonPeriodInfo.latestNationalPeriod || effectiveNationalRate?.period || null,
-      latestCommonPeriod: commonPeriod,
+      latestCommonPeriod: targetPeriodFormatted || targetPeriodKey,
       eligibleStatesCount: eligibleStateCodes.length,
       eligibleStateCodes,
       excludedStatesCount: excludedStateCodes.length,
       excludedStateCodes,
       exclusionReason:
         excludedStateCodes.length > 0
-          ? `Missing verified residential natural gas price reporting for period ${commonPeriod}.`
+          ? `Missing verified residential natural gas price reporting for period ${targetPeriodFormatted || targetPeriodKey}.`
           : 'All reporting states and districts present for common period.',
     };
 
@@ -282,7 +351,7 @@ export async function getNaturalGasHubData(): Promise<NaturalGasHubViewModel> {
       latestNationalRate: effectiveNationalRate,
       history: mergedHistory,
       trend,
-      stateRates,
+      stateRates: cohortStateRates,
       latestSourceMonthFormatted,
       dataStatusText: latestSourceMonthFormatted
         ? `Based on U.S. Energy Information Administration (EIA) Natural Gas Monthly Table 20 monthly data for ${latestSourceMonthFormatted}.`
