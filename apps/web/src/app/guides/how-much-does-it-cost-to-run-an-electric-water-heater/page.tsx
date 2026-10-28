@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -17,14 +21,16 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function WaterHeaterGuidePage() {
-  // Worked Example: 4,500W element, 1 active element, 3.0 active hours/day, 30 days, 16.5 ¢/kWh
+  // Worked Example: 4,500W element, 1 active element, 3.0 active hours/day, 30 days at canonical benchmark
   const workedExample = calculateWaterHeaterCost({
     elementWatts: 4500,
     activeElements: 1,
     hoursPerDay: 3.0,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
 
   return (
     <GuideArticleView guide={guide}>
@@ -89,9 +95,10 @@ export default function WaterHeaterGuidePage() {
         <h2>4. Worked Calculation: Shared Engine Output</h2>
         <p>
           Consider a standard 50-gallon electric water heater with a{' '}
-          <strong>4,500-Watt element</strong>,<strong>1 active element</strong>, operating for{' '}
-          <strong>3.0 active heating hours per day</strong>
-          at an example rate of <strong>16.5 ¢/kWh</strong> over 30 days:
+          <strong>4,500-Watt element</strong>, <strong>1 active element</strong>, operating for{' '}
+          <strong>3.0 active heating hours per day</strong> at the national benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH} ¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}) over 30 days:
         </p>
         <ul>
           <li>
@@ -121,8 +128,8 @@ export default function WaterHeaterGuidePage() {
         <div className={styles.tableWrapper}>
           <table aria-label="Electric Resistance Water Heater Active Hours vs Monthly Cost">
             <caption>
-              Table 1: Estimated Water Heater Costs by Daily Active Runtime (4,500W Element @
-              16.5¢/kWh)
+              Table 1: Estimated Water Heater Costs by Daily Active Runtime (4,500W Element @{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
             </caption>
             <thead>
               <tr>
@@ -138,29 +145,29 @@ export default function WaterHeaterGuidePage() {
                 <td>Low Usage (1-2 persons, short showers)</td>
                 <td>2.0 hrs/day</td>
                 <td>9.0 kWh</td>
-                <td>$44.55</td>
-                <td>$542.03</td>
+                <td>${(9.0 * 30 * rateDollars).toFixed(2)}</td>
+                <td>${(9.0 * 365 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Average Household (3-4 persons, typical laundry)</td>
                 <td>3.0 hrs/day</td>
                 <td>13.5 kWh</td>
-                <td>$66.83</td>
-                <td>$813.04</td>
+                <td>${(13.5 * 30 * rateDollars).toFixed(2)}</td>
+                <td>${(13.5 * 365 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Usage (Large family, daily baths)</td>
                 <td>4.5 hrs/day</td>
                 <td>20.25 kWh</td>
-                <td>$100.24</td>
-                <td>$1,219.56</td>
+                <td>${(20.25 * 30 * rateDollars).toFixed(2)}</td>
+                <td>${(20.25 * 365 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Heavy Usage + Cold Winter Inlet Temps</td>
                 <td>6.0 hrs/day</td>
                 <td>27.0 kWh</td>
-                <td>$133.65</td>
-                <td>$1,626.08</td>
+                <td>${(27.0 * 30 * rateDollars).toFixed(2)}</td>
+                <td>${(27.0 * 365 * rateDollars).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

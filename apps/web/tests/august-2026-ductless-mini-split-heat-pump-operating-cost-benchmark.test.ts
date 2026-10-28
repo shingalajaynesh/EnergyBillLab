@@ -34,7 +34,7 @@ describe('August 2026 Ductless Mini-Split Heat Pump Operating Cost Benchmark Ins
 
   it('4. activates home-energy-costs category with published articles', () => {
     const homeCostInsights = getInsightsByCategory('home-energy-costs', '2026-08-17T00:00:00.000Z');
-    expect(homeCostInsights.length).toBeGreaterThanOrEqual(4);
+    expect(homeCostInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

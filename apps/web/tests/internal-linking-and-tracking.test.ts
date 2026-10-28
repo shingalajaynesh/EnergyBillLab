@@ -210,15 +210,15 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
     expect(event['tool_slug']).toBe('appliance-energy-cost-calculator');
   });
 
-  // Test 11: Sitemap includes Insights launch batch and daily updates
+  // Test 11: Sitemap includes Insights launch batch and daily updates while excluding archived and noindexed URLs
   it('11. Sitemap includes Insights launch batch and daily updates', () => {
     const sitemapEntries = sitemap();
-    expect(sitemapEntries).toHaveLength(177);
+    expect(sitemapEntries).toHaveLength(159);
 
     const urls = sitemapEntries.map((e) => e.url);
-    expect(new Set(urls).size).toBe(177);
+    expect(new Set(urls).size).toBe(159);
     expect(urls).toContain('https://energybilllab.com/insights');
-    expect(urls).toContain(
+    expect(urls).not.toContain(
       'https://energybilllab.com/insights/may-2026-ev-home-charging-cost-benchmark',
     );
     expect(urls).toContain(
@@ -227,10 +227,10 @@ describe('Search Console Readiness, Internal Linking, and Analytics Tracking', (
     expect(urls).toContain(
       'https://energybilllab.com/insights/may-2026-heat-pump-water-heater-savings-benchmark',
     );
-    expect(urls).toContain(
+    expect(urls).not.toContain(
       'https://energybilllab.com/insights/july-2026-summer-wholesale-electricity-price-forecast',
     );
-    expect(urls).toContain(
+    expect(urls).not.toContain(
       'https://energybilllab.com/insights/august-2026-vampire-power-phantom-load-standby-electricity-cost-benchmark',
     );
     expect(urls).toContain(

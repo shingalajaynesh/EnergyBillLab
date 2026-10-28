@@ -3,7 +3,7 @@ import path from 'path';
 import { describe, expect, it } from 'vitest';
 
 import { APPROVED_STATE_SLUGS } from '../src/config/published-states';
-import { createPageMetadata } from '../src/lib/metadata';
+import { createPageMetadata, createRootMetadata } from '../src/lib/metadata';
 import { ADSENSE_CLIENT_ID } from '../src/lib/site';
 
 const CRITICAL_ROUTES = [
@@ -113,10 +113,11 @@ describe('Production Monitoring & Quality Gates', () => {
     expect(adsbygoogleMatches).toHaveLength(0);
     expect(layoutContent).not.toContain('pagead2.googlesyndication.com');
 
-    // 2. Ownership verification meta tag is present with correct client ID
+    // 2. Ownership verification meta tag is configured via Next.js metadata with zero layout duplicates
     expect(ADSENSE_CLIENT_ID).toBe('ca-pub-6303291083449043');
-    expect(layoutContent).toContain('name="google-adsense-account"');
-    expect(layoutContent).toContain('content={ADSENSE_CLIENT_ID}');
+    const rootMeta = createRootMetadata();
+    expect(rootMeta.other?.['google-adsense-account']).toBe(ADSENSE_CLIENT_ID);
+    expect(layoutContent).not.toContain('<meta name="google-adsense-account"');
 
     // 3. ads.txt is present and contains exact authorized publisher line
     const adsTxtPath = path.resolve(__dirname, '../public/ads.txt');

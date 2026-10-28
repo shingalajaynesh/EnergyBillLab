@@ -9,6 +9,7 @@ import { Button, Select } from 'antd';
 import React, { useState } from 'react';
 
 import { NumberInputWithUnit } from '@/components/number-input-with-unit';
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
 
 import { EV_PRESETS, type EvPreset } from '../constants/ev-presets';
 import { trackEvAnalytics } from '../lib/ev-analytics';
@@ -328,7 +329,8 @@ export function EvForm({ onCalculate, onReset, stateRates = [] }: EvFormProps) {
             }}
           />
           <div className={styles.fieldHint}>
-            Enter your bill rate or select a state EIA benchmark.
+            {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}. Enter your custom bill rate or select a
+            state EIA benchmark.
           </div>
         </div>
 

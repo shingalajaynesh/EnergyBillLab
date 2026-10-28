@@ -18,6 +18,8 @@ type StateOption = {
   rateCentsPerKwh: number;
 };
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 type RefrigeratorContainerProps = {
   stateOptions?: StateOption[];
   sourcePeriodText?: string;
@@ -27,7 +29,7 @@ const INITIAL_RESULT: ApplianceCostResult = calculateApplianceCost({
   wattage: 150,
   hoursPerDay: 24,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 35,
 });
 

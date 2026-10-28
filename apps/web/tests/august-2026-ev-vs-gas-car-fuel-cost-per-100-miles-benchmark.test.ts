@@ -35,7 +35,7 @@ describe('August 2026 EV vs. Gasoline Car Fuel Cost & eGallon Benchmark Insight'
       'home-energy-costs',
       '2026-08-26T00:00:00.000Z',
     );
-    expect(homeEnergyInsights.length).toBeGreaterThanOrEqual(9);
+    expect(homeEnergyInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

@@ -48,12 +48,14 @@ export const evCalculatorSchema = z
 
 export type EvFormValues = z.infer<typeof evCalculatorSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_EV_FORM_VALUES: EvFormValues = {
   batteryCapacityKwh: 75,
   startingChargePercent: 20,
   targetChargePercent: 80,
   chargingEfficiencyPercent: 90,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   milesDriven: 30,
   milesPerKwh: 3.3,
   presetId: '75kwh-long-range',

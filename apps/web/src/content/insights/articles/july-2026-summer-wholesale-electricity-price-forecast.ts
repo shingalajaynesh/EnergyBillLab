@@ -4,6 +4,7 @@ export const july2026SummerWholesaleElectricityPriceForecast: InsightRecord = {
   id: 'insight-2026-07-31-july-summer-wholesale-electricity-price-forecast',
   slug: 'july-2026-summer-wholesale-electricity-price-forecast',
   status: 'published',
+  noindex: true,
   title: 'July 2026 Summer Wholesale Electricity Price Forecast',
   metaTitle: 'July 2026 Summer Wholesale Electricity Price Forecast',
   metaDescription:

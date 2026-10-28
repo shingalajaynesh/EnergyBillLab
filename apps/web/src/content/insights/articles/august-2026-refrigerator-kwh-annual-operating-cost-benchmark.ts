@@ -3,7 +3,7 @@ import type { InsightRecord } from '../types';
 export const august2026RefrigeratorKwhAnnualOperatingCostBenchmark: InsightRecord = {
   id: 'insight-2026-08-10-august-refrigerator-kwh-annual-operating-cost-benchmark',
   slug: 'august-2026-refrigerator-kwh-annual-operating-cost-benchmark',
-  status: 'published',
+  status: 'archived',
   title: 'August 2026 Residential Refrigerator kWh Consumption & Annual Operating Cost Benchmark',
   metaTitle: 'August 2026 Refrigerator kWh & Annual Operating Cost Benchmark',
   metaDescription:

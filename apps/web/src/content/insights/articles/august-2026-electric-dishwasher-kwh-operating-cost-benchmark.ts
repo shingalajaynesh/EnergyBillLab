@@ -8,7 +8,7 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
   metaTitle: 'August 2026 Dishwasher Electricity Cost & Heated Dry Benchmark | EnergyBillLab',
   metaDescription:
     'Dishwasher electricity cost benchmark using EIA rate data. Disabling heated dry saves $19.82/year. Dishwashers use 65% less energy than hand washing.',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-11',
   updatedAt: null,
   category: 'appliances',

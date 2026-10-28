@@ -3,7 +3,7 @@ import type { InsightRecord } from '../types';
 export const august2026ElectricClothesDryerKwhOperatingCostBenchmark: InsightRecord = {
   id: 'insight-2026-08-07-august-electric-clothes-dryer-kwh-operating-cost-benchmark',
   slug: 'august-2026-electric-clothes-dryer-kwh-operating-cost-benchmark',
-  status: 'published',
+  status: 'archived',
   title: 'August 2026 Electric Clothes Dryer kWh Consumption & Monthly Operating Cost Benchmark',
   metaTitle: 'August 2026 Electric Clothes Dryer kWh & Operating Cost Benchmark',
   metaDescription:

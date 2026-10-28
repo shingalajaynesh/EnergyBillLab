@@ -9,6 +9,10 @@ import {
 
 import { ThermalCrossoverCard } from './thermal-crossover-card';
 import { MmbtuBenchmarkTable } from './mmbtu-benchmark-table';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 import styles from './heating-fuel.module.css';
 
 interface FuelComparatorToolProps {
@@ -20,7 +24,8 @@ interface FuelComparatorToolProps {
 
 export function FuelComparatorTool({ initialRates }: FuelComparatorToolProps) {
   const [params, setParams] = useState<CalculateHeatingFuelComparisonInput>({
-    electricityRateCentsPerKwh: initialRates?.electricityCentsPerKwh ?? 16.5,
+    electricityRateCentsPerKwh:
+      initialRates?.electricityCentsPerKwh ?? DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     naturalGasDollarsPerTherm: initialRates?.naturalGasDollarsPerTherm ?? 1.45,
     heatingOilDollarsPerGallon: 3.85,
     propaneDollarsPerGallon: 2.95,
@@ -37,14 +42,20 @@ export function FuelComparatorTool({ initialRates }: FuelComparatorToolProps) {
       <div className={styles.controlsPanel}>
         <div className={styles.controlsGrid}>
           <Form layout="vertical">
-            <Form.Item label="Electricity Rate (¢/kWh)">
+            <Form.Item
+              label="Electricity Rate (¢/kWh)"
+              extra={DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}
+            >
               <InputNumber
                 min={1}
                 max={100}
                 step={0.1}
                 value={params.electricityRateCentsPerKwh}
                 onChange={(val) =>
-                  setParams((prev) => ({ ...prev, electricityRateCentsPerKwh: val ?? 16.5 }))
+                  setParams((prev) => ({
+                    ...prev,
+                    electricityRateCentsPerKwh: val ?? DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+                  }))
                 }
                 addonAfter="¢/kWh"
                 style={{ width: '100%' }}

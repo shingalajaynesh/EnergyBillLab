@@ -107,8 +107,10 @@ export default function AuthorProfilePage() {
             <div className={styles.featureCard}>
               <h3>Calculation Engine Architecture</h3>
               <p>
-                Author and maintainer of all 12 pure TypeScript calculation packages in Energy Bill
-                Lab, ensuring IEEE-754 decimal safety, explicit unit conversions (Watts, kWh,
+                Author and maintainer of Energy Bill Lab’s pure TypeScript calculation engine
+                package (@energy-bill-lab/calculation-engine), comprising 10 specialized
+                mathematical formula modules and powering 15 public interactive energy tools.
+                Engineered with IEEE-754 decimal safety, explicit unit conversions (Watts, kWh,
                 BTU/hr, therms, Mcf), and zero third-party framework dependencies in the
                 mathematical core.
               </p>
@@ -117,16 +119,18 @@ export default function AuthorProfilePage() {
               <h3>Data Verification & Integrity</h3>
               <p>
                 Conducts monthly ingestion and statistical verification of U.S. Energy Information
-                Administration (EIA) state electricity rates and natural gas price snapshots,
-                maintaining historical 24-month baselines and quality status tracking.
+                Administration (EIA) state electricity rates (50 U.S. states and the District of
+                Columbia) and natural gas price snapshots, maintaining historical 24-month baselines
+                and quality status tracking.
               </p>
             </div>
             <div className={styles.featureCard}>
-              <h3>Original Case Study Modeling</h3>
+              <h3>Creation Methodology & Quality Verification</h3>
               <p>
-                Develops practical worked examples for utility bill decomposition, isolating
-                calendar billing drift (28 vs 35 billing days), fuel adjustment riders, customer
-                charges, and appliance duty-cycle thermal shifts.
+                Jaynesh designs and operates custom TypeScript pipelines that ingest official EIA
+                datasets and compute deterministic model scenarios. All analysis, narrative context,
+                and technical explanations are personally researched, written, and verified by
+                Jaynesh prior to publication.
               </p>
             </div>
             <div className={styles.featureCard}>

@@ -6,6 +6,8 @@ import {
 } from '@energy-bill-lab/calculation-engine';
 import React, { useState } from 'react';
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 import { EvForm, type StateRateOption } from './ev-form';
 import { EvResults } from './ev-results';
 import { WorkedExampleSection } from './worked-example-section';
@@ -19,7 +21,7 @@ const DEFAULT_INITIAL_RESULT: EvChargingCostResult = calculateEvChargingCost({
   startingChargePercent: 20,
   targetChargePercent: 80,
   chargingEfficiencyPercent: 90,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   milesDriven: 30,
   milesPerKwh: 3.3,
 });

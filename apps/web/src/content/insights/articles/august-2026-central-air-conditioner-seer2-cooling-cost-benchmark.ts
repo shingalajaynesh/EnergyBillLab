@@ -3,7 +3,7 @@ import type { InsightRecord } from '../types';
 export const august2026CentralAirConditionerSeer2CoolingCostBenchmark: InsightRecord = {
   id: 'insight-2026-08-02-august-central-ac-seer2-cooling-cost-benchmark',
   slug: 'august-2026-central-air-conditioner-seer2-cooling-cost-benchmark',
-  status: 'published',
+  status: 'archived',
   title: 'August 2026 Central Air Conditioner SEER2 Efficiency & Summer Cooling Cost Benchmark',
   metaTitle: 'August 2026 Central AC SEER2 Efficiency & Cooling Cost Benchmark',
   metaDescription:

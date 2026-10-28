@@ -9,7 +9,7 @@ import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { AppThemeProvider } from '@/components/app-theme-provider';
 import { createRootMetadata } from '@/lib/metadata';
-import { ADSENSE_CLIENT_ID, GTM_ID } from '@/lib/site';
+import { GTM_ID } from '@/lib/site';
 import {
   createOrganizationStructuredData,
   createWebsiteStructuredData,
@@ -25,9 +25,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en">
-      <head>
-        <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
-      </head>
       <body>
         <GoogleTagManager gtmId={GTM_ID} />
         <a className="skip-link" href="#main-content">

@@ -37,12 +37,14 @@ export const spaceHeaterCalculatorSchema = z.object({
 
 export type SpaceHeaterFormValues = z.infer<typeof spaceHeaterCalculatorSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_HEATER_FORM_VALUES: SpaceHeaterFormValues = {
   heaterWatts: 1500,
   quantity: 1,
   hoursPerDay: 4,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 80,
   presetId: '1500w-standard',
 };

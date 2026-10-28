@@ -25,12 +25,14 @@ export const waterHeaterSchema = z.object({
 
 export type WaterHeaterFormValues = z.infer<typeof waterHeaterSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_WATER_HEATER_FORM_VALUES: WaterHeaterFormValues = {
   elementWatts: 4500,
   activeElements: 1,
   hoursPerDay: 3,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
   presetId: 'standard-electric-water-heater',
 };

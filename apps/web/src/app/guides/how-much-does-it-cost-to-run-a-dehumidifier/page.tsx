@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -17,14 +21,16 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function DehumidifierGuidePage() {
-  // Worked Example: 500W unit, 24 connected hours/day, 50% duty cycle, 30 days, 16.5 ¢/kWh
+  // Worked Example: 500W unit, 24 connected hours/day, 50% duty cycle, 30 days at canonical benchmark
   const workedExample = calculateApplianceCost({
     wattage: 500,
     hoursPerDay: 24,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 50,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
 
   return (
     <GuideArticleView guide={guide}>
@@ -71,8 +77,9 @@ export default function DehumidifierGuidePage() {
         <p>
           Consider a <strong>500-Watt basement dehumidifier</strong> plugged in{' '}
           <strong>24 hours per day</strong>, cycling its compressor at a{' '}
-          <strong>50% duty cycle</strong> over <strong>30 days</strong> at an example rate of{' '}
-          <strong>16.5 ¢/kWh</strong>:
+          <strong>50% duty cycle</strong> over <strong>30 days</strong> at the national benchmark of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH} ¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <ul>
           <li>
@@ -102,7 +109,9 @@ export default function DehumidifierGuidePage() {
         <div className={styles.tableWrapper}>
           <table aria-label="Dehumidifier Duty Cycle vs Monthly Operating Cost">
             <caption>
-              Table 1: Estimated Dehumidifier Costs by Duty Cycle (500W Unit @ 16.5¢/kWh, 30 Days)
+              Table 1: Estimated Dehumidifier Costs by Duty Cycle (500W Unit @{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh, 30 Days) —{' '}
+              {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}
             </caption>
             <thead>
               <tr>
@@ -119,28 +128,28 @@ export default function DehumidifierGuidePage() {
                 <td>25% Duty Cycle</td>
                 <td>6 hrs/day</td>
                 <td>90.0 kWh</td>
-                <td>$14.85</td>
+                <td>${(90.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Moderate Summer Humidity</td>
                 <td>50% Duty Cycle</td>
                 <td>12 hrs/day</td>
                 <td>180.0 kWh</td>
-                <td>$29.70</td>
+                <td>${(180.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Humidity / Damp Basement</td>
                 <td>75% Duty Cycle</td>
                 <td>18 hrs/day</td>
                 <td>270.0 kWh</td>
-                <td>$44.55</td>
+                <td>${(270.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Continuous Operation (Wet Space)</td>
                 <td>100% Duty Cycle</td>
                 <td>24 hrs/day</td>
                 <td>360.0 kWh</td>
-                <td>$59.40</td>
+                <td>${(360.0 * rateDollars).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

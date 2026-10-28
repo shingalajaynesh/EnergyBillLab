@@ -9,6 +9,7 @@ import { Button, Select } from 'antd';
 import React, { useState } from 'react';
 
 import { NumberInputWithUnit } from '@/components/number-input-with-unit';
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
 
 import { APPLIANCE_PRESETS, type AppliancePreset } from '../constants/appliance-presets';
 import { trackApplianceAnalytics } from '../lib/appliance-analytics';
@@ -284,7 +285,8 @@ export function ApplianceCalculatorForm({
             }}
           />
           <div className={styles.fieldHint}>
-            Check your monthly electric bill or select a state EIA benchmark below.
+            {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}. Check your monthly electric bill or select a
+            state EIA benchmark below.
           </div>
         </div>
 

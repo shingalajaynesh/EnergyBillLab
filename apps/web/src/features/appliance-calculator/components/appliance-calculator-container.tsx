@@ -6,6 +6,8 @@ import {
 } from '@energy-bill-lab/calculation-engine';
 import React, { useState } from 'react';
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 import { ApplianceCalculatorForm, type StateRateOption } from './appliance-calculator-form';
 import { ApplianceCalculatorResults } from './appliance-calculator-results';
 import { WorkedExampleSection } from './worked-example-section';
@@ -18,7 +20,7 @@ const DEFAULT_INITIAL_RESULT: ApplianceCostResult = calculateApplianceCost({
   wattage: 1500,
   hoursPerDay: 4,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
 });
 

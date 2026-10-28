@@ -32,7 +32,7 @@ describe('August 2026 Heat Pump Auxiliary Electric Resistance Heat Strip Benchma
 
   it('4. activates home-energy-costs category with published articles', () => {
     const costInsights = getInsightsByCategory('home-energy-costs', '2026-08-22T00:00:00.000Z');
-    expect(costInsights.length).toBeGreaterThanOrEqual(7);
+    expect(costInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

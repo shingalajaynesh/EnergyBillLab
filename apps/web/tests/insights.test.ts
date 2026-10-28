@@ -68,8 +68,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 2: Published registry renders public articles
   it('2. production registry contains the published launch Insights plus daily updates', () => {
     expect(insightsRegistry).toHaveLength(36);
-    expect(insightsRegistry.every((record) => record.status === 'published')).toBe(true);
-    expect(getPublishedInsights()).toHaveLength(36);
+    expect(insightsRegistry.filter((r) => r.status === 'published')).toHaveLength(24);
+    expect(insightsRegistry.filter((r) => r.status === 'archived')).toHaveLength(12);
+    expect(getPublishedInsights()).toHaveLength(23);
   });
 
   // Test 2b: getPublishedInsights returns articles in descending order by publishedAt (latest first)
@@ -316,7 +317,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   // Test 26: Published sitemap inventory includes hub and article URLs
   it('26. sitemap inventory includes /insights and the published article URLs', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(177);
+    expect(entries).toHaveLength(159);
     expect(entries.some((e) => e.url.endsWith('/insights'))).toBe(true);
     expect(
       entries.some((e) =>
@@ -337,9 +338,10 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
+    // Archived insight is excluded from sitemap
     expect(
       entries.some((e) => e.url.endsWith('/insights/may-2026-ev-home-charging-cost-benchmark')),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/may-2026-residential-electricity-price-bill-impact'),
@@ -358,11 +360,12 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/may-2026-heat-pump-water-heater-savings-benchmark'),
       ),
     ).toBe(true);
+    // Seasonal forecast marked noindex is excluded from sitemap
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/july-2026-summer-wholesale-electricity-price-forecast'),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/may-2026-rooftop-solar-generation-retail-savings-benchmark'),
@@ -394,13 +397,14 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         e.url.endsWith('/insights/may-2026-residential-natural-gas-price-off-season-bill-impact'),
       ),
     ).toBe(true);
+    // Archived insights are excluded from sitemap
     expect(
       entries.some((e) =>
         e.url.endsWith(
           '/insights/august-2026-central-air-conditioner-seer2-cooling-cost-benchmark',
         ),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith(
@@ -424,31 +428,31 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       entries.some((e) =>
         e.url.endsWith('/insights/august-2026-electric-dishwasher-kwh-operating-cost-benchmark'),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith(
           '/insights/august-2026-electric-clothes-washer-kwh-operating-cost-benchmark',
         ),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/august-2026-electric-dehumidifier-kwh-operating-cost-benchmark'),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith('/insights/august-2026-ev-home-charging-efficiency-losses-benchmark'),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith(
           '/insights/august-2026-window-air-conditioner-wattage-operating-cost-benchmark',
         ),
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       entries.some((e) =>
         e.url.endsWith(
@@ -456,25 +460,20 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
         ),
       ),
     ).toBe(true);
-    expect(
-      entries.some((e) =>
-        e.url.endsWith('/insights/april-2026-residential-natural-gas-price-heating-cost'),
-      ),
-    ).toBe(true);
   });
 
   // Test 26b: Category archives enter sitemap when category threshold is reached
-  it('26b. includes category archive URL when category reaches 3 published articles threshold', () => {
+  it('26b. category archives are noindex directory hubs and not in sitemap', () => {
     const urls = sitemap().map((entry) => entry.url);
-    expect(urls).toContain('https://energybilllab.com/insights/category/home-energy-costs');
-    expect(urls).toContain('https://energybilllab.com/insights/category/electricity-rates');
-    expect(urls).toContain('https://energybilllab.com/insights/category/appliances');
-    expect(urls).toContain('https://energybilllab.com/insights/category/natural-gas');
-    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(9);
+    expect(urls).not.toContain('https://energybilllab.com/insights/category/home-energy-costs');
+    expect(urls).not.toContain('https://energybilllab.com/insights/category/electricity-rates');
+    expect(urls).not.toContain('https://energybilllab.com/insights/category/appliances');
+    expect(urls).not.toContain('https://energybilllab.com/insights/category/natural-gas');
+    expect(getInsightsByCategory('home-energy-costs')).toHaveLength(7);
     expect(getInsightsByCategory('electricity-rates')).toHaveLength(3);
-    expect(getInsightsByCategory('appliances')).toHaveLength(17);
+    expect(getInsightsByCategory('appliances')).toHaveLength(7);
     expect(getInsightsByCategory('natural-gas')).toHaveLength(3);
-    expect(getInsightsByCategory('energy-markets')).toHaveLength(1);
+    expect(getInsightsByCategory('energy-markets')).toHaveLength(0);
     expect(getInsightsByCategory('solar')).toHaveLength(2);
     expect(getInsightsByCategory('battery-storage')).toHaveLength(1);
   });
@@ -511,7 +510,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
   it('28. verifies pagination pageSize is 12 and activates when article count exceeds 12', () => {
     const articles = getPublishedInsights();
     const totalPages = Math.ceil(articles.length / 12);
-    expect(totalPages).toBe(3);
+    expect(totalPages).toBe(2);
   });
 
   // Test 29: Thin category pages are not indexable
@@ -605,11 +604,11 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(articleJson).not.toContain('real-time');
   });
 
-  // Test 33b: Daily EV charging Insight is public and source-backed
+  // Test 33b: Daily EV charging Insight is archived with 301 redirect to EV charging guide
   it('33b. validates the May 2026 EV charging Insight metadata, sources, and privacy bounds', () => {
     const article = getInsightBySlug('may-2026-ev-home-charging-cost-benchmark');
     expect(article).toBeDefined();
-    expect(article?.status).toBe('published');
+    expect(article?.status).toBe('archived');
     expect(article?.category).toBe('home-energy-costs');
     expect(article?.reportingPeriod).toBe('May 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
@@ -756,12 +755,12 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article).toBeDefined();
     expect(article?.status).toBe('published');
     expect(article?.category).toBe('electricity-rates');
-    expect(article?.reportingPeriod).toBe('August 2026');
+    expect(article?.reportingPeriod).toBe('May 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
-    expect(article?.summary).toContain('3.3x');
-    expect(article?.summary).toContain('$176.80');
-    expect(article?.keyFindings?.join(' ')).toContain('Rhode Island (26.71¢/kWh)');
-    expect(article?.keyFindings?.join(' ')).toContain('Oklahoma ($90.30)');
+    expect(article?.summary).toContain('4.51x');
+    expect(article?.summary).toContain('$404.80');
+    expect(article?.keyFindings?.join(' ')).toContain('Washington');
+    expect(article?.keyFindings?.join(' ')).toContain('Hawaii');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     expect(article?.relatedRoutes).toContain('/electricity-rates');
     expect(article?.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
@@ -806,13 +805,13 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(articleJson).not.toContain('guaranteed payback');
   });
 
-  // Test 33j: Daily central AC SEER2 Insight is public and source-backed
+  // Test 33j: Daily central AC SEER2 Insight is archived with 301 redirect to AC guide
   it('33j. validates the August 2026 central AC SEER2 Insight metadata, sources, and privacy bounds', () => {
     const article = getInsightBySlug(
       'august-2026-central-air-conditioner-seer2-cooling-cost-benchmark',
     );
     expect(article).toBeDefined();
-    expect(article?.status).toBe('published');
+    expect(article?.status).toBe('archived');
     expect(article?.category).toBe('appliances');
     expect(article?.reportingPeriod).toBe('August 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
@@ -953,7 +952,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       'august-2026-refrigerator-kwh-annual-operating-cost-benchmark',
     );
     expect(article).toBeDefined();
-    expect(article?.status).toBe('published');
+    expect(article?.status).toBe('archived');
     expect(article?.category).toBe('appliances');
     expect(article?.reportingPeriod).toBe('August 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
@@ -970,7 +969,7 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
       'august-2026-electric-dehumidifier-kwh-operating-cost-benchmark',
     );
     expect(article).toBeDefined();
-    expect(article?.status).toBe('published');
+    expect(article?.status).toBe('archived');
     expect(article?.category).toBe('appliances');
     expect(article?.reportingPeriod).toBe('August 2026 (May 2026 EIA Release)');
     expect(article?.authorName).toBe('Jaynesh Shingala');

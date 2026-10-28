@@ -2,18 +2,22 @@
 
 ## Current Task
 
-- Phase: Cooktop Energy Cost Benchmark Provenance Convergence & Metadata Consistency
-- Date: October 14, 2026
+- Phase: AdSense Low-Value Content Remediation Implementation
+- Date: October 28, 2026
 - Status:
-  - PASS - Identified and resolved metadata description mismatch in `apps/web/src/content/insights/articles/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.ts`: corrected stale `$47.30/yr` to `$62.56/yr` in `metaDescription` (which was being crawled and indexed by search crawlers).
-  - PASS - Embedded explicit Markdown data tables for Table 1 (Standardized 300 Wh Cooking Task Benchmark) and Table 2 (Annual Cooktop Operating Cost Benchmark Across Major States) into sections 2 and 3 of the cooktop article.
-  - PASS - Added automated unit tests in `apps/web/tests/august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.test.ts` verifying Table 20 provenance, absence of legacy Table 18 or $47.30 values, and consistent metaDescription.
-  - PASS - Extended internal revalidation route (`/api/internal/revalidate-energy-data`) with the cooktop benchmark and other natural gas insight paths, plus on-demand `?path=` query parameter support.
-  - PASS - Updated research documentation in `docs/editorial/topic-research/2026-08-15-august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark.md`.
-  - PASS - Verified full quality test suites: `pnpm typecheck` (9 packages clean), `pnpm lint` (0 errors), `pnpm test` (58 test files, 457 tests pass), and `pnpm build:web` (all static routes prerendered).
-- Scope & Governance Completed:
-  1. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala with zero exposed personal history or location details.
-  2. **Protected Files Unchanged:** Protected infrastructure configurations (`turbo.json`, `vercel.json`, `render.yaml`) have 0 diff.
-  3. **Strict Git Rules:** Zero Git write commands executed; all changes remain unstaged in working tree.
-- Suggested Commit: `fix(insights): update cooktop benchmark metaDescription and add structured task tables`
-
+  - PASS - EIA Live Release Verification: Live query confirmed August 2026 national residential electricity benchmark is 18.16 ¢/kWh (Table 5.3 / 5.6.A, Form EIA-861M) and July 2026 residential natural gas benchmark is $26.45/Mcf ($2.645/therm).
+  - PASS - Canonical Electricity Benchmark Architecture: Established `CANONICAL_ELECTRICITY_SNAPSHOT`, `DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH` (18.16), and `DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE` in `apps/web/src/lib/constants/electricity.ts`.
+  - PASS - State Rate Options & Agreement: Validated all 50 states + District of Columbia + US Total (52 records) in `apps/web/src/lib/constants/state-rates-snapshot.ts` against official EIA Table 5.6.A (0 mismatches, 0 missing).
+  - PASS - 11 Calculator Defaults & Disclosures: Harmonized all 11 calculators (AC, Appliance, Dryer, Refrigerator, Water Heater, EV Charging, Space Heater, Pool Pump, Dehumidifier, Heating Fuel Comparator, Home Energy Scorecard) to 18.16¢/kWh default with explicit EIA benchmark disclosure and zero stale 16.50¢/kWh occurrences.
+  - PASS - Strengthened 10 Appliance Guides: Deterministically calculated all worked examples using `DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH` (18.16¢/kWh) with clear EIA provenance disclosures.
+  - PASS - State Spread Insight Harmonization: Fully corrected `/insights/august-2026-state-residential-electricity-price-spread-benchmark` to single consistent dataset (WA 11.52¢, CA 32.40¢, HI 52.00¢, US 18.44¢, 4.51x nationwide spread, $404.80/mo delta) with explicit May 2026 EIA benchmark title and body language.
+  - PASS - Redundant Insights Consolidation & 301 Permanent Redirects: Consolidated 12 thin/overlapping insights into canonical guides with 301 permanent redirects in `apps/web/next.config.ts`, marked `status: 'archived'` in registry, and excluded from sitemap.
+  - PASS - Directory Hubs Noindex: Marked `/research` and `/insights/category/*` as `robots: noindex, follow`, keeping standalone report `/research/us-residential-electricity-rate-report` indexed in sitemap.
+  - PASS - AdSense Technical Verification: Preserved valid `ads.txt` (`google.com, pub-6303291083449043, DIRECT, f08c47fec0942fa0`), consolidated ownership verification into single canonical `meta name="google-adsense-account"` via `createRootMetadata`, removed duplicate from `layout.tsx`, and verified zero active `adsbygoogle` script tags.
+  - PASS - Sitemap Audit: 159 clean unique URLs, zero 301 redirect URLs, zero noindex URLs.
+  - PASS - Full Quality Gates: `pnpm format:check` (0 issues), `pnpm typecheck` (10 tasks clean), `pnpm lint` (10 tasks clean), `pnpm test` (59 test files, 490 tests pass), `pnpm build:web` (162/162 static pages prerendered), `pnpm build:api` (clean).
+- Scope & Governance:
+  1. **Zero AdSense Review Requests:** Site remains local and ready; no AdSense review requested.
+  2. **Strict Privacy Standards:** Author listed exclusively as Jaynesh Shingala without personal or location disclosure.
+  3. **Strict Git Rules:** Zero Git write commands executed (`git add`, `git commit`, `git push` avoided); all changes unstaged in working tree.
+- Suggested Commit: `fix(adsense): complete low-value content remediation with eia aug-2026 rate harmonization, canonical guide consolidations, and 301 redirects`

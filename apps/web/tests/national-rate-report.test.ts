@@ -35,7 +35,7 @@ describe('U.S. Residential Electricity-Rate Report & Research Hub', () => {
     expect(hubRoute?.group).toBe('research');
     expect(reportRoute?.group).toBe('research');
 
-    expect(sitemapRoutes.some((r) => r.href === '/research')).toBe(true);
+    expect(sitemapRoutes.some((r) => r.href === '/research')).toBe(false);
     expect(
       sitemapRoutes.some((r) => r.href === '/research/us-residential-electricity-rate-report'),
     ).toBe(true);

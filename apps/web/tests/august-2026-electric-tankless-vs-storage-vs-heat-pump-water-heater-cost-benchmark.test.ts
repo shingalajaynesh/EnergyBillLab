@@ -40,7 +40,7 @@ describe('August 2026 Electric Tankless vs. Storage vs. Heat Pump Water Heater C
 
   it('4. activates appliances category with published articles', () => {
     const applianceInsights = getInsightsByCategory('appliances', '2026-08-27T00:00:00.000Z');
-    expect(applianceInsights.length).toBeGreaterThanOrEqual(17);
+    expect(applianceInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

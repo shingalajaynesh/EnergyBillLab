@@ -27,13 +27,17 @@ describe('August 2026 Portable Electric Space Heater Operating Cost Benchmark In
     );
   });
 
-  it('3. is included in published insights', () => {
-    const published = getPublishedInsights('2026-08-05T12:00:00.000Z');
-    const found = published.find(
-      (item) => item.slug === 'august-2026-portable-electric-space-heater-operating-cost-benchmark',
+  it('3. is marked archived in registry and excluded from published insights', () => {
+    const found = getInsightBySlug(
+      'august-2026-portable-electric-space-heater-operating-cost-benchmark',
     );
     expect(found).toBeDefined();
-    expect(found?.status).toBe('published');
+    expect(found?.status).toBe('archived');
+    const published = getPublishedInsights('2026-08-05T12:00:00.000Z');
+    const inPublished = published.find(
+      (item) => item.slug === 'august-2026-portable-electric-space-heater-operating-cost-benchmark',
+    );
+    expect(inPublished).toBeUndefined();
   });
 
   it('4. activates home-energy-costs category with at least 3 published articles', () => {

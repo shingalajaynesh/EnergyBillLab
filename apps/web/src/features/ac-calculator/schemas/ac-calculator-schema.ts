@@ -46,6 +46,8 @@ export const acCalculatorSchema = z.object({
 
 export type AcCalculatorFormValues = z.infer<typeof acCalculatorSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_AC_FORM_VALUES: AcCalculatorFormValues = {
   mode: 'capacity_eer',
   acType: 'window',
@@ -54,7 +56,7 @@ export const DEFAULT_AC_FORM_VALUES: AcCalculatorFormValues = {
   wattage: 1000,
   hoursPerDay: 8,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 60,
   presetId: 'large-window-12000',
 };

@@ -26,6 +26,8 @@ export const refrigeratorSchema = z.object({
 
 export type RefrigeratorFormValues = z.infer<typeof refrigeratorSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_REFRIGERATOR_FORM_VALUES: RefrigeratorFormValues = {
   mode: 'wattage',
   wattage: 150,
@@ -33,6 +35,6 @@ export const DEFAULT_REFRIGERATOR_FORM_VALUES: RefrigeratorFormValues = {
   dutyCyclePercent: 35,
   annualKwh: 450,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   presetId: 'standard-top-freezer-fridge',
 };

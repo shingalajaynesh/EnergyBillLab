@@ -186,7 +186,7 @@ const basePublicRoutes = [
     href: '/research',
     label: 'Research',
     nav: true,
-    sitemap: true,
+    sitemap: false,
   },
   {
     description:

@@ -8,7 +8,7 @@ export const august2026VampirePowerPhantomLoadStandbyElectricityCostBenchmark: I
   metaTitle: 'August 2026 Vampire Power & Standby Electricity Cost Benchmark | EnergyBillLab',
   metaDescription:
     'Vampire power energy benchmark using LBNL standby research and May 2026 EIA electricity rates (18.44¢/kWh). A typical 115W continuous phantom load costs $185.76/year. Smart power strips yield a 5-month payback.',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-24',
   updatedAt: null,
   category: 'appliances',

@@ -80,7 +80,7 @@ export default async function HomePage() {
           <dl>
             <div>
               <dt>State Coverage</dt>
-              <dd>50 of 50 U.S. States</dd>
+              <dd>50 States + District of Columbia</dd>
             </div>
             <div>
               <dt>Data Provenance</dt>
@@ -88,7 +88,7 @@ export default async function HomePage() {
             </div>
             <div>
               <dt>Calculation Tools</dt>
-              <dd>12 Household Calculators</dd>
+              <dd>15 Interactive Energy Tools</dd>
             </div>
           </dl>
         </div>

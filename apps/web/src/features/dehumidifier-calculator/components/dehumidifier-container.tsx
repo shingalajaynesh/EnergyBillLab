@@ -9,6 +9,7 @@ import {
 
 import { DehumidifierForm } from './dehumidifier-form';
 import type { DehumidifierFormValues } from '../schemas/dehumidifier-schema';
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
 
 const { Text, Title } = Typography;
 
@@ -27,7 +28,7 @@ const INITIAL_RESULT: ApplianceCostResult = calculateApplianceCost({
   wattage: 500,
   hoursPerDay: 12,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 50,
 });
 

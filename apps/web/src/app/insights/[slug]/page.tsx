@@ -41,7 +41,6 @@ export async function generateMetadata(props: InsightPageProps): Promise<Metadat
   if (
     !article ||
     article.status !== 'published' ||
-    article.noindex ||
     article.publishedAt.slice(0, 10) > maxValidDate
   ) {
     return createPageMetadata({
@@ -51,11 +50,16 @@ export async function generateMetadata(props: InsightPageProps): Promise<Metadat
     });
   }
 
-  return createPageMetadata({
+  const baseMeta = createPageMetadata({
     title: article.metaTitle || article.title,
     description: article.metaDescription || article.summary,
     path: `/insights/${article.slug}` as `/${string}`,
   });
+
+  return {
+    ...baseMeta,
+    ...(article.noindex ? { robots: { index: false, follow: true } } : {}),
+  };
 }
 
 type RenderBlock =
@@ -176,7 +180,6 @@ export default async function InsightDetailPage(props: InsightPageProps) {
   if (
     !article ||
     article.status !== 'published' ||
-    article.noindex ||
     article.publishedAt.slice(0, 10) > maxValidDate
   ) {
     notFound();

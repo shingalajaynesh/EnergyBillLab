@@ -4,6 +4,10 @@ import type { Metadata } from 'next';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -16,14 +20,35 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function GuideEvChargingCostPage() {
-  // Execute shared calculation engine for worked example: 75 kWh battery, 20% to 80% charge (60% added), 88% Level 2 efficiency, 16.5¢/kWh
+  // Execute shared calculation engine for worked example: 75 kWh battery, 20% to 80% charge (60% added), 88% Level 2 efficiency at canonical benchmark
   const workedExampleResult = calculateEvChargingCost({
     batteryCapacityKwh: 75,
     startingChargePercent: 20,
     targetChargePercent: 80,
     chargingEfficiencyPercent: 88,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
+
+  const evBenchmarks = [
+    { name: 'Compact EV (e.g. Nissan Leaf)', battery: 40, added: 24.0, grid: 27.27, miPerKwh: 3.7 },
+    { name: 'Standard Sedan (e.g. Model 3)', battery: 60, added: 36.0, grid: 40.91, miPerKwh: 4.0 },
+    {
+      name: 'Long-Range SUV (e.g. Model Y / Ioniq 5)',
+      battery: 75,
+      added: 45.0,
+      grid: 51.14,
+      miPerKwh: 3.3,
+    },
+    {
+      name: 'Full-Size Truck (e.g. F-150 Lightning)',
+      battery: 131,
+      added: 78.6,
+      grid: 89.32,
+      miPerKwh: 2.2,
+    },
+  ];
 
   return (
     <GuideArticleView guide={guide}>
@@ -67,12 +92,15 @@ export default function GuideEvChargingCostPage() {
         <p>
           Below is a reference benchmark table showing grid energy draw and session costs across
           common EV battery capacities when charging from 20% to 80% (adding 60% state-of-charge) at
-          a Level 2 efficiency of 88% and a rate of 16.5¢/kWh:
+          a Level 2 efficiency of 88% and the U.S. residential benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <div className={styles.tableWrapper}>
           <table aria-label="EV Home Charging Cost Benchmarks">
             <caption>
-              Home EV Charging Session Costs (20% to 80% Charge at 88% Level 2 Efficiency)
+              Home EV Charging Session Costs (20% to 80% Charge at 88% Level 2 Efficiency @{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
             </caption>
             <thead>
               <tr>
@@ -80,43 +108,26 @@ export default function GuideEvChargingCostPage() {
                 <th scope="col">Battery Capacity</th>
                 <th scope="col">Energy Added (60%)</th>
                 <th scope="col">Grid Draw Required</th>
-                <th scope="col">Session Cost (at 16.5¢)</th>
-                <th scope="col">Est. Cost / Mile (3 mi/kWh)</th>
+                <th scope="col">Session Cost (@ {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢)</th>
+                <th scope="col">Est. Cost / Mile</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Compact EV (e.g. Nissan Leaf)</td>
-                <td>40 kWh</td>
-                <td>24.0 kWh</td>
-                <td>27.27 kWh</td>
-                <td>$4.50</td>
-                <td>4.5¢ / mile</td>
-              </tr>
-              <tr>
-                <td>Standard Sedan (e.g. Model 3)</td>
-                <td>60 kWh</td>
-                <td>36.0 kWh</td>
-                <td>40.91 kWh</td>
-                <td>$6.75</td>
-                <td>4.5¢ / mile</td>
-              </tr>
-              <tr>
-                <td>Long-Range SUV (e.g. Model Y / Ioniq 5)</td>
-                <td>75 kWh</td>
-                <td>45.0 kWh</td>
-                <td>51.14 kWh</td>
-                <td>$8.44</td>
-                <td>4.7¢ / mile</td>
-              </tr>
-              <tr>
-                <td>Full-Size Truck (e.g. F-150 Lightning)</td>
-                <td>131 kWh</td>
-                <td>78.6 kWh</td>
-                <td>89.32 kWh</td>
-                <td>$14.74</td>
-                <td>6.1¢ / mile</td>
-              </tr>
+              {evBenchmarks.map((ev) => {
+                const sessionCost = ev.grid * rateDollars;
+                const costPerMileCents =
+                  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / (ev.miPerKwh * 0.88);
+                return (
+                  <tr key={ev.name}>
+                    <td>{ev.name}</td>
+                    <td>{ev.battery} kWh</td>
+                    <td>{ev.added.toFixed(1)} kWh</td>
+                    <td>{ev.grid.toFixed(2)} kWh</td>
+                    <td>${sessionCost.toFixed(2)}</td>
+                    <td>{costPerMileCents.toFixed(1)}¢ / mile</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -146,14 +157,16 @@ export default function GuideEvChargingCostPage() {
               <div className={styles.value}>{workedExampleResult.chargingLossKwh} kWh</div>
             </div>
             <div className={styles.exampleItem}>
-              <div className={styles.label}>Session Cost (at 16.5¢)</div>
+              <div className={styles.label}>
+                Session Cost (@ {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢)
+              </div>
               <div className={styles.value}>${workedExampleResult.chargeCostUsd}</div>
             </div>
           </div>
           <p>
             <strong>Step-by-Step Formula:</strong> Battery Added = 75 kWh × (80% - 20%) = 45.0 kWh.
-            Grid Required = 45.0 ÷ 0.88 = 51.14 kWh. Charging Session Cost = (51.14 kWh × 16.5¢) ÷
-            100 = $8.44.
+            Grid Required = 45.0 ÷ 0.88 = 51.14 kWh. Charging Session Cost = (51.14 kWh ×{' '}
+            {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢) ÷ 100 = ${workedExampleResult.chargeCostUsd}.
           </p>
         </div>
       </section>

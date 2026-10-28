@@ -22,12 +22,14 @@ export const poolPumpSchema = z.object({
 
 export type PoolPumpFormValues = z.infer<typeof poolPumpSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_POOL_PUMP_FORM_VALUES: PoolPumpFormValues = {
   wattage: 1500,
   hoursPerDay: 8,
   daysPerWeek: 7,
   weeks: 4.33,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
   presetId: 'standard-pool-pump',
 };

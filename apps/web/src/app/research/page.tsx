@@ -13,12 +13,15 @@ import styles from './research-hub.module.css';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'U.S. Residential Electricity Research & Data Reports',
-  description:
-    'Original, source-led research reports analyzing U.S. residential electricity rates, regional price trends, and household energy cost benchmarks.',
-  path: '/research',
-});
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: 'U.S. Residential Electricity Research & Data Reports',
+    description:
+      'Original, source-led research reports analyzing U.S. residential electricity rates, regional price trends, and household energy cost benchmarks.',
+    path: '/research',
+  }),
+  robots: { index: false, follow: true },
+};
 
 export default async function ResearchHubPage() {
   const report = await getNationalRateReport();

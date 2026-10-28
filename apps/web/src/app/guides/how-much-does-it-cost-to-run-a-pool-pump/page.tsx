@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -17,15 +21,17 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function PoolPumpGuidePage() {
-  // Worked Example: 1,500W pump, 8 hrs/day, 7 days/week, 20 weeks (seasonal), 16.5 ¢/kWh
+  // Worked Example: 1,500W pump, 8 hrs/day, 7 days/week, 20 weeks (seasonal) at canonical benchmark
   const workedExample = calculatePoolPumpCost({
     wattage: 1500,
     hoursPerDay: 8,
     daysPerWeek: 7,
     weeks: 20,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 100,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
 
   return (
     <GuideArticleView guide={guide}>
@@ -69,9 +75,10 @@ export default function PoolPumpGuidePage() {
         <h2>3. Worked Example: 1,500W Pump Seasonal Cost</h2>
         <p>
           Consider a <strong>1,500-Watt single-speed pool pump</strong> operating for{' '}
-          <strong>8 hours per day</strong>,<strong>7 days per week</strong>, over a{' '}
-          <strong>20-week pool season (140 days)</strong> at an example rate of{' '}
-          <strong>16.5 ¢/kWh</strong>:
+          <strong>8 hours per day</strong>, <strong>7 days per week</strong>, over a{' '}
+          <strong>20-week pool season (140 days)</strong> at the national benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH} ¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <ul>
           <li>
@@ -99,7 +106,10 @@ export default function PoolPumpGuidePage() {
         <h2>4. Single-Speed vs. Variable-Speed (VSP) Energy Comparison</h2>
         <div className={styles.tableWrapper}>
           <table aria-label="Pool Pump Single Speed vs Variable Speed Cost Comparison">
-            <caption>Table 1: Filtration Cost Comparison (20-Week Season @ 16.5¢/kWh)</caption>
+            <caption>
+              Table 1: Filtration Cost Comparison (20-Week Season @{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Pump Technology & Setting</th>
@@ -115,28 +125,28 @@ export default function PoolPumpGuidePage() {
                 <td>1,800 W</td>
                 <td>8 hrs/day</td>
                 <td>14.4 kWh</td>
-                <td>$332.64</td>
+                <td>${(14.4 * 140 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>1.0 HP Single-Speed (Standard)</td>
                 <td>1,200 W</td>
                 <td>8 hrs/day</td>
                 <td>9.6 kWh</td>
-                <td>$221.76</td>
+                <td>${(9.6 * 140 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Variable Speed @ Medium RPM (1,750 RPM)</td>
                 <td>450 W</td>
                 <td>12 hrs/day</td>
                 <td>5.4 kWh</td>
-                <td>$124.74</td>
+                <td>${(5.4 * 140 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Variable Speed @ Low RPM (1,100 RPM)</td>
                 <td>180 W</td>
                 <td>16 hrs/day</td>
                 <td>2.88 kWh</td>
-                <td>$66.53</td>
+                <td>${(2.88 * 140 * rateDollars).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

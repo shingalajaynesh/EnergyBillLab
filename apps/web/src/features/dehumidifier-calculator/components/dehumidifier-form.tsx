@@ -19,6 +19,7 @@ import {
   dehumidifierSchema,
   type DehumidifierFormValues,
 } from '../schemas/dehumidifier-schema';
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
 import styles from './dehumidifier-form.module.css';
 
 type StateOption = {
@@ -170,6 +171,7 @@ export function DehumidifierForm({
           <Form.Item
             name="rateCentsPerKwh"
             label="Electricity Rate (¢/kWh)"
+            extra={DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}
             rules={[{ required: true, message: 'Please enter electricity rate' }]}
           >
             <NumberInputWithUnit min={0.01} max={500} step={0.1} unit="¢/kWh" />

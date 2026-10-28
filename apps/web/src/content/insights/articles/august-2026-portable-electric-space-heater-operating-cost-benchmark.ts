@@ -3,7 +3,7 @@ import type { InsightRecord } from '../types';
 export const august2026PortableElectricSpaceHeaterOperatingCostBenchmark: InsightRecord = {
   id: 'insight-2026-08-06-august-portable-electric-space-heater-operating-cost-benchmark',
   slug: 'august-2026-portable-electric-space-heater-operating-cost-benchmark',
-  status: 'published',
+  status: 'archived',
   title: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
   metaTitle: 'August 2026 Portable Electric Space Heater Operating Cost & Wattage Benchmark',
   metaDescription:

@@ -18,6 +18,8 @@ type StateOption = {
   rateCentsPerKwh: number;
 };
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 type WaterHeaterContainerProps = {
   stateOptions?: StateOption[];
   sourcePeriodText?: string;
@@ -28,7 +30,7 @@ const INITIAL_RESULT: ApplianceCostResult = calculateWaterHeaterCost({
   activeElements: 1,
   hoursPerDay: 3,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
 });
 

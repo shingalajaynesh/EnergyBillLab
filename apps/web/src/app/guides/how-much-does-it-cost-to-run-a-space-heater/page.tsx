@@ -4,6 +4,10 @@ import type { Metadata } from 'next';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -16,15 +20,17 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function GuideSpaceHeaterCostPage() {
-  // Execute shared calculation engine for worked example: 1,500W heater, 1 unit, 8 hrs/day, 75% duty cycle, 16.5¢/kWh
+  // Execute shared calculation engine for worked example: 1,500W heater, 1 unit, 8 hrs/day, 75% duty cycle at canonical benchmark
   const workedExampleResult = calculateSpaceHeaterCost({
     heaterWatts: 1500,
     quantity: 1,
     hoursPerDay: 8,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 75,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
 
   return (
     <GuideArticleView guide={guide}>
@@ -65,11 +71,16 @@ export default function GuideSpaceHeaterCostPage() {
         <h2>3. Space Heater Operating Cost Benchmarks</h2>
         <p>
           Below is an operating cost reference table comparing different space heater power levels
-          and runtimes over a 30-day billing month at a rate of 16.5¢/kWh:
+          and runtimes over a 30-day billing month at the national benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <div className={styles.tableWrapper}>
           <table aria-label="Space Heater Operating Cost Benchmarks">
-            <caption>Electric Space Heater Operating Costs by Power Level & Duty Cycle</caption>
+            <caption>
+              Electric Space Heater Operating Costs by Power Level & Duty Cycle (@{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Setting & Wattage</th>
@@ -87,7 +98,7 @@ export default function GuideSpaceHeaterCostPage() {
                 <td>4 hours</td>
                 <td>100% (continuous)</td>
                 <td>90.0 kWh</td>
-                <td>$14.85</td>
+                <td>${(90.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Setting (1,500W)</td>
@@ -95,7 +106,7 @@ export default function GuideSpaceHeaterCostPage() {
                 <td>4 hours</td>
                 <td>100% (continuous)</td>
                 <td>180.0 kWh</td>
-                <td>$29.70</td>
+                <td>${(180.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Setting (1,500W)</td>
@@ -103,7 +114,7 @@ export default function GuideSpaceHeaterCostPage() {
                 <td>8 hours</td>
                 <td>75% (thermostat)</td>
                 <td>270.0 kWh</td>
-                <td>$44.55</td>
+                <td>${(270.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Setting (1,500W)</td>
@@ -111,7 +122,7 @@ export default function GuideSpaceHeaterCostPage() {
                 <td>12 hours</td>
                 <td>100% (continuous)</td>
                 <td>540.0 kWh</td>
-                <td>$89.10</td>
+                <td>${(540.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>High Setting (1,500W)</td>
@@ -119,7 +130,7 @@ export default function GuideSpaceHeaterCostPage() {
                 <td>8 hours</td>
                 <td>75% (thermostat)</td>
                 <td>540.0 kWh</td>
-                <td>$89.10</td>
+                <td>${(540.0 * rateDollars).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -129,7 +140,10 @@ export default function GuideSpaceHeaterCostPage() {
       <section className={styles.section}>
         <h2>4. Engine-Verified Calculation Example</h2>
         <div className={styles.workedExampleCard}>
-          <h3>Calculation Case Study: 1,500W Heater (8 hrs/day, 75% Duty Cycle at 16.5¢/kWh)</h3>
+          <h3>
+            Calculation Case Study: 1,500W Heater (8 hrs/day, 75% Duty Cycle at{' '}
+            {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
+          </h3>
           <p>
             Here is the step-by-step output calculated by Energy Bill Lab&apos;s shared space heater
             engine:
@@ -155,7 +169,8 @@ export default function GuideSpaceHeaterCostPage() {
           <p>
             <strong>Step-by-Step Formula:</strong> Effective Watts = 1,500W × 0.75 = 1,125W. Daily
             kWh = (1,125W × 8 hrs) ÷ 1,000 = 9.00 kWh/day. 30-Day kWh = 9.00 kWh × 30 = 270.00 kWh.
-            30-Day Cost = (270 kWh × 16.5¢) ÷ 100 = $44.55.
+            30-Day Cost = (270 kWh × {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢) ÷ 100 = $
+            {workedExampleResult.periodCostUsd}.
           </p>
         </div>
       </section>

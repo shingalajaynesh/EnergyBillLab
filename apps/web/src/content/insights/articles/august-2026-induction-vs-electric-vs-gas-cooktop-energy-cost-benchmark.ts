@@ -86,7 +86,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
       paragraphs: [
         'Table 2 outlines annual energy consumption and operating expenses for a household using cooktop burners for 1 hour daily (365 hours/year) across major U.S. states using May 2026 EIA residential retail rates:',
         'Table 2: Annual Cooktop Operating Cost Benchmark Across Major States (1 Hour/Day Baseline)',
-        '| State / Geographic Region | Residential Electricity Rate (¢/kWh) | Residential Natural Gas Price ($/therm) | Annual Induction Cost ($94.23 Nat\'l) | Annual Radiant Electric Cost ($108.43 Nat\'l) | Annual Natural Gas Cost ($62.56 Nat\'l) | Induction vs. Radiant Savings ($/yr) |',
+        "| State / Geographic Region | Residential Electricity Rate (¢/kWh) | Residential Natural Gas Price ($/therm) | Annual Induction Cost ($94.23 Nat'l) | Annual Radiant Electric Cost ($108.43 Nat'l) | Annual Natural Gas Cost ($62.56 Nat'l) | Induction vs. Radiant Savings ($/yr) |",
         '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',
         '| U.S. National Average | 18.44 ¢/kWh | $1.90 / therm ($19.73/Mcf) | $94.23 / yr | $108.43 / yr | $62.56 / yr | $14.20 / yr (13.1%) |',
         '| Washington (Low-Cost Hydro) | 11.52 ¢/kWh | $1.35 / therm ($13.99/Mcf) | $58.87 / yr | $67.74 / yr | $44.35 / yr | $8.87 / yr (13.1%) |',

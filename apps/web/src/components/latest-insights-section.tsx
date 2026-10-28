@@ -46,8 +46,11 @@ export function LatestInsightsSection() {
             <p className={styles.summary}>{article.summary}</p>
             <div className={styles.cardFooter}>
               {article.reportingPeriod ? (
-                <span className={styles.period} title={article.reportingPeriod}>
-                  Data: {article.reportingPeriod}
+                <span
+                  className={styles.period}
+                  title={`Research using ${article.reportingPeriod} EIA data`}
+                >
+                  Research using {article.reportingPeriod} EIA data
                 </span>
               ) : (
                 <span />

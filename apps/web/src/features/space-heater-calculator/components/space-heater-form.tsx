@@ -9,6 +9,7 @@ import { Button, Select } from 'antd';
 import React, { useState } from 'react';
 
 import { NumberInputWithUnit } from '@/components/number-input-with-unit';
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
 
 import { HEATER_PRESETS, type SpaceHeaterPreset } from '../constants/heater-presets';
 import { trackHeaterAnalytics } from '../lib/heater-analytics';
@@ -313,7 +314,8 @@ export function SpaceHeaterForm({ onCalculate, onReset, stateRates = [] }: Space
             }}
           />
           <div className={styles.fieldHint}>
-            Enter your bill rate or select a state EIA benchmark.
+            {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}. Enter your custom bill rate or select a
+            state EIA benchmark.
           </div>
         </div>
 

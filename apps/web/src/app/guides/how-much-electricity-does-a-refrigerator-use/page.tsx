@@ -11,6 +11,11 @@ import { createPageMetadata } from '@/lib/metadata';
 
 import styles from '@/components/guide-article-view.module.css';
 
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
+
 const guide = energyGuides['how-much-electricity-does-a-refrigerator-use']!;
 
 export const metadata: Metadata = createPageMetadata({
@@ -20,21 +25,27 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function RefrigeratorGuidePage() {
-  // Worked Example 1: Annual EnergyGuide mode (400 kWh/year at 16.5 ¢/kWh)
+  // Worked Example 1: Annual EnergyGuide mode (400 kWh/year at canonical benchmark)
   const annualModeResult = calculateRefrigeratorAnnualKwhCost({
     annualKwh: 400,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   });
 
-  // Worked Example 2: Wattage mode (150W compressor at 35% duty cycle over 30 days at 16.5 ¢/kWh)
+  // Worked Example 2: Wattage mode (150W compressor at 35% duty cycle over 30 days)
   const wattageModeResult = calculateApplianceCost({
     wattage: 150,
     hoursPerDay: 24,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 35,
   });
+
+  const topFreezerAnnual = (360 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2);
+  const frenchDoorAnnual = (580 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2);
+  const garageAnnual = (750 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2);
+  const legacyAnnual = (1050 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2);
+  const legacySavingsAnnual = (690 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2);
 
   return (
     <GuideArticleView guide={guide}>
@@ -100,7 +111,9 @@ export default function RefrigeratorGuidePage() {
         <h2>4. Worked Calculations: Shared Engine Results</h2>
         <p>
           Below are two worked examples calculated using Energy Bill Lab’s verified calculation
-          engine at an example electricity rate of <strong>16.5 ¢/kWh</strong>.
+          engine at the U.S. residential benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH} ¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}).
         </p>
 
         <h3>Example A: Standard 400 kWh/year EnergyGuide Rating</h3>
@@ -118,7 +131,8 @@ export default function RefrigeratorGuidePage() {
             <strong>Estimated 30-Day Cost:</strong> ${annualModeResult.periodCostUsd.toFixed(2)}
           </li>
           <li>
-            <strong>Estimated Annual Cost:</strong> ${(400 * 0.165).toFixed(2)}/year
+            <strong>Estimated Annual Cost:</strong> $
+            {(400 * (DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100)).toFixed(2)}/year
           </li>
         </ul>
 
@@ -136,6 +150,36 @@ export default function RefrigeratorGuidePage() {
           </li>
           <li>
             <strong>30-Day Operating Cost:</strong> ${wattageModeResult.periodCostUsd.toFixed(2)}
+          </li>
+        </ul>
+
+        <h3>Configuration Efficiency Benchmarks & Legacy Replacement Economics</h3>
+        <p>
+          Under Department of Energy (DOE 10 CFR Part 430) test standards and national electricity
+          benchmarks, annual operating costs differ significantly by refrigerator configuration:
+        </p>
+        <ul>
+          <li>
+            <strong>ENERGY STAR Top-Freezer (18 cu. ft., ~360 kWh/yr):</strong> ${topFreezerAnnual}
+            /year ($
+            {(Number(topFreezerAnnual) / 12).toFixed(2)}/month). The most thermally efficient
+            configuration.
+          </li>
+          <li>
+            <strong>ENERGY STAR French Door with Dispenser (25 cu. ft., ~580 kWh/yr):</strong> $
+            {frenchDoorAnnual}/year (${(Number(frenchDoorAnnual) / 12).toFixed(2)}/month).
+            Anti-sweat heaters and icemakers add ~61% more energy draw.
+          </li>
+          <li>
+            <strong>Secondary Unit in Unconditioned Garage (~750 kWh/yr):</strong> ${garageAnnual}
+            /year (${(Number(garageAnnual) / 12).toFixed(2)}/month). Summer heat (90°F–105°F) adds a
+            ~25% thermal load penalty.
+          </li>
+          <li>
+            <strong>Legacy Pre-2010 Unit (~1,050 kWh/yr):</strong> ${legacyAnnual}/year ($
+            {(Number(legacyAnnual) / 12).toFixed(2)}/month). Replacing an aging 1,050 kWh/year unit
+            with a 360 kWh/year ENERGY STAR model saves 690 kWh/year (${legacySavingsAnnual}
+            /year), fully recovering purchase costs within 3 to 5 years.
           </li>
         </ul>
       </section>

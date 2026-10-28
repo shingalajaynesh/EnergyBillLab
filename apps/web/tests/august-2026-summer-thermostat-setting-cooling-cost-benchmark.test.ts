@@ -32,7 +32,7 @@ describe('August 2026 Summer Thermostat Setting Cooling Cost Benchmark Insight',
 
   it('4. activates home-energy-costs category with published articles', () => {
     const homeCostInsights = getInsightsByCategory('home-energy-costs', '2026-08-18T00:00:00.000Z');
-    expect(homeCostInsights.length).toBeGreaterThanOrEqual(5);
+    expect(homeCostInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

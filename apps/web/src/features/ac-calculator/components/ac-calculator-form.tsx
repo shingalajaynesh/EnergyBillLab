@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 
 import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
+
 import { AC_PRESETS, type AcPreset } from '../constants/ac-presets';
 import { trackAcAnalytics } from '../lib/ac-analytics';
 import {
@@ -410,7 +412,8 @@ export function AcCalculatorForm({ onCalculate, onReset, stateRates = [] }: AcCa
             }}
           />
           <div className={styles.fieldHint}>
-            Enter your bill rate or select a state EIA benchmark.
+            {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}. Enter your utility bill rate or select a
+            state EIA benchmark.
           </div>
         </div>
 

@@ -3,6 +3,8 @@
 import { calculateAcCost, type AcCostResult } from '@energy-bill-lab/calculation-engine';
 import React, { useState } from 'react';
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 import { AcCalculatorForm, type StateRateOption } from './ac-calculator-form';
 import { AcCalculatorResults } from './ac-calculator-results';
 import { WorkedExampleSection } from './worked-example-section';
@@ -18,7 +20,7 @@ const DEFAULT_INITIAL_RESULT: AcCostResult = calculateAcCost({
   eer: 12.0,
   hoursPerDay: 8,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 60,
 });
 

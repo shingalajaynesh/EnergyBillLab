@@ -5,7 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { TechnicalVisualCard } from '../src/components/technical-visual-card';
 import { guideSlugs } from '../src/content/guides';
 import { GUIDE_VISUAL_CONFIGS } from '../src/content/guides-visuals';
-import { getPublishedInsights } from '../src/content/insights';
+import { getPublishedInsights, insightsRegistry } from '../src/content/insights';
 import { INSIGHT_VISUAL_CONFIGS } from '../src/content/insights/visuals';
 
 describe('TechnicalVisualCard Component & Full Visual Coverage', () => {
@@ -50,11 +50,11 @@ describe('TechnicalVisualCard Component & Full Visual Coverage', () => {
     expect(html).toContain('role="img"');
   });
 
-  it('2. provides valid visual configs for all 36 published Insight articles', () => {
+  it('2. provides valid visual configs for published Insight articles and registered insights', () => {
     const publishedInsights = getPublishedInsights();
-    expect(publishedInsights).toHaveLength(36);
+    expect(publishedInsights).toHaveLength(23);
 
-    publishedInsights.forEach((insight) => {
+    insightsRegistry.forEach((insight) => {
       const config = INSIGHT_VISUAL_CONFIGS[insight.slug];
       expect(config).toBeDefined();
       expect(config?.title).toBeTruthy();

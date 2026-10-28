@@ -6,6 +6,8 @@ import {
 } from '@energy-bill-lab/calculation-engine';
 import React, { useState } from 'react';
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 import { SpaceHeaterForm, type StateRateOption } from './space-heater-form';
 import { SpaceHeaterResults } from './space-heater-results';
 import { WorkedExampleSection } from './worked-example-section';
@@ -19,7 +21,7 @@ const DEFAULT_INITIAL_RESULT: SpaceHeaterCostResult = calculateSpaceHeaterCost({
   quantity: 1,
   hoursPerDay: 4,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 80,
 });
 

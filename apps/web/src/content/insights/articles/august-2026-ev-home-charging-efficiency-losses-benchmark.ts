@@ -8,7 +8,7 @@ export const august2026EvHomeChargingEfficiencyLossesBenchmark: InsightRecord = 
   metaTitle: 'EV Charging Efficiency: Level 1 vs Level 2 Energy Losses (Aug 2026) | EnergyBillLab',
   metaDescription:
     'Level 1 (120V) vs Level 2 (240V) EV charging efficiency benchmark using May 2026 EIA data. Level 1 loses 17.5% in 250W auxiliary overhead, adding $75–$212/yr in wasted power.',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-19',
   updatedAt: null,
   category: 'appliances',

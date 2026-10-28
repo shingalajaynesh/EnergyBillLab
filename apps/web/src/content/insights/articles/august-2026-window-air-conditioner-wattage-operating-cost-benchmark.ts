@@ -8,7 +8,7 @@ export const august2026WindowAirConditionerWattageOperatingCostBenchmark: Insigh
   metaTitle: 'Window AC Wattage & Hourly Cost Benchmark (5k–15k BTU) | EnergyBillLab',
   metaDescription:
     'Window air conditioner electricity cost benchmark using May 2026 EIA data. Running a 5,000 BTU unit costs 4.6¢–8.3¢/hr ($10.95/mo for 8h/day), while an 8,000 BTU unit costs 7.1¢–12.9¢/hr ($17.04/mo).',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-20',
   updatedAt: null,
   category: 'appliances',

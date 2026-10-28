@@ -39,7 +39,7 @@ describe('August 2026 Induction vs Electric vs Gas Cooktop Energy Cost Benchmark
 
   it('4. activates appliances category with published articles', () => {
     const applianceInsights = getInsightsByCategory('appliances', '2026-08-16T00:00:00.000Z');
-    expect(applianceInsights.length).toBeGreaterThanOrEqual(4);
+    expect(applianceInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {
@@ -89,9 +89,10 @@ describe('August 2026 Induction vs Electric vs Gas Cooktop Energy Cost Benchmark
     expect(jsonStr).toContain('$62.56');
 
     // Check sources
-    const gasSource = record.sources.find((s) => s.organization.includes('EIA') && s.title.includes('Natural Gas'));
+    const gasSource = record.sources.find(
+      (s) => s.organization.includes('EIA') && s.title.includes('Natural Gas'),
+    );
     expect(gasSource).toBeDefined();
     expect(gasSource?.title).toContain('Table 20');
   });
 });
-

@@ -21,13 +21,15 @@ describe('August 2026 Electric Dishwasher kWh Consumption & Operating Cost Bench
     expect(found?.id).toBe('august-2026-electric-dishwasher-kwh-operating-cost-benchmark');
   });
 
-  it('3. is included in published insights', () => {
+  it('3. is marked archived in registry and excluded from published insights', () => {
+    const found = getInsightBySlug('august-2026-electric-dishwasher-kwh-operating-cost-benchmark');
+    expect(found).toBeDefined();
+    expect(found?.status).toBe('archived');
     const published = getPublishedInsights('2026-08-11T12:00:00.000Z');
-    const found = published.find(
+    const inPublished = published.find(
       (item) => item.slug === 'august-2026-electric-dishwasher-kwh-operating-cost-benchmark',
     );
-    expect(found).toBeDefined();
-    expect(found?.status).toBe('published');
+    expect(inPublished).toBeUndefined();
   });
 
   it('4. activates appliances category with published articles', () => {

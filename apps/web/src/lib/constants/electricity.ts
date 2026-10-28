@@ -17,34 +17,49 @@
 
 export interface CanonicalElectricitySnapshot {
   reportingPeriod: string;
+  displayPeriod: string;
   reportingPeriodFormatted: string;
+  eiaReleaseDate: string;
   releaseDate: string;
   source: string;
   sourceShort: string;
+  sourceTable: string;
   sourceNationalTable: string;
   sourceStateTable: string;
+  underlyingSurvey: string;
   sourceSurvey: string;
   sourceUrl: string;
   priceCentsPerKwh: number;
   priceDollarsPerKwh: number;
   validationDate: string;
+  status: 'verified' | 'current' | 'fallback';
 }
 
 export const CANONICAL_ELECTRICITY_SNAPSHOT: CanonicalElectricitySnapshot = {
-  reportingPeriod: '2026-07',
-  reportingPeriodFormatted: 'July 2026',
-  releaseDate: '2026-09-24',
+  reportingPeriod: '2026-08',
+  displayPeriod: 'August 2026',
+  reportingPeriodFormatted: 'August 2026',
+  eiaReleaseDate: '2026-10-23',
+  releaseDate: '2026-10-23',
   source:
     'U.S. Energy Information Administration (EIA) Electric Power Monthly Table 5.3 / ES1.A (National Residential Average) and Table 5.6.A (State Residential Retail Prices), Form EIA-861M',
   sourceShort: 'EIA Electric Power Monthly (Table 5.3 & 5.6.A)',
+  sourceTable: 'Electric Power Monthly Table 5.3 / Table ES1.A & Table 5.6.A',
   sourceNationalTable: 'Electric Power Monthly Table 5.3 / Table ES1.A',
   sourceStateTable: 'Electric Power Monthly Table 5.6.A',
+  underlyingSurvey: 'Form EIA-861M',
   sourceSurvey: 'Form EIA-861M',
   sourceUrl: 'https://www.eia.gov/electricity/monthly/',
-  priceCentsPerKwh: 18.31,
-  priceDollarsPerKwh: 0.1831,
-  validationDate: '2026-09-25',
+  priceCentsPerKwh: 18.16,
+  priceDollarsPerKwh: 0.1816,
+  validationDate: '2026-10-23',
+  status: 'verified',
 };
+
+export const DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH =
+  CANONICAL_ELECTRICITY_SNAPSHOT.priceCentsPerKwh;
+
+export const DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE = `U.S. residential benchmark — ${CANONICAL_ELECTRICITY_SNAPSHOT.displayPeriod} — U.S. EIA`;
 
 export interface HistoricalElectricityBenchmark {
   period: string;
@@ -59,12 +74,19 @@ export interface HistoricalElectricityBenchmark {
  * Sourced from Electric Power Monthly Table 5.3 / Table ES1.A
  */
 export const HISTORICAL_ELECTRICITY_BENCHMARKS: Record<string, HistoricalElectricityBenchmark> = {
+  '2026-08': {
+    period: '2026-08',
+    formattedMonth: 'August 2026',
+    priceCentsPerKwh: 18.16,
+    releaseDate: '2026-10-23',
+    notes: 'Latest published EIA Electric Power Monthly release as of October 23, 2026.',
+  },
   '2026-07': {
     period: '2026-07',
     formattedMonth: 'July 2026',
     priceCentsPerKwh: 18.31,
     releaseDate: '2026-09-24',
-    notes: 'Latest published EIA Electric Power Monthly release as of September 2026.',
+    notes: 'Published EIA Electric Power Monthly release for July 2026.',
   },
   '2026-06': {
     period: '2026-06',

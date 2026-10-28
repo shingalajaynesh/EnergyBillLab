@@ -1,11 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { energyGuides } from '@/content/guides';
-import {
-  getPublishedInsights,
-  INSIGHT_CATEGORIES,
-  INSIGHTS_PUBLICATION_THRESHOLD,
-} from '@/content/insights';
+import { getPublishedInsights } from '@/content/insights';
 import { contentPages } from '@/content/pages';
 import { sitemapRoutes } from '@/lib/routes';
 import { getSiteUrl } from '@/lib/site';
@@ -48,18 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const categoryEntries = Object.values(INSIGHT_CATEGORIES)
-    .filter(
-      (category) =>
-        publishedInsights.filter((article) => article.category === category.slug).length >=
-        INSIGHTS_PUBLICATION_THRESHOLD,
-    )
-    .map((category) => ({
-      url: getSiteUrl(`/insights/category/${category.slug}`),
-      lastModified: DEFAULT_LAST_MODIFIED,
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    }));
-
-  return [...routeEntries, ...insightEntries, ...categoryEntries];
+  return [...routeEntries, ...insightEntries];
 }

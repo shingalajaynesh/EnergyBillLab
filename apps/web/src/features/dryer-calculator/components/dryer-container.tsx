@@ -15,6 +15,8 @@ type StateOption = {
   rateCentsPerKwh: number;
 };
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 type DryerContainerProps = {
   stateOptions?: StateOption[];
   sourcePeriodText?: string;
@@ -25,7 +27,7 @@ const INITIAL_RESULT: DryerCostResult = calculateDryerCost({
   minutesPerLoad: 45,
   loadsPerWeek: 4,
   weeks: 4.33,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
 });
 

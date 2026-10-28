@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
 
 export const dehumidifierSchema = z.object({
   wattage: z
@@ -26,6 +27,6 @@ export const DEFAULT_DEHUMIDIFIER_FORM_VALUES: DehumidifierFormValues = {
   hoursPerDay: 12,
   dutyCyclePercent: 50,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   presetId: 'standard-dehumidifier',
 };

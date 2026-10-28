@@ -28,12 +28,14 @@ export const dryerSchema = z.object({
 
 export type DryerFormValues = z.infer<typeof dryerSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_DRYER_FORM_VALUES: DryerFormValues = {
   wattage: 4500,
   minutesPerLoad: 45,
   loadsPerWeek: 4,
   weeks: 4.33,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
   presetId: 'standard-electric-dryer',
 };

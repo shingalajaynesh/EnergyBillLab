@@ -4,6 +4,10 @@ import type { Metadata } from 'next';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -16,16 +20,18 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function GuideAcCostPage() {
-  // Execute shared calculation engine for worked example: 12,000 BTU Window AC, EER 10.0, 8 hrs/day, 65% duty cycle, 16.5¢/kWh
+  // Execute shared calculation engine for worked example: 12,000 BTU Window AC, EER 10.0, 8 hrs/day, 65% duty cycle at canonical benchmark
   const workedExampleResult = calculateAcCost({
     mode: 'capacity_eer',
     coolingCapacityBtu: 12000,
     eer: 10,
     hoursPerDay: 8,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 65,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
 
   return (
     <GuideArticleView guide={guide}>
@@ -68,12 +74,16 @@ export default function GuideAcCostPage() {
         <h2>3. Monthly Operating Cost Comparison by AC Type</h2>
         <p>
           Below is a comparison table showing estimated monthly cooling costs across standard air
-          conditioner configurations based on a 30-day billing period at an electricity rate of
-          16.5¢/kWh:
+          conditioner configurations based on a 30-day billing period at the U.S. residential
+          benchmark rate of <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <div className={styles.tableWrapper}>
           <table aria-label="Air Conditioner Operating Cost Benchmarks">
-            <caption>Air Conditioner Monthly Electricity Cost Benchmarks by Unit Type</caption>
+            <caption>
+              Air Conditioner Monthly Electricity Cost Benchmarks by Unit Type (@{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
+            </caption>
             <thead>
               <tr>
                 <th scope="col">AC Unit Type</th>
@@ -93,7 +103,7 @@ export default function GuideAcCostPage() {
                 <td>8 hours</td>
                 <td>60%</td>
                 <td>78.5 kWh</td>
-                <td>$12.95</td>
+                <td>${(78.5 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Medium Living Room Window AC</td>
@@ -102,7 +112,7 @@ export default function GuideAcCostPage() {
                 <td>8 hours</td>
                 <td>65%</td>
                 <td>187.2 kWh</td>
-                <td>$30.89</td>
+                <td>${(187.2 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Ductless Mini-Split Heat Pump</td>
@@ -111,7 +121,7 @@ export default function GuideAcCostPage() {
                 <td>10 hours</td>
                 <td>50%</td>
                 <td>216.0 kWh</td>
-                <td>$35.64</td>
+                <td>${(216.0 * rateDollars).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>Central Air Conditioner (3 Ton)</td>
@@ -120,7 +130,7 @@ export default function GuideAcCostPage() {
                 <td>9 hours</td>
                 <td>60%</td>
                 <td>530.1 kWh</td>
-                <td>$87.47</td>
+                <td>${(530.1 * rateDollars).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -158,7 +168,8 @@ export default function GuideAcCostPage() {
           <p>
             <strong>Step-by-Step Formula:</strong> Input Watts = 12,000 ÷ 10 = 1,200W. Effective
             Watts = 1,200W × 0.65 = 780W. Monthly kWh = (780W × 8 hrs × 30 days) ÷ 1,000 = 187.20
-            kWh. Monthly Cost = (187.20 kWh × 16.5¢) ÷ 100 = $30.89.
+            kWh. Monthly Cost = (187.20 kWh × {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢) ÷ 100 = $
+            {workedExampleResult.monthlyCostUsd}.
           </p>
         </div>
       </section>

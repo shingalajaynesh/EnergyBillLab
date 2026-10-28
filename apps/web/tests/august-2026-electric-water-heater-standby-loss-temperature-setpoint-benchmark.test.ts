@@ -40,7 +40,7 @@ describe('August 2026 Electric Water Heater Standby Heat Loss & Temperature Setp
 
   it('4. activates appliances category with published articles', () => {
     const applianceInsights = getInsightsByCategory('appliances', '2026-08-21T00:00:00.000Z');
-    expect(applianceInsights.length).toBeGreaterThanOrEqual(12);
+    expect(applianceInsights.length).toBeGreaterThanOrEqual(3);
   });
 
   it('5. adheres to strict author and privacy boundaries', () => {

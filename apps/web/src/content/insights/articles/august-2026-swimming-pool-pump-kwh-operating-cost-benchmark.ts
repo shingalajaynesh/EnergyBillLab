@@ -7,7 +7,7 @@ export const august2026SwimmingPoolPumpKwhOperatingCostBenchmark: InsightRecord 
   metaTitle: 'August 2026 Pool Pump Electricity Cost & Variable Speed Benchmark | EnergyBillLab',
   metaDescription:
     'Pool pump electricity benchmark using EIA rate data. A single-speed pump costs $96.81/mo nationally ($170.10 in CA). Variable-speed saves 68% ($66.38/mo).',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-15',
   updatedAt: null,
   category: 'appliances',

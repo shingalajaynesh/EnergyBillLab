@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { GuideArticleView } from '@/components/guide-article-view';
 import { energyGuides } from '@/content/guides';
 import { createPageMetadata } from '@/lib/metadata';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 
 import styles from '@/components/guide-article-view.module.css';
 
@@ -22,9 +26,44 @@ export default function GuideApplianceUsagePage() {
     wattage: 1500,
     hoursPerDay: 8,
     days: 30,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 100,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
+
+  const applianceRows = [
+    {
+      name: 'LED Light Bulb (100W Equivalent)',
+      watts: '14 W',
+      hours: '6 hours',
+      duty: '100%',
+      kwh: 2.52,
+    },
+    { name: '55" Smart Television', watts: '110 W', hours: '5 hours', duty: '100%', kwh: 16.5 },
+    {
+      name: 'ENERGY STAR Refrigerator (18 cu ft)',
+      watts: '150 W',
+      hours: '24 hours',
+      duty: '35% (cycling)',
+      kwh: 37.8,
+    },
+    {
+      name: 'Desktop Computer & Dual Monitors',
+      watts: '200 W',
+      hours: '8 hours',
+      duty: '100%',
+      kwh: 48.0,
+    },
+    { name: 'Dishwasher (Heated Dry)', watts: '1,200 W', hours: '1 hour', duty: '100%', kwh: 36.0 },
+    {
+      name: 'Electric Clothes Dryer',
+      watts: '4,000 W',
+      hours: '0.75 hours',
+      duty: '100%',
+      kwh: 90.0,
+    },
+  ];
 
   return (
     <GuideArticleView guide={guide}>
@@ -70,11 +109,13 @@ export default function GuideApplianceUsagePage() {
         <ul>
           <li>
             <strong>1,500W Toaster (3 min/day for 30 days):</strong> 1,500W × 0.05 hrs × 30 days ÷
-            1,000 = <strong>2.25 kWh/month</strong> ($0.37/month at 16.5¢/kWh).
+            1,000 = <strong>2.25 kWh/month</strong> (${(2.25 * rateDollars).toFixed(2)}/month at{' '}
+            {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh).
           </li>
           <li>
             <strong>1,200W Electric Kettle (5 min/boil, 3 boils/day):</strong> 1,200W × 0.25 hrs ×
-            30 days ÷ 1,000 = <strong>9.00 kWh/month</strong> ($1.49/month). See our detailed{' '}
+            30 days ÷ 1,000 = <strong>9.00 kWh/month</strong> (${(9.0 * rateDollars).toFixed(2)}
+            /month). See our detailed{' '}
             <Link href="/guides/how-much-electricity-does-an-electric-kettle-use">
               Electric Kettle Electricity Usage Guide
             </Link>
@@ -82,7 +123,8 @@ export default function GuideApplianceUsagePage() {
           </li>
           <li>
             <strong>1,500W Space Heater (8 hrs/day for 30 days):</strong> 1,500W × 8.0 hrs × 30 days
-            ÷ 1,000 = <strong>360.00 kWh/month</strong> ($59.40/month at 16.5¢/kWh).
+            ÷ 1,000 = <strong>360.00 kWh/month</strong> (${(360.0 * rateDollars).toFixed(2)}/month
+            at {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh).
           </li>
         </ul>
       </section>
@@ -91,7 +133,9 @@ export default function GuideApplianceUsagePage() {
         <h2>4. Typical Household Appliance Power Benchmarks</h2>
         <p>
           Below is a reference benchmark table showing typical wattage ratings, estimated daily
-          runtimes, and monthly energy consumption for common home appliances:
+          runtimes, and monthly energy consumption for common home appliances, calculated using the
+          national benchmark of {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
         </p>
         <div className={styles.tableWrapper}>
           <table aria-label="Appliance Power Consumption Benchmarks">
@@ -103,58 +147,20 @@ export default function GuideApplianceUsagePage() {
                 <th scope="col">Daily Runtime</th>
                 <th scope="col">Est. Duty Cycle</th>
                 <th scope="col">Est. Monthly kWh</th>
-                <th scope="col">Est. Monthly Cost (at 16.5¢)</th>
+                <th scope="col">Est. Monthly Cost (@ {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢)</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>LED Light Bulb (100W Equivalent)</td>
-                <td>14 W</td>
-                <td>6 hours</td>
-                <td>100%</td>
-                <td>2.52 kWh</td>
-                <td>$0.42</td>
-              </tr>
-              <tr>
-                <td>55&quot; Smart Television</td>
-                <td>110 W</td>
-                <td>5 hours</td>
-                <td>100%</td>
-                <td>16.50 kWh</td>
-                <td>$2.72</td>
-              </tr>
-              <tr>
-                <td>ENERGY STAR Refrigerator (18 cu ft)</td>
-                <td>150 W</td>
-                <td>24 hours</td>
-                <td>35% (cycling)</td>
-                <td>37.80 kWh</td>
-                <td>$6.24</td>
-              </tr>
-              <tr>
-                <td>Desktop Computer & Dual Monitors</td>
-                <td>200 W</td>
-                <td>8 hours</td>
-                <td>100%</td>
-                <td>48.00 kWh</td>
-                <td>$7.92</td>
-              </tr>
-              <tr>
-                <td>Dishwasher (Heated Dry)</td>
-                <td>1,200 W</td>
-                <td>1 hour</td>
-                <td>100%</td>
-                <td>36.00 kWh</td>
-                <td>$5.94</td>
-              </tr>
-              <tr>
-                <td>Electric Clothes Dryer</td>
-                <td>4,000 W</td>
-                <td>0.75 hours</td>
-                <td>100%</td>
-                <td>90.00 kWh</td>
-                <td>$14.85</td>
-              </tr>
+              {applianceRows.map((row) => (
+                <tr key={row.name}>
+                  <td>{row.name}</td>
+                  <td>{row.watts}</td>
+                  <td>{row.hours}</td>
+                  <td>{row.duty}</td>
+                  <td>{row.kwh.toFixed(2)} kWh</td>
+                  <td>${(row.kwh * rateDollars).toFixed(2)}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -163,10 +169,14 @@ export default function GuideApplianceUsagePage() {
       <section className={styles.section}>
         <h2>5. Engine-Verified Calculation Example</h2>
         <div className={styles.workedExampleCard}>
-          <h3>Calculation Case Study: 1,500W Appliance (8 hrs/day at 16.5¢/kWh)</h3>
+          <h3>
+            Calculation Case Study: 1,500W Appliance (8 hrs/day at{' '}
+            {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
+          </h3>
           <p>
             Using Energy Bill Lab&apos;s calculation engine, here is the exact step-by-step output
-            for a 1,500W load running 8 hours daily over a 30-day billing period:
+            for a 1,500W load running 8 hours daily over a 30-day billing period (
+            {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}):
           </p>
           <div className={styles.exampleGrid}>
             <div className={styles.exampleItem}>

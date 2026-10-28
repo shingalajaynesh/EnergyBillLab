@@ -37,9 +37,6 @@ export async function generateMetadata(props: CategoryPageProps): Promise<Metada
     };
   }
 
-  const articles = getInsightsByCategory(meta.slug);
-  const isEligible = articles.length >= INSIGHTS_PUBLICATION_THRESHOLD;
-
   const baseMeta = createPageMetadata({
     title: `${meta.name} Energy Insights`,
     description: meta.description,
@@ -48,7 +45,7 @@ export async function generateMetadata(props: CategoryPageProps): Promise<Metada
 
   return {
     ...baseMeta,
-    robots: isEligible ? { index: true, follow: true } : { index: false, follow: true },
+    robots: { index: false, follow: true },
   };
 }
 

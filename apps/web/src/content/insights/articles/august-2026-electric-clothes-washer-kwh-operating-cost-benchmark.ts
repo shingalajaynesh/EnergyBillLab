@@ -8,7 +8,7 @@ export const august2026ElectricClothesWasherKwhOperatingCostBenchmark: InsightRe
   metaTitle: 'August 2026 Clothes Washer Electricity Cost & Cold Wash Benchmark | EnergyBillLab',
   metaDescription:
     'Washing machine energy benchmark using EIA rate data (18.44¢/kWh). Switching to cold wash saves $124.47/year nationally. Front-loaders cut power 50%.',
-  status: 'published',
+  status: 'archived',
   publishedAt: '2026-08-12',
   updatedAt: null,
   category: 'appliances',

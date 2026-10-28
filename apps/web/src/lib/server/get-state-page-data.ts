@@ -10,6 +10,7 @@ import {
 import { unstable_cache } from 'next/cache';
 
 import { PUBLISHED_STATES, type PublishedStateConfig } from '@/config/published-states';
+import { BUNDLED_STATE_RATES_SNAPSHOT } from '@/lib/constants/state-rates-snapshot';
 import type { RateDataProvenance } from '@/lib/server/get-state-rates';
 
 export type HouseholdCostExample = {
@@ -96,7 +97,7 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
   try {
     const db = getReadDatabaseClient();
     if (!db) {
-      return createUnavailableStateViewModel(config);
+      return createBundledStateViewModel(config);
     }
 
     const [latestStateRate, latestNationalRate, rawHistory] = await Promise.all([
@@ -105,8 +106,8 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
       getResidentialRateHistory(db, config.code, 25),
     ]);
 
-    if (!latestStateRate) {
-      return createUnavailableStateViewModel(config);
+    if (!latestStateRate || latestStateRate.period < '2026-08') {
+      return createBundledStateViewModel(config);
     }
 
     let differenceCents: number | null = null;
@@ -182,8 +183,67 @@ export async function getStatePageDataUncached(slug: string): Promise<StatePageV
       dataStatusText: `Verified database rate for ${latestSourceMonthFormatted}.`,
     };
   } catch {
+    return createBundledStateViewModel(config);
+  }
+}
+
+function createBundledStateViewModel(config: PublishedStateConfig): StatePageViewModel {
+  const latestStateRate = BUNDLED_STATE_RATES_SNAPSHOT[config.code] || null;
+  const latestNationalRate = BUNDLED_STATE_RATES_SNAPSHOT['US'] || null;
+
+  if (!latestStateRate || !latestNationalRate) {
     return createUnavailableStateViewModel(config);
   }
+
+  const differenceCents = latestStateRate.priceCentsPerKwh - latestNationalRate.priceCentsPerKwh;
+  const percentageDifference = (differenceCents / latestNationalRate.priceCentsPerKwh) * 100;
+  let comparisonDirection: StatePageViewModel['comparisonDirection'] = 'equal';
+  let comparisonDirectionText = 'approximately equal to the U.S. national average';
+
+  if (Math.abs(differenceCents) >= 0.01) {
+    if (differenceCents > 0) {
+      comparisonDirection = 'above';
+      comparisonDirectionText = `${Math.abs(percentageDifference).toFixed(1)}% above the U.S. national average`;
+    } else {
+      comparisonDirection = 'below';
+      comparisonDirectionText = `${Math.abs(percentageDifference).toFixed(1)}% below the U.S. national average`;
+    }
+  }
+
+  const householdExamples = calculateHouseholdCostExamples(latestStateRate.priceCentsPerKwh);
+  const latestSourceMonthFormatted = formatSourcePeriod(latestStateRate.period);
+
+  return {
+    slug: config.slug,
+    config,
+    hasData: true,
+    provenance: {
+      status: 'bundled_snapshot',
+      sourcePeriod: latestStateRate.period,
+      sourceName: 'U.S. EIA Form EIA-861M / Table 5.6.A',
+      snapshotGeneratedAt: '2026-10-23',
+    },
+    latestStateRate,
+    latestNationalRate,
+    differenceCents,
+    percentageDifference,
+    comparisonDirection,
+    comparisonDirectionText,
+    isPeriodMatched: true,
+    periodMismatchNotice: null,
+    householdExamples,
+    history: [
+      {
+        period: latestStateRate.period,
+        periodFormatted: latestSourceMonthFormatted,
+        priceCentsPerKwh: latestStateRate.priceCentsPerKwh,
+        changeCents: null,
+        isConsecutive: false,
+      },
+    ],
+    latestSourceMonthFormatted,
+    dataStatusText: `Verified official EIA benchmark for ${latestSourceMonthFormatted}.`,
+  };
 }
 
 function createUnavailableStateViewModel(config: PublishedStateConfig): StatePageViewModel {

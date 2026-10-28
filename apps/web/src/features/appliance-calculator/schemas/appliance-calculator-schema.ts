@@ -31,11 +31,13 @@ export const applianceCalculatorSchema = z.object({
 
 export type ApplianceCalculatorFormValues = z.infer<typeof applianceCalculatorSchema>;
 
+import { DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH } from '@/lib/constants/electricity';
+
 export const DEFAULT_APPLIANCE_FORM_VALUES: ApplianceCalculatorFormValues = {
   wattage: 1500,
   hoursPerDay: 4,
   days: 30,
-  rateCentsPerKwh: 16.5,
+  rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   dutyCyclePercent: 100,
   presetId: 'space-heater',
 };

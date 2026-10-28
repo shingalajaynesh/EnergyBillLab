@@ -16,6 +16,10 @@ import {
 } from '@energy-bill-lab/calculation-engine';
 
 import { EfficiencyGradeCard } from './efficiency-grade-card';
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
 import styles from './home-energy-scorecard.module.css';
 
 interface WizardState {
@@ -40,7 +44,7 @@ const INITIAL_STATE: WizardState = {
   coolingType: 'central_standard_seer14',
   waterHeaterType: 'gas_tank',
   windowType: 'double_clear',
-  electricityRateCentsPerKwh: 16.5,
+  electricityRateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
   gasPriceDollarsPerTherm: 1.45,
 };
 
@@ -284,14 +288,21 @@ export function AuditWizard() {
 
           <Form layout="vertical">
             <div className={styles.formGrid}>
-              <Form.Item label="Electricity Rate (¢/kWh)" required>
+              <Form.Item
+                label="Electricity Rate (¢/kWh)"
+                extra={DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}
+                required
+              >
                 <InputNumber
                   min={1}
                   max={100}
                   step={0.1}
                   value={formState.electricityRateCentsPerKwh}
                   onChange={(val) =>
-                    setFormState((prev) => ({ ...prev, electricityRateCentsPerKwh: val ?? 16.5 }))
+                    setFormState((prev) => ({
+                      ...prev,
+                      electricityRateCentsPerKwh: val ?? DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+                    }))
                   }
                   addonAfter="¢/kWh"
                   style={{ width: '100%' }}

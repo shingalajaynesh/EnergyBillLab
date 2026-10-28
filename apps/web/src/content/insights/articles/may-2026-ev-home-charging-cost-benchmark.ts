@@ -3,7 +3,7 @@ import type { InsightRecord } from '../types';
 export const may2026EvHomeChargingCostBenchmark: InsightRecord = {
   id: 'insight-2026-07-30-may-ev-home-charging-cost-benchmark',
   slug: 'may-2026-ev-home-charging-cost-benchmark',
-  status: 'published',
+  status: 'archived',
   title: 'May 2026 EV Home Charging Cost Benchmark',
   metaTitle: 'May 2026 EV Home Charging Cost Benchmark',
   metaDescription:

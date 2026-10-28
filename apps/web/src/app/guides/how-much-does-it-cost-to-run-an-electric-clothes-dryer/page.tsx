@@ -8,6 +8,11 @@ import { createPageMetadata } from '@/lib/metadata';
 
 import styles from '@/components/guide-article-view.module.css';
 
+import {
+  DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
+  DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE,
+} from '@/lib/constants/electricity';
+
 const guide = energyGuides['how-much-does-it-cost-to-run-an-electric-clothes-dryer']!;
 
 export const metadata: Metadata = createPageMetadata({
@@ -17,15 +22,18 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function ClothesDryerGuidePage() {
-  // Worked Example: 4,000W electric dryer, 45 minutes/load, 5 loads/week, 4 weeks, 16.5 ¢/kWh
+  // Worked Example: 4,000W electric dryer, 45 minutes/load, 5 loads/week, 4 weeks at canonical benchmark
   const workedExample = calculateDryerCost({
     wattage: 4000,
     minutesPerLoad: 45,
     loadsPerWeek: 5,
     weeks: 4,
-    rateCentsPerKwh: 16.5,
+    rateCentsPerKwh: DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH,
     dutyCyclePercent: 100,
   });
+
+  const rateDollars = DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH / 100;
+  const loadKwh = 3.0; // 4,000W * 0.75 hrs
 
   return (
     <GuideArticleView guide={guide}>
@@ -69,8 +77,9 @@ export default function ClothesDryerGuidePage() {
           Consider a typical family laundry schedule using a{' '}
           <strong>4,000-Watt electric dryer</strong>
           running for <strong>45 minutes per load</strong>, completing{' '}
-          <strong>5 loads per week</strong>
-          at an example rate of <strong>16.5 ¢/kWh</strong>.
+          <strong>5 loads per week</strong> at the national benchmark rate of{' '}
+          <strong>{DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH} ¢/kWh</strong> (
+          {DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}).
         </p>
         <ul>
           <li>
@@ -105,8 +114,8 @@ export default function ClothesDryerGuidePage() {
         <div className={styles.tableWrapper}>
           <table aria-label="Electric Clothes Dryer Laundry Volume vs Monthly Cost">
             <caption>
-              Table 1: Estimated Electric Dryer Costs by Weekly Load Volume (4,000W Dryer @
-              16.5¢/kWh)
+              Table 1: Estimated Electric Dryer Costs by Weekly Load Volume (4,000W Dryer @{' '}
+              {DEFAULT_ELECTRICITY_RATE_CENTS_PER_KWH}¢/kWh)
             </caption>
             <thead>
               <tr>
@@ -121,34 +130,59 @@ export default function ClothesDryerGuidePage() {
               <tr>
                 <td>2 loads / week (Single / Couple)</td>
                 <td>8 loads</td>
-                <td>24.0 kWh</td>
-                <td>$3.96</td>
-                <td>$51.48</td>
+                <td>{(8 * loadKwh).toFixed(1)} kWh</td>
+                <td>${(8 * loadKwh * rateDollars).toFixed(2)}</td>
+                <td>${(8 * loadKwh * rateDollars * 13).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>5 loads / week (Medium Household)</td>
                 <td>20 loads</td>
-                <td>60.0 kWh</td>
-                <td>$9.90</td>
-                <td>$128.70</td>
+                <td>{(20 * loadKwh).toFixed(1)} kWh</td>
+                <td>${(20 * loadKwh * rateDollars).toFixed(2)}</td>
+                <td>${(20 * loadKwh * rateDollars * 13).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>8 loads / week (Large Family)</td>
                 <td>32 loads</td>
-                <td>96.0 kWh</td>
-                <td>$15.84</td>
-                <td>$205.92</td>
+                <td>{(32 * loadKwh).toFixed(1)} kWh</td>
+                <td>${(32 * loadKwh * rateDollars).toFixed(2)}</td>
+                <td>${(32 * loadKwh * rateDollars * 13).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>12 loads / week (Heavy Laundry)</td>
                 <td>48 loads</td>
-                <td>144.0 kWh</td>
-                <td>$23.76</td>
-                <td>$308.88</td>
+                <td>{(48 * loadKwh).toFixed(1)} kWh</td>
+                <td>${(48 * loadKwh * rateDollars).toFixed(2)}</td>
+                <td>${(48 * loadKwh * rateDollars * 13).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <h3>Technology Efficiency Comparison: Standard vs. Heat Pump Dryers</h3>
+        <p>
+          According to EPA ENERGY STAR criteria, upgrading from a standard electric resistance dryer
+          to modern drying technologies delivers substantial energy savings:
+        </p>
+        <ul>
+          <li>
+            <strong>Standard Vented Dryer:</strong> Consumes ~3.0 kWh per cycle ($
+            {(3.0 * rateDollars).toFixed(2)}/load; ${(65 * rateDollars).toFixed(2)}/month at 5
+            loads/week).
+          </li>
+          <li>
+            <strong>ENERGY STAR Sensor Dryer:</strong> Uses moisture sensors to terminate cycles
+            early, consuming ~2.4 kWh per cycle ($
+            {(2.4 * rateDollars).toFixed(2)}/load; ${(52 * rateDollars).toFixed(2)}/month). Saves
+            20% in energy waste.
+          </li>
+          <li>
+            <strong>Ventless Heat Pump Dryer:</strong> Recirculates heat through a closed-loop
+            refrigeration cycle, consuming only ~1.2 kWh per cycle ($
+            {(1.2 * rateDollars).toFixed(2)}/load; ${(26 * rateDollars).toFixed(2)}/month). Cuts
+            dryer electricity costs by 60%.
+          </li>
+        </ul>
       </section>
 
       <section className={styles.section}>

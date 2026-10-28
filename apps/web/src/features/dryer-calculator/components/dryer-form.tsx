@@ -5,6 +5,7 @@ import { Button, Form, Select } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import { NumberInputWithUnit } from '@/components/number-input-with-unit';
 import { calculateDryerCost, type DryerCostResult } from '@energy-bill-lab/calculation-engine';
+import { DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE } from '@/lib/constants/electricity';
 
 import {
   getBenchmarksByApplianceType,
@@ -171,6 +172,7 @@ export function DryerForm({
           <Form.Item
             name="rateCentsPerKwh"
             label="Electricity Rate (¢/kWh)"
+            extra={`${DEFAULT_ELECTRICITY_BENCHMARK_DISCLOSURE}. Enter your custom bill rate or select a state benchmark.`}
             rules={[{ required: true, message: 'Please enter electricity rate' }]}
           >
             <NumberInputWithUnit min={0.01} max={500} step={0.1} unit="¢/kWh" />
