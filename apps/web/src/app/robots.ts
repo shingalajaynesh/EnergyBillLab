@@ -15,6 +15,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
+        userAgent: 'Google-Display-Ads-Bot',
+        allow: '/',
+      },
+      {
         userAgent: 'OAI-SearchBot',
         allow: '/',
       },
