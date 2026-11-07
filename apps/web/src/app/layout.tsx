@@ -9,7 +9,7 @@ import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { AppThemeProvider } from '@/components/app-theme-provider';
 import { createRootMetadata } from '@/lib/metadata';
-import { GTM_ID } from '@/lib/site';
+import { ADSENSE_CLIENT_ID, GTM_ID } from '@/lib/site';
 import {
   createOrganizationStructuredData,
   createWebsiteStructuredData,
@@ -25,6 +25,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <GoogleTagManager gtmId={GTM_ID} />
         <a className="skip-link" href="#main-content">

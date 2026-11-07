@@ -414,12 +414,13 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
       expect(ADSENSE_CLIENT_ID).toBe('ca-pub-6303291083449043');
     });
 
-    it('verifies layout.tsx has zero duplicate hardcoded meta tag and zero adsbygoogle script tags', () => {
+    it('verifies layout.tsx has zero duplicate hardcoded meta tag and canonical adsbygoogle script loader', () => {
       const layoutPath = path.resolve(__dirname, '../src/app/layout.tsx');
       const content = fs.readFileSync(layoutPath, 'utf-8');
       expect(content).not.toContain('<meta name="google-adsense-account"');
-      expect(content).not.toContain('adsbygoogle');
-      expect(content).not.toContain('pagead2.googlesyndication.com');
+      expect(content).toContain('adsbygoogle.js');
+      expect(content).toContain('pagead2.googlesyndication.com');
+      expect(content).toContain('ADSENSE_CLIENT_ID');
     });
   });
 

@@ -104,14 +104,15 @@ describe('Production Monitoring & Quality Gates', () => {
     expect(content).toContain('independent, source-transparent');
   });
 
-  it('verifies AdSense ownership verification is preserved via meta tag and ads.txt with zero active display scripts', () => {
+  it('verifies AdSense ownership verification is preserved via script loader, meta tag and ads.txt', () => {
     const layoutFilePath = path.resolve(__dirname, '../src/app/layout.tsx');
     const layoutContent = fs.readFileSync(layoutFilePath, 'utf8');
 
-    // 1. Zero active AdSense display scripts exist in layout
+    // 1. Exactly one canonical AdSense script loader exists in layout
     const adsbygoogleMatches = layoutContent.match(/adsbygoogle\.js/g) || [];
-    expect(adsbygoogleMatches).toHaveLength(0);
-    expect(layoutContent).not.toContain('pagead2.googlesyndication.com');
+    expect(adsbygoogleMatches).toHaveLength(1);
+    expect(layoutContent).toContain('pagead2.googlesyndication.com');
+    expect(layoutContent).toContain('ADSENSE_CLIENT_ID');
 
     // 2. Ownership verification meta tag is configured via Next.js metadata with zero layout duplicates
     expect(ADSENSE_CLIENT_ID).toBe('ca-pub-6303291083449043');
