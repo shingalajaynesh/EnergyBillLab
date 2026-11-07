@@ -32,8 +32,7 @@ describe('Redirect Integrity & Internal Link Scan Gate', () => {
       ).toBe(false);
 
       // 3. Destination must exist in public routes or registered guides (resolves to HTTP 200)
-      const destinationExists =
-        publicHrefs.has(r.destination) || guideHrefs.has(r.destination);
+      const destinationExists = publicHrefs.has(r.destination) || guideHrefs.has(r.destination);
       expect(
         destinationExists,
         `Destination ${r.destination} must resolve to a valid registered route`,

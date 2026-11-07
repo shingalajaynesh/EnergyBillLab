@@ -141,4 +141,3 @@ describe('Sitemap Exact Inventory & Accounting Gate', () => {
     expect(uniqueUrls.some((u) => u.includes('/insights/page/'))).toBe(false);
   });
 });
-
