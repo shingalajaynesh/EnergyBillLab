@@ -64,7 +64,7 @@ describe('August 2026 Natural Gas vs. Electric Heating Cost-per-MMBtu Insight', 
   it('7. contains valid internal links to permanent resources', () => {
     const record = august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark;
     expect(record.relatedRoutes).toContain('/tools/space-heater-cost-calculator');
-    expect(record.relatedRoutes).toContain('/tools/electricity-bill-analyzer');
+    expect(record.relatedRoutes).toContain('/electricity-bill-analyzer');
     expect(record.relatedRoutes).toContain('/electricity-rates');
     expect(record.relatedRoutes).toContain('/guides');
   });

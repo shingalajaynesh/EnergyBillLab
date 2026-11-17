@@ -1,5 +1,10 @@
 import type { InsightRecord } from '../types';
 
+export const SOLAR_CREDIT_EXAMPLES = [
+  { label: 'On-site use', formula: '300 kWh × $0.30', value: 300 * 0.3 },
+  { label: 'Export credit', formula: '400 kWh × $0.05', value: 400 * 0.05 },
+];
+
 export const august2026RooftopSolarNem3NetBillingExportValueBenchmark: InsightRecord = {
   id: 'insight-2026-08-14-august-rooftop-solar-nem-3-net-billing-export-value-benchmark',
   slug: 'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
@@ -7,12 +12,12 @@ export const august2026RooftopSolarNem3NetBillingExportValueBenchmark: InsightRe
   title: 'August 2026 Rooftop Solar NEM 3.0 Net Billing Export Value Benchmark',
   metaTitle: 'August 2026 Rooftop Solar NEM 3.0 Net Billing Value Benchmark',
   metaDescription:
-    'Benchmark analysis of NEM 3.0 net billing vs legacy 1:1 net metering: 6 kW solar export credits drop from $1,800/yr to $620/yr without battery storage.',
+    'Understand how California’s Net Billing Tariff treats on-site use and exports. Use an example to estimate the value of shifting solar into a battery.',
   summary:
-    'Under modern net billing tariffs (NEM 3.0), residential rooftop solar export compensation has shifted from full 1:1 retail electricity credits (averaging 32.40¢/kWh across California investor-owned utilities) down to avoided-cost wholesale rates averaging approximately 6.80¢/kWh. For a standard 6 kW DC solar array generating 9,000 kWh annually, this policy transition reduces annual grid export credit revenue from $1,896 down to $398, slashing standalone solar bill savings by 51.4% ($1,498/year). Pairing the array with a 10 kWh home battery increases on-site self-consumption from 35% to 75%, restoring annual utility savings to $2,340.',
+    'Under California’s Net Billing Tariff, the value of exported solar electricity depends on when it goes to the grid. In an illustrative month, using 300 kWh on site at 30¢/kWh avoids $90 in purchases. Exporting 400 kWh at an assumed average of 5¢/kWh earns $20 in credits.',
   category: 'solar',
   primaryIntent:
-    'quantify rooftop solar net billing export compensation reductions under NEM 3.0 and model annual household bill savings with standalone solar versus solar-plus-storage',
+    'Explain how to estimate the value of on-site solar use, grid exports, and battery storage under net billing.',
   primaryQuery: 'nem 3 net billing export value solar savings benchmark 2026',
   secondaryQueries: [
     'nem 2 vs nem 3 solar bill savings comparison',
@@ -22,100 +27,57 @@ export const august2026RooftopSolarNem3NetBillingExportValueBenchmark: InsightRe
   intentFingerprint: 'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark',
   canonicalTopic: 'august-2026-solar-net-billing-export-economics',
   geography: 'united-states',
-  reportingPeriod: 'August 2026 (May 2026 EIA Data Release)',
+  reportingPeriod: null,
   publishedAt: '2026-08-14',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   updateCadence: 'annual',
   authorName: 'Jaynesh Shingala',
   keyFindings: [
-    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential retail rate of 32.40¢/kWh CA / 18.44¢/kWh national; CPUC Decision D.22-12-056 Avoided Cost Calculator metrics) from EnergyBillLab model assumptions (6 kW DC solar generating 9,000 kWh/yr; 10,000 kWh household demand; 35% standalone vs 75% battery-paired self-consumption; 10 kWh battery; 6.80¢/kWh average export rate) and derived calculated results ($2,916/yr NEM 2.0 savings vs $1,418.40/yr NEM 3.0 standalone vs $2,340/yr NEM 3.0 solar+storage; 79.0% export credit reduction).',
-    'Under legacy NEM 2.0 1:1 net metering, a 6 kW solar array exporting 65% of generation earns $1,896/year in export credits at a 32.40¢/kWh retail rate.',
-    'Under NEM 3.0 Net Billing, average export credits plummet by 79.0% to $398/year based on a 6.80¢/kWh average avoided-cost valuation.',
-    'Standalone rooftop solar annual bill savings drop from $2,916/year (NEM 2.0) to $1,418/year (NEM 3.0), extending estimated simple payback from 5.8 to 11.9 years.',
-    'Adding a 10 kWh battery lifts solar self-consumption from 35% to 75%, increasing annual bill offset to $2,340 and reducing payback to 7.7 years.',
-  ],
-  bodyParagraphs: [
-    'The economics of residential rooftop solar power in the United States have undergone a profound structural shift as regulatory commissions transition from legacy 1:1 net energy metering (NEM 2.0) to avoided-cost net billing tariffs (NEM 3.0). While traditional net metering treated the electric grid as a free, 100% efficient storage battery—crediting excess afternoon generation at full retail price—modern net billing calculates export value based on the utility’s instantaneous avoided wholesale generation cost.',
-    'According to data from the U.S. Energy Information Administration (EIA) May 2026 Electric Power Monthly release, residential electricity rates across states with aggressive solar adoption average 32.40 cents per kWh in California, 28.14 cents in New England, and 18.44 cents nationwide. When solar generation is exported during midday hours when grid-level solar supply is abundant, avoided cost valuations frequently drop to between 4.0 and 8.0 cents per kWh.',
-    'This benchmark analyzes the mathematical impact of net billing tariffs on household utility bills, modeling annual cost offsets, export valuations, and battery storage economics for a standard American single-family home.',
+    'The California Public Utilities Commission says Net Billing Tariff export credits reflect the value of the energy at the time it is exported. The examples below use assumed rates.',
+    'Solar electricity used in the home can avoid purchases at the applicable import price. Exports should be valued at the export price for their hours.',
   ],
   sections: [
     {
-      heading: 'Net metering policy shift: 1:1 retail credits versus avoided-cost compensation',
+      heading: 'Separate on-site use from exports',
       paragraphs: [
-        'Under legacy NEM 2.0 rules, a kilowatt-hour of surplus solar electricity sent to the utility grid generated a full retail credit against future consumption. If a homeowner paid 32.40¢/kWh for grid electricity, exporting 1 kWh of midday solar earned 32.40¢ of credit to offset 1 kWh consumed at midnight.',
-        'Under NEM 3.0 Net Billing (formalized under CPUC Decision D.22-12-056 and emerging across multiple state jurisdictions), energy imported from the grid and energy exported to the grid are unbundled and measured instantaneously. Grid imports are billed at full time-of-use (TOU) retail rates, while exports are credited based on the Avoided Cost Calculator (ACC).',
-        'Because wholesale generation value is lowest when millions of rooftop solar panels produce maximum output simultaneously (11 AM to 3 PM), average daytime export compensation drops to approximately 5.5¢–8.2¢/kWh—a 75% to 83% discount compared to retail purchase rates.',
-        'Table: Data Provenance & Methodology Lineage Breakdown',
-        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
-        '| :--- | :--- | :--- | :--- |',
-        '| Official Government Data | California Retail Residential Electricity Rate | 32.40 ¢/kWh ($0.3240/kWh) | EIA Form EIA-861M / Electric Power Monthly (May 2026 Data Release) |',
-        '| Official Government Data | Net Billing Tariff & Avoided Cost Framework | CPUC Decision D.22-12-056 / ACC Metric | California Public Utilities Commission (CPUC) |',
-        '| Official Government Data | Residential Clean Energy Credit | 30.0% Federal Tax Credit (26 U.S. Code § 25D) | Internal Revenue Service (IRS) |',
-        '| Model Assumption | Solar System Size & Annual Generation | 6.0 kW DC Array producing 9,000 kWh / year | PVWatts / NREL Solar Irradiance Profile |',
-        '| Model Assumption | Household Electricity Baseline Demand | 10,000 kWh / year ($3,240/year baseline bill) | Standard California Single-Family Home Profile |',
-        '| Model Assumption | Standalone Solar Self-Consumption Rate | 35.0% On-Site Real-Time (3,150 kWh/yr) | 65.0% Grid Export (5,850 kWh/yr) |',
-        '| Model Assumption | Battery-Paired Solar Self-Consumption Rate | 75.0% On-Site Stored (6,750 kWh/yr) | 25.0% Grid Export (2,250 kWh/yr) |',
-        '| Model Assumption | Average Grid Export Valuation (NEM 3.0) | 6.80 ¢/kWh Average ACC Value | Hourly Avoided Cost Weighted Generation Curve |',
-        '| EnergyBillLab Calculation | NEM 2.0 Total Annual Bill Offset | $2,916.00 / year (Net Bill: $324.00/yr) | $1,020.60 self-consumption + $1,895.40 export credits |',
-        '| EnergyBillLab Calculation | NEM 3.0 Standalone Annual Bill Offset | $1,418.40 / year (Net Bill: $1,821.60/yr) | $1,020.60 self-consumption + $397.80 export credits |',
-        '| EnergyBillLab Calculation | NEM 3.0 Solar + Storage Annual Bill Offset | $2,340.00 / year (Net Bill: $900.00/yr) | $2,187.00 self-consumption + $153.00 export credits |',
+        'The CPUC guidance covers large investor-owned utilities in California. Check the tariff you qualify for, since program rules can differ by utility and enrollment date.',
+        'In this example, 300 kWh is used on site and 400 kWh is exported in one month. Assume the household avoids 30¢/kWh when it uses solar on site and earns an average modeled credit of 5¢/kWh for its exports.',
+        '| Component | Model | Monthly energy value |',
+        '| :--- | :--- | ---: |',
+        ...SOLAR_CREDIT_EXAMPLES.map(
+          ({ label, formula, value }) => `| ${label} | ${formula} | $${value.toFixed(2)} |`,
+        ),
+        'The two components total $110. This is the modeled energy value before charges that remain on the bill. The example export rate is not a California-wide average.',
       ],
     },
     {
-      heading:
-        'Mathematical model: 6 kW rooftop solar financial returns under NEM 2.0 versus NEM 3.0',
+      heading: 'Estimate the value of shifting one kWh into a battery',
       paragraphs: [
-        'To quantify the real-world household impact, consider a standard 6 kW DC rooftop solar installation in a sunny climate producing 9,000 kWh annually, installed on a home consuming 10,000 kWh per year (baseline utility bill of $3,240/year before solar).',
-        'In a standalone solar setup without battery storage, approximately 35% of solar production (3,150 kWh) is consumed on-site in real time by baseline appliances, air conditioning, and electronics. The remaining 65% (5,850 kWh) is pushed out to the utility distribution grid as surplus generation.',
-        'Under NEM 2.0, self-consumption offsets $1,020.60 of retail purchases (3,150 kWh × $0.3240), and 5,850 kWh of exports generates $1,895.40 in credits, yielding a total annual bill reduction of $2,916.00 (net remaining bill: $324.00/year).',
-        'Under NEM 3.0, the same 3,150 kWh of self-consumption still saves $1,020.60, but the 5,850 kWh of exports only earns $397.80 at an average 6.80¢/kWh avoided cost rate. Total annual savings fall to $1,418.40 (net remaining bill: $1,821.60/year)—a net loss of $1,497.60 in annual financial value for identical physical energy production.',
-      ],
-    },
-    {
-      heading: 'Paired battery storage economics: Maximizing self-consumption and peak arbitrage',
-      paragraphs: [
-        'The sharp drop in export compensation transforms the role of residential battery storage from an emergency backup luxury into an essential financial optimizer. When a 10 kWh lithium battery (usable capacity ~9.0 kWh at 90% round-trip efficiency) is paired with the 6 kW solar array, excess daytime solar is captured on-site rather than exported at low wholesale rates.',
-        'During evening peak hours (4 PM to 9 PM) when grid TOU rates surge to 42.00¢–54.00¢/kWh, the home discharges stored solar energy to power evening cooking, refrigeration, lighting, and air conditioning.',
-        'With battery storage, on-site solar self-consumption jumps from 35% to 75% (6,750 kWh), leaving only 2,250 kWh of remaining export. Annual avoided retail purchases rise to $2,187.00, while remaining exports contribute $153.00, bringing total annual savings to $2,340.00.',
-      ],
-    },
-    {
-      heading: 'Three-scenario financial comparison matrix and estimated payback duration',
-      paragraphs: [
-        'The table below compares financial performance, annual utility savings, grid export value, and simple payback periods across legacy NEM 2.0, NEM 3.0 standalone solar, and NEM 3.0 solar paired with 10 kWh battery storage.',
-        'Assumptions: 6 kW DC solar array ($17,000 gross / $11,900 net after 30% federal tax credit); 10 kWh battery storage ($10,000 gross / $7,000 net after tax credit); 32.40¢/kWh baseline retail electricity price.',
-      ],
-    },
-    {
-      heading: 'Practical homeowner strategies for rooftop solar under modern net billing tariffs',
-      paragraphs: [
-        '1. Shift flexible daytime electrical loads: Schedule pool pumps, electric clothes dryers, dishwashers, and electric vehicle charging between 10 AM and 2 PM to maximize free on-site solar consumption.',
-        '2. Right-size solar arrays for self-consumption: Over-sizing a solar system beyond 100% of household load under net billing yields minimal financial return because excess production is credited at avoided-cost wholesale rates.',
-        '3. Evaluate battery storage ROI: Pair solar arrays with at least 8–13 kWh of usable battery storage to capture high-value TOU peak rate arbitrage (4 PM to 9 PM).',
-        '4. Monitor utility tariff structures: Review rate plans annually to ensure the home remains on the most favorable solar-friendly time-of-use schedule.',
+        'At 90% round-trip efficiency, storing 1 kWh leaves 0.9 kWh for later use. If it offsets a purchase at 30¢/kWh, the value is 27¢. Subtract the 5¢ credit you gave up by not exporting the original kWh. In this example, the net benefit is 22¢ before battery costs.',
+        'Actual battery value depends on your hourly loads, import and export prices, usable capacity, and system limits. Use the utility’s tariff and installer analysis to compare bids.',
       ],
     },
   ],
-  practicalExample:
-    'For a household with a 6 kW solar array producing 9,000 kWh/year, shifting a 5 kWh EV charging session from midnight (grid power @ 32.4¢/kWh = $1.62) to noon solar self-consumption saves $1.62/day, whereas exporting that same 5 kWh under NEM 3.0 earns only $0.34 in utility credits—a daily net benefit of $1.28 per session.',
   methodologyNotes:
-    'Calculations model a 6 kW DC rooftop array using NREL PVWatts solar irradiance profiles with a 0.82 system efficiency derate factor. Self-consumption load curves are modeled against a standard U.S. residential hourly load profile (10,000 kWh/year). Avoided cost export rates reflect CPUC 2026 Avoided Cost Calculator (ACC) hourly matrices. Retail rates use U.S. EIA Electric Power Monthly May 2026 benchmarks.',
+    'The scenario values are hypothetical and cover energy charges only. The example does not assume any tax credit. The IRS says the federal Residential Clean Energy Credit is unavailable for property placed in service after December 31, 2025. Check current rules for your own project.',
   sources: [
     {
-      organization: 'U.S. Energy Information Administration (EIA)',
-      title: 'Electric Power Monthly — Table 5.6.A (May 2026 Release)',
-      url: 'https://www.eia.gov/electricity/monthly/',
+      organization: 'California Public Utilities Commission',
+      title: 'Net Energy Metering and Net Billing',
+      url: 'https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing',
+      topic: 'California retail net billing and export compensation rules',
     },
     {
-      organization: 'National Renewable Energy Laboratory (NREL)',
-      title: 'PVWatts Calculator & U.S. Utility Rate Database',
-      url: 'https://pvwatts.nrel.gov/',
+      organization: 'Internal Revenue Service',
+      title: 'Residential Clean Energy Credit',
+      url: 'https://www.irs.gov/credits-deductions/residential-clean-energy-credit',
+      topic: 'Federal residential credit end date',
     },
     {
-      organization: 'California Public Utilities Commission (CPUC)',
-      title: 'Decision D.22-12-056: Net Billing Tariff (NEM 3.0) & Avoided Cost Calculator',
-      url: 'https://www.cpuc.gov/nem/',
+      organization: 'National Laboratory of the Rockies',
+      title: 'Annual Technology Baseline: Residential Battery Storage',
+      url: 'https://atb.nlr.gov/electricity/2024b/residential_battery_storage',
+      topic: 'Modeling residential battery energy losses and operating assumptions',
     },
   ],
   relatedRoutes: [

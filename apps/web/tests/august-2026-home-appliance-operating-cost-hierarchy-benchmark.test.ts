@@ -73,6 +73,6 @@ describe('August 2026 Home Appliance Operating Cost Hierarchy Insight', () => {
     expect(record.summary).toContain('405 kWh');
     expect(record.summary).toContain('$74.68/month');
     expect(record.practicalExample).toContain('$327.80 at the U.S. national average rate');
-    expect(record.practicalExample).toContain('$575.96 per month');
+    expect(record.practicalExample).toContain('$591.07 per month');
   });
 });

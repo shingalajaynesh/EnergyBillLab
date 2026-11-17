@@ -10,7 +10,7 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
     'Electric water heater standby loss benchmark using May 2026 EIA data. Standby heat loss wastes 640–880 kWh/yr ($118–$162/yr). Lowering from 140°F to 120°F saves $123.84/yr (13.8%), while an R-10 jacket saves an additional $47.11/yr.',
   status: 'published',
   publishedAt: '2026-08-21',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   category: 'appliances',
   canonicalTopic: 'august-2026-electric-water-heater-standby-loss-temperature-setpoint-benchmark',
   intentFingerprint: 'august-2026-electric-water-heater-standby-heat-loss-120-vs-140-cost-savings',
@@ -37,7 +37,7 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
     'Setpoint Adjustment Savings: Reducing water heater temperature from 140°F to 120°F saves $43.08/year in pure standby loss and $80.77/year in pipe distribution and recovery losses, delivering $123.84/year ($10.32/month) in total utility bill reductions nationally.',
     'Tank Insulation Jacket ROI: Adding an external R-10 fiberglass blanket to a pre-2015 tank in an unconditioned basement or garage cuts standby heat loss by 40%, saving 255.5 kWh ($47.11/year) and achieving simple payback in less than 9 months on a $35 materials investment.',
     'Safety and Anti-Scald Threshold: Storing water at 140°F causes third-degree burns in just 5 seconds, whereas water delivered at 120°F requires over 5 minutes of continuous contact to cause a serious burn, eliminating scald hazards for children and seniors.',
-    'State Utility Price Disparity: Operating a standard 50-gallon electric water heater at 120°F (4,194 kWh/year) costs $483.15/year ($40.26/month) in Washington (11.52¢/kWh) and $650.07/year ($54.17/month) in Texas (15.50¢/kWh), but climbs to $1,358.85/year ($113.24/month) in California (32.40¢/kWh) and $2,180.88/year ($181.74/month) in Hawaii (52.00¢/kWh).',
+    'State Utility Price Disparity: Operating a standard 50-gallon electric water heater at 120°F (4,194 kWh/year) costs $627.00/year ($52.25/month) in Washington (14.95¢/kWh) and $689.49/year ($57.46/month) in Texas (16.44¢/kWh), but climbs to $1,394.51/year ($116.21/month) in California (33.25¢/kWh) and $2,180.88/year ($181.74/month) in Hawaii (52.00¢/kWh).',
   ],
   bodyParagraphs: [
     'Water heating represents the second-largest energy expense in American households, consuming approximately 18% of a typical home’s electricity budget according to U.S. Department of Energy (DOE) data. With residential electricity rates averaging 18.44¢ per kilowatt-hour based on May 2026 U.S. Energy Information Administration (EIA) data releases, operating a conventional electric-resistance storage water heater costs $720 to $900 per year for a four-person family.',
@@ -97,14 +97,14 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
       paragraphs: [
         'Because retail electricity rates span a 4.5x range across U.S. states, the dollar value of reducing standby loss and optimizing setpoints varies dramatically by geographic region.',
         'Benchmarking annual electricity costs for a standard 50-gallon electric water heater (4,194 kWh/year at 120°F) and the financial savings of lowering from 140°F to 120°F (672 kWh/year reduction) across May 2026 EIA state rates shows:',
-        '• Washington (11.52¢/kWh): $483.15/year ($40.26/month) operating cost · 140°F to 120°F savings = $77.41/year ($6.45/month).',
-        '• Texas (15.50¢/kWh): $650.07/year ($54.17/month) operating cost · 140°F to 120°F savings = $104.16/year ($8.68/month).',
-        '• Florida (15.82¢/kWh): $663.49/year ($55.29/month) operating cost · 140°F to 120°F savings = $106.31/year ($8.86/month).',
-        '• U.S. National Average (18.44¢/kWh): $773.35/year ($64.45/month) operating cost · 140°F to 120°F savings = $123.84/year ($10.32/month).',
-        '• Pennsylvania (19.26¢/kWh): $807.74/year ($67.31/month) operating cost · 140°F to 120°F savings = $129.35/year ($10.78/month).',
-        '• New York (24.80¢/kWh): $1,040.11/year ($86.68/month) operating cost · 140°F to 120°F savings = $166.56/year ($13.88/month).',
-        '• California (32.40¢/kWh): $1,358.85/year ($113.24/month) operating cost · 140°F to 120°F savings = $217.59/year ($18.13/month).',
-        '• Hawaii (52.00¢/kWh): $2,180.88/year ($181.74/month) operating cost · 140°F to 120°F savings = $349.23/year ($29.10/month).',
+        '• Washington (14.95¢/kWh): $627.00/year ($52.25/month) operating cost · 140°F to 120°F savings = $100.46/year ($8.37/month).',
+        '• Florida (15.17¢/kWh): $636.23/year ($53.02/month) operating cost · 140°F to 120°F savings = $101.94/year ($8.50/month).',
+        '• Texas (16.44¢/kWh): $689.49/year ($57.46/month) operating cost · 140°F to 120°F savings = $110.48/year ($9.21/month).',
+        '• U.S. National Average (18.44¢/kWh): $773.37/year ($64.45/month) operating cost · 140°F to 120°F savings = $123.92/year ($10.33/month).',
+        '• Pennsylvania (21.55¢/kWh): $903.81/year ($75.32/month) operating cost · 140°F to 120°F savings = $144.82/year ($12.07/month).',
+        '• New York (29.93¢/kWh): $1,255.26/year ($104.61/month) operating cost · 140°F to 120°F savings = $201.13/year ($16.76/month).',
+        '• California (33.25¢/kWh): $1,394.51/year ($116.21/month) operating cost · 140°F to 120°F savings = $223.44/year ($18.62/month).',
+        '• Hawaii (52.00¢/kWh): $2,180.88/year ($181.74/month) operating cost · 140°F to 120°F savings = $349.44/year ($29.12/month).',
       ],
     },
     {
@@ -114,7 +114,7 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
         'Adding an external fiberglass or reflective insulation blanket (R-8 to R-10) reduces tank surface heat conduction by 35% to 45%. Furthermore, insulating the first six feet of both the cold-water inlet and hot-water outlet pipes with closed-cell foam sleeves stops "thermal thermosiphoning"—the convective circulation of hot water upward into uninsulated piping loops.',
         'Economic Payback Calculation (50-Gallon Tank in a 65°F Space):',
         '• DIY Material Investment: $25.00 for an R-10 water heater insulation jacket + $10.00 for 12 feet of self-sealing foam pipe insulation = $35.00 total.',
-        '• Annual Standby Reduction: 255.5 kWh saved per year ($47.11/year at national average 18.44¢/kWh; $82.78/year in California).',
+        '• Annual Standby Reduction: 255.5 kWh saved per year ($47.11/year at national average 18.44¢/kWh; $84.95/year in California @ 33.25¢/kWh).',
         '• Simple Payback Period: $35.00 ÷ $47.11/year = 0.74 years (8.9 months). In California or New York, the payback period drops to under 5 months. Over a typical 10-year service life, a $35 insulation retrofit returns $471 to $827 in cumulative net electricity savings.',
       ],
     },
@@ -140,23 +140,22 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
     },
   ],
   practicalExample:
-    'A family of four living in Pennsylvania has a standard 10-year-old 50-gallon electric water heater located in an unconditioned basement (60°F average ambient temperature). The unit was operating at the factory default of 140°F without tank or pipe insulation, drawing 4,980 kWh per year and costing $959.15 annually at the local rate of 19.26¢/kWh ($79.93/month). By dialing both thermostat dials down to 120°F and spending $35 on a DIY R-10 tank blanket and foam pipe insulation, the family reduced annual consumption to 4,039 kWh per year ($777.91/year; $64.83/month). The intervention delivered $181.24 in direct annual utility savings ($15.10/month), fully recovering the $35 retrofit investment in just 2.3 months.',
+    'A family of four living in Pennsylvania has a standard 10-year-old 50-gallon electric water heater located in an unconditioned basement (60°F average ambient temperature). The unit was operating at the factory default of 140°F without tank or pipe insulation, drawing 4,980 kWh per year and costing $1,073.19 annually at the local May 2026 EIA rate of 21.55¢/kWh ($89.43/month). By dialing both thermostat dials down to 120°F and spending $35 on a DIY R-10 tank blanket and foam pipe insulation, the family reduced annual consumption to 4,039 kWh per year ($870.40/year; $72.53/month). The intervention delivered $202.79 in direct annual utility savings ($16.90/month), fully recovering the $35 retrofit investment in just 2.1 months.',
   methodologyNotes:
-    'Thermal calculations, standby loss coefficients, and standby dissipation modeling are derived from U.S. Department of Energy (DOE) test procedures codified in 10 CFR Part 430 (Subpart B, Appendix E) for Consumer Water Heaters, alongside ENERGY STAR Version 5.0 Residential Water Heaters specifications. Standby heat transmission is modeled using cylindrical surface area heat transfer equations (Q = U · A · ΔT · 24 hrs) calibrated against NREL ResStock and Building America benchmark empirical field data. Baseline water consumption assumes a standard 4-person household consuming 60 gallons of hot water daily with a 55°F incoming groundwater baseline and 98% electric resistance heating efficiency (1 kWh = 3,412 BTU). Electricity rate benchmarks are derived from official U.S. Energy Information Administration (EIA) Form EIA-861M data releases for the May 2026 reporting period (National Average: 18.44¢/kWh; WA: 11.52¢/kWh; TX: 15.50¢/kWh; FL: 15.82¢/kWh; PA: 19.26¢/kWh; NY: 24.80¢/kWh; CA: 32.40¢/kWh; HI: 52.00¢/kWh). Scald burn thresholds are based on American Burn Association and U.S. Consumer Product Safety Commission (CPSC) thermal safety curves.',
+    'Thermal calculations, standby loss coefficients, and standby dissipation modeling are derived from U.S. Department of Energy (DOE) test procedures codified in 10 CFR Part 430 (Subpart B, Appendix E) for Consumer Water Heaters, alongside ENERGY STAR Version 5.0 Residential Water Heaters specifications. Standby heat transmission is modeled using cylindrical surface area heat transfer equations (Q = U · A · ΔT · 24 hrs) calibrated against NREL ResStock and Building America benchmark empirical field data. Baseline water consumption assumes a standard 4-person household consuming 60 gallons of hot water daily with a 55°F incoming groundwater baseline and 98% electric resistance heating efficiency (1 kWh = 3,412 BTU). Electricity rate benchmarks are derived from official U.S. Energy Information Administration (EIA) Form EIA-861M data releases for the May 2026 reporting period (National Average: 18.44¢/kWh; WA: 14.95¢/kWh; TX: 16.44¢/kWh; FL: 15.17¢/kWh; PA: 21.55¢/kWh; NY: 29.93¢/kWh; CA: 33.25¢/kWh; HI: 52.00¢/kWh). Scald burn thresholds are based on American Burn Association and U.S. Consumer Product Safety Commission (CPSC) thermal safety curves.',
   sources: [
     {
       organization: 'U.S. Energy Information Administration (EIA)',
-      title: 'Electric Power Monthly (May 2026 Data Release), Table 5.6.A',
-      url: 'https://www.eia.gov/electricity/monthly/',
+      title: 'July 2026 Electric Power Monthly Archive (Table 5.6.A May 2026 Data)',
+      url: 'https://www.eia.gov/electricity/monthly/archive/july2026.zip',
       topic:
         'May 2026 U.S. national and state residential electricity rates (18.44¢/kWh national average)',
     },
     {
-      organization: 'U.S. Department of Energy (DOE)',
-      title: 'Energy Saver: Water Heating Temperature Settings & Standby Heat Loss Reduction',
-      url: 'https://www.energy.gov/energysaver/water-heating',
-      topic:
-        'Thermostat setpoint guidelines (120°F vs 140°F), standby heat loss mechanics, and pipe insulation recommendations',
+      organization: 'ENERGY STAR',
+      title: 'Water Heater Key Product Criteria',
+      url: 'https://www.energystar.gov/products/water_heaters/residential_water_heaters_key_product_criteria',
+      topic: 'Water heater types and efficiency rating definitions',
     },
     {
       organization: 'ENERGY STAR Program (U.S. EPA & DOE)',
@@ -170,7 +169,7 @@ export const august2026ElectricWaterHeaterStandbyLossTemperatureSetpointBenchmar
       organization: 'National Renewable Energy Laboratory (NREL)',
       title:
         'Building America Research Benchmark: Domestic Hot Water Consumption and Thermal Losses',
-      url: 'https://www.nrel.gov/docs/fy14osti/60988.pdf',
+      url: 'https://docs.nlr.gov/docs/fy14osti/60988.pdf',
       topic:
         'Empirical hot water draw profiles, tank surface standby loss coefficients, and thermal jacket efficiency gains',
     },

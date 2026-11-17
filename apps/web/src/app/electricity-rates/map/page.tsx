@@ -5,6 +5,7 @@ import { DataSourceNote } from '@/components/data-source-note';
 import { PageContainer } from '@/components/page-container';
 import { PageHeader } from '@/components/page-header';
 import { RelatedLinks } from '@/components/related-links';
+import { isApprovedStateSlug } from '@/config/published-states';
 import { StateRateMap, type StateMapRecord } from '@/features/state-rates';
 import { createPageMetadata } from '@/lib/metadata';
 import type { PublicRouteHref } from '@/lib/routes';
@@ -15,7 +16,7 @@ import { createFaqStructuredData, serializeStructuredData } from '@/lib/structur
 export const metadata: Metadata = createPageMetadata({
   title: 'Interactive U.S. Electricity Rate Map & 50-State Price Heatmap',
   description:
-    'Interactive 50-state residential electricity rate map. Compare ¢/kWh pricing tiers, regional rate spreads, and average monthly household utility bills across all U.S. states using official EIA data.',
+    'Compare residential electricity rates across 50 states and DC, and see what the same 884 kWh would cost at each EIA average rate.',
   path: '/electricity-rates/map',
 });
 
@@ -113,12 +114,12 @@ export default async function StateRateMapPage() {
 
   const stateRecords: StateMapRecord[] = snapshot.geographies
     .filter((g) => g.code !== 'US' && snapshot.rates[g.code])
-    .map((g) => {
+    .map((g): StateMapRecord => {
       const rateDto = snapshot.rates[g.code]!;
       return {
         code: g.code,
         name: g.name,
-        slug: g.slug,
+        reportHref: isApprovedStateSlug(g.slug) ? `/electricity-rates/${g.slug}` : null,
         rateCentsPerKwh: rateDto.priceCentsPerKwh,
         periodFormatted: formatSourcePeriod(rateDto.period),
         region: REGION_LOOKUP[g.code] ?? 'West',
@@ -136,7 +137,7 @@ export default async function StateRateMapPage() {
 
       <PageHeader
         title="Interactive U.S. Electricity Rate Map"
-        description="Explore residential electricity pricing tiers (¢/kWh) and average monthly household utility expenses across all 50 states + DC."
+        description="Compare residential electricity rates across all 50 states and DC. Cost examples apply each published rate to the same 884 kWh of usage."
       />
 
       <StateRateMap states={stateRecords} nationalAverageRate={nationalAvg} />
@@ -170,7 +171,8 @@ export default async function StateRateMapPage() {
 
       <DataSourceNote>
         Data sourced directly from U.S. Energy Information Administration (EIA) Form EIA-861M
-        monthly residential sales reports ({stateRecords[0]?.periodFormatted ?? 'May 2026'}).
+        monthly residential sales reports
+        {stateRecords[0] ? ` (${stateRecords[0].periodFormatted})` : ''}.
       </DataSourceNote>
 
       <RelatedLinks links={relatedLinks} />

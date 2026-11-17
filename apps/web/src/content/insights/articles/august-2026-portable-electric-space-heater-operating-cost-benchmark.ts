@@ -105,9 +105,9 @@ export const august2026PortableElectricSpaceHeaterOperatingCostBenchmark: Insigh
       url: 'https://www.eia.gov/electricity/monthly/',
     },
     {
-      organization: 'U.S. Department of Energy (DOE)',
-      title: 'Energy Saver Guide: Portable Electric Space Heaters',
-      url: 'https://www.energy.gov/energysaver/portable-heaters',
+      organization: 'U.S. Consumer Product Safety Commission',
+      title: 'Reducing Fire Hazards for Portable Electric Heaters',
+      url: 'https://www.cpsc.gov/s3fs-public/heaters.pdf',
     },
     {
       organization: 'Federal Trade Commission (FTC)',

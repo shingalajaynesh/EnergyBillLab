@@ -11,7 +11,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
     'Cooktop operating cost benchmark using May 2026 EIA data. Induction is 85% efficient ($94.23/yr) vs radiant electric ($108.43/yr) and natural gas ($62.56/yr).',
   status: 'published',
   publishedAt: '2026-08-15',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   category: 'appliances',
   canonicalTopic: 'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
   intentFingerprint: 'august-2026-induction-vs-electric-vs-gas-cooktop-energy-cost-benchmark',
@@ -35,9 +35,9 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
     'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA residential rate of 18.44¢/kWh; EIA natural gas price of $19.73/Mcf / ≈ $1.90/therm; DOE 10 CFR Part 430 Appendix I1 cooktop test standards) from EnergyBillLab model assumptions (1.0 hour/day active cooking baseline; 300 Wh standard task heat requirement; 85% induction vs 74% radiant vs 40% gas efficiency) and derived calculated results ($94.23/yr induction vs $108.43/yr radiant electric vs $62.56/yr gas; $14.20/yr induction efficiency dividend; $8.52 summer AC heat penalty).',
     'Thermal Transfer Efficiency Spread: U.S. Department of Energy (DOE) testing establishes that induction cooktops transfer 85.0% of input energy directly into food and cookware, compared to 74.0% for smooth radiant glass-top electric elements and 40.0% for standard residential natural gas burners.',
     'Annual Electricity vs. Gas Baseline: At 18.44¢/kWh and $1.90/therm ($19.73/Mcf), operating a 1,800W burner for 1 hour daily consumes 511.0 kWh/year ($94.23/yr) on induction, 588.0 kWh/year ($108.43/yr) on smooth radiant electric, and 32.85 therms/year ($62.56/yr) on natural gas.',
-    'Efficiency Dividend Over Radiant Electric: Induction delivers identical cooking heat while consuming 77.0 fewer kWh per year than smooth radiant electric elements, reducing cooking electric utility expense by 13.1% ($14.20/yr nationally, $24.95/yr in California, and $40.04/yr in Hawaii).',
+    'Efficiency Dividend Over Radiant Electric: Induction delivers identical cooking heat while consuming 77.0 fewer kWh per year than smooth radiant electric elements, reducing cooking electric utility expense by 13.1% ($14.20/yr nationally, $25.60/yr in California, and $40.04/yr in Hawaii).',
     'The Summer Cooling Waste Heat Penalty: Natural gas burners vent 60% of combustion heat into ambient kitchen air (5,400 BTU/hr of uncaptured waste heat). Over a 4-month cooling season, removing this excess cooking heat with a 14 SEER2 central air conditioner adds 46.2 kWh ($8.52) of extra AC electricity load.',
-    'State Operating Cost Variance: Annual induction cooking expense spans from $58.87/year in Washington (11.52¢/kWh) and $79.21/year in Texas (15.50¢/kWh) up to $165.56/year in California (32.40¢/kWh) and $265.72/year in Hawaii (52.00¢/kWh).',
+    'State Operating Cost Variance: Annual induction cooking expense spans from $76.39/year in Washington (14.95¢/kWh) and $84.01/year in Texas (16.44¢/kWh) up to $169.91/year in California (33.25¢/kWh) and $265.72/year in Hawaii (52.00¢/kWh).',
   ],
   bodyParagraphs: [
     'Residential cooking appliances represent one of the most visible daily energy interactions in American households. However, the true operating cost and energy efficiency of cooktops depend on thermal transfer physics—specifically how much input energy from the electric grid or gas pipeline reaches the food versus how much is lost to surrounding ambient kitchen air. Based on May 2026 U.S. Energy Information Administration (EIA) price releases, the residential national average electricity rate is 18.44¢/kWh, while residential natural gas averages $19.73 per thousand cubic feet (Mcf), or approximately $1.90 per therm (100,000 BTU) using the EIA heat-content baseline of 1,036 Btu per cubic foot.',
@@ -45,7 +45,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
     'To evaluate these technologies on an equal thermodynamic basis, consider a standardized cooking task: delivering 300 Watt-hours (1,024 BTU) of useful heat into food (equivalent to rapidly boiling 2 liters of water from room temperature). Because of efficiency differences, an induction cooktop draws 0.353 kWh of grid electricity (costing 6.51¢ nationally), a radiant electric cooktop draws 0.405 kWh (costing 7.47¢ nationally), and a gas burner burns 2,560 BTU of natural gas (0.0256 therms, costing 4.88¢ nationally at $1.9044/therm). While natural gas remains cheaper per unit of delivered energy on a national commodity average, induction requires the least primary site energy and transfers heat nearly 50% faster than conventional gas.',
     'For a typical household cooking for an average of 60 minutes per day across all burners (equivalent to 1.40 kWh of active induction power draw daily), total annual electricity consumption reaches 511.0 kWh ($94.23 per year). A standard radiant electric range performing the exact same culinary work consumes 588.0 kWh per year ($108.43 per year). Choosing induction over traditional electric resistance saves 77.0 kWh per year while providing gas-like instantaneous heat response and eliminating hot burner surfaces.',
     'An often-overlooked factor in residential energy economics is the summer air conditioning penalty. During warm months, the 60% waste heat emitted by natural gas burners (averaging 5,400 BTU per hour of uncaptured heat on a medium-high burner) directly increases the thermal cooling load on the home’s HVAC system. Removing 5,400 BTU of heat via an ENERGY STAR 14 SEER2 central air conditioner consumes approximately 0.385 kWh of additional electricity per hour of cooking ($0.071 per hour at 18.44¢/kWh). Factoring in HVAC heat extraction costs significantly narrows the operating expense gap between gas and ultra-efficient induction cooking.',
-    'In regions with high residential electricity tariffs, induction efficiency yields meaningful dollar savings over electric radiant cooking. In California, where electricity averages 32.40¢/kWh according to May 2026 EIA data, annual induction cooking costs $165.56 compared to $190.51 for radiant electric—saving $24.95 annually on cooking power alone. In Hawaii (52.00¢/kWh), induction saves $40.04 per year over radiant electric. Furthermore, for households with rooftop solar arrays, induction cooking utilizes on-site daytime solar generation at zero marginal fuel cost, making it the most cost-effective and carbon-free cooking method available.',
+    'In regions with high residential electricity tariffs, induction efficiency yields meaningful dollar savings over electric radiant cooking. In California, where electricity averages 33.25¢/kWh according to May 2026 EIA data, annual induction cooking costs $169.91 compared to $195.51 for radiant electric—saving $25.60 annually on cooking power alone. In Hawaii (52.00¢/kWh), induction saves $40.04 per year over radiant electric. Furthermore, for households with rooftop solar arrays, induction cooking utilizes on-site daytime solar generation at zero marginal fuel cost, making it the most cost-effective and carbon-free cooking method available.',
   ],
   sections: [
     {
@@ -86,14 +86,14 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
       paragraphs: [
         'Table 2 outlines annual energy consumption and operating expenses for a household using cooktop burners for 1 hour daily (365 hours/year) across major U.S. states using May 2026 EIA residential retail rates:',
         'Table 2: Annual Cooktop Operating Cost Benchmark Across Major States (1 Hour/Day Baseline)',
-        "| State / Geographic Region | Residential Electricity Rate (¢/kWh) | Residential Natural Gas Price ($/therm) | Annual Induction Cost ($94.23 Nat'l) | Annual Radiant Electric Cost ($108.43 Nat'l) | Annual Natural Gas Cost ($62.56 Nat'l) | Induction vs. Radiant Savings ($/yr) |",
+        "| State / Geographic Region | Residential Electricity Rate (¢/kWh) | Residential Natural Gas Price ($/therm) | Annual Induction Cost ($94.23 Nat'l) | Annual Radiant Electric Cost ($108.43 Nat'l) | Annual Natural Gas Cost ($62.41 Nat'l) | Induction vs. Radiant Savings ($/yr) |",
         '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',
-        '| U.S. National Average | 18.44 ¢/kWh | $1.90 / therm ($19.73/Mcf) | $94.23 / yr | $108.43 / yr | $62.56 / yr | $14.20 / yr (13.1%) |',
-        '| Washington (Low-Cost Hydro) | 11.52 ¢/kWh | $1.35 / therm ($13.99/Mcf) | $58.87 / yr | $67.74 / yr | $44.35 / yr | $8.87 / yr (13.1%) |',
-        '| Texas (Competitive Retail) | 15.50 ¢/kWh | $1.72 / therm ($17.82/Mcf) | $79.21 / yr | $91.14 / yr | $56.50 / yr | $11.93 / yr (13.1%) |',
-        '| Florida (Southeastern Grid) | 15.80 ¢/kWh | $2.45 / therm ($25.38/Mcf) | $80.74 / yr | $92.90 / yr | $80.48 / yr | $12.16 / yr (13.1%) |',
-        '| New York (Northeastern Metro) | 24.80 ¢/kWh | $2.05 / therm ($21.24/Mcf) | $126.73 / yr | $145.82 / yr | $67.34 / yr | $19.09 / yr (13.1%) |',
-        '| California (High-Tier Tariffs) | 32.40 ¢/kWh | $1.85 / therm ($19.17/Mcf) | $165.56 / yr | $190.51 / yr | $60.77 / yr | $24.95 / yr (13.1%) |',
+        '| U.S. National Average | 18.44 ¢/kWh | $1.90 / therm ($19.73/Mcf) | $94.23 / yr | $108.43 / yr | $62.41 / yr | $14.20 / yr (13.1%) |',
+        '| Washington (Low-Cost Hydro) | 14.95 ¢/kWh | $1.35 / therm ($13.99/Mcf) | $76.39 / yr | $87.91 / yr | $44.35 / yr | $11.51 / yr (13.1%) |',
+        '| Florida (Southeastern Grid) | 15.17 ¢/kWh | $2.45 / therm ($25.38/Mcf) | $77.52 / yr | $89.20 / yr | $80.48 / yr | $11.68 / yr (13.1%) |',
+        '| Texas (Competitive Retail) | 16.44 ¢/kWh | $1.72 / therm ($17.82/Mcf) | $84.01 / yr | $96.67 / yr | $56.50 / yr | $12.66 / yr (13.1%) |',
+        '| New York (Northeastern Metro) | 29.93 ¢/kWh | $2.05 / therm ($21.24/Mcf) | $152.94 / yr | $175.99 / yr | $67.34 / yr | $23.05 / yr (13.1%) |',
+        '| California (High-Tier Tariffs) | 33.25 ¢/kWh | $1.85 / therm ($19.17/Mcf) | $169.91 / yr | $195.51 / yr | $60.77 / yr | $25.60 / yr (13.1%) |',
         '| Hawaii (Isolated Island Grid) | 52.00 ¢/kWh | $4.85 / therm ($50.25/Mcf) | $265.72 / yr | $305.76 / yr | $159.32 / yr | $40.04 / yr (13.1%) |',
       ],
     },
@@ -102,7 +102,7 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
       paragraphs: [
         'In addition to direct fuel expenses, gas and radiant cooktops impose an indirect energy penalty by dumping waste heat into conditioned living space. A 9,000 BTU/hr gas burner operating for 1 hour vents 5,400 BTU of waste heat into the kitchen.',
         'During summer cooling months, an air conditioning system operating at a Seasonal Energy Efficiency Ratio (SEER2) of 14.0 requires approximately 0.385 kWh of electrical compressor power to remove that 5,400 BTU of waste heat.',
-        'Over a 120-day summer cooking period, removing gas cooking waste heat adds 46.2 kWh ($8.52 nationally; $14.97 in California) in supplemental cooling costs, whereas induction vents minimal ambient heat.',
+        'Over a 120-day summer cooking period, removing gas cooking waste heat adds 46.2 kWh ($8.52 nationally; $15.36 in California @ 33.25¢/kWh) in supplemental cooling costs, whereas induction vents minimal ambient heat.',
       ],
     },
     {
@@ -114,14 +114,14 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
     },
   ],
   practicalExample:
-    'A household cooking dinner for 60 minutes daily on an induction cooktop consumes 1.40 kWh per day (42.0 kWh per month), costing $7.74 per month at the May 2026 EIA national average rate of 18.44¢/kWh. Running an older radiant electric cooktop for the same meals consumes 1.61 kWh per day (48.3 kWh per month), costing $8.91 per month ($1.17/month higher). Over a full year, induction saves 77.0 kWh ($14.20 nationally, $24.95 in California, and $40.04 in Hawaii) while keeping the kitchen significantly cooler.',
+    'A household cooking dinner for 60 minutes daily on an induction cooktop consumes 1.40 kWh per day (42.0 kWh per month), costing $7.74 per month at the May 2026 EIA national average rate of 18.44¢/kWh. Running an older radiant electric cooktop for the same meals consumes 1.61 kWh per day (48.3 kWh per month), costing $8.91 per month ($1.17/month higher). Over a full year, induction saves 77.0 kWh ($14.20 nationally, $25.60 in California, and $40.04 in Hawaii) while keeping the kitchen significantly cooler.',
   methodologyNotes:
-    'Thermal efficiency factors are derived from U.S. Department of Energy (DOE) 10 CFR Part 430 cooking test procedures and Lawrence Berkeley National Laboratory (LBNL) residential kitchen efficiency measurements (Induction: 85.0%, Smooth Radiant Electric: 74.0%, Natural Gas Burner: 40.0%). Electricity rates are sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M May 2026 reporting period (National: 18.44¢/kWh; CA: 32.40¢/kWh; TX: 15.50¢/kWh; FL: 15.80¢/kWh; WA: 11.52¢/kWh; HI: 52.00¢/kWh). Residential natural gas prices are sourced from EIA Natural Gas Monthly Table 20 May 2026 releases ($19.73/Mcf ≈ $1.90/therm). Annual household baseline assumes 365 operating hours per year at a nominal 1,800W burner power rating (or 9,000 BTU/hr gas burner equivalent).',
+    'Thermal efficiency factors are derived from U.S. Department of Energy (DOE) 10 CFR Part 430 cooking test procedures and Lawrence Berkeley National Laboratory (LBNL) residential kitchen efficiency measurements (Induction: 85.0%, Smooth Radiant Electric: 74.0%, Natural Gas Burner: 40.0%). Electricity rates are sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M May 2026 reporting period (National: 18.44¢/kWh; CA: 33.25¢/kWh; TX: 16.44¢/kWh; FL: 15.17¢/kWh; WA: 14.95¢/kWh; HI: 52.00¢/kWh). Residential natural gas prices are sourced from EIA Natural Gas Monthly Table 20 May 2026 releases ($19.73/Mcf ≈ $1.90/therm). Annual household baseline assumes 365 operating hours per year at a nominal 1,800W burner power rating (or 9,000 BTU/hr gas burner equivalent).',
   sources: [
     {
       organization: 'U.S. Energy Information Administration (EIA)',
-      title: 'Electric Power Monthly (Table 5.6.A — May 2026 Residential Electricity Prices)',
-      url: 'https://www.eia.gov/electricity/monthly/',
+      title: 'July 2026 Electric Power Monthly Archive (Table 5.6.A May 2026 Data)',
+      url: 'https://www.eia.gov/electricity/monthly/archive/july2026.zip',
       topic: 'May 2026 U.S. residential electricity prices and state benchmark rates',
     },
     {
@@ -139,10 +139,10 @@ export const august2026InductionVsElectricVsGasCooktopEnergyCostBenchmark: Insig
       topic: 'Residential cooktop thermal transfer efficiency test standards',
     },
     {
-      organization: 'ENERGY STAR (U.S. EPA / DOE)',
-      title: 'ENERGY STAR Residential Electric & Induction Cooking Metrics',
-      url: 'https://www.energystar.gov/products/appliances',
-      topic: 'Induction electromagnetic heat transfer efficiency ratings',
+      organization: 'ENERGY STAR',
+      title: 'Product Specifications and Partner Commitments',
+      url: 'https://www.energystar.gov/products/spec',
+      topic: 'Efficiency specifications across product categories',
     },
   ],
   relatedRoutes: [

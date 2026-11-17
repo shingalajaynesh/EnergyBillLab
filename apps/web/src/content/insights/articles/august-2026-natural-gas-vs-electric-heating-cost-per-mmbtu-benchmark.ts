@@ -26,7 +26,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   geography: 'united-states',
   reportingPeriod: 'August 2026',
   publishedAt: '2026-08-05',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   updateCadence: 'monthly',
   authorName: 'Jaynesh Shingala',
   keyFindings: [
@@ -35,7 +35,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
     'High-Efficiency Condensing Gas Furnaces (96% AFUE) deliver heat at $19.84 per MMBtu (10.42 therms input at ≈ $1.90/therm national average), saving 63.3% compared to electric resistance heating.',
     'High-Efficiency Air-Source Heat Pumps (seasonal COP 3.0) deliver heat at $18.01 per MMBtu (97.69 kWh input), outperforming 96% gas furnaces by 9.2% ($1.83/MMBtu savings) at national average rates.',
     'Mid-Efficiency Gas Furnaces (80% AFUE) cost $23.81 per MMBtu delivered (12.50 therms input), making a 96% furnace upgrade worth $3.97 in savings per MMBtu burned ($198.38 per winter).',
-    'In low-electricity-rate territories (12.50¢/kWh WA), heat pumps (COP 3.0) deliver heat at just $12.21 per MMBtu—46.0% cheaper than high-efficiency gas heating ($22.61/MMBtu in regional gas markets).',
+    'In low-electricity-rate territories (12.35¢/kWh in Idaho or 14.95¢/kWh in Washington), heat pumps (COP 3.0) deliver heat at just $12.06 to $14.60 per MMBtu—undercutting high-efficiency gas heating ($19.84/MMBtu nationally; $22.61/MMBtu in regional gas markets).',
   ],
   bodyParagraphs: [
     'As U.S. homeowners prepare for upcoming heating equipment replacements or evaluate fuel switching between utility natural gas and electric heat pumps, comparing raw fuel prices alone can produce misleading financial conclusions. Natural gas is metered in therms or thousand cubic feet (Mcf), whereas electricity is metered in kilowatt-hours (kWh). Comparing a gas tariff of ≈ $1.90 per therm directly against an electric rate of 18.44 cents per kWh obscures the fundamental physical difference in heat content and equipment thermal efficiency.',
@@ -74,7 +74,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
         '2. Condensing Gas Furnace Efficiency (96% AFUE): Sealed-combustion condensing gas furnaces capture latent heat from water vapor in exhaust gases, reaching 96% AFUE. Requiring 10.42 therms (1.004 Mcf) of raw gas input per MMBtu, a 96% furnace delivers heat at $19.84 per MMBtu ($991.90 per winter). Upgrading from an older 80% AFUE furnace ($23.81/MMBtu) saves $3.97 per MMBtu ($198.38 per winter season).',
         '3. Air-Source Heat Pump Thermodynamic Advantage: In moderate outdoor temperatures (35°F to 50°F), modern inverter-driven heat pumps transfer 3.0 units of heat for every 1 unit of electrical power consumed (seasonal COP 3.0). Delivering 1 MMBtu requires only 97.69 kWh of electricity, resulting in a delivered cost of $18.01 per MMBtu ($900.70 per winter). At national average utility rates, a high-efficiency heat pump is $1.83 per MMBtu (9.2%) cheaper to operate than a top-tier 96% gas furnace.',
         '4. Cold-Climate Heat Pump Operating Floor (COP 2.0): When outdoor temperatures drop into extreme sub-freezing ranges (5°F), heat pump COP declines toward 2.0 (146.54 kWh required per MMBtu). At COP 2.0, heat pump operating cost rises to $27.02 per MMBtu ($1,351.06 per winter). In extreme cold climates without dual-fuel backup, gas furnaces maintain an operational cost advantage during deep freezes.',
-        '5. Regional Rate Dynamics: In low-electric territories like Washington state (12.50¢/kWh), a COP 3.0 heat pump delivers heat for just $12.21 per MMBtu—saving 46.0% compared to a 96% gas furnace ($22.61/MMBtu). Conversely, in high-electric regions like California (32.40¢/kWh electricity vs $16.50/Mcf gas), a 96% gas furnace ($16.56/MMBtu) remains cheaper than a COP 3.0 heat pump ($31.65/MMBtu).',
+        '5. Regional Rate Dynamics: In low-electric territories like Idaho (12.35¢/kWh) and Washington state (14.95¢/kWh), a COP 3.0 heat pump delivers heat for just $12.06 to $14.60 per MMBtu—saving 35% to 47% compared to a 96% gas furnace ($22.61/MMBtu in regional gas markets). Conversely, in high-electric regions like California (33.25¢/kWh electricity vs $16.50/Mcf gas), a 96% gas furnace ($16.56/MMBtu) remains cheaper than a COP 3.0 heat pump ($32.48/MMBtu).',
       ],
     },
     {
@@ -102,9 +102,8 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
     },
     {
       organization: 'U.S. Energy Information Administration (EIA)',
-      title:
-        'Electric Power Monthly — Table 5.6.A Average Price of Electricity to Ultimate Customers by End-Use Sector',
-      url: 'https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_06_a',
+      title: 'July 2026 Electric Power Monthly Archive (Table 5.6.A May 2026 Data)',
+      url: 'https://www.eia.gov/electricity/monthly/archive/july2026.zip',
       topic:
         'Official monthly U.S. residential electricity prices, sales, and revenue data by state and census division.',
     },
@@ -119,7 +118,7 @@ export const august2026NaturalGasVsElectricHeatingCostPerMmtuBenchmark: InsightR
   ],
   relatedRoutes: [
     '/tools/space-heater-cost-calculator',
-    '/tools/electricity-bill-analyzer',
+    '/electricity-bill-analyzer',
     '/tools/ac-cost-calculator',
     '/electricity-rates',
     '/guides',

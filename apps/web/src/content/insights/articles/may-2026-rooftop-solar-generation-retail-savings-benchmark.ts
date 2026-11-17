@@ -93,7 +93,7 @@ export const may2026RooftopSolarGenerationRetailSavingsBenchmark: InsightRecord 
     {
       organization: 'National Renewable Energy Laboratory',
       title: 'PVWatts Calculator Architecture & Solar Production Data',
-      url: 'https://pvwatts.nrel.gov/',
+      url: 'https://pvwatts.nlr.gov/',
       topic:
         'Standard rooftop PV performance factors, AC capacity ratings, and seasonal insolating factors.',
     },

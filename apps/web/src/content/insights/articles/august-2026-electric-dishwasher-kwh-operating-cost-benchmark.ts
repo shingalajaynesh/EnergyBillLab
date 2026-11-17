@@ -113,7 +113,7 @@ export const august2026ElectricDishwasherKwhOperatingCostBenchmark: InsightRecor
     {
       organization: 'ENERGY STAR Program',
       title: 'ENERGY STAR Product Specifications for Residential Dishwashers (Version 6.0)',
-      url: 'https://www.energystar.gov/products/appliances/dishwashers',
+      url: 'https://www.energystar.gov/products/dishwashers',
       topic:
         'ENERGY STAR standard (240 kWh/yr max) and compact (155 kWh/yr max) energy efficiency criteria',
     },

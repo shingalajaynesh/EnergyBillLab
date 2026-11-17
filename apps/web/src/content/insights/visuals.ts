@@ -1,5 +1,14 @@
 import type { VisualBarItem } from '@/components/technical-visual-card';
 
+import { WATER_HEATER_COST_EXAMPLES } from './articles/august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark';
+import { EV_CHARGING_COST_EXAMPLES } from './articles/august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark';
+
+import { MAY_2026_SPREAD_EXAMPLES } from './articles/august-2026-state-residential-electricity-price-spread-benchmark';
+import { THERMOSTAT_RUNTIME_EXAMPLES } from './articles/august-2026-summer-thermostat-setting-cooling-cost-benchmark';
+
+import { MAY_2026_REGIONAL_RATES } from './articles/august-2026-census-division-residential-electricity-rate-breakdown';
+import { SOLAR_CREDIT_EXAMPLES } from './articles/august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark';
+
 export interface InsightVisualConfig {
   badge?: string;
   badgeType?: 'primary' | 'success' | 'neutral';
@@ -55,39 +64,15 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
 
   // 2. Rooftop Solar NEM 3.0 Benchmark
   'august-2026-rooftop-solar-nem-3-net-billing-export-value-benchmark': {
-    title: 'Rooftop Solar Annual Utility Bill Savings by Tariff Structure',
-    subtitle:
-      'Annual bill reduction for a 6 kW solar system (9,000 kWh/yr) on a 10,000 kWh/yr household',
-    badge: 'NEM 3.0 Economics',
-    badgeType: 'primary',
-    items: [
-      {
-        label: 'Legacy NEM 2.0 (1:1 Net Metering @ 32.4¢/kWh credit)',
-        displayValue: '$2,916/yr',
-        value: 2916,
-        color: 'primary',
-        subLabel: 'Full retail credit for 5,850 kWh exported + 3,150 kWh self-consumed',
-      },
-      {
-        label: 'NEM 3.0 Net Billing + 10 kWh Battery Storage',
-        displayValue: '$2,340/yr',
-        value: 2340,
-        color: 'success',
-        highlight: true,
-        badge: 'Storage Optimized',
-        subLabel: '75% on-site self-consumption (6,750 kWh) avoids high evening TOU retail rates',
-      },
-      {
-        label: 'NEM 3.0 Standalone Solar (No Battery Storage)',
-        displayValue: '$1,418/yr',
-        value: 1418,
-        color: 'danger',
-        subLabel:
-          'Exports credited at wholesale avoided cost (~6.8¢/kWh) · 51.4% savings reduction',
-      },
-    ],
-    footerNote:
-      'Tariff Shift: Net billing credits excess solar exports at wholesale avoided-cost rates, making paired battery storage essential for financial ROI.',
+    title: 'Modeled monthly solar value',
+    subtitle: 'An example with 300 kWh used on site and 400 kWh exported',
+    items: SOLAR_CREDIT_EXAMPLES.map(({ label, formula, value }) => ({
+      label,
+      subLabel: formula,
+      displayValue: `$${value.toFixed(2)}`,
+      value,
+      color: 'primary',
+    })),
   },
 
   // 3. Dehumidifier Benchmark
@@ -491,134 +476,37 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
 
   // 13. State Residential Electricity Price Spread Benchmark
   'august-2026-state-residential-electricity-price-spread-benchmark': {
-    title: 'State Electricity Price Spread: Highest vs Lowest Rates (May 2026 EIA)',
-    subtitle: 'Residential electricity rate per kilowatt-hour across top and bottom states',
-    badge: '4.5x Rate Spread',
-    badgeType: 'primary',
-    items: [
-      {
-        label: 'Hawaii (Island Grid & Imported Petroleum)',
-        displayValue: '52.00¢ / kWh',
-        value: 52.0,
-        color: 'danger',
-        subLabel: '$520.00 per 1,000 kWh monthly electricity consumption',
-      },
-      {
-        label: 'California (Grid Infrastructure & Wildfire Mitigation Tariffs)',
-        displayValue: '32.40¢ / kWh',
-        value: 32.4,
-        color: 'danger',
-        subLabel: '$324.00 per 1,000 kWh monthly electricity consumption',
-      },
-      {
-        label: 'U.S. National Average (May 2026 EIA Release)',
-        displayValue: '18.44¢ / kWh',
-        value: 18.44,
-        color: 'warning',
-        subLabel: '$184.40 per 1,000 kWh monthly electricity consumption',
-      },
-      {
-        label: 'Texas (Deregulated Competitive Generation)',
-        displayValue: '15.50¢ / kWh',
-        value: 15.5,
-        color: 'primary',
-        subLabel: '$155.00 per 1,000 kWh monthly electricity consumption',
-      },
-      {
-        label: 'Washington (Pacific Northwest Hydroelectric Generation)',
-        displayValue: '11.52¢ / kWh',
-        value: 11.52,
-        color: 'success',
-        highlight: true,
-        badge: 'Lowest Rate',
-        subLabel: '$115.20 per 1,000 kWh monthly electricity consumption',
-      },
-    ],
-    footerNote:
-      'Geographic Disparity: A household consuming 1,000 kWh/month pays $404.80 more per month in Hawaii than in Washington State.',
+    title: 'Selected May 2026 residential electricity rates',
+    subtitle: 'EIA Electric Power Monthly, Table 5.6.A',
+    items: MAY_2026_SPREAD_EXAMPLES.map(({ name, cents }) => ({
+      label: name,
+      displayValue: `${cents.toFixed(2)}¢/kWh`,
+      value: cents,
+      color: 'primary',
+    })),
   },
 
   // 14. Census Division Residential Electricity Rate Breakdown
   'august-2026-census-division-residential-electricity-rate-breakdown': {
-    title: 'U.S. Census Division Residential Electricity Rates (May 2026 EIA)',
-    subtitle: 'Average residential electricity price (¢/kWh) across the 9 U.S. Census Divisions',
-    badge: 'Regional Benchmark',
-    badgeType: 'primary',
-    items: [
-      {
-        label: 'New England (CT, MA, ME, NH, RI, VT)',
-        displayValue: '28.50¢ / kWh',
-        value: 28.5,
-        color: 'danger',
-        subLabel: 'Highest regional rates due to pipeline constraints and winter LNG dependencies',
-      },
-      {
-        label: 'Pacific Contiguous (CA, OR, WA)',
-        displayValue: '24.10¢ / kWh',
-        value: 24.1,
-        color: 'danger',
-        subLabel: 'Elevated by California utility tariffs offsetting low Northwest hydro rates',
-      },
-      {
-        label: 'Middle Atlantic (NJ, NY, PA)',
-        displayValue: '21.80¢ / kWh',
-        value: 21.8,
-        color: 'warning',
-        subLabel: 'High transmission delivery charges and legacy infrastructure costs',
-      },
-      {
-        label: 'U.S. National Average',
-        displayValue: '18.44¢ / kWh',
-        value: 18.44,
-        color: 'primary',
-        subLabel: 'Weighted national benchmark for 142M+ residential utility accounts',
-      },
-      {
-        label: 'East South Central (AL, KY, MS, TN)',
-        displayValue: '13.90¢ / kWh',
-        value: 13.9,
-        color: 'success',
-        highlight: true,
-        badge: 'Lowest Regional Cost',
-        subLabel: 'Low-cost Tennessee Valley Authority hydro and nuclear generation resources',
-      },
-    ],
-    footerNote: 'Source: U.S. EIA Electric Power Monthly Table 5.6.A (May 2026 data period).',
+    title: 'Residential electricity rates by EIA region',
+    subtitle: 'May 2026 data, including both Pacific groups',
+    items: MAY_2026_REGIONAL_RATES.map(({ name, cents }) => ({
+      label: name,
+      displayValue: `${cents.toFixed(2)}¢/kWh`,
+      value: cents,
+      color: 'primary',
+    })),
   },
 
   // 15. Time of Use Peak Rate Spread & Appliance Load Shifting Benchmark
   'august-2026-time-of-use-peak-rate-spread-appliance-load-shifting-benchmark': {
-    title: 'Time-of-Use Rate Spread & Appliance Load Shifting Savings',
-    subtitle: 'Cost to run high-draw appliances during Peak vs Off-Peak TOU pricing windows',
-    badge: 'Load Shifting ROI',
-    badgeType: 'success',
+    title: 'Modeled energy cost for the same 401.5 kWh',
+    subtitle: 'Illustrative peak and off-peak rates',
     items: [
-      {
-        label: 'Running EV + Dryer + Dishwasher During On-Peak Hours (45¢/kWh)',
-        displayValue: '$18.00 / day',
-        value: 18.0,
-        color: 'danger',
-        subLabel: '40 kWh daily consumption charged at premium 4 PM–9 PM peak rates',
-      },
-      {
-        label: 'Running Same Appliances on Flat Standard Rate (18.44¢/kWh)',
-        displayValue: '$7.38 / day',
-        value: 7.38,
-        color: 'warning',
-        subLabel: '40 kWh daily consumption on non-time-varying flat rate',
-      },
-      {
-        label: 'Shifting All Major Loads to Super-Off-Peak Hours (12¢/kWh)',
-        displayValue: '$4.80 / day',
-        value: 4.8,
-        color: 'success',
-        highlight: true,
-        badge: '73.3% Savings',
-        subLabel: 'Automating EV charging and dishwasher timers after 11 PM saves $13.20/day',
-      },
+      { label: 'All at peak (32¢/kWh)', displayValue: '$128.48', value: 128.48, color: 'warning' },
+      { label: 'All off peak (12.8¢/kWh)', displayValue: '$51.39', value: 51.39, color: 'primary' },
     ],
-    footerNote:
-      'Automation Payback: Smart timer plugs and scheduled EV charging capture peak-to-off-peak rate spreads without requiring habit changes.',
+    footerNote: 'Of the modeled $77.09 difference, $57.60 comes from shifting home EV charging.',
   },
 
   // 16. May 2026 EV Home Charging Cost Benchmark
@@ -999,45 +887,15 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
 
   // 26. August 2026 Summer Thermostat Setting Cooling Cost Benchmark
   'august-2026-summer-thermostat-setting-cooling-cost-benchmark': {
-    title: 'Summer Thermostat Setting Monthly AC Electricity Cost Benchmark',
-    subtitle:
-      'Calculated for a 3-ton (14.3 SEER2) central AC at May 2026 national average rate of 18.44¢/kWh',
-    badge: '+$44.57/mo at 72°F',
-    badgeType: 'primary',
-    items: [
-      {
-        label: 'Setpoint 78°F (DOE / ENERGY STAR Recommended Baseline)',
-        displayValue: '$83.53/mo',
-        value: 83.53,
-        color: 'success',
-        highlight: true,
-        badge: 'Lowest Bill',
-        subLabel: '453.0 kWh/month · 6.0 hr/day runtime · Optimal balance of comfort & efficiency',
-      },
-      {
-        label: 'Setpoint 75°F (Typical American Household Setpoint)',
-        displayValue: '$101.64/mo',
-        value: 101.64,
-        color: 'primary',
-        subLabel: '551.2 kWh/month · 7.3 hr/day runtime · +$18.11/mo (+21.7% increase vs 78°F)',
-      },
-      {
-        label: 'Setpoint 72°F (Heavy Cooling Setting)',
-        displayValue: '$128.10/mo',
-        value: 128.1,
-        color: 'warning',
-        subLabel: '694.7 kWh/month · 9.2 hr/day runtime · +$44.57/mo (+53.4% increase vs 78°F)',
-      },
-      {
-        label: 'Setpoint 70°F (Maximum Comfort / Over-Cooling Penalty)',
-        displayValue: '$150.38/mo',
-        value: 150.38,
-        color: 'danger',
-        subLabel: '815.5 kWh/month · 10.8 hr/day runtime · +$66.85/mo (+80.0% increase vs 78°F)',
-      },
-    ],
-    footerNote:
-      'Thermodynamic Law: Building heat gain is proportional to outdoor-indoor delta-T. Lowering thermostat setpoints increases cooling load by 3% to 5% per degree Fahrenheit.',
+    title: 'Estimated cost at two runtimes',
+    subtitle: 'A 2.5 kW air conditioner over 30 days at 18.44¢/kWh',
+    items: THERMOSTAT_RUNTIME_EXAMPLES.map(({ hours, kwh, cost }) => ({
+      label: `${hours} hours of active cooling per day`,
+      displayValue: `$${cost.toFixed(2)}`,
+      subLabel: `${kwh} kWh over 30 days`,
+      value: cost,
+      color: 'primary',
+    })),
   },
 
   // 27. August 2026 EV Home Charging Efficiency Benchmark
@@ -1310,7 +1168,7 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
         highlight: true,
         badge: 'Net Profit',
         subLabel:
-          '$68.16 saved across a 4-month summer season ($93.20/season in California @ 33.82¢/kWh)',
+          '$68.16 saved across a 4-month summer season ($91.61/season in California @ 33.25¢/kWh)',
       },
     ],
     footerNote:
@@ -1391,96 +1249,29 @@ export const INSIGHT_VISUAL_CONFIGS: Record<string, InsightVisualConfig> = {
       'Four fan hours break even at 20 minutes of AC runtime avoided. The bars compare operating costs at the stated runtimes. Cooling and humidity depend on outdoor conditions.',
   },
 
-  // 35. August 2026 EV vs Gas Car Fuel Cost per 100 Miles Benchmark
   'august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark': {
-    title: 'EV vs. Gasoline Vehicle Driving Cost Benchmark per 100 Miles',
-    subtitle:
-      'Calculated for 30 kWh/100-mi EV vs. 28 MPG Gas Car at August 2026 EIA Gas ($4.085/gal) & Electricity (18.44¢/kWh)',
-    badge: '58%–81% Fuel Savings',
-    badgeType: 'success',
-    items: [
-      {
-        label: 'Super-Off-Peak Residential EV Charging (8.5¢/kWh · 33.3 kWh grid)',
-        displayValue: '$2.83/100 mi',
-        value: 2.83,
-        color: 'success',
-        highlight: true,
-        badge: 'Lowest Fuel Cost',
-        subLabel:
-          'Modeled overnight TOU window (midnight–6 AM) · Slashes fuel cost by 80.6% ($1,411.20/yr saved vs 28 MPG gas)',
-      },
-      {
-        label: 'Standard Flat Home EV Charging (18.44¢/kWh · 33.3 kWh grid)',
-        displayValue: '$6.15/100 mi',
-        value: 6.15,
-        color: 'primary',
-        subLabel:
-          'U.S. national average residential rate · Level 2 (90% efficiency) · DOE eGallon equivalent = $1.72/gal',
-      },
-      {
-        label: 'High-Efficiency Compact Gas Car (35 MPG · 2.86 gal @ $4.085/gal)',
-        displayValue: '$11.67/100 mi',
-        value: 11.67,
-        color: 'warning',
-        subLabel: 'Civic / Corolla class baseline · $1,400.40/yr fuel expense at 12,000 miles/yr',
-      },
-      {
-        label: 'Standard Passenger Gas Car Baseline (28 MPG · 3.57 gal @ $4.085/gal)',
-        displayValue: '$14.59/100 mi',
-        value: 14.59,
-        color: 'danger',
-        subLabel:
-          'EPA light-duty fleet baseline · $1,750.80/yr fuel expense · 3.6x more raw energy consumed than EV',
-      },
-      {
-        label: 'Commercial Public DC Fast Charging (45.0¢/kWh · 33.3 kWh grid)',
-        displayValue: '$15.00/100 mi',
-        value: 15.0,
-        color: 'danger',
-        subLabel:
-          'Modeled 45.0¢/kWh fast-charging scenario · Adds $0.41/100 mi vs 28 MPG gas at $4.085/gal (rates vary by network)',
-      },
-    ],
+    title: 'Modeled fuel cost for the same 100 miles',
+    subtitle: 'Illustrative driving and charging scenarios',
+    items: EV_CHARGING_COST_EXAMPLES.map(({ label, cost }) => ({
+      label,
+      displayValue: `$${cost.toFixed(2)} per 100 miles`,
+      value: cost,
+      color: 'primary',
+    })),
     footerNote:
-      'Thermodynamic Principle: Electric motors convert 85%–90% of grid energy into wheel propulsion, whereas gas engines lose 70%–80% as heat. Home charging provides fuel at an eGallon price of $1.72 vs $4.085 pump gasoline.',
+      'The cost changes with the EV’s wall energy use, the gas car’s MPG, and the prices you pay.',
   },
 
-  // 36. August 2026 Electric Tankless vs Storage vs Heat Pump Water Heater Cost Benchmark
   'august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark': {
-    title: 'Water Heater Annual Electricity Cost & Peak Power Demand Benchmark',
-    subtitle:
-      'Calculated for 55 gal/day household (65°F rise) at May 2026 EIA average residential rate of 18.44¢/kWh',
-    badge: '73.5% Savings',
-    badgeType: 'success',
-    items: [
-      {
-        label: 'Standard 50-Gal Electric Resistance Tank (4.5 kW · UEF 0.92)',
-        displayValue: '$680.44/yr',
-        value: 680.44,
-        color: 'danger',
-        subLabel:
-          '3,690 kWh/year · 4.50 kW peak load (18.8A @ 240V) · 1.20 kWh/day standby jacket loss',
-      },
-      {
-        label: 'Whole-Home Electric Tankless Instantaneous (27–36 kW · UEF 0.98)',
-        displayValue: '$599.67/yr',
-        value: 599.67,
-        color: 'warning',
-        subLabel:
-          '3,252 kWh/year · 18.0–36.0 kW surge (75–150A @ 240V) · Saves only $80.77/yr over tank',
-      },
-      {
-        label: 'ENERGY STAR Hybrid Heat Pump Water Heater (UEF 3.75 Hybrid Mode)',
-        displayValue: '$180.34/yr',
-        value: 180.34,
-        color: 'success',
-        highlight: true,
-        badge: 'Lowest Bill & Grid Load',
-        subLabel:
-          '978 kWh/year · 0.45 kW compressor (1.88A @ 240V) · Saves $500.10/yr (73.5% reduction) on 30A circuit',
-      },
-    ],
-    footerNote:
-      'Thermodynamic Reality: Electric tankless only saves 10%–15% in standby loss while demanding a 18–36 kW electrical surge; hybrid heat pumps deliver 73.5% true energy savings by extracting ambient room heat.',
+    title: 'Modeled water heater electricity costs',
+    subtitle: 'Illustrative annual use at 18.44¢/kWh',
+    items: WATER_HEATER_COST_EXAMPLES.map(({ label, annualKwh, annualCost }) => ({
+      label,
+      displayValue: `$${annualCost.toFixed(2)} per year`,
+      subLabel: `${annualKwh.toLocaleString('en-US')} kWh per year assumed`,
+      value: annualCost,
+      color: 'primary',
+    })),
+    footerNote: 'Use the annual kWh for the models on your quotes and your own electricity rate.',
   },
 };

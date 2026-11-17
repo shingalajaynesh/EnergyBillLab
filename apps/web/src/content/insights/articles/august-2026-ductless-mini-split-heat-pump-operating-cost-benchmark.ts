@@ -10,7 +10,7 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
     'Ductless mini-split operating cost benchmark using May 2026 EIA data. A 12,000 BTU unit at 22 SEER2 costs $24.14/mo to cool vs $49.52/mo for ducted central AC.',
   status: 'published',
   publishedAt: '2026-08-17',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   category: 'home-energy-costs',
   canonicalTopic: 'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
   intentFingerprint: 'august-2026-ductless-mini-split-heat-pump-operating-cost-benchmark',
@@ -36,7 +36,7 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
     'Heating Mode Operating Economics: Cold-climate inverter mini-splits achieve 10.0 to 12.0 HSPF2 (Seasonal COP 2.9–3.5), delivering 12,000 BTU/hr of warmth at 1,143 Watts ($63.23/mo for 10 hr/day) versus 2,133 Watts ($118.02/mo) for standard ducted central heat pumps and 3,517 Watts ($194.56/mo) for electric resistance baseboards.',
     'The 25% Duct Loss Penalty: Department of Energy (DOE) and NREL field studies confirm that uninsulated or leaky ductwork in unconditioned attics and crawlspaces wastes 20% to 30% of conditioned heating and cooling energy, an efficiency loss completely eliminated by ductless point-of-use units.',
     'Whole-Home 3-Zone Annual Savings: For a 3-zone, 36,000 BTU (3-ton) home setup, ductless mini-splits consume 7,200 kWh/year ($1,327.68/yr nationally), delivering $1,061.59 in annual electricity bill savings over a standard 14.3 SEER2 / 7.5 HSPF2 central system (12,957 kWh/yr; $2,389.27/yr).',
-    'State Operating Cost Variance: Annual whole-home (3-zone) mini-split HVAC operating expense ranges from $829.44/year in Washington (11.52¢/kWh) and $1,116.00/year in Texas (15.50¢/kWh) up to $2,332.80/year in California (32.40¢/kWh) and $3,744.00/year in Hawaii (52.00¢/kWh).',
+    'State Operating Cost Variance: Annual whole-home (3-zone) mini-split HVAC operating expense ranges from $1,076.40/year in Washington (14.95¢/kWh) and $1,183.68/year in Texas (16.44¢/kWh) up to $2,394.00/year in California (33.25¢/kWh) and $3,744.00/year in Hawaii (52.00¢/kWh) compared to $1,327.68/year nationally (18.44¢/kWh).',
   ],
   bodyParagraphs: [
     'Space heating and air conditioning represent over 50% of the average American household’s total annual energy consumption. As utility electricity rates rise across the country—reaching a national residential average of 18.44¢/kWh according to May 2026 U.S. Energy Information Administration (EIA) data releases—homeowners are increasingly evaluating ductless mini-split heat pumps against traditional central ducted HVAC systems. The thermodynamic advantages of ductless systems stem from two primary engineering factors: high-efficiency variable-speed inverter compressors and the complete elimination of ductwork distribution losses.',
@@ -44,7 +44,7 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
     'Furthermore, traditional single-stage central compressors operate strictly on a binary basis: 100% full blast or completely off. This frequent cycling creates high inrush current spikes and wide indoor temperature swings. In contrast, ductless mini-splits use DC inverter-driven variable-speed compressors that modulate output between 20% and 100% capacity to precisely match real-time thermal load. By cruising continuously at low RPM, inverter systems maintain optimal heat exchanger delta-T, boosting effective seasonal cooling efficiency up to 22–30 SEER2 and heating efficiency up to 10–13 HSPF2 under DOE Appendix M1 test protocols.',
     'To calculate cooling operating costs for a standard 12,000 BTU/hr (1-ton) capacity zone, divide capacity in BTU/hr by the SEER2 rating to determine average continuous electrical wattage draw: 12,000 BTU ÷ 22.0 SEER2 = 545.45 Watts (0.545 kW). Running for 8 active cooling hours per day consumes 4.36 kWh daily (130.9 kWh/month), costing $24.14 per month at the national average rate of 18.44¢/kWh ($0.80/day). In contrast, a standard 14.3 SEER2 ducted central system requires 839 Watts at the compressor, plus a 25% duct loss multiplier (839 W ÷ 0.75 = 1,119 Watts total grid draw). Over an 8-hour daily schedule, the central system uses 8.95 kWh daily (268.5 kWh/month), costing $49.52 per month—more than double the operating cost of the ductless unit.',
     'In winter heating mode, the efficiency gap is even more pronounced. Electric resistance heaters (baseboards, radiant panels, or space heaters) have a Coefficient of Performance (COP) of exactly 1.0, converting 1 kWh of electricity into 3,412 BTU of thermal heat (3.517 kW continuous draw for 12,000 BTU/hr). An ENERGY STAR cold-climate ductless mini-split rated at 10.5 HSPF2 operates at a seasonal COP of approximately 3.08, extracting ambient heat from sub-freezing outdoor air and drawing just 1,143 Watts. For 10 hours of daily heating, the mini-split costs $63.23 per month (342.9 kWh) versus $118.02 per month for a 7.5 HSPF2 ducted central heat pump and $194.56 per month for electric baseboards—saving $131.33 every month compared to resistance heat.',
-    'For whole-home multi-zone installations (e.g., three 12,000 BTU indoor heads powered by a multi-port 36,000 BTU outdoor unit), independent room-by-room zoning allows homeowners to turn off conditioning in unoccupied guest rooms or setback bedrooms during daytime hours. In high-cost utility regions like California (32.40¢/kWh) and Hawaii (52.00¢/kWh), transitioning an entire home from standard ducted central HVAC to a high-efficiency multi-split system delivers over $1,800 to $2,900 in documented annual electric utility bill reductions.',
+    'For whole-home multi-zone installations (e.g., three 12,000 BTU indoor heads powered by a multi-port 36,000 BTU outdoor unit), independent room-by-room zoning allows homeowners to turn off conditioning in unoccupied guest rooms or setback bedrooms during daytime hours. In high-cost utility regions like California (33.25¢/kWh) and Hawaii (52.00¢/kWh), transitioning an entire home from standard ducted central HVAC to a high-efficiency multi-split system delivers over $1,800 to $2,900 in documented annual electric utility bill reductions.',
   ],
   sections: [
     {
@@ -78,7 +78,15 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
     {
       heading: '3. Whole-Home 3-Zone (36,000 BTU / 3-Ton) Annual HVAC Cost by State',
       paragraphs: [
-        'The table below models annual heating and cooling electricity expenditure for a 3-zone household (1,000 cooling hours + 1,500 heating hours per year) across key states using May 2026 EIA residential retail rates:',
+        'The table below models annual heating and cooling electricity expenditure for a 3-zone household (1,000 cooling hours + 1,500 heating hours = 7,200 kWh/year) across key state rate benchmarks using official May 2026 EIA residential retail data:',
+        'Table: Whole-Home 3-Zone (36,000 BTU) Annual HVAC Cost Benchmark (May 2026 EIA Rates)',
+        '| State / Region | May 2026 Rate (¢/kWh) | Annual Electricity (7,200 kWh) | Average Monthly Cost ($/mo) | Comparison vs. Ducted Central ($2,389/yr) |',
+        '| :--- | :--- | :--- | :--- | :--- |',
+        '| Washington | 14.95 ¢/kWh | $1,076.40 / yr | $89.70 / mo | Saves $860.03 / yr (44.4% reduction) |',
+        '| Texas | 16.44 ¢/kWh | $1,183.68 / yr | $98.64 / mo | Saves $945.75 / yr (44.4% reduction) |',
+        '| U.S. National Average | 18.44 ¢/kWh | $1,327.68 / yr | $110.64 / mo | Saves $1,061.59 / yr (44.4% reduction) |',
+        '| California | 33.25 ¢/kWh | $2,394.00 / yr | $199.50 / mo | Saves $1,914.20 / yr (44.4% reduction) |',
+        '| Hawaii | 52.00 ¢/kWh | $3,744.00 / yr | $312.00 / mo | Saves $2,993.64 / yr (44.4% reduction) |',
       ],
     },
     {
@@ -97,27 +105,27 @@ export const august2026DuctlessMiniSplitHeatPumpOperatingCostBenchmark: InsightR
     },
   ],
   practicalExample:
-    'A homeowner in Florida cooling a master suite with a 12,000 BTU ductless mini-split (22 SEER2) runs the unit for 10 hours every night. At 545 Watts power draw, daily consumption is 5.45 kWh (163.5 kWh/month). At Florida’s May 2026 EIA rate of 15.80¢/kWh, night-time cooling costs $25.83 per month ($0.86/night). Running a central 14.3 SEER2 system to cool the entire house at night consumes 11.19 kWh/night (335.7 kWh/month), costing $53.04 per month. Installing the single-zone mini-split saves $27.21 per month ($326.52/year) on cooling bills alone.',
+    'A homeowner in Florida cooling a master suite with a 12,000 BTU ductless mini-split (22 SEER2) runs the unit for 10 hours every night. At 545 Watts power draw, daily consumption is 5.45 kWh (163.5 kWh/month). At Florida’s May 2026 EIA rate of 15.17¢/kWh, night-time cooling costs $24.80 per month ($0.83/night). Running a central 14.3 SEER2 system to cool the entire house at night consumes 11.19 kWh/night (335.7 kWh/month), costing $50.93 per month. Installing the single-zone mini-split saves $26.13 per month ($313.56/year) on cooling bills alone.',
   methodologyNotes:
-    'Efficiency standards are defined under U.S. Department of Energy (DOE) 10 CFR Part 430 Appendix M1 test procedures (SEER2: Seasonal Energy Efficiency Ratio 2; HSPF2: Heating Seasonal Performance Factor 2). Duct thermal loss factors (25% nominal reduction) are sourced from National Renewable Energy Laboratory (NREL) and DOE Building America HVAC distribution benchmarks. Electricity prices are sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M May 2026 reporting period (National Average: 18.44¢/kWh; WA: 11.52¢/kWh; TX: 15.50¢/kWh; FL: 15.80¢/kWh; CA: 32.40¢/kWh; HI: 52.00¢/kWh). Annual whole-home baseline assumes a 36,000 BTU (3-ton) system operating 1,000 cooling hours and 1,500 heating hours annually.',
+    'Efficiency standards are defined under U.S. Department of Energy (DOE) 10 CFR Part 430 Appendix M1 test procedures (SEER2: Seasonal Energy Efficiency Ratio 2; HSPF2: Heating Seasonal Performance Factor 2). Duct thermal loss factors (25% nominal reduction) are sourced from National Renewable Energy Laboratory (NREL) and DOE Building America HVAC distribution benchmarks. Electricity prices are sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M May 2026 reporting period (National Average: 18.44¢/kWh; WA: 14.95¢/kWh; TX: 16.44¢/kWh; FL: 15.17¢/kWh; CA: 33.25¢/kWh; HI: 52.00¢/kWh). Annual whole-home baseline assumes a 36,000 BTU (3-ton) system operating 1,000 cooling hours and 1,500 heating hours annually.',
   sources: [
     {
       organization: 'U.S. Energy Information Administration (EIA)',
-      title: 'Electric Power Monthly (Table 5.6.A — May 2026 Residential Electricity Prices)',
-      url: 'https://www.eia.gov/electricity/monthly/',
+      title: 'July 2026 Electric Power Monthly Archive (Table 5.6.A May 2026 Data)',
+      url: 'https://www.eia.gov/electricity/monthly/archive/july2026.zip',
       topic: 'May 2026 U.S. residential electricity prices and state benchmark rates',
     },
     {
-      organization: 'U.S. Department of Energy (DOE)',
-      title: 'Ductless Mini-Split Heat Pumps & Energy Saver Principles',
-      url: 'https://www.energy.gov/energysaver/ductless-mini-split-heat-pumps',
-      topic: 'Mini-split operating principles, inverter technology, and zero-duct efficiency',
+      organization: 'ENERGY STAR',
+      title: 'Ductless Heating and Cooling',
+      url: 'https://www.energystar.gov/products/ductless_heating_cooling',
+      topic: 'Ductless heat pump operation and efficiency',
     },
     {
-      organization: 'ENERGY STAR / EPA',
-      title: 'ENERGY STAR Certified Heat Pumps & Air Conditioners (SEER2 / HSPF2 Criteria)',
-      url: 'https://www.energystar.gov/products/heating_cooling/heat_pumps_air_source',
-      topic: 'Cold-climate heat pump performance metrics and seasonal efficiency standards',
+      organization: 'ENERGY STAR',
+      title: 'Air-Source Heat Pumps',
+      url: 'https://www.energystar.gov/products/air_source_heat_pumps',
+      topic: 'Air-source heat pump efficiency and buying considerations',
     },
   ],
   relatedRoutes: [

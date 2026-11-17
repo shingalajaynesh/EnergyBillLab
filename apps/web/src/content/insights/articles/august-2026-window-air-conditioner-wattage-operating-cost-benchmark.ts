@@ -161,7 +161,7 @@ export const august2026WindowAirConditionerWattageOperatingCostBenchmark: Insigh
       organization: 'National Renewable Energy Laboratory (NREL)',
       title:
         'Building America Research Benchmark: Room Air Conditioner Performance and Sizing Guidelines',
-      url: 'https://www.nrel.gov/docs/fy14osti/60988.pdf',
+      url: 'https://docs.nlr.gov/docs/fy14osti/60988.pdf',
       topic:
         'Compressor cycling duty cycles, building envelope heat gain, and supplemental room zoning energy modeling',
     },

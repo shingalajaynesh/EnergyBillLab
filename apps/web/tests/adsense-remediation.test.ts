@@ -285,7 +285,7 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
   });
 
   describe('4. State Spread Insight Reconstruction', () => {
-    it('uses a single internally consistent dataset (WA 11.52¢, CA 32.40¢, HI 52.00¢, US 18.44¢, 4.51x spread)', () => {
+    it('uses the May 2026 archived table for the lowest and highest state rates', () => {
       const insight = insightsRegistry.find(
         (i) => i.slug === 'august-2026-state-residential-electricity-price-spread-benchmark',
       );
@@ -293,11 +293,11 @@ describe('AdSense Low-Value Content Remediation Quality Gates', () => {
       expect(insight?.status).toBe('published');
       expect(insight?.reportingPeriod).toBe('May 2026');
       expect(insight?.title).toContain('May 2026 EIA Benchmark');
-      expect(insight?.summary).toContain('4.51x nationwide');
-      expect(insight?.summary).toContain('11.52¢/kWh in Washington');
+      expect(insight?.summary).toContain('4.21x nationwide');
+      expect(insight?.summary).toContain('12.35¢/kWh in Idaho');
       expect(insight?.summary).toContain('52.00¢/kWh in Hawaii');
-      expect(insight?.summary).toContain('32.40¢/kWh in California');
-      expect(insight?.summary).toContain('$404.80 monthly');
+      expect(insight?.summary).toContain('33.25¢/kWh in California');
+      expect(insight?.summary).toContain('$396.50');
       expect(insight?.summary).not.toContain('3.3x');
       expect(insight?.summary).not.toContain('Rhode Island');
       expect(insight?.summary).not.toContain('Oklahoma');

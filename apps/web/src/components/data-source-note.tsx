@@ -9,7 +9,7 @@ export function DataSourceNote({ children }: { children?: ReactNode }) {
       <strong>Source note</strong>
       <p>
         {children ??
-          'Published rate and appliance defaults will identify their source, unit, scope, and data date. This release does not include live rate data.'}
+          'Published electricity rates are historical averages. Use the rate on your bill for a household estimate.'}
       </p>
       <Link href="/data-sources">Review data-source approach</Link>
     </aside>

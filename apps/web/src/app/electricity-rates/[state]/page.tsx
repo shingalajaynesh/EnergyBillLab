@@ -93,6 +93,11 @@ export default async function StateElectricityRatePage({ params }: Props) {
   ];
 
   const approvedRelatedSlugs = config.relatedStateSlugs.filter((s) => isApprovedStateSlug(s));
+  const rateMethod = `The U.S. Energy Information Administration divides residential electricity revenue by residential electricity sales in ${config.name}. The result is shown in cents per kWh.`;
+  const billDifferences =
+    'Your effective cost per kWh can differ because of your rate plan, delivery charges, taxes, or how fixed fees are spread across your usage.';
+  const updateSchedule =
+    'EIA publishes monthly data. Energy Bill Lab imports and validates new releases. The reporting month shown on this page identifies the data used.';
 
   return (
     <PageContainer>
@@ -143,14 +148,6 @@ export default async function StateElectricityRatePage({ params }: Props) {
                 reporting periods are displayed in the rate history table below.
               </li>
             </ul>
-            {pageData.history.some(
-              (h) => h.periodFormatted.includes('2025') || h.period.startsWith('2025'),
-            ) ? (
-              <p style={{ marginTop: 12, fontSize: '0.9375rem', color: '#475467' }}>
-                Looking for a 2025 value? Use the historical table below to review the monthly rates
-                available for that year.
-              </p>
-            ) : null}
           </section>
 
           <HouseholdCostExamplesTable data={pageData} />
@@ -247,9 +244,7 @@ export default async function StateElectricityRatePage({ params }: Props) {
               How is the {config.name} average residential electricity rate calculated?
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
-              The statewide average rate is calculated by the U.S. Energy Information Administration
-              (EIA) by dividing total monthly residential utility revenues by total megawatt-hours
-              delivered across all regulated and municipal utilities operating in {config.name}.
+              {rateMethod}
             </p>
           </div>
           <div style={{ marginBottom: 16 }}>
@@ -257,9 +252,7 @@ export default async function StateElectricityRatePage({ params }: Props) {
               Why is my electric bill in {config.name} higher than the state average?
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
-              Individual electric bills include fixed meter service fees ($10 to $25/month), tiered
-              seasonal rates, local city taxes, and fuel adjustment charges. Your specific utility
-              service territory may have higher delivery costs than the statewide aggregate.
+              {billDifferences}
             </p>
           </div>
           <div style={{ marginBottom: 16 }}>
@@ -267,9 +260,7 @@ export default async function StateElectricityRatePage({ params }: Props) {
               How often are {config.name} electricity rate datasets updated?
             </h3>
             <p style={{ fontSize: 14, color: '#595959', margin: 0, lineHeight: 1.6 }}>
-              Energy Bill Lab synchronizes state rates monthly following official U.S. EIA Form
-              EIA-861M publication cycles, reflecting the most recent verified utility reporting
-              period.
+              {updateSchedule}
             </p>
           </div>
         </div>
@@ -358,15 +349,15 @@ export default async function StateElectricityRatePage({ params }: Props) {
             createFaqStructuredData([
               {
                 question: `How is the ${config.name} average residential electricity rate calculated?`,
-                answer: `The statewide average rate is calculated by the U.S. EIA by dividing total monthly residential utility revenues by total megawatt-hours delivered in ${config.name}.`,
+                answer: rateMethod,
               },
               {
                 question: `Why is my electric bill in ${config.name} higher than the state average?`,
-                answer: `Individual electric bills include fixed meter service fees ($10 to $25/month), tiered seasonal rates, local city taxes, and fuel adjustment charges.`,
+                answer: billDifferences,
               },
               {
                 question: `How often are ${config.name} electricity rate datasets updated?`,
-                answer: `Energy Bill Lab synchronizes state rates monthly following official U.S. EIA Form EIA-861M publication cycles.`,
+                answer: updateSchedule,
               },
             ]),
           ),

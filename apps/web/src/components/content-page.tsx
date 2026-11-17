@@ -27,6 +27,15 @@ export function ContentPageView({
             {section.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            {section.links?.length ? (
+              <ul>
+                {section.links.map(({ href, label }) => (
+                  <li key={href}>
+                    <a href={href}>{label}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </section>
         ))}
       </div>

@@ -70,12 +70,12 @@ describe('August 2026 U.S. Census Division Electricity Rate Breakdown Insight', 
     expect(record.relatedRoutes).toContain('/research/us-residential-electricity-rate-report');
   });
 
-  it('8. provides original analytical calculations for 1,000 kWh bill burdens across 9 Census Divisions', () => {
+  it('8. provides original analytical calculations for 1,000 kWh costs using the published regional rates', () => {
     const record = august2026CensusDivisionResidentialElectricityRateBreakdown;
-    expect(record.summary).toContain('28.14 cents per kWh');
-    expect(record.summary).toContain('14.75 cents per kWh');
-    expect(record.summary).toContain('$281.40 per month');
-    expect(record.summary).toContain('$147.50 per month');
-    expect(record.practicalExample).toContain('$133.90 per month');
+    expect(record.summary).toContain('28.14¢/kWh');
+    expect(record.summary).toContain('14.62¢/kWh');
+    expect(record.summary).toContain('$281.40');
+    expect(record.summary).toContain('$146.20');
+    expect(record.practicalExample).toContain('$135.20');
   });
 });

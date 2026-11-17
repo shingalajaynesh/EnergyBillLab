@@ -33,7 +33,7 @@ describe('Analytics, Usability, & Internal Linking Sprint Verification', () => {
     expect(ncPageFile).toContain(
       'reporting rate snapshot rather than a single calendar-year average',
     );
-    expect(ncPageFile).toContain('Looking for a 2025 value? Use the historical table below');
+    expect(ncPageFile).toContain('<RateHistoryTable data={pageData} />');
   });
 
   it('3. Current-rate source is visible near the rate value', () => {

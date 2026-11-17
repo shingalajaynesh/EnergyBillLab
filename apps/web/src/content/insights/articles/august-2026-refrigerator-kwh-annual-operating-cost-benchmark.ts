@@ -125,7 +125,7 @@ export const august2026RefrigeratorKwhAnnualOperatingCostBenchmark: InsightRecor
     {
       organization: 'ENERGY STAR',
       title: 'ENERGY STAR Program Requirements for Residential Refrigerators',
-      url: 'https://www.energystar.gov/products/appliances/refrigerators',
+      url: 'https://www.energystar.gov/products/refrigerators',
     },
   ],
 };

@@ -100,16 +100,15 @@ export const august2026HomeBatteryStorageUsableCapacityRoundTripEfficiencyBenchm
           'U.S. battery storage market trends, capacity additions, and generator inventory overview.',
       },
       {
-        organization: 'U.S. Department of Energy',
-        title: 'FEMP Federal Energy Management Program — Energy Storage Technical Guidance',
-        url: 'https://www.energy.gov/femp/energy-storage-technology-procurement-guidance',
-        topic:
-          'Technical guidance on battery storage round-trip efficiency, depth of discharge, and performance benchmarks.',
+        organization: 'National Laboratory of the Rockies',
+        title: 'Annual Technology Baseline: Residential Battery Storage',
+        url: 'https://atb.nlr.gov/electricity/2024b/residential_battery_storage',
+        topic: 'Residential battery performance and round-trip efficiency assumptions',
       },
       {
         organization: 'National Renewable Energy Laboratory',
         title: 'System Advisor Model (SAM) — Battery Storage Model Specifications',
-        url: 'https://sam.nrel.gov/battery-storage.html',
+        url: 'https://sam.nlr.gov/battery-storage.html',
         topic:
           'AC-to-AC round-trip efficiency modeling, inverter conversion loss factors, and battery discharge performance.',
       },

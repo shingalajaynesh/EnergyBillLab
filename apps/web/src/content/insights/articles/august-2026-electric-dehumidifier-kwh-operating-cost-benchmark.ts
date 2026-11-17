@@ -118,7 +118,7 @@ export const august2026ElectricDehumidifierKwhOperatingCostBenchmark: InsightRec
     {
       organization: 'ENERGY STAR Program',
       title: 'ENERGY STAR Product Specifications for Dehumidifiers (Version 5.1)',
-      url: 'https://www.energystar.gov/products/appliances/dehumidifiers',
+      url: 'https://www.energystar.gov/products/dehumidifiers',
       topic:
         'ENERGY STAR IEF efficiency benchmarks (≥1.57 L/kWh portable ≤25 pt, ≥1.90 L/kWh portable >25-50 pt) and wattage savings',
     },

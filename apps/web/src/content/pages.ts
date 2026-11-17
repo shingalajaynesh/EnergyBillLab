@@ -3,6 +3,7 @@ import type { PublicRouteHref } from '@/lib/routes';
 export type ContentSection = {
   heading: string;
   paragraphs: string[];
+  links?: { label: string; href: string }[];
 };
 
 export type ContentPage = {
@@ -218,7 +219,7 @@ export const contentPages = {
     description:
       'How Energy Bill Lab approaches privacy, cookies, analytics, advertising readiness, and data minimization.',
     path: '/privacy',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-11-17',
     related: ['/cookies', '/terms', '/disclaimer', '/contact'],
     sections: [
       {
@@ -238,14 +239,21 @@ export const contentPages = {
       {
         heading: 'Advertising and Google AdSense',
         paragraphs: [
-          'Energy Bill Lab integrates Google AdSense verification and advertising services. Third-party vendors, including Google, use cookies or device identifiers to serve ads based on a user’s prior visits to this or other websites.',
-          'Google’s use of advertising cookies enables it and its partners to serve ads to users based on their visit to Energy Bill Lab and/or other sites on the Internet. Users may opt out of personalized advertising by visiting Google Ads Settings (www.google.com/settings/ads) or through www.aboutads.info.',
+          'Energy Bill Lab uses the Google AdSense tag for site verification and advertising. When ads are served, Google and its partners may use cookies, device identifiers, and information about visits to this and other sites to deliver and measure ads, subject to applicable settings and consent choices.',
+          'You can manage Google’s personalized advertising in My Ad Center. Google also explains which data it may receive from sites that use its services.',
+        ],
+        links: [
+          {
+            label: 'How Google uses data from sites that use its services',
+            href: 'https://policies.google.com/technologies/partner-sites',
+          },
+          { label: 'Google My Ad Center', href: 'https://myadcenter.google.com/' },
         ],
       },
       {
         heading: 'Consent and regional rights',
         paragraphs: [
-          'For visitors residing in the European Economic Area (EEA), United Kingdom, or Switzerland, consent for personalized advertising and cookies is requested via Google Privacy & Messaging or certified Consent Management Platforms (CMP) in accordance with the ePrivacy Directive and GDPR.',
+          'Where a consent message is available, use its controls to manage your choices. You can also contact Energy Bill Lab using the Contact page if you have a privacy question.',
           'Visitors in California and other U.S. states with consumer privacy laws have rights regarding the collection and use of technical identifiers. Energy Bill Lab does not sell personal information.',
         ],
       },
@@ -256,7 +264,7 @@ export const contentPages = {
     description:
       'Detailed overview of cookies, local storage, analytics trackers, and consent controls at Energy Bill Lab.',
     path: '/cookies',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-11-17',
     related: ['/privacy', '/terms', '/disclaimer'],
     sections: [
       {
@@ -278,7 +286,7 @@ export const contentPages = {
         heading: 'Managing your choices',
         paragraphs: [
           'You can control or disable cookies through your browser settings. Most modern browsers allow you to block third-party cookies, delete existing cookies, or receive a warning before a cookie is stored.',
-          'For European Economic Area (EEA) and UK visitors, ad consent settings can be managed at any time via the consent banner choices. You may also opt out of targeted advertising network cookies at www.aboutads.info or www.youronlinechoices.eu.',
+          'If you see a consent message or privacy settings link on this site, use it to manage your choices for this site. Browser controls can block or delete cookies. Google’s My Ad Center manages personalized ads on Google and partner sites where applicable.',
         ],
       },
     ],

@@ -757,9 +757,9 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article?.category).toBe('electricity-rates');
     expect(article?.reportingPeriod).toBe('May 2026');
     expect(article?.authorName).toBe('Jaynesh Shingala');
-    expect(article?.summary).toContain('4.51x');
-    expect(article?.summary).toContain('$404.80');
-    expect(article?.keyFindings?.join(' ')).toContain('Washington');
+    expect(article?.summary).toContain('4.21x');
+    expect(article?.summary).toContain('$396.50');
+    expect(article?.keyFindings?.join(' ')).toContain('Idaho');
     expect(article?.keyFindings?.join(' ')).toContain('Hawaii');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     expect(article?.relatedRoutes).toContain('/electricity-rates');
@@ -1073,14 +1073,11 @@ describe('Energy Insights Publishing Infrastructure & Quality Gates', () => {
     expect(article).toBeDefined();
     expect(article?.status).toBe('published');
     expect(article?.category).toBe('appliances');
-    expect(article?.reportingPeriod).toBe(
-      'August 2026 (May 2026 EIA Form EIA-861M Electricity Releases)',
-    );
+    expect(article?.reportingPeriod).toBe('May 2026 electricity');
     expect(article?.authorName).toBe('Jaynesh Shingala');
     expect(article?.summary).toContain('18.44¢/kWh');
-    expect(article?.summary).toContain('$599.67');
-    expect(article?.summary).toContain('$680.44');
-    expect(article?.summary).toContain('$180.34');
+    expect(article?.summary).toContain('$682.28');
+    expect(article?.summary).toContain('$184.40');
     expect(article?.sources.length).toBeGreaterThanOrEqual(3);
     const validation = validateInsightRecord(article!);
     expect(validation.valid).toBe(true);

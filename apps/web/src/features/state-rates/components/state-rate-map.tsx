@@ -11,7 +11,7 @@ import styles from './state-rate-map.module.css';
 export interface StateMapRecord {
   code: string;
   name: string;
-  slug: string;
+  reportHref: PublicRouteHref | null;
   rateCentsPerKwh: number;
   periodFormatted: string;
   region: 'New England' | 'Middle Atlantic' | 'Midwest' | 'South' | 'West';
@@ -163,15 +163,10 @@ export function StateRateMap({ states, nationalAverageRate }: StateRateMapProps)
         {filteredStates.map((st) => {
           const color = getRateTierColor(st.rateCentsPerKwh);
           const bg = getRateTierBg(st.rateCentsPerKwh);
-          const typicalMonthlyBill = Math.round(st.rateCentsPerKwh * 8.84); // 884 kWh average
+          const exampleCost = Math.round((st.rateCentsPerKwh * 884) / 100);
 
-          return (
-            <Link
-              key={st.code}
-              href={`/electricity-rates/${st.slug}` as PublicRouteHref}
-              className={styles.stateCard}
-              style={{ backgroundColor: bg }}
-            >
+          const content = (
+            <>
               <div className={styles.stateCardTop}>
                 <span className={styles.stateCode}>{st.code}</span>
                 <Tag color={st.rateCentsPerKwh < nationalAverageRate ? 'green' : 'orange'}>
@@ -184,8 +179,22 @@ export function StateRateMap({ states, nationalAverageRate }: StateRateMapProps)
                 {st.rateCentsPerKwh.toFixed(1)}¢
                 <span style={{ fontSize: 12, fontWeight: 500, color: '#64748b' }}>/kWh</span>
               </div>
-              <div className={styles.stateBill}>Avg Bill: ~${typicalMonthlyBill}/mo</div>
+              <div className={styles.stateBill}>884 kWh costs about ${exampleCost}</div>
+            </>
+          );
+          return st.reportHref ? (
+            <Link
+              key={st.code}
+              href={st.reportHref}
+              className={styles.stateCard}
+              style={{ backgroundColor: bg }}
+            >
+              {content}
             </Link>
+          ) : (
+            <div key={st.code} className={styles.stateCard} style={{ backgroundColor: bg }}>
+              {content}
+            </div>
           );
         })}
       </div>

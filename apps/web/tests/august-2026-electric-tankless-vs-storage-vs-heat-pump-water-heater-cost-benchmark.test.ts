@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import { august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchmark } from '../src/content/insights/articles/august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark';
+import {
+  august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchmark,
+  WATER_HEATER_COST_EXAMPLES,
+} from '../src/content/insights/articles/august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark';
 import {
   getInsightsByCategory,
   getInsightBySlug,
@@ -71,29 +74,14 @@ describe('August 2026 Electric Tankless vs. Storage vs. Heat Pump Water Heater C
     }
   });
 
-  it('8. verifies mathematical consistency of power surge formulas and annual energy costs', () => {
-    const record = august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchmark;
-    expect(record.summary).toContain('$599.67 annually');
-    expect(record.summary).toContain('$680.44/year');
-    expect(record.summary).toContain('$180.34/year');
-    expect(record.summary).toContain('55 gallons of hot water per day');
-  });
-
-  it('9. verifies explicit 3-tier data provenance structure (Official Data vs Model Assumptions vs Calculations)', () => {
-    const record = august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchmark;
-    const allContent = [
-      record.summary,
-      ...(record.keyFindings ?? []),
-      ...(record.bodyParagraphs ?? []),
-      ...(record.sections?.flatMap((s) => s.paragraphs) ?? []),
-      record.methodologyNotes ?? '',
-    ].join('\n');
-
-    expect(allContent).toContain('Data Provenance & Methodology Lineage Breakdown');
-    expect(allContent).toContain('Official Government Data');
-    expect(allContent).toContain('Model Assumption');
-    expect(allContent).toContain('EnergyBillLab Calculation');
-    expect(allContent).toContain('18.44 ¢/kWh');
-    expect(allContent).toContain('55.0 Gallons / Day');
+  it('compares operating cost and payback for the stated quote and energy assumptions', () => {
+    expect(WATER_HEATER_COST_EXAMPLES.map(({ annualCost }) => annualCost.toFixed(2))).toEqual([
+      '682.28',
+      '599.30',
+      '184.40',
+    ]);
+    expect(
+      august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchmark.practicalExample,
+    ).toContain('3.0 years');
   });
 });

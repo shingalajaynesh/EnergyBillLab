@@ -68,16 +68,16 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.eia.gov/energyexplained/electricity/prices-and-factors-affecting-prices.php',
       },
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Understanding Household Energy Use & Billing Adjustments',
-        topic: 'Seasonal HVAC loads, thermal envelope losses, and standby power draw',
-        url: 'https://www.energy.gov/energysaver/understanding-your-electricity-bill',
+        organization: 'North Carolina Public Staff',
+        title: 'Understanding Your Electric Bill',
+        topic: 'Examples of billing periods, usage, and residential charges',
+        url: 'https://publicstaff.nc.gov/public-staff-divisions/energy-division/electric-section/understanding-your-electric-bill',
       },
       {
-        organization: 'ENERGY STAR',
-        title: 'Where Does My Money Go? Typical Household Energy Split',
-        topic: 'Percentage breakdowns for heating, cooling, water heating, and appliances',
-        url: 'https://www.energystar.gov/products/where_does_my_money_go',
+        organization: 'U.S. Energy Information Administration',
+        title: 'Residential Energy Consumption Survey',
+        topic: 'U.S. residential energy end uses',
+        url: 'https://www.eia.gov/consumption/residential/',
       },
     ],
     relatedRoutes: [
@@ -116,16 +116,16 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Estimating Appliance and Home Electronic Energy Use',
-        topic: 'Appliance wattage ranges, measurement methods, and operating formulas',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        organization: 'U.S. Department of Energy',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
       {
         organization: 'ENERGY STAR',
-        title: 'Appliance Energy Consumption Benchmarks & Standards',
-        topic: 'Annual kWh baselines for certified refrigerators, washers, and dryers',
-        url: 'https://www.energystar.gov/products/appliances',
+        title: 'Product Specifications and Partner Commitments',
+        topic: 'Efficiency specifications across product categories',
+        url: 'https://www.energystar.gov/products/spec',
       },
       {
         organization: 'U.S. Energy Information Administration (EIA)',
@@ -170,16 +170,16 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Central Air Conditioners & Room AC Efficiency Standards',
-        topic: 'BTU capacity sizing, EER/SEER2 ratings, and energy calculation formulas',
-        url: 'https://www.energy.gov/energysaver/central-air-conditioning',
+        organization: 'ENERGY STAR',
+        title: 'Central Air Conditioner and Air Source Heat Pump Specification',
+        topic: 'Efficiency definitions for central air conditioners and heat pumps',
+        url: 'https://www.energystar.gov/sites/default/files/2025-01/ENERGY%20STAR%20Version%206.2%20Central%20Air%20Conditioner%20and%20Heat%20Pump%20Final%20Specification.pdf',
       },
       {
         organization: 'ENERGY STAR',
-        title: 'Room Air Conditioner Sizing & Energy Savings Guide',
-        topic: 'Cooling square footage baselines and efficiency certifications',
-        url: 'https://www.energystar.gov/products/heating_cooling/air_conditioning_room',
+        title: 'Room Air Conditioners',
+        topic: 'Room air conditioner efficiency and sizing',
+        url: 'https://www.energystar.gov/products/room_air_conditioners',
       },
       {
         organization: 'U.S. Energy Information Administration (EIA)',
@@ -224,10 +224,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Portable Electric Resistance Space Heater Energy Guide',
-        topic: 'Wattage ratings, thermal output, safety guidelines, and operating costs',
-        url: 'https://www.energy.gov/energysaver/portable-heaters',
+        organization: 'U.S. Consumer Product Safety Commission',
+        title: 'Reducing Fire Hazards for Portable Electric Heaters',
+        topic: 'Portable electric heater safety',
+        url: 'https://www.cpsc.gov/s3fs-public/heaters.pdf',
       },
       {
         organization: 'U.S. Consumer Product Safety Commission (CPSC)',
@@ -236,10 +236,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Space-Heater-Safety-Center',
       },
       {
-        organization: 'U.S. Energy Information Administration (EIA)',
-        title: 'Winter Fuels Outlook: Space Heating Energy Trends',
-        topic: 'Residential electric heating price baselines across U.S. climate zones',
-        url: 'https://www.eia.gov/outlooks/steo/special/supplements/2023/2023_winter_fuels.pdf',
+        organization: 'U.S. Energy Information Administration',
+        title: 'Winter Fuels Outlook 2023–2024',
+        topic: 'Historical winter household heating fuel expenditures',
+        url: 'https://www.eia.gov/outlooks/steo/report/perspectives/2023/10-winterfuels/2023_winter_fuels.pdf',
       },
     ],
     relatedRoutes: [
@@ -290,10 +290,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.fueleconomy.gov/feg/evtech.shtml',
       },
       {
-        organization: 'U.S. Energy Information Administration (EIA)',
-        title: 'Electric Vehicle Energy Consumption & Residential Rate Data',
-        topic: 'Impact of home EV charging on monthly residential electricity statements',
-        url: 'https://www.eia.gov/environment/emissions/carbon_reporting/electric_vehicles.php',
+        organization: 'U.S. Environmental Protection Agency',
+        title: 'Electric Vehicle Myths',
+        topic: 'How electric-vehicle emissions depend on electricity generation',
+        url: 'https://www.epa.gov/greenvehicles/electric-vehicle-myths',
       },
     ],
     relatedRoutes: [
@@ -332,22 +332,16 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Estimating Refrigerator Energy Consumption & Operating Costs',
-        topic: 'Annual kWh baselines, compressor duty cycles, and temperature settings',
-        url: 'https://www.energy.gov/energysaver/refrigerators',
-      },
-      {
         organization: 'ENERGY STAR',
-        title: 'Certified Refrigerator Energy Specifications & Savings',
-        topic: 'Standard vs ENERGY STAR annual kWh consumption benchmarks',
-        url: 'https://www.energystar.gov/products/appliances/refrigerators',
+        title: 'Refrigerators',
+        topic: 'Refrigerator efficiency and buying considerations',
+        url: 'https://www.energystar.gov/products/refrigerators',
       },
       {
-        organization: 'Federal Trade Commission (FTC)',
-        title: 'EnergyGuide Labeling Requirements for Home Refrigeration',
-        topic: 'Standardized annual kWh rating methodology and testing baselines',
-        url: 'https://www.ftc.gov/business-guidance/resources/energyguide-labels',
+        organization: 'Federal Trade Commission',
+        title: 'EnergyGuide Label Templates',
+        topic: 'Examples of EnergyGuide labels and required fields',
+        url: 'https://search.ftc.gov/business-guidance/resources/energyguide-labels-templates-manufacturers',
       },
     ],
     relatedRoutes: [
@@ -387,10 +381,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Residential Clothes Dryer Energy Efficiency Standards',
-        topic: 'Electric dryer wattage ratings, cycle durations, and load energy draw',
-        url: 'https://www.energy.gov/energysaver/laundry',
+        organization: 'ENERGY STAR',
+        title: 'Clothes Dryers',
+        topic: 'Dryer energy use and efficiency considerations',
+        url: 'https://www.energystar.gov/products/clothes_dryers',
       },
       {
         organization: 'ENERGY STAR',
@@ -436,10 +430,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Estimating Electric Water Heater Energy Use & Operating Costs',
-        topic: 'Element wattage ratings, standby thermal losses, and usage baselines',
-        url: 'https://www.energy.gov/energysaver/water-heating',
+        organization: 'ENERGY STAR',
+        title: 'Water Heater Key Product Criteria',
+        topic: 'Water heater types and efficiency rating definitions',
+        url: 'https://www.energystar.gov/products/water_heaters/residential_water_heaters_key_product_criteria',
       },
       {
         organization: 'ENERGY STAR',
@@ -484,16 +478,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Pool Pump Energy Efficiency Standards & Operating Guidelines',
-        topic: 'Pool pump wattage ratings, filtration hours, and variable-speed efficiency',
-        url: 'https://www.energy.gov/energysaver/swimming-pool-treatment',
-      },
-      {
         organization: 'ENERGY STAR',
-        title: 'Certified Pool Pump Energy Consumption & Utility Savings',
-        topic: 'ENERGY STAR variable-speed pool pump energy baselines',
-        url: 'https://www.energystar.gov/products/other/pool_pumps',
+        title: 'Pool Pumps',
+        topic: 'Pool pump efficiency and speed settings',
+        url: 'https://www.energystar.gov/products/pool_pumps',
       },
     ],
     relatedRoutes: [
@@ -532,16 +520,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Dehumidifier Energy Efficiency Standards & Moisture Removal',
-        topic: 'Dehumidifier wattage ratings, Integrated Energy Factor (IEF), and duty cycles',
-        url: 'https://www.energy.gov/energysaver/dehumidifiers',
-      },
-      {
         organization: 'ENERGY STAR',
-        title: 'Certified Dehumidifier Product Specifications & Energy Savings',
-        topic: 'ENERGY STAR basement and room dehumidifier energy baselines',
-        url: 'https://www.energystar.gov/products/appliances/dehumidifiers',
+        title: 'Dehumidifiers',
+        topic: 'Dehumidifier capacity and efficiency',
+        url: 'https://www.energystar.gov/products/dehumidifiers',
       },
     ],
     relatedRoutes: [
@@ -586,10 +568,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.eia.gov/electricity/monthly/',
       },
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Understanding Your Electricity Bill',
-        topic: 'Electricity bill charges, rate structures, and fixed fees',
-        url: 'https://www.energy.gov/energysaver/understanding-your-electricity-bill',
+        organization: 'North Carolina Public Staff',
+        title: 'Understanding Your Electric Bill',
+        topic: 'Examples of billing periods, usage, and residential charges',
+        url: 'https://publicstaff.nc.gov/public-staff-divisions/energy-division/electric-section/understanding-your-electric-bill',
       },
     ],
     relatedRoutes: [
@@ -724,10 +706,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Energy Basics: Watts, Kilowatts, and Kilowatt-Hours',
-        topic: 'Electrical power units, energy measurement formulas, and consumption conversion',
-        url: 'https://www.energy.gov/energysaver/energy-saver',
+        organization: 'U.S. Department of Energy',
+        title: 'Energy Savings Hub',
+        topic: 'U.S. Department of Energy home energy resources',
+        url: 'https://www.energy.gov/save',
       },
       {
         organization: 'National Institute of Standards and Technology (NIST)',
@@ -778,10 +760,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.eia.gov/',
       },
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'How to Read Your Monthly Utility Statement',
-        topic: 'Daily usage averages, billing cycle days, and statement comparisons',
-        url: 'https://www.energy.gov/energysaver/understanding-your-electricity-bill',
+        organization: 'North Carolina Public Staff',
+        title: 'Understanding Your Electric Bill',
+        topic: 'Examples of billing periods, usage, and residential charges',
+        url: 'https://publicstaff.nc.gov/public-staff-divisions/energy-division/electric-section/understanding-your-electric-bill',
       },
     ],
     relatedRoutes: [
@@ -823,13 +805,13 @@ export const energyGuides: Record<string, GuideDefinition> = {
         organization: 'ENERGY STAR',
         title: 'Certified Dishwashers Energy & Water Savings Criteria',
         topic: 'Dishwasher annual kWh baselines, water heating energy split, and heated dry draw',
-        url: 'https://www.energystar.gov/products/appliances/dishwashers',
+        url: 'https://www.energystar.gov/products/dishwashers',
       },
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Estimating Appliance Energy Use: Dishwashers',
-        topic: 'Dishwasher wattage ranges, heating element draw, and cycle energy calculations',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        organization: 'U.S. Department of Energy',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
     ],
     relatedRoutes: [
@@ -874,10 +856,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.energystar.gov/products/appliances/clothes_washers',
       },
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Laundry Energy Efficiency Tips & Hot Water Energy Split',
-        topic: 'Motor power draw, water heater energy share, and cold water wash benefits',
-        url: 'https://www.energy.gov/energysaver/laundry',
+        organization: 'ENERGY STAR',
+        title: 'Clothes Washers',
+        topic: 'Washer energy and water efficiency',
+        url: 'https://www.energystar.gov/products/clothes_washers',
       },
     ],
     relatedRoutes: [
@@ -916,11 +898,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Estimating Appliance Energy Use: Electric Ovens & Stoves',
-        topic:
-          'Electric oven wattage ratings, thermostat cycling duty cycles, and energy calculations',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        organization: 'U.S. Department of Energy',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
       {
         organization: 'ENERGY STAR',
@@ -968,13 +949,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         organization: 'ENERGY STAR',
         title: 'Ceiling Fans Key Product Criteria',
         topic: 'Ceiling fan CFM efficiency, AC vs DC motor power draw, and energy standards',
-        url: 'https://www.energystar.gov/products/lighting_fans/ceiling_fans',
-      },
-      {
-        organization: 'U.S. Department of Energy (DOE)',
-        title: 'Using Ceiling Fans for Summer Cooling & Winter Heating',
-        topic: 'Wind-chill effect, thermostat adjustment savings, and seasonal fan rotation',
-        url: 'https://www.energy.gov/energysaver/using-ceiling-fans-cooling-and-heating',
+        url: 'https://www.energystar.gov/products/ceiling_fans',
       },
     ],
     relatedRoutes: [
@@ -1023,7 +998,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Computers & Monitors Energy Efficiency Specifications',
         topic:
           'Power supply 80 Plus efficiency ratings, idle power limits, and desktop PC baselines',
-        url: 'https://www.energystar.gov/products/office_equipment/computers',
+        url: 'https://www.energystar.gov/products/computers',
       },
     ],
     relatedRoutes: [
@@ -1062,15 +1037,15 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sources: [
       {
         organization: 'U.S. Department of Energy',
-        title: 'Estimating Appliance and Home Electronic Energy Use',
-        topic: 'Microwave power consumption, standby clock power draw, and cooking efficiency',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
       {
         organization: 'ENERGY STAR',
-        title: 'Residential Kitchen Appliance Energy Efficiency Standards',
-        topic: 'Standby power limits and kitchen electronics energy baselines',
-        url: 'https://www.energystar.gov/products/appliances',
+        title: 'Product Specifications and Partner Commitments',
+        topic: 'Efficiency specifications across product categories',
+        url: 'https://www.energystar.gov/products/spec',
       },
     ],
     relatedRoutes: [
@@ -1109,16 +1084,15 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sources: [
       {
         organization: 'U.S. Department of Energy',
-        title: 'Kitchen Appliance Energy Efficiency & Small Cooking Electronics',
-        topic:
-          'Small appliance heating elements, thermostat duty cycles, and cooking energy efficiency',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
       {
         organization: 'ENERGY STAR',
-        title: 'Commercial & Residential Cooking Equipment Energy Baselines',
-        topic: 'Convection heating efficiency and compact cooking enclosure energy performance',
-        url: 'https://www.energystar.gov/products/appliances',
+        title: 'Product Specifications and Partner Commitments',
+        topic: 'Efficiency specifications across product categories',
+        url: 'https://www.energystar.gov/products/spec',
       },
     ],
     relatedRoutes: [
@@ -1160,14 +1134,13 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Televisions Energy Efficiency Specification (Version 9.0)',
         topic:
           'On-mode power limits by screen area, HDR power consumption, and standby power requirements',
-        url: 'https://www.energystar.gov/products/home_electronics/televisions',
+        url: 'https://www.energystar.gov/products/televisions',
       },
       {
         organization: 'U.S. Department of Energy',
-        title: 'Home Electronics Energy Use Guide',
-        topic:
-          'Display power demand, ambient light sensors, and streaming media device energy consumption',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
     ],
     relatedRoutes: [
@@ -1206,10 +1179,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sources: [
       {
         organization: 'ENERGY STAR',
-        title: 'Small Network Equipment Efficiency Specifications',
-        topic:
-          'Broadband modems, wireless routers, access points, and continuous network power draw',
-        url: 'https://www.energystar.gov/products/certified-products/small-network-equipment',
+        title: 'Small Network Equipment Specification, Version 1.0',
+        topic: 'Published efficiency specification material for small network equipment',
+        url: 'https://www.energystar.gov/products/spec/small_network_equipment_specification_version_1_0_pd',
       },
       {
         organization: 'Lawrence Berkeley National Laboratory',
@@ -1258,14 +1230,13 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Computers & Monitors Energy Efficiency Specifications',
         topic:
           'Notebook computer power limits, external power supply efficiency, and idle/active state power draw',
-        url: 'https://www.energystar.gov/products/office_equipment/computers',
+        url: 'https://www.energystar.gov/products/computers',
       },
       {
         organization: 'U.S. Department of Energy',
-        title: 'Estimating Computer and Office Electronic Power Draw',
-        topic:
-          'Laptop charger rating vs. actual wall power consumption and battery charging efficiency',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
     ],
     relatedRoutes: [
@@ -1304,10 +1275,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sources: [
       {
         organization: 'U.S. Department of Energy',
-        title: 'Small Kitchen Appliance Power & Water Heating Energy',
-        topic:
-          'Electric resistance water heating element efficiency, thermal losses, and kettle power draw',
-        url: 'https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use',
+        title: 'Estimating Appliance and Home Electronic Energy Use (archived PDF)',
+        topic: 'Estimating energy and operating cost from power, runtime, and electricity price',
+        url: 'https://bpi.org/__cms/docs/Estimating-Appliance-and-Home-Electronic-Energy-Use-_-Department-of-Energy.pdf',
       },
       {
         organization: 'National Institute of Standards and Technology',
@@ -1401,17 +1371,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sources: [
       {
         organization: 'ENERGY STAR',
-        title: 'Room Air Conditioners Energy Efficiency Specification',
-        topic:
-          'CEER efficiency baselines, cooling capacity in BTU/hr, and compressor energy limits',
-        url: 'https://www.energystar.gov/products/heating_cooling/room_air_conditioners',
-      },
-      {
-        organization: 'U.S. Department of Energy',
-        title: 'Room Air Conditioner Energy Saver Guide',
-        topic:
-          'Sizing window AC units by room square footage, thermostat settings, and seasonal energy use',
-        url: 'https://www.energy.gov/energysaver/room-air-conditioners',
+        title: 'Room Air Conditioners',
+        topic: 'Room air conditioner efficiency and sizing',
+        url: 'https://www.energystar.gov/products/room_air_conditioners',
       },
     ],
     relatedRoutes: [
@@ -1497,11 +1459,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Heat Pump Systems & Energy Efficiency Guide',
-        topic:
-          'Heat pump COP performance ratings, heating season performance factor (HSPF2), and resistance heating comparisons',
-        url: 'https://www.energy.gov/energysaver/heat-pump-systems',
+        organization: 'ENERGY STAR',
+        title: 'Air-Source Heat Pumps',
+        topic: 'Air-source heat pump efficiency and buying considerations',
+        url: 'https://www.energystar.gov/products/air_source_heat_pumps',
       },
       {
         organization: 'U.S. Energy Information Administration',
@@ -1546,18 +1507,16 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Central Air Conditioning Systems & Energy Efficiency Standards',
-        topic:
-          'Central AC wattage by tonnage, SEER2 efficiency standards, compressor duty cycles, and duct losses',
-        url: 'https://www.energy.gov/energysaver/central-air-conditioning',
+        organization: 'ENERGY STAR',
+        title: 'Central Air Conditioner and Air Source Heat Pump Specification',
+        topic: 'Efficiency definitions for central air conditioners and heat pumps',
+        url: 'https://www.energystar.gov/sites/default/files/2025-01/ENERGY%20STAR%20Version%206.2%20Central%20Air%20Conditioner%20and%20Heat%20Pump%20Final%20Specification.pdf',
       },
       {
         organization: 'ENERGY STAR',
-        title: 'Central Air Conditioner Efficiency Specifications',
-        topic:
-          'SEER2 efficiency baselines, EER2 regional requirements, and variable-speed compressor performance',
-        url: 'https://www.energystar.gov/products/heating_cooling/central_air_conditioners',
+        title: 'Central Air Conditioner and Air-Source Heat Pump Specification',
+        topic: 'Central air conditioner efficiency requirements',
+        url: 'https://www.energystar.gov/products/spec/central_air_conditioner_and_air_source_heat_pump_specification_version_6_0_pd',
       },
     ],
     relatedRoutes: [
@@ -1603,10 +1562,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
       },
       {
         organization: 'Federal Trade Commission',
-        title: 'EnergyGuide Appliance Ratings for Portable Air Conditioners',
-        topic:
-          'Annual operating cost labels and comparative energy efficiency ratios for portable cooling',
-        url: 'https://www.ftc.gov/legal-library/browse/rules/energy-water-use-labeling-consumer-information-under-energy-policy-conservation-act-energy-labeling-rule',
+        title: 'Energy Labeling Rule',
+        topic: 'EnergyGuide labeling requirements',
+        url: 'https://search.ftc.gov/legal-library/browse/rules/energy-water-use-labeling-consumer-products-under-energy-policy-conservation-act-energy-labeling',
       },
     ],
     relatedRoutes: [
@@ -1648,14 +1606,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Ductless Mini-Split Heat Pump Efficiency Specifications',
         topic:
           'Variable-speed inverter compressor efficiency, SEER2 and HSPF2 ratings, and multi-zone heating/cooling performance',
-        url: 'https://www.energystar.gov/products/heating_cooling/ductless_heating_cooling',
-      },
-      {
-        organization: 'U.S. Department of Energy',
-        title: 'Ductless Mini-Split Heat Pumps Energy Saver Guide',
-        topic:
-          'Inverter modulation benefits, ductless zone control savings, and cold-climate heating performance',
-        url: 'https://www.energy.gov/energysaver/ductless-mini-split-heat-pumps',
+        url: 'https://www.energystar.gov/products/ductless_heating_cooling',
       },
     ],
     relatedRoutes: [
@@ -1693,11 +1644,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Heat Pump Systems Energy Efficiency & Seasonal Performance',
-        topic:
-          'Heating vs cooling kWh draw, Coefficient of Performance (COP), HSPF2 ratings, defrost cycles, and auxiliary heat strips',
-        url: 'https://www.energy.gov/energysaver/heat-pump-systems',
+        organization: 'ENERGY STAR',
+        title: 'Air-Source Heat Pumps',
+        topic: 'Air-source heat pump efficiency and buying considerations',
+        url: 'https://www.energystar.gov/products/air_source_heat_pumps',
       },
       {
         organization: 'U.S. Energy Information Administration',
@@ -1742,11 +1692,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Electric Resistance Heating Systems & Furnaces',
-        topic:
-          'Electric furnace kW heating elements, blower motor energy draw, thermostat duty cycles, and winter heating loads',
-        url: 'https://www.energy.gov/energysaver/electric-resistance-heating',
+        organization: 'Vermont Energy Saver',
+        title: 'Space Heating',
+        topic: 'Electric resistance space heating and alternative technologies',
+        url: 'https://energysaver.vermont.gov/heating-cooling/space-heating',
       },
       {
         organization: 'Building America Solution Center',
@@ -1791,18 +1740,17 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Electric Baseboard Heaters & Zone Heating Guide',
-        topic:
-          'Wattage per linear foot (250W/ft), line-voltage thermostat operation, zone heating efficiency, and convective heat flow',
-        url: 'https://www.energy.gov/energysaver/electric-resistance-heating',
+        organization: 'Vermont Energy Saver',
+        title: 'Space Heating',
+        topic: 'Electric resistance space heating and alternative technologies',
+        url: 'https://energysaver.vermont.gov/heating-cooling/space-heating',
       },
       {
         organization: 'National Renewable Energy Laboratory',
         title: 'Residential Zoned Electric Space Heating Study',
         topic:
           'Baseboard heater thermal delivery, room zoning energy impact, and heat loss dynamics',
-        url: 'https://www.nrel.gov/',
+        url: 'https://www.nlr.gov/',
       },
     ],
     relatedRoutes: [
@@ -1844,14 +1792,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Smart Thermostats Energy Efficiency Specification & Savings Benchmarks',
         topic:
           'Independent energy savings field studies, 8%–12% heating / 15% cooling benchmarks, and occupancy detection algorithms',
-        url: 'https://www.energystar.gov/products/heating_cooling/smart_thermostats',
-      },
-      {
-        organization: 'U.S. Department of Energy',
-        title: 'Thermostats Energy Saver Guide',
-        topic:
-          'Temperature setback calculations, 1% savings per degree setback for 8-hour periods, and HVAC compatibility',
-        url: 'https://www.energy.gov/energysaver/thermostats',
+        url: 'https://www.energystar.gov/products/smart_thermostats',
       },
     ],
     relatedRoutes: [
@@ -1889,11 +1830,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Thermostat Setbacks & Air Conditioning Operating Efficiency',
-        topic:
-          'Thermostat setback thermodynamics, indoor heat gain transfer rates, and humidity control safety boundaries',
-        url: 'https://www.energy.gov/energysaver/thermostats',
+        organization: 'ENERGY STAR',
+        title: 'Smart Thermostats',
+        topic: 'Scheduling and connected thermostat efficiency',
+        url: 'https://www.energystar.gov/products/smart_thermostats',
       },
       {
         organization: 'Building America Solution Center',
@@ -1938,17 +1878,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Air Sealing Your Home & Air Infiltration Reduction',
-        topic:
-          'Building envelope infiltration loss, stack effect physics, duct leakage, weatherstripping ROI, and blower door testing',
-        url: 'https://www.energy.gov/energysaver/air-sealing-your-home',
-      },
-      {
         organization: 'ENERGY STAR',
-        title: 'Seal and Insulate Guide for Home Energy Efficiency',
-        topic:
-          'Attic air sealing locations, chimney bypasses, recessed light penetrations, and energy bill savings',
+        title: 'Seal and Insulate with ENERGY STAR',
+        topic: 'Air sealing and insulation considerations',
         url: 'https://www.energystar.gov/saveathome/seal_insulate',
       },
     ],
@@ -2094,7 +2026,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         organization: 'National Renewable Energy Laboratory',
         title: 'Utility Rate Database & Time-of-Use Tariff Analysis',
         topic: 'Residential TOU schedules, seasonal rate variations, and smart meter interval data',
-        url: 'https://www.nrel.gov/',
+        url: 'https://www.nlr.gov/',
       },
     ],
     relatedRoutes: [
@@ -2179,11 +2111,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'Federal Trade Commission',
-        title: 'Shopping for Competitive Retail Electricity Contracts',
-        topic:
-          'Retail choice, fixed vs variable supply plans, early termination fees, and contract terms',
-        url: 'https://consumer.ftc.gov/articles/shopping-electricity-or-natural-gas',
+        organization: 'Pennsylvania Public Utility Commission',
+        title: 'PA Power Switch',
+        topic: 'Illustration of a state electricity shopping and rate comparison program',
+        url: 'https://www.papowerswitch.com/',
       },
       {
         organization: 'U.S. Energy Information Administration',
@@ -2231,7 +2162,7 @@ export const energyGuides: Record<string, GuideDefinition> = {
         title: 'Understanding Electric Utility Demand Charges',
         topic:
           'Peak demand kW measurement, 15-minute billing windows, and commercial/residential rate structures',
-        url: 'https://www.nrel.gov/docs/fy17osti/68942.pdf',
+        url: 'https://docs.nlr.gov/docs/fy17osti/68942.pdf',
       },
       {
         organization: 'U.S. Department of Energy',
@@ -2324,11 +2255,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
     sections: [],
     sources: [
       {
-        organization: 'U.S. Department of Energy',
-        title: 'Managing Household Energy Expenses & Equal Payment Plans',
-        topic:
-          'Levelized billing methods, annual reconciliation, deferred balance accounts, and seasonal smoothing',
-        url: 'https://www.energy.gov/energysaver/managing-your-utility-bills',
+        organization: 'Public Utilities Commission of Ohio',
+        title: 'Budget Billing for Natural Gas and Electric Service',
+        topic: 'Example of budget billing and payment adjustments',
+        url: 'https://puco.ohio.gov/utilities/electricity/resources/budget-billing-for-natural-gas-and-electric-service',
       },
       {
         organization: 'U.S. Energy Information Administration',
@@ -2478,11 +2408,10 @@ export const energyGuides: Record<string, GuideDefinition> = {
         url: 'https://www.cpuc.ca.gov/nemrevisit',
       },
       {
-        organization: 'National Renewable Energy Laboratory',
-        title: 'Net Energy Metering (NEM) Policy & Compensation Models',
-        topic:
-          'Bi-directional metering, 1:1 retail credit, avoided cost compensation, and annual true-up rules',
-        url: 'https://www.nrel.gov/state-local-tribal/net-metering.html',
+        organization: 'California Public Utilities Commission',
+        title: 'Net Energy Metering and Net Billing',
+        topic: 'California examples of retail credits and net billing export compensation',
+        url: 'https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/customer-generation/net-energy-metering-and-net-billing',
       },
       {
         organization: 'U.S. Department of Energy',

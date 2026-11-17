@@ -1,5 +1,58 @@
 import type { InsightRecord } from '../types';
 
+export const MAY_2026_REGIONAL_RATES = [
+  {
+    name: 'New England',
+    cents: 28.14,
+    priorYearCents: 29.21,
+  },
+  {
+    name: 'Middle Atlantic',
+    cents: 25.1,
+    priorYearCents: 22.43,
+  },
+  {
+    name: 'East North Central',
+    cents: 20.76,
+    priorYearCents: 18.23,
+  },
+  {
+    name: 'West North Central',
+    cents: 14.75,
+    priorYearCents: 14.12,
+  },
+  {
+    name: 'South Atlantic',
+    cents: 16.14,
+    priorYearCents: 15.27,
+  },
+  {
+    name: 'East South Central',
+    cents: 15.5,
+    priorYearCents: 14.63,
+  },
+  {
+    name: 'West South Central',
+    cents: 15.72,
+    priorYearCents: 14.85,
+  },
+  {
+    name: 'Mountain',
+    cents: 14.62,
+    priorYearCents: 14.49,
+  },
+  {
+    name: 'Pacific Contiguous',
+    cents: 26.06,
+    priorYearCents: 25.56,
+  },
+  {
+    name: 'Pacific Noncontiguous',
+    cents: 42.13,
+    priorYearCents: 34.96,
+  },
+];
+
 export const august2026CensusDivisionResidentialElectricityRateBreakdown: InsightRecord = {
   id: 'insight-2026-08-03-august-census-division-electricity-rate-breakdown',
   slug: 'august-2026-census-division-residential-electricity-rate-breakdown',
@@ -7,9 +60,9 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
   title: 'August 2026 U.S. Census Division Residential Electricity Rate Breakdown',
   metaTitle: 'August 2026 U.S. Census Division Residential Electricity Rate Breakdown',
   metaDescription:
-    'EIA dataset analyzed across 9 U.S. Census Divisions: New England leads at 28.14¢/kWh vs West North Central at 14.75¢/kWh—a 1.91x regional rate spread.',
+    'Compare the May 2026 EIA rates across Census regions, including the separate Pacific groups, and model the cost of 1,000 kWh.',
   summary:
-    'According to official U.S. Energy Information Administration (EIA) data from the May 2026 Electric Power Monthly release, residential electricity rates vary significantly across the nine U.S. Census Divisions. While the national residential electricity price averaged 18.44 cents per kWh ($0.1844/kWh), regional averages ranged from a high of 28.14 cents per kWh in New England to a low of 14.75 cents per kWh in the West North Central division. For a standard household consuming 1,000 kWh per month, this regional pricing disparity translates into a monthly bill burden spread of $133.90—from $281.40 per month in New England down to $147.50 per month in the Midwest.',
+    'For May 2026, EIA reported 14.62¢/kWh for the Mountain group, 28.14¢/kWh for New England, and 42.13¢/kWh for Pacific noncontiguous (Alaska and Hawaii). At the same 1,000 kWh, those prices imply $146.20, $281.40, and $421.30.',
   category: 'electricity-rates',
   primaryIntent:
     'explain regional residential electricity price variations across the nine U.S. Census Divisions and model 1,000 kWh monthly household bill burdens',
@@ -22,94 +75,50 @@ export const august2026CensusDivisionResidentialElectricityRateBreakdown: Insigh
   intentFingerprint: 'august-2026-census-division-residential-electricity-rate-breakdown',
   canonicalTopic: 'august-2026-census-division-electricity-rates',
   geography: 'united-states',
-  reportingPeriod: 'August 2026',
+  reportingPeriod: 'May 2026',
   publishedAt: '2026-08-03',
-  updatedAt: null,
-  updateCadence: 'monthly',
+  updatedAt: '2026-11-17',
+  updateCadence: 'one-time',
   authorName: 'Jaynesh Shingala',
   keyFindings: [
-    'Data Provenance Transparency: This analysis clearly separates official empirical inputs (EIA Form EIA-861M weighted average residential rates across 9 Census Divisions) from EnergyBillLab model assumptions (standard 1,000 kWh/month single-family baseline consumption) and derived calculated results ($281.40/mo New England vs $147.50/mo West North Central bill burden; 1.91x regional spread; $1,606.80/yr geographic cost variance for identical energy use).',
-    'New England ranks as the most expensive U.S. Census Division at 28.14¢/kWh, generating a $281.40 monthly electric bill burden for a baseline 1,000 kWh household.',
-    'West North Central records the lowest regional rate at 14.75¢/kWh ($147.50/month for 1,000 kWh), creating a 1.91x regional price spread across the contiguous U.S.',
-    'The $133.90 monthly price difference between New England and the West North Central division amounts to an annual household energy cost variance of $1,606.80 for identical consumption.',
-    'Middle Atlantic (25.10¢/kWh) and Pacific (23.45¢/kWh) divisions represent the second and third highest regional rate clusters in the country.',
-  ],
-  bodyParagraphs: [
-    'Residential electricity prices in the United States are heavily influenced by geographic location, regional generation fuel mix, transmission infrastructure investment, and state regulatory structures. While national metrics provide useful top-line benchmarks, regional analysis across the nine official U.S. Census Divisions exposes stark cost disparities faced by American households.',
-    'Data published by the U.S. Energy Information Administration (EIA) in the May 2026 Electric Power Monthly release (published July 23, 2026) reveals that regional residential rates span from 14.75 cents per kWh in the central Midwest to 28.14 cents per kWh in the Northeast. Understanding these regional baseline rates helps consumers evaluate utility bill benchmarks, assess moving costs, and identify realistic energy savings potential.',
-    'This report analyzes residential electricity rate structures, monthly bill burdens, and year-over-year percentage trends across all nine U.S. Census Divisions for the August 2026 benchmark period.',
+    'EIA lists the Pacific contiguous and noncontiguous regions separately. The noncontiguous group combines Alaska and Hawaii. A single Pacific figure would require combining residential revenue and sales.',
+    'The Mountain group had the lowest rate in the published regional rows at 14.62¢/kWh. Pacific noncontiguous had the highest at 42.13¢/kWh. New England was 28.14¢/kWh.',
   ],
   sections: [
     {
-      heading: 'Nine U.S. Census Division rate and monthly bill comparison',
+      heading: 'May 2026 rate comparison at equal usage',
       paragraphs: [
-        'To model realistic household financial impacts, electric bill burdens are calculated for a standardized monthly usage benchmark of 1,000 kilowatt-hours (kWh). At the U.S. national average rate of 18.44 cents per kWh, a 1,000 kWh bill totals $184.40 per month before local utility fixed charges and municipal taxes.',
-        'New England (comprising CT, ME, MA, NH, RI, VT) tops the regional hierarchy at 28.14¢/kWh, resulting in a $281.40 monthly bill burden. High natural gas pipeline constraints during peak demand periods, strict environmental policies, and heavy regional grid transmission investments drive elevated rates in this division.',
-        'The Middle Atlantic division (NJ, NY, PA) follows closely at 25.10¢/kWh ($251.00/month for 1,000 kWh), while the Pacific division (AK, CA, HI, OR, WA) averages 23.45¢/kWh ($234.50/month), pulled upward by California (32.40¢/kWh) and Hawaii (42.50¢/kWh).',
-        'In contrast, the West North Central division (IA, KS, MN, MO, NE, ND, SD) offers the nation’s lowest average regional rate at 14.75¢/kWh ($147.50/month), closely joined by West South Central (14.80¢/kWh, $148.00/month) and Mountain (14.95¢/kWh, $149.50/month). Abundant regional wind generation, low-cost solar resources, and lower utility delivery overhead contribute to competitive pricing in these divisions.',
-        'Table: Data Provenance & Methodology Lineage Breakdown',
-        '| Lineage Category | Parameter / Metric | Value & Specification | Primary Source / Methodology Reference |',
-        '| :--- | :--- | :--- | :--- |',
-        '| Official Government Data | Census Division Residential Rate Datasets | Form EIA-861M (May 2026 reporting period) | U.S. Energy Information Administration (EIA) |',
-        '| Official Government Data | Regional Division Geography Definitions | 9 U.S. Census Bureau Official Divisions | U.S. Census Bureau Geographic Hierarchy |',
-        '| Model Assumption | Standard Monthly Consumption Benchmark | 1,000.0 kWh / Month Baseline Usage | Standard U.S. Residential Single-Family Metric |',
-        '| EnergyBillLab Calculation | New England Monthly Bill Burden | $281.40 / month (28.14 ¢/kWh) | 1,000 kWh × $0.2814/kWh |',
-        '| EnergyBillLab Calculation | West North Central Monthly Bill Burden | $147.50 / month (14.75 ¢/kWh) | 1,000 kWh × $0.1475/kWh |',
-        '| EnergyBillLab Calculation | Contiguous U.S. Regional Rate Spread | 1.91x Regional Disparity Ratio | 28.14 ¢/kWh (New England) ÷ 14.75 ¢/kWh (WNC) |',
-        '| EnergyBillLab Calculation | Annual Geographic Household Variance | $1,606.80 / year variance | ($281.40/mo - $147.50/mo) × 12 months |',
+        'The table uses the residential columns of the archived EIA release. The last column applies the May 2026 price to the same 1,000 kWh in each group.',
+        '| EIA region | May 2025 | May 2026 | Modeled price for 1,000 kWh |',
+        '| :--- | ---: | ---: | ---: |',
+        ...MAY_2026_REGIONAL_RATES.map(
+          ({ name, cents, priorYearCents }) =>
+            `| ${name} | ${priorYearCents.toFixed(2)}¢/kWh | ${cents.toFixed(2)}¢/kWh | $${(cents * 10).toFixed(2)} |`,
+        ),
       ],
     },
     {
-      heading: 'Regional electricity price hierarchy and 1,000 kWh bill burden table',
+      heading: 'Use the region as a benchmark',
       paragraphs: [
-        'The table below presents the May 2026 EIA residential rate benchmark, average 1,000 kWh monthly bill cost, 12-month percentage trend, and representative state contributors across all nine U.S. Census Divisions.',
-        'Regional Price Spread: The 1.91x spread between New England ($281.40) and West North Central ($147.50) highlights why uniform national energy advice fails without local rate adjustments.',
-      ],
-    },
-    {
-      heading: 'Key drivers of regional electricity price disparities',
-      paragraphs: [
-        'Primary factors causing regional rate variations include fuel mix composition, grid density, local weather extremes, and regulatory market structure.',
-        '1. Generation Fuel Mix: Regions reliant on imported liquefied natural gas (LNG) or expensive spot fuel markets experience higher wholesale costs than regions with rich local wind, solar, nuclear, or low-cost coal generation.',
-        '2. Distribution & Transmission Capital Spending: Urbanized coastal corridors with aging underground power grids incur substantial capital recovery tariffs on residential electric bills.',
-        '3. Regulatory Framework: States with restructured competitive retail supplier markets exhibit different rate dynamics compared to traditionally regulated vertically integrated utility territories.',
-      ],
-    },
-    {
-      heading: 'Methodology and limits',
-      paragraphs: [
-        'Data is sourced from the U.S. Energy Information Administration (EIA) Form EIA-861M "Monthly Electric Power Industry Report" (May 2026 reporting period, released July 23, 2026). Regional figures represent weighted average revenue per kilowatt-hour for residential end-use customers across each Census Division.',
-        'Formula: Monthly Bill Burden ($) = 1,000 kWh * (Regional Rate ¢/kWh / 100). Regional Spread Ratio = Highest Regional Rate / Lowest Regional Rate. Annual Cost Variance = (Highest Monthly Bill Burden - Lowest Monthly Bill Burden) * 12.',
-        'Calculations model volumetric energy usage charges. Utility fixed monthly account fees, local franchise taxes, and utility rider surcharges vary by specific service territory and are excluded from regional average retail rate comparisons.',
+        'The regional rate is revenue divided by sales across the included territories. Averaging the state rates with equal weights gives a different result.',
+        'Keep usage constant to compare price differences. Use your own utility rate and fees to estimate an actual bill. The illustration does not project future prices or account for differences in heating and cooling use.',
       ],
     },
   ],
   practicalExample:
-    'A household consuming 1,000 kWh per month in New England pays $281.40 monthly ($0.2814/kWh) compared to $147.50 per month ($0.1475/kWh) in the West North Central division—a difference of $133.90 per month ($1,606.80 annually) for identical electrical energy usage.',
-  methodologyNotes:
-    'EIA Table 5.6.A residential average retail prices by Census Division (May 2026 dataset). Standard usage benchmark = 1,000 kWh. New England = 28.14¢; Middle Atlantic = 25.10¢; Pacific = 23.45¢; East North Central = 20.76¢; South Atlantic = 16.20¢; East South Central = 15.10¢; Mountain = 14.95¢; West South Central = 14.80¢; West North Central = 14.75¢. National average = 18.44¢/kWh.',
+    'At 1,000 kWh, New England’s 28.14¢ average implies $281.40 and Mountain’s 14.62¢ average implies $146.20. The price difference is $135.20 for the same usage.',
   sources: [
     {
       organization: 'U.S. Energy Information Administration',
-      title:
-        'Electric Power Monthly — Table 5.6.A Average Price of Electricity to Ultimate Customers by End-Use Sector',
-      url: 'https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_06_a',
-      topic:
-        'Official monthly residential electricity rates, regional sales, and revenue data by U.S. Census Division.',
+      title: 'July 2026 Electric Power Monthly archive, Table 5.6.A',
+      url: 'https://www.eia.gov/electricity/monthly/archive/july2026.zip',
+      topic: 'Residential prices by region in May 2026 and May 2025',
     },
     {
       organization: 'U.S. Census Bureau',
-      title: 'Geographic Terms and Concepts — Census Divisions',
-      url: 'https://www.census.gov/programs-surveys/popest/guidance-geographies/terms-and-concepts.html',
-      topic:
-        'Official boundaries, state composition, and regional definitions for the nine U.S. Census Divisions.',
-    },
-    {
-      organization: 'U.S. Department of Energy',
-      title: 'Grid Deployment Office — Regional Transmission & Rate Analysis',
-      url: 'https://www.energy.gov/gdo/grid-deployment-office',
-      topic:
-        'Regional power grid infrastructure investments, congestion costs, and utility tariff driver analyses.',
+      title: 'Census Regions and Divisions of the United States',
+      url: 'https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf',
+      topic: 'Geographic definitions behind the regional comparison',
     },
   ],
   relatedRoutes: [
