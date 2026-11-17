@@ -43,7 +43,7 @@ const faqs = [
   {
     question: 'Can fixed customer charges raise my cost per kWh when usage drops?',
     answer:
-      'Yes. Fixed customer fees ($5 to $25/month) are charged regardless of usage. When monthly kWh draw drops, fixed charges are spread over fewer units, mathematically increasing your effective cost per kWh.',
+      'Yes. When usage drops, the same fixed customer charge is spread over fewer kilowatt-hours, which increases the effective cost per kWh.',
   },
 ];
 
@@ -133,12 +133,36 @@ export default async function ElectricityBillAnalyzerPage() {
               Total Bill Change = Usage Effect ($) + Rate/Fee & Other Effect ($)
             </p>
             <p>
-              We calculate how much your bill would have changed if your rate stayed constant, and
-              attribute the remaining dollar difference to rate adjustments, fee changes, or tax
-              variances.
+              We price the change in billing-day-adjusted usage at the previous bill's all-in cost
+              per kWh. The remaining dollar difference can include extra billing days as well as
+              changes in rates, fees, taxes, or credits.
             </p>
           </div>
         </div>
+      </section>
+
+      <section className={styles.methodologySection} aria-labelledby="bill-example-heading">
+        <h2 id="bill-example-heading">Try this two-bill example</h2>
+        <p>
+          Enter $112, 560 kWh, and 28 days for the previous bill. Enter $150, 704 kWh, and 32 days
+          for the current bill. These figures represent charges for each billing period, excluding
+          any balance carried over from earlier statements.
+        </p>
+        <ol>
+          <li>
+            Usage rose from 20 to 22 kWh per day. At the old daily usage, a 32-day bill would have
+            recorded 640 kWh, so the home used 64 kWh more after adjusting for billing days.
+          </li>
+          <li>
+            At the old all-in cost of 20¢/kWh, the analyzer estimates $12.80 of the $38 increase
+            came from higher daily usage.
+          </li>
+          <li>
+            The remaining $25.20 includes the effect of the longer billing period and any other
+            differences. Compare the supply rate, fees, and credits on the two statements to see
+            which charges actually changed.
+          </li>
+        </ol>
       </section>
 
       <section className={styles.checklistSection}>

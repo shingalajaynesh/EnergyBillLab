@@ -75,9 +75,10 @@ describe('August 2026 EV vs. Gasoline Car Fuel Cost & eGallon Benchmark Insight'
     expect(record.summary).toContain('$6.15 per 100 miles');
     expect(record.summary).toContain('$14.59 per 100 miles');
     expect(record.summary).toContain('$4.085 per gallon');
-    expect(record.summary).toContain('$1.72 per eGallon');
-    expect(record.summary).toContain('57.8%');
-    expect(record.summary).toContain('$1,012.80');
+    expect(record.summary).toContain('30 kWh of battery energy per 100 miles');
+    expect(record.methodologyNotes).toContain(
+      'EPA label consumption already accounts for charging losses',
+    );
   });
 
   it('9. verifies explicit 3-tier data provenance structure (Official Data vs Model Assumptions vs Calculations)', () => {

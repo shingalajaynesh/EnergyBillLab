@@ -10,7 +10,7 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
     'EV vs gasoline car fuel cost benchmark using August 2026 EIA gasoline ($4.085/gal) and electricity data (18.44¢/kWh). Home EV charging costs $6.15 per 100 miles ($1.72/eGallon) vs $14.59 for a 28 MPG gas car—saving 58% ($1,013/yr). Compare off-peak TOU, fast charging, and 10-state parity.',
   status: 'published',
   publishedAt: '2026-08-26',
-  updatedAt: null,
+  updatedAt: '2026-11-17',
   category: 'home-energy-costs',
   canonicalTopic: 'august-2026-ev-vs-gas-car-fuel-cost-per-100-miles-benchmark',
   intentFingerprint: 'ev-vs-gas-car-fuel-cost-per-100-miles-egallon-benchmark-2026',
@@ -31,11 +31,11 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
   updateCadence: 'annual',
   noindex: false,
   summary:
-    'Driving a standard electric vehicle (30 kWh/100 miles rated battery consumption) charged at home costs $6.15 per 100 miles (6.15¢/mile) under this benchmark scenario, applying the May 2026 U.S. Energy Information Administration (EIA) national residential electricity average of 18.44¢/kWh and a standard 90% Level 2 charging efficiency model assumption. In contrast, driving a comparable 28 MPG internal combustion engine (ICE) passenger car costs $14.59 per 100 miles (14.59¢/mile) at the August 24, 2026 EIA national average regular gasoline price of $4.085 per gallon. Translating electricity into the U.S. Department of Energy (DOE) eGallon equivalent yields $1.72 per eGallon—representing a 57.8% fuel cost discount that saves a typical 12,000-mile/year household an estimated $1,012.80 annually.',
+    'Under the modeled prices, home charging costs $6.15 per 100 miles and gasoline costs $14.59 per 100 miles for a 28 MPG vehicle at $4.085 per gallon. The EV example uses 30 kWh of battery energy per 100 miles and 90% charging efficiency. If you start with an EPA label or wall-meter reading, use that electricity figure directly.',
   keyFindings: [
     'Data Provenance Transparency: This analysis clearly separates official government inputs (EIA residential rate of 18.44¢/kWh; EIA gasoline average of $4.085/gal; DOE AFDC 33.705 kWh/GGE energy density) from EnergyBillLab model assumptions (90% Level 2 efficiency; 28 MPG ICE baseline; 30 kWh/100 mi EV rating) and derived calculated results ($6.15/100 mi EV cost; $1.72/eGallon; $1,012.80 annual fuel savings).',
     '57.8% National Fuel Savings Benchmark: In this national baseline scenario, Home Level 2 EV charging costs $6.15 per 100 miles (18.44¢/kWh) versus $14.59 per 100 miles for a 28 MPG gasoline vehicle ($4.085/gal regular gasoline), yielding an estimated $8.44 in net fuel savings per 100 miles driven.',
-    'Official DOE eGallon Metric ($1.72/eGallon): At 18.44¢/kWh, the electrical cost to drive an EV the exact distance a standard gas car travels on one gallon of gasoline (28 miles) is $1.72—delivering an effective $2.365/gallon discount against $4.085/gal retail pump gas.',
+    'Modeled gasoline price equivalent ($1.72/eGallon): At 18.44¢/kWh, the electrical cost to drive an EV the exact distance a standard gas car travels on one gallon of gasoline (28 miles) is $1.72—delivering an effective $2.365/gallon discount against $4.085/gal retail pump gas.',
     'Off-Peak TOU Modeled Scenario ($2.83/100 mi): In utility service areas offering overnight off-peak charging programs (modeled at 8.5¢/kWh), EV fueling costs drop to 2.83¢ per mile—capturing an estimated 80.6% fuel savings ($1,411.20 saved per 12,000 annual driving miles vs. $4.085/gal gasoline).',
     'Commercial DC Fast Charging Scenario ($15.00/100 mi): In a scenario where a driver relies exclusively on public DC fast chargers (modeled at $0.45/kWh), EV fueling costs increase to $15.00 per 100 miles—making fast charging approximately 2.8% more expensive than fueling a 28 MPG gasoline car at $4.085/gallon. Actual charging tariffs vary widely by network provider, subscription discounts, and regional station pricing.',
     'Powertrain Thermodynamic Disparity: Electric motors convert 85% to 90% of grid electrical energy into mechanical propulsion at the wheels, whereas internal combustion engines lose 70% to 80% of gasoline energy as radiant engine heat, friction, and exhaust gas.',
@@ -46,7 +46,7 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
   bodyParagraphs: [
     'Automotive fuel expenses represent the second largest recurring energy expenditure for American households after home heating and air conditioning. As regular retail gasoline prices average $4.085 per gallon nationally following late-summer 2026 supply shifts—and exceed $4.95 per gallon across the West Coast—millions of drivers are evaluating the direct operational cost of switching from internal combustion engines to battery electric vehicles.',
     'Comparing the financial cost of electricity versus gasoline requires translating kilowatt-hours and battery charging efficiency into miles per gallon and cost per 100 miles. Because an electric motor operates with three to four times the mechanical thermodynamic efficiency of a gasoline engine, an EV uses far less total energy to propel a vehicle over identical highway and city terrain.',
-    'According to testing standards established by the U.S. Department of Energy (DOE) Alternative Fuels Data Center (AFDC) and the U.S. Environmental Protection Agency (EPA), a standard light-duty electric passenger vehicle consumes approximately 30 kilowatt-hours (kWh) of battery energy per 100 miles (equivalent to 112 MPGe). Factoring in a 90% AC-to-DC Level 2 charging efficiency requires 33.33 kWh of grid electricity from the household electric meter.',
+    'This comparison assumes the EV uses 30 kWh of battery energy per 100 miles. At 90% charging efficiency, replacing that energy takes 33.33 kWh at the wall. An EPA label or wall-meter reading already includes charging losses, so use it directly.',
     'Evaluating residential electricity rates (averaging 18.44¢/kWh based on May 2026 EIA Form EIA-861M data) alongside regional gasoline tariffs, overnight time-of-use schedules, and commercial fast charging markups establishes a transparent fuel parity benchmark for American vehicle owners.',
   ],
   sections: [
@@ -73,9 +73,9 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
         '| Official Government Data | U.S. Residential Electricity Average | 18.44 ¢/kWh ($0.1844/kWh) | U.S. EIA Electric Power Monthly (May 2026 Form EIA-861M) |',
         '| Official Government Data | U.S. Regular Gasoline Pump Average | $4.085 / gallon | U.S. EIA Weekly Retail Gasoline Update (August 24, 2026) |',
         '| Official Government Data | Gasoline Chemical Energy Density | 33.705 kWh / GGE | U.S. DOE Alternative Fuels Data Center (AFDC) |',
-        '| Model Assumption | Standard EV Rated Efficiency | 30.0 kWh / 100 miles (112 MPGe) | EPA Light-Duty Fleet Average Benchmark |',
+        '| Model Assumption | Assumed EV Battery Energy Use | 30.0 kWh / 100 miles | Illustrative battery-side input |',
         '| Model Assumption | Level 2 AC-to-DC Charging Efficiency | 90.0% (0.90) | SAE J2847 / DOE OBC Conversion Standard |',
-        '| Model Assumption | Baseline Gasoline Passenger Fuel Economy | 28.0 MPG combined | EPA 2026 Automotive Trends Report |',
+        '| Model Assumption | Baseline Gasoline Passenger Fuel Economy | 28.0 MPG combined | Illustrative gasoline vehicle |',
         '| Model Assumption | Super-Off-Peak TOU Tariff Scenario | 8.50 ¢/kWh ($0.085/kWh) | Representative Utility Overnight EV Rate (Midnight–6 AM) |',
         '| Model Assumption | Commercial DC Fast Charging Tariff Scenario | 45.00 ¢/kWh ($0.450/kWh) | Representative Public High-Power Fast Charging Rate |',
         '| Model Assumption | Annual Commuter Driving Distance | 12,000 miles / year | Standard U.S. Household Vehicle Usage Baseline |',
@@ -88,9 +88,9 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
         'Table: Vehicle Class Fuel Cost & Efficiency Benchmark (at 18.44¢/kWh Electricity & $4.085/gal Regular Gasoline)',
         '| Vehicle Class & Powertrain | Efficiency Rating | Energy Consumed per 100 Miles | Fuel Cost per 100 Miles | Cost per Mile (¢/mi) | 12,000-Mile Annual Fuel Cost | Net Annual Savings vs 28 MPG Gas |',
         '| :--- | :--- | :--- | :--- | :--- | :--- | :--- |',
-        '| Efficient Compact EV (Model 3 / Ioniq 6) | 25.0 kWh / 100 mi (135 MPGe) | 27.78 kWh (grid) | $5.12 / 100 mi | 5.12 ¢ / mi | $614.40 / yr | $1,136.40 / yr (64.9%) |',
-        '| Standard Crossover EV (Model Y / Ioniq 5 / ID.4) | 30.0 kWh / 100 mi (112 MPGe) | 33.33 kWh (grid) | $6.15 / 100 mi | 6.15 ¢ / mi | $738.00 / yr | $1,012.80 / yr (57.8%) |',
-        '| Large Electric SUV / Dual-Motor Truck | 42.0 kWh / 100 mi (80 MPGe) | 46.67 kWh (grid) | $8.61 / 100 mi | 8.61 ¢ / mi | $1,033.20 / yr | $717.60 / yr (41.0%) |',
+        '| Efficient Compact EV (Model 3 / Ioniq 6) | 25.0 kWh / 100 mi | 27.78 kWh (grid) | $5.12 / 100 mi | 5.12 ¢ / mi | $614.40 / yr | $1,136.40 / yr (64.9%) |',
+        '| Standard Crossover EV (Model Y / Ioniq 5 / ID.4) | 30.0 kWh / 100 mi | 33.33 kWh (grid) | $6.15 / 100 mi | 6.15 ¢ / mi | $738.00 / yr | $1,012.80 / yr (57.8%) |',
+        '| Large Electric SUV / Dual-Motor Truck | 42.0 kWh / 100 mi | 46.67 kWh (grid) | $8.61 / 100 mi | 8.61 ¢ / mi | $1,033.20 / yr | $717.60 / yr (41.0%) |',
         '| Efficient Compact Gas Car (Civic / Corolla) | 35.0 MPG | 2.86 gallons | $11.67 / 100 mi | 11.67 ¢ / mi | $1,400.40 / yr | $350.40 / yr (20.0%) |',
         '| Standard Passenger Gas Car (U.S. Average) | 28.0 MPG | 3.57 gallons | $14.59 / 100 mi | 14.59 ¢ / mi | $1,750.80 / yr | Baseline ($0.00) |',
         '| Full-Size Gas SUV / Half-Ton Truck (F-150 / Tahoe) | 20.0 MPG | 5.00 gallons | $20.43 / 100 mi | 20.43 ¢ / mi | $2,451.60 / yr | -$700.80 / yr (-40.0%) |',
@@ -170,7 +170,7 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
   practicalExample:
     'A suburban household in Columbus, Ohio drives 12,000 miles per year and is deciding between a 28 MPG gasoline crossover and a 30 kWh/100-mile electric crossover. With local regular gasoline selling at $3.65 per gallon and residential electricity billing at 16.80¢/kWh, the gasoline vehicle consumes 428.6 gallons of fuel annually, costing an estimated $1,564.39 per year ($130.37/month). The electric vehicle draws 4,000.0 kWh of grid electricity annually (33.33 kWh/100 mi at 90% Level 2 efficiency), costing an estimated $672.00 per year ($56.00/month). In this benchmark scenario, switching to the EV saves the household $892.39 per year ($74.37/month in direct energy costs). By enrolling in a utility overnight off-peak charging program (modeled at 8.0¢/kWh), the annual EV charging expense drops to $320.00/year ($26.67/month), expanding annual household energy savings to $1,244.39.',
   methodologyNotes:
-    'Fuel economy baselines are derived from the EPA 2026 Automotive Trends Report (28.0 MPG combined adjusted light-duty passenger average; 30.0 kWh/100 mi EV light-duty fleet average). Grid electricity consumption incorporates a 90.0% Level 2 AC-to-DC on-board charger (OBC) and thermal management conversion efficiency model assumption (30.0 kWh battery delivery = 33.33 kWh meter draw). Chemical energy equivalence is based on the DOE standard of 33.705 kWh per Gasoline Gallon Equivalent (GGE). Electricity rates reflect the May 2026 EIA Form EIA-861M residential revenue per kWh dataset. Gasoline prices are sourced from the EIA Weekly Retail Gasoline and Diesel Prices update for August 24, 2026. Limitations & Scope: This benchmark focuses strictly on direct fuel and electricity consumption expenses under specified scenario assumptions. Actual electricity and charging costs will vary based on individual utility rate structures, tiered billing, time-of-use schedules, ambient temperature effects on battery efficiency, driving style, terrain, commercial charging network subscription plans, and vehicle maintenance differences. It excludes vehicle acquisition costs, financing, tax incentives, insurance premiums, and state registration fees.',
+    'The 28 MPG gas vehicle and 30 kWh/100 miles of EV battery use are illustrative inputs. EPA label consumption already accounts for charging losses. Grid electricity consumption incorporates a 90.0% Level 2 AC-to-DC on-board charger (OBC) and thermal management conversion efficiency model assumption (30.0 kWh battery delivery = 33.33 kWh meter draw). Chemical energy equivalence is based on the DOE standard of 33.705 kWh per Gasoline Gallon Equivalent (GGE). Electricity rates reflect the May 2026 EIA Form EIA-861M residential revenue per kWh dataset. Gasoline prices are sourced from the EIA Weekly Retail Gasoline and Diesel Prices update for August 24, 2026. Limitations & Scope: This benchmark focuses strictly on direct fuel and electricity consumption expenses under specified scenario assumptions. Actual electricity and charging costs will vary based on individual utility rate structures, tiered billing, time-of-use schedules, ambient temperature effects on battery efficiency, driving style, terrain, commercial charging network subscription plans, and vehicle maintenance differences. It excludes vehicle acquisition costs, financing, tax incentives, insurance premiums, and state registration fees.',
   sources: [
     {
       organization: 'U.S. Energy Information Administration (EIA)',
@@ -192,9 +192,9 @@ export const august2026EvVsGasCarFuelCostPer100MilesBenchmark: InsightRecord = {
     },
     {
       organization: 'U.S. Environmental Protection Agency (EPA)',
-      title: 'Automotive Trends Report & Light-Duty Fuel Economy Ratings',
-      url: 'https://www.epa.gov/automotive-trends',
-      topic: 'Fleet average light-duty MPG and EV kWh/100-mile consumption baselines',
+      title: 'Fuel Economy and EV Range Testing',
+      url: 'https://www.epa.gov/greenvehicles/fuel-economy-and-ev-range-testing',
+      topic: 'EPA fuel economy labels and included charging losses',
     },
   ],
   relatedRoutes: [

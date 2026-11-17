@@ -44,21 +44,6 @@ export function LatestInsightsSection() {
               {article.title}
             </Link>
             <p className={styles.summary}>{article.summary}</p>
-            <div className={styles.cardFooter}>
-              {article.reportingPeriod ? (
-                <span
-                  className={styles.period}
-                  title={`Research using ${article.reportingPeriod} EIA data`}
-                >
-                  Research using {article.reportingPeriod} EIA data
-                </span>
-              ) : (
-                <span />
-              )}
-              <Link className={styles.readMoreLink} href={`/insights/${article.slug}`}>
-                Read Entire Insight →
-              </Link>
-            </div>
           </article>
         ))}
       </div>

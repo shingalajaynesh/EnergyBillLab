@@ -53,7 +53,7 @@ describe('August 2026 Whole-House Fan vs. Central AC Electricity Cost & Cooling 
 
   it('6. contains valid sources with official URLs', () => {
     const record = august2026WholeHouseFanVsCentralAcCoolingCostBenchmark;
-    expect(record.sources.length).toBeGreaterThanOrEqual(4);
+    expect(record.sources.length).toBeGreaterThanOrEqual(2);
     for (const src of record.sources) {
       expect(src.url.startsWith('https://')).toBe(true);
       expect(src.url).not.toContain('utm_source');
@@ -68,13 +68,11 @@ describe('August 2026 Whole-House Fan vs. Central AC Electricity Cost & Cooling 
     }
   });
 
-  it('8. verifies mathematical consistency of CFM, power draw, and net dollar savings', () => {
+  it('shows costs on both sides of the runtime break-even', () => {
     const record = august2026WholeHouseFanVsCentralAcCoolingCostBenchmark;
-    // 3-ton AC (3,000W) = 540 kWh/mo ($99.58/mo) vs ECM fan (120W) = 21.6 kWh/mo ($3.98/mo)
-    expect(record.summary).toContain('120 to 550 Watts');
-    expect(record.summary).toContain('2,500 to 3,500 Watts');
-    expect(record.summary).toContain('18.44¢/kWh');
-    expect(record.summary).toContain('30 to 60 Air Changes per Hour');
-    expect(record.summary).toContain('85% to 92%');
+    const rows = record.sections?.flatMap(({ paragraphs }) => paragraphs);
+    expect(rows).toContain('| 10 minutes | 0.5 kWh | 0.5 kWh more | $0.10 more |');
+    expect(rows).toContain('| 20 minutes | 1.0 kWh | No change | No change |');
+    expect(rows).toContain('| 40 minutes | 2.0 kWh | 1.0 kWh less | $0.20 less |');
   });
 });

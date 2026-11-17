@@ -210,7 +210,7 @@ function generateInsightsAndChecklist(
   if (Math.abs(estimatedRateFeeOtherEffectDollar) >= 1) {
     const rateImpact = estimatedRateFeeOtherEffectDollar;
     insights.push(
-      `Estimated impact of effective rate, fixed fee, tax, or credit changes: ${rateImpact >= 0 ? '+' : ''}$${rateImpact.toFixed(2)}.`,
+      `Remaining bill difference after accounting for changes in daily usage: ${rateImpact >= 0 ? '+' : ''}$${rateImpact.toFixed(2)}. Check billing days, rates, fees, taxes, and credits.`,
     );
   }
 

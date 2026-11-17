@@ -9,6 +9,19 @@ export interface GuideVisualConfig {
   title: string;
 }
 
+export const STANDBY_POWER_EXAMPLE = {
+  standbyHoursPerDay: 20,
+  wattsBefore: 8,
+  wattsAfter: 2,
+  stripPrice: 25,
+} as const;
+
+const standbyKwhPerWatt = (STANDBY_POWER_EXAMPLE.standbyHoursPerDay * 365) / 1000;
+const standbyKwhBefore = STANDBY_POWER_EXAMPLE.wattsBefore * standbyKwhPerWatt;
+const standbyKwhAfter = STANDBY_POWER_EXAMPLE.wattsAfter * standbyKwhPerWatt;
+
+export const STANDBY_ANNUAL_KWH_SAVED = standbyKwhBefore - standbyKwhAfter;
+
 export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
   'why-is-my-electric-bill-so-high': {
     title: 'Where Electricity Goes in a Typical U.S. Home',
@@ -1085,44 +1098,23 @@ export const GUIDE_VISUAL_CONFIGS: Record<string, GuideVisualConfig> = {
   },
 
   'what-is-vampire-power-and-how-much-does-it-cost': {
-    title: 'Phantom Vampire Power Draw by Common Household Devices',
-    subtitle: 'Continuous standby electricity draw and annual cost when devices are "turned off"',
-    badge: 'Hidden Drain',
-    badgeType: 'primary',
+    title: `Annual electricity use at ${STANDBY_POWER_EXAMPLE.standbyHoursPerDay} standby hours per day`,
+    subtitle: 'Illustrative meter readings for a TV and its accessories',
     items: [
       {
-        label: 'Cable/Satellite DVR Set-Top Box (25W continuous standby)',
-        displayValue: '$40.38 / yr',
-        value: 40.38,
-        color: 'danger',
-        subLabel: '219 kWh/yr · Constantly downloading program guides and maintaining tuner state',
-      },
-      {
-        label: 'Gaming Console on "Instant On" Standby (15W standby)',
-        displayValue: '$24.23 / yr',
-        value: 24.23,
+        label: `Before the change (${STANDBY_POWER_EXAMPLE.wattsBefore} W at the wall)`,
+        displayValue: `${standbyKwhBefore.toFixed(1)} kWh/yr`,
+        value: standbyKwhBefore,
         color: 'warning',
-        subLabel: '131.4 kWh/yr · Background updates and remote wake listening mode',
       },
       {
-        label: 'Smart Speaker / Display (4W continuous listening)',
-        displayValue: '$6.46 / yr',
-        value: 6.46,
+        label: `After the change (${STANDBY_POWER_EXAMPLE.wattsAfter} W at the wall)`,
+        displayValue: `${standbyKwhAfter.toFixed(1)} kWh/yr`,
+        value: standbyKwhAfter,
         color: 'primary',
-        subLabel: '35 kWh/yr · Constant microphone array and Wi-Fi connection',
-      },
-      {
-        label: 'Laptop / Phone Charger plugged in without device (0.5W)',
-        displayValue: '$0.81 / yr',
-        value: 0.81,
-        color: 'success',
-        highlight: true,
-        badge: 'Negligible',
-        subLabel: '4.38 kWh/yr · Modern switched-mode power supplies draw negligible idle power',
       },
     ],
-    footerNote:
-      'Smart Strip Solution: Using smart power strips that cut power to peripheral devices when your TV or computer sleeps eliminates ~$100/yr in phantom load.',
+    footerNote: `The change saves ${STANDBY_ANNUAL_KWH_SAVED.toFixed(1)} kWh per year under this schedule.`,
   },
 
   'heat-pump-vs-electric-resistance-heating-cost': {

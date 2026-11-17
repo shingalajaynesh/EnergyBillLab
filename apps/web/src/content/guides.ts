@@ -1431,20 +1431,20 @@ export const energyGuides: Record<string, GuideDefinition> = {
     h1Title: 'What Is Vampire Power and How Much Does It Cost?',
     breadcrumbLabel: 'Vampire Power & Standby Cost',
     description:
-      'Understand standby power consumption (vampire load), continuous phantom power draw in household electronics, annual dollar costs, and smart power strip savings.',
+      'Measure standby electricity with a plug-in meter, estimate annual cost from your own readings, and decide whether a smart strip would pay for itself.',
     eyebrow: 'Standby Energy Guide',
     datePublished: '2026-07-26',
-    updatedAt: '2026-07-26',
+    updatedAt: '2026-11-17',
     category: 'Electric Bill Diagnostics',
-    primaryCalculatorHref: '/electricity-bill-analyzer',
-    primaryCalculatorLabel: 'Electricity Bill Analyzer',
+    primaryCalculatorHref: '/tools/appliance-energy-cost-calculator',
+    primaryCalculatorLabel: 'Appliance Energy Cost Calculator',
     primaryCalculatorDescription:
-      'Analyze your household electric statement to isolate continuous background standby power.',
-    actionLabel: 'Analyze Your Household Electric Bill',
+      'Use measured watts, standby hours, and your electricity rate to estimate annual cost.',
+    actionLabel: 'Estimate Your Standby Cost',
     summaryTakeaways: [
       'Vampire power (phantom load) is the electrical energy consumed by appliances and electronics while turned off or in standby mode.',
-      'A typical U.S. household has 20 to 40 plugged-in devices drawing 1W to 15W continuously, accumulating 200 to 500 kWh annually ($30 to $100/year).',
-      'Smart power strips auto-cut power to secondary electronics when primary devices (like TVs or computers) enter standby, eliminating continuous draw.',
+      'Use a plug-in meter to measure the device in its usual standby mode. If the reading fluctuates, measure kWh over several hours to calculate average watts.',
+      'Use the measured reduction, standby hours, and electricity price to check how long a smart strip would take to pay for itself.',
     ],
     sections: [],
     sources: [
@@ -1457,10 +1457,9 @@ export const energyGuides: Record<string, GuideDefinition> = {
       },
       {
         organization: 'U.S. Department of Energy',
-        title: 'Reducing Standby Power Losses in Home Electronics',
-        topic:
-          'Phantom loads, smart power strips, ENERGY STAR standby power requirements, and measurement tools',
-        url: 'https://www.energy.gov/energysaver/low-power-mode-payoffs',
+        title: 'Measuring Standby Power',
+        topic: 'Measuring fluctuating standby power using energy over time',
+        url: 'https://www.energy.gov/cmei/femp/measuring-standby-power',
       },
     ],
     relatedRoutes: [

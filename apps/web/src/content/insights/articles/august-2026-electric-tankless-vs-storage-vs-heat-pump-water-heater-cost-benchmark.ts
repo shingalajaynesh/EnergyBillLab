@@ -11,7 +11,7 @@ export const august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchma
       'Electric tankless vs storage vs heat pump water heater cost benchmark using August 2026 EIA data (18.44¢/kWh). Tankless draws 18–36 kW (75–150A) saving only $81/yr over standard tanks ($680 vs $600/yr), while hybrid heat pumps save $500/yr ($180/yr). Compare flow rate power, panel sizing, and standby loss.',
     status: 'published',
     publishedAt: '2026-08-27',
-    updatedAt: null,
+    updatedAt: '2026-11-17',
     category: 'appliances',
     canonicalTopic:
       'august-2026-electric-tankless-vs-storage-vs-heat-pump-water-heater-cost-benchmark',
@@ -33,7 +33,7 @@ export const august2026ElectricTanklessVsStorageVsHeatPumpWaterHeaterCostBenchma
     updateCadence: 'annual',
     noindex: false,
     summary:
-      'Operating a whole-home electric tankless water heater costs an estimated $599.67 annually (3,252 kWh/year) for a standard 55-gallon-per-day household at the May 2026 U.S. Energy Information Administration (EIA) national residential average electricity rate of 18.44¢/kWh. Compared to a standard 50-gallon electric resistance storage tank ($680.44/year, 3,690 kWh/year), electric tankless saves only $80.77 per year ($6.73/month) by eliminating standby jacket losses—while demanding a massive 18.0 kW to 36.0 kW peak electrical power surge (75 to 150 Amps at 240V) that frequently requires a $1,500 to $3,500 electrical panel upgrade. In contrast, an ENERGY STAR qualified hybrid heat pump water heater consumes just 978 kWh/year ($180.34/year), saving $500.10 annually (73.5% reduction) on a standard 30-amp circuit.',
+      'At 18.44¢/kWh, modeled electricity costs are $680.44/year for a resistance tank, $599.67 annually for electric tankless, and $180.34/year for a heat pump. The example assumes 55 gallons of hot water per day. Compare those energy costs with local installation quotes for specific models.',
     keyFindings: [
       'Data Provenance Transparency: This analysis clearly separates official government inputs (EIA residential rate of 18.44¢/kWh; DOE Building Technologies Office 55 gal/day household baseline; ENERGY STAR UEF test procedures) from EnergyBillLab model assumptions (65°F average water temperature rise; 98% resistance element efficiency; 3.75 HPWH hybrid UEF) and derived calculated results ($599.67/yr tankless cost; $180.34/yr HPWH cost; $80.77/yr tankless standby savings).',
       'Minimal Standby Loss Savings ($80.77/Year): Because electric tankless systems rely on the same 98% efficient direct electric resistance heating as standard storage tanks, eliminating tank standby heat loss (1.20 kWh/day) yields only an 11.9% reduction in annual electricity consumption ($6.73/month saved at 18.44¢/kWh).',

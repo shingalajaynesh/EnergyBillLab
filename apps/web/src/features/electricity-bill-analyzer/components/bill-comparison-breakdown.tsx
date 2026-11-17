@@ -65,14 +65,14 @@ export function BillComparisonBreakdown({ comparison }: BillComparisonBreakdownP
         <div className={styles.itemCard}>
           <div className={styles.itemHeader}>
             <span>2. Rate, Fee & Other Change</span>
-            <span className={styles.feeBadge}>Effective Cost & Surcharges</span>
+            <span className={styles.feeBadge}>Remaining Difference</span>
           </div>
           <div className={styles.itemValue}>
             {formatCurrency(estimatedRateFeeOtherEffectDollar, true)}
           </div>
           <p className={styles.itemExplain}>
-            Calculated as the remaining bill difference from effective supply rate adjustments,
-            customer charges, fuel riders, taxes, or credits.
+            This is the difference left after accounting for changes in daily usage. It can include
+            a longer or shorter billing period, rate changes, fees, taxes, or credits.
           </p>
         </div>
       </div>
@@ -81,7 +81,7 @@ export function BillComparisonBreakdown({ comparison }: BillComparisonBreakdownP
         <div className={styles.reconciliationNotice}>
           <span className={styles.checkIcon}>&check;</span> Exact Reconciliation:{' '}
           {formatCurrency(estimatedUsageEffectDollar, true)} (Usage) +{' '}
-          {formatCurrency(estimatedRateFeeOtherEffectDollar, true)} (Rate/Fee) ={' '}
+          {formatCurrency(estimatedRateFeeOtherEffectDollar, true)} (Other) ={' '}
           {formatCurrency(billChangeDollar, true)} (Total Bill Change).
         </div>
       ) : null}

@@ -76,9 +76,7 @@ describe('August 2026 Electric Tankless vs. Storage vs. Heat Pump Water Heater C
     expect(record.summary).toContain('$599.67 annually');
     expect(record.summary).toContain('$680.44/year');
     expect(record.summary).toContain('$180.34/year');
-    expect(record.summary).toContain('$80.77 per year');
-    expect(record.summary).toContain('$500.10 annually');
-    expect(record.summary).toContain('18.0 kW to 36.0 kW');
+    expect(record.summary).toContain('55 gallons of hot water per day');
   });
 
   it('9. verifies explicit 3-tier data provenance structure (Official Data vs Model Assumptions vs Calculations)', () => {

@@ -16,11 +16,11 @@ export const BILL_ANALYZER_CONSTANTS = {
 
 export const CLASSIFICATION_MESSAGES: Record<InsightClassification, string> = {
   USAGE_PRIMARY:
-    'Your bill increased primarily because your daily electricity usage was higher during this billing period.',
+    'The estimate attributes most of the bill change to a difference in daily electricity use.',
   RATE_FEE_PRIMARY:
-    'Your electricity usage was similar or lower, so changes in effective rate, fixed charges, taxes, or other bill items appear to explain the difference.',
+    'Most of the bill change remains after accounting for daily electricity use. Compare billing days and line-item charges on the two statements.',
   BOTH_SIGNIFICANT:
-    'Both higher daily electricity usage and higher effective cost/fees contributed significantly to your bill increase.',
+    'Changes in daily electricity use explain part of the bill difference. Check billing days and line-item charges to understand the rest.',
   SMALL_CHANGE: 'The total bill change between these two billing periods is relatively small.',
   NO_COMPARISON:
     'Showing current period cost estimates. Enter previous period billing details to calculate a comparison breakdown.',

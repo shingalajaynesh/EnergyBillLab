@@ -1,9 +1,11 @@
 # AdSense Technical & Policy Readiness Audit
 
 **Site:** EnergyBillLab.com  
-**Document:** `docs/seo-adsense/adsense-readiness.md`  
-**Status:** Ready with manual actions (Technical & Policy Verification)  
-**Last Updated:** 2026-07-22
+**Document:** `docs/seo-adsense/adsense-readiness.md`
+
+**Status:** AdSense review rejected for Low value content on 2026-11-17
+
+**Last Updated:** 2026-11-17
 
 ---
 
@@ -12,7 +14,7 @@
 This document records the technical readiness, policy compliance, crawlability, and manual external configuration required for Google AdSense verification at EnergyBillLab.com.
 
 > [!IMPORTANT]
-> **AdSense Approval Disclaimer**: AdSense approval is an external Google decision. No tool, agent, or document can guarantee approval. Energy Bill Lab maintains full code-level, policy-level, and architectural readiness to support active review.
+> **AdSense Approval Disclaimer**: AdSense approval is an external Google decision. No tool, agent, or document can guarantee approval. The technical checks below are historical. On November 17, 2026, AdSense showed ads.txt as Authorized and flagged Low value content.
 
 ---
 
@@ -75,6 +77,16 @@ Ads.txt: Ready
 Crawlability: Ready
 Policy pages: Ready
 Consent: Technical preparation complete; external CMP configuration and verification required
-Original content: Ready (Production Electricity Bill Analyzer and official EIA-backed state residential rate comparison implemented)
-Overall readiness: Technical preparation complete; external CMP configuration and verification required
+Original content: AdSense review flagged Low value content on November 17, 2026
+Overall readiness: Content remediation in progress
 ```
+
+## November 17 content review
+
+The homepage featured three modeled comparisons without enough context about how to apply the numbers. The whole-house fan Insight now compares actual compressor runtime displaced. The EV comparison distinguishes battery consumption from the electricity measured at the wall. The water-heater summary separates modeled running costs from installation quotes. The Electricity Bill Analyzer now explains a two-statement example, including how a longer period appears in the residual.
+
+## Follow-up on overlapping articles
+
+The existing permanent redirects already consolidate the standby-power and refrigerator Insights into their guides. Both archived Insight URLs are excluded from the sitemap. The standby-power guide now shows readers how to measure a device at the wall and estimate savings from a measured change. The example and chart share the same assumptions and no longer claim a universal household load or smart-strip savings.
+
+The time-of-use guide explains how to read an entire plan, while the published load-shifting Insight models individual appliance cycles. These answer different questions. The remaining guide and state inventories still need claim and overlap checks.
